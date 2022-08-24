@@ -1,0 +1,117 @@
+<head>
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>8values中文版</title>
+<link rel="icon" type="x-icon" href="icon.png">
+<link rel="shortcut icon" type="x-icon" href="icon.png">
+<meta charset="utf-8">
+</head>
+<body>
+<h1>8values中文版</h1>
+<hr>
+<div class="center">
+    <div class="axis_name quadcolumn">经济</div>
+    <div class="axis_name quadcolumn">外交</div>
+    <div class="axis_name quadcolumn">民事</div>
+    <div class="axis_name quadcolumn">社会</div>
+    <a href="#anchor"><img src="value_images/equality.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/nation.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/liberty.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/tradition.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/markets.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/globe.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/authority.svg" class="quadcolumn"></a>
+    <a href="#anchor"><img src="value_images/progress.svg" class="quadcolumn"></a>
+</div>
+<br>
+<button class="button" onclick="location.href='instructions.html';" style="font-size:36pt;">开始！</button>
+<br><hr>
+<h2>什么是8values？</h2>
+    <p>8values是一个政治立场测试，它会将根据你的测试结果为八种不同的政治意识形态级分配百分比和最佳匹配。你将看到一些观点，然后对这些观点选择你的态度，从“<b>非常同意</b>”到“<b>非常不同意</b>”每个选项都将影响你的测试结果。测验结束时，您的答案将与每个价值观的最大可能值进行比较，从而得出一个百分比。<br /><br />
+    此测试包含<b><u><span id="numOfQuestions"></span></u></b>个问题。</p>
+
+<h2><a id="anchor">有哪八项意识形态？</a></h2>
+    <p>有四个独立的价值观：经济、外交、公民和社会。每个轴都有一对相反的意识形态。 他们是：</p>
+    <div class="explanation_bg">
+        <div class="spacer">
+            <div class="explanation_blurb_left">
+                <p class="value"><b style="color:#d32f2f;">平等</b></p>
+                <p class="blurb-text">
+                    平等得分较高的人认为经济应该对于民众平等。他们倾向于支持累进税法、社会事业，更高得分的会支持社会主义。
+                </p>
+            </div>
+            <div class="explanation_axis">
+                <p class="axis_name">经济</p>
+                <img class="arrow" src="double_arrow.svg"></img>
+            </div>
+            <div class="explanation_blurb_right">
+                <p class="value"><b style="color:#00796b;">市场</b></p>
+                <p class="blurb-text">
+                    市场得分较高的人认为经济应该专注于快速增长。他们倾向于支持减税、私有化、放松管制，甚至支持自由放任的资本主义。
+                </p>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="explanation_blurb_left">
+                <p class="value"><b style="color:#f57c00;">民族</b></p>
+                <p class="blurb-text">
+                    民族分数较高的人是爱国主义者和民族主义者。他们通常支持侵略性的外交政策，重视军事、实力、主权，并高度重视领土扩张。
+                </p>
+            </div>
+            <div class="explanation_axis">
+                <p class="axis_name">外交</p>
+                <img class="arrow" src="double_arrow.svg"></img>
+            </div>
+            <div class="explanation_blurb_right">
+                <p class="value"><b style="color:#0288d1;">国际</b></p>
+                <p class="blurb-text">
+                    国际得分较高的人是世界主义者和国际主义者。 他们通常支持和平的外交政策，强调外交、合作、融合，甚至支持世界只有一个政府。
+                </p>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="explanation_blurb_left">
+                <p class="value"><b style="color:#fbc02d;">自由</b></p>
+                <p class="blurb-text">
+                    自由分数较高的人支持个人自由。他们倾向于支持民主，反对国家干预个人生活（这里是指个人自由，而不是经济自由）。
+                </p>
+            </div>
+            <div class="explanation_axis">
+                <p class="axis_name">民事</p>
+                <img class="arrow" src="double_arrow.svg"></img>
+            </div>
+            <div class="explanation_blurb_right">
+                <p class="value"><b style="color:#303f9f;">威权</b></p>
+                <p class="blurb-text">
+                    威权分数较高的人相信壮大国家权力。他们倾向于支持国家干预个人生活、政府监视，甚至是审查或专制。
+                </p>
+            </div>
+        </div>
+        <div class="spacer">
+            <div class="explanation_blurb_left">
+                <p class="value"><b style="color:#689f38;">保守</b></p>
+                <p class="blurb-text">
+                    保守分数较高的人相信传统价值观并严格遵守道德准则。 虽然并非总是如此，但他们通常是虔诚的，并支持现状。
+                </p>
+            </div>
+            <div class="explanation_axis">
+                <p class="axis_name">社会</p>
+                <img class="arrow" src="double_arrow.svg"></img>
+            </div>
+            <div class="explanation_blurb_right">
+                <p class="value"><b style="color:#7b1fa2;">进步</b></p>
+                <p class="blurb-text">
+                    进步分数较高的人相信社会变革和理性。虽然并非总是如此，但他们通常是无神论者，并支持环境行动和科学或技术研究。
+                </p>
+            </div>
+        </div>
+        <br/>
+    </div>
+
+    <p>本项目为 <a href="https://songyon.github.io/8valuescn/">8valuescn</a> 的镜像，如有疑问，请点击此处的超链接进入源网站。镜像删除了谷歌广告以加快大陆网友的访问速度。</p>
+
+<!-- This is the script for the page itself -->
+<script type="application/javascript"src="questions.js"></script>
+<script type="text/javascript">
+    document.getElementById("numOfQuestions").innerHTML = questions.length;
+</script>
+</body>
