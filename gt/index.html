@@ -54,6 +54,7 @@
 
   <div v-else-if="step === 2" class="intro">
     <h1>{{ result ? "恭喜！" : "请再接再厉。" }}</h1>
+<div v-if="result==1" class="intro"><p>您所通关的难度标签为 x={{option.x}} y={{option.y}} z={{option.z}} p={{option.cardRandom}} t={{option.maxCardType}}</p> </div><br>
     <button @click="rePlay">重试</button>
     <button @click="setGame">难度</button>
   </div>
