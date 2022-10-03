@@ -66,8 +66,10 @@
       />
 	<a v-if="option.toolLimit == 5"> 无限 </a>
 	<a v-else> {{option.toolLimit}} </a>
-
     </div> 
+<p><a href="./gt.zip">源码下载</a></p>
+<p><a href="https://juejin.cn/post/7143897892531486727">原作者</a>及其<a href="https://zdjdcs.csb.app/">作品</a></p>
+<p>改编作者：<font color="0x8318de">crystal302</font>；版本号：<a href="">v1.1.2</a></p>
 </br>
     <button @click="startGame">开始</button>
   </div> 
@@ -76,7 +78,7 @@
     <h1>{{ result ? "恭喜！" : "请再接再厉。" }}</h1>
 <div v-if="result==1" class="intro"><p>您所通关的难度标签为 x={{option.x}} y={{option.y}} z={{option.z}} p={{option.cardRandom}} t={{option.maxCardType}} s={{option.toolLimit}}</p> </div><br>
     <button @click="rePlay">重试</button>
-    <button @click="setGame">难度</button>
+    <button @click="setGame">首页</button>
   </div>
   <div v-else class="box">
     <div class="card-wrap" :style="cardWrapStyle">
@@ -128,9 +130,10 @@
     </div>
     <div class="tools">
       <font color="0x330033">工具：</font>
-      <button :disabled="!tools.save" @click="saveCard">移出({{tools.save}})</button>
-      <button :disabled="!tools.rand" @click="randCard">洗牌({{tools.rand}})</button>
-      <button @click="rePlay"><font color="red">重开</fond></button>
+<button :disabled="tools.save<=0" @click="saveCard">移出({{tools.save}})</button>
+<button :disabled="tools.rand<=0" @click="randCard">洗牌({{tools.rand}})</button>
+<button @click="rePlay"><font color="red">重开</fond></button>
+<button @click="setGame"><font color="red">首页</fond></button>
     </div>
   </div>
 </div>
@@ -235,7 +238,7 @@ new Vue({
   },
   methods: {
     randCard() {
-      if (!this.tools.rand) {
+      if (this.tools.rand<=0) {
         return;
       }
       this.tools.rand -= 1;
@@ -265,7 +268,7 @@ new Vue({
       this.calcCover();
     },
     saveCard() {
-      if (!this.tools.save) {
+      if (this.tools.save<=0) {
         return false;
       }
       this.tools.save -= 1;
