@@ -55,13 +55,26 @@
       />
       {{ option.maxCardType }}
     </div> 
+    <div>
+      道具限制次数
+      <input
+        v-model="option.toolLimit"
+        min="0"
+        max="5"
+        step="1"
+        type="range"
+      />
+	<a v-if="option.toolLimit == 5"> 无限 </a>
+	<a v-else> {{option.toolLimit}} </a>
+
+    </div> 
 </br>
     <button @click="startGame">开始</button>
   </div> 
 
   <div v-else-if="step === 2" class="intro">
     <h1>{{ result ? "恭喜！" : "请再接再厉。" }}</h1>
-<div v-if="result==1" class="intro"><p>您所通关的难度标签为 x={{option.x}} y={{option.y}} z={{option.z}} p={{option.cardRandom}} t={{option.maxCardType}}</p> </div><br>
+<div v-if="result==1" class="intro"><p>您所通关的难度标签为 x={{option.x}} y={{option.y}} z={{option.z}} p={{option.cardRandom}} t={{option.maxCardType}} s={{option.toolLimit}}</p> </div><br>
     <button @click="rePlay">重试</button>
     <button @click="setGame">难度</button>
   </div>
@@ -115,8 +128,8 @@
     </div>
     <div class="tools">
       <font color="0x330033">工具：</font>
-      <button :disabled="!tools.save" @click="saveCard">移出</button>
-      <button :disabled="!tools.rand" @click="randCard">洗牌</button>
+      <button :disabled="!tools.save" @click="saveCard">移出({{tools.save}})</button>
+      <button :disabled="!tools.rand" @click="randCard">洗牌({{tools.rand}})</button>
       <button @click="rePlay"><font color="red">重开</fond></button>
     </div>
   </div>
@@ -189,7 +202,8 @@ new Vue({
         y: 6,
         z: 20,
         cardRandom: 0.4,
-        maxCardType: 14,
+        maxCardType: 14,	 
+	   toolLimit: 1,
       },
       step: 0,
       win: false,
@@ -202,8 +216,8 @@ new Vue({
       maxWidth: 0,
       maxHeight: 0,
       tools: {
-        save: true,
-        rand: true,
+        save: 1,
+        rand: 1,
       },
       timer: 0
   },
@@ -224,7 +238,7 @@ new Vue({
       if (!this.tools.rand) {
         return;
       }
-      this.tools.rand = false;
+      this.tools.rand -= 1;
       const length = this.cardItemList.length;
       this.cardItemList.forEach((item) => {
         const randNum = Math.floor(length * Math.random());
@@ -254,8 +268,11 @@ new Vue({
       if (!this.tools.save) {
         return false;
       }
-      this.tools.save = false;
-      this.saveList = this.penddingList.slice(0, 3);
+      this.tools.save -= 1;
+      this.saveList.forEach((item, index) => {this.calcValueList[item.val]++;});
+      if (this.penddingList.length>0) this.saveList.push(this.penddingList[0]);
+      if (this.penddingList.length>1) this.saveList.push(this.penddingList[1]);
+      if (this.penddingList.length>2) this.saveList.push(this.penddingList[2]);
       setTimeout(() => {
         this.saveList.forEach((item, index) => {
           item.style.top = "110%";
@@ -275,8 +292,10 @@ new Vue({
       this.penddingList = [];
       this.clearList = [];
       this.saveList = [];
-      this.tools.save = true;
-      this.tools.rand = true;
+      this.tools.save = this.option.toolLimit;
+      this.tools.rand = this.option.toolLimit;
+	if (this.tools.save == 5) this.tools.save=99;
+	if (this.tools.rand == 5) this.tools.rand=99;
       this.setCardValue({ maxCardType: Number(this.option.maxCardType) });
       this.calcCover();
     },
