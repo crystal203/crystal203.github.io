@@ -8,6 +8,13 @@
 	<script src="js/vue.js"></script>
   </head>
   <body class="bg">
+<audio src="./aud/bgm_shop.mp3" loop autostart id="music" controls></audio>
+<script>
+	function playMusic(){
+		music.play();document.removeEventListener('click',playMusic);
+	}
+	document.addEventListener('click',playMusic)
+</script>
 <div class="bgcharacter1">
 <img src="./pic/hana.gif"></img>
 </div>
