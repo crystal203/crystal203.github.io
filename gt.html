@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>坎公练度计算器</title>
+</head>
+
+<body>
+    <h1>坎公练度计算器</h1>
+    <h2>更新至【拜蒙】版本</h2>
+    <div class="content">
+        <table border="2">
+            <tbody>
+                <tr>
+                    <td><b>项目</b></td>
+                    <td><b>攻击</b></td>
+                    <td><b>防御</b></td>
+                    <td><b>生命</b></td>
+                </tr>
+                <tr>
+                    <td>英雄羁绊</td>
+                    <td><input type="text" id="a1" value="0">/<a id="a1m">46.0</a></td>
+                    <td><input type="text" id="d1" value="0">/<a id="d1m">23.4</a></td>
+                    <td><input type="text" id="h1" value="0">/<a id="h1m">24.8</a></td>
+                </tr>
+                <tr>
+                    <td>装备羁绊</td>
+                    <td><input type="text" id="a2" value="0">/<a id="a2m">51.7</a></td>
+                    <td><input type="text" id="d2" value="0">/<a id="d2m">27.1</a></td>
+                    <td><input type="text" id="h2" value="0">/<a id="h2m">26.6</a></td>
+                </tr>
+                <tr>
+                    <td>武/饰/盾</td>
+                    <td><input type="text" id="a3" value="0">/<a id="a3m">10</a></td>
+                    <td><input type="text" id="d3" value="0">/<a id="d3m">7.7</a></td>
+                    <td><input type="text" id="h3" value="0">/<a id="h3m">7.7</a></td>
+                </tr>
+                <tr>
+                    <td>遗物图鉴</td>
+                    <td><input type="text" id="a4" value="0">/<a id="a4m">1.2</a></td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>英雄时装</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td><input type="text" id="h4" value="0">/<a id="h4m">10</a></td>
+                </tr>
+                <tr>
+                    <td>武器外观</td>
+                    <td><input type="text" id="a5" value="0">/<a id="a5m">9.3</a></td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>超级时装</td>
+                    <td><input type="text" id="a6" value="0">/<a id="a6m">1.9</a></td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>魔卡图鉴</td>
+                    <td><input type="text" id="a7" value="0">/<a id="a7m">10</a></td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>周边图鉴</td>
+                    <td><input type="text" id="a8" value="0">/<a id="a8m">3.8</a></td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <button onclick="calc()">计算</button>
+            <a id="stat"></a>
+        </p>
+        <h2>结果</h2>
+        <table border="2">
+            <tbody>
+                <tr>
+                    <td><b>项目</b></td>
+                    <td><b>你的练度</b></td>
+                    <td><b>最高练度</b></td>
+                    <td><b>百分比</b></td>
+                    <td><b>评分</b></td>
+                </tr>
+                <tr>
+                    <td>攻击</td>
+                    <td><a id="ca1">尚未计算</a></td>
+                    <td><a id="ca2">尚未计算</a></td>
+                    <td><a id="ca3">尚未计算</a></td>
+                    <td><a id="ca4">尚未计算</a></td>
+                </tr>
+                <tr>
+                    <td>防御</td>
+                    <td><a id="cd1">尚未计算</a></td>
+                    <td><a id="cd2">尚未计算</a></td>
+                    <td><a id="cd3">尚未计算</a></td>
+                    <td><a id="cd4">尚未计算</a></td>
+                </tr>
+                <tr>
+                    <td>生命</td>
+                    <td><a id="ch1">尚未计算</a></td>
+                    <td><a id="ch2">尚未计算</a></td>
+                    <td><a id="ch3">尚未计算</a></td>
+                    <td><a id="ch4">尚未计算</a></td>
+                </tr>
+                <tr>
+                    <td>合计</td>
+                    <td><a id="cs1">尚未计算</a></td>
+                    <td><a id="cs2">尚未计算</a></td>
+                    <td><a id="cs3">尚未计算</a></td>
+                    <td><a id="cs4">尚未计算</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function check(a,b){
+        		for (var i=0;i<a.length;i++){
+        			if (a[i]>b[i]) return 0;
+          }
+          return 1;
+        }
+        function work(s,a,b){
+          var p=a/b;var col="color:";var txt="";
+          if (p<0.6) col+="grey",txt="低练";
+          else if (p<0.75) col+="green",txt="普通";
+          else if (p<0.85) col+="blue",txt="中练";
+          else if (p<0.93) col+="purple",txt="高练";
+          else if (p<0.96) col+="gold",txt="小满";
+          else if (p<0.98) col+="red",txt="中满";
+          else col+="brown",txt="满中满"
+          s.innerHTML=txt;
+          s.style=col;
+        }
+          function calc() {
+            var am=new Array(8);var hm=new Array(4);var dm=new Array(3);
+            am[0]=Number(document.getElementById("a1m").innerHTML);
+            am[1]=Number(document.getElementById("a2m").innerHTML);
+            am[2]=Number(document.getElementById("a3m").innerHTML);
+            am[3]=Number(document.getElementById("a4m").innerHTML);
+            am[4]=Number(document.getElementById("a5m").innerHTML);
+            am[5]=Number(document.getElementById("a6m").innerHTML);
+            am[6]=Number(document.getElementById("a7m").innerHTML);
+            am[7]=Number(document.getElementById("a8m").innerHTML);
+            hm[0]=Number(document.getElementById("h1m").innerHTML);
+            hm[1]=Number(document.getElementById("h2m").innerHTML);
+            hm[2]=Number(document.getElementById("h3m").innerHTML);
+            hm[3]=Number(document.getElementById("h4m").innerHTML);
+            dm[0]=Number(document.getElementById("d1m").innerHTML);
+            dm[1]=Number(document.getElementById("d2m").innerHTML);
+            dm[2]=Number(document.getElementById("d3m").innerHTML);
+          var amax=eval(am.join("+"));
+            var dmax=eval(dm.join("+"));
+            var hmax=eval(hm.join("+"));
+            var a=new Array(4);var d=new Array(3);var h=new Array(4);
+          a[0]=Number(document.getElementById("a1").value);
+         	 a[1]=Number(document.getElementById("a2").value);
+          a[2]=Number(document.getElementById("a3").value);
+          a[3]=Number(document.getElementById("a4").value);
+          a[4]=Number(document.getElementById("a5").value);
+          a[5]=Number(document.getElementById("a6").value);
+          a[6]=Number(document.getElementById("a7").value);
+          a[7]=Number(document.getElementById("a8").value);
+          d[0]=Number(document.getElementById("d1").value);
+          d[1]=Number(document.getElementById("d2").value);
+          d[2]=Number(document.getElementById("d3").value);
+          h[0]=Number(document.getElementById("h1").value);
+          h[1]=Number(document.getElementById("h2").value);
+          h[2]=Number(document.getElementById("h3").value);
+          h[3]=Number(document.getElementById("h4").value);
+          var asum=eval(a.join("+"));
+            var dsum=eval(d.join("+"));
+            var hsum=eval(h.join("+"));
+          if (check(a,am) && check(d,dm) && check(h,hm)){
+        	document.getElementById("stat").innerHTML="计算成功";		
+        	document.getElementById("stat").style="color:green;";			
+          }else{
+        	document.getElementById("stat").innerHTML="计算失败。失败原因：请检查各数值是否超出限制";
+        	document.getElementById("stat").style="color:red;";			
+            return;
+          }
+          document.getElementById("ca1").innerHTML=asum.toFixed(1);
+          document.getElementById("ca2").innerHTML=amax.toFixed(1);
+          document.getElementById("ca3").innerHTML=(asum/amax*100).toFixed(2).toString()+"%";
+          document.getElementById("cd1").innerHTML=dsum.toFixed(1);
+          document.getElementById("cd2").innerHTML=dmax.toFixed(1);
+          document.getElementById("cd3").innerHTML=(dsum/dmax*100).toFixed(2).toString()+"%";
+          document.getElementById("ch1").innerHTML=hsum.toFixed(1);
+          document.getElementById("ch2").innerHTML=hmax.toFixed(1);
+          document.getElementById("ch3").innerHTML=(hsum/hmax*100).toFixed(2).toString()+"%";
+          document.getElementById("cs1").innerHTML=(asum+dsum+hsum).toFixed(1);
+          document.getElementById("cs2").innerHTML=(amax+dmax+hmax).toFixed(1);
+          document.getElementById("cs3").innerHTML=((asum+dsum+hsum)/(amax+dmax+hmax)*100).toFixed(2).toString()+"%";
+            
+            work(document.getElementById("ca4"),asum,amax);
+            work(document.getElementById("cd4"),dsum,dmax);
+            work(document.getElementById("ch4"),hsum,hmax);
+            work(document.getElementById("cs4"),asum+dsum+hsum,amax+dmax+hmax);
+          }
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
