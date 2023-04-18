@@ -3,13 +3,67 @@
 <head>
     <meta charset="utf-8">
     <title>坎公练度计算器</title>
+
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+          width: 100%;
+        }
+        .container{ 
+          left: 50%;
+          top: 50%;
+          font-family: Arial; 
+          border: 2px solid #379082; 
+          border-radius: 20px; 
+          padding: 20px 20px; 
+          width: auto; 
+          justify-content: center;
+        }
+        table {
+            border-spacing: 3;
+            width: 100%;
+            border: 2px solid;
+        }
+        
+        th, td {
+            border: "3";
+            text-align: center;
+            padding: 8px;
+        }
+        
+        input,
+        .btn {
+          width: 60px;
+          border: none;
+          border-radius: 4px;
+          margin: 3px 0;
+          opacity: 0.85;
+          display: inline-block;
+          font-size: 17px;
+          line-height: 20px;
+          text-decoration: none; /* 移除锚文本链接下划线 */
+        }
+        td:nth-child(1){background-color: #F7F6D5}
+        td:nth-child(2){background-color: #FBE2E2}
+        td:nth-child(3){background-color: #D9FDFB}
+        td:nth-child(4){background-color: #D5F9DA}
+    </style>
 </head>
 
 <body>
-    <h1>坎公练度计算器</h1>
-    <h2>更新至【拜蒙】版本</h2>
-    <div class="content">
-        <table border="2">
+    <h1 align="center">坎公练度计算器</h1>
+    <h4 align="center">更新至【拜蒙】版本</h4>
+    <div class="container">
+        <table border="2" class="table1">
             <tbody>
                 <tr>
                     <td><b>项目</b></td>
@@ -74,10 +128,10 @@
             </tbody>
         </table>
         <p>
-            <button onclick="calc()">计算</button>
+            <button onclick="calc()" class="button">计算</button>
             <a id="stat"></a>
         </p>
-        <h2>结果</h2>
+        <h2 align="center">结果</h2>
         <table border="2">
             <tbody>
                 <tr>
@@ -118,7 +172,7 @@
             </tbody>
         </table>
     </div>
-
+    Powered by crystal302
     <script>
         function check(a,b){
         		for (var i=0;i<a.length;i++){
@@ -204,6 +258,8 @@
             work(document.getElementById("cs4"),asum+dsum+hsum,amax+dmax+hmax);
           }
     </script>
+
+
 
 
 
