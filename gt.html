@@ -64,6 +64,7 @@ td:nth-child(5){background-color: #FFFFFF}
     <h1 align="center">坎公练度计算器</h1>
     <h4 align="center">更新至【双二专】版本（June 8th）</h4>    
 <h4 align="center">已忽略未实装的二星角色进阶对图鉴上限造成的影响</h4>
+<h4 align="center">额外增加羁绊练度单独计算表格</h4>
     <div class="container">
         <table border="2" class="table1">
             <tbody>
@@ -134,6 +135,25 @@ td:nth-child(5){background-color: #FFFFFF}
             <a id="stat"></a>
         </p>
         <h2 align="center">结果</h2>
+        <table border="2">
+            <tbody>
+                <tr>
+                    <td><b>项目</b></td>
+                    <td><b>你的练度</b></td>
+                    <td><b>最高练度</b></td>
+                    <td><b>百分比</b></td>
+                    <td><b>评分</b></td>
+                </tr>
+                <tr>
+                    <td>羁绊</td>
+                    <td><a id="jb1">尚未计算</a></td>
+                    <td><a id="jb2">尚未计算</a></td>
+                    <td><a id="jb3">尚未计算</a></td>
+                    <td><a id="jb4">尚未计算</a></td>
+                </tr>
+            </tbody>
+        </table>
+<br>
         <table border="2">
             <tbody>
                 <tr>
@@ -233,6 +253,8 @@ td:nth-child(5){background-color: #FFFFFF}
           var asum=eval(a.join("+"));
             var dsum=eval(d.join("+"));
             var hsum=eval(h.join("+"));
+var jsum=a[0]+a[1]+d[0]+d[1]+h[0]+h[1];
+var jmax=am[0]+am[1]+dm[0]+dm[1]+hm[0]+hm[1];
           if (check(a,am) && check(d,dm) && check(h,hm)){
         	document.getElementById("stat").innerHTML="计算成功";		
         	document.getElementById("stat").style="color:green;";			
@@ -241,6 +263,9 @@ td:nth-child(5){background-color: #FFFFFF}
         	document.getElementById("stat").style="color:red;";			
             return;
           }
+          document.getElementById("jb1").innerHTML=jsum.toFixed(1);
+          document.getElementById("jb2").innerHTML=jmax.toFixed(1);
+          document.getElementById("jb3").innerHTML=(jsum/jmax*100).toFixed(2).toString()+"%";
           document.getElementById("ca1").innerHTML=asum.toFixed(1);
           document.getElementById("ca2").innerHTML=amax.toFixed(1);
           document.getElementById("ca3").innerHTML=(asum/amax*100).toFixed(2).toString()+"%";
@@ -256,8 +281,9 @@ td:nth-child(5){background-color: #FFFFFF}
             
             work(document.getElementById("ca4"),asum,amax);
             work(document.getElementById("cd4"),dsum,dmax);
-            work(document.getElementById("ch4"),hsum,hmax);
+            work(document.getElementById("ch4"),hsum,hmax);            
             work(document.getElementById("cs4"),asum+dsum+hsum,amax+dmax+hmax);
+work(document.getElementById("jb4"),jsum,jmax);
           }
     </script>
 
