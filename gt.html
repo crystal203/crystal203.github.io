@@ -405,7 +405,7 @@ work(document.getElementById("jb4"),jsum,jmax);
 
 var savedata=a.concat(h.concat(d));
 var sd=encode.call(this,savedata);
-document.getElementById("share").innerHTML="crystal203.github.io/gt.html?share="+sd;
+document.getElementById("share").innerHTML="crystal203.github.io/gt.html?share="+encodeURI(sd);
           }
 
 getShare();
