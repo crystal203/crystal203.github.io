@@ -313,16 +313,7 @@ function getPar(par){
 
 	return get_par;
 }
-function getShare(){
-	var s=decodeURI(getPar("share"));
-	if (s){
-		f=decode.call(this,s);
-	}
-	for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
-	for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
-	for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
-}
-getShare();
+
         function check(a,b){
         		for (var i=0;i<a.length;i++){
         			if (a[i]>b[i]) return 0;
@@ -416,6 +407,19 @@ var savedata=a.concat(h.concat(d));
 var sd=encode.call(this,savedata);
 document.getElementById("share").innerHTML="crystal203.github.io/gt.html?share="+sd;
           }
+
+getShare();
+function getShare(){
+	var s=decodeURI(getPar("share"));
+	if (s){
+		f=decode.call(this,s);	
+	for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
+	for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
+	for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
+		calc();
+	}
+
+}
     </script>
 
 
