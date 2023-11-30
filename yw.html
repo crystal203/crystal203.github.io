@@ -1,0 +1,310 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>坎公遗物计算器</title>
+    <style>
+        .button{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .buttonx1{
+            background-color: #1dcaca;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .buttonx2{
+            background-color: #1dcaca;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .buttond1{
+            background-color: #ca1d1d;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .buttond2{
+            background-color: #ca1d1d;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .container{ 
+            left: 50%;
+            top: 50%;
+            font-family: Arial; 
+            border: 2px solid #379082; 
+            border-radius: 20px; 
+            padding: 20px 20px; 
+            width: auto; 
+            justify-content: center;
+        }
+        table{
+            border-spacing: 3;
+            width: 100%;
+            border: 2px solid;
+        }
+        th,td{
+            border: "3";
+            text-align: center;
+            padding: 8px;
+        }
+        input,
+        .btn{
+            width: 60px;
+            border: none;
+            border-radius: 4px;
+            margin: 3px 0;
+            opacity: 0.85;
+            display: inline-block;
+            font-size: 17px;
+            line-height: 20px;
+            text-decoration: none;
+        }
+        select{
+            border: none;
+            border-radius: 4px;
+            margin: 3px 0;
+            opacity: 0.85;
+            display: inline-block;
+            font-size: 17px;
+            line-height: 20px;
+            text-decoration: none;
+        }
+        td:nth-child(1){background-color: #F7F6D5}
+        td:nth-child(2){background-color: #fbf0e2}
+        td:nth-child(3){background-color: #FBE2E2}
+        td:nth-child(4){background-color: #fbfae2}
+        td:nth-child(5){background-color: #f0fdd9}
+        td:nth-child(6){background-color: #D5F9DA}
+        td:nth-child(7){background-color: #FFFFFF}
+    </style>
+</head>
+<body>
+    <h1 align="center">坎公遗物计算器</h1>
+    <h4 align="center">测试版本 Alpha 1.0</h4>
+    <div class="container">
+        <table cellspacing="20" border="2" class="table1">
+            <thead>
+                <tr>
+                    <th>类型</th>
+                    <th>攻击</th>
+                    <th>暴击率</th>
+                    <th>技伤</th>
+                    <th>生命</th>
+                    <th>防御</th>
+                    <th>分值</th>
+                    <th>编辑</th>
+                </tr>
+            </thead>
+            <tbody class="tbody1">
+                <!--DATA-->
+            </tbody>
+        </table>
+        <button class="buttonx1">添加</button>
+        <h2 align="center">自定义规则</h2>
+        <table cellspacing="20" border="2" class="table1">
+            <thead>
+                <tr>
+                    <th>应用类型</th>
+                    <th>攻击权重</th>
+                    <th>暴击率权重</th>
+                    <th>技伤权重</th>
+                    <th>生命权重</th>
+                    <th>防御权重</th>
+                    <th>及格线</th>
+                    <th>规则名称</th>
+                    <th>编辑</th>
+                </tr>
+            </thead>
+            <tbody class="tbody2">
+                <!--DATA-->
+            </tbody>
+        </table>
+        <button class="buttonx2">添加</button>
+        <button class="button" id="calc">计算</button>
+    </div>
+    <p></p>
+    <p>Powered by crystal302</p>
+    <p><a style="color:orange;font-weight:bold">Ciallo～(∠・ω< )⌒☆</a><br>
+        这里是自定义遗物计算器！<br>
+        如果觉得这个计算器对你很有帮助，请转发一下谢谢喵！<br>
+        <a href="https://crystal203.github.io/gt.html">【练度计算器】</a>同样值得体验！</p>
+    <script>
+        window.onload=function(){
+            var initrule=[  {use:"book",atk:1.00,cri:2.33,sda:1.00,hp:0.00,def:0.00,pas:23.00,name:"主控书"},
+                        {use:"book",atk:1.00,cri:2.33,sda:0.00,hp:0.00,def:0.00,pas:16.67,name:"挂件书"},
+                        {use:"cup",atk:1.00,cri:3.67,sda:1.00,hp:0.00,def:0.00,pas:23.00,name:"主控杯"},
+                        {use:"cup",atk:1.00,cri:3.67,sda:0.00,hp:0.00,def:0.00,pas:23.00,name:"挂件杯"},
+                        {use:"cand",atk:1.00,cri:2.40,sda:0.00,hp:1.20,def:1.20,pas:17.00,name:"烛台"},
+                     ];
+            var tbody1=document.querySelector("tbody.tbody1");
+            var tbody2=document.querySelector("tbody.tbody2");
+            var btn1=document.querySelector("button.buttonx1");
+            var btn2=document.querySelector("button.buttonx2");
+            btn1.onclick=function(){
+                var tr=document.createElement("tr");
+                tbody1.appendChild(tr);
+                
+                var td=document.createElement("td");
+                td.innerHTML=`<select>
+                                    <option value="cup">永恒羁绊（杯）</option>
+                                    <option value="cand">真理指引（烛）</option>
+                                    <option value="book">神圣誓约（书）</option>
+                                    <option value="bell">庄严共鸣（铃）</option>
+                              </select>`;
+                tr.appendChild(td);
+
+                for (var k=0;k<5;k++){
+                    var td=document.createElement("td");
+                    td.innerHTML=`<input type="text">`;
+                    tr.appendChild(td);
+                }
+                var td=document.createElement("td");
+                td.innerHTML=`<a>尚未计算</a>`;
+                tr.appendChild(td);
+
+                var td=document.createElement("td");
+                td.innerHTML=`<button class="buttond1">删除</button>`;
+                tr.appendChild(td);
+
+                var a=document.querySelectorAll("button.buttond1");
+                for (var i=0;i<a.length;i++){
+                    a[i].onclick=function(){
+                        tbody1.removeChild(this.parentNode.parentNode);
+                    }
+                }
+            }
+            for (var i=0;i<initrule.length;++i){
+                var tr=document.createElement("tr");
+                tbody2.appendChild(tr);
+                var td=document.createElement("td");
+                td.innerHTML=`<select>
+                                    <option value="cup">永恒羁绊（杯）</option>
+                                    <option value="cand">真理指引（烛）</option>
+                                    <option value="book">神圣誓约（书）</option>
+                                    <option value="bell">庄严共鸣（铃）</option>
+                                </select>`;
+                td.querySelectorAll("select")[0].value=initrule[i].use;
+                tr.appendChild(td);
+                for (var k in initrule[i]){
+                    if (k=="use") continue;
+                    var td=document.createElement("td");
+                    td.innerHTML=`<input type="text" value="`+String(initrule[i][k])+`">`;
+                    tr.appendChild(td);
+                }
+                var td=document.createElement("td");
+                td.innerHTML=`<button class="buttond2">删除</button>`;
+                tr.appendChild(td);
+                var a=document.querySelectorAll("button.buttond2");
+                for (var i=0;i<a.length;i++){
+                    a[i].onclick=function(){
+                        tbody2.removeChild(this.parentNode.parentNode);
+                    }
+                }
+            }
+            btn2.onclick=function(){
+                var tr=document.createElement("tr");
+                tbody2.appendChild(tr);
+                
+                var td=document.createElement("td");
+                td.innerHTML=`<select>
+                                    <option value="cup">永恒羁绊（杯）</option>
+                                    <option value="cand">真理指引（烛）</option>
+                                    <option value="book">神圣誓约（书）</option>
+                                    <option value="bell">庄严共鸣（铃）</option>
+                              </select>`;
+                tr.appendChild(td);
+
+                for (var k=0;k<7;k++){
+                    var td=document.createElement("td");
+                    td.innerHTML=`<input type="text">`;
+                    tr.appendChild(td);
+                }
+
+                var td=document.createElement("td");
+                td.innerHTML=`<button class="buttond2">删除</button>`;
+                tr.appendChild(td);
+
+                var a=document.querySelectorAll("button.buttond2");
+                for (var i=0;i<a.length;i++){
+                    a[i].onclick=function(){
+                        tbody2.removeChild(this.parentNode.parentNode);
+                    }
+                }
+            }
+            document.getElementById("calc").onclick=function(){
+                item=[];
+                tbody=tbody1.querySelectorAll("tr");
+                for (var i=0;i<tbody.length;++i){
+                    cur=[];
+                    tbodyx=tbody[i].querySelectorAll("td");
+                    for (var j=0;j<tbodyx.length;++j){
+                        if (tbodyx[j].querySelector("select")!==null){
+                            cur.push(tbodyx[j].querySelector("select").value);
+                        }else if (tbodyx[j].querySelector("input")!==null){
+                            cur.push(tbodyx[j].querySelector("input").value);
+                        }
+                    }
+                    item.push(cur);
+                }
+                console.log(item);
+                rule=[];
+                tbody=tbody2.querySelectorAll("tr");
+                for (var i=0;i<tbody.length;++i){
+                    cur=[];
+                    tbodyx=tbody[i].querySelectorAll("td");
+                    for (var j=0;j<tbodyx.length;++j){
+                        if (tbodyx[j].querySelector("select")!==null){
+                            cur.push(tbodyx[j].querySelector("select").value);
+                        }else if (tbodyx[j].querySelector("input")!==null){
+                            cur.push(tbodyx[j].querySelector("input").value);
+                        }
+                    }
+                    rule.push(cur);
+                }
+                console.log(rule);
+            }
+        }
+    </script>
+</body>
+</html>
