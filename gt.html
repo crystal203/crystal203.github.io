@@ -1,11 +1,9 @@
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>坎公练度计算器</title>
-
     <style>
-        .button {
+        .button{
             background-color: #4CAF50;
             border: none;
             color: white;
@@ -16,54 +14,64 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-          width: 100%;
+            width: 100%;
+        }
+        .buttonx{
+            background-color: #1dcaca;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100%;
         }
         .container{ 
-          left: 50%;
-          top: 50%;
-          font-family: Arial; 
-          border: 2px solid #379082; 
-          border-radius: 20px; 
-          padding: 20px 20px; 
-          width: auto; 
-          justify-content: center;
+            left: 50%;
+            top: 50%;
+            font-family: Arial; 
+            border: 2px solid #379082; 
+            border-radius: 20px; 
+            padding: 20px 20px; 
+            width: auto; 
+            justify-content: center;
         }
-        table {
+        table{
             border-spacing: 3;
             width: 100%;
             border: 2px solid;
         }
-        
-        th, td {
+        th,td{
             border: "3";
             text-align: center;
             padding: 8px;
         }
-        
         input,
-        .btn {
-          width: 60px;
-          border: none;
-          border-radius: 4px;
-          margin: 3px 0;
-          opacity: 0.85;
-          display: inline-block;
-          font-size: 17px;
-          line-height: 20px;
-          text-decoration: none; /* 移除锚文本链接下划线 */
+        .btn{
+            width: 60px;
+            border: none;
+            border-radius: 4px;
+            margin: 3px 0;
+            opacity: 0.85;
+            display: inline-block;
+            font-size: 17px;
+            line-height: 20px;
+            text-decoration: none;
         }
         td:nth-child(1){background-color: #F7F6D5}
         td:nth-child(2){background-color: #FBE2E2}
         td:nth-child(3){background-color: #D9FDFB}
         td:nth-child(4){background-color: #D5F9DA}
-td:nth-child(5){background-color: #FFFFFF}
+        td:nth-child(5){background-color: #FFFFFF}
     </style>
 </head>
-
 <body>
     <h1 align="center">坎公练度计算器</h1>
     <h4 align="center">更新至【远征 4】版本（November 23rd）</h4>  
-
+    <h4 align="center">代码优化与更新（November 30th）</h4>  
     <div class="container">
         <table border="2" class="table1">
             <tbody>
@@ -75,25 +83,25 @@ td:nth-child(5){background-color: #FFFFFF}
                 </tr>
                 <tr>
                     <td>英雄羁绊</td>
-                    <td><input type="text" id="a1" value="0">/<a id="a1m">53.0</a></td>
-                    <td><input type="text" id="d1" value="0">/<a id="d1m">27.9</a></td>
-                    <td><input type="text" id="h1" value="0">/<a id="h1m">30.8</a></td>
+                    <td><input type="text" id="a1" value="">/<a id="a1m">53.0</a></td>
+                    <td><input type="text" id="d1" value="">/<a id="d1m">27.9</a></td>
+                    <td><input type="text" id="h1" value="">/<a id="h1m">30.8</a></td>
                 </tr>
                 <tr>
                     <td>装备羁绊</td>
-                    <td><input type="text" id="a2" value="0">/<a id="a2m">59.7</a></td>
-                    <td><input type="text" id="d2" value="0">/<a id="d2m">34.1</a></td>
-                    <td><input type="text" id="h2" value="0">/<a id="h2m">32.6</a></td>
+                    <td><input type="text" id="a2" value="">/<a id="a2m">59.7</a></td>
+                    <td><input type="text" id="d2" value="">/<a id="d2m">34.1</a></td>
+                    <td><input type="text" id="h2" value="">/<a id="h2m">32.6</a></td>
                 </tr>
                 <tr>
                     <td>武/饰/盾</td>
-                    <td><input type="text" id="a3" value="0">/<a id="a3m">10.0</a></td>
-                    <td><input type="text" id="d3" value="0">/<a id="d3m">7.9</a></td>
-                    <td><input type="text" id="h3" value="0">/<a id="h3m">8.2</a></td>
+                    <td><input type="text" id="a3" value="">/<a id="a3m">10.0</a></td>
+                    <td><input type="text" id="d3" value="">/<a id="d3m">7.9</a></td>
+                    <td><input type="text" id="h3" value="">/<a id="h3m">8.2</a></td>
                 </tr>
                 <tr>
                     <td>遗物图鉴</td>
-                    <td><input type="text" id="a4" value="0">/<a id="a4m">2.0</a></td>
+                    <td><input type="text" id="a4" value="">/<a id="a4m">2.0</a></td>
                     <td>N/A</td>
                     <td>N/A</td>
                 </tr>
@@ -101,34 +109,37 @@ td:nth-child(5){background-color: #FFFFFF}
                     <td>英雄时装</td>
                     <td>N/A</td>
                     <td>N/A</td>
-                    <td><input type="text" id="h4" value="0">/<a id="h4m">10.0</a></td>
+                    <td><input type="text" id="h4" value="">/<a id="h4m">10.0</a></td>
                 </tr>
                 <tr>
                     <td>武器外观</td>
-                    <td><input type="text" id="a5" value="0">/<a id="a5m">10.0</a></td>
+                    <td><input type="text" id="a5" value="">/<a id="a5m">10.0</a></td>
                     <td>N/A</td>
                     <td>N/A</td>
                 </tr>
                 <tr>
                     <td>超级时装</td>
-                    <td><input type="text" id="a6" value="0">/<a id="a6m">2.1</a></td>
+                    <td><input type="text" id="a6" value="">/<a id="a6m">2.1</a></td>
                     <td>N/A</td>
                     <td>N/A</td>
                 </tr>
                 <tr>
                     <td>魔卡图鉴</td>
-                    <td><input type="text" id="a7" value="0">/<a id="a7m">10.0</a></td>
+                    <td><input type="text" id="a7" value="">/<a id="a7m">10.0</a></td>
                     <td>N/A</td>
                     <td>N/A</td>
                 </tr>
                 <tr>
                     <td>周边图鉴</td>
-                    <td><input type="text" id="a8" value="0">/<a id="a8m">4.0</a></td>
+                    <td><input type="text" id="a8" value="">/<a id="a8m">4.0</a></td>
                     <td>N/A</td>
                     <td>N/A</td>
                 </tr>
             </tbody>
         </table>
+        <p>
+            <button onclick="setEmpty()" class="buttonx">填充所有空项为最大值</button>
+        </p>
         <p>
             <button onclick="calc()" class="button">计算</button>
             <a id="stat"></a>
@@ -152,7 +163,7 @@ td:nth-child(5){background-color: #FFFFFF}
                 </tr>
             </tbody>
         </table>
-<br>
+        <br>
         <table border="2">
             <tbody>
                 <tr>
@@ -192,127 +203,129 @@ td:nth-child(5){background-color: #FFFFFF}
                 </tr>
             </tbody>
         </table>        
-	<p>
-            <a color="green">分享链接：</a><a id="share">尚未计算</a>
+	    <p>
+            <a color="green">分享你的练度：</a><a id="share">尚未计算</a>
+            <br>
+            <button onclick="copy2pb()" class="buttonx">复制到剪贴板</button>
+            <a id="stat2"></a>
         </p>
     </div>
-    <p>Powered by crystal302</p><p>如果表格数据有误，可以联系：<br>E-mail: realzombie462@gmail.com | QQ: 2770931135</p>
+    <p></p>
+    <p>Powered by crystal302</p>
+    <p><a style="color:orange;font-weight:bold">Ciallo～(∠・ω< )⌒☆</a><br>
+        本练度计算表将在版本更新日当天更新。如果表格数据有误，可以联系：<br>
+        E-mail: realzombie462@gmail.com | QQ: 2770931135<br>
+        如果觉得这个计算器对你很有帮助，请转发一下谢谢喵！<br>
+        遗物打分计算器将在近日实装，敬请期待！</p>
     <script>
-	const {encode,decode}=(()=>{
-		const C=126-33+1;
-const PADDING="G";
-		const ENCODE_P={33:125,34:84,35:44,36:102,37:57,38:68,39:50,40:69,41:59,42:83,43:100,44:72,45:116,46:35,47:108,48:89,49:92,50:51,51:65,52:73,53:124,54:119,55:90,56:45,57:47,58:75,59:60,60:95,61:96,62:91,63:63,64:111,65:46,66:101,67:36,68:120,69:104,70:97,71:42,72:55,73:99,74:113,75:53,76:112,77:122,78:114,79:106,80:33,81:79,82:74,83:121,84:61,85:85,86:76,87:49,88:93,89:82,90:40,91:117,92:105,93:62,94:94,95:39,96:78,97:86,98:109,99:41,100:66,101:70,102:48,103:58,104:88,105:103,106:64,107:115,108:80,109:81,110:43,111:123,112:67,113:56,114:107,115:110,116:52,117:118,118:77,119:126,120:87,121:98,122:34,123:71,124:38,125:37,126:54,};
-		const DECODE_P={125:33,84:34,44:35,102:36,57:37,68:38,50:39,69:40,59:41,83:42,100:43,72:44,116:45,35:46,108:47,89:48,92:49,51:50,65:51,73:52,124:53,119:54,90:55,45:56,47:57,75:58,60:59,95:60,96:61,91:62,63:63,111:64,46:65,101:66,36:67,120:68,104:69,97:70,42:71,55:72,99:73,113:74,53:75,112:76,122:77,114:78,106:79,33:80,79:81,74:82,121:83,61:84,85:85,76:86,49:87,93:88,82:89,40:90,117:91,105:92,62:93,94:94,39:95,78:96,86:97,109:98,41:99,66:100,70:101,48:102,58:103,88:104,103:105,64:106,115:107,80:108,81:109,43:110,123:111,67:112,56:113,107:114,110:115,52:116,118:117,77:118,126:119,87:120,98:121,34:122,71:123,38:124,37:125,54:126,};
-		function encode_compress(obj){
-			obj=JSON.parse(JSON.stringify(obj));
-			let data=[];
-			let dataMap=new Map();
-			function getData(d){
-				let index=JSON.stringify(d);
-				if(!dataMap.has(index)){
-					let id=data.length;
-					data.push(d);
-					dataMap.set(index,id);
-				}
-				return dataMap.get(index);
-			}
-			function transverse(obj){
-				if(obj!==null&&typeof obj==='object'){
-					if(obj instanceof Array){
-						return getData(obj.map(transverse));
-					}
-					else{
-						let keys=getData([{},...Object.keys(obj).map(transverse)]);
-						return getData([keys,...Object.values(obj).map(transverse)]);
-					}
-				}
-				else{
-					return getData(obj);
-				}
-			}
-			transverse(obj);
-			return data;
-		}
-		function decode_compress(data){
-			data=JSON.parse(JSON.stringify(data));
-			function isKeys(arr){
-				return arr instanceof Array&&typeof arr[0]==='object'&&!(arr[0] instanceof Array);
-			}
-			function getObj(index){
-				let x=data[index];
-				if(x instanceof Array){
-					if(x.length>0&&isKeys(data[x[0]])){
-						let [,...keys]=getObj(x[0]);
-						let [,...values]=x;
-						values=values.map(getObj);
-						let f=Object.create(null);
-						for(let i=0;i<keys.length;i++){
-							f[keys[i]]=values[i];
-						}
-						return f;
-					}
-					else{
-						return x.map(getObj);
-					}
-				}
-				else{
-					return x;
-				}
-			}
-			return getObj(data.length-1);
-		}
-		function encodeArr(arr){
-			function encodeChar(x){
-				return String.fromCharCode(ENCODE_P[x+33]);
-			}
-			return arr.map((x,i)=>encodeChar((x+Number(i)*(C-21))%C)).join('');
-		}
-		function decodeArr(str){
-			function decodeChar(ch){
-				return DECODE_P[ch.charCodeAt(0)]-33;
-			}
-			return str.split('').map((ch,i)=>(decodeChar(ch)+Number(i)*21)%C);
-		}
-		const FLAG_COMPRESS='-';
-		return {
-			encode(x){
-				let arr=decodeArr(JSON.stringify(encode_compress(x)));
-				let l=arr.length;
-				for(let i=l-1;i>0;i--){
-					arr[i]=(arr[i]-arr[i-1]+C)%C;
-				}
-				return PADDING
-				+encodeArr(arr)
-				+PADDING
-				+FLAG_COMPRESS;
-			},
-			decode(x){
-				let compressed=false;
-				if(x[x.length-1]===FLAG_COMPRESS){
-					x=x.slice(0,-1);
-					compressed=true;
-				}
-				let arr=decodeArr(x.slice(PADDING.length,-PADDING.length));
-				let l=arr.length;
-				for(let i=1;i<l;i++){
-					arr[i]=(arr[i]+arr[i-1])%C;
-				}
-				let result=JSON.parse(encodeArr(arr));
-				// console.log(JSON.parse(JSON.stringify(result)));
-				if(compressed){result=decode_compress(result);}
-				return result;
-			},
-		};
-	})();
-function getPar(par){
-	var local_url=document.location.href;
-	var get=local_url.indexOf(par+"=");
-	if (get==-1) return false;
-	var get_par=local_url.slice(par.length+get+1);
-
-	return get_par;
-}
-
+        const {encode,decode}=(()=>{
+            const C=126-33+1;
+            const PADDING="G";
+            const ENCODE_P={33:125,34:84,35:44,36:102,37:57,38:68,39:50,40:69,41:59,42:83,43:100,44:72,45:116,46:35,47:108,48:89,49:92,50:51,51:65,52:73,53:124,54:119,55:90,56:45,57:47,58:75,59:60,60:95,61:96,62:91,63:63,64:111,65:46,66:101,67:36,68:120,69:104,70:97,71:42,72:55,73:99,74:113,75:53,76:112,77:122,78:114,79:106,80:33,81:79,82:74,83:121,84:61,85:85,86:76,87:49,88:93,89:82,90:40,91:117,92:105,93:62,94:94,95:39,96:78,97:86,98:109,99:41,100:66,101:70,102:48,103:58,104:88,105:103,106:64,107:115,108:80,109:81,110:43,111:123,112:67,113:56,114:107,115:110,116:52,117:118,118:77,119:126,120:87,121:98,122:34,123:71,124:38,125:37,126:54,};
+            const DECODE_P={125:33,84:34,44:35,102:36,57:37,68:38,50:39,69:40,59:41,83:42,100:43,72:44,116:45,35:46,108:47,89:48,92:49,51:50,65:51,73:52,124:53,119:54,90:55,45:56,47:57,75:58,60:59,95:60,96:61,91:62,63:63,111:64,46:65,101:66,36:67,120:68,104:69,97:70,42:71,55:72,99:73,113:74,53:75,112:76,122:77,114:78,106:79,33:80,79:81,74:82,121:83,61:84,85:85,76:86,49:87,93:88,82:89,40:90,117:91,105:92,62:93,94:94,39:95,78:96,86:97,109:98,41:99,66:100,70:101,48:102,58:103,88:104,103:105,64:106,115:107,80:108,81:109,43:110,123:111,67:112,56:113,107:114,110:115,52:116,118:117,77:118,126:119,87:120,98:121,34:122,71:123,38:124,37:125,54:126,};
+            function encode_compress(obj){
+                obj=JSON.parse(JSON.stringify(obj));
+                let data=[];
+                let dataMap=new Map();
+                function getData(d){
+                    let index=JSON.stringify(d);
+                    if (!dataMap.has(index)){
+                        let id=data.length;
+                        data.push(d);
+                        dataMap.set(index,id);
+                    }
+                    return dataMap.get(index);
+                }
+                function transverse(obj){
+                    if (obj!==null && typeof obj==='object'){
+                        if (obj instanceof Array){
+                            return getData(obj.map(transverse));
+                        }else{
+                            let keys=getData([{},...Object.keys(obj).map(transverse)]);
+                            return getData([keys,...Object.values(obj).map(transverse)]);
+                        }
+                    }else{
+                        return getData(obj);
+                    }
+                }
+                transverse(obj);
+                return data;
+            }
+            function decode_compress(data){
+                data=JSON.parse(JSON.stringify(data));
+                function isKeys(arr){
+                    return arr instanceof Array && typeof arr[0]==='object' && !(arr[0] instanceof Array);
+                }
+                function getObj(index){
+                    let x=data[index];
+                    if (x instanceof Array){
+                        if (x.length>0&&isKeys(data[x[0]])){
+                            let [,...keys]=getObj(x[0]);
+                            let [,...values]=x;
+                            values=values.map(getObj);
+                            let f=Object.create(null);
+                            for (let i=0;i<keys.length;i++){
+                                f[keys[i]]=values[i];
+                            }
+                            return f;
+                        }else{
+                            return x.map(getObj);
+                        }
+                    }else{
+                        return x;
+                    }
+                }
+                return getObj(data.length-1);
+            }
+            function encodeArr(arr){
+                function encodeChar(x){
+                    return String.fromCharCode(ENCODE_P[x+33]);
+                }
+                return arr.map((x,i)=>encodeChar((x+Number(i)*(C-21))%C)).join('');
+            }
+            function decodeArr(str){
+                function decodeChar(ch){
+                    return DECODE_P[ch.charCodeAt(0)]-33;
+                }
+                return str.split('').map((ch,i)=>(decodeChar(ch)+Number(i)*21)%C);
+            }
+            const FLAG_COMPRESS='-';
+            return{
+                encode(x){
+                    let arr=decodeArr(JSON.stringify(encode_compress(x)));
+                    let l=arr.length;
+                    for (let i=l-1;i>0;i--){
+                        arr[i]=(arr[i]-arr[i-1]+C)%C;
+                    }
+                    return PADDING
+                    +encodeArr(arr)
+                    +PADDING
+                    +FLAG_COMPRESS;
+                },
+                decode(x){
+                    let compressed=false;
+                    if (x[x.length-1]===FLAG_COMPRESS){
+                        x=x.slice(0,-1);
+                        compressed=true;
+                    }
+                    let arr=decodeArr(x.slice(PADDING.length,-PADDING.length));
+                    let l=arr.length;
+                    for (let i=1;i<l;i++){
+                        arr[i]=(arr[i]+arr[i-1])%C;
+                    }
+                    let result=JSON.parse(encodeArr(arr));
+                    if (compressed){result=decode_compress(result);}
+                    return result;
+                },
+            };
+        })();
+        function getPar(par){
+            var local_url=document.location.href;
+            var get=local_url.indexOf(par+"=");
+            if (get==-1) return false;
+            var get_par=local_url.slice(par.length+get+1);
+            return get_par;
+        }
         function check(a,b){
         		for (var i=0;i<a.length;i++){
         			if (a[i]>b[i]) return 0;
@@ -320,107 +333,108 @@ function getPar(par){
           return 1;
         }
         function work(s,a,b){
-          var p=a/b;var col="color:";var txt="";
-          if (p<0.6) col+="grey",txt="低练";
-          else if (p<0.75) col+="green",txt="普通";
-          else if (p<0.85) col+="blue",txt="中练";
-          else if (p<0.93) col+="purple",txt="高练";
-          else if (p<0.96) col+="gold",txt="小满";
-          else if (p<0.98) col+="red",txt="中满";
-          else col+="brown",txt="满中满"
-          s.innerHTML=txt;
-          s.style=col;
+            var p=a/b;var col="color:";var txt="";
+            if (p<0.6) col+="grey",txt="低练";
+            else if (p<0.75) col+="green",txt="普通";
+            else if (p<0.85) col+="blue",txt="中练";
+            else if (p<0.93) col+="purple",txt="高练";
+            else if (p<0.96) col+="gold",txt="小满";
+            else if (p<0.98) col+="red",txt="中满";
+            else col+="brown",txt="满中满"
+            s.innerHTML=txt;
+            s.style=col;
         }
-          function calc() {
+        const copyText=async(val)=>{
+            if (navigator.clipboard && navigator.permissions){
+                await navigator.clipboard.writeText(val);
+            }else{
+                const textArea=document.createElement('textArea');
+                textArea.value=val;
+                textArea.style.width=0;
+                textArea.style.position='fixed';
+                textArea.style.left='-999px';
+                textArea.style.top='10px';
+                textArea.setAttribute('readonly','readonly');
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+        }
+        function copy2pb(){
+            var element=document.getElementById("share");
+            copyText(element.innerHTML);
+            document.getElementById("stat2").innerHTML="复制成功！";
+            document.getElementById("stat2").style="color:green";
+        }
+        function setEmpty(){
+            for (var i=0;i<8;++i) if (document.getElementById("a"+String(i+1)).value=="") document.getElementById("a"+String(i+1)).value=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<4;++i) if (document.getElementById("h"+String(i+1)).value=="") document.getElementById("h"+String(i+1)).value=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<3;++i) if (document.getElementById("d"+String(i+1)).value=="") document.getElementById("d"+String(i+1)).value=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
+        }
+        function calc(){
             var am=new Array(8);var hm=new Array(4);var dm=new Array(3);
-            am[0]=Number(document.getElementById("a1m").innerHTML);
-            am[1]=Number(document.getElementById("a2m").innerHTML);
-            am[2]=Number(document.getElementById("a3m").innerHTML);
-            am[3]=Number(document.getElementById("a4m").innerHTML);
-            am[4]=Number(document.getElementById("a5m").innerHTML);
-            am[5]=Number(document.getElementById("a6m").innerHTML);
-            am[6]=Number(document.getElementById("a7m").innerHTML);
-            am[7]=Number(document.getElementById("a8m").innerHTML);
-            hm[0]=Number(document.getElementById("h1m").innerHTML);
-            hm[1]=Number(document.getElementById("h2m").innerHTML);
-            hm[2]=Number(document.getElementById("h3m").innerHTML);
-            hm[3]=Number(document.getElementById("h4m").innerHTML);
-            dm[0]=Number(document.getElementById("d1m").innerHTML);
-            dm[1]=Number(document.getElementById("d2m").innerHTML);
-            dm[2]=Number(document.getElementById("d3m").innerHTML);
-          var amax=eval(am.join("+"));
+            //Get the max value of each blank
+            for (var i=0;i<8;++i) am[i]=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<4;++i) hm[i]=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<3;++i) dm[i]=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
+            var amax=eval(am.join("+"));
             var dmax=eval(dm.join("+"));
             var hmax=eval(hm.join("+"));
             var a=new Array(4);var d=new Array(3);var h=new Array(4);
-          a[0]=Number(document.getElementById("a1").value);
-         	 a[1]=Number(document.getElementById("a2").value);
-          a[2]=Number(document.getElementById("a3").value);
-          a[3]=Number(document.getElementById("a4").value);
-          a[4]=Number(document.getElementById("a5").value);
-          a[5]=Number(document.getElementById("a6").value);
-          a[6]=Number(document.getElementById("a7").value);
-          a[7]=Number(document.getElementById("a8").value);
-          d[0]=Number(document.getElementById("d1").value);
-          d[1]=Number(document.getElementById("d2").value);
-          d[2]=Number(document.getElementById("d3").value);
-          h[0]=Number(document.getElementById("h1").value);
-          h[1]=Number(document.getElementById("h2").value);
-          h[2]=Number(document.getElementById("h3").value);
-          h[3]=Number(document.getElementById("h4").value);
-          var asum=eval(a.join("+"));
+            //Get the current value of each blank
+            for (var i=0;i<8;++i) a[i]=Number(document.getElementById("a"+String(i+1)).value);
+            for (var i=0;i<4;++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
+            for (var i=0;i<3;++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);
+            var asum=eval(a.join("+"));
             var dsum=eval(d.join("+"));
             var hsum=eval(h.join("+"));
-var jsum=a[0]+a[1]+d[0]+d[1]+h[0]+h[1];
-var jmax=am[0]+am[1]+dm[0]+dm[1]+hm[0]+hm[1];
-          if (check(a,am) && check(d,dm) && check(h,hm)){
-        	document.getElementById("stat").innerHTML="计算成功";		
-        	document.getElementById("stat").style="color:green;";			
-          }else{
-        	document.getElementById("stat").innerHTML="计算失败。失败原因：请检查各数值是否超出限制";
-        	document.getElementById("stat").style="color:red;";			
-            return;
-          }
-          document.getElementById("jb1").innerHTML=jsum.toFixed(1);
-          document.getElementById("jb2").innerHTML=jmax.toFixed(1);
-          document.getElementById("jb3").innerHTML=(jsum/jmax*100).toFixed(2).toString()+"%";
-          document.getElementById("ca1").innerHTML=asum.toFixed(1);
-          document.getElementById("ca2").innerHTML=amax.toFixed(1);
-          document.getElementById("ca3").innerHTML=(asum/amax*100).toFixed(2).toString()+"%";
-          document.getElementById("cd1").innerHTML=dsum.toFixed(1);
-          document.getElementById("cd2").innerHTML=dmax.toFixed(1);
-          document.getElementById("cd3").innerHTML=(dsum/dmax*100).toFixed(2).toString()+"%";
-          document.getElementById("ch1").innerHTML=hsum.toFixed(1);
-          document.getElementById("ch2").innerHTML=hmax.toFixed(1);
-          document.getElementById("ch3").innerHTML=(hsum/hmax*100).toFixed(2).toString()+"%";
-          document.getElementById("cs1").innerHTML=(asum+dsum+hsum).toFixed(1);
-          document.getElementById("cs2").innerHTML=(amax+dmax+hmax).toFixed(1);
-          document.getElementById("cs3").innerHTML=((asum+dsum+hsum)/(amax+dmax+hmax)*100).toFixed(2).toString()+"%";
-            
+            var jsum=a[0]+a[1]+d[0]+d[1]+h[0]+h[1];
+            var jmax=am[0]+am[1]+dm[0]+dm[1]+hm[0]+hm[1];
+            if (check(a,am) && check(d,dm) && check(h,hm)){
+                document.getElementById("stat").innerHTML="计算成功";		
+                document.getElementById("stat").style="color:green;";			
+            }else{
+                document.getElementById("stat").innerHTML="计算失败。失败原因：请检查各数值是否超出限制";
+                document.getElementById("stat").style="color:red;";			
+                return;
+            }
+            //Fill the result blank
+            document.getElementById("jb1").innerHTML=jsum.toFixed(1);
+            document.getElementById("jb2").innerHTML=jmax.toFixed(1);
+            document.getElementById("jb3").innerHTML=(jsum/jmax*100).toFixed(2).toString()+"%";
+            document.getElementById("ca1").innerHTML=asum.toFixed(1);
+            document.getElementById("ca2").innerHTML=amax.toFixed(1);
+            document.getElementById("ca3").innerHTML=(asum/amax*100).toFixed(2).toString()+"%";
+            document.getElementById("cd1").innerHTML=dsum.toFixed(1);
+            document.getElementById("cd2").innerHTML=dmax.toFixed(1);
+            document.getElementById("cd3").innerHTML=(dsum/dmax*100).toFixed(2).toString()+"%";
+            document.getElementById("ch1").innerHTML=hsum.toFixed(1);
+            document.getElementById("ch2").innerHTML=hmax.toFixed(1);
+            document.getElementById("ch3").innerHTML=(hsum/hmax*100).toFixed(2).toString()+"%";
+            document.getElementById("cs1").innerHTML=(asum+dsum+hsum).toFixed(1);
+            document.getElementById("cs2").innerHTML=(amax+dmax+hmax).toFixed(1);
+            document.getElementById("cs3").innerHTML=((asum+dsum+hsum)/(amax+dmax+hmax)*100).toFixed(2).toString()+"%";
             work(document.getElementById("ca4"),asum,amax);
             work(document.getElementById("cd4"),dsum,dmax);
             work(document.getElementById("ch4"),hsum,hmax);            
             work(document.getElementById("cs4"),asum+dsum+hsum,amax+dmax+hmax);
-work(document.getElementById("jb4"),jsum,jmax);
-
-var savedata=a.concat(h.concat(d));
-var sd=encode.call(this,savedata);
-document.getElementById("share").innerHTML="crystal203.github.io/gt.html?share="+encodeURI(sd);
-          }
-
-getShare();
-function getShare(){
-	var s=decodeURI(getPar("share"));
-	if (s){
-		f=decode.call(this,s);	
-	for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
-	for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
-	for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
-		calc();
-	}
-
-}
+            work(document.getElementById("jb4"),jsum,jmax);
+            var savedata=a.concat(h.concat(d));
+            var sd=encode.call(this,savedata);
+            document.getElementById("share").innerHTML="crystal203.github.io/gt.html?share="+encodeURI(sd);
+        }
+        getShare();
+        function getShare(){
+            var s=decodeURI(getPar("share"));
+            if (s){
+                f=decode.call(this,s);	
+            for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
+            for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
+            for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
+                calc();
+            }
+        }
     </script>
-
 </body>
-
 </html>
