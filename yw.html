@@ -162,20 +162,22 @@
         </table>
         <button class="buttonx2">添加</button>
         <button class="button" id="calc">计算</button>
+        <p><a id="stat"></a></p>
     </div>
     <p></p>
     <p>Powered by crystal302</p>
     <p><a style="color:orange;font-weight:bold">Ciallo～(∠・ω< )⌒☆</a><br>
-        这里是自定义遗物计算器！<br>
+        这里是自定义遗物计算器！输入框内可以直接输入算式哦！<br>
         如果觉得这个计算器对你很有帮助，请转发一下谢谢喵！<br>
         <a href="https://crystal203.github.io/gt.html">【练度计算器】</a>同样值得体验！</p>
     <script>
         window.onload=function(){
-            var initrule=[  {use:"book",atk:1.00,cri:2.33,sda:1.00,hp:0.00,def:0.00,pas:23.00,name:"主控书"},
+            var initrule=[  
+                        {use:"book",atk:1.00,cri:2.33,sda:1.00,hp:0.00,def:0.00,pas:23.00,name:"主控书"},
                         {use:"book",atk:1.00,cri:2.33,sda:0.00,hp:0.00,def:0.00,pas:16.67,name:"挂件书"},
                         {use:"cup",atk:1.00,cri:3.67,sda:1.00,hp:0.00,def:0.00,pas:23.00,name:"主控杯"},
                         {use:"cup",atk:1.00,cri:3.67,sda:0.00,hp:0.00,def:0.00,pas:23.00,name:"挂件杯"},
-                        {use:"cand",atk:1.00,cri:2.40,sda:0.00,hp:1.20,def:1.20,pas:17.00,name:"烛台"},
+                        {use:"cand",atk:1.00,cri:2.40,sda:0.00,hp:1.20,def:1.20,pas:17.00,name:"烛台"}
                      ];
             var tbody1=document.querySelector("tbody.tbody1");
             var tbody2=document.querySelector("tbody.tbody2");
@@ -236,8 +238,8 @@
                 td.innerHTML=`<button class="buttond2">删除</button>`;
                 tr.appendChild(td);
                 var a=document.querySelectorAll("button.buttond2");
-                for (var i=0;i<a.length;i++){
-                    a[i].onclick=function(){
+                for (var j=0;j<a.length;j++){
+                    a[j].onclick=function(){
                         tbody2.removeChild(this.parentNode.parentNode);
                     }
                 }
@@ -303,6 +305,31 @@
                     rule.push(cur);
                 }
                 console.log(rule);
+                stat=document.getElementById("stat");
+                if (rule.length==0) stat.innerHTML="计算失败：自定义规则不能为空",stat.style="color:red";
+                else if (item.length==0) stat.innerHTML="计算失败：待计算遗物不能为空",stat.style="color:red";
+                else{
+                    for (var j=0;j<item.length;++j) item[j].push("");
+                    for (var i=0;i<rule.length;++i){
+                        for (var j=0;j<item.length;++j){
+                            if (rule[i][0]==item[j][0]){
+                                var sum=0;
+                                for (var k=1;k<=5;++k) sum+=rule[i][k]*(item[j][k]==""?0:eval(item[j][k]));
+                                var res=rule[i][7]+"："+String(sum.toFixed(2))+"</a><br>";
+                                if (sum>=rule[i][6]) res=`<a style="color:green">`+res;
+                                else res=`<a style="color:red">`+res;
+                                item[j][6]+=res;
+                            }
+                        }
+                    }
+                    tbody=tbody1.querySelectorAll("tr");
+                    for (var i=0;i<tbody.length;++i){
+                        cur=[];
+                        tbodyx=tbody[i].querySelector("a");
+                        tbodyx.innerHTML=(item[i][6]==""?"无有效规则":item[i][6]);
+                    }
+                    stat.innerHTML="计算成功",stat.style="color:green";
+                }
             }
         }
     </script>
