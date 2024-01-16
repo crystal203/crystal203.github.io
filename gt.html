@@ -366,9 +366,9 @@
                 document.body.removeChild(textArea);
             }
         }
+        var shareinfo="";
         function copy2pb(){
-            var element=document.getElementById("share");
-            copyText(element.innerHTML);
+            copyText(shareinfo);
             document.getElementById("stat2").innerHTML="复制成功！";
             document.getElementById("stat2").style="color:green";
         }
@@ -430,9 +430,10 @@
             for (var i=0;i<maxInd[2][1];++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
             for (var i=0;i<maxInd[2][2];++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);           
             var savedata=a.concat(h.concat(d));
+            console.log(savedata);
             var sd=encode.call(this,savedata);
             
-            document.getElementById("share").innerHTML="crystal203.github.io/gt.html?s="+encodeURI(sd);
+            document.getElementById("share").innerHTML=shareinfo="crystal203.github.io/gt.html?s="+encodeURI(sd);
         }
         checkUpd();
         getShare();
@@ -453,6 +454,7 @@
             }
             s=decodeURI(getPar("s"));
             if (s!=='false'){
+                console.log(s);
                 f=decode.call(this,s);	
                 console.log(f);
                 for (var i=0;i<maxInd[2][0];++i) document.getElementById("a"+String(i+1)).value=f[i];
