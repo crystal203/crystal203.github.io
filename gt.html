@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -70,7 +71,7 @@
 </head>
 <body>
     <h1 align="center">坎公练度计算器</h1>
-    <h4 align="center">更新至【云苓】版本（January 4th）</h4>
+    <h4 align="center">更新至【云苓】版本（24w01a, January 4th）</h4>
     <div class="container">
         <table border="2" class="table1">
             <tbody>
@@ -134,8 +135,31 @@
                     <td>N/A</td>
                     <td>N/A</td>
                 </tr>
+                <tr>
+                    <td>守护者等级</td>
+                    <td><input type="text" id="a9" value="">/<a id="a9m">39.8</a></td>
+                    <td><input type="text" id="d4" value="">/<a id="d4m">10.7</a></td>
+                    <td><input type="text" id="h5" value="">/<a id="h5m">10.7</a></td>
+                </tr>
+                <tr>
+                    <td>浮游城建筑</td>
+                    <td><input type="text" id="a10" value="">/<a id="a10m">10.0</a></td>
+                    <td>N/A</td>
+                    <td><input type="text" id="h6" value="">/<a id="h6m">10.0</a></td>
+                </tr>
             </tbody>
         </table>
+        <p> 
+            <input type="radio" id="optional" name="options" value="0">
+            <label>仅羁绊</label>
+            <br>
+            <input type="radio" id="optional" name="options" value="1" checked>
+            <label>经典（不包括守护者等级与浮游城建筑）</label>
+            <br>
+            <input type="radio" id="optional" name="options" value="2">
+            <label>全部</label>
+            <br>
+        </p>
         <p>
             <button onclick="setEmpty()" class="buttonx">填充所有空项为最大值</button>
         </p>
@@ -144,25 +168,7 @@
             <a id="stat"></a>
         </p>
         <h2 align="center">结果</h2>
-        <table border="2">
-            <tbody>
-                <tr>
-                    <td><b>项目</b></td>
-                    <td><b>你的练度</b></td>
-                    <td><b>最高练度</b></td>
-                    <td><b>百分比</b></td>
-                    <td><b>评分</b></td>
-                </tr>
-                <tr>
-                    <td>羁绊</td>
-                    <td><a id="jb1">尚未计算</a></td>
-                    <td><a id="jb2">尚未计算</a></td>
-                    <td><a id="jb3">尚未计算</a></td>
-                    <td><a id="jb4">尚未计算</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
+        <h3 align="center" id="mode"></h3>
         <table border="2">
             <tbody>
                 <tr>
@@ -219,6 +225,7 @@
         <a href="https://crystal203.github.io/yw.html">【遗物计算器】</a>同样值得体验！</p>
         <img src="https://badges.toozhao.com/badges/01HGMYNBT2G9VN8T2TEBJEVXPM/green.svg" />
     <script>
+        const upd_date="2024-01-04 17:00:00";
         const {encode,decode}=(()=>{
             const C=126-33+1;
             const PADDING="G";
@@ -298,10 +305,7 @@
                     for (let i=l-1;i>0;i--){
                         arr[i]=(arr[i]-arr[i-1]+C)%C;
                     }
-                    return PADDING
-                    +encodeArr(arr)
-                    +PADDING
-                    +FLAG_COMPRESS;
+                    return PADDING+encodeArr(arr)+PADDING+FLAG_COMPRESS;
                 },
                 decode(x){
                     let compressed=false;
@@ -368,42 +372,42 @@
             document.getElementById("stat2").innerHTML="复制成功！";
             document.getElementById("stat2").style="color:green";
         }
+        const maxInd=[[2,2,2],[8,4,3],[10,6,4]];
         function setEmpty(){
-            for (var i=0;i<8;++i) if (document.getElementById("a"+String(i+1)).value=="") document.getElementById("a"+String(i+1)).value=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
-            for (var i=0;i<4;++i) if (document.getElementById("h"+String(i+1)).value=="") document.getElementById("h"+String(i+1)).value=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
-            for (var i=0;i<3;++i) if (document.getElementById("d"+String(i+1)).value=="") document.getElementById("d"+String(i+1)).value=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[2][0];++i) if (document.getElementById("a"+String(i+1)).value=="") document.getElementById("a"+String(i+1)).value=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[2][1];++i) if (document.getElementById("h"+String(i+1)).value=="") document.getElementById("h"+String(i+1)).value=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[2][2];++i) if (document.getElementById("d"+String(i+1)).value=="") document.getElementById("d"+String(i+1)).value=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
         }
         function calc(){
-            var am=new Array(8);var hm=new Array(4);var dm=new Array(3);
+            var k=Number(document.querySelector('input[name="options"]:checked').value);
+            if (k==0) document.getElementById("mode").innerHTML="羁绊模式";
+            else if (k==1) document.getElementById("mode").innerHTML="经典模式";
+            else if (k==2) document.getElementById("mode").innerHTML="扩展模式";
+            var am=new Array(maxInd[k][0]);var hm=new Array(maxInd[k][1]);var dm=new Array(maxInd[k][2]);
             //Get the max value of each blank
-            for (var i=0;i<8;++i) am[i]=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
-            for (var i=0;i<4;++i) hm[i]=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
-            for (var i=0;i<3;++i) dm[i]=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[k][0];++i) am[i]=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[k][1];++i) hm[i]=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[k][2];++i) dm[i]=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
             var amax=eval(am.join("+"));
             var dmax=eval(dm.join("+"));
             var hmax=eval(hm.join("+"));
-            var a=new Array(4);var d=new Array(3);var h=new Array(4);
+            var a=new Array(maxInd[k][0]);var h=new Array(maxInd[k][1]);var d=new Array(maxInd[k][2]);
             //Get the current value of each blank
-            for (var i=0;i<8;++i) a[i]=Number(document.getElementById("a"+String(i+1)).value);
-            for (var i=0;i<4;++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
-            for (var i=0;i<3;++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);
+            for (var i=0;i<maxInd[k][0];++i) a[i]=Number(document.getElementById("a"+String(i+1)).value);
+            for (var i=0;i<maxInd[k][1];++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
+            for (var i=0;i<maxInd[k][2];++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);
             var asum=eval(a.join("+"));
             var dsum=eval(d.join("+"));
             var hsum=eval(h.join("+"));
-            var jsum=a[0]+a[1]+d[0]+d[1]+h[0]+h[1];
-            var jmax=am[0]+am[1]+dm[0]+dm[1]+hm[0]+hm[1];
             if (check(a,am) && check(d,dm) && check(h,hm)){
                 document.getElementById("stat").innerHTML="计算成功";		
                 document.getElementById("stat").style="color:green;";			
             }else{
-                document.getElementById("stat").innerHTML="计算失败。失败原因：请检查各数值是否超出限制";
+                document.getElementById("stat").innerHTML="计算失败。失败原因：参与运算的数值超出限制";
                 document.getElementById("stat").style="color:red;";			
                 return;
             }
-            //Fill the result blank
-            document.getElementById("jb1").innerHTML=jsum.toFixed(1);
-            document.getElementById("jb2").innerHTML=jmax.toFixed(1);
-            document.getElementById("jb3").innerHTML=(jsum/jmax*100).toFixed(2).toString()+"%";
+            
             document.getElementById("ca1").innerHTML=asum.toFixed(1);
             document.getElementById("ca2").innerHTML=amax.toFixed(1);
             document.getElementById("ca3").innerHTML=(asum/amax*100).toFixed(2).toString()+"%";
@@ -420,19 +424,40 @@
             work(document.getElementById("cd4"),dsum,dmax);
             work(document.getElementById("ch4"),hsum,hmax);            
             work(document.getElementById("cs4"),asum+dsum+hsum,amax+dmax+hmax);
-            work(document.getElementById("jb4"),jsum,jmax);
+
+            a=new Array(maxInd[2][0]);h=new Array(maxInd[2][1]);d=new Array(maxInd[2][2]);
+            for (var i=0;i<maxInd[2][0];++i) a[i]=Number(document.getElementById("a"+String(i+1)).value);
+            for (var i=0;i<maxInd[2][1];++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
+            for (var i=0;i<maxInd[2][2];++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);           
             var savedata=a.concat(h.concat(d));
             var sd=encode.call(this,savedata);
-            document.getElementById("share").innerHTML="crystal203.github.io/gt.html?share="+encodeURI(sd);
+            
+            document.getElementById("share").innerHTML="crystal203.github.io/gt.html?s="+encodeURI(sd);
         }
+        checkUpd();
         getShare();
+        function checkUpd(){
+            d=Math.ceil((new Date()-new Date(upd_date))/1000/3600/24);
+            if (d>=14){
+                alert("注意：距离计算器最近一次更新已达到 "+String(d)+" 天！（按确定进入计算器）");
+            }
+        }
         function getShare(){
             var s=decodeURI(getPar("share"));
-            if (s){
+            if (s!=='false'){
                 f=decode.call(this,s);	
-            for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
-            for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
-            for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
+                for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
+                for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
+                for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
+                calc();
+            }
+            s=decodeURI(getPar("s"));
+            if (s!=='false'){
+                f=decode.call(this,s);	
+                console.log(f);
+                for (var i=0;i<maxInd[2][0];++i) document.getElementById("a"+String(i+1)).value=f[i];
+                for (var i=0;i<maxInd[2][1];++i) document.getElementById("h"+String(i+1)).value=f[i+maxInd[2][0]];
+                for (var i=0;i<maxInd[2][2];++i) document.getElementById("d"+String(i+1)).value=f[i+maxInd[2][1]+maxInd[2][0]];
                 calc();
             }
         }
