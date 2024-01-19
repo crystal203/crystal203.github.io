@@ -71,7 +71,8 @@
 </head>
 <body>
     <h1 align="center">坎公练度计算器</h1>
-    <h4 align="center">更新至【千日】版本（24w02a, January 18th）</h4>
+    <h4 align="center">更新至【千日】版本（24w02b, January 18th | 19th）</h4>
+    <h4 align="center">按照既定事实对计算器进行了修改。注意：这可能导致曾经的分享链接失效！</h4>
     <div class="container">
         <table border="2" class="table1">
             <tbody>
@@ -136,16 +137,16 @@
                     <td>N/A</td>
                 </tr>
                 <tr>
-                    <td>守护者等级</td>
-                    <td><input type="text" id="a9" value="">/<a id="a9m">39.8</a></td>
-                    <td><input type="text" id="d4" value="">/<a id="d4m">10.7</a></td>
-                    <td><input type="text" id="h5" value="">/<a id="h5m">10.7</a></td>
-                </tr>
-                <tr>
                     <td>浮游城建筑</td>
                     <td><input type="text" id="a10" value="">/<a id="a10m">10.0</a></td>
                     <td>N/A</td>
                     <td><input type="text" id="h6" value="">/<a id="h6m">10.0</a></td>
+                </tr>
+                <tr>
+                    <td>守护者等级</td>
+                    <td><input type="text" id="a9" value="">/<a id="a9m">39.8</a></td>
+                    <td><input type="text" id="d4" value="">/<a id="d4m">10.7</a></td>
+                    <td><input type="text" id="h5" value="">/<a id="h5m">10.7</a></td>
                 </tr>
             </tbody>
         </table>
@@ -157,7 +158,10 @@
             <label>经典（不包括守护者等级与浮游城建筑）</label>
             <br>
             <input type="radio" id="optional" name="options" value="2">
-            <label>全部</label>
+            <label>经典+浮游城建筑</label>
+            <br>
+            <input type="radio" id="optional" name="options" value="3">
+            <label>全部（仅供参考，守护者等级增益不与其余项共享乘区）</label>
             <br>
         </p>
         <p>
@@ -372,7 +376,7 @@
             document.getElementById("stat2").innerHTML="复制成功！";
             document.getElementById("stat2").style="color:green";
         }
-        const maxInd=[[2,2,2],[8,4,3],[10,6,4]];
+        const maxInd=[[2,2,2],[8,4,3],[9,5,3],[10,6,4]];
         function setEmpty(){
             for (var i=0;i<maxInd[2][0];++i) if (document.getElementById("a"+String(i+1)).value=="") document.getElementById("a"+String(i+1)).value=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
             for (var i=0;i<maxInd[2][1];++i) if (document.getElementById("h"+String(i+1)).value=="") document.getElementById("h"+String(i+1)).value=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
@@ -382,7 +386,8 @@
             var k=Number(document.querySelector('input[name="options"]:checked').value);
             if (k==0) document.getElementById("mode").innerHTML="羁绊模式";
             else if (k==1) document.getElementById("mode").innerHTML="经典模式";
-            else if (k==2) document.getElementById("mode").innerHTML="扩展模式";
+            else if (k==2) document.getElementById("mode").innerHTML="扩展模式 I";
+            else if (k==3) document.getElementById("mode").innerHTML="扩展模式 II";
             var am=new Array(maxInd[k][0]);var hm=new Array(maxInd[k][1]);var dm=new Array(maxInd[k][2]);
             //Get the max value of each blank
             for (var i=0;i<maxInd[k][0];++i) am[i]=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
@@ -444,14 +449,6 @@
             }
         }
         function getShare(){
-            var s=decodeURI(getPar("share"));
-            if (s!=='false'){
-                f=decode.call(this,s);	
-                for (var i=0;i<8;++i) document.getElementById("a"+String(i+1)).value=f[i];
-                for (var i=0;i<4;++i) document.getElementById("h"+String(i+1)).value=f[i+8];
-                for (var i=0;i<3;++i) document.getElementById("d"+String(i+1)).value=f[i+12];
-                calc();
-            }
             s=decodeURI(getPar("s"));
             if (s!=='false'){
                 console.log(s);
