@@ -71,7 +71,8 @@
 </head>
 <body>
     <h1 align="center">坎公练度计算器</h1>
-    <h4 align="center">更新至【噩梦 13】版本（24w04a, February 1st）</h4>
+    <h4 align="center">更新至【噩梦 13】版本（24w04b, February 1st）</h4>    
+    <h4 align="center">修复了分享链接错误的问题</h4>
     <div class="container">
         <table border="2" class="table1">
             <tbody>
@@ -377,9 +378,9 @@
         }
         const maxInd=[[2,2,2],[8,4,3],[9,5,3],[10,6,4]];
         function setEmpty(){
-            for (var i=0;i<maxInd[2][0];++i) if (document.getElementById("a"+String(i+1)).value=="") document.getElementById("a"+String(i+1)).value=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
-            for (var i=0;i<maxInd[2][1];++i) if (document.getElementById("h"+String(i+1)).value=="") document.getElementById("h"+String(i+1)).value=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
-            for (var i=0;i<maxInd[2][2];++i) if (document.getElementById("d"+String(i+1)).value=="") document.getElementById("d"+String(i+1)).value=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[3][0];++i) if (document.getElementById("a"+String(i+1)).value=="") document.getElementById("a"+String(i+1)).value=Number(document.getElementById("a"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[3][1];++i) if (document.getElementById("h"+String(i+1)).value=="") document.getElementById("h"+String(i+1)).value=Number(document.getElementById("h"+String(i+1)+"m").innerHTML);
+            for (var i=0;i<maxInd[3][2];++i) if (document.getElementById("d"+String(i+1)).value=="") document.getElementById("d"+String(i+1)).value=Number(document.getElementById("d"+String(i+1)+"m").innerHTML);
         }
         function calc(){
             var k=Number(document.querySelector('input[name="options"]:checked').value);
@@ -429,10 +430,10 @@
             work(document.getElementById("ch4"),hsum,hmax);            
             work(document.getElementById("cs4"),asum+dsum+hsum,amax+dmax+hmax);
 
-            a=new Array(maxInd[2][0]);h=new Array(maxInd[2][1]);d=new Array(maxInd[2][2]);
-            for (var i=0;i<maxInd[2][0];++i) a[i]=Number(document.getElementById("a"+String(i+1)).value);
-            for (var i=0;i<maxInd[2][1];++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
-            for (var i=0;i<maxInd[2][2];++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);           
+            a=new Array(maxInd[3][0]);h=new Array(maxInd[3][1]);d=new Array(maxInd[3][2]);
+            for (var i=0;i<maxInd[3][0];++i) a[i]=Number(document.getElementById("a"+String(i+1)).value);
+            for (var i=0;i<maxInd[3][1];++i) h[i]=Number(document.getElementById("h"+String(i+1)).value);
+            for (var i=0;i<maxInd[3][2];++i) d[i]=Number(document.getElementById("d"+String(i+1)).value);           
             var savedata=a.concat(h.concat(d));
             console.log(savedata);
             var sd=encode.call(this,savedata);
@@ -453,9 +454,9 @@
                 console.log(s);
                 f=decode.call(this,s);	
                 console.log(f);
-                for (var i=0;i<maxInd[2][0];++i) document.getElementById("a"+String(i+1)).value=f[i];
-                for (var i=0;i<maxInd[2][1];++i) document.getElementById("h"+String(i+1)).value=f[i+maxInd[2][0]];
-                for (var i=0;i<maxInd[2][2];++i) document.getElementById("d"+String(i+1)).value=f[i+maxInd[2][1]+maxInd[2][0]];
+                for (var i=0;i<maxInd[3][0];++i) document.getElementById("a"+String(i+1)).value=f[i];
+                for (var i=0;i<maxInd[3][1];++i) document.getElementById("h"+String(i+1)).value=f[i+maxInd[2][0]];
+                for (var i=0;i<maxInd[3][2];++i) document.getElementById("d"+String(i+1)).value=f[i+maxInd[2][1]+maxInd[2][0]];
                 calc();
             }
         }
