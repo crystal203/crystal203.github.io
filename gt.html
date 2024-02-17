@@ -454,8 +454,8 @@
                 f=decode.call(this,s);	
                 console.log(f);
                 for (var i=0;i<maxInd[3][0];++i) document.getElementById("a"+String(i+1)).value=f[i];
-                for (var i=0;i<maxInd[3][1];++i) document.getElementById("h"+String(i+1)).value=f[i+maxInd[2][0]];
-                for (var i=0;i<maxInd[3][2];++i) document.getElementById("d"+String(i+1)).value=f[i+maxInd[2][1]+maxInd[2][0]];
+                for (var i=0;i<maxInd[3][1];++i) document.getElementById("h"+String(i+1)).value=f[i+maxInd[3][0]];
+                for (var i=0;i<maxInd[3][2];++i) document.getElementById("d"+String(i+1)).value=f[i+maxInd[3][1]+maxInd[3][0]];
                 calc();
             }
         }
