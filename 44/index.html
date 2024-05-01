@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>New Calculator</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="enemy">
+            <div v-for="item in enemyList" :key="item.key" class="enemyList" :style="item.style">
+                <img v-if="item.character === enemyParty.leader" width="32px" height="32px"
+                    src="./pic/ui/ic_crown_red.png.png" style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                <img :width="item.imgWidth" :height="item.imgHeight" :src="item.image"
+                    style="position:absolute;left:0px;top:0px;z-index:0" @click="clickCard(item)"></img>
+            </div>
+            <div v-for="item in enemyParty.member" :key="item.key" class="enemyParty" :style="item.EPStyle">
+                <img v-if="item === enemyParty.leader" width="32px" height="32px" src="./pic/ui/ic_crown_red.png.png"
+                    style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                <img :width="item.EPImgWidth" :height="item.EPImgHeight" :src="item.image"
+                    style="position:absolute;left:0px;top:0px;z-index:0" @click="setLeader(item)"></img>
+            </div>
+        </div>
+        <div class="calc">
+            <div v-for="item in calcList" :key="item.key" class="calcList" :style="item.style">
+                <img :width="item.imgWidth" :height="item.imgHeight" :src="item.image"
+                    style="position:absolute;left:0px;top:0px;z-index:0"></img>
+            </div>
+        </div>
+        <div v-if="isEnemyCs === 1" class="enemyCs">
+            <div v-for="item in elementFilters" :key="item.key" class="elementFilter" :style="item.style">
+                <img :src="item.image" :style="item.imgStyle" @click="clickElementFilter(item)"></img>
+            </div>
+            <div v-for="item in character" :key="item.key" class="enemyCsList" :style="item.ECsStyle">
+                <div v-if="item.ECsFiltered === 1">
+                    <img :width="item.ECsImgWidth" :height="item.ECsImgHeight" :src="item.image"
+                        @click="clickECs(item)"></img>
+                </div>
+            </div>
+        </div>
+        <div v-if="showSolution === 1" class="solutions">
+            <div v-for="item in solutions" :key="item.key" class="solutions">
+
+                <div v-for="citem in item.party" :key="citem.key" :style="citem.style" class="solutions">
+                    <img v-if="citem.style.left==='50px'" width="32px" height="32px"
+                        src="./pic/ui/ic_crown_blue.png.png"
+                        style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                    <img :width="citem.character.SImgWidth" :height="citem.character.SImgHeight"
+                        :src="citem.character.image"></img>
+                </div>
+            </div>
+        </div>
+        <div style="position:absolute;left:315px;top:315px">
+            <button @click="calc()" class="calcButton">计算</button>
+        </div>
+        <div>
+            <a style="color:red">{{errorInfo}}</a>
+            <a style="color:green">{{succInfo}}</a>
+        </div>
+    </div>
+</body>
+<script type="module">
+    const height = 65;
+    const width = 65;
+    const offset = 50;
+    const enemyLeftOffset = 400;
+    class Character {
+        constructor({ id, name, nick, element }) {
+            this.id = id;
+            this.name = name;
+            this.nick = nick;
+            this.element = element;
+            if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
+            else this.image = "./pic/portraits/" + name + ".png";
+            /* Style for Enemy Choose */
+            this.ECsImgHeight = 60;
+            this.ECsImgWidth = 60;
+            this.SImgHeight = 60;
+            this.SImgWidth = 60;
+            this.ECsy = 0;
+            this.ECsx = 0;
+            this.ECsFiltered = 0;
+            this.ECsStyle = {}
+            this.EPImgHeight = 60;
+            this.EPImgWidth = 60;
+            this.EPStyle = {}
+        }
+        filter(rule, id) {
+            this.ECsFiltered = 0;
+            if (rule.ban === 1) return 0;
+            if (this.id !== 0 && rule.element !== "" && this.element !== rule.element) return 0;
+            this.ECsy = Math.floor(id / 10);
+            this.ECsx = id % 10;
+            this.ECsFiltered = 1;
+            this.ECsStyle = {
+                top: (this.ECsy + 6) * height + offset + "px",
+                left: this.ECsx * width + enemyLeftOffset + "px",
+                width: width + "px",
+                height: height + "px",
+            }
+            return 1;
+        }
+    };
+    class Party {
+        constructor() {
+            this.member = [];
+            this.leader = null;
+        }
+        addMember(item) {
+            let len = this.member.length;
+            item.EPStyle = {};
+            item.EPImgHeight = 60;
+            item.EPImgWidth = 60;
+            this.member.push(item);
+        }
+        refresh() {
+            for (let i = 0; i < this.member.length; ++i) {
+                this.member[i].EPStyle = {
+                    top: 4 * height + offset + "px",
+                    left: (i + 5) * width + enemyLeftOffset + "px",
+                    width: width + "px",
+                    height: height + "px",
+                }
+            }
+        }
+    }
+    class Tile {
+        setCharacter(c) {
+            this.character = c;
+            this.image = c.image;
+        }
+        constructor({ side, x, y, c }) {
+            this.imgHeight = 60;
+            this.imgWidth = 60;
+            this.side = side;
+            this.x = x;
+            this.y = y;
+            this.style = {
+                top: y * height + offset + "px",
+                left: x * width + offset + side * enemyLeftOffset + "px",
+                width: height + "px",
+                height: width + "px",
+                opacity: 1,
+            };
+            this.character = c;
+            if (c.id === 0) {
+                this.image = "./pic/portraits/empty_" + side + ".png";
+            } else this.image = c.image;
+        }
+    };
+    class ElementFilter {
+        constructor({ id, name, color }) {
+            this.id = id;
+            this.name = name;
+            this.color = color;
+            this.image = "./pic/ui/ic_attribute_" + name + ".png.png";
+            this.imgHeight = 60;
+            this.imgWidth = 60;
+            this.style = {
+                top: 5 * height + offset + "px",
+                left: this.id * width + enemyLeftOffset + "px",
+                width: width + "px",
+                height: height + "px",
+                opacity: 1,
+            }
+            this.imgStyle = {
+                "background-color": this.color,
+                width: this.imgWidth + "px",
+                height: this.imgHeight + "px",
+            }
+        }
+    }
+    const boardWidth = 4;
+    const boardHeight = 5;
+    new Vue({
+        el: ".main",
+        data: {
+            enemyList: [],
+            enemyMap: [],
+            calcList: [],
+            calcMap: [],
+            errorInfo: "",
+            succInfo: "",
+            solutions: [],
+            showSolution: 0,
+            elementFilters_: [
+                { name: "no", color: "gray" },
+                { name: "dark", color: "purple" },
+                { name: "light", color: "yellow" },
+                { name: "ground", color: "brown" },
+                { name: "water", color: "blue" },
+                { name: "fire", color: "red" },
+            ],
+            elementFilters: [],
+            character_: [
+                { name: "empty", nick: "", element: "" },
+                { name: "tanker_ascent", nick: "craig", element: "ground" },
+                { name: "vampire_noble_ascent", nick: "karina", element: "dark" },
+                { name: "invader_knight", nick: "beth", element: "dark" },
+                { name: "witch_coco", nick: "lupina", element: "dark" },
+                { name: "future_princess", nick: "fprincess", element: "light" },
+                { name: "dokkaebi", nick: "yunna", element: "no" },
+                { name: "surfer_sohee", nick: "sohee", element: "no" },
+                { name: "blue_dragon", nick: "yun", element: "water" },
+                { name: "parvati", nick: "parvati", element: "ground" },
+                { name: "mermaid", nick: "sia", element: "water" },
+                { name: "fallen_queen", nick: "camilla", element: "dark" },
+                { name: "festival_girl", nick: "miya", element: "fire" },
+                { name: "innuit_ascent", nick: "coco", element: "water" },
+                { name: "guardian_angel", nick: "angie", element: "water" },
+                { name: "mecha_android", nick: "mk99", element: "light" },
+                { name: "demon_powergirl", nick: "paimond", element: "fire" },
+                { name: "sea_witch", nick: "ara", element: "water" },
+                { name: "slime_shuna", nick: "shuna", element: "fire" },
+                { name: "demon_slayer", nick: "andras", element: "water" },
+                { name: "priestess", nick: "veronica", element: "water" },
+                { name: "hero_ai", nick: "kai", element: "light" },
+                { name: "eleanor", nick: "eleanor", element: "light" },
+                { name: "necromancer", nick: "noxia", element: "dark" },
+                { name: "shuran", nick: "winling", element: "fire" },
+                { name: "store_angel", nick: "gabriel", element: "light" },
+                { name: "kamael", nick: "kamael", element: "ground" },
+                { name: "vampire_captain", nick: "valencia", element: "light" },
+                { name: "lina", nick: "lina", element: "fire" },
+                { name: "half_vampire", nick: "priscilla", element: "light" },
+                { name: "robot_tanker", nick: "oghma", element: "dark" },
+                { name: "future_knight", nick: "fknight", element: "no" },
+                { name: "alpaca_girl", nick: "mayreel", element: "ground" },
+                { name: "rudolph", nick: "rue", element: "ground" },
+                { name: "china_hero_boy_ascent", nick: "fei", element: "light" },
+                { name: "uptown_lancer_girl", nick: "lapice", element: "light" },
+                { name: "vampire_lord", nick: "claude", element: "dark" },
+                { name: "villain_redhood", nick: "arabelle", element: "dark" },
+                { name: "villain_android", nick: "mk2", element: "dark" },
+                { name: "demon_ceo", nick: "lilith", element: "dark" },
+                { name: "demon_engineer", nick: "vinette", element: "dark" },
+                { name: "desertelf_hunter", nick: "rosetta", element: "ground" },
+                { name: "dragon_daughter", nick: "ameris", element: "ground" },
+                { name: "legendary_hero", nick: "erina", element: "no" },
+                { name: "eight_tail", nick: "nari", element: "no" },
+                { name: "fire_bishop", nick: "vishuvac", element: "fire" },
+                { name: "plitvice", nick: "plitvice", element: "fire" },
+                { name: "sheep_girl", nick: "ray", element: "fire" },
+                { name: "fire_harpy", nick: "scintilla", element: "fire" },
+                { name: "flower_girl", nick: "bari", element: "ground" },
+                { name: "idol_captain", nick: "eva", element: "no" },
+                { name: "cyborg_monk", nick: "qianlv", element: "light" },
+
+                { name: "plague_doctor", nick: "kaden", element: "dark" },
+                { name: "watcher", nick: "yuna", element: "ground" },
+            ],
+            checker: [
+                { name: "craig-sohee-sia", party: ["craig", "lupina", "sohee", "sia"] },
+                { name: "lupina-sohee-sia", party: ["lupina", "craig", "sohee", "sia"] },
+                { name: "craig-sohee-sia2", party: ["craig", "parvati", "sohee", "sia"] },
+                { name: "craig-3dark", party: ["craig", "lupina", "beth", "karina"] },
+                { name: "paimond-sohee-sia", party: ["paimond", "parvati", "sohee", "sia"] },
+                { name: "paimond-beth-sia", party: ["paimond", "parvati", "beth", "sia"] },
+                { name: "paimond-dark-sia", party: ["paimond", "lupina", "beth", "sia"] },
+                { name: "craig-sohee-karina", party: ["craig", "lupina", "sohee", "karina"] },
+                { name: "craig-skill-dmg", party: ["craig", "yunna", "coco", "miya"] },
+                { name: "craig-skill-dmg2", party: ["craig", "yunna", "coco", "sia"] },
+                { name: "craig-angie", party: ["craig", "lupina", "angie", "sia"] },
+
+                { name: "craig-99dark", party: ["craig", "karina", "camilla", "mk99"] },
+                { name: "craig-yunna-dark", party: ["craig", "karina", "camilla", "yunna"] },
+
+                { name: "karina-craig", party: ["karina", "craig", "*", "*"] },
+                { name: "fprincess-parvati", party: ["fprincess", "parvati", "beth", "sia"] },
+                { name: "fprincess-parvati2", party: ["fprincess", "parvati", "sohee", "sia"] },
+                { name: "craig-dark-sia", party: ["craig", "lupina", "beth", "sia"] },
+                { name: "craig-parvati-dark", party: ["craig", "parvati", "beth", "karina"] },
+
+                { name: "damage-only", party: [], SPJid: 1 },
+                { name: "double-tank", party: [], SPJid: 2 },
+            ],
+            solution: [
+                {
+                    name: "cd-beth", party: [{ nick: "beth" }, { nick: "lupina", panda: 1 }, { nick: "oghma", weapon: "robottanker2", panda: 1 }, { nick: "vinette", panda: 1 }],
+                    solve: [{ name: "craig-sohee-sia" }, { name: "craig-3dark" }, { name: "paimond-sohee-sia" }, { name: "craig-sohee-sia2" },{name:"craig-dark-sia"}],
+                },                
+                {
+                    name: "cd-beth-rev", party: [ { nick: "lupina", panda: 1 },{ nick: "beth" }, { nick: "oghma", weapon: "robottanker2", panda: 1 }, { nick: "vinette", panda: 1 }],
+                    solve: [{ name: "lupina-sohee-sia" }],
+                },
+                {
+                    name: "craig-3dark", party: [{ nick: "craig", panda: 1 }, { nick: "lupina" }, { nick: "beth", panda: 1 }, { nick: "karina" }],
+                    solve: [{ name: "craig-sohee-sia" }, { name: "craig-sohee-karina" }, { name: "craig-skill-dmg" }, { name: "craig-skill-dmg2" },
+                    { name: "craig-angie" }, { name: "craig-99dark" }, { name: "craig-yunna-dark" }],
+                },
+                {
+                    name: "fire-beth", party: [{ nick: "paimond", panda: 1 }, { nick: "winling", panda: 1 }, { nick: "beth", panda: 1 }, { nick: "parvati", panda: 1 }],
+                    solve: [],
+                },
+                {
+                    name: "fire-beth", party: [{ nick: "paimond", panda: 1 }, { nick: "winling", panda: 1 }, { nick: "scintilla" }, { nick: "parvati", panda: 1 }],
+                    solve: [],
+                },
+                {
+                    name: "cd-yunna", party: [{ nick: "yunna" }, { nick: "fknight" }, { nick: "eva" }, { nick: "craig", panda: 1 }],
+                    solve: [],
+                },
+                {
+                    name: "valencia", party: [{ nick: "valencia" }, { nick: "lupina", panda: 1 }, { nick: "beth", panda: 1 }, { nick: "kai" }],
+                    solve: [{ name: "karina-craig" }, { name: "craig-99dark" }, { name: "craig-yunna-dark" }],
+                },
+                {
+                    name: "kailight", party: [{ nick: "fprincess" }, { nick: "eleanor" }, { nick: "kai", panda: 1 }, { nick: "gabriel" }],
+                    solve: [{ name: "craig-3dark" }, { name: "craig-dark-sia" }],
+                },
+                {
+                    name: "critic", party: [{ nick: "karina", panda: 1 }, { nick: "craig", panda: 1 }, { nick: "qianlv" }, { nick: "parvati" }],
+                    solve: [{ name: "paimond-sohee-sia" }, { name: "paimond-beth-sia" }, { name: "paimond-dark-sia" }, { name: "fprincess-parvati" }, { name: "fprincess-parvati2" }],
+                },
+                {
+                    name: "critic1", party: [{ nick: "karina", panda: 1 }, { nick: "craig", panda: 1 }, { nick: "yunna", panda: 1 }, { nick: "parvati" }],
+                    solve: [{ name: "paimond-sohee-sia" }, { name: "paimond-beth-sia" }, { name: "paimond-dark-sia" }, { name: "fprincess-parvati" }, { name: "fprincess-parvati2" }],
+                },
+                {
+                    name: "critic2", party: [{ nick: "karina", panda: 1 }, { nick: "craig", panda: 1 }, { nick: "claude", panda: 1 }, { nick: "parvati" }],
+                    solve: [{ name: "paimond-sohee-sia" }, { name: "paimond-beth-sia" }, { name: "paimond-dark-sia" }, { name: "fprincess-parvati" }, { name: "fprincess-parvati2" }],
+                },
+                {
+                    name: "vampire-rcv", party: [{ nick: "karina" }, { nick: "craig" }, { nick: "miya" }, { nick: "parvati" }],
+                    solve: [{ name: "double-tank" }],
+                },
+                {
+                    name: "xianshan", party: [{ nick: "fprincess", panda: 1 }, { nick: "fei", panda: 1 }, { nick: "eleanor" }, { nick: "beth" }],
+                    solve: [{ name: "damage-only" }],
+                },
+                {
+                    name: "fp-lup-beth", party: [{ nick: "fprincess" }, { nick: "lupina", panda: 1 }, { nick: "beth", panda: 1 }, { nick: "kai", panda: 1 }],
+                    solve: [{ name: "craig-angie" }, { name: "craig-parvati-dark" }, { name: "craig-sohee-sia" }, { name: "craig-sohee-sia2" }],
+                },
+            ],
+            character: [],
+            usedList: {},
+            enemyParty: new Party(),
+            isEnemyCs: 0,
+            enemyCs: 0,
+            elementFilter: "",
+        },
+        computed: {
+
+        },
+        methods: {
+            info(msg, flag) {
+                if (flag === 0) {
+                    this.succInfo = msg;this.errorInfo="";
+                } else {
+                    this.errorInfo = msg;this.succInfo="";
+                }
+            },
+            init() {
+                const enemyMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    enemyMap[i] = new Array(boardWidth);
+                }
+                const calcMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    calcMap[i] = new Array(boardWidth);
+                }
+
+                const character = [];
+                for (let i = 0; i < this.character_.length; ++i) {
+                    let item = this.character_[i];
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element });
+                    character.push(c);
+                }
+                const elementFilters = [];
+                for (let i = 0; i < this.elementFilters_.length; ++i) {
+                    let item = this.elementFilters_[i];
+                    const c = new ElementFilter({ id: i, name: item.name, color: item.color });
+                    elementFilters.push(c);
+                }
+                const enemyList = [];
+                for (let i = 0; i < boardHeight; ++i) {
+                    for (let j = 0; j < boardWidth; ++j) {
+                        const tile = new Tile({ side: 1, x: j, y: i, c: character[0] });
+                        enemyMap[i][j] = tile;
+                        enemyList.push(tile);
+                    }
+                }
+                const calcList = [];
+                for (let i = 0; i < boardHeight; ++i) {
+                    for (let j = 0; j < boardWidth; ++j) {
+                        const tile = new Tile({ side: 0, x: j, y: i, c: character[0] });
+                        calcMap[i][j] = tile;
+                        calcList.push(tile);
+                    }
+                }
+                this.character = character;
+                this.elementFilters = elementFilters;
+                this.enemyMap = enemyMap;
+                this.enemyList = enemyList;
+                this.calcMap = calcMap;
+                this.calcList = calcList;
+                for (let i = 0; i < this.solution.length; ++i) {
+                    for (let j = 0; j < this.solution[i].party.length; ++j) {
+                        const nick = this.solution[i].party[j].nick;
+                        for (let k = 0; k < this.character.length; ++k) {
+                            if (this.character[k].nick === nick) {
+                                this.solution[i].party[j].character = this.character[k];
+                                break;
+                            }
+                        }
+                        this.solution[i].party[j].style = { left: offset + j * width + "px", top: "0px" }
+                    }
+                }
+            },
+            updateUsedList() {
+                this.usedList = {};
+                this.enemyParty.member = [];
+                let fpos = -1;
+                for (let i = 0, j = 0; i < this.enemyList.length; ++i) {
+                    if (this.enemyList[i].character.id !== 0) {
+                        this.usedList[this.enemyList[i].character.id] = this.enemyList[i];
+                        this.enemyParty.addMember(this.enemyList[i].character);
+                        if (this.enemyParty.leader === null) this.enemyParty.leader = this.enemyList[i].character;
+                        if (this.enemyParty.leader === this.enemyList[i].character) fpos = j;
+                        j = j + 1;
+                    }
+                }
+                if (fpos === -1) {
+                    if (this.enemyParty.member.length === 0) this.enemyParty.leader = null;
+                    else this.enemyParty.leader = this.enemyParty.member[0], fpos = 0;
+                }
+                if (this.enemyParty.leader !== null) {
+                    const t = this.enemyParty.member[fpos];
+                    this.enemyParty.member[fpos] = this.enemyParty.member[0];
+                    this.enemyParty.member[0] = t;
+                }
+                this.enemyParty.refresh();
+            },
+            setLeader(item) {
+                this.enemyParty.leader = item;
+                this.updateUsedList();
+            },
+            updateFilter(banned) {
+                for (let i = 0, id = 0; i < this.character.length; ++i) {
+                    id = id + this.character[i].filter({ ban: banned, element: this.elementFilter }, id);
+                }
+            },
+            clickCard(item) {
+                this.showSolution = 0;
+                this.updateUsedList();
+                if (this.isEnemyCs === 1) {
+                    this.enemyCs.style.opacity = 1;
+                    if (this.enemyCs === item) {
+                        this.enemyCs.setCharacter(this.character[0]);
+                        this.isEnemyCs = 0;
+                        this.updateUsedList();
+                        this.updateFilter(1);
+                        return;
+                    }
+                }
+                this.isEnemyCs = 1;
+                this.enemyCs = item;
+                this.enemyCs.style.opacity = 0.5;
+                this.updateUsedList();
+                this.updateFilter(0);
+            },
+            clickECs(item) {
+                this.showSolution = 0;
+                if (this.usedList.hasOwnProperty(item.id)) {
+                    this.usedList[item.id].setCharacter(this.character[0]);
+                } else {
+                    if (this.enemyParty.member.length >= 4 && item.id !== 0 && this.enemyCs.character.id === 0) {
+                        this.info("队伍已满员！", 1);
+                        return;
+                    }
+                }
+                this.enemyCs.setCharacter(item);
+                this.enemyCs.style.opacity = 1;
+                this.isEnemyCs = 0;
+                this.updateUsedList();
+                this.updateFilter(1);
+            },
+            clickElementFilter(item) {
+                this.showSolution = 0;
+                if (this.elementFilter === item.name) this.elementFilter = "", item.style.opacity = 1;
+                else {
+                    for (let i = 0; i < this.elementFilters.length; ++i) {
+                        this.elementFilters[i].style.opacity = 1;
+                    }
+                    this.elementFilter = item.name, item.style.opacity = 0.5;
+                }
+                this.updateFilter(0);
+            },
+            check(party, checker) {
+                const cparty = checker.party;
+                if (cparty.length === 0) {
+                    return 0;//to do SPJ
+                }
+                if (party[0].nick !== cparty[0]) return 0;
+                for (let i = 1; i < 4; ++i) {
+                    if (cparty[i] === "*") continue;
+                    let flag = 0;
+                    for (let j = 1; j < 4; ++j) {
+                        if (cparty[i] === party[j].nick) {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag === 0) return 0;
+                }
+                return 1;
+            },
+            calc() {
+                if (this.enemyParty.member.length !== 4) {
+                    this.info("队伍角色数不是四名！", 1);
+                    return;
+                } else {
+                    this.errorInfo = "";
+                }
+                const partyType = [];
+                for (let i = 0; i < this.checker.length; ++i) {
+                    const checker = this.checker[i];
+                    if (this.check(this.enemyParty.member, checker)) {
+                        partyType.push(checker.name);
+                    }
+                }
+                console.log(partyType);
+                const solutions = [];
+                for (let i = 0; i < this.solution.length; ++i) {
+                    let flag = 0;
+                    const solution = this.solution[i];
+                    for (let j = 0; j < partyType.length; ++j) {
+                        for (let k = 0; k < solution.solve.length; ++k) {
+                            const solve = solution.solve[k];
+                            if (partyType[j] === solve.name) flag = 1;
+                        }
+                    }
+                    if (flag === 1) {
+                        for (let j = 0; j < solution.party.length; ++j) {
+                            solution.party[j].style.top = offset + (solutions.length + 7) * height + "px";
+                        }
+                        solutions.push(solution);
+                    }
+                }
+                this.solutions = solutions;
+                if (this.solutions.length === 0) {
+                    this.info("未找到合适解", 1);
+                } else {
+                    this.showSolution = 1;
+                    this.info("计算完成", 0);
+                }
+            }
+        },
+        mounted: function () {
+            this.init();
+        },
+    });
+</script>
+<style>
+    .main {
+        position: relative;
+    }
+
+    .enemyList {
+        position: absolute;
+    }
+
+    .enemy {
+        position: relative;
+    }
+
+    .enemyCs {
+        position: relative;
+    }
+
+    .enemyCsList {
+        position: absolute;
+    }
+
+    .elementFilter {
+        position: absolute;
+    }
+
+    .enemyParty {
+        position: absolute;
+    }
+
+    .calcList {
+        position: absolute;
+    }
+
+    .solutions {
+        position: absolute;
+    }
+
+    .calcButton {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        width: 120px;
+    }
+</style>
+
+</html>
