@@ -20,13 +20,31 @@
                 <img v-if="item === enemyParty.leader" width="32px" height="32px" src="./pic/ui/ic_crown_red.png.png"
                     style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
                 <img :width="item.EPImgWidth" :height="item.EPImgHeight" :src="item.image"
-                    style="position:absolute;left:0px;top:0px;z-index:0" @click="setLeader(item)"></img>
+                    style="position:absolute;left:0px;top:0px;z-index:0"></img>
+                <img v-if="item !== enemyParty.leader" width="65px" height="65px" src="./pic/ui/arrow.png"
+                    style="position:absolute;left:0px;top:65px;z-index:1"
+                    @click="modifyEP(enemyParty.member,item)"></img>
             </div>
         </div>
         <div class="calc">
             <div v-for="item in calcList" :key="item.key" class="calcList" :style="item.style">
+                <img v-if="item.character === calcParty.leader" width="32px" height="32px"
+                    src="./pic/ui/ic_crown_blue.png.png" style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
                 <img :width="item.imgWidth" :height="item.imgHeight" :src="item.image"
-                    style="position:absolute;left:0px;top:0px;z-index:0"></img>
+                    style="position:absolute;left:0px;top:0px;z-index:0" @click="clickCalc(item)"></img>
+            </div>
+            <div v-if="showCalcParty === 1">
+                <div v-for="item in calcParty.member" :key="item.key" class="calcParty" :style="item.CPStyle">
+                    <img v-if="item === calcParty.leader" width="32px" height="32px"
+                        src="./pic/ui/ic_crown_blue.png.png"
+                        style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                    <img v-if="item.CPStyle.left!='115px' && item !== calcParty.leader" width="65px" height="65px"
+                        src="./pic/ui/arrow.png" style="position:absolute;left:0px;top:65px;z-index:1"
+                        @click="modifyCP(calcParty.member,item)"></img>
+                    <img :width="item.CPImgWidth" :height="item.CPImgHeight" :src="item.image"
+                        style="position:absolute;left:0px;top:0px;z-index:0" @click="clickSP(item)"
+                        :style="item.calcStyle"></img>
+                </div>
             </div>
         </div>
         <div v-if="isEnemyCs === 1" class="enemyCs">
@@ -42,13 +60,21 @@
         </div>
         <div v-if="showSolution === 1" class="solutions">
             <div v-for="item in solutions" :key="item.key" class="solutions">
-
                 <div v-for="citem in item.party" :key="citem.key" :style="citem.style" class="solutions">
                     <img v-if="citem.style.left==='50px'" width="32px" height="32px"
                         src="./pic/ui/ic_crown_blue.png.png"
                         style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                    <button v-if="citem.style.left==='50px'" class="calcButton" @click="chooseCalc(item)"
+                        style="position:absolute;left:275px">选择</button>
                     <img :width="citem.character.SImgWidth" :height="citem.character.SImgHeight"
                         :src="citem.character.image"></img>
+                </div>
+            </div>
+        </div>
+        <div v-if="showSolution === 0" class="equipment">
+            <div v-for="item in calcParty.member" :key="item.key" class="equipment">
+                <div v-for="citem in item.equipment" :key="citem.key" :style="citem.style" class="equipment">
+                    <img :src="citem.image"></img>
                 </div>
             </div>
         </div>
@@ -67,16 +93,19 @@
     const offset = 50;
     const enemyLeftOffset = 400;
     class Character {
-        constructor({ id, name, nick, element }) {
+        constructor({ id, name, nick, element, weapon }) {
             this.id = id;
             this.name = name;
             this.nick = nick;
             this.element = element;
+            this.weapon = weapon;
             if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
             else this.image = "./pic/portraits/" + name + ".png";
             /* Style for Enemy Choose */
             this.ECsImgHeight = 60;
             this.ECsImgWidth = 60;
+            this.CPImgHeight = 60;
+            this.CPImgWidth = 60;
             this.SImgHeight = 60;
             this.SImgWidth = 60;
             this.ECsy = 0;
@@ -85,7 +114,13 @@
             this.ECsStyle = {}
             this.EPImgHeight = 60;
             this.EPImgWidth = 60;
-            this.EPStyle = {}
+            this.EPStyle = {};
+            this.CPStyle = {};
+            this.calcStyle = {
+                position: "absolute",
+                "z-index": 0,
+                opacity: 1,
+            }
         }
         filter(rule, id) {
             this.ECsFiltered = 0;
@@ -108,28 +143,47 @@
             this.member = [];
             this.leader = null;
         }
-        addMember(item) {
+        addMember(item, side) {
             let len = this.member.length;
-            item.EPStyle = {};
-            item.EPImgHeight = 60;
-            item.EPImgWidth = 60;
+            if (side === 1) {
+                item.EPStyle = {};
+                item.EPImgHeight = 60;
+                item.EPImgWidth = 60;
+            } else {
+                item.CPStyle = {};
+                item.CPImgHeight = 60;
+                item.CPImgWidth = 60;
+            }
             this.member.push(item);
         }
-        refresh() {
+        refresh(side) {
             for (let i = 0; i < this.member.length; ++i) {
-                this.member[i].EPStyle = {
-                    top: 4 * height + offset + "px",
-                    left: (i + 5) * width + enemyLeftOffset + "px",
-                    width: width + "px",
-                    height: height + "px",
+                if (side === 1) {
+                    this.member[i].EPStyle = {
+                        top: 4 * height + offset + "px",
+                        left: (i + 5) * width + enemyLeftOffset + "px",
+                        width: width + "px",
+                        height: height + "px",
+                    }
+                } else {
+                    this.member[i].CPStyle = {
+                        top: 5 * height + offset + "px",
+                        left: i * width + offset + "px",
+                        width: width + "px",
+                        height: height + "px",
+                    }
                 }
             }
         }
     }
     class Tile {
-        setCharacter(c) {
+        setCharacter(c, side = 1) {
             this.character = c;
             this.image = c.image;
+            this.side = side;
+            if (c.id === 0) {
+                this.image = "./pic/portraits/empty_" + side + ".png";
+            } else this.image = c.image;
         }
         constructor({ side, x, y, c }) {
             this.imgHeight = 60;
@@ -186,7 +240,7 @@
             solutions: [],
             showSolution: 0,
             elementFilters_: [
-                { name: "no", color: "gray" },
+                { name: "no", color: "grey" },
                 { name: "dark", color: "purple" },
                 { name: "light", color: "yellow" },
                 { name: "ground", color: "brown" },
@@ -195,152 +249,351 @@
             ],
             elementFilters: [],
             character_: [
-                { name: "empty", nick: "", element: "" },
-                { name: "tanker_ascent", nick: "craig", element: "ground" },
-                { name: "vampire_noble_ascent", nick: "karina", element: "dark" },
-                { name: "invader_knight", nick: "beth", element: "dark" },
-                { name: "witch_coco", nick: "lupina", element: "dark" },
-                { name: "future_princess", nick: "fprincess", element: "light" },
-                { name: "dokkaebi", nick: "yunna", element: "no" },
-                { name: "surfer_sohee", nick: "sohee", element: "no" },
-                { name: "blue_dragon", nick: "yun", element: "water" },
-                { name: "parvati", nick: "parvati", element: "ground" },
-                { name: "mermaid", nick: "sia", element: "water" },
-                { name: "fallen_queen", nick: "camilla", element: "dark" },
-                { name: "festival_girl", nick: "miya", element: "fire" },
-                { name: "innuit_ascent", nick: "coco", element: "water" },
-                { name: "guardian_angel", nick: "angie", element: "water" },
-                { name: "mecha_android", nick: "mk99", element: "light" },
-                { name: "demon_powergirl", nick: "paimond", element: "fire" },
-                { name: "sea_witch", nick: "ara", element: "water" },
-                { name: "slime_shuna", nick: "shuna", element: "fire" },
-                { name: "demon_slayer", nick: "andras", element: "water" },
-                { name: "priestess", nick: "veronica", element: "water" },
-                { name: "hero_ai", nick: "kai", element: "light" },
-                { name: "eleanor", nick: "eleanor", element: "light" },
-                { name: "necromancer", nick: "noxia", element: "dark" },
-                { name: "shuran", nick: "winling", element: "fire" },
-                { name: "store_angel", nick: "gabriel", element: "light" },
-                { name: "kamael", nick: "kamael", element: "ground" },
-                { name: "vampire_captain", nick: "valencia", element: "light" },
-                { name: "lina", nick: "lina", element: "fire" },
-                { name: "half_vampire", nick: "priscilla", element: "light" },
-                { name: "robot_tanker", nick: "oghma", element: "dark" },
-                { name: "future_knight", nick: "fknight", element: "no" },
-                { name: "alpaca_girl", nick: "mayreel", element: "ground" },
-                { name: "rudolph", nick: "rue", element: "ground" },
-                { name: "china_hero_boy_ascent", nick: "fei", element: "light" },
-                { name: "uptown_lancer_girl", nick: "lapice", element: "light" },
-                { name: "vampire_lord", nick: "claude", element: "dark" },
-                { name: "villain_redhood", nick: "arabelle", element: "dark" },
-                { name: "villain_android", nick: "mk2", element: "dark" },
-                { name: "demon_ceo", nick: "lilith", element: "dark" },
-                { name: "demon_engineer", nick: "vinette", element: "dark" },
-                { name: "desertelf_hunter", nick: "rosetta", element: "ground" },
-                { name: "dragon_daughter", nick: "ameris", element: "ground" },
-                { name: "legendary_hero", nick: "erina", element: "no" },
-                { name: "eight_tail", nick: "nari", element: "no" },
-                { name: "fire_bishop", nick: "vishuvac", element: "fire" },
-                { name: "plitvice", nick: "plitvice", element: "fire" },
-                { name: "sheep_girl", nick: "ray", element: "fire" },
-                { name: "fire_harpy", nick: "scintilla", element: "fire" },
-                { name: "flower_girl", nick: "bari", element: "ground" },
-                { name: "idol_captain", nick: "eva", element: "no" },
-                { name: "cyborg_monk", nick: "qianlv", element: "light" },
+                // ai: 1 近战 2 远程 3 锁射手 4 锁辅助 5 支援 6 暗萝 7 火奶
+                // type: 1 战士 2 射手 3 辅助 4 坦克
+                { name: "empty", nick: "", element: "", ai: 0, type: 0, weapon: "" },
+                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, weapon: "tanker" },
+                { name: "vampire_noble_ascent", nick: "karina", element: "dark", ai: 2, type: 3, weapon: "vampirenoble" },
+                { name: "invader_knight", nick: "beth", element: "dark", ai: 3, type: 1 },
+                { name: "witch_coco", nick: "lupina", element: "dark", ai: 1, type: 1 },
+                { name: "future_princess", nick: "fprincess", element: "light", ai: 1, type: 4 },
+                { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 3 },
+                { name: "surfer_sohee", nick: "sohee", element: "no", ai: 3, type: 1 },
+                { name: "blue_dragon", nick: "yun", element: "water", ai: 2, type: 3 },
+                { name: "parvati", nick: "parvati", element: "ground", ai: 4, type: 1 },
+                { name: "mermaid", nick: "sia", element: "water", ai: 2, type: 3 },
+                { name: "fallen_queen", nick: "camilla", element: "dark", ai: 1, type: 2 },
+                { name: "festival_girl", nick: "miya", element: "fire", ai: 7, type: 3 },
+                { name: "innuit_ascent", nick: "coco", element: "water", ai: 2, type: 2 },
+                { name: "guardian_angel", nick: "angie", element: "water", ai: 4, type: 1 },
+                { name: "mecha_android", nick: "mk99", element: "light", ai: 2, type: 2 },
+                { name: "demon_powergirl", nick: "paimond", element: "fire", ai: 1, type: 4 },
+                { name: "sea_witch", nick: "ara", element: "water", ai: 2, type: 3 },
+                { name: "slime_shuna", nick: "shuna", element: "fire", ai: 2, type: 3 },
+                { name: "demon_slayer", nick: "andras", element: "water", ai: 2, type: 2 },
+                { name: "priestess", nick: "veronica", element: "water", ai: 1, type: 3 },
+                { name: "hero_ai", nick: "kai", element: "light", ai: 1, type: 1 },
+                { name: "eleanor", nick: "eleanor", element: "light", ai: 2, type: 3 },
+                { name: "necromancer", nick: "noxia", element: "dark", ai: 6, type: 3 },
+                { name: "shuran", nick: "winling", element: "fire", ai: 5, type: 1 },
+                { name: "store_angel", nick: "gabriel", element: "light", ai: 2, type: 3 },
+                { name: "kamael", nick: "kamael", element: "ground", ai: 2, type: 3 },
+                { name: "vampire_captain", nick: "valencia", element: "light", ai: 2, type: 1 },
+                { name: "lina", nick: "lina", element: "fire", ai: 1, type: 2 },
+                { name: "half_vampire", nick: "priscilla", element: "light", ai: 2, type: 2 },
+                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 2 /*default as weapon 2*/, type: 4 },
+                { name: "future_knight", nick: "fknight", element: "no", ai: 2, type: 2 },
+                { name: "alpaca_girl", nick: "mayreel", element: "ground", ai: 1, type: 3 },
+                { name: "rudolph", nick: "rue", element: "ground", ai: 3, type: 1 },
+                { name: "china_hero_boy_ascent", nick: "fei", element: "light", ai: 1, type: 1, weapon: "china" },
+                { name: "uptown_lancer_girl", nick: "lapice", element: "light", ai: 1/*default as weapon 2*/, type: 1 },
+                { name: "vampire_lord", nick: "claude", element: "dark", ai: 2, type: 2 },
+                { name: "villain_redhood", nick: "arabelle", element: "dark", ai: 2, type: 2 },
+                { name: "villain_android", nick: "mk2", element: "dark", ai: 2, type: 2 },
+                { name: "demon_ceo", nick: "lilith", element: "dark", ai: 1, type: 1 },
+                { name: "demon_engineer", nick: "vinette", element: "dark", ai: 2, type: 3 },
+                { name: "desertelf_hunter", nick: "rosetta", element: "ground", ai: 2, type: 2 },
+                { name: "dragon_daughter", nick: "ameris", element: "ground", ai: 2, type: 2 },
+                { name: "legendary_hero", nick: "erina", element: "no", ai: 1, type: 4 },
+                { name: "eight_tail", nick: "nari", element: "no", ai: 2, type: 2 },
+                { name: "fire_bishop", nick: "vishuvac", element: "fire", ai: 3, type: 1 },
+                { name: "plitvice", nick: "plitvice", element: "fire", ai: 1, type: 1 },
+                { name: "sheep_girl", nick: "rey", element: "fire", ai: 2, type: 1 },
+                { name: "fire_harpy", nick: "scintilla", element: "fire", ai: 1, type: 1 },
+                { name: "flower_girl", nick: "bari", element: "ground", ai: 2, type: 2 },
+                { name: "idol_captain", nick: "eva", element: "no", ai: 1, type: 3 },
+                { name: "cyborg_monk", nick: "qianlv", element: "light", ai: 2, type: 2 },
 
-                { name: "plague_doctor", nick: "kaden", element: "dark" },
-                { name: "watcher", nick: "yuna", element: "ground" },
+                { name: "plague_doctor", nick: "kaden", element: "dark", ai: 1, type: 0 },
+                { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 0 },
             ],
             checker: [
-                { name: "craig-sohee-sia", party: ["craig", "lupina", "sohee", "sia"] },
-                { name: "lupina-sohee-sia", party: ["lupina", "craig", "sohee", "sia"] },
-                { name: "craig-sohee-sia2", party: ["craig", "parvati", "sohee", "sia"] },
-                { name: "craig-3dark", party: ["craig", "lupina", "beth", "karina"] },
-                { name: "paimond-sohee-sia", party: ["paimond", "parvati", "sohee", "sia"] },
-                { name: "paimond-beth-sia", party: ["paimond", "parvati", "beth", "sia"] },
-                { name: "paimond-dark-sia", party: ["paimond", "lupina", "beth", "sia"] },
-                { name: "craig-sohee-karina", party: ["craig", "lupina", "sohee", "karina"] },
-                { name: "craig-skill-dmg", party: ["craig", "yunna", "coco", "miya"] },
-                { name: "craig-skill-dmg2", party: ["craig", "yunna", "coco", "sia"] },
-                { name: "craig-angie", party: ["craig", "lupina", "angie", "sia"] },
-
-                { name: "craig-99dark", party: ["craig", "karina", "camilla", "mk99"] },
-                { name: "craig-yunna-dark", party: ["craig", "karina", "camilla", "yunna"] },
-
-                { name: "karina-craig", party: ["karina", "craig", "*", "*"] },
-                { name: "fprincess-parvati", party: ["fprincess", "parvati", "beth", "sia"] },
-                { name: "fprincess-parvati2", party: ["fprincess", "parvati", "sohee", "sia"] },
-                { name: "craig-dark-sia", party: ["craig", "lupina", "beth", "sia"] },
-                { name: "craig-parvati-dark", party: ["craig", "parvati", "beth", "karina"] },
-
-                { name: "damage-only", party: [], SPJid: 1 },
-                { name: "double-tank", party: [], SPJid: 2 },
+                { name: "盾索-狼鱼", party: ["craig", "lupina", "sohee", "sia"] },
+                { name: "盾索-狼鬼", party: ["craig", "lupina", "sohee", "karina"] },
+                { name: "盾索-狼主控", party: ["lupina", "craig", "sohee", "sia"] },
+                { name: "盾索-土鱼", party: ["craig", "parvati", "sohee", "sia"] },
+                { name: "土盾三暗-有切", party: ["craig", "lupina", "beth", "karina"] },
+                { name: "土盾三暗-无切", party: ["craig", "lupina", "karina", "noxia"] },
+                { name: "土盾暗鱼", party: ["craig", "lupina", "beth", "sia"] },
+                { name: "土盾鱼", party: ["craig", "sia", "parvati", "beth"] },
+                { name: "土盾双切鬼", party: ["craig", "karina", "parvati", "beth"] },
+                { name: "土盾暗刀", party: ["craig", "beth", "*", "*"] },
+                { name: "烤鱼-索", party: ["paimond", "parvati", "sohee", "sia"] },
+                { name: "烤鱼-刀", party: ["paimond", "parvati", "beth", "sia"] },
+                { name: "火魔双切", party: ["paimond", "lupina", "beth", "sia"] },
+                { name: "土盾技伤-火", party: ["craig", "eunha", "coco", "miya"] },
+                { name: "土盾技伤-鱼", party: ["craig", "eunha", "coco", "sia"] },
+                { name: "土盾安吉", party: ["craig", "lupina", "angie", "sia"] },
+                { name: "土盾双射-光炮", party: ["craig", "karina", "camilla", "mk99"] },
+                { name: "土盾双射-银河", party: ["craig", "karina", "camilla", "eunha"] },
+                { name: "鬼土盾", party: ["karina", "craig", "*", "*"] },
+                { name: "鬼姐", party: ["karina", "parvati", "eunha", "craig"] },
+                { name: "鬼双射", party: ["karina", "camilla", "eunha", "craig"] },
+                { name: "鬼双切", party: ["karina", "parvati", "beth", "craig"] },
+                { name: "鬼炮", party: ["karina", "craig", "mk99", "camilla"] },
+                { name: "公鱼双切-刀", party: ["fprincess", "parvati", "beth", "sia"] },
+                { name: "公鱼双切-索", party: ["fprincess", "parvati", "sohee", "sia"] },
+                { name: "土盾三辅", party: ["craig", "kamael", "noxia", "karina"] },
+                { name: "公主双坦", party: ["fprincess", "craig", "*", "*"] },
+                { name: "公主", party: ["fprincess", "*", "*", "*"] },
+                { name: "公主刀", party: ["fprincess", "beth", "*", "*"] },
+                { name: "公主土", party: ["fprincess", "parvati", "*", "*"] },
+                { name: "公主索", party: ["fprincess", "sohee", "*", "*"] },
+                { name: "银河技伤", party: ["eunha", "veronica", "craig", "miya"] },
+                { name: "银河光", party: ["eunha", "mk99", "craig", "camilla"] },
+                { name: "kai投", party: ["kai", "lupina", "sohee", "beth"] },
+                { name: "刀投", party: ["beth", "lupina", "sohee", "kai"] },
+                { name: "索投", party: ["sohee", "lupina", "beth", "kai"] },
+                { name: "臀投", party: ["valencia", "lupina", "beth", "kai"] },
+                { name: "土", party: ["mayreel", "craig", "rue", "kamael"] },
+                { name: "臀投", party: ["valencia", "lupina", "beth", "kai"] },
+                { name: "暗盾技伤", party: ["oghma", "craig", "veronica", "miya"] },
+                { name: "莉娜", party: ["lina", "*", "*", "*"] },
             ],
             solution: [
+                //merch: 1 熊猫 3 坦杀 2 售货机 4 双子 5 母舰
+                //card: 1 防 3 爆 5 7 攻
+
                 {
-                    name: "cd-beth", party: [{ nick: "beth" }, { nick: "lupina", panda: 1 }, { nick: "oghma", weapon: "robottanker2", panda: 1 }, { nick: "vinette", panda: 1 }],
-                    solve: [{ name: "craig-sohee-sia" }, { name: "craig-3dark" }, { name: "paimond-sohee-sia" }, { name: "craig-sohee-sia2" },{name:"craig-dark-sia"}],
-                },                
-                {
-                    name: "cd-beth-rev", party: [ { nick: "lupina", panda: 1 },{ nick: "beth" }, { nick: "oghma", weapon: "robottanker2", panda: 1 }, { nick: "vinette", panda: 1 }],
-                    solve: [{ name: "lupina-sohee-sia" }],
+                    name: "土三暗", party: [{ nick: "craig", merch: 1 }, { nick: "lupina" }, { nick: "beth", merch: 1 }, { nick: "karina" }],
+                    card: [[1, 1], [3, 7], [3, 3], [7, 1]],
+                    solve: [
+                        { name: "盾索-狼鬼" },
+                        { name: "盾索-狼鱼" },
+                        { name: "土盾技伤-火" },
+                        { name: "土盾技伤-鱼" },
+                        { name: "土盾安吉" },
+                        { name: "银河技伤", merch: [1, 5, 1, 1] },
+                        { name: "银河光", merch: [1, 5, 1, 1] },
+                        { name: "土盾双射-银河", merch: [1, 3, 3, 3] },
+                        { name: "土盾双射-光炮", merch: [1, 3, 3, 3] }],
                 },
                 {
-                    name: "craig-3dark", party: [{ nick: "craig", panda: 1 }, { nick: "lupina" }, { nick: "beth", panda: 1 }, { nick: "karina" }],
-                    solve: [{ name: "craig-sohee-sia" }, { name: "craig-sohee-karina" }, { name: "craig-skill-dmg" }, { name: "craig-skill-dmg2" },
-                    { name: "craig-angie" }, { name: "craig-99dark" }, { name: "craig-yunna-dark" }],
+                    name: "土三暗-贝丝", party: [{ nick: "beth" }, { nick: "craig" }, { nick: "lupina" }, { nick: "karina" }],
+                    card: [[3, 3], [1, 1], [3, 7], [7, 1]],
+                    solve: [
+                        { name: "土盾双射-银河", merch: [3, 1, 3, 3] }],
                 },
                 {
-                    name: "fire-beth", party: [{ nick: "paimond", panda: 1 }, { nick: "winling", panda: 1 }, { nick: "beth", panda: 1 }, { nick: "parvati", panda: 1 }],
-                    solve: [],
+                    name: "治疗队", party: [{ nick: "karina", merch: 3 }, { nick: "craig", merch: 1 }, { nick: "parvati", merch: 1 }, { nick: "miya", merch: 2 },],
+                    card: [[3, 3], [1, 1], [3, 7], [1, 1]],
+                    solve: [
+                        { name: "公主双坦" },
+                        { name: "土盾三辅" },
+                        { name: "盾索-狼鱼" },
+                        { name: "盾索-狼鬼" }],
                 },
                 {
-                    name: "fire-beth", party: [{ nick: "paimond", panda: 1 }, { nick: "winling", panda: 1 }, { nick: "scintilla" }, { nick: "parvati", panda: 1 }],
-                    solve: [],
+                    name: "公主cd", party: [{ nick: "fprincess", merch: 1 }, { nick: "lupina", merch: 5 }, { nick: "vinette", merch: 1 }, { nick: "beth", merch: 1 }],
+                    card: [[1, 1], [3, 7], [1, 1], [3, 3]],
+                    solve: [
+                        { name: "盾索-狼鱼" },
+                        { name: "盾索-狼鱼" },
+                        { name: "公主刀" },
+                        { name: "公主土" }],
                 },
                 {
-                    name: "cd-yunna", party: [{ nick: "yunna" }, { nick: "fknight" }, { nick: "eva" }, { nick: "craig", panda: 1 }],
-                    solve: [],
+                    name: "暗刀cd", party: [{ nick: "beth" }, { nick: "lupina", merch: 1 }, { nick: "oghma", weapon: "robottanker2", merch: 1 }, { nick: "vinette", merch: 1 }],
+                    card: [[3, 3], [3, 7], [1, 1], [1, 1]],
+                    solve: [
+                        { name: "盾索-狼鱼", merch: [5, 4, 1, 1] },
+                        { name: "盾索-狼鬼", merch: [5, 4, 1, 1] },
+                        { name: "土盾三暗-有切" },
+                        { name: "烤鱼-索", merch: [5, 4, 1, 1] },
+                        { name: "烤鱼-刀", merch: [5, 4, 1, 1] },
+                        { name: "火魔双切" }],
                 },
                 {
-                    name: "valencia", party: [{ nick: "valencia" }, { nick: "lupina", panda: 1 }, { nick: "beth", panda: 1 }, { nick: "kai" }],
-                    solve: [{ name: "karina-craig" }, { name: "craig-99dark" }, { name: "craig-yunna-dark" }],
+                    name: "暗刀cd-狼控", party: [{ nick: "lupina", merch: 1 }, { nick: "beth" }, { nick: "oghma", weapon: "robottanker2", merch: 1 }, { nick: "vinette", merch: 1 }],
+                    card: [[3, 7], [3, 3], [1, 1], [1, 1]],
+                    solve: [
+                        { name: "盾索-狼主控" }],
                 },
                 {
-                    name: "kailight", party: [{ nick: "fprincess" }, { nick: "eleanor" }, { nick: "kai", panda: 1 }, { nick: "gabriel" }],
-                    solve: [{ name: "craig-3dark" }, { name: "craig-dark-sia" }],
+                    name: "纯光", party: [{ nick: "fprincess", merch: 1 }, { nick: "eleanor", merch: 3 }, { nick: "mk99", merch: 4 }, { nick: "gabriel", merch: 1 }],
+                    card: [[1, 1], [3, 1], [3, 3], [1, 1]],
+                    solve: [
+                        { name: "土盾三暗-无切" },
+                        { name: "莉娜" },
+                        { name: "鬼双射" },
+                        { name: "暗盾技伤" },
+                        { name: "鬼炮" }],
                 },
                 {
-                    name: "critic", party: [{ nick: "karina", panda: 1 }, { nick: "craig", panda: 1 }, { nick: "qianlv" }, { nick: "parvati" }],
-                    solve: [{ name: "paimond-sohee-sia" }, { name: "paimond-beth-sia" }, { name: "paimond-dark-sia" }, { name: "fprincess-parvati" }, { name: "fprincess-parvati2" }],
+                    name: "登光", party: [{ nick: "fprincess", merch: 1 }, { nick: "eleanor" }, { nick: "kai", merch: 1 }, { nick: "gabriel" }],
+                    card: [[1, 1], [3, 4], [1, 1], [1, 4]],
+                    solve: [
+                        { name: "土盾三暗-有切", merch: [1, 3, 1, 3] },
+                        { name: "土盾暗刀", merch: [1, 3, 1, 3] },
+                        { name: "土盾暗鱼" }],
                 },
                 {
-                    name: "critic1", party: [{ nick: "karina", panda: 1 }, { nick: "craig", panda: 1 }, { nick: "yunna", panda: 1 }, { nick: "parvati" }],
-                    solve: [{ name: "paimond-sohee-sia" }, { name: "paimond-beth-sia" }, { name: "paimond-dark-sia" }, { name: "fprincess-parvati" }, { name: "fprincess-parvati2" }],
+                    name: "登光伞", party: [{ nick: "fprincess", merch: 1 }, { nick: "eleanor" }, { nick: "kai", merch: 1 }, { nick: "lapice", weapon: "uptownlancergirl2" }],
+                    card: [[1, 1], [3, 4], [1, 1], [1, 4]],
+                    solve: [
+                        { name: "土盾三暗-有切", merch: [1, 3, 1, 3] },
+                        { name: "土盾暗刀", merch: [1, 3, 1, 3] }],
                 },
                 {
-                    name: "critic2", party: [{ nick: "karina", panda: 1 }, { nick: "craig", panda: 1 }, { nick: "claude", panda: 1 }, { nick: "parvati" }],
-                    solve: [{ name: "paimond-sohee-sia" }, { name: "paimond-beth-sia" }, { name: "paimond-dark-sia" }, { name: "fprincess-parvati" }, { name: "fprincess-parvati2" }],
+                    name: "公双爆", party: [{ nick: "fprincess", merch: 1 }, { nick: "lupina", merch: 5 }, { nick: "kai", merch: 1 }, { nick: "parvati", merch: 1 }],
+                    card: [[1, 1], [3, 7], [3, 3], [7, 1]],
+                    solve: [
+                        { name: "烤鱼-刀" },
+                        { name: "土盾鱼" }],
                 },
                 {
-                    name: "vampire-rcv", party: [{ nick: "karina" }, { nick: "craig" }, { nick: "miya" }, { nick: "parvati" }],
-                    solve: [{ name: "double-tank" }],
+                    name: "公刀狼", party: [{ nick: "fprincess" }, { nick: "lupina", merch: 1 }, { nick: "beth", merch: 1 }, { nick: "kai", merch: 1 }],
+                    card: [[1, 1], [3, 7], [3, 3], [7, 1]],
+                    solve: [
+                        { name: "土盾鱼", merch: [1, 5, 1, 1] },
+                        { name: "土盾安吉" },
+                        { name: "盾索土鱼" },
+                        { name: "烤鱼-刀", merch: [1, 5, 1, 1] },
+                        { name: "土盾双切鬼", merch: [1, 5, 1, 1] },
+                        { name: "鬼双切", merch: [1, 5, 1, 1] }],
                 },
                 {
-                    name: "xianshan", party: [{ nick: "fprincess", panda: 1 }, { nick: "fei", panda: 1 }, { nick: "eleanor" }, { nick: "beth" }],
-                    solve: [{ name: "damage-only" }],
+                    name: "烧0", party: [{ nick: "paimond", merch: 1 }, { nick: "winling", merch: 1 }, { nick: "parvati", merch: 1 }, { nick: "beth", merch: 1 }],
+                    card: [[1, 1], [1, 1], [3, 7], [3, 3]],
+                    solve: [
+                        { name: "土盾鱼" },
+                        { name: "纯土" },
+                        { name: "土盾双切鬼" }],
                 },
                 {
-                    name: "fp-lup-beth", party: [{ nick: "fprincess" }, { nick: "lupina", panda: 1 }, { nick: "beth", panda: 1 }, { nick: "kai", panda: 1 }],
-                    solve: [{ name: "craig-angie" }, { name: "craig-parvati-dark" }, { name: "craig-sohee-sia" }, { name: "craig-sohee-sia2" }],
+                    name: "烧0火", party: [{ nick: "paimond", merch: 1 }, { nick: "winling", merch: 1 }, { nick: "rey", merch: 1 }, { nick: "scintilla", merch: 1 }],
+                    card: [[1, 1], [1, 1], [3, 7], [3, 3]],
+                    solve: [
+                        { name: "土盾鱼" },
+                        { name: "纯土" },
+                        { name: "土盾双切鬼" }],
                 },
+                {
+                    name: "银河三射", party: [{ nick: "eunha", merch: 5 }, { nick: "mk99", merch: 4 }, { nick: "craig", merch: 1 }, { nick: "camilla", merch: 1 }],
+                    card: [[10, 10], [3, 3], [1, 1], [3, 7]],
+                    solve: [
+                        { name: "公主土" },
+                        { name: "公主索" },
+                        { name: "公主刀" },
+                        { name: "鬼姐" },
+                        { name: "莉娜" },
+                        { name: "公主" }],
+                },
+                {
+                    name: "土姐投", party: [{ nick: "parvati", merch: 1 }, { nick: "lupina", merch: 1 }, { nick: "beth", merch: 1 }, { nick: "valencia", merch: 1 }],
+                    card: [[7, 7], [1, 5], [7, 5], [1, 1]],
+                    solve: [
+                        { name: "鬼姐" },
+                        { name: "暗盾技伤" },
+                        { name: "鬼双射" }],
+                },
+                {
+                    name: "臀投", party: [{ nick: "valencia", merch: 0 }, { nick: "lupina", merch: 1 }, { nick: "kai", merch: 0 }, { nick: "beth", merch: 1 }],
+                    card: [[3, 3], [7, 1], [7, 1], [3, 7]],
+                    solve: [
+                        { name: "鬼土盾" },
+                        { name: "鬼双射", march: [1, 5, 1, 1] },
+                        { name: "鬼双切", march: [1, 5, 1, 1] },
+                        { name: "土盾双射-光炮" },
+                        { name: "暗盾技伤" },
+                        { name: "莉娜" },
+                        { name: "土盾双射-银河" }],
+                },
+                {
+                    name: "鬼双辅", party: [{ nick: "karina", merch: 3 }, { nick: "craig", merch: 1 }, { nick: "claude", merch: 1 }, { nick: "noxia", merch: 3 }],
+                    card: [[3, 3], [1, 1], [3, 7], [1, 1]],
+                    solve: [
+                        { name: "火魔双切" },
+                        { name: "纯土", merch: [3, 1, 5, 3] },
+                        { name: "公主索", merch: [3, 1, 5, 3] }],
+                },
+                {
+                    name: "鬼三奶", party: [{ nick: "karina", merch: 4 }, { nick: "craig", merch: 1 }, { nick: "eunha", merch: 1 }, { nick: "miya", merch: 2 }],
+                    card: [[3, 3], [1, 1], [3, 7], [1, 1]],
+                    solve: [
+                        { name: "纯土" }],
+                },
+                {
+                    name: "鬼远爆1", party: [{ nick: "karina", merch: 3 }, { nick: "craig", merch: 1 }, { nick: "claude", merch: 1 }, { nick: "parvati", merch: 1 }],
+                    card: [[3, 3], [1, 1], [3, 7], [7, 7]],
+                    solve: [
+                        { name: "烤鱼-索" },
+                        { name: "烤鱼-刀" },
+                        { name: "火魔双切" },
+                        { name: "公鱼双切-刀" },
+                        { name: "公鱼双切-索" }],
+                },
+                {
+                    name: "鬼远爆2", party: [{ nick: "karina", merch: 3 }, { nick: "craig", merch: 1 }, { nick: "eunha", merch: 1 }, { nick: "parvati", merch: 1 }],
+                    card: [[3, 3], [1, 1], [3, 7], [7, 7]],
+                    solve: [
+                        { name: "烤鱼-索" },
+                        { name: "烤鱼-刀" },
+                        { name: "火魔双切" },
+                        { name: "公鱼双切-刀" },
+                        { name: "公鱼双切-索" }],
+                },
+                {
+                    name: "鬼远爆3", party: [{ nick: "karina", merch: 3 }, { nick: "craig", merch: 1 }, { nick: "qianlv" }, { nick: "parvati", merch: 1 }],
+                    card: [[3, 3], [1, 1], [3, 7], [7, 7]],
+                    solve: [
+                        { name: "烤鱼-索" },
+                        { name: "烤鱼-刀" },
+                        { name: "火魔双切" },
+                        { name: "公鱼双切-刀" },
+                        { name: "公鱼双切-索" }],
+                },
+                {
+                    name: "银河技伤1", party: [{ nick: "eunha", merch: 2 }, { nick: "coco", merch: 2 }, { nick: "craig", merch: 2 }, { nick: "sia", merch: 2 }],
+                    card: [[10, 10], [3, 3], [1, 1], [1, 1]],
+                    solve: [
+                        { name: "公主" },
+                        { name: "莉娜" },
+                        { name: "公主索" }],
+                },
+                {
+                    name: "银河技伤2", party: [{ nick: "eunha", merch: 2 }, { nick: "coco", merch: 2 }, { nick: "craig", merch: 2 }, { nick: "miya", merch: 2 }],
+                    card: [[10, 10], [3, 3], [1, 1], [1, 1]],
+                    solve: [
+                        { name: "公主", },
+                        { name: "莉娜" },
+                        { name: "公主索" }],
+                },
+                {
+                    name: "刀投", party: [{ nick: "beth", merch: 4 }, { nick: "lupina", merch: 4 }, { nick: "sohee", merch: 1 }, { nick: "kai", merch: 1 }],
+                    card: [[3, 3], [7, 1], [3, 7], [7, 1]],
+                    solve: [
+                        { name: "银河光" }],
+                },
+                {
+                    name: "索投", party: [{ nick: "sohee", merch: 4 }, { nick: "lupina", merch: 1 }, { nick: "beth", merch: 1 }, { nick: "kai", merch: 1 }],
+                    card: [[3, 3], [7, 1], [3, 7], [7, 1]],
+                    solve: [
+                        { name: "莉娜" }],
+                },
+                {
+                    name: "仙山拳", party: [{ nick: "fprincess", merch: 1 }, { nick: "fei", merch: 1, weapon: "china" }, { nick: "eleanor", merch: 4 }, { nick: "beth", merch: 1 }],
+                    card: [[1, 1], [1, 1], [3, 4], [3, 3]],
+                    solve: [
+                        { name: "kai投" },
+                        { name: "刀投" },
+                        { name: "索投" },
+                        { name: "臀投" }],
+                },
+
+
             ],
+            merchName: ["enhance_bond", "mad_panda_trophy", "vending_machine", "oghma_box", "twin_statue", "mothership_model", "princess_figure"],
             character: [],
             usedList: {},
             enemyParty: new Party(),
+            calcParty: new Party(),
             isEnemyCs: 0,
             enemyCs: 0,
+            showCalcParty: 0,
             elementFilter: "",
+            characterBuffer: null,
+            tileBuffer: null,
         },
         computed: {
 
@@ -348,9 +601,9 @@
         methods: {
             info(msg, flag) {
                 if (flag === 0) {
-                    this.succInfo = msg;this.errorInfo="";
+                    this.succInfo = msg; this.errorInfo = "";
                 } else {
-                    this.errorInfo = msg;this.succInfo="";
+                    this.errorInfo = msg; this.succInfo = "";
                 }
             },
             init() {
@@ -366,7 +619,10 @@
                 const character = [];
                 for (let i = 0; i < this.character_.length; ++i) {
                     let item = this.character_[i];
-                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element });
+                    if (item.weapon === undefined) {
+                        item.weapon = item.name.replaceAll('_', '');
+                    }
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, weapon: item.weapon });
                     character.push(c);
                 }
                 const elementFilters = [];
@@ -403,10 +659,39 @@
                         for (let k = 0; k < this.character.length; ++k) {
                             if (this.character[k].nick === nick) {
                                 this.solution[i].party[j].character = this.character[k];
+
+                                let weapon_img = "./pic/item/weapon/centered_cwp_";
+                                if (this.solution[i].party[j].weapon !== undefined) weapon_img = weapon_img + this.solution[i].party[j].weapon + ".png";
+                                else weapon_img = weapon_img + this.character[k].weapon + ".png";
+
+                                let merch_img = "./pic/item/merch/centered_merch_";
+                                let merch = (this.solution[i].party[j].merch===undefined)?0:this.solution[i].party[j].merch;
+
+                                merch_img = merch_img + this.merchName[merch] + ".png";
+
+                                let orb_img0="./pic/item/orb/centered_orb_";
+                                let orb0=this.solution[i].card[j][0];
+                                orb_img0 = orb_img0 + orb0 + ".png";
+
+                                let orb_img1="./pic/item/orb/centered_orb_";
+                                let orb1=this.solution[i].card[j][1];
+                                orb_img1 = orb_img1 + orb1 + ".png";
+
+                                this.solution[i].party[j].character.equipment = [{ style: {}, image: weapon_img }, { style: {}, image: merch_img },{ style: {}, image: orb_img0 },{ style: {}, image: orb_img1 }];
                                 break;
                             }
                         }
                         this.solution[i].party[j].style = { left: offset + j * width + "px", top: "0px" }
+                    }
+                    for (let j=0;j<this.solution[i].solve.length;++j){
+                        if (this.solution[i].solve[j].merch===undefined){
+                            const tmp=[];
+                            for (let k=0;k<this.solution[i].party.length;++k){
+                                let merch = (this.solution[i].party[k].merch===undefined)?0:this.solution[i].party[k].merch;
+                                tmp.push(merch);
+                            }
+                            this.solution[i].solve[j].merch=tmp;                            
+                        }
                     }
                 }
             },
@@ -417,7 +702,7 @@
                 for (let i = 0, j = 0; i < this.enemyList.length; ++i) {
                     if (this.enemyList[i].character.id !== 0) {
                         this.usedList[this.enemyList[i].character.id] = this.enemyList[i];
-                        this.enemyParty.addMember(this.enemyList[i].character);
+                        this.enemyParty.addMember(this.enemyList[i].character, 1);
                         if (this.enemyParty.leader === null) this.enemyParty.leader = this.enemyList[i].character;
                         if (this.enemyParty.leader === this.enemyList[i].character) fpos = j;
                         j = j + 1;
@@ -432,11 +717,44 @@
                     this.enemyParty.member[fpos] = this.enemyParty.member[0];
                     this.enemyParty.member[0] = t;
                 }
-                this.enemyParty.refresh();
+                this.enemyParty.refresh(1);
             },
-            setLeader(item) {
-                this.enemyParty.leader = item;
-                this.updateUsedList();
+            modifyEP(members, item) {
+                let index = -1;
+                for (let i = 0; i < members.length; ++i) {
+                    if (members[i] === item) {
+                        index = i; break;
+                    }
+                }
+                if (index !== 0) {
+                    const tmp = members[index - 1];
+                    members[index - 1] = members[index];
+                    members[index] = tmp;
+                    this.enemyParty.leader = members[0];
+                }
+                this.enemyParty.member = members;
+                this.enemyParty.refresh(1);
+            },
+            modifyCP(members, item) {
+                let index = -1;
+                for (let i = 0; i < members.length; ++i) {
+                    if (members[i] === item) {
+                        index = i; break;
+                    }
+                }
+                if (index > 1) {
+                    const tmp = members[index - 1];
+                    members[index - 1] = members[index];
+                    members[index] = tmp;
+                    for (let i = 0; i < members[index - 1].equipment.length; ++i) {
+                        members[index - 1].equipment[i].style.left = offset + i * width;
+                    }
+                    for (let i = 0; i < members[index].equipment.length; ++i) {
+                        members[index].equipment[i].style.left = offset + i * width;
+                    }
+                }
+                this.calcParty.member = members;
+                this.calcParty.refresh(0);
             },
             updateFilter(banned) {
                 for (let i = 0, id = 0; i < this.character.length; ++i) {
@@ -508,6 +826,76 @@
                 }
                 return 1;
             },
+            chooseCalc(item) {
+                this.calcParty.member = [];
+                this.calcParty.leader = null;
+                for (let i = 0; i < this.calcList.length; ++i) {
+                    this.calcList[i].setCharacter(this.character[0], 0);
+                }
+                for (let i = 0; i < item.party.length; ++i) {
+                    for (let j = 0; j < item.party[i].character.equipment.length; ++j) {
+                        item.party[i].character.equipment[j].style = {
+                            left: offset + i * width + "px",
+                            top: offset + (7 + j) * height + "px",
+                        }
+                    }                                
+                    let merch_img = "./pic/item/merch/centered_merch_";
+                    let merch = (item.party[i].merch===undefined)?0:item.party[i].merch;
+                    merch_img = merch_img + this.merchName[merch] + ".png";
+                    item.party[i].character.equipment[1].image=merch_img;
+                    this.calcParty.addMember(item.party[i].character, 0);
+                    this.calcParty.member[i].calcStyle.opacity = 1;
+                }
+                this.tileBuffer = null;
+                this.characterBuffer = null;
+                this.showCalcParty = 1;
+                this.calcParty.refresh(0);
+                this.calcParty.leader = this.calcParty.member[0];
+                this.showSolution = 0;
+            },
+            clickCalc(item) {
+                if (item.character.id === 0) {
+                    if (this.characterBuffer === null) return;
+                    if (this.characterBuffer.id !== 0) {
+                        item.setCharacter(this.characterBuffer, 0);
+                        this.characterBuffer.calcStyle.opacity = 0.25;
+                        this.characterBuffer = null;
+                        if (this.tileBuffer !== null) {
+                            this.tileBuffer.setCharacter(this.character[0], 0);
+                            this.tileBuffer.style.opacity = 1;
+                            this.tileBuffer = null;
+                        }
+                    }
+                } else {
+                    if (this.characterBuffer === null) {
+                        this.characterBuffer = item.character;
+                        item.style.opacity = 0.5;
+                        this.tileBuffer = item;
+                    } else if (this.characterBuffer.id === item.character.id) {
+                        item.style.opacity = 1;
+                        item.setCharacter(this.character[0], 0);
+                        this.characterBuffer.calcStyle.opacity = 1;
+                        this.characterBuffer = null;
+                        this.tileBuffer = null;
+                    } else if (this.tileBuffer !== null) {
+                        this.tileBuffer.style.opacity = 1;
+                        item.style.opacity = 1;
+                        const tmp = this.tileBuffer.character;
+                        this.tileBuffer.setCharacter(item.character, 0);
+                        item.setCharacter(tmp, 0);
+                        this.tileBuffer = null;
+                        this.characterBuffer = null;
+                    }
+                }
+            },
+            clickSP(item) {
+                if (item.calcStyle.opacity === 0.25) return;
+                if (this.characterBuffer !== null) {
+                    this.characterBuffer.calcStyle.opacity = 1;
+                }
+                item.calcStyle.opacity = 0.5;
+                this.characterBuffer = item;
+            },
             calc() {
                 if (this.enemyParty.member.length !== 4) {
                     this.info("队伍角色数不是四名！", 1);
@@ -526,15 +914,20 @@
                 const solutions = [];
                 for (let i = 0; i < this.solution.length; ++i) {
                     let flag = 0;
+                    let index=0;
                     const solution = this.solution[i];
                     for (let j = 0; j < partyType.length; ++j) {
                         for (let k = 0; k < solution.solve.length; ++k) {
                             const solve = solution.solve[k];
-                            if (partyType[j] === solve.name) flag = 1;
+                            if (partyType[j] === solve.name){
+                                flag=1;
+                                index=k;
+                            }
                         }
                     }
                     if (flag === 1) {
                         for (let j = 0; j < solution.party.length; ++j) {
+                            if (solution.solve[index].merch[j]!==undefined) solution.party[j].merch=solution.solve[index].merch[j];
                             solution.party[j].style.top = offset + (solutions.length + 7) * height + "px";
                         }
                         solutions.push(solution);
@@ -583,11 +976,19 @@
         position: absolute;
     }
 
+    .calcParty {
+        position: absolute;
+    }
+
     .calcList {
         position: absolute;
     }
 
     .solutions {
+        position: absolute;
+    }
+
+    .equipment {
         position: absolute;
     }
 
