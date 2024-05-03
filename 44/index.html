@@ -675,15 +675,7 @@
 
                                 merch_img = merch_img + this.merchName[merch] + ".png";
 
-                                let orb_img0="./pic/item/orb/centered_orb_";
-                                let orb0=this.solution[i].card[j][0];
-                                orb_img0 = orb_img0 + orb0 + ".png";
-
-                                let orb_img1="./pic/item/orb/centered_orb_";
-                                let orb1=this.solution[i].card[j][1];
-                                orb_img1 = orb_img1 + orb1 + ".png";
-
-                                const equipment=[{ style: {}, image: weapon_img }, { style: {}, image: merch_img },{ style: {}, image: orb_img0 },{ style: {}, image: orb_img1 }];
+                                const equipment=[{ style: {}, image: weapon_img }, { style: {}, image: merch_img },{style:{},image:""},{style:{},image:""}];
                                 if (this.character[k].shield!==0){
                                     equipment.push({style:{},image: "./pic/item/shield/centered_goblin_chief_shield.png"});
                                 }
@@ -693,6 +685,7 @@
                             }
                         }
                         this.solution[i].party[j].style = { left: offset + j * width + "px", top: "0px" }
+                        this.solution[i].party[j].card=this.solution[i].card[j];
                     }
                     for (let j=0;j<this.solution[i].solve.length;++j){
                         if (this.solution[i].solve[j].merch===undefined){
@@ -859,6 +852,20 @@
                             item.party[0].character.equipment[4].image="./pic/item/shield/centered_mirror_shield.png";
                         }
                     }
+
+                    let orb_img0="./pic/item/orb/centered_orb_";
+                    let orb0=item.party[i].card[0];
+                    orb_img0 = orb_img0 + orb0 + ".png";
+
+                    let orb_img1="./pic/item/orb/centered_orb_";
+                    let orb1=item.party[i].card[1];
+                    orb_img1 = orb_img1 + orb1 + ".png";
+                    
+                    let len=item.party[i].character.equipment.length;
+                    item.party[i].character.equipment[2].image=orb_img0;
+                    item.party[i].character.equipment[3].image=orb_img1;
+
+
                     this.calcParty.addMember(item.party[i].character, 0);
                     this.calcParty.member[i].calcStyle.opacity = 1;
                 }
