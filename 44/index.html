@@ -93,12 +93,15 @@
     const offset = 50;
     const enemyLeftOffset = 400;
     class Character {
-        constructor({ id, name, nick, element, weapon }) {
+        constructor({ id, name, nick, element, weapon,ai,type,shield }) {
             this.id = id;
             this.name = name;
             this.nick = nick;
             this.element = element;
             this.weapon = weapon;
+            this.ai=ai;
+            this.type=type;
+            this.shield=shield;
             if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
             else this.image = "./pic/portraits/" + name + ".png";
             /* Style for Enemy Choose */
@@ -252,11 +255,11 @@
                 // ai: 1 近战 2 远程 3 锁射手 4 锁辅助 5 支援 6 暗萝 7 火奶
                 // type: 1 战士 2 射手 3 辅助 4 坦克
                 { name: "empty", nick: "", element: "", ai: 0, type: 0, weapon: "" },
-                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, weapon: "tanker" },
+                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, weapon: "tanker" ,shield:1},
                 { name: "vampire_noble_ascent", nick: "karina", element: "dark", ai: 2, type: 3, weapon: "vampirenoble" },
                 { name: "invader_knight", nick: "beth", element: "dark", ai: 3, type: 1 },
                 { name: "witch_coco", nick: "lupina", element: "dark", ai: 1, type: 1 },
-                { name: "future_princess", nick: "fprincess", element: "light", ai: 1, type: 4 },
+                { name: "future_princess", nick: "fprincess", element: "light", ai: 1, type: 4,shield:1 },
                 { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 3 },
                 { name: "surfer_sohee", nick: "sohee", element: "no", ai: 3, type: 1 },
                 { name: "blue_dragon", nick: "yun", element: "water", ai: 2, type: 3 },
@@ -622,7 +625,10 @@
                     if (item.weapon === undefined) {
                         item.weapon = item.name.replaceAll('_', '');
                     }
-                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, weapon: item.weapon });
+                    if (item.shield===undefined){
+                        item.shield=0;
+                    }
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, weapon: item.weapon,ai:item.ai,shield:item.shield,type:item.type });
                     character.push(c);
                 }
                 const elementFilters = [];
@@ -677,7 +683,12 @@
                                 let orb1=this.solution[i].card[j][1];
                                 orb_img1 = orb_img1 + orb1 + ".png";
 
-                                this.solution[i].party[j].character.equipment = [{ style: {}, image: weapon_img }, { style: {}, image: merch_img },{ style: {}, image: orb_img0 },{ style: {}, image: orb_img1 }];
+                                const equipment=[{ style: {}, image: weapon_img }, { style: {}, image: merch_img },{ style: {}, image: orb_img0 },{ style: {}, image: orb_img1 }];
+                                if (this.character[k].shield!==0){
+                                    equipment.push({style:{},image: "./pic/item/shield/centered_goblin_chief_shield.png"});
+                                }
+
+                                this.solution[i].party[j].character.equipment = equipment;
                                 break;
                             }
                         }
@@ -843,6 +854,11 @@
                     let merch = (item.party[i].merch===undefined)?0:item.party[i].merch;
                     merch_img = merch_img + this.merchName[merch] + ".png";
                     item.party[i].character.equipment[1].image=merch_img;
+                    if (i===0 && item.party[0].character.shield===1){
+                        if (item.party[0].character.id===this.enemyParty.member[0].id || item.party[0].character.nick==="fprincess"){
+                            item.party[0].character.equipment[4].image="./pic/item/shield/centered_mirror_shield.png";
+                        }
+                    }
                     this.calcParty.addMember(item.party[i].character, 0);
                     this.calcParty.member[i].calcStyle.opacity = 1;
                 }

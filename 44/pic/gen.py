@@ -24,5 +24,5 @@ def process_images_in_directory(directory):
             output_path = os.path.join(directory, 'centered_' + filename)
             center_image_in_square(file_path, output_path)# 使用示例
             
-directory = './item/orb'
+directory = './item/shield'
 process_images_in_directory(directory)
