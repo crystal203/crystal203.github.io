@@ -78,10 +78,19 @@
                 </div>
             </div>
         </div>
+        <div class="arrow">
+            <svg width="1200" height="600">
+                <line v-for="item in arrowList" :key="item.key" :x1="item.y1" :y1="item.x1" :x2="item.y2" :y2="item.x2"
+                    :style="item.style"></line>
+            </svg>
+        </div>
         <div style="position:absolute;left:315px;top:315px">
             <button @click="calc()" class="calcButton">计算</button>
         </div>
         <div>
+            <b>坎公 44 懒狗计算器</b>（ver 1.2, by <a href="https://space.bilibili.com/500388576">crystal302</a>）增加了索敌功能
+            （<a href="./readme.txt">点我查看操作说明</a>）
+            <br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
         </div>
@@ -284,7 +293,7 @@
                 { name: "vampire_captain", nick: "valencia", element: "light", ai: 2, type: 1 },
                 { name: "lina", nick: "lina", element: "fire", ai: 1, type: 2 },
                 { name: "half_vampire", nick: "priscilla", element: "light", ai: 2, type: 2 },
-                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1 /*default as weapon 1*/, type: 4,shield:1 },
+                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1 /*default as weapon 1*/, type: 4, shield: 1 },
                 { name: "future_knight", nick: "fknight", element: "no", ai: 2, type: 2 },
                 { name: "alpaca_girl", nick: "mayreel", element: "ground", ai: 1, type: 3 },
                 { name: "rudolph", nick: "rue", element: "ground", ai: 3, type: 1 },
@@ -597,6 +606,7 @@
             elementFilter: "",
             characterBuffer: null,
             tileBuffer: null,
+            arrowList: [],
         },
         computed: {
 
@@ -738,6 +748,450 @@
                 }
                 this.enemyParty.member = members;
                 this.enemyParty.refresh(1);
+                this.refreshLocker();
+            },
+            distance(x1, y1, x2, y2) {
+                return ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+            },
+            refreshLocker() {
+                const topList = [];
+                for (let i = 0; i < 5; ++i) {
+                    topList.push(offset + height * i + height / 2);
+                }
+                const leftList = [];
+                for (let i = 0; i < 4; ++i) {
+                    leftList.push(offset + width * i + width / 2);
+                }
+                for (let i = 0; i < 6; ++i) leftList.push(0);
+                for (let i = 0; i < 4; ++i) {
+                    leftList.push(enemyLeftOffset + offset + width * i + width / 2);
+                }
+
+                const clist = [];
+                for (let i = 0; i < this.calcParty.member.length; ++i) {
+                    for (let x = 0; x < this.calcMap.length; ++x) {
+                        for (let y = 0; y < this.calcMap[x].length; ++y) {
+                            if (this.calcMap[x][y].character === this.calcParty.member[i]) {
+                                clist.push({ x: x, y: y, c: this.calcMap[x][y].character, locked: 0 });
+                                break;
+                            }
+                        }
+                    }
+                }
+                const elist = [];
+                for (let i = 0; i < this.enemyParty.member.length; ++i) {
+                    for (let x = 0; x < this.enemyMap.length; ++x) {
+                        for (let y = 0; y < this.enemyMap[x].length; ++y) {
+                            if (this.enemyMap[x][y].character === this.enemyParty.member[i]) {
+                                elist.push({ x: x, y: y + 10, c: this.enemyMap[x][y].character, locked: 0 });
+                                break;
+                            }
+                        }
+                    }
+                }
+                for (let i = 0; i < clist.length; ++i) {
+                    const c = clist[i];
+                    let ai = c.c.ai;
+                    switch (ai) {
+                        case 0: break;
+                        case 1: { // 近战 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            clist[i].to = elist[mini];
+                            if (mini===-1) break;
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                        case 2: { // 远程 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            clist[i].to = elist[mini];
+                            if (mini===-1) break;
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                        case 3: { // 锁射手
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.c.type !== 2 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.c.type !== 2) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            clist[i].to = elist[mini];
+                            if (mini===-1) break;
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                        case 4: { // 锁辅助
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.c.type !== 3 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.c.type !== 3) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            clist[i].to = elist[mini];
+                            if (mini===-1) break;
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                        case 5: { // 支援
+                            let maxx = 0;
+                            let maxi = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                if (i === j) continue;
+                                const e = clist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < maxx) {
+                                    maxx = dis; maxi = j;
+                                }
+                            }
+                            clist[i].to = clist[maxi];
+                            if (mini===-1) break;
+                            clist[maxi].locked = 1;
+                            break;
+                        }
+                        case 6: { // 暗萝
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            clist[i].to = elist[mini];
+                            if (mini===-1) break;
+                            elist[mini].locked = 1;
+                            clist.push({ x: c.x, y: c.y, c: new Character({ id: 999, name: "golem", nick: "golem", ai: 1, type: 4, element: "dark" }), locked: 0 });
+                            break;
+                        }
+                        case 7: { // 火奶
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (e.locked && dis >= 65) continue;
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            clist[i].to = elist[mini];
+                            if (mini===-1) break;
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                    }
+                }
+                for (let i = 0; i < elist.length; ++i) {
+                    const c = elist[i];
+                    let ai = c.c.ai;
+                    switch (ai) {
+                        case 0: break;
+                        case 1: { // 近战 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            elist[i].to = clist[mini];
+                            if (mini===-1) break;
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 2: { // 远程 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            elist[i].to = clist[mini];
+                            if (mini===-1) break;
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 3: { // 锁射手
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.c.type !== 2 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.c.type !== 2) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            elist[i].to = clist[mini];
+                            if (mini===-1) break;
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 5: {
+                            break;
+                        }
+                        case 4: { // 锁辅助
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.c.type !== 3 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.c.type !== 3) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            elist[i].to = clist[mini];
+                            if (mini===-1) break;
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 6: { // 暗萝
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            elist[i].to = clist[mini];
+                            if (mini===-1) break;
+                            clist[mini].locked = 1;
+                            elist.push({ x: c.x, y: c.y, c: new Character({ id: 999, name: "golem", nick: "golem", ai: 1, type: 4, element: "dark" }), locked: 0 });
+                            break;
+                        }
+                        case 7: { // 火奶
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (e.locked && dis >= 65) continue;
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini===-1) break;
+                            elist[i].to = clist[mini];
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                    }
+                }
+                const arrowList = [];
+                for (let i = 0; i < clist.length; ++i) {
+                    const c = clist[i];
+                    const e = clist[i].to;
+                    if (e === undefined) continue;
+                    const arrow = {
+                        x1: topList[c.x]-3,
+                        y1: leftList[c.y],
+                        x2: topList[e.x]-3,
+                        y2: leftList[e.y],
+                        style: "stroke:rgb(0,210,212);stroke-width:3",
+                    }
+                    arrowList.push(arrow);
+                }
+                for (let i = 0; i < elist.length; ++i) {
+                    const c = elist[i];
+                    const e = elist[i].to;
+                    if (e === undefined) continue;
+                    const arrow = {
+                        x1: topList[c.x]+3,
+                        y1: leftList[c.y],
+                        x2: topList[e.x]+3,
+                        y2: leftList[e.y],
+                        style: "stroke:rgb(190,21,21);stroke-width:3",
+                    }
+                    arrowList.push(arrow);
+                }
+                this.arrowList = arrowList;
             },
             modifyCP(members, item) {
                 let index = -1;
@@ -759,6 +1213,7 @@
                 }
                 this.calcParty.member = members;
                 this.calcParty.refresh(0);
+                this.refreshLocker();
             },
             updateFilter(banned) {
                 for (let i = 0, id = 0; i < this.character.length; ++i) {
@@ -775,6 +1230,7 @@
                         this.isEnemyCs = 0;
                         this.updateUsedList();
                         this.updateFilter(1);
+                        this.refreshLocker();
                         return;
                     }
                 }
@@ -783,6 +1239,7 @@
                 this.enemyCs.style.opacity = 0.5;
                 this.updateUsedList();
                 this.updateFilter(0);
+                this.refreshLocker();
             },
             clickECs(item) {
                 this.showSolution = 0;
@@ -799,6 +1256,7 @@
                 this.isEnemyCs = 0;
                 this.updateUsedList();
                 this.updateFilter(1);
+                this.refreshLocker();
             },
             clickElementFilter(item) {
                 this.showSolution = 0;
@@ -810,6 +1268,7 @@
                     this.elementFilter = item.name, item.style.opacity = 0.5;
                 }
                 this.updateFilter(0);
+                this.refreshLocker();
             },
             check(party, checker) {
                 const cparty = checker.party;
@@ -875,6 +1334,7 @@
                 this.calcParty.refresh(0);
                 this.calcParty.leader = this.calcParty.member[0];
                 this.showSolution = 0;
+                this.refreshLocker();
             },
             clickCalc(item) {
                 if (item.character.id === 0) {
@@ -910,6 +1370,7 @@
                         this.characterBuffer = null;
                     }
                 }
+                this.refreshLocker();
             },
             clickSP(item) {
                 if (item.calcStyle.opacity === 0.25) return;
@@ -918,6 +1379,7 @@
                 }
                 item.calcStyle.opacity = 0.5;
                 this.characterBuffer = item;
+                this.refreshLocker();
             },
             calc() {
                 if (this.enemyParty.member.length !== 4) {
@@ -962,6 +1424,7 @@
                     this.showSolution = 1;
                     this.info("计算完成", 0);
                 }
+                this.refreshLocker();
             }
         },
         mounted: function () {
@@ -1014,6 +1477,12 @@
         position: absolute;
     }
 
+    .arrow {
+        pointer-events: none;
+        position: absolute;
+        z-index: 1;
+    }
+
     .calcButton {
         background-color: #4CAF50;
         border: none;
@@ -1025,6 +1494,7 @@
         margin: 4px 2px;
         cursor: pointer;
         width: 120px;
+        z-index: 0;
     }
 </style>
 
