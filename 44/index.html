@@ -268,6 +268,7 @@
                 { name: "vampire_noble_ascent", nick: "karina", element: "dark", ai: 2, type: 3, weapon: "vampirenoble" },
                 { name: "invader_knight", nick: "beth", element: "dark", ai: 3, type: 1 },
                 { name: "witch_coco", nick: "lupina", element: "dark", ai: 1, type: 1 },
+                { name: "plague_doctor", nick: "kaden", element: "dark", ai: 1, type: 1 },
                 { name: "future_princess", nick: "fprincess", element: "light", ai: 1, type: 4, shield: 1 },
                 { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 2 },
                 { name: "surfer_sohee", nick: "sohee", element: "no", ai: 3, type: 1 },
@@ -315,8 +316,8 @@
                 { name: "flower_girl", nick: "bari", element: "ground", ai: 2, type: 2 },
                 { name: "idol_captain", nick: "eva", element: "no", ai: 1, type: 3 },
                 { name: "cyborg_monk", nick: "qianlv", element: "light", ai: 2, type: 2 },
+                { name: "succubus_noble", nick: "bianca", element: "water", ai: 2, type: 2 },
 
-                { name: "plague_doctor", nick: "kaden", element: "dark", ai: 1, type: 0 },
                 { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 0 },
             ],
             checker: [
@@ -493,7 +494,7 @@
                 },
                 {
                     name: "土姐投", party: [{ nick: "parvati", merch: 1 }, { nick: "lupina", merch: 1 }, { nick: "beth", merch: 1 }, { nick: "valencia", merch: 1 }],
-                    card: [[7, 7], [1, 5], [7, 5], [1, 1]],
+                    card: [[7, 7], [1, 5], [7, 7], [1, 1]],
                     solve: [
                         { name: "鬼姐" },
                         { name: "暗盾技伤" },
@@ -815,7 +816,7 @@
                                 }
                             }
                             clist[i].to = elist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[mini].locked = 1;
                             break;
                         }
@@ -830,7 +831,7 @@
                                 }
                             }
                             clist[i].to = elist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[mini].locked = 1;
                             break;
                         }
@@ -875,7 +876,7 @@
                                 }
                             }
                             clist[i].to = elist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[mini].locked = 1;
                             break;
                         }
@@ -920,7 +921,7 @@
                                 }
                             }
                             clist[i].to = elist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[mini].locked = 1;
                             break;
                         }
@@ -936,7 +937,7 @@
                                 }
                             }
                             clist[i].to = clist[maxi];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             clist[maxi].locked = 1;
                             break;
                         }
@@ -951,7 +952,7 @@
                                 }
                             }
                             clist[i].to = elist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[mini].locked = 1;
                             clist.push({ x: c.x, y: c.y, c: new Character({ id: 999, name: "golem", nick: "golem", ai: 1, type: 4, element: "dark" }), locked: 0 });
                             break;
@@ -977,7 +978,7 @@
                                 }
                             }
                             clist[i].to = elist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[mini].locked = 1;
                             break;
                         }
@@ -1009,7 +1010,7 @@
                                 }
                             }
                             elist[i].to = clist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             clist[mini].locked = 1;
                             break;
                         }
@@ -1024,7 +1025,7 @@
                                 }
                             }
                             elist[i].to = clist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             clist[mini].locked = 1;
                             break;
                         }
@@ -1069,7 +1070,7 @@
                                 }
                             }
                             elist[i].to = clist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             clist[mini].locked = 1;
                             break;
                         }
@@ -1117,7 +1118,7 @@
                                 }
                             }
                             elist[i].to = clist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             clist[mini].locked = 1;
                             break;
                         }
@@ -1132,7 +1133,7 @@
                                 }
                             }
                             elist[i].to = clist[mini];
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             clist[mini].locked = 1;
                             elist.push({ x: c.x, y: c.y, c: new Character({ id: 999, name: "golem", nick: "golem", ai: 1, type: 4, element: "dark" }), locked: 0 });
                             break;
@@ -1157,7 +1158,7 @@
                                     }
                                 }
                             }
-                            if (mini===-1) break;
+                            if (mini === -1) break;
                             elist[i].to = clist[mini];
                             clist[mini].locked = 1;
                             break;
@@ -1170,9 +1171,9 @@
                     const e = clist[i].to;
                     if (e === undefined) continue;
                     const arrow = {
-                        x1: topList[c.x]-3,
+                        x1: topList[c.x] - 3,
                         y1: leftList[c.y],
-                        x2: topList[e.x]-3,
+                        x2: topList[e.x] - 3,
                         y2: leftList[e.y],
                         style: "stroke:rgb(0,210,212);stroke-width:3",
                     }
@@ -1183,9 +1184,9 @@
                     const e = elist[i].to;
                     if (e === undefined) continue;
                     const arrow = {
-                        x1: topList[c.x]+3,
+                        x1: topList[c.x] + 3,
                         y1: leftList[c.y],
-                        x2: topList[e.x]+3,
+                        x2: topList[e.x] + 3,
                         y2: leftList[e.y],
                         style: "stroke:rgb(190,21,21);stroke-width:3",
                     }
