@@ -84,8 +84,11 @@
                     :style="item.style"></line>
             </svg>
         </div>
-        <div style="position:absolute;left:315px;top:315px">
+        <div style="position:absolute;left:315px;top:370px">
             <button @click="calc()" class="calcButton">计算</button>
+        </div>
+        <div style="position:absolute;left:720px;top:235px">
+            <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div>
             <b>坎公 44 懒狗计算器</b>（ver 1.2.1, by <a href="https://space.bilibili.com/500388576">crystal302</a>）更新了老登版本的部分阵容
@@ -143,7 +146,7 @@
             this.ECsFiltered = 1;
             this.ECsStyle = {
                 top: (this.ECsy + 6) * height + offset + "px",
-                left: this.ECsx * width + enemyLeftOffset + "px",
+                left: this.ECsx * width + enemyLeftOffset + offset + "px",
                 width: width + "px",
                 height: height + "px",
             }
@@ -226,7 +229,7 @@
             this.imgWidth = 60;
             this.style = {
                 top: 5 * height + offset + "px",
-                left: this.id * width + enemyLeftOffset + "px",
+                left: this.id * width + enemyLeftOffset + offset + "px",
                 width: width + "px",
                 height: height + "px",
                 opacity: 1,
@@ -361,7 +364,7 @@
                 { name: "索投", party: ["sohee", "lupina", "beth", "kai"] },
                 { name: "臀投", party: ["valencia", "lupina", "beth", "kai"] },
                 { name: "登投", party: ["kaden", "beth", "lupina", "*"] },
-                { name: "土", party: ["mayreel", "craig", "rue", "kamael"] },
+                { name: "纯土", party: ["mayreel", "craig", "rue", "kamael"] },
                 { name: "臀投", party: ["valencia", "lupina", "beth", "*"] },
                 { name: "远投", party: ["craig", "rosetta", "mk99", "andras"] },
                 { name: "暗盾技伤", party: ["oghma", "craig", "veronica", "miya"] },
@@ -968,12 +971,12 @@
                                 if (i === j) continue;
                                 const e = clist[j];
                                 let dis = this.distance(c.x, c.y, e.x, e.y);
-                                if (dis < maxx) {
+                                if (dis > maxx) {
                                     maxx = dis; maxi = j;
                                 }
                             }
                             clist[i].to = clist[maxi];
-                            if (mini === -1) break;
+                            if (maxi === -1) break;
                             clist[maxi].locked = 1;
                             break;
                         }
@@ -1469,7 +1472,25 @@
                     this.info("计算完成", 0);
                 }
                 this.refreshLocker();
-            }
+            },
+            resetEnemy() {
+                const enemyMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    enemyMap[i] = new Array(boardWidth);
+                }
+                const enemyList = [];
+                for (let i = 0; i < boardHeight; ++i) {
+                    for (let j = 0; j < boardWidth; ++j) {
+                        const tile = new Tile({ side: 1, x: j, y: i, c: this.character[0] });
+                        enemyMap[i][j] = tile;
+                        enemyList.push(tile);
+                    }
+                }
+                this.enemyList = enemyList;
+                this.enemyMap = enemyMap;
+                this.updateUsedList();
+                this.refreshLocker();
+            },
         },
         mounted: function () {
             this.init();
