@@ -106,7 +106,7 @@
     const offset = 50;
     const enemyLeftOffset = 400;
     class Character {
-        constructor({ id, name, nick, element, weapon, ai, type, shield }) {
+        constructor({ id, name, nick, element, weapon, ai, type, shield, disable }) {
             this.id = id;
             this.name = name;
             this.nick = nick;
@@ -115,6 +115,7 @@
             this.ai = ai;
             this.type = type;
             this.shield = shield;
+            this.disable = disable;
             if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
             else this.image = "./pic/portraits/" + name + ".png";
             /* Style for Enemy Choose */
@@ -141,7 +142,7 @@
         filter(rule, id) {
             this.ECsFiltered = 0;
             if (rule.ban === 1) return 0;
-            if (this.disable !== undefined) return 0;
+            if (this.disable === 1) return 0;
             if (this.id !== 0 && rule.element !== "" && this.element !== rule.element) return 0;
             this.ECsy = Math.floor(id / 10);
             this.ECsx = id % 10;
@@ -736,7 +737,10 @@
                     if (item.shield === undefined) {
                         item.shield = 0;
                     }
-                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, weapon: item.weapon, ai: item.ai, shield: item.shield, type: item.type });
+                    if (item.disable === undefined) {
+                        item.disable = 0;
+                    }
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, weapon: item.weapon, ai: item.ai, shield: item.shield, type: item.type, disable: item.disable });
                     character.push(c);
                 }
                 const elementFilters = [];
