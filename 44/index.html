@@ -91,8 +91,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div>
-            <b>坎公 44 懒狗计算器</b>（ver 1.2.4, by <a
-                href="https://space.bilibili.com/500388576">crystal302</a>）更新了老登版本的部分阵容
+            <b>坎公 44 懒狗计算器</b>（ver 1.2.4, by <a href="https://space.bilibili.com/500388576">crystal302</a>）更新了老登版本的部分阵容
             （<a href="https://www.bilibili.com/video/BV1vH4y137WY">点我查看操作说明</a>）
             （<a href="https://www.wjx.top/vm/wkgkI2q.aspx">点我反馈问题</a>）
             <br>
@@ -300,6 +299,7 @@
                 { name: "vampire_captain", nick: "valencia", element: "light", ai: 2, type: 1 },
                 { name: "lina", nick: "lina", element: "fire", ai: 1, type: 2 },
                 { name: "half_vampire", nick: "priscilla", element: "light", ai: 2, type: 2 },
+                { name: "half_vampire", nick: "priscilla-bari", element: "ground", ai: 2, type: 2, weapon: "flowergirl" },
                 { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1 /*default as weapon 1*/, type: 4, shield: 1 },
                 { name: "future_knight", nick: "fknight", element: "no", ai: 2, type: 2 },
                 { name: "alpaca_girl", nick: "mayreel", element: "ground", ai: 1, type: 3 },
@@ -681,6 +681,18 @@
                 {
                     name: "土近", party: [{ nick: "rue2", merch: 1 }, { nick: "parvati", merch: 1 }, { nick: "craig", merch: 1 }, { nick: "sohee", merch: 1 }],
                     card: [[3, 3], [7, 1], [1, 1], [7, 7]],
+                    solve: [
+                        { name: "沄水" }],
+                },
+                {
+                    name: "土近", party: [{ nick: "rue2", merch: 1 }, { nick: "parvati", merch: 1 }, { nick: "craig", merch: 1 }, { nick: "sohee", merch: 1 }],
+                    card: [[3, 3], [7, 1], [1, 1], [7, 7]],
+                    solve: [
+                        { name: "沄水" }],
+                },
+                {
+                    name: "抽象土", party: [{ nick: "craig", merch: 1 }, { nick: "parvati", merch: 1 }, { nick: "priscilla-bari", merch: 1 }, { nick: "ameris", merch: 1 }],
+                    card: [[1, 1], [7, 1], [1, 1], [7, 7]],
                     solve: [
                         { name: "沄水" }],
                 },
