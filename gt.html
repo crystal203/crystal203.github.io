@@ -72,7 +72,7 @@
 </head>
 <body>
     <h1 align="center">坎公练度计算器</h1>
-    <h4 align="center">更新至【团队远征0.5】版本（24w13a, June 6th）</h4>    
+    <h4 align="center">更新至【团队远征0.5】版本（24w13b, June 6th），依据练度通胀情形修改了练度等级</h4>    
     <div class="container">
         <table border="2" class="table1">
             <tbody>
@@ -344,13 +344,21 @@
         }
         function work(s,a,b){
             var p=a/b;var col="color:";var txt="";
-            if (p<0.6) col+="grey",txt="低练";
+            /*if (p<0.6) col+="grey",txt="低练";
             else if (p<0.75) col+="green",txt="普通";
             else if (p<0.85) col+="blue",txt="中练";
             else if (p<0.93) col+="purple",txt="高练";
             else if (p<0.96) col+="gold",txt="小满";
             else if (p<0.98) col+="red",txt="中满";
-            else col+="brown",txt="满中满"
+            else col+="brown",txt="满中满"*/
+            if (p<0.6) col+="grey",txt="超低练";
+            else if (p<0.75) col+="green",txt="低练";
+            else if (p<0.85) col+="blue",txt="普通";
+            else if (p<0.93) col+="purple",txt="中练";
+            else if (p<0.96) col+="gold",txt="高练";
+            else if (p<0.98) col+="red",txt="小满";
+            else if (p<0.999) col+="pink",txt="中满";
+            else col+="brown",txt="满中满";
             s.innerHTML=txt;
             s.style=col;
         }
