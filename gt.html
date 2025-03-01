@@ -343,7 +343,7 @@
         }
         function check(a,b){
         	for (var i=0;i<a.length;i++)
-        		if (a[i]>b[i]) return 0;
+        		if (a[i]>b[i] || a[i]<0) return 0;
         	for (var i=0;i<a.length;i++)
         		if (Math.abs(a[i]*10-Math.round(a[i]*10,0))>1e-7) return 0;
             return 1;
