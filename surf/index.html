@@ -1,0 +1,23 @@
+<!doctype html>
+<html dir="ltr" lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <if expr="is_ios or is_android">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    </if>
+    <script src="./base-error-reporting.js"></script>
+    <script src="./surf-error-reporting.js"></script>
+    <script src="./strings.m.js" type="module"></script>
+    <link href="./interface.css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+    <div id="hamburger-container"></div>
+    <div id="modal-root"></div>
+    <script type="module" src="./lib_fast_deprecated.chunk.js"></script>
+    <script type="module" src="./lib_react.chunk.js"></script>
+    <script type="module" src="./surf.bundle.js"></script>
+</body>
+
+</html>
