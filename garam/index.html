@@ -549,7 +549,7 @@
                             for (let j = 0; j < clist.length; ++j) {
                                 const e = clist[j];
                                 let dis = this.distance(c.x, c.y, e.x, e.y);
-                                if (dis >= 65) continue;
+                                if (dis > 65) continue;
                                 if (dis < minx) {
                                     minx = dis; mini = j;
                                 }
