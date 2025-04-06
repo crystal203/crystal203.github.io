@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 水狐计算器</b>（Beta 1.2.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 水狐计算器</b>（Beta 1.3.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）本版本提高了模拟的准确度，土盾距离因子的容错可能提高了<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -93,8 +93,9 @@
             火奶距离：<a style="color:blue">{{mdist}}</a><br>
         </div>
 
-        <div style="position:absolute;left:60px;top:800px">
-            <a><b>土盾距离</b>，指我方土盾开嘲讽时距离对方土盾的距离因子，越小表示越不容易漏嘲讽。一般3以内完全不会漏嘲讽，4以内基本不会漏嘲讽，4.5以上一定会漏嘲讽。</a><br>
+        <div style="position:absolute;left:60px;top:780px">
+            <a><b>土盾距离</b>，指我方土盾开嘲讽时距离对方土盾的距离因子，越小表示越不容易漏嘲讽。一般3以内完全不会漏嘲讽，4以内基本不会漏嘲讽，4.5以上基本会漏嘲讽。</a><br>
+            <a>（本版本稍高的土盾距离可能也不会漏嘲讽）</a><br>
             <a><b>火奶距离</b>，指我方艾丝离对方火奶攻击线的距离因子，越大表示艾丝越不容易被火奶擦到。</a><br>
             <a>若上述距离显示为-1，则表示不适用此计算。土盾互锁将导致土盾距离恒为5（必漏嘲讽）。</a><br>
             <a><b>摆位</b>按钮能自动依据上述参数帮你寻找一个较优的解。<b>不保证该解一定最优。</b></a><br>
@@ -108,7 +109,7 @@
     const offset = 50;
     const enemyLeftOffset = 400;
     class Character {
-        constructor({ id, name, nick, element, ai, type, disable, speed }) {
+        constructor({ id, name, nick, element, ai, type, disable, speed, hand }) {
             this.id = id;
             this.name = name;
             this.nick = nick;
@@ -117,6 +118,7 @@
             this.type = type;
             this.disable = disable;
             this.speed = speed;
+            this.hand = hand;
             if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
             else this.image = "./pic/portraits/" + name + ".png";
             /* Style for Enemy Choose */
@@ -238,18 +240,18 @@
                 // ai: 1 近战 2 远程 7 火奶
                 // type: 1 战士 2 射手 3 辅助 4 坦克
                 { name: "empty", nick: "", element: "", ai: 0, type: 0, weapon: "" },
-                { name: "garam", nick: "garam", element: "water", ai: 2, type: 2, speed: 1 },
-                { name: "festival_girl", nick: "miya", element: "fire", ai: 7, type: 3, speed: 1 },
-                { name: "priestess", nick: "veronica", element: "water", ai: 1, type: 3, speed: 1.33 },
-                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, speed: 1 },
-                { name: "sunyeo", nick: "dabin", element: "ground", ai: 2, type: 2, disable: 1, speed: 1 },
-                { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2, speed: 1.25 },
-                { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 3, speed: 1 },
-                { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 2, speed: 1 },
-                { name: "blue_dragon", nick: "yun", element: "water", ai: 2, type: 3, speed: 1 },
-                { name: "dragon_daughter", nick: "ameris", element: "ground", ai: 2, type: 2, disable: 1, speed: 1 },
-                { name: "mecha_android", nick: "mk99", element: "light", ai: 2, type: 2, disable: 1, speed: 1 },
-                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1, type: 4, speed: 1 },
+                { name: "garam", nick: "garam", element: "water", ai: 2, type: 2, speed: 1, hand: 4 },
+                { name: "festival_girl", nick: "miya", element: "fire", ai: 7, type: 3, speed: 1, hand: 7 },
+                { name: "priestess", nick: "veronica", element: "water", ai: 1, type: 3, speed: 1.33, hand: 4 },
+                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, speed: 1, hand: 0 },
+                { name: "sunyeo", nick: "dabin", element: "ground", ai: 2, type: 2, disable: 1, speed: 1, hand: 7.5 },
+                { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2, speed: 1.25, hand: 7 },
+                { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 3, speed: 1, hand: 4 },
+                { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 2, speed: 1, hand: 4 },
+                { name: "blue_dragon", nick: "yun", element: "water", ai: 2, type: 3, speed: 1, hand: 4 },
+                { name: "dragon_daughter", nick: "ameris", element: "ground", ai: 2, type: 2, disable: 1, speed: 1, hand: 5.5 },
+                { name: "mecha_android", nick: "mk99", element: "light", ai: 2, type: 2, disable: 1, speed: 1, hand: 8.5 },
+                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1, type: 4, speed: 1, hand: 0 },
             ],
             checker: [
                 { name: "狐狸1", party: ["garam", "craig", "*", "*"] },
@@ -314,7 +316,7 @@
                 const character = [];
                 for (let i = 0; i < this.character_.length; ++i) {
                     let item = this.character_[i];
-                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, ai: item.ai, type: item.type, disable: item.disable, speed: item.speed });
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, ai: item.ai, type: item.type, disable: item.disable, speed: item.speed, hand: item.hand });
                     character.push(c);
                 }
                 const enemyList = [];
@@ -612,10 +614,20 @@
                         let mdis = 1e6;
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
-                                clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 2.0 * clist[i].c.speed;
-                                clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 2.0 * clist[i].c.speed;
-                                elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 2.0 * elist[i].c.speed;
-                                elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 2.0 * elist[i].c.speed;
+                                if (this.vecxy(clist[i], clist[i].to) > clist[i].c.hand) {
+                                    clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 4.0 * clist[i].c.speed;
+                                    clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 4.0 * clist[i].c.speed;
+                                }else{
+                                    clist[i].px = clist[i].fx;
+                                    clist[i].py = clist[i].fy;
+                                }
+                                if (this.vecxy(elist[i], elist[i].to) > elist[i].c.hand) {
+                                    elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 4.0 * elist[i].c.speed;
+                                    elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 4.0 * elist[i].c.speed;
+                                }else{
+                                    elist[i].px = elist[i].fx;
+                                    elist[i].py = elist[i].fy;
+                                }
                             }
                             for (let i = 0; i < 4; ++i) {
                                 clist[i].fx = clist[i].px;
@@ -623,7 +635,7 @@
                                 elist[i].fx = elist[i].px;
                                 elist[i].fy = elist[i].py;
                             }
-                            if (this.vecxy(clist[c_craig], clist[c_craig].to) < 3) break;
+                            if (this.vecxy(clist[c_craig], clist[c_craig].to) < 3.25) break;
                             if (c_estel !== -1 && e_miya !== -1) {
                                 mdis = Math.min(mdis, this.disp2l(clist[c_estel], elist[e_miya], elist[e_miya].to));
                             }
