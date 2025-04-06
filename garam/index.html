@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 水狐计算器</b>（Beta 1.1.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 水狐计算器</b>（Beta 1.2.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -108,7 +108,7 @@
     const offset = 50;
     const enemyLeftOffset = 400;
     class Character {
-        constructor({ id, name, nick, element, ai, type, disable }) {
+        constructor({ id, name, nick, element, ai, type, disable, speed }) {
             this.id = id;
             this.name = name;
             this.nick = nick;
@@ -116,6 +116,7 @@
             this.ai = ai;
             this.type = type;
             this.disable = disable;
+            this.speed = speed;
             if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
             else this.image = "./pic/portraits/" + name + ".png";
             /* Style for Enemy Choose */
@@ -237,18 +238,18 @@
                 // ai: 1 近战 2 远程 7 火奶
                 // type: 1 战士 2 射手 3 辅助 4 坦克
                 { name: "empty", nick: "", element: "", ai: 0, type: 0, weapon: "" },
-                { name: "garam", nick: "garam", element: "water", ai: 2, type: 2 },
-                { name: "festival_girl", nick: "miya", element: "fire", ai: 7, type: 3 },
-                { name: "priestess", nick: "veronica", element: "water", ai: 1, type: 3 },
-                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4 },
-                { name: "sunyeo", nick: "dabin", element: "ground", ai: 2, type: 2, disable: 1 },
-                { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2 },
-                { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 3 },
-                { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 2 },
-                { name: "blue_dragon", nick: "yun", element: "water", ai: 2, type: 3 },
-                { name: "dragon_daughter", nick: "ameris", element: "ground", ai: 2, type: 2, disable: 1 },
-                { name: "mecha_android", nick: "mk99", element: "light", ai: 2, type: 2, disable: 1 },
-                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1, type: 4 },
+                { name: "garam", nick: "garam", element: "water", ai: 2, type: 2, speed: 1 },
+                { name: "festival_girl", nick: "miya", element: "fire", ai: 7, type: 3, speed: 1 },
+                { name: "priestess", nick: "veronica", element: "water", ai: 1, type: 3, speed: 1.33 },
+                { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, speed: 1 },
+                { name: "sunyeo", nick: "dabin", element: "ground", ai: 2, type: 2, disable: 1, speed: 1 },
+                { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2, speed: 1.25 },
+                { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 3, speed: 1 },
+                { name: "dokkaebi", nick: "eunha", element: "no", ai: 2, type: 2, speed: 1 },
+                { name: "blue_dragon", nick: "yun", element: "water", ai: 2, type: 3, speed: 1 },
+                { name: "dragon_daughter", nick: "ameris", element: "ground", ai: 2, type: 2, disable: 1, speed: 1 },
+                { name: "mecha_android", nick: "mk99", element: "light", ai: 2, type: 2, disable: 1, speed: 1 },
+                { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1, type: 4, speed: 1 },
             ],
             checker: [
                 { name: "狐狸1", party: ["garam", "craig", "*", "*"] },
@@ -313,7 +314,7 @@
                 const character = [];
                 for (let i = 0; i < this.character_.length; ++i) {
                     let item = this.character_[i];
-                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, ai: item.ai, type: item.type, disable: item.disable });
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, ai: item.ai, type: item.type, disable: item.disable, speed: item.speed });
                     character.push(c);
                 }
                 const enemyList = [];
@@ -611,10 +612,10 @@
                         let mdis = 1e6;
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
-                                clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 2.0;
-                                clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 2.0;
-                                elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 2.0;
-                                elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 2.0;
+                                clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 2.0 * clist[i].c.speed;
+                                clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 2.0 * clist[i].c.speed;
+                                elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 2.0 * elist[i].c.speed;
+                                elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 2.0 * elist[i].c.speed;
                             }
                             for (let i = 0; i < 4; ++i) {
                                 clist[i].fx = clist[i].px;
