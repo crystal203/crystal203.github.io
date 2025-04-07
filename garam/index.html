@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 水狐计算器</b>（Beta 1.3.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）本版本提高了模拟的准确度，土盾距离因子的容错可能提高了<br>
+            <b>坎公 44 水狐计算器</b>（Beta 1.4.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）本版本提高了模拟的准确度，土盾距离因子的容错可能提高了<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -252,6 +252,7 @@
                 { name: "dragon_daughter", nick: "ameris", element: "ground", ai: 2, type: 2, disable: 1, speed: 1, hand: 5.5 },
                 { name: "mecha_android", nick: "mk99", element: "light", ai: 2, type: 2, disable: 1, speed: 1, hand: 8.5 },
                 { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1, type: 4, speed: 1, hand: 0 },
+                { name: "parvati", nick: "parvati", element: "ground", ai: 4, type: 1, speed: 1.33, hand: 0 },
             ],
             checker: [
                 { name: "狐狸1", party: ["garam", "craig", "*", "*"] },
@@ -267,6 +268,13 @@
                 },
                 {
                     name: "艾炮2", party: [{ nick: "estel" }, { nick: "dabin" }, { nick: "ameris" }, { nick: "craig" }],
+                    solve: [
+                        { name: "狐狸1" },
+                        { name: "狐狸2" },
+                    ]
+                },
+                {
+                    name: "艾姐", party: [{ nick: "estel" }, { nick: "parvati" }, { nick: "eunha" }, { nick: "craig" }],
                     solve: [
                         { name: "狐狸1" },
                         { name: "狐狸2" },
@@ -500,6 +508,51 @@
                             elist[mini].locked = 1;
                             break;
                         }
+                        case 4: { // 锁辅助
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.c.type !== 3 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.c.type !== 3) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            clist[i].to = elist[mini];
+                            elist[mini].locked = 1;
+                            break;
+                        }
                     }
                 }
                 for (let i = 0; i < elist.length; ++i) {
@@ -540,6 +593,51 @@
                                 let dis = this.distance(c.x, c.y, e.x, e.y);
                                 if (dis < minx) {
                                     minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) break;
+                            elist[i].to = clist[mini];
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 4: { // 锁辅助
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.c.type !== 3 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.c.type !== 3) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
                                 }
                             }
                             if (mini === -1) break;
@@ -609,21 +707,28 @@
                         if (elist[i].c.nick === "craig") e_craig = i;
                         if (clist[i].c.nick === "estel") c_estel = i;
                         if (elist[i].c.nick === "miya") e_miya = i;
+                        if (clist[i].c.nick === "dabin") clist[i].c.jumpback=0;
                     }
                     if (c_craig !== -1 || e_craig !== -1) {
                         let mdis = 1e6;
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
                                 if (this.vecxy(clist[i], clist[i].to) > clist[i].c.hand) {
-                                    clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 4.0 * clist[i].c.speed;
-                                    clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 4.0 * clist[i].c.speed;
+                                    clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 16.0 * clist[i].c.speed;
+                                    clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 16.0 * clist[i].c.speed;
                                 }else{
-                                    clist[i].px = clist[i].fx;
-                                    clist[i].py = clist[i].fy;
+                                    if (clist[i].c.nick === "dabin" && !clist[i].c.jumpback){
+                                        clist[i].px = clist[i].fx - this.vecx(clist[i], clist[i].to) * clist[i].c.speed;
+                                        clist[i].py = clist[i].fy - this.vecy(clist[i], clist[i].to) * clist[i].c.speed;
+                                        clist[i].c.jumpback=1;
+                                    } else {
+                                        clist[i].px = clist[i].fx;
+                                        clist[i].py = clist[i].fy;
+                                    }
                                 }
                                 if (this.vecxy(elist[i], elist[i].to) > elist[i].c.hand) {
-                                    elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 4.0 * elist[i].c.speed;
-                                    elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 4.0 * elist[i].c.speed;
+                                    elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 16.0 * elist[i].c.speed;
+                                    elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 16.0 * elist[i].c.speed;
                                 }else{
                                     elist[i].px = elist[i].fx;
                                     elist[i].py = elist[i].fy;
@@ -644,6 +749,7 @@
                         else this.cdist = this.vecxy(clist[c_craig], elist[e_craig]);
                         this.cdist = this.cdist.toFixed(6);
                         if (mdis < 100) this.mdist = mdis.toFixed(6);
+                        else this.mdist = -1;
                     }
                 }
                 if (simulator === 1) return;
@@ -911,7 +1017,7 @@
                                 }
                                 if (!flag) continue;
                                 this.refreshLocker(calcMap);
-                                if (this.mdist > 1 && this.cdist < minans) {
+                                if ((this.mdist > 1 || this.mdist < 0 ) && this.cdist < minans) {
                                     minans = this.cdist;
                                     ansp = [i1, i2, i3, i4];
                                 }
