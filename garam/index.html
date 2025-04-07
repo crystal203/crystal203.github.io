@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 水狐计算器</b>（Beta 1.4.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）本版本提高了模拟的准确度，土盾距离因子的容错可能提高了<br>
+            <b>坎公 44 水狐计算器</b>（Beta 1.5.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）本版本提高了模拟的准确度，土盾距离因子的容错可能提高了<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -711,6 +711,7 @@
                     }
                     if (c_craig !== -1 || e_craig !== -1) {
                         let mdis = 1e6;
+                        let mincdist = 0;
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
                                 if (this.vecxy(clist[i], clist[i].to) > clist[i].c.hand) {
@@ -740,13 +741,16 @@
                                 elist[i].fx = elist[i].px;
                                 elist[i].fy = elist[i].py;
                             }
-                            if (this.vecxy(clist[c_craig], clist[c_craig].to) < 3.25) break;
+                            if (this.vecxy(clist[c_craig], clist[c_craig].to) < 3.5){
+                                mincdist=Math.max(mincdist,this.vecxy(clist[c_craig], elist[e_craig]));
+                            }
+                            if (this.vecxy(clist[c_craig], clist[c_craig].to) < 3.0) break;
                             if (c_estel !== -1 && e_miya !== -1) {
                                 mdis = Math.min(mdis, this.disp2l(clist[c_estel], elist[e_miya], elist[e_miya].to));
                             }
                         }
                         if (clist[c_craig].to === elist[e_craig] && elist[e_craig].to === clist[c_craig]) this.cdist = 5;
-                        else this.cdist = this.vecxy(clist[c_craig], elist[e_craig]);
+                        else this.cdist = mincdist;
                         this.cdist = this.cdist.toFixed(6);
                         if (mdis < 100) this.mdist = mdis.toFixed(6);
                         else this.mdist = -1;
