@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>44 公主计算器</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="enemy">
+            <div v-for="item in enemyList" :key="item.key" class="enemyList" :style="item.style">
+                <img v-if="item.character === enemyParty.leader" width="32px" height="32px"
+                    src="./pic/ui/ic_crown_red.png.png" style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                <img :width="item.imgWidth" :height="item.imgHeight" :src="item.image"
+                    style="position:absolute;left:0px;top:0px;z-index:0" @click="clickCard(item)"></img>
+            </div>
+            <div v-for="item in enemyParty.member" :key="item.key" class="enemyParty" :style="item.EPStyle">
+                <img v-if="item === enemyParty.leader" width="32px" height="32px" src="./pic/ui/ic_crown_red.png.png"
+                    style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                <img :width="item.EPImgWidth" :height="item.EPImgHeight" :src="item.image"
+                    style="position:absolute;left:0px;top:0px;z-index:0"></img>
+                <img v-if="item !== enemyParty.leader" width="65px" height="65px" src="./pic/ui/arrow.png"
+                    style="position:absolute;left:0px;top:65px;z-index:1"
+                    @click="modifyEP(enemyParty.member,item)"></img>
+            </div>
+        </div>
+        <div class="calc">
+            <div v-for="item in calcList" :key="item.key" class="calcList" :style="item.style">
+                <img v-if="item.character === calcParty.leader" width="32px" height="32px"
+                    src="./pic/ui/ic_crown_blue.png.png" style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                <img :width="item.imgWidth" :height="item.imgHeight" :src="item.image"
+                    style="position:absolute;left:0px;top:0px;z-index:0" @click="clickCalc(item)"></img>
+            </div>
+            <div v-if="showCalcParty === 1">
+                <div v-for="item in calcParty.member" :key="item.key" class="calcParty" :style="item.CPStyle">
+                    <img v-if="item === calcParty.leader" width="32px" height="32px"
+                        src="./pic/ui/ic_crown_blue.png.png"
+                        style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                    <img v-if="item.CPStyle.left!='115px' && item !== calcParty.leader" width="65px" height="65px"
+                        src="./pic/ui/arrow.png" style="position:absolute;left:0px;top:65px;z-index:1"
+                        @click="modifyCP(calcParty.member,item)"></img>
+                    <img :width="item.CPImgWidth" :height="item.CPImgHeight" :src="item.image"
+                        style="position:absolute;left:0px;top:0px;z-index:0" @click="clickSP(item)"
+                        :style="item.calcStyle"></img>
+                </div>
+                <button class="calcButton" @click="calcPos(0)"
+                    style="position:absolute;left:315px;top:440px">摆位</button>
+                <label style="position:absolute;left:315px;top:495px">正常摆位<input type="checkbox"
+                        v-model="posType.normal" /></label>
+            </div>
+        </div>
+        <div v-if="isEnemyCs === 1" class="enemyCs">
+            <div v-for="item in character" :key="item.key" class="enemyCsList" :style="item.ECsStyle">
+                <div v-if="item.ECsFiltered === 1">
+                    <img :width="item.ECsImgWidth" :height="item.ECsImgHeight" :src="item.image"
+                        @click="clickECs(item)"></img>
+                </div>
+            </div>
+        </div>
+        <div v-if="showSolution === 1" class="solutions">
+            <div v-for="item in solutions" :key="item.key" class="solutions">
+                <div v-for="citem in item.party" :key="citem.key" :style="citem.style" class="solutions">
+                    <img v-if="citem.style.left==='50px'" width="32px" height="32px"
+                        src="./pic/ui/ic_crown_blue.png.png"
+                        style="position:absolute;left:-16px;top:-16px;z-index:1"></img>
+                    <button v-if="citem.style.left==='50px'" class="calcButton" @click="chooseCalc(item)"
+                        style="position:absolute;left:275px">选择</button>
+                    <img :width="citem.character.SImgWidth" :height="citem.character.SImgHeight"
+                        :src="citem.character.image"></img>
+                </div>
+            </div>
+        </div>
+        <div class="arrow">
+            <svg width="1200" height="600">
+                <line v-for="item in arrowList" :key="item.key" :x1="item.y1" :y1="item.x1" :x2="item.y2" :y2="item.x2"
+                    :style="item.style"></line>
+            </svg>
+        </div>
+        <div style="position:absolute;left:315px;top:370px">
+            <button @click="calc()" class="calcButton">计算</button>
+        </div>
+        <div style="position:absolute;left:720px;top:235px">
+            <button @click="resetEnemy()" class="calcButton">重置</button>
+        </div>
+        <div style="position:absolute;left:715px;top:30px">
+            <b>坎公 44 公主计算器</b>（Beta 1.0.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <a style="color:red">{{errorInfo}}</a>
+            <a style="color:green">{{succInfo}}</a>
+            <a style="color:black">{{distres}}</a>
+            <br>
+        </div>
+
+        <div style="position:absolute;left:60px;top:780px">
+            <a><b>摆位</b>按钮能自动依据上述参数帮你寻找一个较优的解。<b>不保证该解一定最优。</b></a><br>
+            <img src="https://badges.toozhao.com/badges/01JR4ABSZPMMF1SJC27MR5BZKE/green.svg" /><br>
+        </div>
+    </div>
+</body>
+<script type="module">
+    const height = 65;
+    const width = 65;
+    const offset = 50;
+    const enemyLeftOffset = 400;
+    class Character {
+        constructor({ id, name, nick, element, ai, type, disable, speed, hand, jump}) {
+            this.id = id;
+            this.name = name;
+            this.nick = nick;
+            this.element = element;
+            this.ai = ai;
+            this.type = type;
+            this.disable = disable;
+            this.speed = speed;
+            this.hand = hand;
+            this.jump = jump;
+            if (this.id === 0) this.image = "./pic/portraits/empty_1.png";
+            else this.image = "./pic/portraits/" + name + ".png";
+            /* Style for Enemy Choose */
+            this.ECsImgHeight = 60;
+            this.ECsImgWidth = 60;
+            this.CPImgHeight = 60;
+            this.CPImgWidth = 60;
+            this.SImgHeight = 60;
+            this.SImgWidth = 60;
+            this.ECsFiltered = 0;
+            this.ECsy = 0;
+            this.ECsx = 0;
+            this.ECsStyle = {}
+            this.EPImgHeight = 60;
+            this.EPImgWidth = 60;
+            this.EPStyle = {};
+            this.CPStyle = {};
+            this.calcStyle = {
+                position: "absolute",
+                "z-index": 0,
+                opacity: 1,
+            }
+        }
+        filter(id) {
+            if (this.disable === 1) return 0;
+            this.ECsy = Math.floor(id / 10);
+            this.ECsx = id % 10;
+            this.ECsFiltered = 1;
+            this.ECsStyle = {
+                top: (this.ECsy + 6) * height + offset + "px",
+                left: this.ECsx * width + enemyLeftOffset + offset + "px",
+                width: width + "px",
+                height: height + "px",
+            }
+            return 1;
+        }
+    };
+    class Party {
+        constructor() {
+            this.member = [];
+            this.leader = null;
+        }
+        addMember(item, side) {
+            let len = this.member.length;
+            if (side === 1) {
+                item.EPStyle = {};
+                item.EPImgHeight = 60;
+                item.EPImgWidth = 60;
+            } else {
+                item.CPStyle = {};
+                item.CPImgHeight = 60;
+                item.CPImgWidth = 60;
+            }
+            this.member.push(item);
+        }
+        refresh(side) {
+            for (let i = 0; i < this.member.length; ++i) {
+                if (side === 1) {
+                    this.member[i].EPStyle = {
+                        top: 4 * height + offset + "px",
+                        left: (i + 5) * width + enemyLeftOffset + "px",
+                        width: width + "px",
+                        height: height + "px",
+                    }
+                } else {
+                    this.member[i].CPStyle = {
+                        top: 5 * height + offset + "px",
+                        left: i * width + offset + "px",
+                        width: width + "px",
+                        height: height + "px",
+                    }
+                }
+            }
+        }
+    }
+    class Tile {
+        setCharacter(c, side = 1) {
+            this.character = c;
+            this.image = c.image;
+            this.side = side;
+            if (c.id === 0) {
+                this.image = "./pic/portraits/empty_" + side + ".png";
+            } else this.image = c.image;
+        }
+        constructor({ side, x, y, c }) {
+            this.imgHeight = 60;
+            this.imgWidth = 60;
+            this.side = side;
+            this.x = x;
+            this.y = y;
+            this.style = {
+                top: y * height + offset + "px",
+                left: x * width + offset + side * enemyLeftOffset + "px",
+                width: height + "px",
+                height: width + "px",
+                opacity: 1,
+            };
+            this.character = c;
+            if (c.id === 0) {
+                this.image = "./pic/portraits/empty_" + side + ".png";
+            } else this.image = c.image;
+        }
+    };
+    const boardWidth = 4;
+    const boardHeight = 5;
+    new Vue({
+        el: ".main",
+        data: {
+            enemyList: [],
+            enemyMap: [],
+            calcList: [],
+            calcMap: [],
+            errorInfo: "",
+            succInfo: "",
+            solutions: [],
+            distres: "",
+            showSolution: 0,
+            posType: { normal: true },
+            character_: [
+                // ai: 1 近战 2 远程 3 切射
+                // type: 1 战士 2 射手 3 辅助 4 坦克
+                { name: "empty", nick: "", element: "", ai: 0, type: 0 },
+                { name: "future_princess", nick: "fprincess", element: "light", ai: 1, type: 4, speed: 1, hand: 0 ,jump:-1},
+                { name: "plague_doctor", nick: "kaden", element: "dark", ai: 1, type: 1, speed: 1.18, hand: 0 ,jump:3.2},
+                { name: "surfer_sohee", nick: "sohee", element: "no", ai: 3, type: 1, speed: 1.33, hand: 0, jump:2.86},
+                { name: "witch_coco", nick: "lupina", element: "dark", ai: 1, type: 1, speed: 0.9, hand: 5.75 ,jump:-1},
+                { name: "invader_knight", nick: "beth", element: "dark", ai: 3, type: 1, speed: 1.30, hand: 0,jump:3.2 },
+                { name: "mermaid", nick: "sia", element: "water", ai: 2, type: 3, speed: 0.83, hand: 6, disable: 1 ,jump:-1},
+                { name: "knight_female_ascent", nick: "knight", element: "no", ai: 1, type: 1, speed: 1, hand: 0 ,jump:-1},
+            ],
+            checker: [
+                { name: "公登索狼", party: ["fprincess", "kaden", "sohee", "lupina"] },
+                { name: "公骑", party: ["fprincess", "lupina", "beth", "knight"] },
+            ],
+            solution: [
+                {
+                    name: "公鱼", party: [{ nick: "fprincess" }, { nick: "sia" }, { nick: "beth" }, { nick: "lupina" }],
+                    solve: [
+                        { name: "公登索狼" },
+                        { name: "公骑" },
+                    ]
+                },
+            ],
+            character: [],
+            usedList: {},
+            enemyParty: new Party(),
+            calcParty: new Party(),
+            isEnemyCs: 0,
+            enemyCs: 0,
+            showCalcParty: 0,
+            cdist: -1,
+            mdist: -1,
+            characterBuffer: null,
+            tileBuffer: null,
+            arrowList: [],
+        },
+        computed: {
+
+        },
+        methods: {
+            info(msg, flag) {
+                if (flag === 0) {
+                    this.succInfo = msg; this.errorInfo = "";
+                } else {
+                    this.errorInfo = msg; this.succInfo = "";
+                }
+            },
+            init() {
+                const enemyMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    enemyMap[i] = new Array(boardWidth);
+                }
+                const calcMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    calcMap[i] = new Array(boardWidth);
+                }
+
+                const character = [];
+                for (let i = 0; i < this.character_.length; ++i) {
+                    let item = this.character_[i];
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, ai: item.ai, type: item.type, disable: item.disable, speed: item.speed, hand: item.hand, jump: item.jump });
+                    character.push(c);
+                }
+                const enemyList = [];
+                for (let i = 0; i < boardHeight; ++i) {
+                    for (let j = 0; j < boardWidth; ++j) {
+                        const tile = new Tile({ side: 1, x: j, y: i, c: character[0] });
+                        enemyMap[i][j] = tile;
+                        enemyList.push(tile);
+                    }
+                }
+                const calcList = [];
+                for (let i = 0; i < boardHeight; ++i) {
+                    for (let j = 0; j < boardWidth; ++j) {
+                        const tile = new Tile({ side: 0, x: j, y: i, c: character[0] });
+                        calcMap[i][j] = tile;
+                        calcList.push(tile);
+                    }
+                }
+                this.character = character;
+                this.enemyMap = enemyMap;
+                this.enemyList = enemyList;
+                this.calcMap = calcMap;
+                this.calcList = calcList;
+                for (let i = 0, id = 0; i < this.character.length; ++i) {
+                    id = id + this.character[i].filter(id);
+                }
+                for (let i = 0; i < this.solution.length; ++i) {
+                    for (let j = 0; j < this.solution[i].party.length; ++j) {
+                        const nick = this.solution[i].party[j].nick;
+                        for (let k = 0; k < this.character.length; ++k) {
+                            if (this.character[k].nick === nick) {
+                                this.solution[i].party[j].character = this.character[k];
+                                break;
+                            }
+                        }
+                        this.solution[i].party[j].style = { left: offset + j * width + "px", top: "0px" }
+                    }
+                }
+            },
+            updateUsedList() {
+                this.usedList = {};
+                this.enemyParty.member = [];
+                let fpos = -1;
+                for (let i = 0, j = 0; i < this.enemyList.length; ++i) {
+                    if (this.enemyList[i].character.id !== 0) {
+                        this.usedList[this.enemyList[i].character.id] = this.enemyList[i];
+                        this.enemyParty.addMember(this.enemyList[i].character, 1);
+                        if (this.enemyParty.leader === null) this.enemyParty.leader = this.enemyList[i].character;
+                        if (this.enemyParty.leader === this.enemyList[i].character) fpos = j;
+                        j = j + 1;
+                    }
+                }
+                if (fpos === -1) {
+                    if (this.enemyParty.member.length === 0) this.enemyParty.leader = null;
+                    else this.enemyParty.leader = this.enemyParty.member[0], fpos = 0;
+                }
+                if (this.enemyParty.leader !== null) {
+                    const t = this.enemyParty.member[fpos];
+                    this.enemyParty.member[fpos] = this.enemyParty.member[0];
+                    this.enemyParty.member[0] = t;
+                }
+                this.enemyParty.refresh(1);
+            },
+            modifyEP(members, item) {
+                let index = -1;
+                for (let i = 0; i < members.length; ++i) {
+                    if (members[i] === item) {
+                        index = i; break;
+                    }
+                }
+                if (index !== 0) {
+                    const tmp = members[index - 1];
+                    members[index - 1] = members[index];
+                    members[index] = tmp;
+                    this.enemyParty.leader = members[0];
+                }
+                this.enemyParty.member = members;
+                this.enemyParty.refresh(1);
+                this.refreshLocker();
+            },
+            distance(x1, y1, x2, y2) {
+                return ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+            },
+            vecxy(a, b) {
+                return Math.sqrt((a.fx - b.fx) * (a.fx - b.fx) + (a.fy - b.fy) * (a.fy - b.fy));
+            },
+            vecx(a, b) {
+                let dis = this.vecxy(a, b);
+                if (Math.abs(dis) < 0.1) return 0;
+                return (b.fx - a.fx) / dis;
+            },
+            vecy(a, b) {
+                let dis = this.vecxy(a, b);
+                if (Math.abs(dis) < 0.1) return 0;
+                return (b.fy - a.fy) / dis;
+            },
+            disp2l(a, b, c) {
+                if (Math.abs(this.vecxy(b, c)) < 0.01) return 0;
+                return Math.abs((c.fx - b.fx) * (a.fy - b.fy) - (c.fy - b.fy) * (a.fx - b.fx)) / this.vecxy(b, c);
+            },
+            refreshLocker(calcMap = []) {
+                let simulator = 1;
+                if (calcMap.length === 0) calcMap = this.calcMap, simulator = 0;
+                const topList = [];
+                for (let i = 0; i < 5; ++i) {
+                    topList.push(offset + height * i + height / 2);
+                }
+                const leftList = [];
+                for (let i = 0; i < 4; ++i) {
+                    leftList.push(offset + width * i + width / 2);
+                }
+                for (let i = 0; i < 6; ++i) leftList.push(0);
+                for (let i = 0; i < 4; ++i) {
+                    leftList.push(enemyLeftOffset + offset + width * i + width / 2);
+                }
+
+                const clist = [];
+                for (let i = 0; i < this.calcParty.member.length; ++i) {
+                    for (let x = 0; x < calcMap.length; ++x) {
+                        for (let y = 0; y < calcMap[x].length; ++y) {
+                            if (calcMap[x][y].character === this.calcParty.member[i]) {
+                                clist.push({ x: x, y: y, c: calcMap[x][y].character, locked: 0 });
+                                break;
+                            }
+                        }
+                    }
+                }
+                const elist = [];
+                for (let i = 0; i < this.enemyParty.member.length; ++i) {
+                    for (let x = 0; x < this.enemyMap.length; ++x) {
+                        for (let y = 0; y < this.enemyMap[x].length; ++y) {
+                            if (this.enemyMap[x][y].character === this.enemyParty.member[i]) {
+                                elist.push({ x: x, y: y + 10, c: this.enemyMap[x][y].character, locked: 0 });
+                                break;
+                            }
+                        }
+                    }
+                }
+                for (let i = 0; i < clist.length; ++i) {
+                    const c = clist[i];
+                    let ai = c.c.ai;
+                    switch (ai) {
+                        case 0: break;
+                        case 1: { // 近战 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            clist[i].to = elist[mini];
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                        case 2: { // 远程 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) break;
+                            clist[i].to = elist[mini];
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                        case 3: { // 锁射手
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.c.type !== 2 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.c.type !== 2) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            clist[i].to = elist[mini];
+                            elist[mini].locked = 1;
+                            break;
+                        }
+                    }
+                }
+                for (let i = 0; i < elist.length; ++i) {
+                    const c = elist[i];
+                    let ai = c.c.ai;
+                    switch (ai) {
+                        case 0: break;
+                        case 1: { // 近战 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            elist[i].to = clist[mini];
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 2: { // 远程 ai
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) break;
+                            elist[i].to = clist[mini];
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 3: { // 锁射手
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.c.type !== 2 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.c.type !== 2) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            elist[i].to = clist[mini];
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                    }
+                }
+                this.cdist = -1;
+                this.mdist = -1;
+                if (clist.length === 4 && elist.length === 4) {
+                    for (let i = 0; i < 4; ++i) {
+                        clist[i].fx = clist[i].x * 1.0;
+                        clist[i].fy = clist[i].y * 1.0;
+                        elist[i].fx = elist[i].x * 1.0;
+                        elist[i].fy = elist[i].y * 1.0;
+                    }
+                    let c_fp = -1, e_sohee = -1, e_kaden = -1, e_lupina = -1, e_knight = -1;
+                    for (let i = 0; i < 4; ++i) {
+                        if (clist[i].c.nick === "fprincess") c_fp = i;
+                        if (elist[i].c.nick === "sohee") e_sohee =  i;
+                        if (elist[i].c.nick === "kaden") e_kaden = i;
+                        if (elist[i].c.nick === "lupina") e_lupina = i;
+                        if (elist[i].c.nick === "knight") e_knight = i;
+                    }
+                    if (c_fp !== -1) {
+                        let mdis = 1e6;
+                        let sdist = -1, kdist = -1, ldist = -1, kndist=-1;
+                        let getans = 0;
+                        while (1) {
+                            for (let i = 0; i < 4; ++i) {
+                                if (this.vecxy(clist[i], clist[i].to) > clist[i].c.hand) {
+                                    clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 16.0 * clist[i].c.speed;
+                                    clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 16.0 * clist[i].c.speed;
+                                } else {
+                                    if (clist[i].c.jump !== -1 && this.vecxy(clist[i], clist[i].to) < clist[i].c.jump) {
+                                        clist[i].px = (clist[i].fx+clist[i].to.fx)/2;
+                                        clist[i].py= (clist[i].fy+clist[i].to.fy)/2;
+                                    } else {
+                                        clist[i].px = clist[i].fx;
+                                        clist[i].py = clist[i].fy;
+                                    }
+                                }
+                                if (this.vecxy(elist[i], elist[i].to) > elist[i].c.hand) {
+                                    elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 16.0 * elist[i].c.speed;
+                                    elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 16.0 * elist[i].c.speed;
+                                } else {
+                                    if (elist[i].c.jump !== -1 && this.vecxy(elist[i], elist[i].to) < elist[i].c.jump) {
+                                        elist[i].px = (elist[i].fx+elist[i].to.fx)/2;
+                                        elist[i].py= (elist[i].fy+elist[i].to.fy)/2;
+                                    } else {
+                                        elist[i].px = elist[i].fx;
+                                        elist[i].py = elist[i].fy;
+                                    }
+                                }
+                            }
+                            for (let i = 0; i < 4; ++i) {
+                                clist[i].fx = clist[i].px;
+                                clist[i].fy = clist[i].py;
+                                elist[i].fx = elist[i].px;
+                                elist[i].fy = elist[i].py;
+                            }
+                            if (this.vecxy(clist[c_fp], clist[c_fp].to) < 0.3) break;
+                            if (this.vecxy(clist[c_fp], clist[c_fp].to) < 1.33 && getans === 0){
+                                getans = 1;
+                                if (e_sohee !== -1) sdist = this.vecxy(clist[c_fp],elist[e_sohee]);
+                                if (e_kaden !== -1) kdist = this.vecxy(clist[c_fp],elist[e_kaden]);
+                                if (e_lupina !== -1) ldist = this.vecxy(clist[c_fp],elist[e_lupina]);
+                                if (e_knight !== -1) kndist = this.vecxy(clist[c_fp],elist[e_knight]);
+                            }
+                        }
+                        let midx = Math.abs(clist[c_fp].fx-2);
+                        let midy = Math.abs(clist[c_fp].fy-6.5);
+                        let midxy = Math.sqrt(midx*midx+midy*midy);
+                        let ldistf = this.vecxy(clist[c_fp],elist[e_lupina]);
+                        this.distres = "【嘲讽刻】索菲距离："+sdist.toFixed(6)+"；凯登距离："+kdist.toFixed(6)+"；暗狼距离："+ldist.toFixed(6)+"；骑士距离："+kndist.toFixed(6);
+                        this.distres = this.distres + "【稳定刻】对中距离："+midxy.toFixed(6)+"；暗狼距离："+ldistf.toFixed(6);
+                    }
+                }
+                if (simulator === 1) return;
+                const arrowList = [];
+                for (let i = 0; i < clist.length; ++i) {
+                    const c = clist[i];
+                    const e = clist[i].to;
+                    if (e === undefined) continue;
+                    const arrow = {
+                        x1: topList[c.x] - 3,
+                        y1: leftList[c.y],
+                        x2: topList[e.x] - 3,
+                        y2: leftList[e.y],
+                        style: "stroke:rgb(0,210,212);stroke-width:3",
+                    }
+                    arrowList.push(arrow);
+                }
+                for (let i = 0; i < elist.length; ++i) {
+                    const c = elist[i];
+                    const e = elist[i].to;
+                    if (e === undefined) continue;
+                    const arrow = {
+                        x1: topList[c.x] + 3,
+                        y1: leftList[c.y],
+                        x2: topList[e.x] + 3,
+                        y2: leftList[e.y],
+                        style: "stroke:rgb(190,21,21);stroke-width:3",
+                    }
+                    arrowList.push(arrow);
+                }
+                this.arrowList = arrowList;
+            },
+            modifyCP(members, item) {
+                let index = -1;
+                for (let i = 0; i < members.length; ++i) {
+                    if (members[i] === item) {
+                        index = i; break;
+                    }
+                }
+                if (index > 1) {
+                    const tmp = members[index - 1];
+                    members[index - 1] = members[index];
+                    members[index] = tmp;
+                }
+                this.calcParty.member = members;
+                this.calcParty.refresh(0);
+                this.refreshLocker();
+            },
+            clickCard(item) {
+                this.showSolution = 0;
+                this.updateUsedList();
+                if (this.isEnemyCs === 1) {
+                    this.enemyCs.style.opacity = 1;
+                    if (this.enemyCs === item) {
+                        this.enemyCs.setCharacter(this.character[0]);
+                        this.isEnemyCs = 0;
+                        this.updateUsedList();
+                        this.refreshLocker();
+                        return;
+                    }
+                }
+                this.isEnemyCs = 1;
+                this.enemyCs = item;
+                this.enemyCs.style.opacity = 0.5;
+                this.updateUsedList();
+                this.refreshLocker();
+            },
+            clickECs(item) {
+                this.showSolution = 0;
+                if (this.usedList.hasOwnProperty(item.id)) {
+                    this.usedList[item.id].setCharacter(this.character[0]);
+                } else {
+                    if (this.enemyParty.member.length >= 4 && item.id !== 0 && this.enemyCs.character.id === 0) {
+                        this.info("队伍已满员！", 1);
+                        return;
+                    }
+                }
+                this.enemyCs.setCharacter(item);
+                this.enemyCs.style.opacity = 1;
+                this.isEnemyCs = 0;
+                this.updateUsedList();
+                this.refreshLocker();
+            },
+            check(party, checker) {
+                const cparty = checker.party;
+                if (cparty.length === 0) {
+                    return 0;//to do SPJ
+                }
+                if (party[0].nick !== cparty[0]) return 0;
+                for (let i = 1; i < 4; ++i) {
+                    if (cparty[i] === "*") continue;
+                    let flag = 0;
+                    for (let j = 1; j < 4; ++j) {
+                        if (cparty[i] === party[j].nick) {
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if (flag === 0) return 0;
+                }
+                if (checker.without !== undefined) {
+                    for (let i = 1; i < 4; ++i) {
+                        for (let j = 0; j < checker.without.length; ++j) {
+                            if (checker.without[j] === party[i].nick) return 0;
+                        }
+                    }
+                }
+                return 1;
+            },
+            chooseCalc(item) {
+                this.calcParty.member = [];
+                this.calcParty.leader = null;
+                for (let i = 0; i < this.calcList.length; ++i) {
+                    this.calcList[i].setCharacter(this.character[0], 0);
+                }
+                for (let i = 0; i < item.party.length; ++i) {
+                    this.calcParty.addMember(item.party[i].character, 0);
+                    this.calcParty.member[i].calcStyle.opacity = 1;
+                }
+                this.tileBuffer = null;
+                this.characterBuffer = null;
+                this.showCalcParty = 1;
+                this.calcParty.refresh(0);
+                this.calcParty.leader = this.calcParty.member[0];
+                this.showSolution = 0;
+                this.refreshLocker();
+            },
+            clickCalc(item) {
+                if (item.character.id === 0) {
+                    if (this.characterBuffer === null) return;
+                    if (this.characterBuffer.id !== 0) {
+                        item.setCharacter(this.characterBuffer, 0);
+                        this.characterBuffer.calcStyle.opacity = 0.25;
+                        this.characterBuffer = null;
+                        if (this.tileBuffer !== null) {
+                            this.tileBuffer.setCharacter(this.character[0], 0);
+                            this.tileBuffer.style.opacity = 1;
+                            this.tileBuffer = null;
+                        }
+                    }
+                } else {
+                    if (this.characterBuffer === null) {
+                        this.characterBuffer = item.character;
+                        item.style.opacity = 0.5;
+                        this.tileBuffer = item;
+                    } else if (this.characterBuffer.id === item.character.id) {
+                        item.style.opacity = 1;
+                        item.setCharacter(this.character[0], 0);
+                        this.characterBuffer.calcStyle.opacity = 1;
+                        this.characterBuffer = null;
+                        this.tileBuffer = null;
+                    } else if (this.tileBuffer !== null) {
+                        this.tileBuffer.style.opacity = 1;
+                        item.style.opacity = 1;
+                        const tmp = this.tileBuffer.character;
+                        this.tileBuffer.setCharacter(item.character, 0);
+                        item.setCharacter(tmp, 0);
+                        this.tileBuffer = null;
+                        this.characterBuffer = null;
+                    }
+                }
+                this.refreshLocker();
+            },
+            clickSP(item) {
+                if (item.calcStyle.opacity === 0.25) return;
+                if (this.characterBuffer !== null) {
+                    this.characterBuffer.calcStyle.opacity = 1;
+                }
+                item.calcStyle.opacity = 0.5;
+                this.characterBuffer = item;
+                this.refreshLocker();
+            },
+            calc() {
+                if (this.enemyParty.member.length !== 4) {
+                    this.info("队伍角色数不是四名！", 1);
+                    return;
+                } else {
+                    this.errorInfo = "";
+                }
+                const partyType = [];
+                for (let i = 0; i < this.checker.length; ++i) {
+                    const checker = this.checker[i];
+                    if (this.check(this.enemyParty.member, checker)) {
+                        partyType.push(checker.name);
+                    }
+                }
+                const solutions = [];
+                for (let i = 0; i < this.solution.length; ++i) {
+                    let flag = 0;
+                    let index = 0;
+                    const solution = this.solution[i];
+                    for (let j = 0; j < partyType.length; ++j) {
+                        for (let k = 0; k < solution.solve.length; ++k) {
+                            const solve = solution.solve[k];
+                            if (partyType[j] === solve.name) {
+                                flag = 1;
+                                index = k;
+                            }
+                        }
+                    }
+                    if (flag === 1) {
+                        for (let j = 0; j < solution.party.length; ++j) {
+                            solution.party[j].style.top = offset + (solutions.length + 7) * height + "px";
+                        }
+                        solutions.push(solution);
+                    }
+                }
+                this.solutions = solutions;
+                if (this.solutions.length === 0) {
+                    this.info("未找到合适解", 1);
+                } else {
+                    this.showSolution = 1;
+                    this.info("计算完成", 0);
+                }
+                this.refreshLocker();
+            },
+            calcPos() {
+                let limit = this.posType.normal;
+                const calcMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    calcMap[i] = new Array(boardWidth);
+                }
+                let minans = 1e6;
+                let ansp = [0, 0, 0, 0];
+                const character = [];
+                for (let i = 0; i < this.character_.length; ++i) {
+                    let item = this.character_[i];
+                    if (item.weapon === undefined) {
+                        item.weapon = item.name.replaceAll('_', '');
+                    }
+                    if (item.shield === undefined) {
+                        item.shield = 0;
+                    }
+                    if (item.disable === undefined) {
+                        item.disable = 0;
+                    }
+                    const c = new Character({ id: i, name: item.name, nick: item.nick, element: item.element, weapon: item.weapon, ai: item.ai, shield: item.shield, type: item.type, disable: item.disable });
+                    character.push(c);
+                }
+                for (let i1 = 0; i1 < 20; ++i1) {
+                    for (let i2 = 0; i2 < 20; ++i2) {
+                        for (let i3 = 0; i3 < 20; ++i3) {
+                            for (let i4 = 0; i4 < 20; ++i4) {
+                                if (i1 == i2 || i1 == i3 || i1 == i4 || i2 == i3 || i2 == i4 || i3 == i4) continue;
+                                for (let i = 0; i < boardHeight; ++i) {
+                                    for (let j = 0; j < boardWidth; ++j) {
+                                        const tile = new Tile({ side: 0, x: j, y: i, c: character[0] });
+                                        calcMap[i][j] = tile;
+                                    }
+                                }
+                                calcMap[parseInt(i1 / 4)][i1 % 4].setCharacter(this.calcParty.member[0], 0);
+                                calcMap[parseInt(i2 / 4)][i2 % 4].setCharacter(this.calcParty.member[1], 0);
+                                calcMap[parseInt(i3 / 4)][i3 % 4].setCharacter(this.calcParty.member[2], 0);
+                                calcMap[parseInt(i4 / 4)][i4 % 4].setCharacter(this.calcParty.member[3], 0);
+                                let flag = 1;
+                                if (limit === true) {
+                                    for (let x = 0; x < calcMap.length; ++x) {
+                                        for (let y = 0; y < calcMap[x].length; ++y) {
+                                            if (calcMap[x][y].character.name !== "empty") {
+                                                if (calcMap[x][y].character.nick === "craig" && y !== 3) flag = 0;
+                                                if (calcMap[x][y].character.nick !== "craig" && y >= 2) flag = 0;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (!flag) continue;
+                                this.refreshLocker(calcMap);
+                                if ((this.mdist > 1 || this.mdist < 0) && this.cdist < minans) {
+                                    minans = this.cdist;
+                                    ansp = [i1, i2, i3, i4];
+                                }
+                            }
+                        }
+                    }
+                }
+                if (minans > 1000) {
+                    this.info("未找到合适解", 1);
+                } else {
+                    this.calcList = [];
+                    for (let i = 0; i < boardHeight; ++i) {
+                        for (let j = 0; j < boardWidth; ++j) {
+                            const tile = new Tile({ side: 0, x: j, y: i, c: character[0] });
+                            this.calcMap[i][j] = tile;
+                            this.calcList.push(tile);
+                        }
+                    }
+                    for (let i = 0; i < 4; ++i) {
+                        this.calcMap[parseInt(ansp[i] / 4)][ansp[i] % 4].setCharacter(this.calcParty.member[i], 0);
+                        this.calcList[ansp[i]] = this.calcMap[parseInt(ansp[i] / 4)][ansp[i] % 4];
+                        this.calcParty.member[i].calcStyle.opacity = 0.25;
+                    }
+                    this.refreshLocker();
+                    this.info("摆位穷举完成", 0);
+                }
+            },
+            resetEnemy() {
+                const enemyMap = new Array(boardHeight);
+                for (let i = 0; i < boardHeight; ++i) {
+                    enemyMap[i] = new Array(boardWidth);
+                }
+                const enemyList = [];
+                for (let i = 0; i < boardHeight; ++i) {
+                    for (let j = 0; j < boardWidth; ++j) {
+                        const tile = new Tile({ side: 1, x: j, y: i, c: this.character[0] });
+                        enemyMap[i][j] = tile;
+                        enemyList.push(tile);
+                    }
+                }
+                this.enemyList = enemyList;
+                this.enemyMap = enemyMap;
+                this.updateUsedList();
+                this.refreshLocker();
+            },
+        },
+        mounted: function () {
+            this.init();
+        },
+    });
+</script>
+<style>
+    .main {
+        position: relative;
+    }
+
+    .enemyList {
+        position: absolute;
+    }
+
+    .enemy {
+        position: relative;
+    }
+
+    .enemyCs {
+        position: relative;
+    }
+
+    .enemyCsList {
+        position: absolute;
+    }
+
+    .enemyParty {
+        position: absolute;
+    }
+
+    .calcParty {
+        position: absolute;
+    }
+
+    .calcList {
+        position: absolute;
+    }
+
+    .solutions {
+        position: absolute;
+    }
+
+    .arrow {
+        pointer-events: none;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .calcButton {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        width: 120px;
+        z-index: 0;
+    }
+</style>
+
+</html>
