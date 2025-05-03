@@ -225,7 +225,6 @@
       }
     }
     function loadFolderAssetsJS(folder, callback) {
-      // 删除已有的 assets.js 脚本（如果存在）
       const existingScript = document.getElementById("assetsScript");
       if (existingScript) existingScript.remove();
 
@@ -248,8 +247,6 @@
     }
     document.getElementById("folderSelector").addEventListener("change", () => {
       const folder = document.getElementById("folderSelector").value;
-
-      // 如果是 character，显示骨骼选择框
       document.getElementById("skeletonVariantWrapper").style.display = (folder === "character") ? "inline-block" : "none";
 
       loadFolderAssetsJS(folder, (assets) => {
@@ -263,7 +260,7 @@
         });
         if (assets.length > 0) {
           selector.value = assets[0];
-          loadSpineAsset(folder, assets[0]); // 默认加载，骨骼视角在内部处理
+          loadSpineAsset(folder, assets[0]);
         }
       });
     });
@@ -314,7 +311,6 @@
       const filtered = currentAssetList.filter(name => name.toLowerCase().includes(keyword));
       updateAssetSelectorOptions(filtered);
 
-      // 自动选择第一个匹配项并加载
       if (filtered.length > 0) {
         document.getElementById("assetSelector").value = filtered[0];
         loadSpineAsset(folder, filtered[0]);
@@ -357,13 +353,11 @@
       const allSelects = Array.from(container.querySelectorAll("select"));
       const currentIndex = parseInt(e.target.dataset.track);
 
-      // 清除所有后续轨道选择器和动画轨道
       for (let i = allSelects.length - 1; i > currentIndex; i--) {
-        allSelects[i].parentElement.parentElement.remove(); // 删除div
-        state.clearTrack(i); // 清除动画
+        allSelects[i].parentElement.parentElement.remove(); 
+        state.clearTrack(i); 
       }
 
-      // 更新当前及之前的轨道动画
       state.clearTracks();
       for (let i = 0; i <= currentIndex; i++) {
         const sel = allSelects[i];
@@ -372,7 +366,6 @@
         }
       }
 
-      // 如果当前有值，添加下一个轨道选择器（不超过动画数量）
       if (e.target.value && currentIndex + 1 < animationNames.length) {
         createTrackSelector(currentIndex + 1);
       }
@@ -382,7 +375,7 @@
       animationNames = animations.map(a => a.name);
       const container = document.getElementById("trackSelectors");
       container.innerHTML = "";
-      createTrackSelector(0); // Start with track 0
+      createTrackSelector(0);
     }
 
     function createSlotSliders(slots) {
@@ -465,13 +458,12 @@
     let lastFrameTime = performance.now();
 
     function render(now = performance.now()) {
-      const delta = (now - lastFrameTime) / 1000; // 单位：秒
+      const delta = (now - lastFrameTime) / 1000; 
       lastFrameTime = now;
 
       const speed = parseFloat(document.getElementById("speedSlider").value);
       const scale = parseFloat(document.getElementById("scaleSlider").value);
 
-      // 正确推进动画：用真实时间乘以 speed
       state.update(delta * speed);
       state.apply(skeleton);
 
@@ -518,15 +510,6 @@
     canvas.addEventListener("mouseup", () => { isDragging = false; canvas.style.cursor = "grab"; });
     canvas.addEventListener("mouseleave", () => { isDragging = false; canvas.style.cursor = "grab"; });
 
-    /*window.addEventListener("DOMContentLoaded", () => {
-      if (Array.isArray(window.spineAssets)) {
-        populateAssetSelector();
-        document.getElementById("assetSelector").dispatchEvent(new Event("change"));
-      } else {
-        alert("assets.js 中未定义 window.spineAssets");
-      }
-    });*/
-
     function setExportDefaults() {
       const speed = parseFloat(document.getElementById("speedSlider").value || "1");
       const fps = parseFloat(document.getElementById("exportFps").value || "20");
@@ -539,7 +522,7 @@
         }
       }
 
-      const adjustedDuration = maxDuration > 0 ? maxDuration / speed : 3; // fallback = 3s
+      const adjustedDuration = maxDuration > 0 ? maxDuration / speed : 3; 
 
       document.getElementById("exportDuration").value = adjustedDuration.toFixed(2);
       document.getElementById("exportWidth").value = canvas.width;
@@ -564,7 +547,6 @@
       const tempCtx = tempCanvas.getContext("2d");
       const frameList = [];
 
-      // 获取背景颜色
       const bgColorHex = document.getElementById("exportBgColor").value;
       const r = parseInt(bgColorHex.slice(1, 3), 16) / 255;
       const g = parseInt(bgColorHex.slice(3, 5), 16) / 255;
@@ -576,7 +558,6 @@
         state.apply(skeleton);
         skeleton.updateWorldTransform();
 
-        // 使用自定义背景色清除主画布
         gl.clearColor(r, g, b, 1);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
