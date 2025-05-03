@@ -1,0 +1,573 @@
+
+boss_harvester.png
+size: 512,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ail04
+  rotate: false
+  xy: 270, 174
+  size: 5, 4
+  orig: 7, 6
+  offset: 1, 1
+  index: -1
+back_arm1AD
+  rotate: true
+  xy: 478, 343
+  size: 18, 32
+  orig: 24, 36
+  offset: 4, 2
+  index: -1
+front_armUL
+  rotate: true
+  xy: 478, 343
+  size: 18, 32
+  orig: 24, 36
+  offset: 4, 2
+  index: -1
+back_arm1AU
+  rotate: true
+  xy: 187, 398
+  size: 18, 34
+  orig: 28, 41
+  offset: 5, 4
+  index: -1
+front_armBL
+  rotate: true
+  xy: 187, 398
+  size: 18, 34
+  orig: 28, 41
+  offset: 5, 4
+  index: -1
+back_arm2AD
+  rotate: false
+  xy: 492, 300
+  size: 16, 42
+  orig: 18, 55
+  offset: 2, 7
+  index: -1
+front_arm2UL
+  rotate: false
+  xy: 492, 300
+  size: 16, 42
+  orig: 18, 55
+  offset: 2, 7
+  index: -1
+side_arm2BU
+  rotate: false
+  xy: 492, 300
+  size: 16, 42
+  orig: 25, 44
+  offset: 3, 1
+  index: -1
+back_arm2AU
+  rotate: false
+  xy: 494, 82
+  size: 17, 20
+  orig: 17, 20
+  offset: 0, 0
+  index: -1
+front_arm2UD
+  rotate: false
+  xy: 494, 82
+  size: 17, 20
+  orig: 17, 20
+  offset: 0, 0
+  index: -1
+back_body1
+  rotate: true
+  xy: 395, 106
+  size: 23, 20
+  orig: 31, 21
+  offset: 4, 1
+  index: -1
+back_body2
+  rotate: false
+  xy: 199, 83
+  size: 69, 25
+  orig: 71, 58
+  offset: 1, 5
+  index: -1
+back_chest
+  rotate: false
+  xy: 339, 106
+  size: 55, 64
+  orig: 63, 101
+  offset: 4, 25
+  index: -1
+back_gell
+  rotate: false
+  xy: 1, 46
+  size: 123, 124
+  orig: 123, 124
+  offset: 0, 0
+  index: -1
+back_hand
+  rotate: true
+  xy: 179, 225
+  size: 22, 120
+  orig: 27, 128
+  offset: 2, 6
+  index: -1
+back_hand_off
+  rotate: true
+  xy: 179, 202
+  size: 22, 120
+  orig: 27, 128
+  offset: 2, 6
+  index: -1
+back_head
+  rotate: true
+  xy: 436, 241
+  size: 37, 56
+  orig: 51, 90
+  offset: 7, 24
+  index: -1
+back_tail1
+  rotate: true
+  xy: 406, 458
+  size: 53, 96
+  orig: 123, 145
+  offset: 34, 41
+  index: -1
+back_tail1_fx
+  rotate: true
+  xy: 379, 54
+  size: 51, 57
+  orig: 123, 145
+  offset: 35, 58
+  index: -1
+back_tail2
+  rotate: false
+  xy: 173, 51
+  size: 25, 48
+  orig: 123, 145
+  offset: 48, 9
+  index: -1
+eff01
+  rotate: false
+  xy: 1, 417
+  size: 220, 94
+  orig: 220, 94
+  offset: 0, 0
+  index: -1
+eff02
+  rotate: false
+  xy: 222, 463
+  size: 183, 48
+  orig: 183, 48
+  offset: 0, 0
+  index: -1
+eff03
+  rotate: false
+  xy: 1, 171
+  size: 145, 123
+  orig: 145, 123
+  offset: 0, 0
+  index: -1
+eff_Light00
+  rotate: false
+  xy: 394, 181
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+eff_wing
+  rotate: true
+  xy: 300, 192
+  size: 31, 93
+  orig: 31, 93
+  offset: 0, 0
+  index: -1
+emo_01
+  rotate: false
+  xy: 17, 1
+  size: 11, 12
+  orig: 13, 14
+  offset: 1, 1
+  index: -1
+emo_02
+  rotate: false
+  xy: 1, 1
+  size: 15, 12
+  orig: 15, 12
+  offset: 0, 0
+  index: -1
+front_body1
+  rotate: false
+  xy: 467, 54
+  size: 21, 20
+  orig: 31, 21
+  offset: 5, 1
+  index: -1
+front_body2
+  rotate: true
+  xy: 264, 21
+  size: 61, 53
+  orig: 71, 58
+  offset: 5, 5
+  index: -1
+front_chest
+  rotate: true
+  xy: 404, 402
+  size: 55, 74
+  orig: 63, 101
+  offset: 4, 15
+  index: -1
+front_eye
+  rotate: false
+  xy: 363, 372
+  size: 32, 27
+  orig: 51, 90
+  offset: 9, 32
+  index: -1
+front_gell
+  rotate: true
+  xy: 187, 248
+  size: 123, 124
+  orig: 123, 124
+  offset: 0, 0
+  index: -1
+front_handL
+  rotate: true
+  xy: 179, 179
+  size: 22, 120
+  orig: 27, 128
+  offset: 2, 6
+  index: -1
+front_handL_fx
+  rotate: true
+  xy: 300, 171
+  size: 20, 78
+  orig: 27, 128
+  offset: 2, 8
+  index: -1
+front_handL_off
+  rotate: true
+  xy: 300, 224
+  size: 22, 120
+  orig: 27, 128
+  offset: 2, 6
+  index: -1
+front_head
+  rotate: true
+  xy: 478, 362
+  size: 31, 33
+  orig: 51, 90
+  offset: 10, 24
+  index: -1
+front_head2
+  rotate: true
+  xy: 318, 16
+  size: 37, 61
+  orig: 51, 90
+  offset: 7, 19
+  index: -1
+front_tail2
+  rotate: false
+  xy: 436, 279
+  size: 55, 63
+  orig: 123, 124
+  offset: 33, 51
+  index: -1
+front_tail_b
+  rotate: false
+  xy: 479, 426
+  size: 32, 31
+  orig: 32, 31
+  offset: 0, 0
+  index: -1
+front_wing
+  rotate: false
+  xy: 147, 174
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+wing02side
+  rotate: false
+  xy: 147, 174
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+fx_slash
+  rotate: false
+  xy: 1, 295
+  size: 185, 121
+  orig: 185, 121
+  offset: 0, 0
+  index: -1
+fx_trail
+  rotate: false
+  xy: 222, 372
+  size: 140, 90
+  orig: 140, 90
+  offset: 0, 0
+  index: -1
+jo1_front
+  rotate: false
+  xy: 437, 177
+  size: 32, 21
+  orig: 34, 23
+  offset: 1, 1
+  index: -1
+jo_side
+  rotate: true
+  xy: 120, 16
+  size: 29, 20
+  orig: 29, 20
+  offset: 0, 0
+  index: -1
+side_arm2AD
+  rotate: false
+  xy: 379, 172
+  size: 14, 19
+  orig: 16, 21
+  offset: 1, 1
+  index: -1
+side_arm2AU
+  rotate: false
+  xy: 429, 12
+  size: 20, 41
+  orig: 22, 56
+  offset: 1, 10
+  index: -1
+side_arm2BD
+  rotate: false
+  xy: 303, 86
+  size: 14, 23
+  orig: 16, 25
+  offset: 1, 1
+  index: -1
+side_armAD
+  rotate: false
+  xy: 493, 269
+  size: 18, 30
+  orig: 20, 32
+  offset: 1, 0
+  index: -1
+side_armAU
+  rotate: true
+  xy: 431, 126
+  size: 20, 35
+  orig: 27, 43
+  offset: 4, 4
+  index: -1
+side_armBD
+  rotate: false
+  xy: 495, 103
+  size: 13, 29
+  orig: 15, 32
+  offset: 1, 2
+  index: -1
+side_armBU
+  rotate: false
+  xy: 470, 166
+  size: 28, 35
+  orig: 34, 37
+  offset: 3, 2
+  index: -1
+side_body1
+  rotate: false
+  xy: 187, 372
+  size: 20, 25
+  orig: 37, 33
+  offset: 8, 8
+  index: -1
+side_body2
+  rotate: false
+  xy: 318, 54
+  size: 60, 51
+  orig: 96, 54
+  offset: 9, 3
+  index: -1
+side_chest
+  rotate: false
+  xy: 199, 109
+  size: 70, 69
+  orig: 94, 90
+  offset: 24, 13
+  index: -1
+side_eye
+  rotate: false
+  xy: 436, 343
+  size: 41, 58
+  orig: 66, 79
+  offset: 14, 19
+  index: -1
+side_gell
+  rotate: false
+  xy: 312, 247
+  size: 123, 124
+  orig: 123, 124
+  offset: 0, 0
+  index: -1
+side_handA
+  rotate: false
+  xy: 125, 49
+  size: 23, 121
+  orig: 27, 128
+  offset: 3, 1
+  index: -1
+side_handA_off
+  rotate: false
+  xy: 149, 54
+  size: 23, 121
+  orig: 27, 128
+  offset: 3, 1
+  index: -1
+side_handB
+  rotate: true
+  xy: 1, 14
+  size: 31, 118
+  orig: 34, 120
+  offset: 1, 0
+  index: -1
+side_handB_off
+  rotate: false
+  xy: 147, 176
+  size: 31, 118
+  orig: 34, 120
+  offset: 1, 0
+  index: -1
+side_head
+  rotate: false
+  xy: 437, 199
+  size: 28, 41
+  orig: 66, 79
+  offset: 12, 15
+  index: -1
+side_head2
+  rotate: false
+  xy: 363, 400
+  size: 40, 62
+  orig: 66, 79
+  offset: 12, 9
+  index: -1
+side_tail2
+  rotate: false
+  xy: 199, 24
+  size: 64, 58
+  orig: 84, 64
+  offset: 13, 2
+  index: -1
+side_tail2B
+  rotate: false
+  xy: 380, 11
+  size: 48, 42
+  orig: 84, 64
+  offset: 22, 3
+  index: -1
+side_tail2_fx
+  rotate: true
+  xy: 395, 130
+  size: 50, 35
+  orig: 84, 64
+  offset: 21, 10
+  index: -1
+side_tail3
+  rotate: true
+  xy: 466, 202
+  size: 38, 30
+  orig: 69, 85
+  offset: 21, 38
+  index: -1
+side_tail_01
+  rotate: false
+  xy: 467, 75
+  size: 26, 27
+  orig: 26, 27
+  offset: 0, 0
+  index: -1
+tail01
+  rotate: false
+  xy: 503, 503
+  size: 8, 8
+  orig: 10, 10
+  offset: 1, 1
+  index: -1
+tail02
+  rotate: false
+  xy: 208, 381
+  size: 13, 16
+  orig: 15, 18
+  offset: 1, 1
+  index: -1
+tatan05_back
+  rotate: false
+  xy: 270, 83
+  size: 32, 26
+  orig: 34, 28
+  offset: 1, 1
+  index: -1
+tiail03
+  rotate: false
+  xy: 179, 285
+  size: 7, 9
+  orig: 9, 11
+  offset: 1, 1
+  index: -1
+tital05_side
+  rotate: true
+  xy: 467, 103
+  size: 29, 27
+  orig: 31, 29
+  offset: 1, 1
+  index: -1
+titan01
+  rotate: true
+  xy: 467, 133
+  size: 32, 28
+  orig: 34, 30
+  offset: 1, 1
+  index: -1
+titan01_front
+  rotate: false
+  xy: 431, 147
+  size: 35, 29
+  orig: 37, 31
+  offset: 1, 1
+  index: -1
+titan02
+  rotate: false
+  xy: 396, 372
+  size: 32, 27
+  orig: 34, 29
+  offset: 1, 1
+  index: -1
+titan03
+  rotate: false
+  xy: 437, 95
+  size: 29, 30
+  orig: 31, 32
+  offset: 1, 1
+  index: -1
+titan03_front
+  rotate: false
+  xy: 479, 394
+  size: 32, 31
+  orig: 34, 33
+  offset: 1, 1
+  index: -1
+titan04
+  rotate: false
+  xy: 437, 67
+  size: 29, 27
+  orig: 31, 29
+  offset: 1, 1
+  index: -1
+wing1
+  rotate: true
+  xy: 173, 100
+  size: 75, 25
+  orig: 97, 33
+  offset: 10, 4
+  index: -1
+wing2
+  rotate: true
+  xy: 270, 110
+  size: 60, 68
+  orig: 68, 78
+  offset: 4, 5
+  index: -1

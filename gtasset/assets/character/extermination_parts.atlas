@@ -1,0 +1,139 @@
+
+extermination_parts.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back/launcherL
+  rotate: false
+  xy: 1, 17
+  size: 33, 26
+  orig: 122, 121
+  offset: 12, 59
+  index: -1
+back/missileDL
+  rotate: true
+  xy: 145, 44
+  size: 28, 39
+  orig: 122, 121
+  offset: 7, 13
+  index: -1
+back/missileUL
+  rotate: true
+  xy: 184, 44
+  size: 28, 39
+  orig: 122, 121
+  offset: 7, 41
+  index: -1
+back/tg
+  rotate: true
+  xy: 171, 1
+  size: 17, 30
+  orig: 122, 121
+  offset: 29, 31
+  index: -1
+back/tg1
+  rotate: true
+  xy: 83, 1
+  size: 15, 29
+  orig: 122, 121
+  offset: 30, 55
+  index: -1
+back/tg_A
+  rotate: true
+  xy: 49, 1
+  size: 15, 34
+  orig: 122, 121
+  offset: 30, 78
+  index: -1
+front/launcherL
+  rotate: false
+  xy: 171, 18
+  size: 33, 26
+  orig: 122, 121
+  offset: 12, 75
+  index: -1
+front/missileDL
+  rotate: false
+  xy: 223, 33
+  size: 28, 39
+  orig: 122, 121
+  offset: 7, 13
+  index: -1
+front/missileUL
+  rotate: true
+  xy: 54, 16
+  size: 28, 39
+  orig: 122, 121
+  offset: 7, 41
+  index: -1
+front/tg1
+  rotate: true
+  xy: 1, 2
+  size: 15, 32
+  orig: 122, 121
+  offset: 29, 48
+  index: -1
+front/tg1B
+  rotate: false
+  xy: 126, 6
+  size: 13, 10
+  orig: 122, 121
+  offset: 30, 73
+  index: -1
+front/tg2
+  rotate: true
+  xy: 204, 18
+  size: 15, 44
+  orig: 122, 121
+  offset: 45, 45
+  index: -1
+front/tg_A
+  rotate: false
+  xy: 34, 4
+  size: 15, 39
+  orig: 122, 121
+  offset: 29, 73
+  index: -1
+side/launcherL
+  rotate: false
+  xy: 105, 44
+  size: 40, 28
+  orig: 122, 121
+  offset: 57, 68
+  index: -1
+side/missileDL
+  rotate: false
+  xy: 54, 44
+  size: 51, 28
+  orig: 122, 121
+  offset: 71, 18
+  index: -1
+side/missileUL
+  rotate: false
+  xy: 1, 43
+  size: 53, 29
+  orig: 122, 121
+  offset: 65, 47
+  index: -1
+side/tg1
+  rotate: true
+  xy: 93, 16
+  size: 28, 39
+  orig: 122, 121
+  offset: 56, 46
+  index: -1
+side/tg1B
+  rotate: false
+  xy: 112, 6
+  size: 14, 10
+  orig: 122, 121
+  offset: 71, 78
+  index: -1
+side/tg_A
+  rotate: true
+  xy: 132, 16
+  size: 28, 39
+  orig: 122, 121
+  offset: 70, 74
+  index: -1

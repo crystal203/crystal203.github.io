@@ -1,0 +1,293 @@
+
+wraith_male.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/armL
+  rotate: true
+  xy: 73, 36
+  size: 9, 10
+  orig: 55, 56
+  offset: 12, 18
+  index: -1
+back/armR
+  rotate: false
+  xy: 17, 23
+  size: 10, 10
+  orig: 55, 56
+  offset: 11, 18
+  index: -1
+back/body
+  rotate: false
+  xy: 56, 20
+  size: 19, 15
+  orig: 55, 56
+  offset: 18, 13
+  index: -1
+back/bodyB
+  rotate: false
+  xy: 29, 29
+  size: 17, 17
+  orig: 55, 56
+  offset: 19, 0
+  index: -1
+back/elbowL
+  rotate: true
+  xy: 42, 10
+  size: 18, 13
+  orig: 55, 56
+  offset: 3, 11
+  index: -1
+back/elbowR
+  rotate: false
+  xy: 73, 46
+  size: 18, 13
+  orig: 55, 56
+  offset: 3, 11
+  index: -1
+back/handL
+  rotate: false
+  xy: 48, 55
+  size: 7, 11
+  orig: 55, 56
+  offset: 12, 10
+  index: -1
+back/handR
+  rotate: false
+  xy: 48, 55
+  size: 7, 11
+  orig: 55, 56
+  offset: 12, 10
+  index: -1
+front/handL
+  rotate: false
+  xy: 48, 55
+  size: 7, 11
+  orig: 55, 56
+  offset: 12, 10
+  index: -1
+front/handR
+  rotate: false
+  xy: 48, 55
+  size: 7, 11
+  orig: 55, 56
+  offset: 12, 10
+  index: -1
+back/head
+  rotate: true
+  xy: 33, 82
+  size: 31, 28
+  orig: 55, 56
+  offset: 12, 23
+  index: -1
+front/armL
+  rotate: true
+  xy: 94, 63
+  size: 5, 7
+  orig: 55, 56
+  offset: 16, 21
+  index: -1
+front/armR
+  rotate: true
+  xy: 94, 63
+  size: 5, 7
+  orig: 55, 56
+  offset: 16, 21
+  index: -1
+front/body
+  rotate: false
+  xy: 62, 94
+  size: 19, 19
+  orig: 55, 56
+  offset: 18, 9
+  index: -1
+front/bodyB
+  rotate: false
+  xy: 1, 34
+  size: 17, 20
+  orig: 55, 56
+  offset: 19, 0
+  index: -1
+front/elbowL
+  rotate: false
+  xy: 62, 82
+  size: 11, 11
+  orig: 55, 56
+  offset: 9, 14
+  index: -1
+front/elbowLB
+  rotate: false
+  xy: 76, 23
+  size: 16, 12
+  orig: 55, 56
+  offset: 3, 10
+  index: -1
+front/elbowRB
+  rotate: false
+  xy: 76, 23
+  size: 16, 12
+  orig: 55, 56
+  offset: 3, 10
+  index: -1
+front/elbowR
+  rotate: false
+  xy: 74, 83
+  size: 11, 10
+  orig: 55, 56
+  offset: 9, 14
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 28, 7
+  size: 21, 13
+  orig: 55, 56
+  offset: 17, 26
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 77, 60
+  size: 13, 5
+  orig: 55, 56
+  offset: 21, 30
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 1, 1
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 26
+  index: -1
+front/hat
+  rotate: false
+  xy: 1, 85
+  size: 31, 28
+  orig: 55, 56
+  offset: 12, 23
+  index: -1
+front/head
+  rotate: true
+  xy: 56, 60
+  size: 21, 20
+  orig: 55, 56
+  offset: 17, 26
+  index: -1
+side/armL
+  rotate: false
+  xy: 19, 34
+  size: 9, 20
+  orig: 56, 56
+  offset: 38, 8
+  index: -1
+side/armLB
+  rotate: true
+  xy: 17, 14
+  size: 8, 10
+  orig: 56, 56
+  offset: 42, 11
+  index: -1
+side/armR
+  rotate: true
+  xy: 1, 14
+  size: 19, 15
+  orig: 56, 56
+  offset: 11, 14
+  index: -1
+side/armRB
+  rotate: false
+  xy: 77, 74
+  size: 8, 8
+  orig: 56, 56
+  offset: 21, 15
+  index: -1
+side/body
+  rotate: true
+  xy: 56, 36
+  size: 23, 16
+  orig: 56, 56
+  offset: 23, 13
+  index: -1
+side/bodyB
+  rotate: true
+  xy: 82, 95
+  size: 18, 24
+  orig: 56, 56
+  offset: 23, 0
+  index: -1
+side/elbowL
+  rotate: false
+  xy: 48, 48
+  size: 7, 6
+  orig: 56, 56
+  offset: 40, 17
+  index: -1
+side/elbowR
+  rotate: false
+  xy: 47, 29
+  size: 8, 5
+  orig: 56, 56
+  offset: 23, 17
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 86, 82
+  size: 18, 12
+  orig: 56, 56
+  offset: 27, 27
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 83, 63
+  size: 10, 5
+  orig: 56, 56
+  offset: 31, 31
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 86, 69
+  size: 18, 12
+  orig: 56, 56
+  offset: 27, 27
+  index: -1
+side/handL
+  rotate: false
+  xy: 47, 35
+  size: 8, 11
+  orig: 56, 56
+  offset: 43, 10
+  index: -1
+side/handL2
+  rotate: false
+  xy: 92, 52
+  size: 10, 10
+  orig: 56, 56
+  offset: 41, 10
+  index: -1
+side/handR
+  rotate: true
+  xy: 92, 42
+  size: 9, 10
+  orig: 56, 56
+  offset: 24, 10
+  index: -1
+side/hatB
+  rotate: true
+  xy: 29, 67
+  size: 14, 26
+  orig: 56, 56
+  offset: 33, 23
+  index: -1
+side/hatF
+  rotate: true
+  xy: 1, 55
+  size: 29, 27
+  orig: 56, 56
+  offset: 11, 23
+  index: -1
+side/head
+  rotate: false
+  xy: 29, 47
+  size: 18, 19
+  orig: 56, 56
+  offset: 24, 25
+  index: -1

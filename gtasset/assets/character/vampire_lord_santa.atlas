@@ -1,0 +1,860 @@
+
+vampire_lord_santa.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 155, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 155, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 155, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 155, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 130, 91
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 150, 111
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 150, 111
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 150, 111
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 150, 111
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 0, 102
+  size: 33, 26
+  orig: 55, 56
+  offset: 11, 11
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 105, 3
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 105, 3
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/bag
+  rotate: true
+  xy: 75, 108
+  size: 20, 16
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+back/bagB
+  rotate: true
+  xy: 118, 67
+  size: 14, 10
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+back/bagF
+  rotate: true
+  xy: 126, 18
+  size: 15, 8
+  orig: 55, 56
+  offset: 17, 13
+  index: -1
+back/bagdeco
+  rotate: true
+  xy: 56, 105
+  size: 23, 17
+  orig: 55, 56
+  offset: 8, 5
+  index: -1
+back/collar
+  rotate: true
+  xy: 142, 69
+  size: 15, 4
+  orig: 55, 56
+  offset: 20, 12
+  index: -1
+back/helm
+  rotate: true
+  xy: 34, 47
+  size: 27, 19
+  orig: 55, 56
+  offset: 14, 20
+  index: -1
+back/helmB
+  rotate: false
+  xy: 99, 82
+  size: 16, 12
+  orig: 55, 56
+  offset: 21, 23
+  index: -1
+back/helmdeco
+  rotate: false
+  xy: 96, 4
+  size: 7, 7
+  orig: 55, 56
+  offset: 28, 16
+  index: -1
+candy
+  rotate: true
+  xy: 136, 10
+  size: 13, 7
+  orig: 13, 7
+  offset: 0, 0
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 151, 102
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 151, 102
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 130, 77
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 136, 0
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 140, 108
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 0, 76
+  size: 33, 24
+  orig: 55, 56
+  offset: 11, 13
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 156, 47
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 156, 47
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/bag
+  rotate: true
+  xy: 79, 5
+  size: 20, 16
+  orig: 55, 56
+  offset: 17, 1
+  index: -1
+front/bagB
+  rotate: true
+  xy: 119, 51
+  size: 14, 10
+  orig: 55, 56
+  offset: 24, 14
+  index: -1
+front/bagF
+  rotate: true
+  xy: 126, 1
+  size: 15, 8
+  orig: 55, 56
+  offset: 23, 13
+  index: -1
+front/bagdeco
+  rotate: false
+  xy: 54, 1
+  size: 23, 17
+  orig: 55, 56
+  offset: 24, 5
+  index: -1
+front/collarL
+  rotate: true
+  xy: 147, 0
+  size: 9, 6
+  orig: 55, 56
+  offset: 27, 10
+  index: -1
+front/collarR
+  rotate: true
+  xy: 148, 75
+  size: 9, 6
+  orig: 55, 56
+  offset: 19, 10
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 87, 62
+  size: 15, 15
+  orig: 55, 56
+  offset: 20, 9
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 104, 50
+  size: 13, 13
+  orig: 55, 56
+  offset: 21, 10
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 87, 46
+  size: 15, 14
+  orig: 55, 56
+  offset: 20, 10
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 93, 113
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 10
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 87, 30
+  size: 15, 14
+  orig: 55, 56
+  offset: 20, 10
+  index: -1
+front/face/[base]smile
+  rotate: true
+  xy: 97, 13
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 10
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 99, 96
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 10
+  index: -1
+front/hairB
+  rotate: true
+  xy: 73, 27
+  size: 27, 12
+  orig: 55, 56
+  offset: 14, 12
+  index: -1
+front/hairF
+  rotate: true
+  xy: 35, 15
+  size: 30, 17
+  orig: 55, 56
+  offset: 14, 17
+  index: -1
+front/helm
+  rotate: true
+  xy: 55, 52
+  size: 27, 15
+  orig: 55, 56
+  offset: 14, 24
+  index: -1
+front/helmB
+  rotate: true
+  xy: 104, 65
+  size: 15, 12
+  orig: 55, 56
+  offset: 19, 23
+  index: -1
+front/helmdeco
+  rotate: false
+  xy: 151, 93
+  size: 7, 7
+  orig: 55, 56
+  offset: 21, 16
+  index: -1
+metamorph/back/[base]armL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+index
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]armR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]body
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]elbowL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]elbowR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]head
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]legL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/[base]legR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/bag
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/back/collar
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]armL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]armL2
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]armR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]armR2
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]body
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]elbowL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]elbowL2
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]elbowR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]elbowR2
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]head
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]legL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/[base]legR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/bag
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/collarL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/collarR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/front/hairB
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/side/collarL
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/side/collarR
+  rotate: false
+  xy: 35, 78
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+metamorph/side/[base]armL
+  rotate: false
+  xy: 152, 66
+  size: 7, 7
+  orig: 56, 56
+  offset: 33, 8
+  index: -1
+metamorph/side/[base]armR
+  rotate: true
+  xy: 147, 120
+  size: 8, 7
+  orig: 56, 56
+  offset: 24, 7
+  index: -1
+metamorph/side/[base]body
+  rotate: false
+  xy: 130, 37
+  size: 9, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+metamorph/side/[base]elbowL
+  rotate: false
+  xy: 141, 97
+  size: 8, 9
+  orig: 56, 56
+  offset: 34, 2
+  index: -1
+metamorph/side/[base]elbowR
+  rotate: false
+  xy: 141, 86
+  size: 8, 9
+  orig: 56, 56
+  offset: 23, 2
+  index: -1
+metamorph/side/[base]head
+  rotate: false
+  xy: 0, 26
+  size: 28, 24
+  orig: 56, 56
+  offset: 19, 14
+  index: -1
+metamorph/side/[base]legL
+  rotate: false
+  xy: 148, 44
+  size: 6, 9
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+metamorph/side/[base]legR
+  rotate: false
+  xy: 148, 33
+  size: 6, 9
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+metamorph/side/face/[base]attack
+  rotate: true
+  xy: 141, 38
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/face/[base]damaged
+  rotate: true
+  xy: 141, 38
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/face/[base]doyagao
+  rotate: true
+  xy: 141, 38
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/face/[base]mad
+  rotate: true
+  xy: 141, 38
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/face/[base]tired
+  rotate: true
+  xy: 141, 38
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/face/[base]idle
+  rotate: true
+  xy: 145, 55
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/face/[base]smile
+  rotate: true
+  xy: 145, 11
+  size: 12, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+metamorph/side/hairB
+  rotate: false
+  xy: 0, 4
+  size: 33, 20
+  orig: 56, 56
+  offset: 12, 9
+  index: -1
+metamorph/side/hairB2
+  rotate: true
+  xy: 35, 101
+  size: 27, 19
+  orig: 56, 56
+  offset: 5, 13
+  index: -1
+metamorph/side/handL
+  rotate: true
+  xy: 131, 63
+  size: 12, 9
+  orig: 56, 56
+  offset: 35, 0
+  index: -1
+metamorph/side/handR
+  rotate: true
+  xy: 104, 34
+  size: 14, 12
+  orig: 56, 56
+  offset: 20, 0
+  index: -1
+present
+  rotate: false
+  xy: 136, 25
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 156, 77
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 156, 85
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 131, 52
+  size: 9, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 156, 121
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 152, 57
+  size: 7, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 0, 52
+  size: 32, 22
+  orig: 56, 56
+  offset: 15, 15
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 156, 37
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 159, 14
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/bag
+  rotate: true
+  xy: 63, 84
+  size: 19, 18
+  orig: 56, 56
+  offset: 19, 1
+  index: -1
+side/bagB
+  rotate: false
+  xy: 136, 119
+  size: 9, 9
+  orig: 56, 56
+  offset: 15, 12
+  index: -1
+side/bagF
+  rotate: false
+  xy: 128, 105
+  size: 10, 11
+  orig: 56, 56
+  offset: 15, 10
+  index: -1
+side/bagdeco
+  rotate: false
+  xy: 87, 79
+  size: 10, 27
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+side/collarL
+  rotate: true
+  xy: 159, 113
+  size: 6, 5
+  orig: 56, 56
+  offset: 34, 11
+  index: -1
+side/collarR
+  rotate: true
+  xy: 152, 13
+  size: 9, 5
+  orig: 56, 56
+  offset: 26, 11
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 112, 3
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 12
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 118, 35
+  size: 10, 13
+  orig: 56, 56
+  offset: 30, 12
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 108, 114
+  size: 12, 14
+  orig: 56, 56
+  offset: 29, 12
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 114, 99
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 12
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 117, 83
+  size: 11, 14
+  orig: 56, 56
+  offset: 29, 11
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 35, 1
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 12
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 112, 18
+  size: 12, 14
+  orig: 56, 56
+  offset: 29, 12
+  index: -1
+side/hairB
+  rotate: true
+  xy: 72, 56
+  size: 26, 13
+  orig: 56, 56
+  offset: 18, 11
+  index: -1
+side/hairF
+  rotate: false
+  xy: 35, 81
+  size: 26, 18
+  orig: 56, 56
+  offset: 21, 17
+  index: -1
+side/helm
+  rotate: true
+  xy: 54, 20
+  size: 25, 17
+  orig: 56, 56
+  offset: 18, 23
+  index: -1
+side/helmB
+  rotate: false
+  xy: 122, 118
+  size: 12, 10
+  orig: 56, 56
+  offset: 16, 29
+  index: -1
+side/helmdeco
+  rotate: false
+  xy: 152, 24
+  size: 7, 7
+  orig: 56, 56
+  offset: 11, 23
+  index: -1

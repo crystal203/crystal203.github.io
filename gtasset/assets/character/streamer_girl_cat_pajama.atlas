@@ -1,0 +1,657 @@
+
+streamer_girl_cat_pajama.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 135, 119
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 135, 119
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 100, 113
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 126, 119
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 126, 119
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 92
+  size: 33, 34
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 60, 103
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 60, 103
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+back/tail
+  rotate: false
+  xy: 30, 2
+  size: 13, 19
+  orig: 55, 56
+  offset: 26, 2
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 136, 25
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 136, 25
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 126, 110
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 126, 110
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 113, 113
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 132, 101
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 124, 67
+  size: 9, 9
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 132, 92
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 127, 81
+  size: 9, 9
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 2, 23
+  size: 33, 23
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 70, 103
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 70, 103
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/boob
+  rotate: false
+  xy: 36, 58
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 87, 61
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 60, 110
+  size: 16, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]doyagao
+  rotate: true
+  xy: 74, 61
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 37, 92
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 96, 24
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 91, 91
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 108, 13
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/hairF
+  rotate: true
+  xy: 37, 103
+  size: 23, 21
+  orig: 55, 56
+  offset: 16, 15
+  index: -1
+front/hairL
+  rotate: false
+  xy: 126, 43
+  size: 5, 8
+  orig: 55, 56
+  offset: 34, 12
+  index: -1
+front/hairR
+  rotate: false
+  xy: 126, 33
+  size: 5, 8
+  orig: 55, 56
+  offset: 16, 12
+  index: -1
+front/helmF
+  rotate: true
+  xy: 27, 27
+  size: 29, 24
+  orig: 55, 56
+  offset: 13, 22
+  index: -1
+front/tail
+  rotate: false
+  xy: 45, 2
+  size: 13, 19
+  orig: 55, 56
+  offset: 15, 3
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 139, 17
+  size: 6, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 134, 59
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 101, 78
+  size: 11, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 73, 2
+  size: 8, 7
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 83, 2
+  size: 8, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 2, 58
+  size: 32, 24
+  orig: 56, 56
+  offset: 16, 13
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 126, 26
+  size: 5, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 133, 43
+  size: 5, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 112, 64
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 108, 91
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 100, 48
+  size: 13, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 113, 2
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 113, 24
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 99, 63
+  size: 13, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 100, 37
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/hairF
+  rotate: false
+  xy: 2, 2
+  size: 26, 19
+  orig: 56, 56
+  offset: 20, 17
+  index: -1
+side/hairL
+  rotate: false
+  xy: 133, 33
+  size: 5, 8
+  orig: 56, 56
+  offset: 39, 12
+  index: -1
+side/hairR
+  rotate: true
+  xy: 115, 105
+  size: 6, 9
+  orig: 56, 56
+  offset: 23, 12
+  index: -1
+side/helmF
+  rotate: true
+  xy: 28, 61
+  size: 29, 24
+  orig: 56, 56
+  offset: 17, 22
+  index: -1
+side/tail
+  rotate: false
+  xy: 54, 64
+  size: 18, 12
+  orig: 56, 56
+  offset: 13, 1
+  index: -1
+streamer_girl_drone_pink/back/body
+  rotate: false
+  xy: 77, 37
+  size: 21, 22
+  orig: 55, 56
+  offset: 17, 2
+  index: -1
+streamer_girl_drone_pink/back/camera_arm
+  rotate: true
+  xy: 80, 103
+  size: 8, 11
+  orig: 55, 56
+  offset: 37, 4
+  index: -1
+streamer_girl_drone_pink/back/camera_hand
+  rotate: true
+  xy: 72, 113
+  size: 13, 12
+  orig: 55, 56
+  offset: 34, 8
+  index: -1
+streamer_girl_drone_pink/back/display
+  rotate: false
+  xy: 125, 13
+  size: 12, 9
+  orig: 55, 56
+  offset: 9, 8
+  index: -1
+streamer_girl_drone_pink/back/display_light
+  rotate: false
+  xy: 28, 58
+  size: 2, 1
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+streamer_girl_drone_pink/front/display_light
+  rotate: false
+  xy: 28, 58
+  size: 2, 1
+  orig: 55, 56
+  offset: 43, 14
+  index: -1
+streamer_girl_drone_pink/side/display_light
+  rotate: false
+  xy: 28, 58
+  size: 2, 1
+  orig: 56, 56
+  offset: 46, 20
+  index: -1
+streamer_girl_drone_pink/back/display_light2
+  rotate: false
+  xy: 134, 53
+  size: 7, 4
+  orig: 55, 56
+  offset: 10, 10
+  index: -1
+streamer_girl_drone_pink/back/ear_light
+  rotate: false
+  xy: 60, 11
+  size: 23, 10
+  orig: 55, 56
+  offset: 16, 15
+  index: -1
+streamer_girl_drone_pink/back/tail
+  rotate: false
+  xy: 112, 52
+  size: 9, 10
+  orig: 55, 56
+  offset: 25, 4
+  index: -1
+streamer_girl_drone_pink/back/tail2
+  rotate: true
+  xy: 60, 3
+  size: 6, 11
+  orig: 55, 56
+  offset: 28, 10
+  index: -1
+streamer_girl_drone_pink/back/tail3
+  rotate: false
+  xy: 123, 53
+  size: 9, 9
+  orig: 55, 56
+  offset: 24, 18
+  index: -1
+streamer_girl_drone_pink/front/body
+  rotate: false
+  xy: 54, 78
+  size: 21, 23
+  orig: 55, 56
+  offset: 17, 2
+  index: -1
+streamer_girl_drone_pink/front/camera_arm
+  rotate: true
+  xy: 77, 78
+  size: 8, 10
+  orig: 55, 56
+  offset: 10, 9
+  index: -1
+streamer_girl_drone_pink/front/camera_hand
+  rotate: true
+  xy: 77, 88
+  size: 13, 12
+  orig: 55, 56
+  offset: 8, 4
+  index: -1
+streamer_girl_drone_pink/front/display
+  rotate: true
+  xy: 121, 92
+  size: 11, 9
+  orig: 55, 56
+  offset: 35, 8
+  index: -1
+streamer_girl_drone_pink/front/ear_deco
+  rotate: false
+  xy: 53, 28
+  size: 19, 6
+  orig: 55, 56
+  offset: 18, 17
+  index: -1
+streamer_girl_drone_pink/front/ear_light
+  rotate: false
+  xy: 85, 13
+  size: 21, 8
+  orig: 55, 56
+  offset: 17, 16
+  index: -1
+streamer_girl_drone_pink/front/eyeL
+  rotate: false
+  xy: 36, 23
+  size: 4, 2
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+streamer_girl_drone_pink/front/eyeR
+  rotate: false
+  xy: 42, 23
+  size: 4, 2
+  orig: 55, 56
+  offset: 22, 8
+  index: -1
+streamer_girl_drone_pink/front/head_lignt
+  rotate: false
+  xy: 135, 67
+  size: 5, 4
+  orig: 55, 56
+  offset: 25, 9
+  index: -1
+streamer_girl_drone_pink/front/mouth
+  rotate: false
+  xy: 27, 23
+  size: 7, 2
+  orig: 55, 56
+  offset: 24, 4
+  index: -1
+streamer_girl_drone_pink/front/tail
+  rotate: true
+  xy: 104, 105
+  size: 6, 9
+  orig: 55, 56
+  offset: 22, 15
+  index: -1
+streamer_girl_drone_pink/front/tail1
+  rotate: false
+  xy: 135, 110
+  size: 6, 7
+  orig: 55, 56
+  offset: 23, 20
+  index: -1
+streamer_girl_drone_pink/front/tail2
+  rotate: false
+  xy: 93, 103
+  size: 9, 8
+  orig: 55, 56
+  offset: 24, 23
+  index: -1
+streamer_girl_drone_pink/side/body
+  rotate: false
+  xy: 53, 36
+  size: 22, 23
+  orig: 56, 56
+  offset: 20, 5
+  index: -1
+streamer_girl_drone_pink/side/camera_arm
+  rotate: true
+  xy: 115, 78
+  size: 11, 10
+  orig: 56, 56
+  offset: 15, 5
+  index: -1
+streamer_girl_drone_pink/side/camera_hand
+  rotate: true
+  xy: 86, 113
+  size: 13, 12
+  orig: 56, 56
+  offset: 18, 0
+  index: -1
+streamer_girl_drone_pink/side/display
+  rotate: true
+  xy: 128, 2
+  size: 9, 12
+  orig: 56, 56
+  offset: 40, 11
+  index: -1
+streamer_girl_drone_pink/side/ear_deco
+  rotate: false
+  xy: 93, 2
+  size: 18, 9
+  orig: 56, 56
+  offset: 22, 17
+  index: -1
+streamer_girl_drone_pink/side/ear_light
+  rotate: false
+  xy: 74, 23
+  size: 20, 11
+  orig: 56, 56
+  offset: 21, 16
+  index: -1
+streamer_girl_drone_pink/side/eyeL
+  rotate: false
+  xy: 62, 23
+  size: 3, 3
+  orig: 56, 56
+  offset: 38, 11
+  index: -1
+streamer_girl_drone_pink/side/eyeR
+  rotate: false
+  xy: 48, 23
+  size: 4, 2
+  orig: 56, 56
+  offset: 32, 10
+  index: -1
+streamer_girl_drone_pink/side/head_lignt1
+  rotate: true
+  xy: 138, 85
+  size: 5, 4
+  orig: 56, 56
+  offset: 34, 10
+  index: -1
+streamer_girl_drone_pink/side/head_lignt2
+  rotate: false
+  xy: 32, 58
+  size: 2, 1
+  orig: 56, 56
+  offset: 35, 6
+  index: -1
+streamer_girl_drone_pink/side/mouth
+  rotate: false
+  xy: 54, 23
+  size: 6, 3
+  orig: 56, 56
+  offset: 34, 6
+  index: -1
+streamer_girl_drone_pink/side/tail
+  rotate: false
+  xy: 115, 40
+  size: 9, 10
+  orig: 56, 56
+  offset: 17, 12
+  index: -1
+streamer_girl_drone_pink/side/tail1
+  rotate: false
+  xy: 135, 73
+  size: 6, 6
+  orig: 56, 56
+  offset: 17, 20
+  index: -1
+streamer_girl_drone_pink/side/tail2
+  rotate: false
+  xy: 89, 78
+  size: 10, 8
+  orig: 56, 56
+  offset: 18, 22
+  index: -1

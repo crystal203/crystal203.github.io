@@ -1,0 +1,377 @@
+
+exorcist_girl_fox_pajama.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 90, 13
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 90, 13
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 65, 76
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 80, 12
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 80, 12
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 29
+  size: 33, 30
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 90, 80
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 90, 80
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+back/earL
+  rotate: false
+  xy: 52, 72
+  size: 11, 14
+  orig: 55, 56
+  offset: 12, 32
+  index: -1
+back/earR
+  rotate: false
+  xy: 54, 91
+  size: 11, 14
+  orig: 55, 56
+  offset: 32, 32
+  index: -1
+back/tail
+  rotate: false
+  xy: 38, 88
+  size: 14, 15
+  orig: 55, 56
+  offset: 17, 2
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 90, 5
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 90, 5
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 89, 90
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 89, 90
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 67, 97
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 80, 3
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 80, 3
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 38, 62
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 38, 62
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 31, 2
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 90, 70
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 90, 70
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/earL
+  rotate: false
+  xy: 54, 56
+  size: 11, 14
+  orig: 55, 56
+  offset: 32, 32
+  index: -1
+front/earR
+  rotate: false
+  xy: 56, 40
+  size: 11, 14
+  orig: 55, 56
+  offset: 12, 32
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 52, 107
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 13
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 79, 66
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 37, 32
+  size: 17, 10
+  orig: 55, 56
+  offset: 19, 14
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 69, 41
+  size: 17, 8
+  orig: 55, 56
+  offset: 19, 14
+  index: -1
+front/face/[base]mad
+  rotate: true
+  xy: 57, 23
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]smile
+  rotate: true
+  xy: 57, 6
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 69, 22
+  size: 17, 8
+  orig: 55, 56
+  offset: 19, 14
+  index: -1
+front/hairF
+  rotate: false
+  xy: 2, 93
+  size: 33, 31
+  orig: 55, 56
+  offset: 11, 11
+  index: -1
+front/tail
+  rotate: false
+  xy: 37, 44
+  size: 15, 15
+  orig: 55, 56
+  offset: 23, 2
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 91, 108
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 91, 100
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 63, 112
+  size: 12, 12
+  orig: 56, 56
+  offset: 27, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 89, 57
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 89, 48
+  size: 7, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 3
+  size: 27, 24
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 89, 38
+  size: 6, 8
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 90, 116
+  size: 6, 8
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+side/earL
+  rotate: false
+  xy: 80, 99
+  size: 9, 12
+  orig: 56, 56
+  offset: 35, 34
+  index: -1
+side/earR
+  rotate: false
+  xy: 38, 72
+  size: 12, 14
+  orig: 56, 56
+  offset: 17, 32
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 69, 6
+  size: 14, 9
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 80, 21
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 78, 81
+  size: 14, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 79, 50
+  size: 14, 8
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 77, 113
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 67, 60
+  size: 14, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 79, 34
+  size: 14, 8
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/hairF
+  rotate: false
+  xy: 2, 61
+  size: 34, 30
+  orig: 56, 56
+  offset: 15, 12
+  index: -1
+side/tail
+  rotate: true
+  xy: 37, 105
+  size: 19, 13
+  orig: 56, 56
+  offset: 11, 0
+  index: -1

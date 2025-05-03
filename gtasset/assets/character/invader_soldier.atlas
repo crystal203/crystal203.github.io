@@ -1,0 +1,300 @@
+
+invader_soldier.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 120, 29
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 120, 29
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 120, 29
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 120, 29
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 98, 23
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+back/[base]elbowL
+  rotate: true
+  xy: 109, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 109, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+front/[base]elbowL
+  rotate: true
+  xy: 109, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 109, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 34, 2
+  size: 33, 34
+  orig: 55, 56
+  offset: 11, 13
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 112, 3
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 112, 3
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/[base]armL2
+  rotate: true
+  xy: 116, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+front/[base]armR2
+  rotate: true
+  xy: 116, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 109, 23
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 116, 14
+  size: 6, 8
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 116, 14
+  size: 6, 8
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 1, 1
+  size: 33, 35
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 123, 14
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 123, 14
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 127, 35
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 98, 5
+  size: 7, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 120, 22
+  size: 7, 7
+  orig: 56, 56
+  offset: 25, 7
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 98, 11
+  size: 11, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 109, 16
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 105, 2
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 67, 4
+  size: 31, 32
+  orig: 56, 56
+  offset: 16, 13
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 123, 7
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 120, 2
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1

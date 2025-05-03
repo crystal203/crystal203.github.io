@@ -1,0 +1,398 @@
+
+coop_drone.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 2, 41
+  size: 47, 19
+  orig: 55, 51
+  offset: 4, 17
+  index: -1
+back/fanBL
+  rotate: false
+  xy: 68, 2
+  size: 9, 1
+  orig: 55, 51
+  offset: 40, 32
+  index: -1
+front/fanBL
+  rotate: false
+  xy: 68, 2
+  size: 9, 1
+  orig: 55, 51
+  offset: 40, 32
+  index: -1
+side/fanFR
+  rotate: false
+  xy: 68, 2
+  size: 9, 1
+  orig: 56, 51
+  offset: 11, 28
+  index: -1
+back/fanBL2
+  rotate: true
+  xy: 100, 51
+  size: 9, 1
+  orig: 55, 51
+  offset: 40, 32
+  index: -1
+front/fanBL2
+  rotate: true
+  xy: 100, 51
+  size: 9, 1
+  orig: 55, 51
+  offset: 40, 32
+  index: -1
+back/fanBR
+  rotate: true
+  xy: 103, 51
+  size: 9, 1
+  orig: 55, 51
+  offset: 6, 32
+  index: -1
+back/fanFL2
+  rotate: true
+  xy: 103, 51
+  size: 9, 1
+  orig: 55, 51
+  offset: 44, 26
+  index: -1
+front/fanBR
+  rotate: true
+  xy: 103, 51
+  size: 9, 1
+  orig: 55, 51
+  offset: 6, 32
+  index: -1
+front/fanFL2
+  rotate: true
+  xy: 103, 51
+  size: 9, 1
+  orig: 55, 51
+  offset: 44, 26
+  index: -1
+side/fanBL
+  rotate: true
+  xy: 103, 51
+  size: 9, 1
+  orig: 56, 51
+  offset: 36, 30
+  index: -1
+side/fanBR
+  rotate: true
+  xy: 103, 51
+  size: 9, 1
+  orig: 56, 51
+  offset: 3, 30
+  index: -1
+back/fanBR2
+  rotate: true
+  xy: 121, 34
+  size: 9, 1
+  orig: 55, 51
+  offset: 6, 32
+  index: -1
+back/fanFL
+  rotate: true
+  xy: 121, 34
+  size: 9, 1
+  orig: 55, 51
+  offset: 44, 26
+  index: -1
+front/fanBR2
+  rotate: true
+  xy: 121, 34
+  size: 9, 1
+  orig: 55, 51
+  offset: 6, 32
+  index: -1
+front/fanFL
+  rotate: true
+  xy: 121, 34
+  size: 9, 1
+  orig: 55, 51
+  offset: 44, 26
+  index: -1
+side/fanFL
+  rotate: true
+  xy: 121, 34
+  size: 9, 1
+  orig: 56, 51
+  offset: 43, 28
+  index: -1
+back/fanFR
+  rotate: true
+  xy: 124, 34
+  size: 9, 1
+  orig: 55, 51
+  offset: 2, 26
+  index: -1
+front/fanFR
+  rotate: true
+  xy: 124, 34
+  size: 9, 1
+  orig: 55, 51
+  offset: 2, 26
+  index: -1
+back/fanFR2
+  rotate: true
+  xy: 121, 23
+  size: 9, 1
+  orig: 55, 51
+  offset: 2, 26
+  index: -1
+front/fanFR2
+  rotate: true
+  xy: 121, 23
+  size: 9, 1
+  orig: 55, 51
+  offset: 2, 26
+  index: -1
+side/fanFL2
+  rotate: true
+  xy: 121, 23
+  size: 9, 1
+  orig: 56, 51
+  offset: 43, 28
+  index: -1
+back/filter_body
+  rotate: false
+  xy: 93, 17
+  size: 7, 10
+  orig: 55, 51
+  offset: 24, 7
+  index: -1
+front/filter_body
+  rotate: false
+  xy: 93, 17
+  size: 7, 10
+  orig: 55, 51
+  offset: 24, 7
+  index: -1
+back/filter_bodyF
+  rotate: false
+  xy: 100, 46
+  size: 3, 3
+  orig: 55, 51
+  offset: 26, 15
+  index: -1
+front/filter_bodyF
+  rotate: false
+  xy: 100, 46
+  size: 3, 3
+  orig: 55, 51
+  offset: 26, 15
+  index: -1
+side/filter_bodyF
+  rotate: false
+  xy: 100, 46
+  size: 3, 3
+  orig: 56, 51
+  offset: 29, 16
+  index: -1
+back/filter_propeller_1
+  rotate: true
+  xy: 106, 39
+  size: 21, 13
+  orig: 55, 51
+  offset: 17, 11
+  index: -1
+back/filter_propeller_2
+  rotate: false
+  xy: 33, 2
+  size: 20, 9
+  orig: 55, 51
+  offset: 17, 12
+  index: -1
+front/filter_propeller_2
+  rotate: false
+  xy: 33, 2
+  size: 20, 9
+  orig: 55, 51
+  offset: 17, 12
+  index: -1
+back/filter_propeller_3
+  rotate: false
+  xy: 44, 13
+  size: 20, 12
+  orig: 55, 51
+  offset: 18, 12
+  index: -1
+front/filter_propeller_3
+  rotate: false
+  xy: 44, 13
+  size: 20, 12
+  orig: 55, 51
+  offset: 18, 12
+  index: -1
+back/filter_ringB
+  rotate: false
+  xy: 44, 27
+  size: 29, 12
+  orig: 55, 51
+  offset: 13, 13
+  index: -1
+front/filter_ringB
+  rotate: false
+  xy: 44, 27
+  size: 29, 12
+  orig: 55, 51
+  offset: 13, 13
+  index: -1
+back/filter_ringF
+  rotate: false
+  xy: 75, 29
+  size: 29, 10
+  orig: 55, 51
+  offset: 13, 8
+  index: -1
+front/filter_ringF
+  rotate: false
+  xy: 75, 29
+  size: 29, 10
+  orig: 55, 51
+  offset: 13, 8
+  index: -1
+front/body
+  rotate: false
+  xy: 51, 41
+  size: 47, 19
+  orig: 55, 51
+  offset: 4, 17
+  index: -1
+front/filter_propeller_1
+  rotate: true
+  xy: 106, 16
+  size: 21, 13
+  orig: 55, 51
+  offset: 17, 11
+  index: -1
+front/right
+  rotate: false
+  xy: 68, 5
+  size: 17, 4
+  orig: 55, 51
+  offset: 19, 20
+  index: -1
+side/right
+  rotate: false
+  xy: 68, 5
+  size: 17, 4
+  orig: 56, 51
+  offset: 25, 21
+  index: -1
+front/rightR
+  rotate: false
+  xy: 75, 11
+  size: 16, 16
+  orig: 55, 51
+  offset: 13, 14
+  index: -1
+front/rightL
+  rotate: false
+  xy: 75, 11
+  size: 16, 16
+  orig: 55, 51
+  offset: 26, 14
+  index: -1
+side/rightL
+  rotate: false
+  xy: 75, 11
+  size: 16, 16
+  orig: 56, 51
+  offset: 32, 15
+  index: -1
+side/rightR
+  rotate: false
+  xy: 75, 11
+  size: 16, 16
+  orig: 56, 51
+  offset: 19, 15
+  index: -1
+side/body
+  rotate: false
+  xy: 2, 21
+  size: 40, 18
+  orig: 56, 51
+  offset: 5, 18
+  index: -1
+side/fanBL2
+  rotate: true
+  xy: 124, 23
+  size: 9, 1
+  orig: 56, 51
+  offset: 36, 30
+  index: -1
+side/fanBR2
+  rotate: true
+  xy: 124, 23
+  size: 9, 1
+  orig: 56, 51
+  offset: 3, 30
+  index: -1
+side/fanFR2
+  rotate: true
+  xy: 102, 18
+  size: 9, 1
+  orig: 56, 51
+  offset: 11, 28
+  index: -1
+side/filter_body
+  rotate: true
+  xy: 15, 3
+  size: 7, 10
+  orig: 56, 51
+  offset: 27, 7
+  index: -1
+side/filter_propeller_1
+  rotate: false
+  xy: 109, 2
+  size: 16, 4
+  orig: 56, 51
+  offset: 22, 15
+  index: -1
+side/filter_propeller_2
+  rotate: false
+  xy: 87, 3
+  size: 20, 3
+  orig: 56, 51
+  offset: 21, 16
+  index: -1
+side/filter_propeller_3
+  rotate: true
+  xy: 121, 45
+  size: 15, 4
+  orig: 56, 51
+  offset: 22, 15
+  index: -1
+side/filter_ringB
+  rotate: false
+  xy: 93, 8
+  size: 29, 6
+  orig: 56, 51
+  offset: 16, 16
+  index: -1
+side/filter_ringF
+  rotate: false
+  xy: 2, 12
+  size: 29, 7
+  orig: 56, 51
+  offset: 16, 11
+  index: -1
+side/propellerBL
+  rotate: false
+  xy: 2, 2
+  size: 11, 8
+  orig: 56, 51
+  offset: 32, 24
+  index: -1
+side/propellerFL
+  rotate: false
+  xy: 55, 2
+  size: 11, 9
+  orig: 56, 51
+  offset: 39, 21
+  index: -1

@@ -1,0 +1,328 @@
+
+golem_rabbit_mxlv.png
+size: 128,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[add]bodyB
+  rotate: true
+  xy: 105, 455
+  size: 47, 16
+  orig: 57, 48
+  offset: 5, 1
+  index: -1
+back/arm_L
+  rotate: false
+  xy: 1, 257
+  size: 34, 37
+  orig: 40, 48
+  offset: 4, 7
+  index: -1
+back/arm_R
+  rotate: false
+  xy: 1, 257
+  size: 34, 37
+  orig: 40, 48
+  offset: 4, 7
+  index: -1
+back/body
+  rotate: false
+  xy: 1, 395
+  size: 51, 52
+  orig: 57, 52
+  offset: 3, 0
+  index: -1
+back/elbow_L
+  rotate: false
+  xy: 1, 36
+  size: 33, 34
+  orig: 38, 46
+  offset: 5, 2
+  index: -1
+back/elbow_R
+  rotate: false
+  xy: 1, 36
+  size: 33, 34
+  orig: 38, 46
+  offset: 5, 2
+  index: -1
+back/foot_L
+  rotate: false
+  xy: 51, 214
+  size: 15, 15
+  orig: 28, 16
+  offset: 2, 0
+  index: -1
+back/foot_R
+  rotate: false
+  xy: 51, 214
+  size: 15, 15
+  orig: 28, 16
+  offset: 2, 0
+  index: -1
+back/hand_L
+  rotate: true
+  xy: 66, 366
+  size: 33, 30
+  orig: 38, 34
+  offset: 3, 3
+  index: -1
+back/hand_R
+  rotate: true
+  xy: 66, 366
+  size: 33, 30
+  orig: 38, 34
+  offset: 3, 3
+  index: -1
+back/head
+  rotate: false
+  xy: 1, 343
+  size: 31, 51
+  orig: 57, 74
+  offset: 13, 19
+  index: -1
+back/leg_L
+  rotate: false
+  xy: 36, 183
+  size: 14, 13
+  orig: 16, 16
+  offset: 0, 2
+  index: -1
+back/leg_R
+  rotate: false
+  xy: 36, 183
+  size: 14, 13
+  orig: 16, 16
+  offset: 0, 2
+  index: -1
+front/leg_L
+  rotate: false
+  xy: 36, 183
+  size: 14, 13
+  orig: 16, 16
+  offset: 0, 2
+  index: -1
+front/leg_R
+  rotate: false
+  xy: 36, 183
+  size: 14, 13
+  orig: 16, 16
+  offset: 0, 2
+  index: -1
+back/pelvis
+  rotate: true
+  xy: 97, 383
+  size: 31, 30
+  orig: 33, 30
+  offset: 1, 0
+  index: -1
+front/arm_L
+  rotate: false
+  xy: 1, 219
+  size: 34, 37
+  orig: 40, 50
+  offset: 2, 8
+  index: -1
+front/arm_R
+  rotate: false
+  xy: 1, 181
+  size: 34, 37
+  orig: 40, 50
+  offset: 2, 8
+  index: -1
+front/body
+  rotate: false
+  xy: 1, 448
+  size: 51, 54
+  orig: 57, 62
+  offset: 3, 5
+  index: -1
+front/elbow_L
+  rotate: false
+  xy: 1, 1
+  size: 33, 34
+  orig: 38, 46
+  offset: 0, 5
+  index: -1
+front/elbow_R
+  rotate: false
+  xy: 1, 1
+  size: 33, 34
+  orig: 38, 46
+  offset: 0, 5
+  index: -1
+front/face_attack
+  rotate: true
+  xy: 116, 436
+  size: 18, 11
+  orig: 29, 38
+  offset: 7, 20
+  index: -1
+front/foot_L
+  rotate: false
+  xy: 36, 197
+  size: 15, 15
+  orig: 28, 16
+  offset: 2, 0
+  index: -1
+front/foot_R
+  rotate: false
+  xy: 36, 197
+  size: 15, 15
+  orig: 28, 16
+  offset: 2, 0
+  index: -1
+front/hand_L
+  rotate: true
+  xy: 36, 230
+  size: 32, 31
+  orig: 38, 34
+  offset: 0, 3
+  index: -1
+front/hand_R
+  rotate: true
+  xy: 36, 230
+  size: 32, 31
+  orig: 38, 34
+  offset: 0, 3
+  index: -1
+front/head
+  rotate: false
+  xy: 53, 400
+  size: 31, 51
+  orig: 57, 88
+  offset: 13, 26
+  index: -1
+front/pelvis
+  rotate: false
+  xy: 35, 326
+  size: 31, 33
+  orig: 33, 46
+  offset: 1, 13
+  index: -1
+side/arm_B
+  rotate: true
+  xy: 1, 107
+  size: 36, 32
+  orig: 40, 50
+  offset: 2, 9
+  index: -1
+side/arm_F
+  rotate: true
+  xy: 1, 144
+  size: 36, 33
+  orig: 40, 50
+  offset: 2, 8
+  index: -1
+side/body
+  rotate: false
+  xy: 53, 452
+  size: 51, 50
+  orig: 56, 68
+  offset: 5, 11
+  index: -1
+side/elbow_B
+  rotate: false
+  xy: 36, 263
+  size: 31, 32
+  orig: 38, 46
+  offset: 6, 3
+  index: -1
+side/elbow_F
+  rotate: true
+  xy: 33, 360
+  size: 34, 32
+  orig: 46, 46
+  offset: 3, 5
+  index: -1
+side/face_attack
+  rotate: false
+  xy: 33, 358
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face_damaged
+  rotate: false
+  xy: 33, 358
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face_idle
+  rotate: false
+  xy: 33, 358
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face_damaged
+  rotate: false
+  xy: 33, 358
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face_idle
+  rotate: false
+  xy: 33, 358
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/foot_B
+  rotate: false
+  xy: 36, 213
+  size: 14, 16
+  orig: 28, 24
+  offset: 6, 3
+  index: -1
+side/foot_F
+  rotate: true
+  xy: 97, 366
+  size: 16, 18
+  orig: 28, 24
+  offset: 5, 2
+  index: -1
+side/hand_B
+  rotate: false
+  xy: 35, 296
+  size: 27, 29
+  orig: 38, 34
+  offset: 7, 2
+  index: -1
+side/hand_F
+  rotate: false
+  xy: 1, 71
+  size: 34, 35
+  orig: 38, 44
+  offset: 2, 5
+  index: -1
+side/head
+  rotate: false
+  xy: 1, 295
+  size: 33, 47
+  orig: 54, 68
+  offset: 12, 17
+  index: -1
+side/leg_B
+  rotate: true
+  xy: 85, 402
+  size: 12, 11
+  orig: 16, 16
+  offset: 3, 1
+  index: -1
+side/leg_F
+  rotate: true
+  xy: 116, 423
+  size: 12, 11
+  orig: 16, 16
+  offset: 3, 0
+  index: -1
+side/pelvis
+  rotate: true
+  xy: 85, 415
+  size: 36, 30
+  orig: 42, 36
+  offset: 5, 6
+  index: -1

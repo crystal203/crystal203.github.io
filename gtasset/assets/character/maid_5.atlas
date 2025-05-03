@@ -1,0 +1,482 @@
+
+maid_5.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+aura_frenzy
+  rotate: false
+  xy: 1, 71
+  size: 49, 56
+  orig: 53, 56
+  offset: 4, 0
+  index: -1
+back/[base]armL
+  rotate: false
+  xy: 171, 28
+  size: 9, 9
+  orig: 63, 64
+  offset: 19, 12
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 171, 28
+  size: 9, 9
+  orig: 63, 64
+  offset: 19, 12
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 51, 71
+  size: 25, 15
+  orig: 63, 64
+  offset: 19, 5
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 195, 72
+  size: 7, 9
+  orig: 63, 64
+  offset: 20, 8
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 195, 72
+  size: 7, 9
+  orig: 63, 64
+  offset: 20, 8
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 195, 72
+  size: 7, 9
+  orig: 63, 64
+  offset: 20, 8
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 195, 72
+  size: 7, 9
+  orig: 63, 64
+  offset: 20, 8
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 92, 92
+  size: 45, 35
+  orig: 63, 64
+  offset: 9, 15
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 92, 87
+  size: 4, 7
+  orig: 63, 64
+  offset: 27, 4
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 92, 87
+  size: 4, 7
+  orig: 63, 64
+  offset: 27, 4
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 92, 87
+  size: 4, 7
+  orig: 63, 64
+  offset: 27, 4
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 92, 87
+  size: 4, 7
+  orig: 63, 64
+  offset: 27, 4
+  index: -1
+back/bag
+  rotate: true
+  xy: 1, 11
+  size: 59, 38
+  orig: 63, 64
+  offset: 4, 4
+  index: -1
+back/helm_frenzy
+  rotate: true
+  xy: 115, 27
+  size: 45, 29
+  orig: 63, 64
+  offset: 9, 21
+  index: -1
+back/wingL
+  rotate: true
+  xy: 188, 82
+  size: 15, 13
+  orig: 63, 64
+  offset: 10, 5
+  index: -1
+back/wingR
+  rotate: true
+  xy: 188, 82
+  size: 15, 13
+  orig: 63, 64
+  offset: 10, 5
+  index: -1
+front/wingL
+  rotate: true
+  xy: 188, 82
+  size: 15, 13
+  orig: 63, 64
+  offset: 10, 5
+  index: -1
+front/wingR
+  rotate: true
+  xy: 188, 82
+  size: 15, 13
+  orig: 63, 64
+  offset: 10, 5
+  index: -1
+side/wingR
+  rotate: true
+  xy: 188, 82
+  size: 15, 13
+  orig: 60, 60
+  offset: 13, 3
+  index: -1
+basic_twohandsword
+  rotate: false
+  xy: 51, 87
+  size: 40, 40
+  orig: 64, 64
+  offset: 23, 23
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 181, 29
+  size: 9, 9
+  orig: 63, 64
+  offset: 19, 12
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 181, 29
+  size: 9, 9
+  orig: 63, 64
+  offset: 19, 12
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 192, 42
+  size: 8, 8
+  orig: 63, 64
+  offset: 32, 12
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 192, 42
+  size: 8, 8
+  orig: 63, 64
+  offset: 32, 12
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 77, 71
+  size: 25, 15
+  orig: 63, 64
+  offset: 19, 5
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 191, 28
+  size: 10, 8
+  orig: 63, 64
+  offset: 35, 7
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 191, 28
+  size: 10, 8
+  orig: 63, 64
+  offset: 35, 7
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 79, 25
+  size: 45, 35
+  orig: 63, 64
+  offset: 9, 15
+  index: -1
+front/bag
+  rotate: true
+  xy: 40, 11
+  size: 59, 38
+  orig: 63, 64
+  offset: 0, 4
+  index: -1
+side/bag
+  rotate: true
+  xy: 40, 11
+  size: 59, 38
+  orig: 60, 60
+  offset: 0, 1
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 96, 2
+  size: 15, 10
+  orig: 63, 64
+  offset: 24, 17
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 17, 1
+  size: 13, 9
+  orig: 63, 64
+  offset: 25, 18
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 106, 14
+  size: 15, 10
+  orig: 63, 64
+  offset: 24, 18
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 128, 3
+  size: 15, 10
+  orig: 63, 64
+  offset: 24, 18
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 80, 1
+  size: 15, 11
+  orig: 63, 64
+  offset: 24, 17
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 138, 16
+  size: 15, 10
+  orig: 63, 64
+  offset: 24, 18
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 1, 1
+  size: 15, 9
+  orig: 63, 64
+  offset: 24, 18
+  index: -1
+front/face/blood
+  rotate: false
+  xy: 180, 66
+  size: 14, 14
+  orig: 63, 64
+  offset: 24, 18
+  index: -1
+front/face/frenzy_attack
+  rotate: false
+  xy: 103, 73
+  size: 28, 13
+  orig: 63, 64
+  offset: 19, 18
+  index: -1
+front/face/frenzy_damaged
+  rotate: false
+  xy: 144, 2
+  size: 17, 13
+  orig: 63, 64
+  offset: 23, 18
+  index: -1
+front/face/frenzy_idle
+  rotate: false
+  xy: 162, 2
+  size: 17, 13
+  orig: 63, 64
+  offset: 23, 18
+  index: -1
+front/face/frenzy_smile
+  rotate: false
+  xy: 180, 2
+  size: 17, 13
+  orig: 63, 64
+  offset: 23, 18
+  index: -1
+front/face/sleep_deep
+  rotate: false
+  xy: 31, 2
+  size: 13, 8
+  orig: 63, 64
+  offset: 25, 18
+  index: -1
+front/helm_frenzy
+  rotate: false
+  xy: 138, 98
+  size: 45, 29
+  orig: 63, 64
+  offset: 9, 21
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 194, 56
+  size: 9, 7
+  orig: 60, 60
+  offset: 35, 11
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 167, 18
+  size: 11, 8
+  orig: 60, 60
+  offset: 22, 10
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 132, 75
+  size: 26, 16
+  orig: 60, 60
+  offset: 20, 3
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 202, 89
+  size: 7, 8
+  orig: 60, 60
+  offset: 36, 5
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 191, 19
+  size: 8, 8
+  orig: 60, 60
+  offset: 24, 5
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 145, 38
+  size: 36, 34
+  orig: 60, 60
+  offset: 9, 14
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 100, 87
+  size: 4, 6
+  orig: 60, 60
+  offset: 35, 2
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 107, 87
+  size: 4, 6
+  orig: 60, 60
+  offset: 30, 2
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 159, 27
+  size: 11, 10
+  orig: 60, 60
+  offset: 31, 17
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 69, 1
+  size: 10, 9
+  orig: 60, 60
+  offset: 32, 18
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 154, 16
+  size: 12, 10
+  orig: 60, 60
+  offset: 31, 18
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 145, 27
+  size: 13, 10
+  orig: 60, 60
+  offset: 31, 18
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 179, 16
+  size: 11, 11
+  orig: 60, 60
+  offset: 31, 16
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 180, 39
+  size: 11, 11
+  orig: 60, 60
+  offset: 31, 17
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 45, 1
+  size: 11, 9
+  orig: 60, 60
+  offset: 31, 18
+  index: -1
+side/face/blood
+  rotate: false
+  xy: 174, 81
+  size: 13, 16
+  orig: 60, 60
+  offset: 30, 16
+  index: -1
+side/face/frenzy_attack
+  rotate: false
+  xy: 79, 13
+  size: 26, 11
+  orig: 60, 60
+  offset: 22, 17
+  index: -1
+side/face/frenzy_damaged
+  rotate: false
+  xy: 112, 1
+  size: 15, 12
+  orig: 60, 60
+  offset: 29, 18
+  index: -1
+side/face/frenzy_idle
+  rotate: false
+  xy: 122, 14
+  size: 15, 12
+  orig: 60, 60
+  offset: 29, 18
+  index: -1
+side/face/frenzy_smile
+  rotate: true
+  xy: 159, 82
+  size: 15, 14
+  orig: 60, 60
+  offset: 29, 17
+  index: -1
+side/face/sleep_deep
+  rotate: false
+  xy: 57, 1
+  size: 11, 9
+  orig: 60, 60
+  offset: 31, 18
+  index: -1
+side/helm_frenzy
+  rotate: false
+  xy: 184, 98
+  size: 36, 29
+  orig: 60, 60
+  offset: 9, 19
+  index: -1
+side/wingL
+  rotate: true
+  xy: 180, 51
+  size: 14, 13
+  orig: 60, 60
+  offset: 38, 3
+  index: -1

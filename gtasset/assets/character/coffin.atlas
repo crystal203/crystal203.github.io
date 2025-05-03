@@ -1,0 +1,41 @@
+
+coffin.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: true
+  xy: 40, 31
+  size: 30, 42
+  orig: 50, 56
+  offset: 10, 0
+  index: -1
+front/body
+  rotate: false
+  xy: 83, 20
+  size: 30, 41
+  orig: 50, 56
+  offset: 10, 1
+  index: -1
+front/top
+  rotate: true
+  xy: 40, 2
+  size: 28, 37
+  orig: 50, 56
+  offset: 11, 0
+  index: -1
+side/body
+  rotate: true
+  xy: 1, 28
+  size: 33, 38
+  orig: 50, 56
+  offset: 9, 1
+  index: -1
+side/top
+  rotate: true
+  xy: 1, 1
+  size: 26, 38
+  orig: 50, 56
+  offset: 17, 1
+  index: -1

@@ -1,0 +1,174 @@
+
+coop_ghost.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 52, 48
+  size: 25, 31
+  orig: 55, 56
+  offset: 15, 3
+  index: -1
+back/head1
+  rotate: false
+  xy: 70, 7
+  size: 13, 12
+  orig: 55, 56
+  offset: 21, 6
+  index: -1
+front/head1
+  rotate: false
+  xy: 70, 7
+  size: 13, 12
+  orig: 55, 56
+  offset: 21, 6
+  index: -1
+back/head2
+  rotate: true
+  xy: 35, 4
+  size: 15, 16
+  orig: 55, 56
+  offset: 20, 5
+  index: -1
+front/head2
+  rotate: true
+  xy: 35, 4
+  size: 15, 16
+  orig: 55, 56
+  offset: 20, 5
+  index: -1
+front/body
+  rotate: true
+  xy: 52, 21
+  size: 25, 31
+  orig: 55, 56
+  offset: 15, 3
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 85, 21
+  size: 11, 6
+  orig: 55, 56
+  offset: 22, 7
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 85, 8
+  size: 11, 6
+  orig: 55, 56
+  offset: 22, 7
+  index: -1
+front/face/[base]doyagao
+  rotate: true
+  xy: 93, 9
+  size: 11, 5
+  orig: 55, 56
+  offset: 22, 8
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 97, 34
+  size: 11, 5
+  orig: 55, 56
+  offset: 22, 8
+  index: -1
+front/face/[base]mad
+  rotate: true
+  xy: 79, 62
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 5
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 35, 24
+  size: 13, 5
+  orig: 55, 56
+  offset: 21, 8
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 98, 60
+  size: 11, 5
+  orig: 55, 56
+  offset: 22, 8
+  index: -1
+fx_glow
+  rotate: false
+  xy: 2, 31
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+side/body
+  rotate: true
+  xy: 2, 4
+  size: 25, 31
+  orig: 56, 56
+  offset: 18, 3
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 92, 48
+  size: 10, 6
+  orig: 56, 56
+  offset: 29, 8
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 93, 22
+  size: 10, 6
+  orig: 56, 56
+  offset: 29, 9
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 100, 10
+  size: 10, 5
+  orig: 56, 56
+  offset: 29, 9
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 100, 47
+  size: 10, 5
+  orig: 56, 56
+  offset: 29, 9
+  index: -1
+side/face/[base]mad
+  rotate: true
+  xy: 85, 34
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 6
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 91, 62
+  size: 12, 5
+  orig: 56, 56
+  offset: 28, 9
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 93, 2
+  size: 10, 5
+  orig: 56, 56
+  offset: 29, 9
+  index: -1
+side/head1
+  rotate: true
+  xy: 79, 48
+  size: 12, 11
+  orig: 56, 56
+  offset: 27, 7
+  index: -1
+side/head2
+  rotate: false
+  xy: 53, 4
+  size: 15, 15
+  orig: 56, 56
+  offset: 25, 6
+  index: -1

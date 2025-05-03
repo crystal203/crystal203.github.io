@@ -1,0 +1,342 @@
+
+beanpole_icelady.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/armL
+  rotate: true
+  xy: 14, 1
+  size: 6, 11
+  orig: 10, 18
+  offset: 2, 3
+  index: -1
+back/armR
+  rotate: true
+  xy: 14, 1
+  size: 6, 11
+  orig: 10, 18
+  offset: 2, 3
+  index: -1
+front/armL
+  rotate: true
+  xy: 14, 1
+  size: 6, 11
+  orig: 10, 18
+  offset: 2, 3
+  index: -1
+front/armR
+  rotate: true
+  xy: 14, 1
+  size: 6, 11
+  orig: 10, 18
+  offset: 2, 3
+  index: -1
+back/body
+  rotate: true
+  xy: 239, 74
+  size: 17, 15
+  orig: 23, 18
+  offset: 3, 2
+  index: -1
+back/elbowL
+  rotate: true
+  xy: 71, 16
+  size: 7, 14
+  orig: 10, 18
+  offset: 2, 2
+  index: -1
+back/elbowR
+  rotate: true
+  xy: 1, 1
+  size: 6, 12
+  orig: 10, 18
+  offset: 2, 4
+  index: -1
+back/elbowR2
+  rotate: true
+  xy: 137, 51
+  size: 7, 12
+  orig: 10, 18
+  offset: 1, 4
+  index: -1
+back/head
+  rotate: false
+  xy: 84, 25
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/kneeL
+  rotate: false
+  xy: 57, 40
+  size: 13, 23
+  orig: 23, 24
+  offset: 3, 1
+  index: -1
+back/kneeR
+  rotate: false
+  xy: 57, 16
+  size: 13, 23
+  orig: 23, 24
+  offset: 7, 1
+  index: -1
+back/legL
+  rotate: false
+  xy: 115, 52
+  size: 11, 19
+  orig: 23, 22
+  offset: 4, 3
+  index: -1
+front/legL
+  rotate: false
+  xy: 115, 52
+  size: 11, 19
+  orig: 23, 22
+  offset: 4, 3
+  index: -1
+back/legR
+  rotate: true
+  xy: 103, 28
+  size: 11, 19
+  orig: 23, 22
+  offset: 8, 3
+  index: -1
+front/legR
+  rotate: true
+  xy: 103, 28
+  size: 11, 19
+  orig: 23, 22
+  offset: 8, 3
+  index: -1
+back/pelvis
+  rotate: false
+  xy: 163, 60
+  size: 11, 12
+  orig: 23, 20
+  offset: 6, 5
+  index: -1
+front/[fx]bling1
+  rotate: false
+  xy: 173, 76
+  size: 51, 51
+  orig: 71, 72
+  offset: 12, 13
+  index: -1
+front/body
+  rotate: false
+  xy: 84, 56
+  size: 17, 15
+  orig: 23, 18
+  offset: 3, 2
+  index: -1
+front/elbowL
+  rotate: false
+  xy: 73, 1
+  size: 7, 14
+  orig: 10, 18
+  offset: 2, 2
+  index: -1
+front/elbowR
+  rotate: false
+  xy: 127, 41
+  size: 7, 12
+  orig: 10, 18
+  offset: 2, 4
+  index: -1
+front/elbowR2
+  rotate: true
+  xy: 150, 51
+  size: 7, 12
+  orig: 10, 18
+  offset: 1, 4
+  index: -1
+front/face/attack
+  rotate: true
+  xy: 122, 40
+  size: 11, 4
+  orig: 17, 18
+  offset: 3, 7
+  index: -1
+front/face/idle
+  rotate: true
+  xy: 122, 40
+  size: 11, 4
+  orig: 17, 18
+  offset: 3, 7
+  index: -1
+front/face/damaged
+  rotate: false
+  xy: 163, 55
+  size: 11, 4
+  orig: 17, 18
+  offset: 3, 7
+  index: -1
+front/hair1
+  rotate: false
+  xy: 1, 8
+  size: 55, 55
+  orig: 71, 72
+  offset: 6, 14
+  index: -1
+front/hair2
+  rotate: false
+  xy: 1, 64
+  size: 64, 63
+  orig: 71, 72
+  offset: 4, 6
+  index: -1
+front/hair3
+  rotate: false
+  xy: 119, 73
+  size: 53, 54
+  orig: 71, 72
+  offset: 9, 0
+  index: -1
+front/head
+  rotate: true
+  xy: 239, 110
+  size: 17, 16
+  orig: 17, 18
+  offset: 0, 2
+  index: -1
+front/kneeL
+  rotate: false
+  xy: 71, 48
+  size: 12, 23
+  orig: 23, 24
+  offset: 4, 1
+  index: -1
+front/kneeR
+  rotate: false
+  xy: 71, 24
+  size: 12, 23
+  orig: 23, 24
+  offset: 7, 1
+  index: -1
+front/pelvis
+  rotate: false
+  xy: 151, 59
+  size: 11, 13
+  orig: 23, 20
+  offset: 6, 4
+  index: -1
+fx_glow
+  rotate: true
+  xy: 57, 1
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+side/armL
+  rotate: true
+  xy: 38, 2
+  size: 5, 9
+  orig: 10, 12
+  offset: 3, 2
+  index: -1
+side/armR
+  rotate: false
+  xy: 86, 16
+  size: 8, 10
+  orig: 10, 12
+  offset: 1, 1
+  index: -1
+side/body
+  rotate: false
+  xy: 84, 40
+  size: 17, 15
+  orig: 22, 18
+  offset: 2, 2
+  index: -1
+side/elbowL
+  rotate: false
+  xy: 89, 3
+  size: 7, 12
+  orig: 10, 18
+  offset: 2, 3
+  index: -1
+side/elbowR
+  rotate: false
+  xy: 81, 1
+  size: 7, 14
+  orig: 10, 18
+  offset: 2, 1
+  index: -1
+side/face/attack
+  rotate: false
+  xy: 26, 3
+  size: 11, 4
+  orig: 35, 40
+  offset: 14, 18
+  index: -1
+side/face/idle
+  rotate: false
+  xy: 26, 3
+  size: 11, 4
+  orig: 35, 40
+  offset: 14, 18
+  index: -1
+side/face/damaged
+  rotate: true
+  xy: 95, 16
+  size: 10, 5
+  orig: 35, 40
+  offset: 15, 18
+  index: -1
+side/hair1
+  rotate: false
+  xy: 66, 72
+  size: 52, 55
+  orig: 72, 72
+  offset: 14, 14
+  index: -1
+side/head
+  rotate: false
+  xy: 239, 92
+  size: 16, 17
+  orig: 35, 40
+  offset: 10, 13
+  index: -1
+side/kneeL
+  rotate: false
+  xy: 102, 52
+  size: 12, 19
+  orig: 23, 24
+  offset: 7, 2
+  index: -1
+side/kneeR
+  rotate: true
+  xy: 102, 40
+  size: 11, 19
+  orig: 23, 24
+  offset: 5, 2
+  index: -1
+side/legL
+  rotate: true
+  xy: 84, 27
+  size: 12, 18
+  orig: 23, 22
+  offset: 8, 3
+  index: -1
+side/legR
+  rotate: false
+  xy: 127, 54
+  size: 9, 18
+  orig: 23, 22
+  offset: 6, 3
+  index: -1
+side/pelvis
+  rotate: false
+  xy: 137, 59
+  size: 13, 13
+  orig: 22, 20
+  offset: 4, 4
+  index: -1
+weapon
+  rotate: false
+  xy: 225, 74
+  size: 13, 53
+  orig: 13, 56
+  offset: 0, 1
+  index: -1

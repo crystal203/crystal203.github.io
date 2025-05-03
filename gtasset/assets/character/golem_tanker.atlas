@@ -1,0 +1,419 @@
+
+golem_tanker.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 142, 65
+  size: 13, 8
+  orig: 67, 66
+  offset: 6, 22
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 142, 65
+  size: 13, 8
+  orig: 67, 66
+  offset: 6, 22
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 142, 65
+  size: 13, 8
+  orig: 67, 66
+  offset: 6, 22
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 142, 65
+  size: 13, 8
+  orig: 67, 66
+  offset: 6, 22
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 92, 4
+  size: 27, 28
+  orig: 67, 66
+  offset: 20, 14
+  index: -1
+back/[base]bodyF
+  rotate: false
+  xy: 120, 4
+  size: 27, 28
+  orig: 65, 64
+  offset: 19, 13
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 168, 4
+  size: 17, 19
+  orig: 67, 66
+  offset: 3, 7
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 160, 44
+  size: 20, 19
+  orig: 67, 66
+  offset: 0, 7
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 113, 65
+  size: 29, 28
+  orig: 67, 66
+  offset: 19, 32
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 170, 70
+  size: 9, 10
+  orig: 67, 66
+  offset: 22, 4
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 170, 70
+  size: 9, 10
+  orig: 67, 66
+  offset: 22, 4
+  index: -1
+back/[base]pelvis
+  rotate: true
+  xy: 136, 100
+  size: 27, 17
+  orig: 67, 66
+  offset: 20, 6
+  index: -1
+back/bodyB
+  rotate: false
+  xy: 83, 65
+  size: 29, 25
+  orig: 67, 66
+  offset: 19, 18
+  index: -1
+back/pelvisB
+  rotate: true
+  xy: 154, 102
+  size: 25, 12
+  orig: 67, 66
+  offset: 21, 8
+  index: -1
+back/shoulderL
+  rotate: true
+  xy: 60, 1
+  size: 27, 31
+  orig: 67, 66
+  offset: 0, 25
+  index: -1
+front/shoulderL
+  rotate: true
+  xy: 60, 1
+  size: 27, 31
+  orig: 67, 66
+  offset: 0, 25
+  index: -1
+back/shoulderR
+  rotate: true
+  xy: 48, 65
+  size: 22, 34
+  orig: 67, 66
+  offset: 1, 25
+  index: -1
+front/shoulderR
+  rotate: true
+  xy: 48, 65
+  size: 22, 34
+  orig: 67, 66
+  offset: 1, 25
+  index: -1
+front/[base]armL2
+  rotate: true
+  xy: 148, 2
+  size: 13, 8
+  orig: 67, 66
+  offset: 50, 22
+  index: -1
+front/[base]armR2
+  rotate: true
+  xy: 148, 2
+  size: 13, 8
+  orig: 67, 66
+  offset: 50, 22
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 57, 29
+  size: 35, 34
+  orig: 67, 66
+  offset: 16, 13
+  index: -1
+front/[base]elboR2L
+  rotate: false
+  xy: 168, 24
+  size: 17, 19
+  orig: 65, 64
+  offset: 46, 6
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 168, 24
+  size: 17, 19
+  orig: 67, 66
+  offset: 47, 7
+  index: -1
+front/[base]elbowL
+  rotate: true
+  xy: 162, 81
+  size: 20, 19
+  orig: 67, 66
+  offset: 0, 7
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 148, 16
+  size: 20, 19
+  orig: 67, 66
+  offset: 47, 7
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 180, 61
+  size: 17, 19
+  orig: 67, 66
+  offset: 3, 7
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 106, 95
+  size: 29, 32
+  orig: 67, 66
+  offset: 19, 28
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 39, 4
+  size: 10, 13
+  orig: 67, 66
+  offset: 21, 4
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 39, 4
+  size: 10, 13
+  orig: 67, 66
+  offset: 21, 4
+  index: -1
+front/[base]pelvis
+  rotate: true
+  xy: 157, 4
+  size: 11, 10
+  orig: 67, 66
+  offset: 28, 6
+  index: -1
+front/[base]pelvis-2
+  rotate: true
+  xy: 157, 4
+  size: 11, 10
+  orig: 65, 64
+  offset: 27, 5
+  index: -1
+front/bodyF
+  rotate: true
+  xy: 141, 37
+  size: 27, 18
+  orig: 67, 66
+  offset: 20, 25
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 1, 1
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/pelvisB
+  rotate: true
+  xy: 121, 37
+  size: 27, 19
+  orig: 67, 66
+  offset: 20, 9
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 156, 65
+  size: 13, 8
+  orig: 66, 66
+  offset: 45, 22
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 1, 17
+  size: 21, 47
+  orig: 66, 66
+  offset: 6, 16
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 1, 65
+  size: 46, 62
+  orig: 66, 66
+  offset: 6, 1
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 167, 107
+  size: 20, 19
+  orig: 66, 66
+  offset: 42, 7
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 82, 91
+  size: 36, 23
+  orig: 66, 66
+  offset: 5, 1
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 23, 18
+  size: 46, 33
+  orig: 66, 66
+  offset: 6, 30
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 50, 4
+  size: 9, 13
+  orig: 66, 66
+  offset: 38, 4
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 26, 1
+  size: 12, 16
+  orig: 66, 66
+  offset: 28, 1
+  index: -1
+side/[base]pelvis
+  rotate: true
+  xy: 142, 74
+  size: 25, 19
+  orig: 66, 66
+  offset: 25, 2
+  index: -1
+side/bodyF
+  rotate: false
+  xy: 1, 3
+  size: 24, 13
+  orig: 66, 66
+  offset: 27, 25
+  index: -1
+side/shoulderL
+  rotate: false
+  xy: 92, 33
+  size: 28, 31
+  orig: 66, 66
+  offset: 35, 25
+  index: -1
+side/shoulderR
+  rotate: false
+  xy: 48, 88
+  size: 33, 39
+  orig: 66, 66
+  offset: 0, 24
+  index: -1

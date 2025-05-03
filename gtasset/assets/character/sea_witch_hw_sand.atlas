@@ -1,0 +1,916 @@
+
+sea_witch_hw_sand.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 88, 104
+  size: 5, 6
+  orig: 75, 74
+  offset: 30, 18
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 88, 104
+  size: 5, 6
+  orig: 75, 74
+  offset: 30, 18
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 41, 19
+  size: 13, 13
+  orig: 75, 74
+  offset: 31, 13
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 96, 140
+  size: 7, 7
+  orig: 75, 74
+  offset: 26, 14
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 96, 140
+  size: 7, 7
+  orig: 75, 74
+  offset: 26, 14
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 230, 105
+  size: 23, 23
+  orig: 75, 74
+  offset: 26, 23
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 88, 112
+  size: 5, 9
+  orig: 75, 74
+  offset: 32, 9
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 88, 112
+  size: 5, 9
+  orig: 75, 74
+  offset: 32, 9
+  index: -1
+back/hairL
+  rotate: false
+  xy: 193, 111
+  size: 3, 11
+  orig: 75, 74
+  offset: 27, 21
+  index: -1
+front/hairR
+  rotate: false
+  xy: 193, 111
+  size: 3, 11
+  orig: 75, 74
+  offset: 27, 21
+  index: -1
+back/hairR
+  rotate: false
+  xy: 187, 92
+  size: 3, 11
+  orig: 75, 74
+  offset: 45, 21
+  index: -1
+front/hairL
+  rotate: false
+  xy: 187, 92
+  size: 3, 11
+  orig: 75, 74
+  offset: 45, 21
+  index: -1
+back/helm
+  rotate: false
+  xy: 2, 150
+  size: 35, 31
+  orig: 75, 74
+  offset: 20, 21
+  index: -1
+back/tako
+  rotate: false
+  xy: 27, 85
+  size: 29, 15
+  orig: 75, 74
+  offset: 20, 3
+  index: -1
+back/tako1_1
+  rotate: false
+  xy: 2, 48
+  size: 19, 14
+  orig: 75, 74
+  offset: 33, 8
+  index: -1
+back/tako1_2
+  rotate: true
+  xy: 109, 66
+  size: 16, 22
+  orig: 75, 74
+  offset: 44, 9
+  index: -1
+back/tako1_3
+  rotate: true
+  xy: 2, 18
+  size: 11, 14
+  orig: 75, 74
+  offset: 55, 17
+  index: -1
+back/tako2_1
+  rotate: false
+  xy: 188, 153
+  size: 27, 28
+  orig: 75, 74
+  offset: 34, 6
+  index: -1
+back/tako2_2
+  rotate: false
+  xy: 221, 21
+  size: 14, 13
+  orig: 75, 74
+  offset: 52, 21
+  index: -1
+back/tako2_3
+  rotate: true
+  xy: 133, 68
+  size: 14, 25
+  orig: 75, 74
+  offset: 60, 21
+  index: -1
+back/tako3_1
+  rotate: false
+  xy: 126, 103
+  size: 30, 19
+  orig: 75, 74
+  offset: 31, 11
+  index: -1
+back/tako3_2
+  rotate: false
+  xy: 120, 32
+  size: 15, 15
+  orig: 75, 74
+  offset: 55, 9
+  index: -1
+back/tako4F
+  rotate: false
+  xy: 34, 8
+  size: 15, 9
+  orig: 75, 74
+  offset: 40, 60
+  index: -1
+back/tako4_1
+  rotate: true
+  xy: 2, 126
+  size: 22, 31
+  orig: 75, 74
+  offset: 37, 12
+  index: -1
+back/tako4_2
+  rotate: true
+  xy: 106, 126
+  size: 22, 31
+  orig: 75, 74
+  offset: 42, 35
+  index: -1
+back/tako5_1
+  rotate: false
+  xy: 199, 133
+  size: 15, 18
+  orig: 75, 74
+  offset: 24, 8
+  index: -1
+back/tako5_2
+  rotate: false
+  xy: 26, 49
+  size: 20, 15
+  orig: 75, 74
+  offset: 10, 11
+  index: -1
+back/tako5_3
+  rotate: true
+  xy: 184, 6
+  size: 11, 12
+  orig: 75, 74
+  offset: 4, 6
+  index: -1
+back/tako6
+  rotate: true
+  xy: 106, 150
+  size: 31, 26
+  orig: 75, 74
+  offset: 10, 11
+  index: -1
+back/tako7_1
+  rotate: true
+  xy: 193, 86
+  size: 19, 27
+  orig: 75, 74
+  offset: 24, 13
+  index: -1
+back/tako7_2
+  rotate: true
+  xy: 68, 123
+  size: 24, 26
+  orig: 75, 74
+  offset: 15, 32
+  index: -1
+back/tako7_3
+  rotate: false
+  xy: 41, 34
+  size: 20, 10
+  orig: 75, 74
+  offset: 15, 52
+  index: -1
+back/tako8_1
+  rotate: false
+  xy: 27, 66
+  size: 24, 17
+  orig: 75, 74
+  offset: 12, 13
+  index: -1
+back/tako8_2
+  rotate: false
+  xy: 137, 32
+  size: 14, 15
+  orig: 75, 74
+  offset: 6, 17
+  index: -1
+back/tako8_3
+  rotate: true
+  xy: 2, 6
+  size: 10, 13
+  orig: 75, 74
+  offset: 6, 27
+  index: -1
+back/tako8_4
+  rotate: false
+  xy: 175, 33
+  size: 16, 15
+  orig: 75, 74
+  offset: 0, 30
+  index: -1
+back/takoF
+  rotate: true
+  xy: 184, 50
+  size: 17, 19
+  orig: 75, 74
+  offset: 37, 2
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 89, 18
+  size: 5, 6
+  orig: 75, 74
+  offset: 30, 18
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 89, 18
+  size: 5, 6
+  orig: 75, 74
+  offset: 30, 18
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 175, 58
+  size: 6, 7
+  orig: 75, 74
+  offset: 39, 18
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 175, 58
+  size: 6, 7
+  orig: 75, 74
+  offset: 39, 18
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 169, 18
+  size: 13, 13
+  orig: 75, 74
+  offset: 31, 13
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 96, 131
+  size: 7, 7
+  orig: 75, 74
+  offset: 26, 14
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 96, 131
+  size: 7, 7
+  orig: 75, 74
+  offset: 26, 14
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 246, 158
+  size: 9, 8
+  orig: 75, 74
+  offset: 42, 13
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 69, 51
+  size: 9, 8
+  orig: 75, 74
+  offset: 42, 13
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 63, 98
+  size: 23, 23
+  orig: 75, 74
+  offset: 26, 23
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 247, 94
+  size: 5, 9
+  orig: 75, 74
+  offset: 32, 9
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 247, 94
+  size: 5, 9
+  orig: 75, 74
+  offset: 32, 9
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 141, 19
+  size: 15, 10
+  orig: 75, 74
+  offset: 30, 23
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 141, 8
+  size: 15, 9
+  orig: 75, 74
+  offset: 30, 24
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 184, 19
+  size: 15, 10
+  orig: 75, 74
+  offset: 30, 24
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 72, 14
+  size: 15, 10
+  orig: 75, 74
+  offset: 30, 24
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 201, 14
+  size: 15, 10
+  orig: 75, 74
+  offset: 30, 23
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 218, 9
+  size: 15, 10
+  orig: 75, 74
+  offset: 30, 24
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 51, 7
+  size: 15, 9
+  orig: 75, 74
+  offset: 30, 24
+  index: -1
+front/hair
+  rotate: false
+  xy: 53, 62
+  size: 25, 13
+  orig: 75, 74
+  offset: 25, 22
+  index: -1
+front/hairF
+  rotate: false
+  xy: 2, 81
+  size: 23, 20
+  orig: 75, 74
+  offset: 26, 26
+  index: -1
+front/helm
+  rotate: false
+  xy: 39, 154
+  size: 35, 27
+  orig: 75, 74
+  offset: 20, 25
+  index: -1
+front/helmB
+  rotate: false
+  xy: 158, 105
+  size: 33, 17
+  orig: 75, 74
+  offset: 21, 22
+  index: -1
+front/tako
+  rotate: true
+  xy: 133, 49
+  size: 17, 19
+  orig: 75, 74
+  offset: 21, 4
+  index: -1
+front/tako1_1
+  rotate: false
+  xy: 48, 46
+  size: 19, 14
+  orig: 75, 74
+  offset: 22, 10
+  index: -1
+front/tako1_2
+  rotate: true
+  xy: 160, 67
+  size: 15, 22
+  orig: 75, 74
+  offset: 14, 11
+  index: -1
+front/tako1_3
+  rotate: true
+  xy: 56, 18
+  size: 11, 14
+  orig: 75, 74
+  offset: 8, 19
+  index: -1
+side/tako1_3
+  rotate: true
+  xy: 56, 18
+  size: 11, 14
+  orig: 72, 72
+  offset: 8, 17
+  index: -1
+front/tako2_1
+  rotate: false
+  xy: 217, 154
+  size: 27, 27
+  orig: 75, 74
+  offset: 15, 11
+  index: -1
+front/tako2_2
+  rotate: false
+  xy: 19, 17
+  size: 13, 13
+  orig: 75, 74
+  offset: 10, 25
+  index: -1
+front/tako2_3
+  rotate: true
+  xy: 218, 65
+  size: 14, 25
+  orig: 75, 74
+  offset: 1, 25
+  index: -1
+side/tako2_3
+  rotate: true
+  xy: 218, 65
+  size: 14, 25
+  orig: 72, 72
+  offset: 0, 24
+  index: -1
+front/tako3_1
+  rotate: false
+  xy: 88, 84
+  size: 29, 17
+  orig: 75, 74
+  offset: 14, 13
+  index: -1
+front/tako3_2
+  rotate: false
+  xy: 2, 31
+  size: 15, 15
+  orig: 75, 74
+  offset: 5, 10
+  index: -1
+front/tako4F
+  rotate: false
+  xy: 235, 10
+  size: 16, 9
+  orig: 75, 74
+  offset: 19, 60
+  index: -1
+side/tako4F
+  rotate: false
+  xy: 235, 10
+  size: 16, 9
+  orig: 72, 72
+  offset: 17, 59
+  index: -1
+front/tako4_1
+  rotate: true
+  xy: 199, 107
+  size: 21, 29
+  orig: 75, 74
+  offset: 16, 13
+  index: -1
+front/tako4_2
+  rotate: true
+  xy: 96, 103
+  size: 21, 28
+  orig: 75, 74
+  offset: 11, 37
+  index: -1
+front/tako5_1
+  rotate: true
+  xy: 205, 48
+  size: 15, 18
+  orig: 75, 74
+  offset: 37, 11
+  index: -1
+side/tako5_1
+  rotate: true
+  xy: 205, 48
+  size: 15, 18
+  orig: 72, 72
+  offset: 31, 10
+  index: -1
+front/tako5_2
+  rotate: false
+  xy: 109, 49
+  size: 20, 15
+  orig: 75, 74
+  offset: 46, 14
+  index: -1
+front/tako5_3
+  rotate: false
+  xy: 113, 17
+  size: 12, 13
+  orig: 75, 74
+  offset: 60, 9
+  index: -1
+front/tako6
+  rotate: true
+  xy: 134, 150
+  size: 31, 25
+  orig: 75, 74
+  offset: 34, 12
+  index: -1
+front/tako7_1
+  rotate: true
+  xy: 158, 84
+  size: 19, 27
+  orig: 75, 74
+  offset: 32, 13
+  index: -1
+side/tako7_1
+  rotate: true
+  xy: 158, 84
+  size: 19, 27
+  orig: 72, 72
+  offset: 30, 12
+  index: -1
+front/tako7_2
+  rotate: true
+  xy: 139, 124
+  size: 24, 28
+  orig: 75, 74
+  offset: 36, 32
+  index: -1
+front/tako7_3
+  rotate: true
+  xy: 86, 26
+  size: 20, 10
+  orig: 75, 74
+  offset: 40, 52
+  index: -1
+front/tako8_1
+  rotate: false
+  xy: 83, 65
+  size: 24, 17
+  orig: 75, 74
+  offset: 39, 13
+  index: -1
+side/tako8_1
+  rotate: false
+  xy: 83, 65
+  size: 24, 17
+  orig: 72, 72
+  offset: 34, 12
+  index: -1
+front/tako8_2
+  rotate: false
+  xy: 153, 31
+  size: 14, 15
+  orig: 75, 74
+  offset: 55, 17
+  index: -1
+front/tako8_3
+  rotate: true
+  xy: 158, 6
+  size: 10, 13
+  orig: 75, 74
+  offset: 59, 27
+  index: -1
+front/tako8_4
+  rotate: false
+  xy: 23, 32
+  size: 16, 15
+  orig: 75, 74
+  offset: 59, 30
+  index: -1
+front/takoF
+  rotate: false
+  xy: 187, 69
+  size: 29, 15
+  orig: 75, 74
+  offset: 26, 3
+  index: -1
+side/takoF
+  rotate: false
+  xy: 187, 69
+  size: 29, 15
+  orig: 72, 72
+  offset: 30, 2
+  index: -1
+index
+  rotate: false
+  xy: 246, 155
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 173, 10
+  size: 5, 6
+  orig: 72, 72
+  offset: 42, 17
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 131, 9
+  size: 5, 6
+  orig: 72, 72
+  offset: 34, 17
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 237, 21
+  size: 14, 13
+  orig: 72, 72
+  offset: 34, 12
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 246, 43
+  size: 6, 7
+  orig: 72, 72
+  offset: 43, 12
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 158, 22
+  size: 6, 7
+  orig: 72, 72
+  offset: 32, 12
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 222, 81
+  size: 23, 22
+  orig: 72, 72
+  offset: 29, 23
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 150, 92
+  size: 5, 9
+  orig: 72, 72
+  offset: 41, 8
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 247, 83
+  size: 5, 9
+  orig: 72, 72
+  offset: 35, 8
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 89, 5
+  size: 12, 10
+  orig: 72, 72
+  offset: 37, 24
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 246, 169
+  size: 12, 8
+  orig: 72, 72
+  offset: 37, 25
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 103, 5
+  size: 12, 10
+  orig: 72, 72
+  offset: 37, 25
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 198, 3
+  size: 12, 9
+  orig: 72, 72
+  offset: 37, 25
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 117, 5
+  size: 12, 10
+  orig: 72, 72
+  offset: 37, 24
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 68, 2
+  size: 12, 10
+  orig: 72, 72
+  offset: 37, 25
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 245, 67
+  size: 12, 9
+  orig: 72, 72
+  offset: 37, 25
+  index: -1
+side/hair
+  rotate: false
+  xy: 225, 52
+  size: 24, 11
+  orig: 72, 72
+  offset: 28, 22
+  index: -1
+side/hairF
+  rotate: false
+  xy: 58, 77
+  size: 23, 19
+  orig: 72, 72
+  offset: 30, 26
+  index: -1
+side/hairL
+  rotate: false
+  xy: 251, 54
+  size: 3, 11
+  orig: 72, 72
+  offset: 47, 20
+  index: -1
+side/hairR
+  rotate: false
+  xy: 102, 52
+  size: 3, 11
+  orig: 72, 72
+  offset: 33, 20
+  index: -1
+side/helm
+  rotate: true
+  xy: 76, 149
+  size: 32, 28
+  orig: 72, 72
+  offset: 22, 22
+  index: -1
+side/helmL
+  rotate: false
+  xy: 217, 130
+  size: 33, 22
+  orig: 72, 72
+  offset: 24, 19
+  index: -1
+side/tako
+  rotate: true
+  xy: 154, 48
+  size: 17, 19
+  orig: 72, 72
+  offset: 25, 3
+  index: -1
+side/tako1_1
+  rotate: false
+  xy: 225, 36
+  size: 19, 14
+  orig: 72, 72
+  offset: 22, 8
+  index: -1
+side/tako1_2
+  rotate: true
+  xy: 2, 64
+  size: 15, 22
+  orig: 72, 72
+  offset: 14, 9
+  index: -1
+side/tako2_1
+  rotate: false
+  xy: 39, 125
+  size: 27, 27
+  orig: 72, 72
+  offset: 14, 10
+  index: -1
+side/tako2_2
+  rotate: false
+  xy: 98, 17
+  size: 13, 13
+  orig: 72, 72
+  offset: 9, 24
+  index: -1
+side/tako3_1
+  rotate: false
+  xy: 119, 84
+  size: 29, 17
+  orig: 72, 72
+  offset: 13, 11
+  index: -1
+side/tako3_2
+  rotate: false
+  xy: 69, 31
+  size: 15, 15
+  orig: 72, 72
+  offset: 4, 8
+  index: -1
+side/tako4_1
+  rotate: true
+  xy: 2, 103
+  size: 21, 29
+  orig: 72, 72
+  offset: 14, 12
+  index: -1
+side/tako4_2
+  rotate: true
+  xy: 33, 102
+  size: 21, 28
+  orig: 72, 72
+  offset: 9, 36
+  index: -1
+side/tako5_2
+  rotate: false
+  xy: 80, 48
+  size: 20, 15
+  orig: 72, 72
+  offset: 40, 13
+  index: -1
+side/tako5_3
+  rotate: false
+  xy: 127, 17
+  size: 12, 13
+  orig: 72, 72
+  offset: 54, 8
+  index: -1
+side/tako6
+  rotate: true
+  xy: 161, 150
+  size: 31, 25
+  orig: 72, 72
+  offset: 28, 11
+  index: -1
+side/tako7_2
+  rotate: true
+  xy: 169, 124
+  size: 24, 28
+  orig: 72, 72
+  offset: 34, 31
+  index: -1
+side/tako7_3
+  rotate: true
+  xy: 209, 26
+  size: 20, 10
+  orig: 72, 72
+  offset: 38, 51
+  index: -1
+side/tako8_2
+  rotate: false
+  xy: 193, 31
+  size: 14, 15
+  orig: 72, 72
+  offset: 50, 16
+  index: -1
+side/tako8_3
+  rotate: true
+  xy: 17, 5
+  size: 10, 13
+  orig: 72, 72
+  offset: 54, 26
+  index: -1
+side/tako8_4
+  rotate: false
+  xy: 102, 32
+  size: 16, 15
+  orig: 72, 72
+  offset: 54, 29
+  index: -1

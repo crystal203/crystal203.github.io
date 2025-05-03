@@ -1,0 +1,244 @@
+
+fat_desertelf.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 59, 44
+  size: 30, 29
+  orig: 38, 42
+  offset: 5, 2
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 1, 1
+  size: 22, 32
+  orig: 26, 35
+  offset: 0, 3
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 1, 74
+  size: 57, 53
+  orig: 67, 58
+  offset: 5, 5
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 216, 37
+  size: 21, 28
+  orig: 36, 48
+  offset: 9, 11
+  index: -1
+back/[base]handL
+  rotate: true
+  xy: 146, 13
+  size: 23, 20
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 63, 2
+  size: 41, 25
+  orig: 49, 28
+  offset: 4, 0
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 230, 106
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 230, 106
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 30, 15
+  size: 28, 32
+  orig: 30, 40
+  offset: 2, 4
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 169, 18
+  size: 20, 32
+  orig: 26, 34
+  offset: 4, 2
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 59, 75
+  size: 58, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 146, 37
+  size: 22, 26
+  orig: 26, 30
+  offset: 1, 2
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 233, 16
+  size: 20, 18
+  orig: 24, 24
+  offset: 2, 3
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 89, 31
+  size: 43, 26
+  orig: 49, 28
+  offset: 3, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 211, 18
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 211, 18
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 108, 11
+  size: 19, 7
+  orig: 49, 28
+  offset: 15, 9
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 43, 6
+  size: 19, 8
+  orig: 49, 28
+  offset: 15, 8
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 202, 1
+  size: 19, 7
+  orig: 49, 28
+  offset: 15, 9
+  index: -1
+front/face/love
+  rotate: true
+  xy: 135, 11
+  size: 21, 7
+  orig: 49, 28
+  offset: 14, 9
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 146, 64
+  size: 27, 35
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 1, 34
+  size: 28, 39
+  orig: 32, 40
+  offset: 3, 1
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 185, 66
+  size: 61, 44
+  orig: 68, 46
+  offset: 3, 1
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 30, 44
+  size: 29, 27
+  orig: 29, 28
+  offset: 0, 1
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 24, 4
+  size: 18, 10
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 174, 39
+  size: 41, 26
+  orig: 50, 28
+  offset: 3, 0
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 116, 7
+  size: 25, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 89, 5
+  size: 25, 18
+  orig: 36, 32
+  offset: 5, 8
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 230, 8
+  size: 17, 7
+  orig: 62, 54
+  offset: 30, 24
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 174, 82
+  size: 17, 8
+  orig: 62, 54
+  offset: 30, 23
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 202, 21
+  size: 17, 8
+  orig: 62, 54
+  offset: 30, 23
+  index: -1
+side/face/love
+  rotate: false
+  xy: 210, 11
+  size: 19, 6
+  orig: 62, 54
+  offset: 29, 24
+  index: -1
+weapon1
+  rotate: false
+  xy: 118, 100
+  size: 66, 27
+  orig: 72, 40
+  offset: 4, 7
+  index: -1
+weapon2
+  rotate: true
+  xy: 118, 33
+  size: 66, 27
+  orig: 72, 40
+  offset: 4, 7
+  index: -1

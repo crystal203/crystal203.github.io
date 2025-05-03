@@ -1,0 +1,377 @@
+
+android_hitori.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+android_hitori/back/[base]armL
+  rotate: true
+  xy: 21, 2
+  size: 5, 6
+  orig: 67, 68
+  offset: 26, 14
+  index: -1
+android_hitori/back/[base]armR
+  rotate: true
+  xy: 21, 2
+  size: 5, 6
+  orig: 67, 68
+  offset: 26, 14
+  index: -1
+android_hitori/back/[base]body
+  rotate: false
+  xy: 52, 29
+  size: 11, 12
+  orig: 67, 68
+  offset: 28, 10
+  index: -1
+android_hitori/back/[base]elbowL
+  rotate: false
+  xy: 120, 8
+  size: 6, 6
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+android_hitori/back/[base]elbowR
+  rotate: false
+  xy: 120, 8
+  size: 6, 6
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+android_hitori/back/[base]head
+  rotate: false
+  xy: 45, 63
+  size: 41, 24
+  orig: 67, 68
+  offset: 13, 20
+  index: -1
+android_hitori/back/[base]legL
+  rotate: false
+  xy: 122, 39
+  size: 4, 8
+  orig: 67, 68
+  offset: 29, 6
+  index: -1
+android_hitori/back/[base]legR
+  rotate: false
+  xy: 122, 39
+  size: 4, 8
+  orig: 67, 68
+  offset: 29, 6
+  index: -1
+android_hitori/back/hair
+  rotate: false
+  xy: 70, 9
+  size: 11, 7
+  orig: 67, 68
+  offset: 44, 30
+  index: -1
+android_hitori/back/hairB
+  rotate: false
+  xy: 45, 43
+  size: 31, 18
+  orig: 67, 68
+  offset: 19, 13
+  index: -1
+android_hitori/back/hairdeco
+  rotate: true
+  xy: 92, 8
+  size: 6, 8
+  orig: 67, 68
+  offset: 42, 33
+  index: -1
+android_hitori/front/[base]armL
+  rotate: true
+  xy: 29, 2
+  size: 5, 6
+  orig: 67, 68
+  offset: 26, 14
+  index: -1
+android_hitori/front/[base]armR
+  rotate: true
+  xy: 29, 2
+  size: 5, 6
+  orig: 67, 68
+  offset: 26, 14
+  index: -1
+android_hitori/front/[base]armL2
+  rotate: true
+  xy: 102, 8
+  size: 6, 7
+  orig: 67, 68
+  offset: 35, 14
+  index: -1
+android_hitori/front/[base]armR2
+  rotate: true
+  xy: 102, 8
+  size: 6, 7
+  orig: 67, 68
+  offset: 35, 14
+  index: -1
+android_hitori/front/[base]body
+  rotate: false
+  xy: 2, 28
+  size: 11, 12
+  orig: 67, 68
+  offset: 28, 10
+  index: -1
+android_hitori/front/[base]elbowL
+  rotate: false
+  xy: 41, 2
+  size: 6, 6
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+android_hitori/front/[base]elbowR
+  rotate: false
+  xy: 41, 2
+  size: 6, 6
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+android_hitori/front/[base]elbowL2
+  rotate: false
+  xy: 2, 8
+  size: 8, 7
+  orig: 67, 68
+  offset: 39, 9
+  index: -1
+android_hitori/front/[base]elbowR2
+  rotate: false
+  xy: 2, 8
+  size: 8, 7
+  orig: 67, 68
+  offset: 39, 9
+  index: -1
+android_hitori/front/[base]head
+  rotate: false
+  xy: 2, 62
+  size: 41, 25
+  orig: 67, 68
+  offset: 13, 19
+  index: -1
+android_hitori/front/[base]legL
+  rotate: false
+  xy: 28, 32
+  size: 4, 8
+  orig: 67, 68
+  offset: 29, 6
+  index: -1
+android_hitori/front/[base]legR
+  rotate: false
+  xy: 28, 32
+  size: 4, 8
+  orig: 67, 68
+  offset: 29, 6
+  index: -1
+android_hitori/front/face/[base]attack
+  rotate: false
+  xy: 42, 19
+  size: 15, 8
+  orig: 67, 68
+  offset: 26, 19
+  index: -1
+android_hitori/front/face/[base]damaged
+  rotate: false
+  xy: 2, 17
+  size: 13, 9
+  orig: 67, 68
+  offset: 27, 20
+  index: -1
+android_hitori/front/face/[base]doyagao
+  rotate: false
+  xy: 76, 18
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+android_hitori/front/face/[base]idle
+  rotate: true
+  xy: 35, 45
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+android_hitori/front/face/[base]mad
+  rotate: true
+  xy: 109, 28
+  size: 15, 11
+  orig: 67, 68
+  offset: 26, 19
+  index: -1
+android_hitori/front/face/[base]smile
+  rotate: false
+  xy: 35, 31
+  size: 15, 10
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+android_hitori/front/face/[base]tired
+  rotate: false
+  xy: 59, 19
+  size: 15, 8
+  orig: 67, 68
+  offset: 26, 19
+  index: -1
+android_hitori/front/hair
+  rotate: false
+  xy: 42, 10
+  size: 12, 7
+  orig: 67, 68
+  offset: 12, 30
+  index: -1
+android_hitori/front/hairB
+  rotate: false
+  xy: 2, 42
+  size: 31, 18
+  orig: 67, 68
+  offset: 17, 13
+  index: -1
+android_hitori/front/hairdeco
+  rotate: false
+  xy: 83, 8
+  size: 7, 8
+  orig: 67, 68
+  offset: 20, 33
+  index: -1
+android_hitori/side/[base]armL
+  rotate: true
+  xy: 65, 2
+  size: 5, 6
+  orig: 66, 66
+  offset: 39, 13
+  index: -1
+android_hitori/side/[base]armR
+  rotate: true
+  xy: 73, 2
+  size: 5, 6
+  orig: 66, 66
+  offset: 31, 13
+  index: -1
+android_hitori/side/[base]body
+  rotate: false
+  xy: 15, 28
+  size: 11, 12
+  orig: 66, 66
+  offset: 32, 9
+  index: -1
+android_hitori/side/[base]elbowL
+  rotate: true
+  xy: 111, 8
+  size: 6, 7
+  orig: 66, 66
+  offset: 40, 8
+  index: -1
+android_hitori/side/[base]elbowR
+  rotate: true
+  xy: 12, 7
+  size: 6, 7
+  orig: 66, 66
+  offset: 29, 8
+  index: -1
+android_hitori/side/[base]head
+  rotate: false
+  xy: 88, 62
+  size: 33, 25
+  orig: 66, 66
+  offset: 20, 18
+  index: -1
+android_hitori/side/[base]legL
+  rotate: false
+  xy: 122, 29
+  size: 4, 8
+  orig: 66, 66
+  offset: 38, 5
+  index: -1
+android_hitori/side/[base]legR
+  rotate: false
+  xy: 122, 19
+  size: 4, 8
+  orig: 66, 66
+  offset: 33, 5
+  index: -1
+android_hitori/side/face/[base]attack
+  rotate: false
+  xy: 109, 16
+  size: 11, 10
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+android_hitori/side/face/[base]damaged
+  rotate: false
+  xy: 93, 16
+  size: 11, 9
+  orig: 66, 66
+  offset: 34, 21
+  index: -1
+android_hitori/side/face/[base]doyagao
+  rotate: true
+  xy: 116, 49
+  size: 11, 8
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+android_hitori/side/face/[base]idle
+  rotate: false
+  xy: 56, 10
+  size: 12, 7
+  orig: 66, 66
+  offset: 34, 21
+  index: -1
+android_hitori/side/face/[base]mad
+  rotate: false
+  xy: 28, 18
+  size: 12, 11
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+android_hitori/side/face/[base]smile
+  rotate: true
+  xy: 65, 30
+  size: 11, 8
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+android_hitori/side/face/[base]tired
+  rotate: true
+  xy: 17, 15
+  size: 11, 8
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+android_hitori/side/hair
+  rotate: false
+  xy: 27, 9
+  size: 12, 7
+  orig: 66, 66
+  offset: 16, 28
+  index: -1
+android_hitori/side/hairB
+  rotate: false
+  xy: 78, 27
+  size: 29, 16
+  orig: 66, 66
+  offset: 19, 11
+  index: -1
+android_hitori/side/hairdeco1
+  rotate: false
+  xy: 49, 2
+  size: 6, 6
+  orig: 66, 66
+  offset: 25, 32
+  index: -1
+android_hitori/side/hairdeco2
+  rotate: false
+  xy: 57, 2
+  size: 6, 6
+  orig: 66, 66
+  offset: 22, 33
+  index: -1
+guitar
+  rotate: false
+  xy: 78, 45
+  size: 36, 15
+  orig: 40, 23
+  offset: 2, 4
+  index: -1

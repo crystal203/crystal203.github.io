@@ -1,0 +1,2155 @@
+
+bakeneko.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bakeneko_3/back/[base]armL
+  rotate: true
+  xy: 110, 4
+  size: 5, 6
+  orig: 55, 64
+  offset: 20, 12
+  index: -1
+bakeneko_3/front/[base]armL
+  rotate: true
+  xy: 110, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bakeneko_3/back/[base]armR
+  rotate: true
+  xy: 118, 4
+  size: 5, 6
+  orig: 55, 64
+  offset: 20, 12
+  index: -1
+bakeneko_3/front/[base]armR
+  rotate: true
+  xy: 118, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bakeneko_4/front/[base]armR
+  rotate: true
+  xy: 118, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bakeneko_3/back/[base]body
+  rotate: true
+  xy: 18, 71
+  size: 11, 12
+  orig: 55, 64
+  offset: 22, 8
+  index: -1
+bakeneko_3/back/[base]elbowL
+  rotate: false
+  xy: 142, 16
+  size: 7, 7
+  orig: 55, 64
+  offset: 16, 8
+  index: -1
+bakeneko_3/back/[base]elbowR
+  rotate: false
+  xy: 151, 16
+  size: 7, 7
+  orig: 55, 64
+  offset: 16, 8
+  index: -1
+bakeneko_3/back/[base]head
+  rotate: false
+  xy: 69, 123
+  size: 29, 27
+  orig: 55, 64
+  offset: 13, 15
+  index: -1
+bakeneko_3/back/[base]legL
+  rotate: false
+  xy: 28, 96
+  size: 4, 8
+  orig: 55, 64
+  offset: 23, 4
+  index: -1
+bakeneko_4/back/[base]legR
+  rotate: false
+  xy: 28, 96
+  size: 4, 8
+  orig: 55, 64
+  offset: 23, 4
+  index: -1
+bakeneko_3/back/[base]legR
+  rotate: false
+  xy: 250, 74
+  size: 4, 8
+  orig: 55, 64
+  offset: 23, 4
+  index: -1
+bakeneko_3/back/bag
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/bagL
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/bagR
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/elbowL2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/elbowR2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/helmB
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/tail4
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/bag
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/bagL
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/bagR
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/elbowL2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/elbowL2_2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/elbowR2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/elbowR2_2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/helmB
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/front/tail4
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/bag
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/bagL
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/bagR
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/elbowL2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/elbowR2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/helmB
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/helmBF
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/side/tail4
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/back/helmB
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/back/tail4
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/front/bodyF
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/front/helmB
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/front/tail4
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/bag
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/bagL
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/bodyF
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/elbowL2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/elbowR2
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/helmB
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/helmBF
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_4/side/tail4
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_5/side/bag
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_5/side/bagL
+  rotate: false
+  xy: 215, 122
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bakeneko_3/back/bodydecoL
+  rotate: false
+  xy: 115, 91
+  size: 34, 6
+  orig: 55, 64
+  offset: 11, 7
+  index: -1
+bakeneko_4/back/bodydecoL
+  rotate: false
+  xy: 115, 91
+  size: 34, 6
+  orig: 55, 64
+  offset: 11, 7
+  index: -1
+bakeneko_3/back/earL
+  rotate: true
+  xy: 88, 54
+  size: 9, 12
+  orig: 55, 64
+  offset: 14, 34
+  index: -1
+bakeneko_4/back/earL
+  rotate: true
+  xy: 88, 54
+  size: 9, 12
+  orig: 55, 64
+  offset: 14, 34
+  index: -1
+bakeneko_3/back/earL2
+  rotate: false
+  xy: 185, 44
+  size: 12, 8
+  orig: 55, 64
+  offset: 11, 33
+  index: -1
+bakeneko_4/back/earL2
+  rotate: false
+  xy: 185, 44
+  size: 12, 8
+  orig: 55, 64
+  offset: 11, 33
+  index: -1
+bakeneko_3/back/earR
+  rotate: true
+  xy: 193, 54
+  size: 9, 12
+  orig: 55, 64
+  offset: 32, 34
+  index: -1
+bakeneko_4/back/earR
+  rotate: true
+  xy: 193, 54
+  size: 9, 12
+  orig: 55, 64
+  offset: 32, 34
+  index: -1
+bakeneko_3/back/earR2
+  rotate: false
+  xy: 199, 44
+  size: 12, 8
+  orig: 55, 64
+  offset: 32, 33
+  index: -1
+bakeneko_4/back/earR2
+  rotate: false
+  xy: 199, 44
+  size: 12, 8
+  orig: 55, 64
+  offset: 32, 33
+  index: -1
+bakeneko_3/back/hairL
+  rotate: true
+  xy: 156, 44
+  size: 9, 11
+  orig: 55, 64
+  offset: 13, 15
+  index: -1
+bakeneko_4/back/hairL
+  rotate: true
+  xy: 156, 44
+  size: 9, 11
+  orig: 55, 64
+  offset: 13, 15
+  index: -1
+bakeneko_3/back/hairR
+  rotate: true
+  xy: 137, 37
+  size: 6, 13
+  orig: 55, 64
+  offset: 33, 15
+  index: -1
+bakeneko_4/back/hairR
+  rotate: true
+  xy: 137, 37
+  size: 6, 13
+  orig: 55, 64
+  offset: 33, 15
+  index: -1
+bakeneko_3/back/hairT
+  rotate: false
+  xy: 28, 2
+  size: 5, 5
+  orig: 55, 64
+  offset: 24, 40
+  index: -1
+bakeneko_4/back/hairT
+  rotate: false
+  xy: 28, 2
+  size: 5, 5
+  orig: 55, 64
+  offset: 24, 40
+  index: -1
+bakeneko_3/back/tail1
+  rotate: true
+  xy: 206, 35
+  size: 6, 11
+  orig: 55, 64
+  offset: 24, 1
+  index: -1
+bakeneko_4/back/tail1
+  rotate: true
+  xy: 206, 35
+  size: 6, 11
+  orig: 55, 64
+  offset: 24, 1
+  index: -1
+bakeneko_5/back/tail1
+  rotate: true
+  xy: 206, 35
+  size: 6, 11
+  orig: 55, 64
+  offset: 24, 1
+  index: -1
+bakeneko_3/back/tail2
+  rotate: false
+  xy: 182, 4
+  size: 7, 4
+  orig: 55, 64
+  offset: 21, 1
+  index: -1
+bakeneko_4/back/tail2
+  rotate: false
+  xy: 182, 4
+  size: 7, 4
+  orig: 55, 64
+  offset: 21, 1
+  index: -1
+bakeneko_5/back/tail2
+  rotate: false
+  xy: 182, 4
+  size: 7, 4
+  orig: 55, 64
+  offset: 21, 1
+  index: -1
+bakeneko_3/back/tail3
+  rotate: false
+  xy: 112, 31
+  size: 8, 8
+  orig: 55, 64
+  offset: 17, 2
+  index: -1
+bakeneko_4/back/tail3
+  rotate: false
+  xy: 112, 31
+  size: 8, 8
+  orig: 55, 64
+  offset: 17, 2
+  index: -1
+bakeneko_3/front/[base]armL2
+  rotate: false
+  xy: 102, 55
+  size: 7, 8
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+bakeneko_3/front/[base]armR2
+  rotate: true
+  xy: 2, 24
+  size: 7, 8
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+bakeneko_3/front/[base]body
+  rotate: true
+  xy: 32, 71
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bakeneko_3/front/[base]elbowL
+  rotate: false
+  xy: 160, 16
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bakeneko_3/front/[base]elbowL2
+  rotate: false
+  xy: 152, 34
+  size: 10, 8
+  orig: 55, 56
+  offset: 31, 3
+  index: -1
+bakeneko_3/front/[base]elbowR
+  rotate: false
+  xy: 169, 16
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bakeneko_3/front/[base]elbowR2
+  rotate: false
+  xy: 182, 34
+  size: 10, 8
+  orig: 55, 56
+  offset: 31, 3
+  index: -1
+bakeneko_3/front/[base]head
+  rotate: false
+  xy: 197, 125
+  size: 30, 25
+  orig: 55, 56
+  offset: 13, 13
+  index: -1
+bakeneko_3/front/[base]legL
+  rotate: false
+  xy: 142, 69
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bakeneko_4/front/[base]legL
+  rotate: false
+  xy: 142, 69
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bakeneko_3/front/[base]legR
+  rotate: false
+  xy: 90, 66
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bakeneko_3/front/bodyF
+  rotate: false
+  xy: 34, 93
+  size: 5, 3
+  orig: 55, 56
+  offset: 25, 11
+  index: -1
+bakeneko_3/front/bodydecoL
+  rotate: false
+  xy: 151, 91
+  size: 34, 6
+  orig: 55, 56
+  offset: 10, 4
+  index: -1
+bakeneko_3/side/bodydecoL
+  rotate: false
+  xy: 151, 91
+  size: 34, 6
+  orig: 56, 56
+  offset: 14, 4
+  index: -1
+bakeneko_4/front/bodydecoL
+  rotate: false
+  xy: 151, 91
+  size: 34, 6
+  orig: 55, 56
+  offset: 10, 4
+  index: -1
+bakeneko_4/side/bodydecoL
+  rotate: false
+  xy: 151, 91
+  size: 34, 6
+  orig: 56, 56
+  offset: 14, 4
+  index: -1
+bakeneko_3/front/earL
+  rotate: true
+  xy: 2, 53
+  size: 9, 12
+  orig: 55, 56
+  offset: 32, 30
+  index: -1
+bakeneko_4/front/earL
+  rotate: true
+  xy: 2, 53
+  size: 9, 12
+  orig: 55, 56
+  offset: 32, 30
+  index: -1
+bakeneko_3/front/earL2
+  rotate: false
+  xy: 241, 48
+  size: 13, 8
+  orig: 55, 56
+  offset: 32, 29
+  index: -1
+bakeneko_4/front/earL2
+  rotate: false
+  xy: 241, 48
+  size: 13, 8
+  orig: 55, 56
+  offset: 32, 29
+  index: -1
+bakeneko_3/front/earR
+  rotate: true
+  xy: 171, 53
+  size: 9, 12
+  orig: 55, 56
+  offset: 14, 30
+  index: -1
+bakeneko_4/front/earR
+  rotate: true
+  xy: 171, 53
+  size: 9, 12
+  orig: 55, 56
+  offset: 14, 30
+  index: -1
+bakeneko_3/front/earR2
+  rotate: false
+  xy: 126, 45
+  size: 13, 8
+  orig: 55, 56
+  offset: 10, 29
+  index: -1
+bakeneko_4/front/earR2
+  rotate: false
+  xy: 126, 45
+  size: 13, 8
+  orig: 55, 56
+  offset: 10, 29
+  index: -1
+bakeneko_3/front/hairF
+  rotate: false
+  xy: 89, 106
+  size: 26, 15
+  orig: 55, 56
+  offset: 14, 20
+  index: -1
+bakeneko_3/front/hairL
+  rotate: true
+  xy: 41, 14
+  size: 6, 7
+  orig: 55, 56
+  offset: 33, 15
+  index: -1
+bakeneko_4/front/hairL
+  rotate: true
+  xy: 41, 14
+  size: 6, 7
+  orig: 55, 56
+  offset: 33, 15
+  index: -1
+bakeneko_3/front/hairL2
+  rotate: false
+  xy: 251, 101
+  size: 3, 7
+  orig: 55, 56
+  offset: 36, 11
+  index: -1
+bakeneko_4/front/hairL2
+  rotate: false
+  xy: 251, 101
+  size: 3, 7
+  orig: 55, 56
+  offset: 36, 11
+  index: -1
+bakeneko_3/front/hairR
+  rotate: false
+  xy: 249, 15
+  size: 5, 9
+  orig: 55, 56
+  offset: 17, 15
+  index: -1
+bakeneko_4/front/hairR
+  rotate: false
+  xy: 249, 15
+  size: 5, 9
+  orig: 55, 56
+  offset: 17, 15
+  index: -1
+bakeneko_3/front/hairR2
+  rotate: false
+  xy: 251, 92
+  size: 3, 7
+  orig: 55, 56
+  offset: 16, 11
+  index: -1
+bakeneko_4/front/hairR2
+  rotate: false
+  xy: 251, 92
+  size: 3, 7
+  orig: 55, 56
+  offset: 16, 11
+  index: -1
+bakeneko_3/front/hairT
+  rotate: true
+  xy: 225, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 26, 35
+  index: -1
+bakeneko_4/front/hairT
+  rotate: true
+  xy: 225, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 26, 35
+  index: -1
+bakeneko_3/front/tail1
+  rotate: false
+  xy: 14, 29
+  size: 8, 8
+  orig: 55, 56
+  offset: 26, 1
+  index: -1
+bakeneko_4/front/tail1
+  rotate: false
+  xy: 14, 29
+  size: 8, 8
+  orig: 55, 56
+  offset: 26, 1
+  index: -1
+bakeneko_3/front/tail2
+  rotate: false
+  xy: 148, 3
+  size: 6, 4
+  orig: 55, 56
+  offset: 32, 0
+  index: -1
+bakeneko_4/front/tail2
+  rotate: false
+  xy: 148, 3
+  size: 6, 4
+  orig: 55, 56
+  offset: 32, 0
+  index: -1
+bakeneko_3/front/tail3
+  rotate: true
+  xy: 194, 34
+  size: 8, 10
+  orig: 55, 56
+  offset: 36, 1
+  index: -1
+bakeneko_4/front/tail3
+  rotate: true
+  xy: 194, 34
+  size: 8, 10
+  orig: 55, 56
+  offset: 36, 1
+  index: -1
+bakeneko_3/side/[base]armL
+  rotate: false
+  xy: 229, 29
+  size: 6, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bakeneko_3/side/[base]armR
+  rotate: false
+  xy: 50, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+bakeneko_3/side/[base]body
+  rotate: false
+  xy: 229, 58
+  size: 11, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bakeneko_3/side/[base]elbowL
+  rotate: false
+  xy: 178, 16
+  size: 7, 7
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+bakeneko_3/side/[base]elbowR
+  rotate: false
+  xy: 34, 24
+  size: 8, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+bakeneko_3/side/[base]head
+  rotate: false
+  xy: 131, 99
+  size: 30, 24
+  orig: 56, 56
+  offset: 16, 14
+  index: -1
+bakeneko_3/side/[base]legL
+  rotate: false
+  xy: 207, 55
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bakeneko_3/side/[base]legR
+  rotate: false
+  xy: 219, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bakeneko_3/side/bodyF
+  rotate: false
+  xy: 115, 100
+  size: 8, 3
+  orig: 56, 56
+  offset: 29, 12
+  index: -1
+bakeneko_3/side/earL
+  rotate: true
+  xy: 16, 49
+  size: 9, 12
+  orig: 56, 56
+  offset: 35, 30
+  index: -1
+bakeneko_4/side/earL
+  rotate: true
+  xy: 16, 49
+  size: 9, 12
+  orig: 56, 56
+  offset: 35, 30
+  index: -1
+bakeneko_3/side/earL2
+  rotate: false
+  xy: 79, 33
+  size: 9, 8
+  orig: 56, 56
+  offset: 36, 30
+  index: -1
+bakeneko_4/side/earL2
+  rotate: false
+  xy: 79, 33
+  size: 9, 8
+  orig: 56, 56
+  offset: 36, 30
+  index: -1
+bakeneko_3/side/earR
+  rotate: true
+  xy: 30, 49
+  size: 9, 12
+  orig: 56, 56
+  offset: 19, 30
+  index: -1
+bakeneko_4/side/earR
+  rotate: true
+  xy: 30, 49
+  size: 9, 12
+  orig: 56, 56
+  offset: 19, 30
+  index: -1
+bakeneko_3/side/earR2
+  rotate: false
+  xy: 2, 43
+  size: 11, 8
+  orig: 56, 56
+  offset: 17, 30
+  index: -1
+bakeneko_4/side/earR2
+  rotate: false
+  xy: 2, 43
+  size: 11, 8
+  orig: 56, 56
+  offset: 17, 30
+  index: -1
+bakeneko_3/side/hairF
+  rotate: false
+  xy: 2, 88
+  size: 24, 16
+  orig: 56, 56
+  offset: 22, 20
+  index: -1
+bakeneko_3/side/hairL
+  rotate: false
+  xy: 185, 55
+  size: 5, 7
+  orig: 56, 56
+  offset: 39, 17
+  index: -1
+bakeneko_4/side/hairL
+  rotate: false
+  xy: 185, 55
+  size: 5, 7
+  orig: 56, 56
+  offset: 39, 17
+  index: -1
+bakeneko_3/side/hairL2
+  rotate: false
+  xy: 176, 35
+  size: 3, 6
+  orig: 56, 56
+  offset: 39, 12
+  index: -1
+bakeneko_4/side/hairL2
+  rotate: false
+  xy: 176, 35
+  size: 3, 6
+  orig: 56, 56
+  offset: 39, 12
+  index: -1
+bakeneko_3/side/hairR
+  rotate: false
+  xy: 58, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 24, 16
+  index: -1
+bakeneko_4/side/hairR
+  rotate: false
+  xy: 58, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 24, 16
+  index: -1
+bakeneko_3/side/hairR2
+  rotate: false
+  xy: 193, 66
+  size: 4, 7
+  orig: 56, 56
+  offset: 24, 12
+  index: -1
+bakeneko_4/side/hairR2
+  rotate: false
+  xy: 193, 66
+  size: 4, 7
+  orig: 56, 56
+  offset: 24, 12
+  index: -1
+bakeneko_3/side/hairT
+  rotate: true
+  xy: 233, 4
+  size: 5, 6
+  orig: 56, 56
+  offset: 29, 35
+  index: -1
+bakeneko_4/side/hairT
+  rotate: true
+  xy: 233, 4
+  size: 5, 6
+  orig: 56, 56
+  offset: 29, 35
+  index: -1
+bakeneko_3/side/tail1
+  rotate: false
+  xy: 90, 33
+  size: 9, 8
+  orig: 56, 56
+  offset: 23, 1
+  index: -1
+bakeneko_4/side/tail1
+  rotate: false
+  xy: 90, 33
+  size: 9, 8
+  orig: 56, 56
+  offset: 23, 1
+  index: -1
+bakeneko_3/side/tail2
+  rotate: false
+  xy: 191, 4
+  size: 7, 4
+  orig: 56, 56
+  offset: 19, 0
+  index: -1
+bakeneko_4/side/tail2
+  rotate: false
+  xy: 191, 4
+  size: 7, 4
+  orig: 56, 56
+  offset: 19, 0
+  index: -1
+bakeneko_3/side/tail3
+  rotate: true
+  xy: 213, 43
+  size: 9, 10
+  orig: 56, 56
+  offset: 12, 1
+  index: -1
+bakeneko_4/side/tail3
+  rotate: true
+  xy: 213, 43
+  size: 9, 10
+  orig: 56, 56
+  offset: 12, 1
+  index: -1
+bakeneko_4/back/[base]armL
+  rotate: true
+  xy: 104, 14
+  size: 6, 7
+  orig: 55, 64
+  offset: 19, 11
+  index: -1
+bakeneko_4/back/[base]armR
+  rotate: true
+  xy: 11, 12
+  size: 6, 7
+  orig: 55, 64
+  offset: 19, 11
+  index: -1
+bakeneko_4/back/[base]body
+  rotate: true
+  xy: 46, 71
+  size: 11, 12
+  orig: 55, 64
+  offset: 22, 8
+  index: -1
+bakeneko_4/back/[base]elbowL
+  rotate: false
+  xy: 20, 12
+  size: 7, 6
+  orig: 55, 64
+  offset: 16, 8
+  index: -1
+bakeneko_4/back/[base]elbowR
+  rotate: false
+  xy: 113, 11
+  size: 7, 6
+  orig: 55, 64
+  offset: 16, 8
+  index: -1
+bakeneko_4/back/[base]head
+  rotate: false
+  xy: 100, 123
+  size: 29, 27
+  orig: 55, 64
+  offset: 13, 15
+  index: -1
+bakeneko_4/back/[base]legL
+  rotate: true
+  xy: 166, 10
+  size: 4, 8
+  orig: 55, 64
+  offset: 23, 4
+  index: -1
+bakeneko_5/back/[base]legL
+  rotate: true
+  xy: 166, 10
+  size: 4, 8
+  orig: 55, 64
+  offset: 23, 4
+  index: -1
+bakeneko_4/back/bag
+  rotate: false
+  xy: 125, 100
+  size: 3, 3
+  orig: 55, 64
+  offset: 26, 11
+  index: -1
+bakeneko_4/front/bag
+  rotate: false
+  xy: 125, 100
+  size: 3, 3
+  orig: 55, 56
+  offset: 26, 6
+  index: -1
+bakeneko_5/back/bag
+  rotate: false
+  xy: 125, 100
+  size: 3, 3
+  orig: 55, 64
+  offset: 26, 11
+  index: -1
+bakeneko_5/front/bag
+  rotate: false
+  xy: 125, 100
+  size: 3, 3
+  orig: 55, 56
+  offset: 26, 6
+  index: -1
+bakeneko_4/back/bagL
+  rotate: false
+  xy: 201, 16
+  size: 7, 7
+  orig: 55, 64
+  offset: 20, 9
+  index: -1
+bakeneko_4/front/bagR
+  rotate: false
+  xy: 201, 16
+  size: 7, 7
+  orig: 55, 56
+  offset: 20, 4
+  index: -1
+bakeneko_5/back/bagL
+  rotate: false
+  xy: 201, 16
+  size: 7, 7
+  orig: 55, 64
+  offset: 20, 9
+  index: -1
+bakeneko_5/front/bagR
+  rotate: false
+  xy: 201, 16
+  size: 7, 7
+  orig: 55, 56
+  offset: 20, 4
+  index: -1
+bakeneko_4/back/bagR
+  rotate: false
+  xy: 2, 15
+  size: 7, 7
+  orig: 55, 64
+  offset: 28, 9
+  index: -1
+bakeneko_4/front/bagL
+  rotate: false
+  xy: 2, 15
+  size: 7, 7
+  orig: 55, 56
+  offset: 28, 4
+  index: -1
+bakeneko_5/back/bagR
+  rotate: false
+  xy: 2, 15
+  size: 7, 7
+  orig: 55, 64
+  offset: 28, 9
+  index: -1
+bakeneko_5/front/bagL
+  rotate: false
+  xy: 2, 15
+  size: 7, 7
+  orig: 55, 56
+  offset: 28, 4
+  index: -1
+bakeneko_4/back/elbowL2
+  rotate: false
+  xy: 24, 29
+  size: 8, 8
+  orig: 55, 64
+  offset: 15, 6
+  index: -1
+bakeneko_4/back/elbowR2
+  rotate: false
+  xy: 238, 28
+  size: 8, 8
+  orig: 55, 64
+  offset: 15, 6
+  index: -1
+bakeneko_4/front/[base]armL
+  rotate: true
+  xy: 126, 3
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bakeneko_4/front/[base]armL2
+  rotate: true
+  xy: 63, 25
+  size: 7, 9
+  orig: 55, 56
+  offset: 29, 6
+  index: -1
+bakeneko_4/front/[base]armR2
+  rotate: true
+  xy: 147, 25
+  size: 7, 9
+  orig: 55, 56
+  offset: 29, 6
+  index: -1
+bakeneko_4/front/[base]body
+  rotate: true
+  xy: 236, 71
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bakeneko_4/front/[base]elbowL
+  rotate: false
+  xy: 74, 24
+  size: 8, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bakeneko_4/front/[base]elbowL2
+  rotate: false
+  xy: 158, 25
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+bakeneko_4/front/[base]elbowR
+  rotate: false
+  xy: 84, 24
+  size: 8, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bakeneko_4/front/[base]elbowR2
+  rotate: false
+  xy: 169, 25
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+bakeneko_4/front/[base]head
+  rotate: true
+  xy: 229, 120
+  size: 30, 25
+  orig: 55, 56
+  offset: 13, 13
+  index: -1
+bakeneko_4/front/[base]legR
+  rotate: true
+  xy: 176, 10
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bakeneko_4/front/elbowL2
+  rotate: false
+  xy: 137, 27
+  size: 8, 8
+  orig: 55, 56
+  offset: 15, 2
+  index: -1
+bakeneko_4/front/elbowL2_2
+  rotate: false
+  xy: 219, 27
+  size: 8, 8
+  orig: 55, 56
+  offset: 33, 1
+  index: -1
+bakeneko_4/front/elbowR2
+  rotate: false
+  xy: 122, 25
+  size: 8, 8
+  orig: 55, 56
+  offset: 15, 2
+  index: -1
+bakeneko_4/front/elbowR2_2
+  rotate: false
+  xy: 206, 25
+  size: 8, 8
+  orig: 55, 56
+  offset: 33, 1
+  index: -1
+bakeneko_4/front/hairF
+  rotate: false
+  xy: 215, 103
+  size: 26, 15
+  orig: 55, 56
+  offset: 14, 20
+  index: -1
+bakeneko_4/side/[base]armL
+  rotate: false
+  xy: 66, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bakeneko_4/side/[base]armR
+  rotate: false
+  xy: 74, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+bakeneko_4/side/[base]body
+  rotate: true
+  xy: 214, 54
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bakeneko_4/side/[base]elbowL
+  rotate: false
+  xy: 180, 25
+  size: 9, 7
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+bakeneko_4/side/[base]elbowR
+  rotate: false
+  xy: 164, 34
+  size: 10, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+bakeneko_4/side/[base]head
+  rotate: false
+  xy: 131, 125
+  size: 31, 25
+  orig: 56, 56
+  offset: 15, 13
+  index: -1
+bakeneko_4/side/[base]legL
+  rotate: true
+  xy: 197, 10
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bakeneko_4/side/[base]legR
+  rotate: true
+  xy: 29, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bakeneko_4/side/bagR
+  rotate: false
+  xy: 94, 24
+  size: 8, 7
+  orig: 56, 56
+  offset: 21, 6
+  index: -1
+bakeneko_5/side/bagR
+  rotate: false
+  xy: 94, 24
+  size: 8, 7
+  orig: 56, 56
+  offset: 21, 6
+  index: -1
+bakeneko_4/side/hairF
+  rotate: false
+  xy: 89, 88
+  size: 24, 16
+  orig: 56, 56
+  offset: 22, 20
+  index: -1
+bakeneko_5/back/[base]armL
+  rotate: true
+  xy: 122, 11
+  size: 6, 7
+  orig: 55, 64
+  offset: 19, 11
+  index: -1
+bakeneko_5/back/[base]armR
+  rotate: true
+  xy: 226, 11
+  size: 6, 7
+  orig: 55, 64
+  offset: 19, 11
+  index: -1
+bakeneko_5/back/[base]body
+  rotate: true
+  xy: 60, 67
+  size: 11, 12
+  orig: 55, 64
+  offset: 22, 8
+  index: -1
+bakeneko_5/back/[base]elbowL
+  rotate: false
+  xy: 204, 91
+  size: 8, 6
+  orig: 55, 64
+  offset: 16, 8
+  index: -1
+bakeneko_5/back/[base]elbowR
+  rotate: false
+  xy: 52, 16
+  size: 8, 6
+  orig: 55, 64
+  offset: 16, 8
+  index: -1
+bakeneko_5/back/[base]head
+  rotate: false
+  xy: 2, 123
+  size: 31, 27
+  orig: 55, 64
+  offset: 12, 15
+  index: -1
+bakeneko_5/back/[base]legR
+  rotate: true
+  xy: 90, 9
+  size: 4, 8
+  orig: 55, 64
+  offset: 23, 4
+  index: -1
+bakeneko_5/back/bodydecoL
+  rotate: false
+  xy: 28, 84
+  size: 34, 6
+  orig: 55, 64
+  offset: 11, 7
+  index: -1
+bakeneko_5/back/earL
+  rotate: true
+  xy: 64, 80
+  size: 10, 15
+  orig: 55, 64
+  offset: 13, 33
+  index: -1
+bakeneko_5/back/earL2
+  rotate: false
+  xy: 74, 65
+  size: 14, 9
+  orig: 55, 64
+  offset: 9, 33
+  index: -1
+bakeneko_5/back/earR
+  rotate: true
+  xy: 167, 79
+  size: 10, 14
+  orig: 55, 64
+  offset: 32, 34
+  index: -1
+bakeneko_5/back/earR2
+  rotate: false
+  xy: 177, 64
+  size: 14, 9
+  orig: 55, 64
+  offset: 32, 33
+  index: -1
+bakeneko_5/back/elbowL2
+  rotate: false
+  xy: 53, 34
+  size: 11, 7
+  orig: 55, 64
+  offset: 11, 5
+  index: -1
+bakeneko_5/back/elbowR2
+  rotate: false
+  xy: 66, 34
+  size: 11, 7
+  orig: 55, 64
+  offset: 11, 5
+  index: -1
+bakeneko_5/back/hairL
+  rotate: true
+  xy: 149, 80
+  size: 9, 16
+  orig: 55, 64
+  offset: 13, 14
+  index: -1
+bakeneko_5/back/hairR
+  rotate: false
+  xy: 117, 105
+  size: 10, 16
+  orig: 55, 64
+  offset: 33, 14
+  index: -1
+bakeneko_5/back/hairT
+  rotate: false
+  xy: 32, 15
+  size: 7, 7
+  orig: 55, 64
+  offset: 23, 40
+  index: -1
+bakeneko_5/back/handL2
+  rotate: false
+  xy: 149, 67
+  size: 12, 11
+  orig: 55, 64
+  offset: 12, 12
+  index: -1
+bakeneko_5/back/handL3
+  rotate: false
+  xy: 57, 43
+  size: 11, 8
+  orig: 55, 64
+  offset: 13, 12
+  index: -1
+bakeneko_5/back/handR2
+  rotate: false
+  xy: 114, 66
+  size: 12, 11
+  orig: 55, 64
+  offset: 30, 12
+  index: -1
+bakeneko_5/back/handR3
+  rotate: false
+  xy: 70, 43
+  size: 11, 8
+  orig: 55, 64
+  offset: 31, 12
+  index: -1
+bakeneko_5/back/handR4
+  rotate: false
+  xy: 128, 66
+  size: 12, 11
+  orig: 55, 64
+  offset: 30, 12
+  index: -1
+bakeneko_5/back/handR5
+  rotate: false
+  xy: 169, 43
+  size: 11, 8
+  orig: 55, 64
+  offset: 31, 12
+  index: -1
+bakeneko_5/back/helmB
+  rotate: false
+  xy: 163, 99
+  size: 24, 24
+  orig: 55, 64
+  offset: 16, 5
+  index: -1
+bakeneko_5/back/tail3
+  rotate: true
+  xy: 73, 16
+  size: 6, 8
+  orig: 55, 64
+  offset: 19, 2
+  index: -1
+bakeneko_5/back/tail4
+  rotate: false
+  xy: 131, 10
+  size: 7, 6
+  orig: 55, 64
+  offset: 14, 6
+  index: -1
+bakeneko_5/front/[base]armL
+  rotate: true
+  xy: 166, 3
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bakeneko_5/front/[base]armL2
+  rotate: true
+  xy: 104, 22
+  size: 7, 8
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+bakeneko_5/front/[base]armR
+  rotate: true
+  xy: 174, 3
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bakeneko_5/front/[base]armR2
+  rotate: true
+  xy: 12, 20
+  size: 7, 8
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+bakeneko_5/front/[base]body
+  rotate: true
+  xy: 163, 66
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bakeneko_5/front/[base]elbowL
+  rotate: false
+  xy: 22, 20
+  size: 8, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bakeneko_5/front/[base]elbowL2
+  rotate: false
+  xy: 2, 33
+  size: 10, 8
+  orig: 55, 56
+  offset: 31, 3
+  index: -1
+bakeneko_5/front/[base]elbowR
+  rotate: false
+  xy: 229, 19
+  size: 8, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bakeneko_5/front/[base]elbowR2
+  rotate: false
+  xy: 41, 33
+  size: 10, 8
+  orig: 55, 56
+  offset: 31, 3
+  index: -1
+bakeneko_5/front/[base]head
+  rotate: false
+  xy: 164, 125
+  size: 31, 25
+  orig: 55, 56
+  offset: 12, 13
+  index: -1
+bakeneko_5/front/[base]legL
+  rotate: true
+  xy: 246, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bakeneko_5/front/[base]legR
+  rotate: true
+  xy: 39, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bakeneko_5/front/bodyF
+  rotate: false
+  xy: 200, 4
+  size: 7, 4
+  orig: 55, 56
+  offset: 24, 10
+  index: -1
+bakeneko_5/front/bodydecoL
+  rotate: true
+  xy: 243, 84
+  size: 34, 6
+  orig: 55, 56
+  offset: 10, 4
+  index: -1
+bakeneko_5/side/bodydecoL
+  rotate: true
+  xy: 243, 84
+  size: 34, 6
+  orig: 56, 56
+  offset: 14, 4
+  index: -1
+bakeneko_5/front/earL
+  rotate: true
+  xy: 204, 78
+  size: 10, 14
+  orig: 55, 56
+  offset: 32, 30
+  index: -1
+bakeneko_5/front/earL2
+  rotate: false
+  xy: 17, 60
+  size: 14, 9
+  orig: 55, 56
+  offset: 32, 29
+  index: -1
+bakeneko_5/front/earR
+  rotate: true
+  xy: 220, 78
+  size: 10, 14
+  orig: 55, 56
+  offset: 13, 30
+  index: -1
+bakeneko_5/front/earR2
+  rotate: false
+  xy: 33, 60
+  size: 14, 9
+  orig: 55, 56
+  offset: 9, 29
+  index: -1
+bakeneko_5/front/elbowL2
+  rotate: true
+  xy: 114, 41
+  size: 11, 8
+  orig: 55, 56
+  offset: 11, 0
+  index: -1
+bakeneko_5/front/elbowL2_2
+  rotate: false
+  xy: 44, 43
+  size: 11, 9
+  orig: 55, 56
+  offset: 34, 0
+  index: -1
+bakeneko_5/front/elbowR2
+  rotate: false
+  xy: 15, 39
+  size: 11, 8
+  orig: 55, 56
+  offset: 11, 0
+  index: -1
+bakeneko_5/front/elbowR2_2
+  rotate: false
+  xy: 88, 43
+  size: 11, 9
+  orig: 55, 56
+  offset: 34, 0
+  index: -1
+bakeneko_5/front/face/[base]attack
+  rotate: false
+  xy: 115, 79
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bakeneko_5/front/face/[base]damaged
+  rotate: false
+  xy: 126, 55
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bakeneko_5/front/face/[base]doyagao
+  rotate: false
+  xy: 61, 92
+  size: 25, 11
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+bakeneko_5/front/face/[base]idle
+  rotate: false
+  xy: 97, 77
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bakeneko_5/front/face/[base]mad
+  rotate: false
+  xy: 187, 86
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bakeneko_5/front/face/[base]smile
+  rotate: false
+  xy: 132, 79
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bakeneko_5/front/face/[base]tired
+  rotate: false
+  xy: 183, 75
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bakeneko_5/front/hairF
+  rotate: false
+  xy: 2, 106
+  size: 28, 15
+  orig: 55, 56
+  offset: 13, 20
+  index: -1
+bakeneko_5/front/hairL
+  rotate: true
+  xy: 210, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 33, 16
+  index: -1
+bakeneko_5/front/hairL2
+  rotate: false
+  xy: 248, 26
+  size: 6, 10
+  orig: 55, 56
+  offset: 33, 10
+  index: -1
+bakeneko_5/front/hairR
+  rotate: true
+  xy: 93, 15
+  size: 5, 9
+  orig: 55, 56
+  offset: 17, 15
+  index: -1
+bakeneko_5/front/hairR2
+  rotate: false
+  xy: 251, 110
+  size: 3, 8
+  orig: 55, 56
+  offset: 16, 10
+  index: -1
+bakeneko_5/front/hairT
+  rotate: true
+  xy: 132, 18
+  size: 7, 8
+  orig: 55, 56
+  offset: 25, 35
+  index: -1
+bakeneko_5/front/handL2
+  rotate: false
+  xy: 214, 66
+  size: 13, 10
+  orig: 55, 56
+  offset: 31, 0
+  index: -1
+bakeneko_5/front/handL3
+  rotate: false
+  xy: 28, 39
+  size: 11, 8
+  orig: 55, 56
+  offset: 32, 1
+  index: -1
+bakeneko_5/front/handR2
+  rotate: false
+  xy: 97, 65
+  size: 13, 10
+  orig: 55, 56
+  offset: 11, 0
+  index: -1
+bakeneko_5/front/handR3
+  rotate: false
+  xy: 241, 38
+  size: 11, 8
+  orig: 55, 56
+  offset: 13, 1
+  index: -1
+bakeneko_5/front/helmB
+  rotate: false
+  xy: 189, 99
+  size: 24, 24
+  orig: 55, 56
+  offset: 15, 1
+  index: -1
+bakeneko_5/front/tail1
+  rotate: false
+  xy: 53, 24
+  size: 8, 8
+  orig: 55, 56
+  offset: 26, 1
+  index: -1
+bakeneko_5/front/tail2
+  rotate: false
+  xy: 209, 4
+  size: 7, 4
+  orig: 55, 56
+  offset: 32, 0
+  index: -1
+bakeneko_5/front/tail3
+  rotate: true
+  xy: 83, 16
+  size: 6, 8
+  orig: 55, 56
+  offset: 37, 1
+  index: -1
+bakeneko_5/front/tail4
+  rotate: false
+  xy: 148, 9
+  size: 7, 5
+  orig: 55, 56
+  offset: 41, 6
+  index: -1
+bakeneko_5/side/[base]armL
+  rotate: false
+  xy: 82, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bakeneko_5/side/[base]armR
+  rotate: false
+  xy: 140, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+bakeneko_5/side/[base]body
+  rotate: false
+  xy: 242, 58
+  size: 11, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bakeneko_5/side/[base]elbowL
+  rotate: false
+  xy: 216, 18
+  size: 8, 7
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+bakeneko_5/side/[base]elbowR
+  rotate: false
+  xy: 191, 17
+  size: 8, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+bakeneko_5/side/[base]head
+  rotate: false
+  xy: 35, 124
+  size: 32, 26
+  orig: 56, 56
+  offset: 14, 12
+  index: -1
+bakeneko_5/side/[base]legL
+  rotate: true
+  xy: 100, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bakeneko_5/side/[base]legR
+  rotate: true
+  xy: 2, 6
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bakeneko_5/side/bodyF
+  rotate: false
+  xy: 235, 11
+  size: 9, 4
+  orig: 56, 56
+  offset: 29, 11
+  index: -1
+bakeneko_5/side/earL
+  rotate: true
+  xy: 2, 76
+  size: 10, 14
+  orig: 56, 56
+  offset: 35, 30
+  index: -1
+bakeneko_5/side/earL2
+  rotate: false
+  xy: 62, 53
+  size: 11, 10
+  orig: 56, 56
+  offset: 36, 28
+  index: -1
+bakeneko_5/side/earR
+  rotate: true
+  xy: 81, 76
+  size: 10, 14
+  orig: 56, 56
+  offset: 18, 30
+  index: -1
+bakeneko_5/side/earR2
+  rotate: false
+  xy: 142, 55
+  size: 12, 10
+  orig: 56, 56
+  offset: 16, 28
+  index: -1
+bakeneko_5/side/elbowL2
+  rotate: false
+  xy: 191, 26
+  size: 10, 6
+  orig: 56, 56
+  offset: 35, 1
+  index: -1
+bakeneko_5/side/elbowR2
+  rotate: false
+  xy: 141, 45
+  size: 13, 8
+  orig: 56, 56
+  offset: 18, 1
+  index: -1
+bakeneko_5/side/face/[base]attack
+  rotate: false
+  xy: 2, 64
+  size: 13, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+bakeneko_5/side/face/[base]damaged
+  rotate: false
+  xy: 101, 43
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bakeneko_5/side/face/[base]doyagao
+  rotate: false
+  xy: 215, 90
+  size: 21, 11
+  orig: 56, 56
+  offset: 24, 15
+  index: -1
+bakeneko_5/side/face/[base]idle
+  rotate: false
+  xy: 156, 55
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bakeneko_5/side/face/[base]mad
+  rotate: false
+  xy: 49, 54
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bakeneko_5/side/face/[base]smile
+  rotate: false
+  xy: 200, 65
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bakeneko_5/side/face/[base]tired
+  rotate: false
+  xy: 227, 47
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bakeneko_5/side/hairF
+  rotate: false
+  xy: 61, 105
+  size: 26, 16
+  orig: 56, 56
+  offset: 20, 20
+  index: -1
+bakeneko_5/side/hairL
+  rotate: true
+  xy: 187, 10
+  size: 5, 8
+  orig: 56, 56
+  offset: 39, 16
+  index: -1
+bakeneko_5/side/hairL2
+  rotate: false
+  xy: 22, 3
+  size: 4, 7
+  orig: 56, 56
+  offset: 39, 11
+  index: -1
+bakeneko_5/side/hairR
+  rotate: false
+  xy: 90, 2
+  size: 5, 5
+  orig: 56, 56
+  offset: 25, 17
+  index: -1
+bakeneko_5/side/hairR2
+  rotate: false
+  xy: 44, 22
+  size: 6, 9
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+bakeneko_5/side/hairT
+  rotate: true
+  xy: 239, 17
+  size: 7, 8
+  orig: 56, 56
+  offset: 28, 35
+  index: -1
+bakeneko_5/side/handL2
+  rotate: false
+  xy: 112, 54
+  size: 12, 10
+  orig: 56, 56
+  offset: 36, 1
+  index: -1
+bakeneko_5/side/handL3
+  rotate: false
+  xy: 225, 37
+  size: 11, 8
+  orig: 56, 56
+  offset: 37, 1
+  index: -1
+bakeneko_5/side/handR2
+  rotate: false
+  xy: 75, 53
+  size: 11, 10
+  orig: 56, 56
+  offset: 19, 1
+  index: -1
+bakeneko_5/side/handR3
+  rotate: false
+  xy: 124, 35
+  size: 11, 8
+  orig: 56, 56
+  offset: 21, 1
+  index: -1
+bakeneko_5/side/helmB
+  rotate: false
+  xy: 35, 98
+  size: 24, 24
+  orig: 56, 56
+  offset: 11, 1
+  index: -1
+bakeneko_5/side/helmBF
+  rotate: false
+  xy: 113, 19
+  size: 12, 4
+  orig: 56, 56
+  offset: 18, 11
+  index: -1
+bakeneko_5/side/tail1
+  rotate: false
+  xy: 101, 33
+  size: 9, 8
+  orig: 56, 56
+  offset: 23, 1
+  index: -1
+bakeneko_5/side/tail2
+  rotate: false
+  xy: 12, 6
+  size: 8, 4
+  orig: 56, 56
+  offset: 17, 0
+  index: -1
+bakeneko_5/side/tail3
+  rotate: true
+  xy: 63, 16
+  size: 7, 8
+  orig: 56, 56
+  offset: 12, 1
+  index: -1
+bakeneko_5/side/tail4
+  rotate: false
+  xy: 157, 9
+  size: 7, 5
+  orig: 56, 56
+  offset: 7, 6
+  index: -1

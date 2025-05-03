@@ -1,0 +1,300 @@
+
+titantavern_bombbug.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FX_boost_core
+  rotate: false
+  xy: 137, 90
+  size: 13, 13
+  orig: 13, 13
+  offset: 0, 0
+  index: -1
+back/body
+  rotate: true
+  xy: 87, 74
+  size: 25, 24
+  orig: 65, 66
+  offset: 20, 6
+  index: -1
+back/bodyB
+  rotate: false
+  xy: 28, 3
+  size: 25, 20
+  orig: 65, 66
+  offset: 20, 6
+  index: -1
+back/flyA
+  rotate: true
+  xy: 54, 1
+  size: 23, 25
+  orig: 65, 66
+  offset: 8, 16
+  index: -1
+back/flyA1
+  rotate: true
+  xy: 105, 8
+  size: 20, 19
+  orig: 65, 66
+  offset: 13, 12
+  index: -1
+back/flyB
+  rotate: true
+  xy: 25, 24
+  size: 30, 23
+  orig: 65, 66
+  offset: 0, 22
+  index: -1
+back/fx_body
+  rotate: true
+  xy: 60, 63
+  size: 27, 26
+  orig: 65, 66
+  offset: 19, 5
+  index: -1
+back/fx_boom
+  rotate: false
+  xy: 62, 100
+  size: 27, 27
+  orig: 65, 66
+  offset: 19, 4
+  index: -1
+front/fx_boom
+  rotate: false
+  xy: 62, 100
+  size: 27, 27
+  orig: 65, 66
+  offset: 19, 4
+  index: -1
+back/legB
+  rotate: false
+  xy: 78, 58
+  size: 4, 4
+  orig: 65, 66
+  offset: 41, 7
+  index: -1
+front/legB
+  rotate: false
+  xy: 78, 58
+  size: 4, 4
+  orig: 65, 66
+  offset: 41, 7
+  index: -1
+back/legF
+  rotate: false
+  xy: 76, 95
+  size: 4, 4
+  orig: 65, 66
+  offset: 38, 5
+  index: -1
+back/wick
+  rotate: true
+  xy: 37, 91
+  size: 6, 13
+  orig: 65, 66
+  offset: 31, 26
+  index: -1
+front/body
+  rotate: true
+  xy: 90, 102
+  size: 25, 24
+  orig: 65, 66
+  offset: 20, 6
+  index: -1
+front/bodyB
+  rotate: true
+  xy: 115, 102
+  size: 25, 20
+  orig: 65, 66
+  offset: 20, 6
+  index: -1
+front/face/damaged
+  rotate: false
+  xy: 28, 1
+  size: 9, 1
+  orig: 65, 66
+  offset: 28, 9
+  index: -1
+front/face/mad
+  rotate: false
+  xy: 66, 57
+  size: 11, 5
+  orig: 65, 66
+  offset: 27, 6
+  index: -1
+front/flyA
+  rotate: false
+  xy: 104, 48
+  size: 24, 25
+  orig: 65, 66
+  offset: 6, 13
+  index: -1
+front/flyB
+  rotate: true
+  xy: 36, 60
+  size: 30, 23
+  orig: 65, 66
+  offset: 0, 20
+  index: -1
+front/fx_body
+  rotate: true
+  xy: 77, 29
+  size: 27, 26
+  orig: 65, 66
+  offset: 19, 5
+  index: -1
+front/head
+  rotate: false
+  xy: 125, 14
+  size: 13, 14
+  orig: 65, 66
+  offset: 26, 6
+  index: -1
+front/legF
+  rotate: false
+  xy: 81, 95
+  size: 4, 4
+  orig: 65, 66
+  offset: 38, 5
+  index: -1
+front/wick
+  rotate: true
+  xy: 51, 91
+  size: 6, 13
+  orig: 65, 66
+  offset: 29, 26
+  index: -1
+side/wick
+  rotate: true
+  xy: 51, 91
+  size: 6, 13
+  orig: 68, 68
+  offset: 29, 27
+  index: -1
+fx_glow
+  rotate: false
+  xy: 88, 58
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+fx_wick
+  rotate: false
+  xy: 125, 4
+  size: 9, 9
+  orig: 10, 10
+  offset: 0, 1
+  index: -1
+side/body
+  rotate: true
+  xy: 80, 2
+  size: 26, 24
+  orig: 68, 68
+  offset: 21, 7
+  index: -1
+side/bodyB
+  rotate: false
+  xy: 1, 2
+  size: 26, 20
+  orig: 68, 68
+  offset: 21, 7
+  index: -1
+side/face/damaged
+  rotate: false
+  xy: 38, 1
+  size: 7, 1
+  orig: 68, 68
+  offset: 39, 11
+  index: -1
+side/face/mad
+  rotate: false
+  xy: 65, 94
+  size: 10, 5
+  orig: 68, 68
+  offset: 38, 8
+  index: -1
+side/flyA_L
+  rotate: false
+  xy: 112, 76
+  size: 24, 25
+  orig: 68, 68
+  offset: 15, 14
+  index: -1
+side/flyA_R
+  rotate: true
+  xy: 104, 29
+  size: 18, 24
+  orig: 68, 68
+  offset: 46, 15
+  index: -1
+side/flyB_L
+  rotate: true
+  xy: 1, 23
+  size: 31, 23
+  orig: 68, 68
+  offset: 4, 17
+  index: -1
+side/flyB_R
+  rotate: false
+  xy: 136, 104
+  size: 19, 23
+  orig: 68, 68
+  offset: 49, 17
+  index: -1
+side/flyC1
+  rotate: true
+  xy: 1, 91
+  size: 36, 35
+  orig: 68, 68
+  offset: 0, 11
+  index: -1
+side/flyC2
+  rotate: false
+  xy: 1, 55
+  size: 34, 35
+  orig: 68, 68
+  offset: 1, 11
+  index: -1
+side/fx_body
+  rotate: true
+  xy: 37, 98
+  size: 29, 24
+  orig: 68, 68
+  offset: 20, 8
+  index: -1
+side/fx_boom
+  rotate: true
+  xy: 49, 25
+  size: 29, 27
+  orig: 68, 68
+  offset: 20, 5
+  index: -1
+side/head
+  rotate: false
+  xy: 129, 61
+  size: 13, 14
+  orig: 68, 68
+  offset: 35, 8
+  index: -1
+side/legC
+  rotate: false
+  xy: 83, 58
+  size: 4, 4
+  orig: 68, 68
+  offset: 28, 6
+  index: -1
+side/legL
+  rotate: false
+  xy: 36, 55
+  size: 14, 4
+  orig: 68, 68
+  offset: 33, 6
+  index: -1
+side/legR
+  rotate: false
+  xy: 51, 55
+  size: 14, 4
+  orig: 68, 68
+  offset: 23, 6
+  index: -1

@@ -1,0 +1,188 @@
+
+statue_ms_head.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/statue_L
+  rotate: false
+  xy: 84, 34
+  size: 43, 45
+  orig: 73, 76
+  offset: 0, 26
+  index: -1
+back/statue_L2
+  rotate: false
+  xy: 141, 11
+  size: 25, 33
+  orig: 73, 76
+  offset: 15, 9
+  index: -1
+back/statue_L3
+  rotate: false
+  xy: 128, 45
+  size: 18, 36
+  orig: 73, 76
+  offset: 8, 0
+  index: -1
+back/statue_L4
+  rotate: false
+  xy: 66, 75
+  size: 4, 4
+  orig: 73, 76
+  offset: 31, 11
+  index: -1
+back/statue_R
+  rotate: true
+  xy: 47, 80
+  size: 47, 45
+  orig: 73, 76
+  offset: 26, 30
+  index: -1
+back/statue_R2
+  rotate: true
+  xy: 1, 1
+  size: 22, 29
+  orig: 73, 76
+  offset: 32, 9
+  index: -1
+back/statue_R3
+  rotate: false
+  xy: 167, 14
+  size: 19, 19
+  orig: 73, 76
+  offset: 40, 17
+  index: -1
+front/eye
+  rotate: false
+  xy: 31, 2
+  size: 45, 21
+  orig: 73, 76
+  offset: 20, 26
+  index: -1
+front/statue_L
+  rotate: true
+  xy: 93, 82
+  size: 45, 39
+  orig: 73, 76
+  offset: 28, 32
+  index: -1
+front/statue_L2
+  rotate: false
+  xy: 133, 99
+  size: 19, 28
+  orig: 73, 76
+  offset: 38, 9
+  index: -1
+front/statue_L3
+  rotate: true
+  xy: 76, 76
+  size: 3, 2
+  orig: 73, 76
+  offset: 38, 12
+  index: -1
+front/statue_L4
+  rotate: true
+  xy: 133, 82
+  size: 16, 25
+  orig: 73, 76
+  offset: 49, 10
+  index: -1
+front/statue_R
+  rotate: false
+  xy: 1, 24
+  size: 43, 49
+  orig: 73, 76
+  offset: 0, 26
+  index: -1
+front/statue_R2
+  rotate: false
+  xy: 153, 101
+  size: 23, 26
+  orig: 73, 76
+  offset: 23, 9
+  index: -1
+front/statue_R3
+  rotate: false
+  xy: 159, 83
+  size: 11, 17
+  orig: 73, 76
+  offset: 17, 12
+  index: -1
+side/eye
+  rotate: false
+  xy: 77, 2
+  size: 36, 21
+  orig: 73, 76
+  offset: 18, 26
+  index: -1
+side/statue_L
+  rotate: true
+  xy: 1, 74
+  size: 53, 45
+  orig: 73, 76
+  offset: 19, 29
+  index: -1
+side/statue_L2
+  rotate: true
+  xy: 114, 5
+  size: 28, 26
+  orig: 73, 76
+  offset: 38, 11
+  index: -1
+side/statue_L3
+  rotate: true
+  xy: 167, 34
+  size: 21, 19
+  orig: 73, 76
+  offset: 31, 9
+  index: -1
+side/statue_R
+  rotate: false
+  xy: 45, 24
+  size: 38, 49
+  orig: 73, 76
+  offset: 1, 26
+  index: -1
+side/statue_R2
+  rotate: true
+  xy: 147, 56
+  size: 25, 23
+  orig: 73, 76
+  offset: 22, 15
+  index: -1
+side/statue_R3
+  rotate: false
+  xy: 47, 74
+  size: 6, 5
+  orig: 73, 76
+  offset: 26, 10
+  index: -1
+side/statue_R4
+  rotate: true
+  xy: 84, 25
+  size: 8, 18
+  orig: 73, 76
+  offset: 17, 13
+  index: -1
+stone1
+  rotate: false
+  xy: 54, 74
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1
+stone2
+  rotate: false
+  xy: 60, 74
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1
+stone3
+  rotate: false
+  xy: 71, 75
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1

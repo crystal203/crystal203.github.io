@@ -1,0 +1,433 @@
+
+dog_corgi_scarf.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 75, 8
+  size: 6, 6
+  orig: 55, 56
+  offset: 18, 12
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 75, 8
+  size: 6, 6
+  orig: 55, 56
+  offset: 18, 12
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 75, 8
+  size: 6, 6
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 75, 8
+  size: 6, 6
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 44, 57
+  size: 19, 11
+  orig: 55, 56
+  offset: 18, 9
+  index: -1
+back/[base]ear1
+  rotate: false
+  xy: 82, 58
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 25
+  index: -1
+back/[base]ear2
+  rotate: true
+  xy: 116, 82
+  size: 25, 10
+  orig: 55, 56
+  offset: 15, 25
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 93, 72
+  size: 21, 16
+  orig: 55, 56
+  offset: 17, 16
+  index: -1
+back/[base]pelvis
+  rotate: false
+  xy: 23, 57
+  size: 19, 12
+  orig: 55, 56
+  offset: 17, 3
+  index: -1
+back/[base]tail
+  rotate: false
+  xy: 12, 3
+  size: 6, 5
+  orig: 55, 56
+  offset: 24, 6
+  index: -1
+back/scarf_1
+  rotate: false
+  xy: 46, 11
+  size: 19, 6
+  orig: 55, 56
+  offset: 18, 15
+  index: -1
+back/scarf_2
+  rotate: true
+  xy: 2, 48
+  size: 20, 10
+  orig: 55, 56
+  offset: 17, 8
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 46, 20
+  size: 7, 7
+  orig: 55, 58
+  offset: 18, 2
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 70
+  size: 19, 16
+  orig: 55, 58
+  offset: 18, 4
+  index: -1
+front/[base]ear1
+  rotate: false
+  xy: 105, 58
+  size: 21, 12
+  orig: 55, 58
+  offset: 17, 14
+  index: -1
+front/[base]ear2
+  rotate: true
+  xy: 70, 61
+  size: 25, 10
+  orig: 55, 58
+  offset: 15, 14
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 49, 89
+  size: 21, 18
+  orig: 55, 58
+  offset: 17, 3
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 67, 7
+  size: 6, 7
+  orig: 55, 58
+  offset: 20, 18
+  index: -1
+front/[base]pelvis
+  rotate: false
+  xy: 72, 88
+  size: 19, 19
+  orig: 55, 58
+  offset: 20, 11
+  index: -1
+front/[base]tail
+  rotate: false
+  xy: 39, 3
+  size: 6, 6
+  orig: 55, 58
+  offset: 27, 27
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 94, 20
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 109, 20
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 58, 19
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 2, 16
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 17, 16
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 102, 33
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 2
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 64, 32
+  size: 14, 11
+  orig: 55, 56
+  offset: 20, 2
+  index: -1
+front/face/blush
+  rotate: false
+  xy: 85, 43
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 3
+  index: -1
+front/face/scared
+  rotate: true
+  xy: 49, 70
+  size: 17, 19
+  orig: 55, 56
+  offset: 19, 2
+  index: -1
+front/scarf_1
+  rotate: false
+  xy: 29, 2
+  size: 5, 5
+  orig: 55, 58
+  offset: 25, 1
+  index: -1
+front/scarf_2
+  rotate: false
+  xy: 65, 45
+  size: 18, 11
+  orig: 55, 58
+  offset: 19, 14
+  index: -1
+front/scarf_3
+  rotate: false
+  xy: 102, 46
+  size: 18, 10
+  orig: 55, 58
+  offset: 20, 20
+  index: -1
+side/[base]armB
+  rotate: false
+  xy: 2, 6
+  size: 8, 8
+  orig: 56, 56
+  offset: 33, 2
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 115, 10
+  size: 9, 8
+  orig: 56, 56
+  offset: 22, 4
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 88
+  size: 23, 19
+  orig: 56, 56
+  offset: 19, 4
+  index: -1
+side/[base]ear1
+  rotate: false
+  xy: 82, 76
+  size: 7, 10
+  orig: 56, 56
+  offset: 30, 21
+  index: -1
+side/[base]ear2
+  rotate: false
+  xy: 119, 34
+  size: 7, 10
+  orig: 56, 56
+  offset: 30, 21
+  index: -1
+side/[base]handR
+  rotate: false
+  xy: 20, 3
+  size: 7, 4
+  orig: 56, 56
+  offset: 25, 2
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 93, 90
+  size: 21, 17
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+side/[base]legB
+  rotate: false
+  xy: 47, 3
+  size: 6, 6
+  orig: 56, 56
+  offset: 21, 2
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 55, 3
+  size: 6, 6
+  orig: 56, 56
+  offset: 12, 2
+  index: -1
+side/[base]legR2
+  rotate: false
+  xy: 115, 3
+  size: 6, 5
+  orig: 56, 56
+  offset: 13, 3
+  index: -1
+side/[base]pelvis
+  rotate: true
+  xy: 27, 88
+  size: 19, 20
+  orig: 56, 56
+  offset: 9, 4
+  index: -1
+side/[base]tail
+  rotate: false
+  xy: 28, 9
+  size: 9, 5
+  orig: 56, 56
+  offset: 8, 20
+  index: -1
+side/earL1
+  rotate: true
+  xy: 116, 73
+  size: 7, 10
+  orig: 56, 56
+  offset: 40, 21
+  index: -1
+side/earL2
+  rotate: false
+  xy: 14, 58
+  size: 6, 10
+  orig: 56, 56
+  offset: 40, 21
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 32, 16
+  size: 12, 11
+  orig: 56, 56
+  offset: 34, 9
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 73, 16
+  size: 12, 11
+  orig: 56, 56
+  offset: 34, 9
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 2, 29
+  size: 12, 12
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 16, 29
+  size: 12, 12
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 87, 7
+  size: 12, 11
+  orig: 56, 56
+  offset: 34, 9
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 30, 29
+  size: 12, 12
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 44, 29
+  size: 12, 12
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/face/bite
+  rotate: false
+  xy: 80, 29
+  size: 12, 12
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/face/blush
+  rotate: false
+  xy: 14, 43
+  size: 15, 12
+  orig: 56, 56
+  offset: 31, 10
+  index: -1
+side/face/scared
+  rotate: true
+  xy: 23, 71
+  size: 15, 18
+  orig: 56, 56
+  offset: 31, 9
+  index: -1
+side/face/victory
+  rotate: false
+  xy: 101, 7
+  size: 12, 11
+  orig: 56, 56
+  offset: 34, 9
+  index: -1
+side/scarf_1
+  rotate: false
+  xy: 31, 43
+  size: 15, 12
+  orig: 56, 56
+  offset: 15, 14
+  index: -1
+side/scarf_2
+  rotate: true
+  xy: 94, 35
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/scarf_3
+  rotate: false
+  xy: 48, 43
+  size: 14, 12
+  orig: 56, 56
+  offset: 22, 5
+  index: -1
+side/scarf_4
+  rotate: true
+  xy: 12, 10
+  size: 4, 14
+  orig: 56, 56
+  offset: 40, 4
+  index: -1

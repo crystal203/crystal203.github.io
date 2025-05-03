@@ -1,0 +1,314 @@
+
+desertelf_prison_officer.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 11, 1
+  size: 9, 10
+  orig: 55, 56
+  offset: 14, 8
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 11, 1
+  size: 9, 10
+  orig: 55, 56
+  offset: 14, 8
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 22, 1
+  size: 9, 10
+  orig: 55, 56
+  offset: 14, 8
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 22, 1
+  size: 9, 10
+  orig: 55, 56
+  offset: 14, 8
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 60, 31
+  size: 13, 15
+  orig: 55, 56
+  offset: 21, 4
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 92, 6
+  size: 8, 8
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 91, 55
+  size: 8, 8
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 33, 1
+  size: 27, 33
+  orig: 55, 56
+  offset: 14, 14
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 89, 27
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 89, 27
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 84, 15
+  size: 8, 8
+  orig: 55, 56
+  offset: 30, 7
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 84, 15
+  size: 8, 8
+  orig: 55, 56
+  offset: 30, 7
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 64, 48
+  size: 13, 15
+  orig: 55, 56
+  offset: 21, 4
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 85, 45
+  size: 8, 8
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 1, 1
+  size: 8, 9
+  orig: 55, 56
+  offset: 33, 2
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 1, 1
+  size: 8, 9
+  orig: 55, 56
+  offset: 33, 2
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 85, 36
+  size: 8, 8
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 1, 28
+  size: 27, 35
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 93, 18
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 93, 18
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 76, 15
+  size: 7, 2
+  orig: 55, 56
+  offset: 24, 22
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 67, 15
+  size: 15, 4
+  orig: 55, 56
+  offset: 20, 21
+  index: -1
+front/face/[base]doyagao
+  rotate: true
+  xy: 22, 11
+  size: 16, 7
+  orig: 55, 56
+  offset: 19, 20
+  index: -1
+front/face/[base]mad
+  rotate: true
+  xy: 1, 10
+  size: 17, 5
+  orig: 55, 56
+  offset: 19, 21
+  index: -1
+front/face/[base]smile
+  rotate: true
+  xy: 72, 15
+  size: 15, 3
+  orig: 55, 56
+  offset: 20, 21
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 60, 47
+  size: 16, 3
+  orig: 55, 56
+  offset: 19, 21
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 30, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 30, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 30, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 30, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 7, 11
+  size: 16, 14
+  orig: 56, 56
+  offset: 25, 4
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 83, 54
+  size: 9, 7
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 81, 24
+  size: 9, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 29, 29
+  size: 30, 34
+  orig: 56, 56
+  offset: 15, 14
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 94, 46
+  size: 5, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 94, 37
+  size: 5, 8
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 78, 49
+  size: 14, 4
+  orig: 56, 56
+  offset: 28, 22
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 67, 2
+  size: 12, 3
+  orig: 56, 56
+  offset: 29, 22
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 30, 16
+  size: 12, 2
+  orig: 56, 56
+  offset: 29, 23
+  index: -1
+side/face/[base]mad
+  rotate: true
+  xy: 74, 33
+  size: 14, 6
+  orig: 56, 56
+  offset: 28, 21
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 76, 18
+  size: 14, 4
+  orig: 56, 56
+  offset: 28, 23
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 81, 34
+  size: 14, 3
+  orig: 56, 56
+  offset: 28, 22
+  index: -1
+side/shoulderL
+  rotate: true
+  xy: 82, 4
+  size: 10, 9
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/shoulderR
+  rotate: true
+  xy: 71, 3
+  size: 11, 10
+  orig: 56, 56
+  offset: 19, 8
+  index: -1

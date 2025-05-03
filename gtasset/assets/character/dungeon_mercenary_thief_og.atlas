@@ -1,0 +1,300 @@
+
+dungeon_mercenary_thief_og.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 44, 11
+  size: 5, 5
+  orig: 56, 56
+  offset: 21, 5
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 44, 11
+  size: 5, 5
+  orig: 56, 56
+  offset: 21, 5
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 11, 6
+  size: 12, 8
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 2, 2
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 2, 2
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 2, 2
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 2, 2
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 71
+  size: 31, 23
+  orig: 56, 56
+  offset: 12, 9
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 43, 43
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 43, 43
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 43, 43
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 43, 43
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 43, 43
+  size: 4, 6
+  orig: 56, 56
+  offset: 36, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 43, 43
+  size: 4, 6
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 43, 51
+  size: 5, 4
+  orig: 56, 56
+  offset: 21, 5
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 43, 51
+  size: 5, 4
+  orig: 56, 56
+  offset: 21, 5
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 44, 4
+  size: 5, 5
+  orig: 56, 56
+  offset: 30, 4
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 44, 4
+  size: 5, 5
+  orig: 56, 56
+  offset: 30, 4
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 25, 2
+  size: 12, 8
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 44, 18
+  size: 7, 5
+  orig: 56, 56
+  offset: 32, 2
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 44, 18
+  size: 7, 5
+  orig: 56, 56
+  offset: 32, 2
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 2, 96
+  size: 32, 24
+  orig: 56, 56
+  offset: 12, 8
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 16, 16
+  size: 14, 7
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 36, 96
+  size: 12, 6
+  orig: 56, 56
+  offset: 22, 9
+  index: -1
+front/face/[base]doyagao
+  rotate: true
+  xy: 2, 8
+  size: 14, 7
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 36, 106
+  size: 14, 6
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 17, 36
+  size: 14, 8
+  orig: 56, 56
+  offset: 21, 8
+  index: -1
+front/face/[base]smile
+  rotate: true
+  xy: 42, 27
+  size: 14, 6
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 35, 74
+  size: 14, 6
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 43, 57
+  size: 5, 4
+  orig: 56, 56
+  offset: 36, 5
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 45, 82
+  size: 4, 4
+  orig: 56, 56
+  offset: 31, 5
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 32, 22
+  size: 12, 8
+  orig: 56, 56
+  offset: 29, 3
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 43, 63
+  size: 5, 4
+  orig: 56, 56
+  offset: 37, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 44, 104
+  size: 5, 4
+  orig: 56, 56
+  offset: 28, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 46
+  size: 29, 23
+  orig: 56, 56
+  offset: 19, 9
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 2, 35
+  size: 13, 9
+  orig: 56, 56
+  offset: 31, 9
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 33, 57
+  size: 12, 8
+  orig: 56, 56
+  offset: 31, 9
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 33, 43
+  size: 12, 8
+  orig: 56, 56
+  offset: 31, 10
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 35, 82
+  size: 12, 8
+  orig: 56, 56
+  offset: 32, 10
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 17, 25
+  size: 12, 9
+  orig: 56, 56
+  offset: 31, 9
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 2, 24
+  size: 12, 9
+  orig: 56, 56
+  offset: 31, 9
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 35, 7
+  size: 13, 7
+  orig: 56, 56
+  offset: 31, 10
+  index: -1

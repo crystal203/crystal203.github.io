@@ -1,0 +1,244 @@
+
+broken_worker_a_head.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]head_1
+  rotate: false
+  xy: 2, 163
+  size: 37, 25
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+back/[base]head_1a
+  rotate: false
+  xy: 2, 2
+  size: 37, 24
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+back/[base]head_2
+  rotate: true
+  xy: 41, 215
+  size: 37, 24
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+back/[base]head_2a
+  rotate: true
+  xy: 41, 176
+  size: 37, 24
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+back/[base]head_3
+  rotate: true
+  xy: 41, 20
+  size: 37, 23
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+back/[base]head_3a
+  rotate: true
+  xy: 41, 137
+  size: 37, 24
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+back/[base]head_4
+  rotate: false
+  xy: 2, 190
+  size: 37, 27
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+back/[base]head_4a
+  rotate: false
+  xy: 2, 136
+  size: 37, 25
+  orig: 67, 68
+  offset: 15, 14
+  index: -1
+front/[base]head_1
+  rotate: false
+  xy: 2, 109
+  size: 37, 25
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+front/[base]head_1a
+  rotate: false
+  xy: 2, 82
+  size: 37, 25
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+front/[base]head_2
+  rotate: false
+  xy: 2, 55
+  size: 37, 25
+  orig: 67, 68
+  offset: 15, 19
+  index: -1
+front/[base]head_2a
+  rotate: true
+  xy: 41, 98
+  size: 37, 24
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+front/[base]head_3
+  rotate: true
+  xy: 66, 20
+  size: 37, 23
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+front/[base]head_3a
+  rotate: true
+  xy: 67, 215
+  size: 37, 22
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+front/[base]head_4
+  rotate: false
+  xy: 2, 28
+  size: 37, 25
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+front/[base]head_4a
+  rotate: true
+  xy: 41, 59
+  size: 37, 24
+  orig: 67, 68
+  offset: 15, 20
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 67, 162
+  size: 15, 8
+  orig: 67, 68
+  offset: 26, 19
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 67, 152
+  size: 15, 8
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 67, 131
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 67, 122
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 67, 113
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 62, 8
+  size: 15, 10
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 67, 172
+  size: 15, 9
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/face/shocked
+  rotate: false
+  xy: 67, 104
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 20
+  index: -1
+front/shocked_fx
+  rotate: false
+  xy: 2, 219
+  size: 36, 33
+  orig: 67, 68
+  offset: 14, 17
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 67, 183
+  size: 30, 25
+  orig: 66, 66
+  offset: 22, 18
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 67, 140
+  size: 11, 10
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 67, 75
+  size: 11, 7
+  orig: 66, 66
+  offset: 34, 21
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 67, 94
+  size: 11, 8
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 67, 66
+  size: 11, 7
+  orig: 66, 66
+  offset: 34, 21
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 79, 11
+  size: 11, 7
+  orig: 66, 66
+  offset: 34, 21
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 67, 84
+  size: 11, 8
+  orig: 66, 66
+  offset: 34, 20
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 41, 8
+  size: 19, 10
+  orig: 66, 66
+  offset: 29, 21
+  index: -1
+side/face/shocked
+  rotate: false
+  xy: 79, 2
+  size: 11, 7
+  orig: 66, 66
+  offset: 34, 21
+  index: -1

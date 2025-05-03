@@ -1,0 +1,391 @@
+
+lily_white_knight.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 2, 7
+  size: 6, 7
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 2, 7
+  size: 6, 7
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 110, 69
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 1
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 40, 9
+  size: 8, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 50, 8
+  size: 8, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 53
+  size: 29, 30
+  orig: 55, 56
+  offset: 13, 10
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 68, 4
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 68, 4
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/hair
+  rotate: true
+  xy: 60, 54
+  size: 29, 23
+  orig: 55, 56
+  offset: 13, 1
+  index: -1
+back/wingL
+  rotate: false
+  xy: 110, 57
+  size: 15, 10
+  orig: 55, 56
+  offset: 7, 9
+  index: -1
+back/wingR
+  rotate: false
+  xy: 110, 57
+  size: 15, 10
+  orig: 55, 56
+  offset: 7, 9
+  index: -1
+front/wingL
+  rotate: false
+  xy: 110, 57
+  size: 15, 10
+  orig: 55, 56
+  offset: 3, 11
+  index: -1
+front/wingR
+  rotate: false
+  xy: 110, 57
+  size: 15, 10
+  orig: 55, 56
+  offset: 3, 11
+  index: -1
+side/wingR
+  rotate: false
+  xy: 110, 57
+  size: 15, 10
+  orig: 56, 56
+  offset: 6, 13
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 108, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 108, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+front/[base]armL2
+  rotate: true
+  xy: 117, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: true
+  xy: 117, 4
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 16, 38
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 11, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 11, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 29, 8
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 29, 8
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 33, 54
+  size: 29, 25
+  orig: 55, 56
+  offset: 13, 13
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 40, 3
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 100, 2
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 62, 30
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 2, 15
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 2, 26
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 78, 22
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]mad
+  rotate: true
+  xy: 116, 24
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]smile
+  rotate: true
+  xy: 18, 22
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 95, 22
+  size: 14, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/blood
+  rotate: false
+  xy: 125, 82
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/blood
+  rotate: false
+  xy: 125, 82
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/hair
+  rotate: false
+  xy: 85, 33
+  size: 29, 21
+  orig: 55, 56
+  offset: 13, 4
+  index: -1
+front/helm
+  rotate: false
+  xy: 62, 42
+  size: 17, 10
+  orig: 55, 56
+  offset: 19, 29
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 19, 4
+  size: 5, 7
+  orig: 56, 56
+  offset: 35, 8
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 82, 4
+  size: 5, 7
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 38
+  size: 12, 13
+  orig: 56, 56
+  offset: 27, 3
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 91, 4
+  size: 5, 7
+  orig: 56, 56
+  offset: 36, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 60, 7
+  size: 6, 8
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 85, 56
+  size: 27, 23
+  orig: 56, 56
+  offset: 18, 14
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 28, 2
+  size: 4, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 49, 2
+  size: 4, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 111, 12
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 17, 11
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 69, 10
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 82, 11
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 30, 18
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 43, 18
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 95, 11
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/smile2
+  rotate: false
+  xy: 56, 17
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/hair
+  rotate: false
+  xy: 33, 31
+  size: 27, 21
+  orig: 56, 56
+  offset: 16, 1
+  index: -1
+side/helmR
+  rotate: true
+  xy: 116, 40
+  size: 15, 10
+  orig: 56, 56
+  offset: 27, 29
+  index: -1

@@ -1,0 +1,349 @@
+
+bari_mayreel.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 50, 9
+  size: 21, 21
+  orig: 56, 56
+  offset: 18, 12
+  index: -1
+back/clamp
+  rotate: false
+  xy: 88, 76
+  size: 25, 22
+  orig: 56, 56
+  offset: 16, 12
+  index: -1
+back/draw
+  rotate: false
+  xy: 56, 51
+  size: 23, 21
+  orig: 56, 56
+  offset: 17, 12
+  index: -1
+back/earL
+  rotate: false
+  xy: 121, 27
+  size: 4, 6
+  orig: 56, 56
+  offset: 22, 27
+  index: -1
+back/earR
+  rotate: false
+  xy: 121, 19
+  size: 4, 6
+  orig: 56, 56
+  offset: 31, 27
+  index: -1
+back/flowerB
+  rotate: false
+  xy: 27, 7
+  size: 7, 8
+  orig: 56, 56
+  offset: 23, 18
+  index: -1
+back/flowerL
+  rotate: false
+  xy: 16, 6
+  size: 9, 9
+  orig: 56, 56
+  offset: 17, 21
+  index: -1
+back/flowerR
+  rotate: false
+  xy: 115, 74
+  size: 8, 11
+  orig: 56, 56
+  offset: 33, 19
+  index: -1
+back/legBL
+  rotate: false
+  xy: 121, 15
+  size: 2, 2
+  orig: 56, 56
+  offset: 31, 11
+  index: -1
+front/legFL
+  rotate: false
+  xy: 121, 15
+  size: 2, 2
+  orig: 56, 56
+  offset: 31, 11
+  index: -1
+back/legBR
+  rotate: false
+  xy: 45, 13
+  size: 2, 2
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+front/legFR
+  rotate: false
+  xy: 45, 13
+  size: 2, 2
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+side/legBR
+  rotate: false
+  xy: 45, 13
+  size: 2, 2
+  orig: 56, 56
+  offset: 27, 11
+  index: -1
+back/mayreel_qte_c
+  rotate: false
+  xy: 2, 75
+  size: 28, 23
+  orig: 56, 56
+  offset: 14, 11
+  index: -1
+front/body
+  rotate: false
+  xy: 73, 6
+  size: 21, 21
+  orig: 56, 56
+  offset: 18, 12
+  index: -1
+front/bodyB
+  rotate: true
+  xy: 81, 53
+  size: 9, 3
+  orig: 56, 56
+  offset: 24, 29
+  index: -1
+front/clamp
+  rotate: false
+  xy: 88, 52
+  size: 25, 22
+  orig: 56, 56
+  offset: 16, 12
+  index: -1
+front/draw
+  rotate: false
+  xy: 81, 29
+  size: 23, 21
+  orig: 56, 56
+  offset: 17, 12
+  index: -1
+front/earL
+  rotate: true
+  xy: 45, 3
+  size: 4, 6
+  orig: 56, 56
+  offset: 31, 27
+  index: -1
+front/earR
+  rotate: true
+  xy: 53, 3
+  size: 4, 6
+  orig: 56, 56
+  offset: 22, 27
+  index: -1
+front/embarrassed
+  rotate: false
+  xy: 32, 74
+  size: 26, 24
+  orig: 56, 56
+  offset: 15, 11
+  index: -1
+front/embarrassed2
+  rotate: false
+  xy: 50, 32
+  size: 26, 17
+  orig: 56, 56
+  offset: 15, 18
+  index: -1
+front/face/frown
+  rotate: false
+  xy: 114, 8
+  size: 9, 4
+  orig: 56, 56
+  offset: 24, 23
+  index: -1
+front/face/greed
+  rotate: true
+  xy: 106, 33
+  size: 17, 13
+  orig: 56, 56
+  offset: 20, 18
+  index: -1
+front/face/mad
+  rotate: false
+  xy: 16, 17
+  size: 13, 9
+  orig: 56, 56
+  offset: 22, 18
+  index: -1
+front/face/smile
+  rotate: true
+  xy: 96, 16
+  size: 11, 6
+  orig: 56, 56
+  offset: 23, 20
+  index: -1
+front/face/surprise
+  rotate: false
+  xy: 31, 17
+  size: 13, 9
+  orig: 56, 56
+  offset: 22, 19
+  index: -1
+front/flowerB1
+  rotate: false
+  xy: 36, 7
+  size: 7, 8
+  orig: 56, 56
+  offset: 17, 22
+  index: -1
+front/flowerB2
+  rotate: false
+  xy: 121, 44
+  size: 5, 8
+  orig: 56, 56
+  offset: 33, 22
+  index: -1
+front/flowerL
+  rotate: false
+  xy: 121, 35
+  size: 5, 7
+  orig: 56, 56
+  offset: 35, 21
+  index: -1
+front/flowerR
+  rotate: false
+  xy: 2, 6
+  size: 7, 8
+  orig: 56, 56
+  offset: 16, 19
+  index: -1
+front/mayreel_qte_a
+  rotate: true
+  xy: 60, 74
+  size: 24, 26
+  orig: 56, 56
+  offset: 16, 11
+  index: -1
+side/body
+  rotate: false
+  xy: 2, 28
+  size: 22, 21
+  orig: 56, 56
+  offset: 23, 12
+  index: -1
+side/clamp
+  rotate: false
+  xy: 29, 51
+  size: 25, 21
+  orig: 56, 56
+  offset: 21, 12
+  index: -1
+side/draw
+  rotate: false
+  xy: 26, 28
+  size: 22, 21
+  orig: 56, 56
+  offset: 23, 12
+  index: -1
+side/earL
+  rotate: true
+  xy: 61, 3
+  size: 4, 6
+  orig: 56, 56
+  offset: 37, 29
+  index: -1
+side/earR
+  rotate: true
+  xy: 114, 2
+  size: 4, 6
+  orig: 56, 56
+  offset: 30, 29
+  index: -1
+side/face/frown
+  rotate: true
+  xy: 81, 64
+  size: 8, 4
+  orig: 56, 56
+  offset: 32, 25
+  index: -1
+side/face/greed
+  rotate: true
+  xy: 106, 14
+  size: 17, 13
+  orig: 56, 56
+  offset: 28, 20
+  index: -1
+side/face/mad
+  rotate: true
+  xy: 115, 61
+  size: 11, 8
+  orig: 56, 56
+  offset: 31, 21
+  index: -1
+side/face/smile
+  rotate: false
+  xy: 115, 54
+  size: 11, 5
+  orig: 56, 56
+  offset: 31, 23
+  index: -1
+side/face/surprise
+  rotate: true
+  xy: 115, 87
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 21
+  index: -1
+side/flowerB
+  rotate: true
+  xy: 2, 16
+  size: 10, 12
+  orig: 56, 56
+  offset: 21, 18
+  index: -1
+side/flowerF
+  rotate: false
+  xy: 96, 6
+  size: 7, 8
+  orig: 56, 56
+  offset: 24, 19
+  index: -1
+side/flowerL
+  rotate: true
+  xy: 105, 6
+  size: 6, 7
+  orig: 56, 56
+  offset: 40, 19
+  index: -1
+side/legBL
+  rotate: false
+  xy: 11, 12
+  size: 2, 2
+  orig: 56, 56
+  offset: 32, 11
+  index: -1
+side/legFL
+  rotate: false
+  xy: 11, 8
+  size: 2, 2
+  orig: 56, 56
+  offset: 38, 11
+  index: -1
+side/legFR
+  rotate: false
+  xy: 11, 4
+  size: 2, 2
+  orig: 56, 56
+  offset: 32, 11
+  index: -1
+side/mayreel_qte_b
+  rotate: false
+  xy: 2, 51
+  size: 25, 22
+  orig: 56, 56
+  offset: 21, 11
+  index: -1

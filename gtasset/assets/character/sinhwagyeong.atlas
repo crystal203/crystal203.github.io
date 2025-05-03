@@ -1,0 +1,405 @@
+
+sinhwagyeong.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 133, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 133, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 53, 36
+  size: 27, 16
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 147, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 147, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 53, 53
+  size: 28, 27
+  orig: 55, 56
+  offset: 12, 13
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 124, 70
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 124, 70
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 124, 70
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 124, 70
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/bag
+  rotate: false
+  xy: 157, 99
+  size: 55, 28
+  orig: 55, 56
+  offset: 0, 0
+  index: -1
+back/hair
+  rotate: false
+  xy: 100, 75
+  size: 32, 23
+  orig: 55, 56
+  offset: 12, 4
+  index: -1
+back/helm
+  rotate: false
+  xy: 1, 81
+  size: 51, 46
+  orig: 55, 56
+  offset: 2, 0
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 140, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 140, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 241, 76
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 241, 76
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 82, 53
+  size: 27, 16
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 154, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 154, 70
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 233, 74
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 233, 74
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 213, 99
+  size: 28, 28
+  orig: 55, 56
+  offset: 15, 12
+  index: -1
+front/bag
+  rotate: false
+  xy: 1, 5
+  size: 55, 28
+  orig: 55, 56
+  offset: 0, 0
+  index: -1
+front/bodyB
+  rotate: false
+  xy: 81, 36
+  size: 19, 5
+  orig: 55, 56
+  offset: 18, 2
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 81, 42
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 85, 15
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/[base]doyagao
+  rotate: true
+  xy: 230, 83
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 85, 1
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 99, 58
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 85, 25
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 95, 1
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/blood
+  rotate: false
+  xy: 242, 96
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/sleep_deep
+  rotate: false
+  xy: 99, 49
+  size: 13, 8
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/hair
+  rotate: false
+  xy: 133, 77
+  size: 31, 21
+  orig: 55, 56
+  offset: 11, 5
+  index: -1
+front/helm
+  rotate: false
+  xy: 1, 34
+  size: 51, 46
+  orig: 55, 56
+  offset: 2, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 57, 1
+  size: 6, 7
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 65, 1
+  size: 7, 6
+  orig: 56, 56
+  offset: 24, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 198, 82
+  size: 31, 16
+  orig: 56, 56
+  offset: 15, 0
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 73, 1
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 249, 76
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 57, 8
+  size: 27, 27
+  orig: 56, 56
+  offset: 18, 13
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 127, 61
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 132, 61
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/bag
+  rotate: false
+  xy: 100, 99
+  size: 56, 28
+  orig: 56, 56
+  offset: 0, 0
+  index: -1
+side/bodyB
+  rotate: false
+  xy: 99, 69
+  size: 24, 5
+  orig: 56, 56
+  offset: 19, 1
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 115, 58
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 222, 72
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 113, 47
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 113, 37
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 101, 38
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 241, 84
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 198, 72
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/blood
+  rotate: false
+  xy: 242, 111
+  size: 13, 16
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+side/face/sleep_deep
+  rotate: false
+  xy: 210, 72
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/hair
+  rotate: false
+  xy: 165, 78
+  size: 32, 20
+  orig: 56, 56
+  offset: 15, 5
+  index: -1
+side/helmL
+  rotate: false
+  xy: 53, 81
+  size: 46, 46
+  orig: 56, 56
+  offset: 6, 0
+  index: -1

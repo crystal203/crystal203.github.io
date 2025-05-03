@@ -1,0 +1,279 @@
+
+plague_doctor_surgeon.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 60, 57
+  size: 5, 6
+  orig: 73, 74
+  offset: 29, 17
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 60, 57
+  size: 5, 6
+  orig: 73, 74
+  offset: 29, 17
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 60, 57
+  size: 5, 6
+  orig: 73, 74
+  offset: 29, 17
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 60, 57
+  size: 5, 6
+  orig: 73, 74
+  offset: 29, 17
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 30, 2
+  size: 9, 12
+  orig: 73, 74
+  offset: 32, 13
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 57, 31
+  size: 6, 6
+  orig: 73, 74
+  offset: 25, 13
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 57, 31
+  size: 6, 6
+  orig: 73, 74
+  offset: 25, 13
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 31, 24
+  size: 24, 28
+  orig: 73, 74
+  offset: 25, 20
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 58, 3
+  size: 4, 8
+  orig: 73, 74
+  offset: 32, 9
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 58, 3
+  size: 4, 8
+  orig: 73, 74
+  offset: 32, 9
+  index: -1
+back/bodydecoL
+  rotate: false
+  xy: 66, 50
+  size: 1, 3
+  orig: 73, 74
+  offset: 35, 13
+  index: -1
+back/bodydecoR
+  rotate: false
+  xy: 66, 44
+  size: 1, 4
+  orig: 73, 74
+  offset: 37, 12
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 49, 88
+  size: 6, 7
+  orig: 73, 74
+  offset: 38, 17
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 49, 88
+  size: 6, 7
+  orig: 73, 74
+  offset: 38, 17
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 44, 2
+  size: 9, 12
+  orig: 73, 74
+  offset: 32, 13
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 57, 39
+  size: 6, 6
+  orig: 73, 74
+  offset: 25, 13
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 57, 39
+  size: 6, 6
+  orig: 73, 74
+  offset: 25, 13
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 49, 79
+  size: 8, 7
+  orig: 73, 74
+  offset: 42, 12
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 49, 79
+  size: 8, 7
+  orig: 73, 74
+  offset: 42, 12
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 2, 2
+  size: 23, 26
+  orig: 73, 74
+  offset: 25, 22
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 59, 79
+  size: 4, 8
+  orig: 73, 74
+  offset: 32, 9
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 59, 79
+  size: 4, 8
+  orig: 73, 74
+  offset: 32, 9
+  index: -1
+front/bodydecoL
+  rotate: false
+  xy: 65, 22
+  size: 3, 6
+  orig: 73, 74
+  offset: 37, 17
+  index: -1
+front/bodydecoR
+  rotate: false
+  xy: 64, 4
+  size: 3, 7
+  orig: 73, 74
+  offset: 32, 16
+  index: -1
+front/hairB
+  rotate: false
+  xy: 30, 13
+  size: 24, 9
+  orig: 73, 74
+  offset: 24, 21
+  index: -1
+front/potion
+  rotate: false
+  xy: 65, 38
+  size: 3, 4
+  orig: 73, 74
+  offset: 33, 12
+  index: -1
+side/potion
+  rotate: false
+  xy: 65, 38
+  size: 3, 4
+  orig: 74, 74
+  offset: 39, 13
+  index: -1
+onehandsword_plague_doctor_sword
+  rotate: false
+  xy: 2, 54
+  size: 45, 46
+  orig: 64, 64
+  offset: 19, 18
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 60, 65
+  size: 5, 6
+  orig: 74, 74
+  offset: 43, 17
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 63, 89
+  size: 5, 6
+  orig: 74, 74
+  offset: 35, 17
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 49, 54
+  size: 9, 11
+  orig: 74, 74
+  offset: 37, 14
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 56, 13
+  size: 6, 7
+  orig: 74, 74
+  offset: 44, 12
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 57, 22
+  size: 6, 7
+  orig: 74, 74
+  offset: 33, 12
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 27
+  size: 27, 25
+  orig: 74, 74
+  offset: 25, 23
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 57, 89
+  size: 4, 8
+  orig: 74, 74
+  offset: 42, 9
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 60, 47
+  size: 4, 8
+  orig: 74, 74
+  offset: 37, 9
+  index: -1
+side/bodydecoL
+  rotate: false
+  xy: 65, 30
+  size: 3, 6
+  orig: 74, 74
+  offset: 44, 18
+  index: -1
+side/bodydecoR
+  rotate: false
+  xy: 64, 13
+  size: 4, 7
+  orig: 74, 74
+  offset: 39, 17
+  index: -1
+side/hairB
+  rotate: true
+  xy: 49, 67
+  size: 10, 9
+  orig: 74, 74
+  offset: 28, 23
+  index: -1

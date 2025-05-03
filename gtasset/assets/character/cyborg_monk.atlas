@@ -1,0 +1,2785 @@
+
+cyborg_monk.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cyborg_monk_3/back/[base]body
+  rotate: false
+  xy: 102, 59
+  size: 9, 12
+  orig: 69, 70
+  offset: 30, 11
+  index: -1
+cyborg_monk_3/back/[base]elbowL
+  rotate: false
+  xy: 114, 244
+  size: 9, 10
+  orig: 69, 70
+  offset: 21, 7
+  index: -1
+cyborg_monk_3/back/[base]head
+  rotate: false
+  xy: 2, 91
+  size: 27, 26
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_3/back/clothL_1
+  rotate: false
+  xy: 134, 66
+  size: 6, 10
+  orig: 69, 70
+  offset: 28, 6
+  index: -1
+cyborg_monk_3/back/clothL_3
+  rotate: true
+  xy: 70, 179
+  size: 15, 10
+  orig: 69, 70
+  offset: 20, 5
+  index: -1
+cyborg_monk_3/back/clothRF_2
+  rotate: true
+  xy: 70, 162
+  size: 15, 10
+  orig: 69, 70
+  offset: 34, 4
+  index: -1
+cyborg_monk_3/back/clothRF_3
+  rotate: false
+  xy: 56, 2
+  size: 16, 10
+  orig: 69, 70
+  offset: 34, 5
+  index: -1
+cyborg_monk_3/back/elbowL2
+  rotate: true
+  xy: 95, 212
+  size: 12, 10
+  orig: 69, 70
+  offset: 17, 6
+  index: -1
+cyborg_monk_3/front/[base]armR
+  rotate: false
+  xy: 155, 239
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_3/front/[base]body
+  rotate: false
+  xy: 103, 242
+  size: 9, 12
+  orig: 69, 70
+  offset: 30, 11
+  index: -1
+cyborg_monk_3/front/[base]elbowL
+  rotate: true
+  xy: 138, 44
+  size: 8, 7
+  orig: 69, 70
+  offset: 22, 11
+  index: -1
+cyborg_monk_3/front/[base]elbowR
+  rotate: false
+  xy: 155, 163
+  size: 6, 6
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_3/front/[base]head
+  rotate: false
+  xy: 2, 63
+  size: 27, 26
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_3/front/belt
+  rotate: true
+  xy: 157, 176
+  size: 9, 2
+  orig: 69, 70
+  offset: 30, 13
+  index: -1
+cyborg_monk_3/front/clothLB
+  rotate: true
+  xy: 97, 168
+  size: 14, 8
+  orig: 69, 70
+  offset: 36, 9
+  index: -1
+cyborg_monk_3/front/clothL_1
+  rotate: false
+  xy: 92, 38
+  size: 11, 11
+  orig: 69, 70
+  offset: 36, 4
+  index: -1
+cyborg_monk_3/front/clothL_2
+  rotate: false
+  xy: 134, 54
+  size: 6, 10
+  orig: 69, 70
+  offset: 35, 4
+  index: -1
+cyborg_monk_3/front/clothRB
+  rotate: true
+  xy: 150, 171
+  size: 9, 5
+  orig: 69, 70
+  offset: 22, 12
+  index: -1
+cyborg_monk_3/front/clothR_3
+  rotate: false
+  xy: 74, 133
+  size: 14, 10
+  orig: 69, 70
+  offset: 19, 5
+  index: -1
+cyborg_monk_3/front/elbowL1
+  rotate: false
+  xy: 97, 127
+  size: 10, 11
+  orig: 69, 70
+  offset: 19, 4
+  index: -1
+cyborg_monk_3/front/elbowL2
+  rotate: false
+  xy: 82, 201
+  size: 11, 12
+  orig: 69, 70
+  offset: 41, 4
+  index: -1
+cyborg_monk_3/side/S_creatureB_2
+  rotate: false
+  xy: 140, 89
+  size: 7, 7
+  orig: 70, 70
+  offset: 20, 19
+  index: -1
+cyborg_monk_3/side/[base]armL
+  rotate: false
+  xy: 151, 42
+  size: 6, 7
+  orig: 70, 70
+  offset: 41, 14
+  index: -1
+cyborg_monk_4/side/[base]armL
+  rotate: false
+  xy: 151, 42
+  size: 6, 7
+  orig: 70, 70
+  offset: 41, 14
+  index: -1
+cyborg_monk_3/side/[base]armR
+  rotate: false
+  xy: 151, 33
+  size: 6, 7
+  orig: 70, 70
+  offset: 32, 15
+  index: -1
+cyborg_monk_3/side/[base]body
+  rotate: false
+  xy: 112, 159
+  size: 9, 11
+  orig: 70, 70
+  offset: 35, 12
+  index: -1
+cyborg_monk_4/side/[base]body
+  rotate: false
+  xy: 112, 159
+  size: 9, 11
+  orig: 70, 70
+  offset: 35, 12
+  index: -1
+cyborg_monk_5/side/[base]body
+  rotate: false
+  xy: 112, 159
+  size: 9, 11
+  orig: 70, 70
+  offset: 35, 12
+  index: -1
+cyborg_monk_3/side/[base]elbowL
+  rotate: false
+  xy: 130, 133
+  size: 8, 8
+  orig: 70, 70
+  offset: 41, 9
+  index: -1
+cyborg_monk_3/side/[base]elbowR
+  rotate: false
+  xy: 152, 229
+  size: 6, 7
+  orig: 70, 70
+  offset: 31, 10
+  index: -1
+cyborg_monk_3/side/[base]head
+  rotate: false
+  xy: 31, 35
+  size: 23, 24
+  orig: 70, 70
+  offset: 26, 21
+  index: -1
+cyborg_monk_3/side/belt
+  rotate: false
+  xy: 140, 2
+  size: 9, 4
+  orig: 70, 70
+  offset: 36, 13
+  index: -1
+cyborg_monk_3/side/clothLB1
+  rotate: true
+  xy: 119, 177
+  size: 11, 8
+  orig: 70, 70
+  offset: 41, 10
+  index: -1
+cyborg_monk_3/side/clothL_1
+  rotate: true
+  xy: 100, 155
+  size: 11, 10
+  orig: 70, 70
+  offset: 42, 5
+  index: -1
+cyborg_monk_3/side/clothL_2
+  rotate: false
+  xy: 151, 69
+  size: 5, 9
+  orig: 70, 70
+  offset: 42, 4
+  index: -1
+cyborg_monk_3/side/clothRB
+  rotate: true
+  xy: 135, 211
+  size: 10, 6
+  orig: 70, 70
+  offset: 26, 11
+  index: -1
+cyborg_monk_3/side/clothR_1
+  rotate: true
+  xy: 117, 232
+  size: 10, 9
+  orig: 70, 70
+  offset: 32, 4
+  index: -1
+cyborg_monk_3/side/clothR_3
+  rotate: false
+  xy: 51, 198
+  size: 16, 12
+  orig: 70, 70
+  offset: 24, 4
+  index: -1
+cyborg_monk_3/side/elbowL2
+  rotate: false
+  xy: 100, 142
+  size: 10, 11
+  orig: 70, 70
+  offset: 42, 5
+  index: -1
+cyborg_monk_3/side/pelvis
+  rotate: true
+  xy: 86, 68
+  size: 15, 8
+  orig: 70, 70
+  offset: 33, 6
+  index: -1
+cyborg_monk_4/side/pelvis
+  rotate: true
+  xy: 86, 68
+  size: 15, 8
+  orig: 70, 70
+  offset: 33, 6
+  index: -1
+cyborg_monk_5/side/pelvis
+  rotate: true
+  xy: 86, 68
+  size: 15, 8
+  orig: 70, 70
+  offset: 33, 6
+  index: -1
+cyborg_monk_3/side/shoulderL
+  rotate: false
+  xy: 133, 31
+  size: 7, 9
+  orig: 70, 70
+  offset: 40, 13
+  index: -1
+cyborg_monk_4/back/B_creatureB_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureB_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureB_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_2_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_creatureF_4_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/B_cretaureF_4
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/bag
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/clothLB_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/clothLF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/clothLF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/clothRB_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/clothRF
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/clothR_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/back/elbowRdeco
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureB_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureB_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_2_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_4
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/F_creatureF_4_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/bag
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/clothR_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/clothR_4
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/front/elbowRdeco
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureB_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureB_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureB_4
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureB_4_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureF_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureF_2_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureF_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/S_creatureF_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/bag
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/clothB
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/clothBR1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/clothLB
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/clothR_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/clothR_4
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_3/side/elbowRdeco
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/B_creatureB_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/B_creatureF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/B_creatureF_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/B_creatureF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/B_creatureF_2_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/bag
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/clothLF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/clothRF
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/clothR_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/F_creatureB_3
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/F_creatureB_3_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/F_creatureF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/F_creatureF_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/F_creatureF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/F_creatureF_2_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/bag
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/front/clothR_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/S_creatureB_4
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/S_creatureB_4_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/S_creatureF_1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/S_creatureF_1_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/S_creatureF_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/S_creatureF_2_light
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/bag
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/clothB
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/clothBR1
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/clothLB
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/side/clothR_2
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_5/back/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_5/back/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_5/front/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_5/front/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_5/side/[base]legL
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_5/side/[base]legR
+  rotate: false
+  xy: 82, 170
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cyborg_monk_4/back/B_creatureF_4
+  rotate: false
+  xy: 141, 179
+  size: 7, 7
+  orig: 69, 70
+  offset: 51, 14
+  index: -1
+cyborg_monk_5/back/B_cretaureF_4
+  rotate: false
+  xy: 141, 179
+  size: 7, 7
+  orig: 69, 70
+  offset: 53, 14
+  index: -1
+cyborg_monk_4/back/[base]head
+  rotate: false
+  xy: 2, 35
+  size: 27, 26
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_4/back/clothF
+  rotate: false
+  xy: 138, 198
+  size: 5, 11
+  orig: 69, 70
+  offset: 32, 3
+  index: -1
+cyborg_monk_3/back/clothF
+  rotate: false
+  xy: 138, 198
+  size: 5, 11
+  orig: 69, 70
+  offset: 32, 3
+  index: -1
+cyborg_monk_4/back/clothLB_1
+  rotate: true
+  xy: 107, 199
+  size: 13, 8
+  orig: 69, 70
+  offset: 17, 9
+  index: -1
+cyborg_monk_4/back/clothLF_2
+  rotate: false
+  xy: 123, 68
+  size: 8, 10
+  orig: 69, 70
+  offset: 25, 4
+  index: -1
+cyborg_monk_4/back/clothLF_3
+  rotate: true
+  xy: 71, 15
+  size: 15, 10
+  orig: 69, 70
+  offset: 20, 4
+  index: -1
+cyborg_monk_3/back/clothLF_3
+  rotate: true
+  xy: 71, 15
+  size: 15, 10
+  orig: 69, 70
+  offset: 20, 4
+  index: -1
+cyborg_monk_4/back/clothL_3
+  rotate: true
+  xy: 72, 87
+  size: 15, 10
+  orig: 69, 70
+  offset: 20, 5
+  index: -1
+cyborg_monk_4/back/clothRB_1
+  rotate: true
+  xy: 138, 98
+  size: 11, 5
+  orig: 69, 70
+  offset: 37, 13
+  index: -1
+cyborg_monk_4/back/clothRF_2
+  rotate: true
+  xy: 72, 70
+  size: 15, 10
+  orig: 69, 70
+  offset: 34, 4
+  index: -1
+cyborg_monk_4/back/clothRF_3
+  rotate: false
+  xy: 51, 159
+  size: 17, 10
+  orig: 69, 70
+  offset: 34, 5
+  index: -1
+cyborg_monk_4/back/elbowL2
+  rotate: false
+  xy: 107, 172
+  size: 10, 10
+  orig: 69, 70
+  offset: 15, 5
+  index: -1
+cyborg_monk_4/back/elbowRdeco
+  rotate: false
+  xy: 155, 104
+  size: 6, 6
+  orig: 69, 70
+  offset: 23, 12
+  index: -1
+cyborg_monk_4/back/shoulderL
+  rotate: true
+  xy: 128, 192
+  size: 9, 8
+  orig: 69, 70
+  offset: 25, 13
+  index: -1
+cyborg_monk_3/back/shoulderL
+  rotate: true
+  xy: 128, 192
+  size: 9, 8
+  orig: 69, 70
+  offset: 25, 13
+  index: -1
+cyborg_monk_4/front/[base]elbowL
+  rotate: true
+  xy: 139, 188
+  size: 8, 7
+  orig: 69, 70
+  offset: 22, 11
+  index: -1
+cyborg_monk_4/front/[base]head
+  rotate: false
+  xy: 2, 7
+  size: 27, 26
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_4/front/belt
+  rotate: true
+  xy: 140, 9
+  size: 9, 6
+  orig: 69, 70
+  offset: 30, 9
+  index: -1
+cyborg_monk_4/front/clothLB
+  rotate: false
+  xy: 73, 245
+  size: 16, 9
+  orig: 69, 70
+  offset: 36, 9
+  index: -1
+cyborg_monk_4/front/clothL_1
+  rotate: true
+  xy: 83, 21
+  size: 13, 10
+  orig: 69, 70
+  offset: 36, 5
+  index: -1
+cyborg_monk_4/front/clothRB
+  rotate: true
+  xy: 139, 231
+  size: 11, 5
+  orig: 69, 70
+  offset: 22, 13
+  index: -1
+cyborg_monk_4/front/clothR_3
+  rotate: true
+  xy: 59, 87
+  size: 15, 11
+  orig: 69, 70
+  offset: 18, 4
+  index: -1
+cyborg_monk_4/front/clothR_4
+  rotate: false
+  xy: 107, 115
+  size: 10, 10
+  orig: 69, 70
+  offset: 24, 3
+  index: -1
+cyborg_monk_4/front/elbowL1
+  rotate: true
+  xy: 82, 187
+  size: 12, 11
+  orig: 69, 70
+  offset: 17, 4
+  index: -1
+cyborg_monk_4/front/elbowL2
+  rotate: false
+  xy: 56, 14
+  size: 13, 13
+  orig: 69, 70
+  offset: 41, 3
+  index: -1
+cyborg_monk_4/front/elbowRdeco
+  rotate: false
+  xy: 155, 96
+  size: 6, 6
+  orig: 69, 70
+  offset: 24, 12
+  index: -1
+cyborg_monk_4/front/shoulderL
+  rotate: true
+  xy: 128, 42
+  size: 9, 8
+  orig: 69, 70
+  offset: 35, 13
+  index: -1
+cyborg_monk_3/front/shoulderL
+  rotate: true
+  xy: 128, 42
+  size: 9, 8
+  orig: 69, 70
+  offset: 35, 13
+  index: -1
+cyborg_monk_4/side/S_creatureB_1
+  rotate: false
+  xy: 141, 170
+  size: 7, 7
+  orig: 70, 70
+  offset: 51, 15
+  index: -1
+cyborg_monk_5/side/S_creatureB_1
+  rotate: false
+  xy: 141, 170
+  size: 7, 7
+  orig: 70, 70
+  offset: 53, 16
+  index: -1
+cyborg_monk_4/side/S_creatureB_1_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 49, 13
+  index: -1
+cyborg_monk_3/side/S_creatureB_2_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 18, 17
+  index: -1
+cyborg_monk_3/side/S_creatureB_3_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 44, 17
+  index: -1
+cyborg_monk_4/side/S_creatureB_2_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 21, 18
+  index: -1
+cyborg_monk_4/side/S_creatureB_3_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 40, 19
+  index: -1
+cyborg_monk_4/side/S_creatureF_3_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 13, 12
+  index: -1
+cyborg_monk_5/side/S_creatureB_1_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 51, 14
+  index: -1
+cyborg_monk_5/side/S_creatureB_2_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 19, 18
+  index: -1
+cyborg_monk_5/side/S_creatureB_3_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 42, 19
+  index: -1
+cyborg_monk_5/side/S_creatureB_4_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 30, 20
+  index: -1
+cyborg_monk_5/side/S_creatureF_1_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 26, 8
+  index: -1
+cyborg_monk_5/side/S_creatureF_2_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 46, 9
+  index: -1
+cyborg_monk_5/side/S_creatureF_3_light
+  rotate: false
+  xy: 93, 226
+  size: 11, 11
+  orig: 70, 70
+  offset: 12, 11
+  index: -1
+cyborg_monk_4/side/S_creatureB_2
+  rotate: false
+  xy: 142, 69
+  size: 7, 7
+  orig: 70, 70
+  offset: 23, 20
+  index: -1
+cyborg_monk_5/side/S_creatureB_2
+  rotate: false
+  xy: 142, 69
+  size: 7, 7
+  orig: 70, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_4/side/S_creatureF_3
+  rotate: false
+  xy: 142, 60
+  size: 7, 7
+  orig: 70, 70
+  offset: 15, 14
+  index: -1
+cyborg_monk_4/side/[base]armR
+  rotate: false
+  xy: 152, 220
+  size: 6, 7
+  orig: 70, 70
+  offset: 32, 15
+  index: -1
+cyborg_monk_4/side/[base]elbowL
+  rotate: false
+  xy: 130, 88
+  size: 8, 8
+  orig: 70, 70
+  offset: 41, 9
+  index: -1
+cyborg_monk_4/side/[base]elbowR
+  rotate: false
+  xy: 152, 82
+  size: 6, 7
+  orig: 70, 70
+  offset: 31, 10
+  index: -1
+cyborg_monk_4/side/[base]head
+  rotate: false
+  xy: 31, 9
+  size: 23, 24
+  orig: 70, 70
+  offset: 26, 21
+  index: -1
+cyborg_monk_4/side/belt
+  rotate: true
+  xy: 149, 142
+  size: 8, 6
+  orig: 70, 70
+  offset: 37, 9
+  index: -1
+cyborg_monk_4/side/clothLB1
+  rotate: true
+  xy: 107, 184
+  size: 13, 8
+  orig: 70, 70
+  offset: 41, 10
+  index: -1
+cyborg_monk_4/side/clothL_1
+  rotate: true
+  xy: 105, 45
+  size: 12, 9
+  orig: 70, 70
+  offset: 42, 5
+  index: -1
+cyborg_monk_4/side/clothL_2
+  rotate: false
+  xy: 129, 98
+  size: 7, 10
+  orig: 70, 70
+  offset: 42, 4
+  index: -1
+cyborg_monk_4/side/clothRB
+  rotate: true
+  xy: 121, 132
+  size: 12, 7
+  orig: 70, 70
+  offset: 25, 12
+  index: -1
+cyborg_monk_4/side/clothR_1
+  rotate: true
+  xy: 117, 202
+  size: 10, 9
+  orig: 70, 70
+  offset: 32, 4
+  index: -1
+cyborg_monk_4/side/clothR_3
+  rotate: false
+  xy: 51, 212
+  size: 17, 12
+  orig: 70, 70
+  offset: 23, 4
+  index: -1
+cyborg_monk_4/side/clothR_4
+  rotate: false
+  xy: 107, 103
+  size: 10, 10
+  orig: 70, 70
+  offset: 32, 3
+  index: -1
+cyborg_monk_4/side/elbowL2
+  rotate: true
+  xy: 68, 32
+  size: 14, 11
+  orig: 70, 70
+  offset: 42, 5
+  index: -1
+cyborg_monk_4/side/elbowRdeco
+  rotate: false
+  xy: 154, 206
+  size: 8, 3
+  orig: 70, 70
+  offset: 30, 12
+  index: -1
+cyborg_monk_4/side/shoulderL
+  rotate: false
+  xy: 133, 20
+  size: 7, 9
+  orig: 70, 70
+  offset: 40, 13
+  index: -1
+cyborg_monk_5/back/B_creatureB_1
+  rotate: false
+  xy: 142, 35
+  size: 7, 7
+  orig: 69, 70
+  offset: 17, 9
+  index: -1
+cyborg_monk_3/back/B_creatureB_1
+  rotate: false
+  xy: 142, 35
+  size: 7, 7
+  orig: 69, 70
+  offset: 16, 16
+  index: -1
+cyborg_monk_4/back/B_creatureB_1
+  rotate: false
+  xy: 142, 35
+  size: 7, 7
+  orig: 69, 70
+  offset: 21, 9
+  index: -1
+cyborg_monk_5/back/B_creatureB_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 16, 8
+  index: -1
+cyborg_monk_3/back/B_creatureB_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 15, 15
+  index: -1
+cyborg_monk_3/back/B_creatureB_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 45, 15
+  index: -1
+cyborg_monk_3/front/F_creatureB_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 15, 18
+  index: -1
+cyborg_monk_3/front/F_creatureB_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 45, 18
+  index: -1
+cyborg_monk_4/back/B_creatureB_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 20, 8
+  index: -1
+cyborg_monk_4/back/B_creatureB_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 40, 8
+  index: -1
+cyborg_monk_4/back/B_creatureF_3_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 10, 13
+  index: -1
+cyborg_monk_4/back/B_creatureF_4_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 50, 13
+  index: -1
+cyborg_monk_4/front/F_creatureB_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 20, 19
+  index: -1
+cyborg_monk_4/front/F_creatureB_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 40, 19
+  index: -1
+cyborg_monk_4/front/F_creatureF_3_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 10, 13
+  index: -1
+cyborg_monk_4/front/F_creatureF_4_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 50, 13
+  index: -1
+cyborg_monk_5/back/B_creatureB_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 44, 8
+  index: -1
+cyborg_monk_5/back/B_creatureB_3_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 30, 6
+  index: -1
+cyborg_monk_5/back/B_creatureF_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 18, 19
+  index: -1
+cyborg_monk_5/back/B_creatureF_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 42, 19
+  index: -1
+cyborg_monk_5/back/B_creatureF_3_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 8, 13
+  index: -1
+cyborg_monk_5/back/B_creatureF_4_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 52, 13
+  index: -1
+cyborg_monk_5/front/F_creatureB_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 16, 19
+  index: -1
+cyborg_monk_5/front/F_creatureB_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 44, 19
+  index: -1
+cyborg_monk_5/front/F_creatureB_3_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 30, 21
+  index: -1
+cyborg_monk_5/front/F_creatureF_1_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 18, 9
+  index: -1
+cyborg_monk_5/front/F_creatureF_2_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 42, 9
+  index: -1
+cyborg_monk_5/front/F_creatureF_3_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 8, 13
+  index: -1
+cyborg_monk_5/front/F_creatureF_4_light
+  rotate: false
+  xy: 119, 80
+  size: 9, 9
+  orig: 69, 70
+  offset: 52, 13
+  index: -1
+cyborg_monk_5/back/B_creatureB_2
+  rotate: false
+  xy: 142, 26
+  size: 7, 7
+  orig: 69, 70
+  offset: 45, 9
+  index: -1
+cyborg_monk_3/back/B_creatureB_2
+  rotate: false
+  xy: 142, 26
+  size: 7, 7
+  orig: 69, 70
+  offset: 46, 16
+  index: -1
+cyborg_monk_4/back/B_creatureB_2
+  rotate: false
+  xy: 142, 26
+  size: 7, 7
+  orig: 69, 70
+  offset: 41, 9
+  index: -1
+cyborg_monk_5/back/B_creatureB_3
+  rotate: false
+  xy: 143, 222
+  size: 7, 7
+  orig: 69, 70
+  offset: 31, 7
+  index: -1
+cyborg_monk_5/back/B_creatureF_1
+  rotate: false
+  xy: 143, 213
+  size: 7, 7
+  orig: 69, 70
+  offset: 19, 20
+  index: -1
+cyborg_monk_5/back/B_creatureF_2
+  rotate: false
+  xy: 143, 80
+  size: 7, 7
+  orig: 69, 70
+  offset: 43, 20
+  index: -1
+cyborg_monk_5/back/B_creatureF_3
+  rotate: false
+  xy: 145, 204
+  size: 7, 7
+  orig: 69, 70
+  offset: 9, 14
+  index: -1
+cyborg_monk_4/back/B_creatureF_3
+  rotate: false
+  xy: 145, 204
+  size: 7, 7
+  orig: 69, 70
+  offset: 11, 14
+  index: -1
+cyborg_monk_5/back/[base]armL
+  rotate: false
+  xy: 145, 104
+  size: 7, 7
+  orig: 69, 70
+  offset: 25, 14
+  index: -1
+cyborg_monk_3/back/[base]armL
+  rotate: false
+  xy: 145, 104
+  size: 7, 7
+  orig: 69, 70
+  offset: 25, 14
+  index: -1
+cyborg_monk_4/back/[base]armL
+  rotate: false
+  xy: 145, 104
+  size: 7, 7
+  orig: 69, 70
+  offset: 25, 14
+  index: -1
+cyborg_monk_5/back/[base]armR
+  rotate: false
+  xy: 156, 187
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_3/back/[base]armR
+  rotate: false
+  xy: 156, 187
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_4/back/[base]armR
+  rotate: false
+  xy: 156, 187
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_4/front/[base]armR
+  rotate: false
+  xy: 156, 187
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_5/front/[base]armR
+  rotate: false
+  xy: 156, 187
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_5/back/[base]body
+  rotate: false
+  xy: 106, 228
+  size: 9, 12
+  orig: 69, 70
+  offset: 30, 11
+  index: -1
+cyborg_monk_4/back/[base]body
+  rotate: false
+  xy: 106, 228
+  size: 9, 12
+  orig: 69, 70
+  offset: 30, 11
+  index: -1
+cyborg_monk_5/back/[base]elbowL
+  rotate: false
+  xy: 112, 146
+  size: 9, 11
+  orig: 69, 70
+  offset: 21, 6
+  index: -1
+cyborg_monk_4/back/[base]elbowL
+  rotate: false
+  xy: 112, 146
+  size: 9, 11
+  orig: 69, 70
+  offset: 21, 6
+  index: -1
+cyborg_monk_5/back/[base]elbowR
+  rotate: true
+  xy: 151, 61
+  size: 6, 7
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_3/back/[base]elbowR
+  rotate: true
+  xy: 151, 61
+  size: 6, 7
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_4/back/[base]elbowR
+  rotate: true
+  xy: 151, 61
+  size: 6, 7
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_5/back/[base]head
+  rotate: true
+  xy: 31, 90
+  size: 27, 26
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_5/back/bag
+  rotate: false
+  xy: 2, 207
+  size: 47, 47
+  orig: 69, 70
+  offset: 11, 14
+  index: -1
+cyborg_monk_5/back/belt
+  rotate: true
+  xy: 157, 152
+  size: 9, 2
+  orig: 69, 70
+  offset: 30, 13
+  index: -1
+cyborg_monk_3/back/belt
+  rotate: true
+  xy: 157, 152
+  size: 9, 2
+  orig: 69, 70
+  offset: 30, 13
+  index: -1
+cyborg_monk_4/back/belt
+  rotate: true
+  xy: 157, 152
+  size: 9, 2
+  orig: 69, 70
+  offset: 30, 13
+  index: -1
+cyborg_monk_5/back/clothF
+  rotate: false
+  xy: 133, 6
+  size: 5, 12
+  orig: 69, 70
+  offset: 32, 2
+  index: -1
+cyborg_monk_5/back/clothLB_1
+  rotate: true
+  xy: 95, 23
+  size: 13, 9
+  orig: 69, 70
+  offset: 16, 7
+  index: -1
+cyborg_monk_5/back/clothLF_1
+  rotate: false
+  xy: 113, 65
+  size: 8, 12
+  orig: 69, 70
+  offset: 25, 2
+  index: -1
+cyborg_monk_5/back/clothLF_2
+  rotate: true
+  xy: 84, 100
+  size: 13, 10
+  orig: 69, 70
+  offset: 20, 4
+  index: -1
+cyborg_monk_5/back/clothLF_3
+  rotate: true
+  xy: 59, 70
+  size: 15, 11
+  orig: 69, 70
+  offset: 20, 3
+  index: -1
+cyborg_monk_5/back/clothL_1
+  rotate: false
+  xy: 119, 117
+  size: 8, 11
+  orig: 69, 70
+  offset: 26, 5
+  index: -1
+cyborg_monk_4/back/clothL_1
+  rotate: false
+  xy: 119, 117
+  size: 8, 11
+  orig: 69, 70
+  offset: 26, 5
+  index: -1
+cyborg_monk_5/back/clothL_3
+  rotate: false
+  xy: 51, 171
+  size: 17, 11
+  orig: 69, 70
+  offset: 18, 4
+  index: -1
+cyborg_monk_5/back/clothRB_1
+  rotate: true
+  xy: 73, 115
+  size: 15, 10
+  orig: 69, 70
+  offset: 38, 6
+  index: -1
+cyborg_monk_5/back/clothRF
+  rotate: false
+  xy: 113, 17
+  size: 8, 12
+  orig: 69, 70
+  offset: 36, 2
+  index: -1
+cyborg_monk_5/back/clothRF_2
+  rotate: true
+  xy: 69, 196
+  size: 14, 11
+  orig: 69, 70
+  offset: 34, 3
+  index: -1
+cyborg_monk_5/back/clothRF_3
+  rotate: false
+  xy: 56, 48
+  size: 16, 11
+  orig: 69, 70
+  offset: 34, 5
+  index: -1
+cyborg_monk_5/back/clothR_1
+  rotate: false
+  xy: 123, 166
+  size: 9, 9
+  orig: 69, 70
+  offset: 35, 7
+  index: -1
+cyborg_monk_3/back/clothR_1
+  rotate: false
+  xy: 123, 166
+  size: 9, 9
+  orig: 69, 70
+  offset: 35, 7
+  index: -1
+cyborg_monk_4/back/clothR_1
+  rotate: false
+  xy: 123, 166
+  size: 9, 9
+  orig: 69, 70
+  offset: 35, 7
+  index: -1
+cyborg_monk_5/back/clothR_2
+  rotate: true
+  xy: 113, 3
+  size: 12, 8
+  orig: 69, 70
+  offset: 36, 7
+  index: -1
+cyborg_monk_5/back/elbowL2
+  rotate: true
+  xy: 82, 173
+  size: 12, 11
+  orig: 69, 70
+  offset: 13, 5
+  index: -1
+cyborg_monk_5/back/elbowRdeco
+  rotate: true
+  xy: 129, 223
+  size: 9, 8
+  orig: 69, 70
+  offset: 22, 12
+  index: -1
+cyborg_monk_5/back/elbowRdeco2
+  rotate: false
+  xy: 68, 227
+  size: 12, 13
+  orig: 69, 70
+  offset: 18, 9
+  index: -1
+cyborg_monk_5/front/elbowRdeco2
+  rotate: false
+  xy: 68, 227
+  size: 12, 13
+  orig: 69, 70
+  offset: 21, 9
+  index: -1
+cyborg_monk_5/back/handL_attack1
+  rotate: false
+  xy: 107, 91
+  size: 10, 10
+  orig: 69, 70
+  offset: 21, 11
+  index: -1
+cyborg_monk_5/front/handL_attack1
+  rotate: false
+  xy: 107, 91
+  size: 10, 10
+  orig: 69, 70
+  offset: 24, 11
+  index: -1
+cyborg_monk_5/back/handL_attack2
+  rotate: true
+  xy: 123, 27
+  size: 10, 8
+  orig: 69, 70
+  offset: 20, 11
+  index: -1
+cyborg_monk_5/front/handL_attack2
+  rotate: true
+  xy: 123, 27
+  size: 10, 8
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_5/back/handL_cwp
+  rotate: false
+  xy: 149, 91
+  size: 4, 11
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_5/front/handL_cwp
+  rotate: false
+  xy: 149, 91
+  size: 4, 11
+  orig: 69, 70
+  offset: 26, 11
+  index: -1
+cyborg_monk_5/back/handR_attack1
+  rotate: false
+  xy: 107, 79
+  size: 10, 10
+  orig: 69, 70
+  offset: 21, 11
+  index: -1
+cyborg_monk_5/front/handR_attack1
+  rotate: false
+  xy: 107, 79
+  size: 10, 10
+  orig: 69, 70
+  offset: 24, 11
+  index: -1
+cyborg_monk_5/back/handR_attack2
+  rotate: true
+  xy: 123, 15
+  size: 10, 8
+  orig: 69, 70
+  offset: 20, 11
+  index: -1
+cyborg_monk_5/front/handR_attack2
+  rotate: true
+  xy: 123, 15
+  size: 10, 8
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_5/back/handR_cwp
+  rotate: false
+  xy: 150, 182
+  size: 4, 11
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_5/front/handR_cwp
+  rotate: false
+  xy: 150, 182
+  size: 4, 11
+  orig: 69, 70
+  offset: 26, 11
+  index: -1
+cyborg_monk_5/back/pelvis
+  rotate: true
+  xy: 90, 140
+  size: 15, 8
+  orig: 69, 70
+  offset: 27, 7
+  index: -1
+cyborg_monk_3/back/pelvis
+  rotate: true
+  xy: 90, 140
+  size: 15, 8
+  orig: 69, 70
+  offset: 27, 7
+  index: -1
+cyborg_monk_4/back/pelvis
+  rotate: true
+  xy: 90, 140
+  size: 15, 8
+  orig: 69, 70
+  offset: 27, 7
+  index: -1
+cyborg_monk_5/back/shoulderL
+  rotate: true
+  xy: 129, 181
+  size: 9, 8
+  orig: 69, 70
+  offset: 25, 13
+  index: -1
+cyborg_monk_5/front/F_creatureB_1
+  rotate: false
+  xy: 146, 247
+  size: 7, 7
+  orig: 69, 70
+  offset: 17, 20
+  index: -1
+cyborg_monk_3/front/F_creatureB_1
+  rotate: false
+  xy: 146, 247
+  size: 7, 7
+  orig: 69, 70
+  offset: 16, 19
+  index: -1
+cyborg_monk_4/front/F_creatureB_1
+  rotate: false
+  xy: 146, 247
+  size: 7, 7
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_5/front/F_creatureB_2
+  rotate: false
+  xy: 146, 238
+  size: 7, 7
+  orig: 69, 70
+  offset: 45, 20
+  index: -1
+cyborg_monk_3/front/F_creatureB_2
+  rotate: false
+  xy: 146, 238
+  size: 7, 7
+  orig: 69, 70
+  offset: 46, 19
+  index: -1
+cyborg_monk_3/side/S_creatureB_3
+  rotate: false
+  xy: 146, 238
+  size: 7, 7
+  orig: 70, 70
+  offset: 46, 19
+  index: -1
+cyborg_monk_4/front/F_creatureB_2
+  rotate: false
+  xy: 146, 238
+  size: 7, 7
+  orig: 69, 70
+  offset: 41, 20
+  index: -1
+cyborg_monk_4/side/S_creatureB_3
+  rotate: false
+  xy: 146, 238
+  size: 7, 7
+  orig: 70, 70
+  offset: 42, 21
+  index: -1
+cyborg_monk_5/side/S_creatureB_3
+  rotate: false
+  xy: 146, 238
+  size: 7, 7
+  orig: 70, 70
+  offset: 44, 21
+  index: -1
+cyborg_monk_5/front/F_creatureB_3
+  rotate: false
+  xy: 146, 161
+  size: 7, 7
+  orig: 69, 70
+  offset: 31, 22
+  index: -1
+cyborg_monk_5/side/S_creatureB_4
+  rotate: false
+  xy: 146, 161
+  size: 7, 7
+  orig: 70, 70
+  offset: 32, 22
+  index: -1
+cyborg_monk_5/front/F_creatureF_1
+  rotate: false
+  xy: 147, 51
+  size: 7, 7
+  orig: 69, 70
+  offset: 19, 10
+  index: -1
+cyborg_monk_5/side/S_creatureF_1
+  rotate: false
+  xy: 147, 51
+  size: 7, 7
+  orig: 70, 70
+  offset: 28, 10
+  index: -1
+cyborg_monk_5/front/F_creatureF_2
+  rotate: false
+  xy: 148, 195
+  size: 7, 7
+  orig: 69, 70
+  offset: 43, 10
+  index: -1
+cyborg_monk_5/side/S_creatureF_2
+  rotate: false
+  xy: 148, 195
+  size: 7, 7
+  orig: 70, 70
+  offset: 48, 11
+  index: -1
+cyborg_monk_5/front/F_creatureF_3
+  rotate: false
+  xy: 148, 152
+  size: 7, 7
+  orig: 69, 70
+  offset: 9, 14
+  index: -1
+cyborg_monk_4/front/F_creatureF_3
+  rotate: false
+  xy: 148, 152
+  size: 7, 7
+  orig: 69, 70
+  offset: 11, 14
+  index: -1
+cyborg_monk_5/front/F_creatureF_4
+  rotate: false
+  xy: 148, 130
+  size: 7, 7
+  orig: 69, 70
+  offset: 53, 14
+  index: -1
+cyborg_monk_4/front/F_creatureF_4
+  rotate: false
+  xy: 148, 130
+  size: 7, 7
+  orig: 69, 70
+  offset: 51, 14
+  index: -1
+cyborg_monk_5/front/[base]armL
+  rotate: false
+  xy: 156, 53
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_3/front/[base]armL
+  rotate: false
+  xy: 156, 53
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_4/front/[base]armL
+  rotate: false
+  xy: 156, 53
+  size: 6, 6
+  orig: 69, 70
+  offset: 26, 15
+  index: -1
+cyborg_monk_5/front/[base]armL2
+  rotate: false
+  xy: 139, 149
+  size: 7, 8
+  orig: 69, 70
+  offset: 36, 14
+  index: -1
+cyborg_monk_3/front/[base]armL2
+  rotate: false
+  xy: 139, 149
+  size: 7, 8
+  orig: 69, 70
+  offset: 36, 14
+  index: -1
+cyborg_monk_4/front/[base]armL2
+  rotate: false
+  xy: 139, 149
+  size: 7, 8
+  orig: 69, 70
+  offset: 36, 14
+  index: -1
+cyborg_monk_5/front/[base]armR2
+  rotate: false
+  xy: 133, 78
+  size: 8, 8
+  orig: 69, 70
+  offset: 36, 14
+  index: -1
+cyborg_monk_3/front/[base]armR2
+  rotate: false
+  xy: 133, 78
+  size: 8, 8
+  orig: 69, 70
+  offset: 36, 14
+  index: -1
+cyborg_monk_4/front/[base]armR2
+  rotate: false
+  xy: 133, 78
+  size: 8, 8
+  orig: 69, 70
+  offset: 36, 14
+  index: -1
+cyborg_monk_5/front/[base]body
+  rotate: false
+  xy: 106, 31
+  size: 9, 12
+  orig: 69, 70
+  offset: 30, 11
+  index: -1
+cyborg_monk_4/front/[base]body
+  rotate: false
+  xy: 106, 31
+  size: 9, 12
+  orig: 69, 70
+  offset: 30, 11
+  index: -1
+cyborg_monk_5/front/[base]elbowL
+  rotate: true
+  xy: 139, 123
+  size: 8, 7
+  orig: 69, 70
+  offset: 22, 11
+  index: -1
+cyborg_monk_5/front/[base]elbowL2
+  rotate: false
+  xy: 117, 190
+  size: 9, 10
+  orig: 69, 70
+  offset: 39, 8
+  index: -1
+cyborg_monk_3/front/[base]elbowL2
+  rotate: false
+  xy: 117, 190
+  size: 9, 10
+  orig: 69, 70
+  offset: 39, 8
+  index: -1
+cyborg_monk_4/front/[base]elbowL2
+  rotate: false
+  xy: 117, 190
+  size: 9, 10
+  orig: 69, 70
+  offset: 39, 8
+  index: -1
+cyborg_monk_5/front/[base]elbowR
+  rotate: false
+  xy: 154, 211
+  size: 6, 7
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_4/front/[base]elbowR
+  rotate: false
+  xy: 154, 211
+  size: 6, 7
+  orig: 69, 70
+  offset: 23, 11
+  index: -1
+cyborg_monk_5/front/[base]elbowR2
+  rotate: true
+  xy: 139, 113
+  size: 8, 7
+  orig: 69, 70
+  offset: 40, 10
+  index: -1
+cyborg_monk_3/front/[base]elbowR2
+  rotate: true
+  xy: 139, 113
+  size: 8, 7
+  orig: 69, 70
+  offset: 40, 10
+  index: -1
+cyborg_monk_4/front/[base]elbowR2
+  rotate: true
+  xy: 139, 113
+  size: 8, 7
+  orig: 69, 70
+  offset: 40, 10
+  index: -1
+cyborg_monk_5/front/[base]head
+  rotate: true
+  xy: 31, 61
+  size: 27, 26
+  orig: 69, 70
+  offset: 21, 20
+  index: -1
+cyborg_monk_5/front/bag
+  rotate: false
+  xy: 2, 158
+  size: 47, 47
+  orig: 69, 70
+  offset: 11, 16
+  index: -1
+cyborg_monk_5/front/belt
+  rotate: true
+  xy: 87, 217
+  size: 9, 3
+  orig: 69, 70
+  offset: 30, 13
+  index: -1
+cyborg_monk_5/front/clothLB
+  rotate: false
+  xy: 49, 120
+  size: 18, 10
+  orig: 69, 70
+  offset: 36, 9
+  index: -1
+cyborg_monk_5/front/clothL_1
+  rotate: true
+  xy: 84, 85
+  size: 13, 10
+  orig: 69, 70
+  offset: 36, 5
+  index: -1
+cyborg_monk_5/front/clothL_2
+  rotate: false
+  xy: 119, 104
+  size: 8, 11
+  orig: 69, 70
+  offset: 35, 3
+  index: -1
+cyborg_monk_4/front/clothL_2
+  rotate: false
+  xy: 119, 104
+  size: 8, 11
+  orig: 69, 70
+  offset: 35, 3
+  index: -1
+cyborg_monk_5/front/clothRB
+  rotate: true
+  xy: 134, 167
+  size: 12, 5
+  orig: 69, 70
+  offset: 21, 14
+  index: -1
+cyborg_monk_5/front/clothR_1
+  rotate: false
+  xy: 123, 155
+  size: 9, 9
+  orig: 69, 70
+  offset: 25, 5
+  index: -1
+cyborg_monk_3/front/clothR_1
+  rotate: false
+  xy: 123, 155
+  size: 9, 9
+  orig: 69, 70
+  offset: 25, 5
+  index: -1
+cyborg_monk_4/front/clothR_1
+  rotate: false
+  xy: 123, 155
+  size: 9, 9
+  orig: 69, 70
+  offset: 25, 5
+  index: -1
+cyborg_monk_5/front/clothR_2
+  rotate: true
+  xy: 116, 51
+  size: 12, 8
+  orig: 69, 70
+  offset: 21, 5
+  index: -1
+cyborg_monk_5/front/clothR_3
+  rotate: true
+  xy: 56, 29
+  size: 17, 10
+  orig: 69, 70
+  offset: 16, 5
+  index: -1
+cyborg_monk_5/front/clothR_4
+  rotate: false
+  xy: 95, 198
+  size: 10, 12
+  orig: 69, 70
+  offset: 24, 1
+  index: -1
+cyborg_monk_5/side/clothR_4
+  rotate: false
+  xy: 95, 198
+  size: 10, 12
+  orig: 70, 70
+  offset: 32, 1
+  index: -1
+cyborg_monk_5/front/elbowL1
+  rotate: true
+  xy: 59, 104
+  size: 14, 12
+  orig: 69, 70
+  offset: 15, 3
+  index: -1
+cyborg_monk_5/front/elbowL2
+  rotate: false
+  xy: 51, 226
+  size: 15, 14
+  orig: 69, 70
+  offset: 41, 2
+  index: -1
+cyborg_monk_5/front/elbowRdeco
+  rotate: true
+  xy: 129, 121
+  size: 9, 8
+  orig: 69, 70
+  offset: 23, 12
+  index: -1
+cyborg_monk_5/front/face/[base]attack
+  rotate: true
+  xy: 74, 145
+  size: 15, 10
+  orig: 69, 70
+  offset: 27, 20
+  index: -1
+cyborg_monk_5/front/face/[base]damaged
+  rotate: true
+  xy: 96, 103
+  size: 13, 9
+  orig: 69, 70
+  offset: 28, 21
+  index: -1
+cyborg_monk_5/front/face/[base]doyagao
+  rotate: true
+  xy: 74, 53
+  size: 15, 10
+  orig: 69, 70
+  offset: 27, 21
+  index: -1
+cyborg_monk_5/front/face/[base]idle
+  rotate: false
+  xy: 74, 4
+  size: 15, 9
+  orig: 69, 70
+  offset: 27, 21
+  index: -1
+cyborg_monk_5/front/face/[base]mad
+  rotate: true
+  xy: 81, 36
+  size: 15, 9
+  orig: 69, 70
+  offset: 27, 21
+  index: -1
+cyborg_monk_5/front/face/[base]smile
+  rotate: false
+  xy: 70, 215
+  size: 15, 10
+  orig: 69, 70
+  offset: 27, 21
+  index: -1
+cyborg_monk_5/front/face/[base]tired
+  rotate: true
+  xy: 82, 228
+  size: 15, 9
+  orig: 69, 70
+  offset: 27, 21
+  index: -1
+cyborg_monk_5/front/pelvis
+  rotate: true
+  xy: 91, 4
+  size: 15, 8
+  orig: 69, 70
+  offset: 27, 6
+  index: -1
+cyborg_monk_3/front/pelvis
+  rotate: true
+  xy: 91, 4
+  size: 15, 8
+  orig: 69, 70
+  offset: 27, 6
+  index: -1
+cyborg_monk_4/front/pelvis
+  rotate: true
+  xy: 91, 4
+  size: 15, 8
+  orig: 69, 70
+  offset: 27, 6
+  index: -1
+cyborg_monk_5/front/shoulderL
+  rotate: true
+  xy: 129, 110
+  size: 9, 8
+  orig: 69, 70
+  offset: 35, 13
+  index: -1
+cyborg_monk_5/side/S_creatureF_3
+  rotate: false
+  xy: 148, 121
+  size: 7, 7
+  orig: 70, 70
+  offset: 14, 13
+  index: -1
+cyborg_monk_5/side/[base]armL
+  rotate: false
+  xy: 154, 112
+  size: 6, 7
+  orig: 70, 70
+  offset: 41, 14
+  index: -1
+cyborg_monk_5/side/[base]armR
+  rotate: false
+  xy: 155, 247
+  size: 6, 7
+  orig: 70, 70
+  offset: 32, 15
+  index: -1
+cyborg_monk_5/side/[base]elbowL
+  rotate: true
+  xy: 140, 139
+  size: 8, 7
+  orig: 70, 70
+  offset: 41, 10
+  index: -1
+cyborg_monk_5/side/[base]elbowR
+  rotate: false
+  xy: 73, 106
+  size: 6, 7
+  orig: 70, 70
+  offset: 31, 10
+  index: -1
+cyborg_monk_5/side/[base]head
+  rotate: false
+  xy: 49, 132
+  size: 23, 24
+  orig: 70, 70
+  offset: 26, 21
+  index: -1
+cyborg_monk_5/side/bag
+  rotate: true
+  xy: 2, 119
+  size: 37, 45
+  orig: 70, 70
+  offset: 9, 17
+  index: -1
+cyborg_monk_5/side/belt
+  rotate: false
+  xy: 151, 27
+  size: 9, 4
+  orig: 70, 70
+  offset: 36, 13
+  index: -1
+cyborg_monk_5/side/clothB
+  rotate: true
+  xy: 126, 53
+  size: 13, 6
+  orig: 70, 70
+  offset: 23, 16
+  index: -1
+cyborg_monk_5/side/clothLB
+  rotate: true
+  xy: 130, 143
+  size: 10, 7
+  orig: 70, 70
+  offset: 29, 15
+  index: -1
+cyborg_monk_5/side/clothLB1
+  rotate: true
+  xy: 92, 51
+  size: 15, 8
+  orig: 70, 70
+  offset: 41, 10
+  index: -1
+cyborg_monk_5/side/clothL_1
+  rotate: true
+  xy: 86, 157
+  size: 14, 9
+  orig: 70, 70
+  offset: 42, 5
+  index: -1
+cyborg_monk_5/side/clothL_2
+  rotate: false
+  xy: 119, 91
+  size: 8, 11
+  orig: 70, 70
+  offset: 41, 3
+  index: -1
+cyborg_monk_5/side/clothRB
+  rotate: true
+  xy: 93, 239
+  size: 15, 8
+  orig: 70, 70
+  offset: 21, 12
+  index: -1
+cyborg_monk_5/side/clothRB1
+  rotate: true
+  xy: 128, 203
+  size: 15, 5
+  orig: 70, 70
+  offset: 19, 15
+  index: -1
+cyborg_monk_5/side/clothR_1
+  rotate: false
+  xy: 109, 130
+  size: 10, 10
+  orig: 70, 70
+  offset: 32, 4
+  index: -1
+cyborg_monk_5/side/clothR_2
+  rotate: false
+  xy: 134, 159
+  size: 10, 6
+  orig: 70, 70
+  offset: 27, 3
+  index: -1
+cyborg_monk_5/side/clothR_3
+  rotate: false
+  xy: 51, 242
+  size: 20, 12
+  orig: 70, 70
+  offset: 20, 4
+  index: -1
+cyborg_monk_5/side/elbowL2
+  rotate: false
+  xy: 51, 184
+  size: 16, 12
+  orig: 70, 70
+  offset: 42, 5
+  index: -1
+cyborg_monk_5/side/elbowRdeco
+  rotate: false
+  xy: 151, 3
+  size: 10, 3
+  orig: 70, 70
+  offset: 29, 12
+  index: -1
+cyborg_monk_5/side/face/[base]attack
+  rotate: true
+  xy: 101, 10
+  size: 11, 10
+  orig: 70, 70
+  offset: 36, 22
+  index: -1
+cyborg_monk_5/side/face/[base]damaged
+  rotate: true
+  xy: 117, 39
+  size: 10, 9
+  orig: 70, 70
+  offset: 37, 23
+  index: -1
+cyborg_monk_5/side/face/[base]doyagao
+  rotate: true
+  xy: 85, 118
+  size: 13, 10
+  orig: 70, 70
+  offset: 35, 23
+  index: -1
+cyborg_monk_5/side/face/[base]idle
+  rotate: true
+  xy: 96, 88
+  size: 13, 9
+  orig: 70, 70
+  offset: 35, 23
+  index: -1
+cyborg_monk_5/side/face/[base]mad
+  rotate: true
+  xy: 96, 73
+  size: 13, 9
+  orig: 70, 70
+  offset: 35, 23
+  index: -1
+cyborg_monk_5/side/face/[base]smile
+  rotate: true
+  xy: 95, 184
+  size: 12, 10
+  orig: 70, 70
+  offset: 36, 22
+  index: -1
+cyborg_monk_5/side/face/[base]tired
+  rotate: true
+  xy: 107, 214
+  size: 12, 9
+  orig: 70, 70
+  offset: 36, 23
+  index: -1
+cyborg_monk_5/side/handL_attack1
+  rotate: false
+  xy: 138, 244
+  size: 6, 10
+  orig: 70, 70
+  offset: 45, 12
+  index: -1
+cyborg_monk_5/side/handL_attack2
+  rotate: false
+  xy: 148, 17
+  size: 7, 7
+  orig: 70, 70
+  offset: 44, 13
+  index: -1
+cyborg_monk_5/side/handL_cwp
+  rotate: false
+  xy: 123, 3
+  size: 8, 10
+  orig: 70, 70
+  offset: 41, 12
+  index: -1
+cyborg_monk_5/side/handR_attack1
+  rotate: true
+  xy: 125, 246
+  size: 8, 10
+  orig: 70, 70
+  offset: 31, 12
+  index: -1
+cyborg_monk_5/side/handR_attack2
+  rotate: false
+  xy: 148, 8
+  size: 7, 7
+  orig: 70, 70
+  offset: 33, 13
+  index: -1
+cyborg_monk_5/side/handR_cwp
+  rotate: false
+  xy: 128, 234
+  size: 8, 10
+  orig: 70, 70
+  offset: 32, 12
+  index: -1
+cyborg_monk_5/side/shoulderL
+  rotate: false
+  xy: 118, 220
+  size: 9, 10
+  orig: 70, 70
+  offset: 40, 12
+  index: -1

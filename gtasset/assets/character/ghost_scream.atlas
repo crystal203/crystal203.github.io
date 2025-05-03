@@ -1,0 +1,132 @@
+
+ghost_scream.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/handL
+  rotate: false
+  xy: 65, 2
+  size: 5, 5
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+back/handR
+  rotate: false
+  xy: 72, 2
+  size: 5, 5
+  orig: 55, 56
+  offset: 36, 13
+  index: -1
+back/head
+  rotate: true
+  xy: 37, 0
+  size: 22, 26
+  orig: 55, 56
+  offset: 17, 6
+  index: -1
+back/headS
+  rotate: true
+  xy: 0, 51
+  size: 32, 39
+  orig: 55, 56
+  offset: 11, 2
+  index: -1
+front/face/idle
+  rotate: false
+  xy: 0, 8
+  size: 16, 7
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/scream
+  rotate: false
+  xy: 37, 24
+  size: 25, 25
+  orig: 55, 56
+  offset: 15, 8
+  index: -1
+front/face/tired
+  rotate: false
+  xy: 16, 1
+  size: 16, 5
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/handL
+  rotate: false
+  xy: 79, 9
+  size: 5, 5
+  orig: 55, 56
+  offset: 36, 12
+  index: -1
+front/handR
+  rotate: false
+  xy: 79, 2
+  size: 5, 5
+  orig: 55, 56
+  offset: 15, 12
+  index: -1
+front/head
+  rotate: false
+  xy: 64, 25
+  size: 22, 24
+  orig: 55, 56
+  offset: 17, 8
+  index: -1
+front/headS
+  rotate: true
+  xy: 0, 17
+  size: 32, 35
+  orig: 55, 56
+  offset: 11, 6
+  index: -1
+side/face/idle
+  rotate: false
+  xy: 18, 8
+  size: 14, 7
+  orig: 56, 56
+  offset: 20, 14
+  index: -1
+side/face/scream
+  rotate: false
+  xy: 41, 51
+  size: 24, 26
+  orig: 56, 56
+  offset: 15, 9
+  index: -1
+side/face/tired
+  rotate: false
+  xy: 0, 0
+  size: 14, 6
+  orig: 56, 56
+  offset: 20, 14
+  index: -1
+side/handL
+  rotate: false
+  xy: 65, 9
+  size: 6, 6
+  orig: 56, 56
+  offset: 18, 12
+  index: -1
+side/handR
+  rotate: false
+  xy: 65, 17
+  size: 7, 6
+  orig: 56, 56
+  offset: 33, 12
+  index: -1
+side/head
+  rotate: true
+  xy: 41, 79
+  size: 26, 24
+  orig: 56, 56
+  offset: 20, 8
+  index: -1
+side/headS
+  rotate: false
+  xy: 0, 85
+  size: 39, 34
+  orig: 56, 56
+  offset: 13, 7
+  index: -1

@@ -1,0 +1,1518 @@
+
+white_druid_pink_raincoat.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/S_creatureR1
+  rotate: false
+  xy: 215, 40
+  size: 12, 10
+  orig: 61, 56
+  offset: 46, 30
+  index: -1
+back/S_creatureR2
+  rotate: false
+  xy: 226, 65
+  size: 4, 5
+  orig: 61, 56
+  offset: 47, 37
+  index: -1
+back/S_creatureR3
+  rotate: false
+  xy: 250, 43
+  size: 4, 5
+  orig: 61, 56
+  offset: 53, 37
+  index: -1
+back/S_creatureRB
+  rotate: false
+  xy: 109, 14
+  size: 9, 8
+  orig: 61, 56
+  offset: 52, 30
+  index: -1
+back/[base]armL
+  rotate: false
+  xy: 122, 6
+  size: 5, 6
+  orig: 61, 56
+  offset: 23, 8
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 122, 6
+  size: 5, 6
+  orig: 61, 56
+  offset: 23, 8
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 126, 56
+  size: 13, 12
+  orig: 61, 56
+  offset: 24, 4
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]body
+  rotate: false
+  xy: 126, 56
+  size: 13, 12
+  orig: 61, 56
+  offset: 24, 4
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 216, 21
+  size: 6, 6
+  orig: 61, 56
+  offset: 19, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 216, 21
+  size: 6, 6
+  orig: 61, 56
+  offset: 19, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 105, 86
+  size: 29, 26
+  orig: 61, 56
+  offset: 17, 11
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 215, 53
+  size: 4, 8
+  orig: 61, 56
+  offset: 26, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 215, 53
+  size: 4, 8
+  orig: 61, 56
+  offset: 26, 0
+  index: -1
+back/cape
+  rotate: false
+  xy: 187, 73
+  size: 21, 9
+  orig: 61, 56
+  offset: 20, 7
+  index: -1
+back/capeF
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/bodydecoF
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/bodydecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/earL
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/earR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/hairB
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/tailF1
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/bodydecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/capeF
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/earL
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/earR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/hairB
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/tailB1
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/tailB2
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/bodydecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/capeF
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/earL
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/earR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/hairB
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/tailB1
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/tailB2
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/bodydecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/cape
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/helm
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/helmdecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/front/helm
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/front/helmdecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/side/helmL
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/side/helmR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+white_druid_pink_raincoat_tiger/side/helmdecoR
+  rotate: false
+  xy: 252, 107
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/hair
+  rotate: false
+  xy: 2, 63
+  size: 11, 19
+  orig: 61, 56
+  offset: 16, 1
+  index: -1
+white_druid_pink_raincoat_tiger/back/hair
+  rotate: false
+  xy: 2, 63
+  size: 11, 19
+  orig: 61, 56
+  offset: 16, 1
+  index: -1
+back/helm
+  rotate: false
+  xy: 37, 85
+  size: 33, 27
+  orig: 61, 56
+  offset: 14, 13
+  index: -1
+back/helmdecoR
+  rotate: false
+  xy: 2, 49
+  size: 12, 12
+  orig: 61, 56
+  offset: 36, 23
+  index: -1
+back/skirt
+  rotate: false
+  xy: 58, 43
+  size: 19, 6
+  orig: 61, 56
+  offset: 21, 1
+  index: -1
+white_druid_pink_raincoat_tiger/back/skirt
+  rotate: false
+  xy: 58, 43
+  size: 19, 6
+  orig: 61, 56
+  offset: 21, 1
+  index: -1
+back/tail
+  rotate: false
+  xy: 134, 18
+  size: 11, 8
+  orig: 61, 56
+  offset: 28, 1
+  index: -1
+white_druid_pink_raincoat_tiger/back/tail
+  rotate: false
+  xy: 134, 18
+  size: 11, 8
+  orig: 61, 56
+  offset: 28, 1
+  index: -1
+back/tailF
+  rotate: false
+  xy: 75, 16
+  size: 12, 6
+  orig: 61, 56
+  offset: 36, 0
+  index: -1
+front/S_creatureR1
+  rotate: false
+  xy: 112, 3
+  size: 5, 3
+  orig: 61, 56
+  offset: 7, 34
+  index: -1
+front/S_creatureR2
+  rotate: false
+  xy: 204, 31
+  size: 3, 3
+  orig: 61, 56
+  offset: 9, 34
+  index: -1
+front/S_creatureR3
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 61, 56
+  offset: 11, 34
+  index: -1
+side/S_creatureR1
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 58, 56
+  offset: 9, 35
+  index: -1
+side/S_creatureR3
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 58, 56
+  offset: 13, 35
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR1
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 61, 56
+  offset: 7, 34
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR3
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 61, 56
+  offset: 11, 34
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR1
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 58, 56
+  offset: 9, 35
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR3
+  rotate: false
+  xy: 252, 104
+  size: 1, 1
+  orig: 58, 56
+  offset: 13, 35
+  index: -1
+front/S_creatureR4
+  rotate: false
+  xy: 246, 66
+  size: 7, 1
+  orig: 61, 56
+  offset: 6, 33
+  index: -1
+side/S_creatureR4
+  rotate: false
+  xy: 246, 66
+  size: 7, 1
+  orig: 58, 56
+  offset: 8, 34
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR4
+  rotate: false
+  xy: 246, 66
+  size: 7, 1
+  orig: 61, 56
+  offset: 6, 33
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR4
+  rotate: false
+  xy: 246, 66
+  size: 7, 1
+  orig: 58, 56
+  offset: 8, 34
+  index: -1
+front/S_creatureR5
+  rotate: true
+  xy: 171, 40
+  size: 12, 10
+  orig: 61, 56
+  offset: 3, 30
+  index: -1
+front/S_creatureR6
+  rotate: false
+  xy: 150, 2
+  size: 4, 5
+  orig: 61, 56
+  offset: 4, 37
+  index: -1
+front/S_creatureR7
+  rotate: true
+  xy: 25, 17
+  size: 4, 5
+  orig: 61, 56
+  offset: 10, 37
+  index: -1
+front/S_creatureRB
+  rotate: false
+  xy: 62, 62
+  size: 7, 8
+  orig: 61, 56
+  offset: 0, 32
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 210, 3
+  size: 5, 6
+  orig: 61, 56
+  offset: 23, 8
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 210, 3
+  size: 5, 6
+  orig: 61, 56
+  offset: 23, 8
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 63, 76
+  size: 6, 7
+  orig: 61, 56
+  offset: 32, 8
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 63, 76
+  size: 6, 7
+  orig: 61, 56
+  offset: 32, 8
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 101, 54
+  size: 13, 12
+  orig: 61, 56
+  offset: 24, 4
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]body
+  rotate: false
+  xy: 101, 54
+  size: 13, 12
+  orig: 61, 56
+  offset: 24, 4
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 88, 8
+  size: 6, 6
+  orig: 61, 56
+  offset: 19, 4
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 88, 8
+  size: 6, 6
+  orig: 61, 56
+  offset: 19, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 175, 8
+  size: 8, 7
+  orig: 61, 56
+  offset: 36, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 175, 8
+  size: 8, 7
+  orig: 61, 56
+  offset: 36, 3
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 226, 83
+  size: 29, 24
+  orig: 61, 56
+  offset: 15, 13
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 112, 8
+  size: 4, 8
+  orig: 61, 56
+  offset: 26, 0
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 112, 8
+  size: 4, 8
+  orig: 61, 56
+  offset: 26, 0
+  index: -1
+front/cape
+  rotate: false
+  xy: 62, 51
+  size: 17, 8
+  orig: 61, 56
+  offset: 22, 6
+  index: -1
+white_druid_pink_raincoat_tiger/front/cape
+  rotate: false
+  xy: 62, 51
+  size: 17, 8
+  orig: 61, 56
+  offset: 22, 6
+  index: -1
+front/capeL
+  rotate: false
+  xy: 70, 8
+  size: 7, 6
+  orig: 61, 56
+  offset: 34, 8
+  index: -1
+white_druid_pink_raincoat_tiger/front/capeL
+  rotate: false
+  xy: 70, 8
+  size: 7, 6
+  orig: 61, 56
+  offset: 34, 8
+  index: -1
+front/capeR
+  rotate: false
+  xy: 79, 8
+  size: 7, 6
+  orig: 61, 56
+  offset: 20, 8
+  index: -1
+white_druid_pink_raincoat_tiger/front/capeR
+  rotate: false
+  xy: 79, 8
+  size: 7, 6
+  orig: 61, 56
+  offset: 20, 8
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 81, 50
+  size: 15, 9
+  orig: 61, 56
+  offset: 23, 13
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 107, 36
+  size: 13, 9
+  orig: 61, 56
+  offset: 24, 14
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]damaged
+  rotate: false
+  xy: 107, 36
+  size: 13, 9
+  orig: 61, 56
+  offset: 24, 14
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 167, 54
+  size: 15, 10
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 2, 28
+  size: 15, 7
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 209, 59
+  size: 15, 11
+  orig: 61, 56
+  offset: 23, 13
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]mad
+  rotate: false
+  xy: 209, 59
+  size: 15, 11
+  orig: 61, 56
+  offset: 23, 13
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 135, 28
+  size: 15, 7
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 16, 49
+  size: 15, 9
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+front/hair
+  rotate: false
+  xy: 15, 65
+  size: 11, 17
+  orig: 61, 56
+  offset: 34, 1
+  index: -1
+front/helm
+  rotate: false
+  xy: 2, 84
+  size: 33, 28
+  orig: 61, 56
+  offset: 14, 12
+  index: -1
+front/helmdecoR
+  rotate: false
+  xy: 184, 48
+  size: 12, 12
+  orig: 61, 56
+  offset: 12, 22
+  index: -1
+front/skirt
+  rotate: false
+  xy: 229, 42
+  size: 19, 6
+  orig: 61, 56
+  offset: 21, 1
+  index: -1
+white_druid_pink_raincoat_tiger/front/skirt
+  rotate: false
+  xy: 229, 42
+  size: 19, 6
+  orig: 61, 56
+  offset: 21, 1
+  index: -1
+front/tail
+  rotate: false
+  xy: 187, 62
+  size: 20, 9
+  orig: 61, 56
+  offset: 13, 0
+  index: -1
+side/S_creatureR2
+  rotate: false
+  xy: 252, 110
+  size: 1, 2
+  orig: 58, 56
+  offset: 11, 35
+  index: -1
+side/S_creatureR5
+  rotate: false
+  xy: 79, 38
+  size: 12, 10
+  orig: 58, 56
+  offset: 4, 30
+  index: -1
+side/S_creatureR6
+  rotate: true
+  xy: 54, 2
+  size: 4, 5
+  orig: 58, 56
+  offset: 11, 37
+  index: -1
+side/S_creatureR7
+  rotate: false
+  xy: 89, 17
+  size: 5, 5
+  orig: 58, 56
+  offset: 5, 37
+  index: -1
+side/S_creatureRB
+  rotate: false
+  xy: 97, 26
+  size: 7, 7
+  orig: 58, 56
+  offset: 0, 31
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 218, 3
+  size: 5, 6
+  orig: 58, 56
+  offset: 35, 8
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 142, 2
+  size: 5, 6
+  orig: 58, 56
+  offset: 27, 8
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 243, 50
+  size: 12, 11
+  orig: 58, 56
+  offset: 27, 5
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]body
+  rotate: true
+  xy: 243, 50
+  size: 12, 11
+  orig: 58, 56
+  offset: 27, 5
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 28, 75
+  size: 6, 7
+  orig: 58, 56
+  offset: 36, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 141, 61
+  size: 6, 7
+  orig: 58, 56
+  offset: 25, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 72, 61
+  size: 27, 23
+  orig: 58, 56
+  offset: 19, 14
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 13, 7
+  size: 4, 8
+  orig: 58, 56
+  offset: 34, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 44, 5
+  size: 4, 8
+  orig: 58, 56
+  offset: 29, 0
+  index: -1
+side/cape
+  rotate: false
+  xy: 140, 37
+  size: 14, 8
+  orig: 58, 56
+  offset: 27, 7
+  index: -1
+side/capeL
+  rotate: false
+  xy: 158, 8
+  size: 6, 6
+  orig: 58, 56
+  offset: 38, 8
+  index: -1
+side/capeLB
+  rotate: false
+  xy: 166, 8
+  size: 6, 6
+  orig: 58, 56
+  offset: 38, 5
+  index: -1
+side/capeR
+  rotate: false
+  xy: 120, 24
+  size: 12, 8
+  orig: 58, 56
+  offset: 22, 7
+  index: -1
+white_druid_pink_raincoat_tiger/side/capeR
+  rotate: false
+  xy: 120, 24
+  size: 12, 8
+  orig: 58, 56
+  offset: 22, 7
+  index: -1
+side/capeRB
+  rotate: false
+  xy: 185, 8
+  size: 8, 7
+  orig: 58, 56
+  offset: 22, 6
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 56, 32
+  size: 12, 9
+  orig: 58, 56
+  offset: 30, 15
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 50, 21
+  size: 10, 9
+  orig: 58, 56
+  offset: 31, 16
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]damaged
+  rotate: false
+  xy: 50, 21
+  size: 10, 9
+  orig: 58, 56
+  offset: 31, 16
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 2, 37
+  size: 12, 10
+  orig: 58, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 246, 69
+  size: 12, 8
+  orig: 58, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 45, 44
+  size: 11, 11
+  orig: 58, 56
+  offset: 30, 14
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]mad
+  rotate: false
+  xy: 45, 44
+  size: 11, 11
+  orig: 58, 56
+  offset: 30, 14
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 229, 31
+  size: 12, 9
+  orig: 58, 56
+  offset: 30, 15
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 156, 30
+  size: 12, 9
+  orig: 58, 56
+  offset: 30, 16
+  index: -1
+side/hair
+  rotate: true
+  xy: 28, 60
+  size: 10, 17
+  orig: 58, 56
+  offset: 37, 1
+  index: -1
+white_druid_pink_raincoat_tiger/side/hair
+  rotate: true
+  xy: 28, 60
+  size: 10, 17
+  orig: 58, 56
+  offset: 37, 1
+  index: -1
+side/helmL
+  rotate: false
+  xy: 173, 66
+  size: 12, 18
+  orig: 58, 56
+  offset: 37, 13
+  index: -1
+side/helmR
+  rotate: false
+  xy: 72, 86
+  size: 31, 26
+  orig: 58, 56
+  offset: 16, 14
+  index: -1
+side/helmdecoR
+  rotate: false
+  xy: 47, 57
+  size: 13, 13
+  orig: 58, 56
+  offset: 16, 22
+  index: -1
+side/skirt
+  rotate: false
+  xy: 33, 24
+  size: 15, 6
+  orig: 58, 56
+  offset: 26, 2
+  index: -1
+white_druid_pink_raincoat_tiger/side/skirt
+  rotate: false
+  xy: 33, 24
+  size: 15, 6
+  orig: 58, 56
+  offset: 26, 2
+  index: -1
+side/tail
+  rotate: false
+  xy: 123, 46
+  size: 15, 8
+  orig: 58, 56
+  offset: 16, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/S_creatureR1
+  rotate: false
+  xy: 16, 37
+  size: 12, 10
+  orig: 61, 56
+  offset: 46, 30
+  index: -1
+white_druid_pink_raincoat_tiger/back/S_creatureR2
+  rotate: true
+  xy: 61, 2
+  size: 4, 5
+  orig: 61, 56
+  offset: 47, 37
+  index: -1
+white_druid_pink_raincoat_tiger/back/S_creatureR3
+  rotate: true
+  xy: 68, 2
+  size: 4, 5
+  orig: 61, 56
+  offset: 53, 37
+  index: -1
+white_druid_pink_raincoat_tiger/back/S_creatureRB
+  rotate: false
+  xy: 120, 14
+  size: 9, 8
+  orig: 61, 56
+  offset: 52, 30
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]armL
+  rotate: false
+  xy: 96, 7
+  size: 6, 6
+  orig: 61, 56
+  offset: 21, 9
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]armR
+  rotate: false
+  xy: 96, 7
+  size: 6, 6
+  orig: 61, 56
+  offset: 21, 9
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]armL
+  rotate: false
+  xy: 96, 7
+  size: 6, 6
+  orig: 61, 56
+  offset: 21, 9
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]armR
+  rotate: false
+  xy: 96, 7
+  size: 6, 6
+  orig: 61, 56
+  offset: 21, 9
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]elbowL
+  rotate: false
+  xy: 225, 20
+  size: 10, 9
+  orig: 61, 56
+  offset: 15, 3
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]elbowR
+  rotate: false
+  xy: 225, 20
+  size: 10, 9
+  orig: 61, 56
+  offset: 15, 3
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]head
+  rotate: false
+  xy: 136, 86
+  size: 29, 26
+  orig: 61, 56
+  offset: 17, 11
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]legL
+  rotate: false
+  xy: 116, 57
+  size: 7, 9
+  orig: 61, 56
+  offset: 24, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/[base]legR
+  rotate: false
+  xy: 116, 57
+  size: 7, 9
+  orig: 61, 56
+  offset: 24, 0
+  index: -1
+white_druid_pink_raincoat_tiger/back/bodydecoF
+  rotate: false
+  xy: 158, 41
+  size: 11, 11
+  orig: 61, 56
+  offset: 18, 6
+  index: -1
+white_druid_pink_raincoat_tiger/back/capeF
+  rotate: false
+  xy: 150, 71
+  size: 21, 13
+  orig: 61, 56
+  offset: 20, 6
+  index: -1
+white_druid_pink_raincoat_tiger/back/earL
+  rotate: true
+  xy: 175, 17
+  size: 8, 10
+  orig: 61, 56
+  offset: 16, 28
+  index: -1
+white_druid_pink_raincoat_tiger/back/earR
+  rotate: true
+  xy: 187, 17
+  size: 8, 10
+  orig: 61, 56
+  offset: 37, 28
+  index: -1
+white_druid_pink_raincoat_tiger/back/hairB
+  rotate: false
+  xy: 101, 68
+  size: 23, 16
+  orig: 61, 56
+  offset: 17, 11
+  index: -1
+white_druid_pink_raincoat_tiger/back/tailF1
+  rotate: false
+  xy: 14, 13
+  size: 9, 8
+  orig: 61, 56
+  offset: 41, 4
+  index: -1
+white_druid_pink_raincoat_tiger/back/tailF2
+  rotate: true
+  xy: 122, 34
+  size: 10, 11
+  orig: 61, 56
+  offset: 35, 1
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR2
+  rotate: false
+  xy: 252, 101
+  size: 1, 1
+  orig: 61, 56
+  offset: 9, 34
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR2
+  rotate: false
+  xy: 252, 101
+  size: 1, 1
+  orig: 58, 56
+  offset: 11, 35
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR5
+  rotate: false
+  xy: 183, 36
+  size: 12, 10
+  orig: 61, 56
+  offset: 3, 30
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR6
+  rotate: false
+  xy: 250, 20
+  size: 4, 6
+  orig: 61, 56
+  offset: 4, 36
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureR7
+  rotate: true
+  xy: 2, 2
+  size: 4, 6
+  orig: 61, 56
+  offset: 10, 36
+  index: -1
+white_druid_pink_raincoat_tiger/front/S_creatureRB
+  rotate: false
+  xy: 247, 8
+  size: 7, 8
+  orig: 61, 56
+  offset: 0, 32
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]armL2
+  rotate: false
+  xy: 104, 6
+  size: 6, 6
+  orig: 61, 56
+  offset: 34, 9
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]armR2
+  rotate: false
+  xy: 104, 6
+  size: 6, 6
+  orig: 61, 56
+  offset: 34, 9
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]elbowL
+  rotate: false
+  xy: 152, 19
+  size: 10, 9
+  orig: 61, 56
+  offset: 15, 3
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]elbowR
+  rotate: false
+  xy: 152, 19
+  size: 10, 9
+  orig: 61, 56
+  offset: 15, 3
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]elbowL2
+  rotate: false
+  xy: 204, 18
+  size: 10, 9
+  orig: 61, 56
+  offset: 36, 3
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]elbowR2
+  rotate: false
+  xy: 204, 18
+  size: 10, 9
+  orig: 61, 56
+  offset: 36, 3
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]head
+  rotate: false
+  xy: 167, 86
+  size: 29, 26
+  orig: 61, 56
+  offset: 15, 11
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]legL
+  rotate: true
+  xy: 2, 8
+  size: 7, 9
+  orig: 61, 56
+  offset: 24, 0
+  index: -1
+white_druid_pink_raincoat_tiger/front/[base]legR
+  rotate: true
+  xy: 59, 8
+  size: 7, 9
+  orig: 61, 56
+  offset: 24, 0
+  index: -1
+white_druid_pink_raincoat_tiger/front/bodydecoR
+  rotate: true
+  xy: 25, 7
+  size: 7, 8
+  orig: 61, 56
+  offset: 16, 9
+  index: -1
+white_druid_pink_raincoat_tiger/front/capeF
+  rotate: false
+  xy: 98, 47
+  size: 23, 5
+  orig: 61, 56
+  offset: 19, 11
+  index: -1
+white_druid_pink_raincoat_tiger/front/earL
+  rotate: true
+  xy: 237, 18
+  size: 8, 11
+  orig: 61, 56
+  offset: 37, 27
+  index: -1
+white_druid_pink_raincoat_tiger/front/earR
+  rotate: true
+  xy: 62, 17
+  size: 8, 11
+  orig: 61, 56
+  offset: 16, 27
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]attack
+  rotate: false
+  xy: 198, 48
+  size: 15, 9
+  orig: 61, 56
+  offset: 23, 13
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]doyagao
+  rotate: false
+  xy: 226, 52
+  size: 15, 10
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]idle
+  rotate: false
+  xy: 170, 27
+  size: 15, 7
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]smile
+  rotate: false
+  xy: 187, 27
+  size: 15, 7
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+white_druid_pink_raincoat_tiger/front/face/[base]tired
+  rotate: false
+  xy: 141, 47
+  size: 15, 9
+  orig: 61, 56
+  offset: 23, 14
+  index: -1
+white_druid_pink_raincoat_tiger/front/hair
+  rotate: false
+  xy: 233, 64
+  size: 11, 17
+  orig: 61, 56
+  offset: 34, 1
+  index: -1
+white_druid_pink_raincoat_tiger/front/hairB
+  rotate: false
+  xy: 37, 72
+  size: 24, 11
+  orig: 61, 56
+  offset: 18, 11
+  index: -1
+white_druid_pink_raincoat_tiger/front/tail
+  rotate: false
+  xy: 30, 33
+  size: 11, 10
+  orig: 61, 56
+  offset: 22, 0
+  index: -1
+white_druid_pink_raincoat_tiger/front/tailB1
+  rotate: false
+  xy: 48, 11
+  size: 9, 8
+  orig: 61, 56
+  offset: 11, 4
+  index: -1
+white_druid_pink_raincoat_tiger/front/tailB2
+  rotate: true
+  xy: 43, 32
+  size: 10, 11
+  orig: 61, 56
+  offset: 16, 1
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR5
+  rotate: false
+  xy: 197, 36
+  size: 12, 10
+  orig: 58, 56
+  offset: 4, 30
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR6
+  rotate: true
+  xy: 75, 2
+  size: 4, 5
+  orig: 58, 56
+  offset: 11, 37
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureR7
+  rotate: true
+  xy: 82, 2
+  size: 4, 5
+  orig: 58, 56
+  offset: 5, 37
+  index: -1
+white_druid_pink_raincoat_tiger/side/S_creatureRB
+  rotate: false
+  xy: 35, 7
+  size: 7, 7
+  orig: 58, 56
+  offset: 0, 31
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]armL
+  rotate: false
+  xy: 164, 16
+  size: 9, 9
+  orig: 58, 56
+  offset: 35, 7
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]armR
+  rotate: true
+  xy: 216, 10
+  size: 8, 9
+  orig: 58, 56
+  offset: 24, 7
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]elbowL
+  rotate: false
+  xy: 147, 9
+  size: 9, 8
+  orig: 58, 56
+  offset: 37, 2
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]elbowR
+  rotate: false
+  xy: 97, 15
+  size: 10, 8
+  orig: 58, 56
+  offset: 20, 2
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]head
+  rotate: true
+  xy: 198, 84
+  size: 28, 26
+  orig: 58, 56
+  offset: 18, 11
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]legL
+  rotate: true
+  xy: 131, 8
+  size: 8, 9
+  orig: 58, 56
+  offset: 33, 0
+  index: -1
+white_druid_pink_raincoat_tiger/side/[base]legR
+  rotate: true
+  xy: 199, 8
+  size: 8, 9
+  orig: 58, 56
+  offset: 27, 0
+  index: -1
+white_druid_pink_raincoat_tiger/side/bodydecoR
+  rotate: true
+  xy: 2, 17
+  size: 9, 10
+  orig: 58, 56
+  offset: 18, 8
+  index: -1
+white_druid_pink_raincoat_tiger/side/cape
+  rotate: false
+  xy: 210, 72
+  size: 21, 9
+  orig: 58, 56
+  offset: 23, 7
+  index: -1
+white_druid_pink_raincoat_tiger/side/capeF
+  rotate: false
+  xy: 33, 16
+  size: 13, 6
+  orig: 58, 56
+  offset: 20, 11
+  index: -1
+white_druid_pink_raincoat_tiger/side/capeL
+  rotate: false
+  xy: 227, 8
+  size: 8, 8
+  orig: 58, 56
+  offset: 35, 8
+  index: -1
+white_druid_pink_raincoat_tiger/side/earL
+  rotate: true
+  xy: 107, 25
+  size: 9, 11
+  orig: 58, 56
+  offset: 39, 26
+  index: -1
+white_druid_pink_raincoat_tiger/side/earR
+  rotate: true
+  xy: 84, 24
+  size: 9, 11
+  orig: 58, 56
+  offset: 19, 26
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]attack
+  rotate: false
+  xy: 211, 29
+  size: 12, 9
+  orig: 58, 56
+  offset: 30, 15
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]doyagao
+  rotate: false
+  xy: 93, 35
+  size: 12, 10
+  orig: 58, 56
+  offset: 30, 16
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]idle
+  rotate: false
+  xy: 19, 23
+  size: 12, 8
+  orig: 58, 56
+  offset: 30, 16
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]smile
+  rotate: true
+  xy: 243, 28
+  size: 12, 9
+  orig: 58, 56
+  offset: 30, 15
+  index: -1
+white_druid_pink_raincoat_tiger/side/face/[base]tired
+  rotate: false
+  xy: 70, 27
+  size: 12, 9
+  orig: 58, 56
+  offset: 30, 16
+  index: -1
+white_druid_pink_raincoat_tiger/side/hairB
+  rotate: false
+  xy: 126, 70
+  size: 22, 14
+  orig: 58, 56
+  offset: 22, 10
+  index: -1
+white_druid_pink_raincoat_tiger/side/tail
+  rotate: false
+  xy: 150, 58
+  size: 15, 11
+  orig: 58, 56
+  offset: 19, 0
+  index: -1
+white_druid_pink_raincoat_tiger/side/tailB1
+  rotate: false
+  xy: 237, 8
+  size: 8, 8
+  orig: 58, 56
+  offset: 8, 6
+  index: -1
+white_druid_pink_raincoat_tiger/side/tailB2
+  rotate: false
+  xy: 33, 45
+  size: 10, 13
+  orig: 58, 56
+  offset: 12, 1
+  index: -1

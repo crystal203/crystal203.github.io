@@ -1,0 +1,363 @@
+
+succubus_cafe_suit.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 22, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 22, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 15, 11
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 3
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 82, 25
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 82, 25
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 72, 45
+  size: 33, 30
+  orig: 55, 56
+  offset: 11, 11
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 92, 39
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 92, 39
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+back/bodyB
+  rotate: false
+  xy: 92, 24
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 5
+  index: -1
+back/tail
+  rotate: false
+  xy: 43, 9
+  size: 11, 9
+  orig: 55, 56
+  offset: 27, 1
+  index: -1
+back/wingL
+  rotate: true
+  xy: 104, 56
+  size: 22, 17
+  orig: 55, 56
+  offset: 5, 4
+  index: -1
+back/wingR
+  rotate: true
+  xy: 104, 56
+  size: 22, 17
+  orig: 55, 56
+  offset: 5, 4
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 30, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 30, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 120, 17
+  size: 6, 7
+  orig: 55, 56
+  offset: 30, 7
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 120, 17
+  size: 6, 7
+  orig: 55, 56
+  offset: 30, 7
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 67, 11
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 3
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 14, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 14, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 56, 11
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 56, 11
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 2, 45
+  size: 33, 33
+  orig: 55, 56
+  offset: 11, 11
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 56, 5
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 56, 5
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 24, 33
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 67, 22
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 41, 33
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 107, 26
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 58, 33
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 75, 33
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 24, 22
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/tail
+  rotate: true
+  xy: 95, 10
+  size: 12, 9
+  orig: 55, 56
+  offset: 15, 1
+  index: -1
+side/tail
+  rotate: true
+  xy: 95, 10
+  size: 12, 9
+  orig: 56, 56
+  offset: 17, 1
+  index: -1
+front/wingL
+  rotate: false
+  xy: 104, 37
+  size: 22, 17
+  orig: 55, 56
+  offset: 5, 9
+  index: -1
+front/wingR
+  rotate: false
+  xy: 104, 37
+  size: 22, 17
+  orig: 55, 56
+  offset: 5, 9
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 38, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 46, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 2, 15
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 120, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 81, 3
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 37, 45
+  size: 33, 33
+  orig: 56, 56
+  offset: 14, 11
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 66, 5
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 89, 4
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 107, 14
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 2, 4
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 82, 12
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 29, 9
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 41, 20
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 54, 20
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 106, 3
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+side/wingR
+  rotate: false
+  xy: 2, 27
+  size: 20, 16
+  orig: 56, 56
+  offset: 8, 5
+  index: -1

@@ -1,0 +1,755 @@
+
+robot_tanker_night_voyager.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 106, 4
+  size: 10, 10
+  orig: 65, 64
+  offset: 12, 18
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 106, 4
+  size: 10, 10
+  orig: 65, 64
+  offset: 12, 18
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 106, 4
+  size: 10, 10
+  orig: 65, 64
+  offset: 12, 18
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 106, 4
+  size: 10, 10
+  orig: 65, 64
+  offset: 12, 18
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 101, 16
+  size: 39, 27
+  orig: 65, 64
+  offset: 13, 16
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 213, 122
+  size: 13, 18
+  orig: 65, 64
+  offset: 9, 6
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 213, 122
+  size: 13, 18
+  orig: 65, 64
+  offset: 9, 6
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 55, 181
+  size: 39, 39
+  orig: 65, 64
+  offset: 13, 25
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 226, 26
+  size: 12, 13
+  orig: 65, 64
+  offset: 19, 2
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 226, 26
+  size: 12, 13
+  orig: 65, 64
+  offset: 19, 2
+  index: -1
+back/[base]pelvis
+  rotate: true
+  xy: 198, 115
+  size: 25, 13
+  orig: 65, 64
+  offset: 20, 8
+  index: -1
+back/bag
+  rotate: false
+  xy: 2, 207
+  size: 49, 35
+  orig: 65, 64
+  offset: 8, 11
+  index: -1
+back/boost
+  rotate: false
+  xy: 2, 100
+  size: 45, 36
+  orig: 72, 71
+  offset: 13, 1
+  index: -1
+back/boostL
+  rotate: true
+  xy: 173, 186
+  size: 24, 19
+  orig: 72, 71
+  offset: 4, 32
+  index: -1
+back/boostR
+  rotate: true
+  xy: 173, 186
+  size: 24, 19
+  orig: 72, 71
+  offset: 4, 32
+  index: -1
+back/boost_circle
+  rotate: false
+  xy: 130, 7
+  size: 26, 26
+  orig: 32, 33
+  offset: 4, 3
+  index: -1
+boost_circle
+  rotate: false
+  xy: 130, 7
+  size: 26, 26
+  orig: 32, 33
+  offset: 4, 3
+  index: -1
+front/boost_circle
+  rotate: false
+  xy: 130, 7
+  size: 26, 26
+  orig: 32, 33
+  offset: 4, 3
+  index: -1
+side/boost_circle
+  rotate: false
+  xy: 130, 7
+  size: 26, 26
+  orig: 32, 33
+  offset: 4, 3
+  index: -1
+back/shoulderL
+  rotate: false
+  xy: 193, 2
+  size: 21, 14
+  orig: 65, 64
+  offset: 2, 26
+  index: -1
+back/shoulderR
+  rotate: false
+  xy: 193, 2
+  size: 21, 14
+  orig: 65, 64
+  offset: 2, 26
+  index: -1
+back/shoulderLB
+  rotate: false
+  xy: 182, 129
+  size: 14, 27
+  orig: 65, 64
+  offset: 0, 5
+  index: -1
+back/shoulderRB
+  rotate: false
+  xy: 182, 129
+  size: 14, 27
+  orig: 65, 64
+  offset: 0, 5
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 227, 175
+  size: 12, 13
+  orig: 65, 64
+  offset: 42, 16
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 227, 175
+  size: 12, 13
+  orig: 65, 64
+  offset: 42, 16
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 53, 223
+  size: 39, 19
+  orig: 65, 64
+  offset: 13, 14
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 213, 102
+  size: 13, 18
+  orig: 65, 64
+  offset: 9, 6
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 213, 102
+  size: 13, 18
+  orig: 65, 64
+  offset: 9, 6
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 200, 73
+  size: 16, 17
+  orig: 65, 64
+  offset: 43, 6
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 200, 73
+  size: 16, 17
+  orig: 65, 64
+  offset: 43, 6
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 53, 51
+  size: 39, 40
+  orig: 65, 64
+  offset: 13, 24
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 216, 8
+  size: 12, 16
+  orig: 65, 64
+  offset: 19, 1
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 216, 8
+  size: 12, 16
+  orig: 65, 64
+  offset: 19, 1
+  index: -1
+front/[base]pelvis
+  rotate: true
+  xy: 194, 186
+  size: 25, 14
+  orig: 65, 64
+  offset: 20, 7
+  index: -1
+front/bag
+  rotate: false
+  xy: 2, 138
+  size: 51, 32
+  orig: 65, 64
+  offset: 7, 21
+  index: -1
+front/bodyF
+  rotate: true
+  xy: 127, 103
+  size: 37, 28
+  orig: 65, 64
+  offset: 14, 15
+  index: -1
+front/boostB
+  rotate: false
+  xy: 2, 62
+  size: 45, 36
+  orig: 89, 88
+  offset: 21, 51
+  index: -1
+front/boostLB
+  rotate: true
+  xy: 174, 92
+  size: 24, 19
+  orig: 89, 88
+  offset: 12, 37
+  index: -1
+front/boostRB
+  rotate: true
+  xy: 174, 92
+  size: 24, 19
+  orig: 89, 88
+  offset: 12, 37
+  index: -1
+front/shoulderL
+  rotate: true
+  xy: 199, 142
+  size: 19, 16
+  orig: 65, 64
+  offset: 0, 22
+  index: -1
+front/shoulderR
+  rotate: true
+  xy: 199, 142
+  size: 19, 16
+  orig: 65, 64
+  offset: 0, 22
+  index: -1
+front/shoulderLB
+  rotate: true
+  xy: 199, 171
+  size: 13, 21
+  orig: 65, 64
+  offset: 0, 6
+  index: -1
+front/shoulderRB
+  rotate: true
+  xy: 199, 171
+  size: 13, 21
+  orig: 65, 64
+  offset: 0, 6
+  index: -1
+particle1
+  rotate: false
+  xy: 118, 7
+  size: 7, 7
+  orig: 12, 12
+  offset: 2, 3
+  index: -1
+particle1_2
+  rotate: false
+  xy: 226, 41
+  size: 7, 7
+  orig: 12, 12
+  offset: 2, 3
+  index: -1
+particle2
+  rotate: false
+  xy: 125, 196
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 125, 196
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/index
+  rotate: false
+  xy: 125, 196
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+robot_tanker2_fighter/back/bag
+  rotate: false
+  xy: 2, 172
+  size: 51, 33
+  orig: 103, 91
+  offset: 26, 14
+  index: -1
+robot_tanker2_fighter/back/body
+  rotate: true
+  xy: 128, 205
+  size: 37, 28
+  orig: 103, 91
+  offset: 33, 40
+  index: -1
+robot_tanker2_fighter/back/boostL
+  rotate: false
+  xy: 180, 45
+  size: 16, 25
+  orig: 103, 91
+  offset: 20, 15
+  index: -1
+robot_tanker2_fighter/back/boostR
+  rotate: false
+  xy: 180, 45
+  size: 16, 25
+  orig: 103, 91
+  offset: 20, 15
+  index: -1
+robot_tanker2_fighter/back/elbowL
+  rotate: true
+  xy: 195, 92
+  size: 21, 16
+  orig: 103, 91
+  offset: 24, 39
+  index: -1
+robot_tanker2_fighter/back/elbowR
+  rotate: true
+  xy: 195, 92
+  size: 21, 16
+  orig: 103, 91
+  offset: 24, 39
+  index: -1
+robot_tanker2_fighter/back/head
+  rotate: true
+  xy: 95, 142
+  size: 37, 32
+  orig: 103, 91
+  offset: 33, 38
+  index: -1
+robot_tanker2_fighter/back/leg
+  rotate: true
+  xy: 2, 5
+  size: 20, 34
+  orig: 103, 91
+  offset: 41, 38
+  index: -1
+robot_tanker2_fighter/back/shieldL
+  rotate: true
+  xy: 175, 10
+  size: 28, 16
+  orig: 103, 91
+  offset: 8, 31
+  index: -1
+robot_tanker2_fighter/back/shieldR
+  rotate: true
+  xy: 175, 10
+  size: 28, 16
+  orig: 103, 91
+  offset: 8, 31
+  index: -1
+robot_tanker2_fighter/front/bag
+  rotate: false
+  xy: 2, 27
+  size: 49, 33
+  orig: 103, 91
+  offset: 27, 40
+  index: -1
+robot_tanker2_fighter/front/body
+  rotate: false
+  xy: 88, 99
+  size: 37, 37
+  orig: 103, 91
+  offset: 33, 16
+  index: -1
+robot_tanker2_fighter/front/boostL
+  rotate: false
+  xy: 193, 18
+  size: 15, 25
+  orig: 103, 91
+  offset: 17, 62
+  index: -1
+robot_tanker2_fighter/front/boostR
+  rotate: false
+  xy: 193, 18
+  size: 15, 25
+  orig: 103, 91
+  offset: 17, 62
+  index: -1
+robot_tanker2_fighter/front/elbowL
+  rotate: false
+  xy: 158, 212
+  size: 17, 30
+  orig: 103, 91
+  offset: 24, 29
+  index: -1
+robot_tanker2_fighter/front/elbowR
+  rotate: false
+  xy: 158, 212
+  size: 17, 30
+  orig: 103, 91
+  offset: 24, 29
+  index: -1
+robot_tanker2_fighter/front/head
+  rotate: false
+  xy: 94, 57
+  size: 33, 40
+  orig: 103, 91
+  offset: 35, 32
+  index: -1
+robot_tanker2_fighter/front/leg
+  rotate: false
+  xy: 129, 66
+  size: 21, 35
+  orig: 103, 91
+  offset: 41, 6
+  index: -1
+robot_tanker2_fighter/front/shieldL
+  rotate: true
+  xy: 180, 158
+  size: 26, 17
+  orig: 103, 91
+  offset: 7, 44
+  index: -1
+robot_tanker2_fighter/front/shieldR
+  rotate: true
+  xy: 180, 158
+  size: 26, 17
+  orig: 103, 91
+  offset: 7, 44
+  index: -1
+robot_tanker2_fighter/side/armB
+  rotate: false
+  xy: 210, 207
+  size: 16, 16
+  orig: 103, 61
+  offset: 61, 25
+  index: -1
+robot_tanker2_fighter/side/armF
+  rotate: false
+  xy: 157, 118
+  size: 23, 23
+  orig: 103, 91
+  offset: 41, 25
+  index: -1
+robot_tanker2_fighter/side/bag
+  rotate: false
+  xy: 53, 16
+  size: 46, 33
+  orig: 103, 91
+  offset: 25, 34
+  index: -1
+robot_tanker2_fighter/side/bodyB
+  rotate: false
+  xy: 153, 143
+  size: 25, 23
+  orig: 103, 91
+  offset: 57, 35
+  index: -1
+robot_tanker2_fighter/side/bodyF
+  rotate: true
+  xy: 153, 168
+  size: 35, 18
+  orig: 103, 91
+  offset: 48, 28
+  index: -1
+robot_tanker2_fighter/side/bodydeco
+  rotate: false
+  xy: 92, 5
+  size: 12, 9
+  orig: 103, 91
+  offset: 79, 29
+  index: -1
+robot_tanker2_fighter/side/boostB
+  rotate: true
+  xy: 158, 6
+  size: 32, 15
+  orig: 103, 91
+  offset: 23, 52
+  index: -1
+robot_tanker2_fighter/side/boostF
+  rotate: false
+  xy: 38, 6
+  size: 34, 8
+  orig: 103, 91
+  offset: 3, 39
+  index: -1
+robot_tanker2_fighter/side/head
+  rotate: true
+  xy: 96, 199
+  size: 43, 30
+  orig: 103, 91
+  offset: 37, 37
+  index: -1
+robot_tanker2_fighter/side/leg
+  rotate: true
+  xy: 152, 68
+  size: 33, 20
+  orig: 103, 91
+  offset: 68, 21
+  index: -1
+robot_tanker2_fighter/side/leg_glow
+  rotate: false
+  xy: 182, 121
+  size: 13, 6
+  orig: 103, 91
+  offset: 79, 28
+  index: -1
+robot_tanker2_fighter/side/pelvis
+  rotate: false
+  xy: 218, 73
+  size: 13, 13
+  orig: 103, 91
+  offset: 61, 24
+  index: -1
+robot_tanker2_fighter/side/shieldB
+  rotate: false
+  xy: 222, 158
+  size: 11, 15
+  orig: 103, 91
+  offset: 63, 53
+  index: -1
+robot_tanker2_fighter/side/shieldF
+  rotate: true
+  xy: 177, 214
+  size: 28, 16
+  orig: 103, 91
+  offset: 22, 22
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 128, 143
+  size: 12, 14
+  orig: 64, 64
+  offset: 43, 15
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 157, 104
+  size: 12, 14
+  orig: 64, 64
+  offset: 13, 16
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 198, 45
+  size: 22, 15
+  orig: 64, 64
+  offset: 27, 19
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 215, 54
+  size: 13, 17
+  orig: 64, 64
+  offset: 43, 6
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 209, 225
+  size: 16, 17
+  orig: 64, 64
+  offset: 11, 6
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 49, 93
+  size: 43, 37
+  orig: 64, 64
+  offset: 10, 27
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 217, 142
+  size: 14, 13
+  orig: 64, 64
+  offset: 37, 3
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 228, 88
+  size: 11, 13
+  orig: 64, 64
+  offset: 25, 3
+  index: -1
+side/[base]pelvis
+  rotate: true
+  xy: 210, 26
+  size: 17, 14
+  orig: 64, 64
+  offset: 27, 8
+  index: -1
+side/bag
+  rotate: true
+  xy: 129, 157
+  size: 46, 22
+  orig: 64, 64
+  offset: 2, 28
+  index: -1
+side/bodyF
+  rotate: true
+  xy: 130, 35
+  size: 29, 24
+  orig: 64, 64
+  offset: 15, 15
+  index: -1
+side/boostL
+  rotate: false
+  xy: 156, 40
+  size: 22, 26
+  orig: 87, 87
+  offset: 12, 51
+  index: -1
+side/boostR
+  rotate: false
+  xy: 156, 40
+  size: 22, 26
+  orig: 87, 87
+  offset: 12, 51
+  index: -1
+side/boostRB
+  rotate: true
+  xy: 55, 138
+  size: 41, 38
+  orig: 87, 87
+  offset: 0, 17
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 158, 206
+  size: 9, 4
+  orig: 64, 64
+  offset: 36, 31
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 199, 165
+  size: 9, 4
+  orig: 64, 64
+  offset: 36, 31
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 144, 151
+  size: 5, 4
+  orig: 64, 64
+  offset: 36, 31
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 74, 4
+  size: 16, 10
+  orig: 64, 64
+  offset: 32, 29
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 38, 19
+  size: 11, 6
+  orig: 64, 64
+  offset: 35, 30
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 210, 165
+  size: 9, 4
+  orig: 64, 64
+  offset: 36, 31
+  index: -1
+side/shieldR
+  rotate: true
+  xy: 96, 183
+  size: 14, 27
+  orig: 64, 64
+  offset: 0, 5
+  index: -1
+side/shoulderL
+  rotate: false
+  xy: 210, 188
+  size: 15, 17
+  orig: 64, 64
+  offset: 44, 23
+  index: -1
+side/shoulderLB
+  rotate: false
+  xy: 195, 214
+  size: 12, 28
+  orig: 64, 64
+  offset: 52, 5
+  index: -1
+side/shoulderR
+  rotate: false
+  xy: 174, 72
+  size: 24, 18
+  orig: 64, 64
+  offset: 4, 22
+  index: -1
+side/vamR
+  rotate: true
+  xy: 230, 9
+  size: 15, 9
+  orig: 64, 64
+  offset: 11, 14
+  index: -1

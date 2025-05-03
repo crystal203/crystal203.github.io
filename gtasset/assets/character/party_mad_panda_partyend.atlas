@@ -1,0 +1,1021 @@
+
+party_mad_panda_partyend.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+boss_mech_claw
+  rotate: false
+  xy: 234, 30
+  size: 12, 10
+  orig: 40, 40
+  offset: 15, 16
+  index: -1
+mini_gun
+  rotate: false
+  xy: 2, 83
+  size: 43, 21
+  orig: 82, 62
+  offset: 25, 20
+  index: -1
+trio_boss/back/[base]armL
+  rotate: false
+  xy: 207, 3
+  size: 5, 6
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+trio_boss/back/[base]armR
+  rotate: false
+  xy: 207, 3
+  size: 5, 6
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+trio_boss/back/[base]body
+  rotate: false
+  xy: 236, 52
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 4
+  index: -1
+trio_boss/back/[base]elbowL
+  rotate: false
+  xy: 2, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_boss/back/[base]elbowR
+  rotate: false
+  xy: 2, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_boss/back/[base]head
+  rotate: true
+  xy: 174, 75
+  size: 29, 26
+  orig: 55, 56
+  offset: 13, 14
+  index: -1
+trio_boss/back/[base]legL
+  rotate: false
+  xy: 250, 95
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_boss/back/[base]legR
+  rotate: false
+  xy: 250, 95
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_boss/back/hair
+  rotate: false
+  xy: 202, 79
+  size: 30, 25
+  orig: 55, 56
+  offset: 12, 2
+  index: -1
+trio_boss/back/skirt
+  rotate: false
+  xy: 149, 42
+  size: 17, 8
+  orig: 55, 56
+  offset: 19, 0
+  index: -1
+trio_boss/front/[base]armL
+  rotate: false
+  xy: 52, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+trio_boss/front/[base]armR
+  rotate: false
+  xy: 52, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+trio_boss/front/[base]armL2
+  rotate: true
+  xy: 119, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+trio_boss/front/[base]armR2
+  rotate: true
+  xy: 119, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+trio_boss/front/[base]body
+  rotate: true
+  xy: 236, 68
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 4
+  index: -1
+trio_boss/front/[base]elbowL
+  rotate: false
+  xy: 60, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_boss/front/[base]elbowR
+  rotate: false
+  xy: 60, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_boss/front/[base]elbowL2
+  rotate: false
+  xy: 190, 44
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 2
+  index: -1
+trio_boss/front/[base]elbowR2
+  rotate: false
+  xy: 190, 44
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 2
+  index: -1
+trio_boss/front/[base]head
+  rotate: false
+  xy: 47, 75
+  size: 29, 29
+  orig: 55, 56
+  offset: 13, 11
+  index: -1
+trio_boss/front/[base]legL
+  rotate: false
+  xy: 250, 22
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_boss/front/[base]legR
+  rotate: false
+  xy: 250, 22
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_boss/front/face/[base]attack
+  rotate: false
+  xy: 63, 40
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+trio_boss/front/face/[base]damaged
+  rotate: false
+  xy: 58, 29
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_boss/front/face/[base]doyagao
+  rotate: false
+  xy: 115, 41
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+trio_boss/front/face/[base]idle
+  rotate: false
+  xy: 20, 40
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+trio_boss/front/face/[base]mad
+  rotate: false
+  xy: 200, 43
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 12
+  index: -1
+trio_boss/front/face/[base]smile
+  rotate: false
+  xy: 80, 40
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+trio_boss/front/face/[base]tired
+  rotate: false
+  xy: 37, 40
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+trio_boss/front/hair
+  rotate: false
+  xy: 109, 76
+  size: 30, 28
+  orig: 55, 56
+  offset: 13, 2
+  index: -1
+trio_boss/front/hairF
+  rotate: true
+  xy: 34, 52
+  size: 21, 27
+  orig: 55, 56
+  offset: 18, 9
+  index: -1
+trio_boss/front/skirt
+  rotate: false
+  xy: 235, 42
+  size: 17, 8
+  orig: 55, 56
+  offset: 19, 1
+  index: -1
+trio_boss/side/[base]armL
+  rotate: false
+  xy: 251, 79
+  size: 3, 5
+  orig: 56, 56
+  offset: 35, 9
+  index: -1
+trio_boss/side/[base]armR
+  rotate: true
+  xy: 119, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+trio_boss/side/[base]body
+  rotate: true
+  xy: 93, 57
+  size: 16, 12
+  orig: 56, 56
+  offset: 23, 5
+  index: -1
+trio_boss/side/[base]elbowL
+  rotate: true
+  xy: 128, 10
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+trio_boss/side/[base]elbowR
+  rotate: true
+  xy: 137, 10
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+trio_boss/side/[base]head
+  rotate: false
+  xy: 78, 75
+  size: 29, 29
+  orig: 56, 56
+  offset: 16, 10
+  index: -1
+trio_boss/side/[base]legL
+  rotate: true
+  xy: 68, 5
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+trio_boss/side/[base]legR
+  rotate: true
+  xy: 197, 5
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+trio_boss/side/face/[base]attack
+  rotate: false
+  xy: 97, 29
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+trio_boss/side/face/[base]damaged
+  rotate: false
+  xy: 34, 17
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_boss/side/face/[base]doyagao
+  rotate: false
+  xy: 111, 29
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_boss/side/face/[base]idle
+  rotate: false
+  xy: 162, 29
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_boss/side/face/[base]mad
+  rotate: false
+  xy: 2, 30
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+trio_boss/side/face/[base]smile
+  rotate: false
+  xy: 149, 29
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+trio_boss/side/face/[base]tired
+  rotate: false
+  xy: 236, 19
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_boss/side/hair
+  rotate: true
+  xy: 202, 57
+  size: 20, 32
+  orig: 56, 56
+  offset: 13, 4
+  index: -1
+trio_boss/side/hairF
+  rotate: true
+  xy: 234, 85
+  size: 19, 14
+  orig: 56, 56
+  offset: 25, 21
+  index: -1
+trio_boss/side/skirt
+  rotate: false
+  xy: 132, 40
+  size: 15, 10
+  orig: 56, 56
+  offset: 22, 0
+  index: -1
+trio_man/back/[base]armL
+  rotate: true
+  xy: 146, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+trio_man/back/[base]armR
+  rotate: true
+  xy: 146, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+trio_man/back/[base]body
+  rotate: true
+  xy: 58, 18
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+trio_man/back/[base]elbowL
+  rotate: false
+  xy: 92, 9
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_man/back/[base]elbowR
+  rotate: false
+  xy: 92, 9
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_man/back/[base]head
+  rotate: true
+  xy: 141, 79
+  size: 25, 31
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+trio_man/back/[base]legL
+  rotate: true
+  xy: 34, 77
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_man/back/[base]legR
+  rotate: true
+  xy: 34, 77
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_man/front/[base]armL
+  rotate: false
+  xy: 176, 6
+  size: 5, 7
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+trio_man/front/[base]armR
+  rotate: false
+  xy: 176, 6
+  size: 5, 7
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+trio_man/front/[base]armL2
+  rotate: true
+  xy: 32, 9
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+trio_man/front/[base]armR2
+  rotate: true
+  xy: 32, 9
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+trio_man/front/[base]body
+  rotate: true
+  xy: 72, 18
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+trio_man/front/[base]elbowL
+  rotate: false
+  xy: 248, 33
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_man/front/[base]elbowR
+  rotate: false
+  xy: 248, 33
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+trio_man/front/[base]elbowL2
+  rotate: false
+  xy: 215, 9
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+trio_man/front/[base]elbowR2
+  rotate: false
+  xy: 215, 9
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+trio_man/front/[base]head
+  rotate: true
+  xy: 2, 56
+  size: 25, 30
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+trio_man/front/[base]legL
+  rotate: true
+  xy: 41, 8
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_man/front/[base]legR
+  rotate: true
+  xy: 41, 8
+  size: 4, 9
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+trio_man/front/face/[base]attack
+  rotate: false
+  xy: 73, 29
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_man/front/face/[base]damaged
+  rotate: false
+  xy: 217, 33
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+trio_man/front/face/[base]doyagao
+  rotate: false
+  xy: 125, 29
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_man/front/face/[base]idle
+  rotate: true
+  xy: 176, 26
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_man/front/face/[base]mad
+  rotate: false
+  xy: 206, 22
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_man/front/face/[base]smile
+  rotate: false
+  xy: 187, 21
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_man/front/face/[base]tired
+  rotate: false
+  xy: 221, 19
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+trio_man/side/[base]armL
+  rotate: false
+  xy: 250, 86
+  size: 4, 7
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+trio_man/side/[base]armR
+  rotate: false
+  xy: 88, 31
+  size: 6, 7
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+trio_man/side/[base]body
+  rotate: true
+  xy: 86, 18
+  size: 9, 12
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+trio_man/side/[base]elbowL
+  rotate: false
+  xy: 140, 31
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+trio_man/side/[base]elbowR
+  rotate: true
+  xy: 167, 7
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+trio_man/side/[base]head
+  rotate: true
+  xy: 141, 52
+  size: 25, 29
+  orig: 56, 56
+  offset: 18, 14
+  index: -1
+trio_man/side/[base]legL
+  rotate: true
+  xy: 10, 4
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+trio_man/side/[base]legR
+  rotate: true
+  xy: 20, 4
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+trio_man/side/face/[base]attack
+  rotate: false
+  xy: 171, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_man/side/face/[base]damaged
+  rotate: false
+  xy: 100, 18
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_man/side/face/[base]doyagao
+  rotate: false
+  xy: 114, 18
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_man/side/face/[base]idle
+  rotate: false
+  xy: 202, 11
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_man/side/face/[base]mad
+  rotate: false
+  xy: 184, 10
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_man/side/face/[base]smile
+  rotate: false
+  xy: 128, 18
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_man/side/face/[base]tired
+  rotate: true
+  xy: 47, 14
+  size: 12, 8
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_panda/back/[base]armL
+  rotate: true
+  xy: 100, 3
+  size: 4, 5
+  orig: 56, 56
+  offset: 22, 5
+  index: -1
+trio_panda/back/[base]armR
+  rotate: true
+  xy: 100, 3
+  size: 4, 5
+  orig: 56, 56
+  offset: 22, 5
+  index: -1
+trio_panda/back/[base]body
+  rotate: false
+  xy: 236, 9
+  size: 8, 8
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+trio_panda/back/[base]elbowL
+  rotate: false
+  xy: 107, 3
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+trio_panda/back/[base]elbowR
+  rotate: false
+  xy: 107, 3
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+trio_panda/front/[base]elbowL
+  rotate: false
+  xy: 107, 3
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+trio_panda/front/[base]elbowR
+  rotate: false
+  xy: 107, 3
+  size: 5, 4
+  orig: 56, 56
+  offset: 19, 3
+  index: -1
+trio_panda/back/[base]head
+  rotate: false
+  xy: 63, 53
+  size: 28, 20
+  orig: 56, 56
+  offset: 14, 9
+  index: -1
+trio_panda/back/[base]legL
+  rotate: true
+  xy: 134, 4
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+trio_panda/back/[base]legR
+  rotate: true
+  xy: 134, 4
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+trio_panda/back/earL
+  rotate: true
+  xy: 206, 34
+  size: 7, 8
+  orig: 56, 56
+  offset: 15, 21
+  index: -1
+trio_panda/back/earR
+  rotate: false
+  xy: 246, 9
+  size: 7, 8
+  orig: 56, 56
+  offset: 34, 21
+  index: -1
+trio_panda/back/tail
+  rotate: false
+  xy: 190, 32
+  size: 14, 9
+  orig: 56, 56
+  offset: 15, 0
+  index: -1
+trio_panda/front/tail
+  rotate: false
+  xy: 190, 32
+  size: 14, 9
+  orig: 56, 56
+  offset: 16, 2
+  index: -1
+trio_panda/front/[base]armL
+  rotate: true
+  xy: 214, 3
+  size: 4, 5
+  orig: 56, 56
+  offset: 22, 5
+  index: -1
+trio_panda/front/[base]armR
+  rotate: true
+  xy: 214, 3
+  size: 4, 5
+  orig: 56, 56
+  offset: 22, 5
+  index: -1
+trio_panda/front/[base]armL2
+  rotate: false
+  xy: 127, 3
+  size: 5, 5
+  orig: 56, 56
+  offset: 30, 4
+  index: -1
+trio_panda/front/[base]armR2
+  rotate: false
+  xy: 127, 3
+  size: 5, 5
+  orig: 56, 56
+  offset: 30, 4
+  index: -1
+trio_panda/front/[base]body
+  rotate: false
+  xy: 226, 8
+  size: 8, 9
+  orig: 56, 56
+  offset: 24, 2
+  index: -1
+trio_panda/front/[base]elbowL2
+  rotate: false
+  xy: 142, 4
+  size: 6, 4
+  orig: 56, 56
+  offset: 33, 2
+  index: -1
+trio_panda/front/[base]elbowR2
+  rotate: false
+  xy: 142, 4
+  size: 6, 4
+  orig: 56, 56
+  offset: 33, 2
+  index: -1
+trio_panda/front/[base]head
+  rotate: false
+  xy: 109, 53
+  size: 28, 21
+  orig: 56, 56
+  offset: 14, 8
+  index: -1
+trio_panda/front/[base]legL
+  rotate: true
+  xy: 183, 4
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+trio_panda/front/[base]legR
+  rotate: true
+  xy: 183, 4
+  size: 4, 6
+  orig: 56, 56
+  offset: 24, 0
+  index: -1
+trio_panda/front/earL
+  rotate: false
+  xy: 101, 9
+  size: 7, 7
+  orig: 56, 56
+  offset: 34, 22
+  index: -1
+trio_panda/front/earR
+  rotate: false
+  xy: 110, 9
+  size: 7, 7
+  orig: 56, 56
+  offset: 15, 22
+  index: -1
+trio_panda/front/face/[base]attack
+  rotate: false
+  xy: 2, 19
+  size: 14, 7
+  orig: 56, 56
+  offset: 21, 12
+  index: -1
+trio_panda/front/face/[base]damaged
+  rotate: false
+  xy: 97, 41
+  size: 16, 10
+  orig: 56, 56
+  offset: 20, 8
+  index: -1
+trio_panda/front/face/[base]doyagao
+  rotate: false
+  xy: 217, 44
+  size: 16, 11
+  orig: 56, 56
+  offset: 20, 9
+  index: -1
+trio_panda/front/face/[base]idle
+  rotate: false
+  xy: 2, 43
+  size: 16, 11
+  orig: 56, 56
+  offset: 20, 9
+  index: -1
+trio_panda/front/face/[base]mad
+  rotate: false
+  xy: 18, 19
+  size: 14, 7
+  orig: 56, 56
+  offset: 21, 12
+  index: -1
+trio_panda/front/face/[base]smile
+  rotate: false
+  xy: 172, 41
+  size: 16, 11
+  orig: 56, 56
+  offset: 20, 9
+  index: -1
+trio_panda/front/face/[base]tired
+  rotate: false
+  xy: 2, 11
+  size: 14, 6
+  orig: 56, 56
+  offset: 21, 13
+  index: -1
+trio_panda/side/[base]armL
+  rotate: false
+  xy: 236, 3
+  size: 5, 4
+  orig: 56, 56
+  offset: 35, 5
+  index: -1
+trio_panda/side/[base]armR
+  rotate: false
+  xy: 250, 3
+  size: 4, 4
+  orig: 56, 56
+  offset: 31, 5
+  index: -1
+trio_panda/side/[base]body
+  rotate: false
+  xy: 156, 8
+  size: 9, 9
+  orig: 56, 56
+  offset: 31, 2
+  index: -1
+trio_panda/side/[base]elbowL
+  rotate: false
+  xy: 243, 3
+  size: 5, 4
+  orig: 56, 56
+  offset: 37, 3
+  index: -1
+trio_panda/side/[base]elbowR
+  rotate: false
+  xy: 38, 2
+  size: 5, 4
+  orig: 56, 56
+  offset: 28, 3
+  index: -1
+trio_panda/side/[base]head
+  rotate: false
+  xy: 172, 54
+  size: 26, 19
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+trio_panda/side/[base]legL
+  rotate: true
+  xy: 30, 3
+  size: 4, 6
+  orig: 56, 56
+  offset: 36, 0
+  index: -1
+trio_panda/side/[base]legR
+  rotate: true
+  xy: 92, 3
+  size: 4, 6
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+trio_panda/side/earL
+  rotate: false
+  xy: 54, 42
+  size: 6, 8
+  orig: 56, 56
+  offset: 40, 22
+  index: -1
+trio_panda/side/earR
+  rotate: false
+  xy: 83, 8
+  size: 7, 8
+  orig: 56, 56
+  offset: 23, 22
+  index: -1
+trio_panda/side/face/[base]attack
+  rotate: false
+  xy: 57, 11
+  size: 11, 5
+  orig: 56, 56
+  offset: 33, 13
+  index: -1
+trio_panda/side/face/[base]damaged
+  rotate: false
+  xy: 156, 19
+  size: 13, 8
+  orig: 56, 56
+  offset: 32, 11
+  index: -1
+trio_panda/side/face/[base]doyagao
+  rotate: false
+  xy: 16, 28
+  size: 12, 10
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+trio_panda/side/face/[base]idle
+  rotate: false
+  xy: 30, 28
+  size: 12, 10
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+trio_panda/side/face/[base]mad
+  rotate: false
+  xy: 18, 10
+  size: 12, 7
+  orig: 56, 56
+  offset: 32, 11
+  index: -1
+trio_panda/side/face/[base]smile
+  rotate: false
+  xy: 44, 28
+  size: 12, 10
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+trio_panda/side/face/[base]tired
+  rotate: false
+  xy: 70, 11
+  size: 11, 5
+  orig: 56, 56
+  offset: 33, 13
+  index: -1
+trio_panda/side/tail
+  rotate: false
+  xy: 142, 18
+  size: 12, 9
+  orig: 56, 56
+  offset: 22, 1
+  index: -1
