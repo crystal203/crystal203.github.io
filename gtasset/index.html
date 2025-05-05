@@ -120,9 +120,37 @@
       <select id="folderSelector">
         <option value="illust">illust</option>
         <option value="character">character</option>
+        <option value="custom">custom</option> <!-- 新增 -->
       </select>
     </label>
 
+    <div id="customUploadPanel" style="display: none; width: 100%; padding: 10px; background: #2c2c2c;">
+      <div style="display: flex; justify-content: center; align-items: flex-start; gap: 12px; max-width: 800px; margin: auto;">
+        <!-- 上传控件 -->
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px;">
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <label for="customImage" style="min-width: 90px;">图片 (.png)</label>
+            <input type="file" id="customImage" accept=".png" style="max-width: 180px;">
+          </div>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <label for="customAtlas" style="min-width: 90px;">图集 (.atlas)</label>
+            <input type="file" id="customAtlas" accept=".atlas,.txt" style="max-width: 180px;">
+          </div>
+          <div style="display: flex; gap: 6px; align-items: center;">
+            <label for="customSkeleton" style="min-width: 90px;">骨骼 (.json)</label>
+            <input type="file" id="customSkeleton" accept=".json,.bytes" style="max-width: 180px;">
+          </div>
+        </div>
+    
+        <!-- 加载按钮 -->
+        <div style="display: flex; align-items: center; padding-top: 5px;">
+          <button onclick="loadCustomSpine()" id="customLoadBtn" disabled style="padding: 6px 12px; font-size: 14px;">
+            加载动画
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <div style="display: flex; flex-direction: column;">
       <label>搜索资源:
         <input type="text" id="assetSearchBox" placeholder="输入关键词过滤资源">
@@ -256,6 +284,20 @@
     document.getElementById("folderSelector").addEventListener("change", () => {
       const folder = document.getElementById("folderSelector").value;
       document.getElementById("skeletonVariantWrapper").style.display = (folder === "character") ? "inline-block" : "none";
+      const customUploadPanel = document.getElementById("customUploadPanel");
+      const assetSearchBox = document.getElementById("assetSearchBox").parentElement;
+      const assetSelectorBox = document.getElementById("assetSelector").parentElement;
+      if (folder === "custom") {
+        customUploadPanel.style.display = "block";
+        assetSearchBox.style.display = "none";
+        assetSelectorBox.style.display = "none";
+        return;
+      } else {
+        customUploadPanel.style.display = "none";
+        assetSearchBox.style.display = "flex";
+        assetSelectorBox.style.display = "flex";
+      }
+      if (folder === "custom") return;
       loadFolderAssetsJS(folder, (assets) => {
         const selector = document.getElementById("assetSelector");
         selector.innerHTML = "";
@@ -271,6 +313,88 @@
         }
       });
     });
+
+    let uploadedFiles = {
+      image: null,
+      atlas: null,
+      skeleton: null
+    };
+
+    ["customImage", "customAtlas", "customSkeleton"].forEach(id => {
+      document.getElementById(id).addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        if (id === "customImage") uploadedFiles.image = file;
+        if (id === "customAtlas") uploadedFiles.atlas = file;
+        if (id === "customSkeleton") uploadedFiles.skeleton = file;
+        checkCustomUploadReady();
+      });
+    });
+
+    function checkCustomUploadReady() {
+      const btn = document.getElementById("customLoadBtn");
+      btn.disabled = !(uploadedFiles.image && uploadedFiles.atlas && uploadedFiles.skeleton);
+    }
+
+    function loadCustomSpine() {
+      const readerImage = new FileReader();
+      const readerAtlas = new FileReader();
+      const readerSkeleton = new FileReader();
+
+      let image, atlasText, skeletonData;
+
+      readerImage.onload = function () {
+        const img = new Image();
+        img.onload = function () {
+          const texture = new spine.webgl.GLTexture(gl, img);
+          const page = new spine.TextureAtlasPage();
+          page.name = "custom";
+          page.width = img.width;
+          page.height = img.height;
+          page.texture = texture;
+          const atlas = new spine.TextureAtlas(atlasText, function (path) {
+            return texture; // 用我们手动创建的 GLTexture
+          });
+
+          const atlasLoader = new spine.AtlasAttachmentLoader(atlas);
+
+          let skeletonDataParsed;
+          if (uploadedFiles.skeleton.name.endsWith(".json")) {
+            skeletonDataParsed = new spine.SkeletonJson(atlasLoader).readSkeletonData(JSON.parse(skeletonData));
+          } else {
+            skeletonDataParsed = new spine.SkeletonBinary(atlasLoader).readSkeletonData(new Uint8Array(skeletonData));
+          }
+
+          skeleton = new spine.Skeleton(skeletonDataParsed);
+          skeleton.setToSetupPose();
+          skeleton.updateWorldTransform();
+          populateSkinSelector(skeletonDataParsed.skins);
+          resetTrackSelectors(skeletonDataParsed.animations);
+          createSlotSliders(skeleton.slots);
+          updateCanvasSize();
+          state = new spine.AnimationState(new spine.AnimationStateData(skeleton.data));
+          requestAnimationFrame(render);
+          setExportDefaults();
+        };
+        img.src = readerImage.result;
+      };
+
+      readerAtlas.onload = () => {
+        atlasText = readerAtlas.result;
+        readerImage.readAsDataURL(uploadedFiles.image);
+      };
+
+      readerSkeleton.onload = () => {
+        skeletonData = readerSkeleton.result;
+      };
+
+      readerAtlas.readAsText(uploadedFiles.atlas);
+      if (uploadedFiles.skeleton.name.endsWith(".json")) {
+        readerSkeleton.readAsText(uploadedFiles.skeleton);
+      } else {
+        readerSkeleton.readAsArrayBuffer(uploadedFiles.skeleton);
+      }
+    }
 
     document.getElementById("assetSelector").addEventListener("change", () => {
       const folder = document.getElementById("folderSelector").value;
