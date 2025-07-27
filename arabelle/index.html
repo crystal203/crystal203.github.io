@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 暗炮计算器</b>（Beta 1.06.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 暗炮计算器</b>（Beta 1.07.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -93,6 +93,7 @@
             嘲讽坦克距：<a style="color:blue">{{tdist}}</a><br>
             坦克卡莉距：<a style="color:blue">{{ctdist}}</a><br>
             稳态位置：<a style="color:blue">({{finalx}}, {{finaly}})</a><br>
+            嘲讽顺序：<a style="color:blue">{{first_taunt}}</a><br>
         </div>
 
         <div style="position:absolute;left:60px;top:780px">
@@ -269,7 +270,7 @@
             ],
             solution: [
                 {
-                    name: "暗炮", party: [{ nick: "arabelle" }, { nick: "callie" }, { nick: "eunha" }, { nick: "oghma" }],
+                    name: "暗炮", party: [{ nick: "arabelle" }, { nick: "eunha" }, { nick: "oghma" }, { nick: "callie" }],
                     solve: [
                         { name: "暗炮1" },
                         { name: "暗炮2" },
@@ -297,6 +298,7 @@
             characterBuffer: null,
             tileBuffer: null,
             arrowList: [],
+            first_taunt: "",
         },
         computed: {
 
@@ -617,6 +619,8 @@
                         let e_callie_rushed = 0;
                         let c_callie_rushed_dist = 0;
                         let e_callie_rushed_dist = 0;
+                        let first_taunt = "";
+                        let flag = 0;
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
                                 // 我方
@@ -692,11 +696,21 @@
                             if (this.vecxy(clist[c_tanker], clist[c_tanker].to) < clist[c_tanker].c.taunt && !c_taunted) { // 我方坦克嘲讽
                                 dist_callie = this.vecxy(clist[c_tanker], elist[e_callie]);
                                 dist_tanker = this.vecxy(clist[c_tanker], elist[e_tanker]);
+                                if (first_taunt === "") {
+                                    first_taunt = "我方先手嘲讽";
+                                }
                                 // 换锁
                                 if (c_tanker_getdmg !== null) clist[c_tanker].to = c_tanker_getdmg;
                                 c_taunted = 1;
                             }
                             if (this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.taunt && !e_taunted) { // 对方坦克嘲讽
+                                if (e_tanker_getdmg !== null) elist[e_tanker].to = e_tanker_getdmg;
+                                if (first_taunt === "") {
+                                    first_taunt = "我方后手嘲讽";
+                                    if (this.vecxy(clist[c_tanker], elist[e_tanker]) < elist[e_tanker].c.taunt) {
+                                        flag = 1;
+                                    }
+                                }
                                 if (e_tanker_getdmg !== null) elist[e_tanker].to = e_tanker_getdmg;
                                 e_taunted = 1;
                             }
@@ -706,8 +720,14 @@
                         this.cdist = dist_callie.toFixed(6);
                         this.tdist = dist_tanker.toFixed(6);
                         this.ctdist = ctdist.toFixed(6);
-                        this.finalx = (clist[c_tanker].px + 1).toFixed(3);
-                        this.finaly = (clist[c_tanker].py + 1).toFixed(3);
+                        if (!flag) {
+                            this.finalx = (clist[c_tanker].px + 1).toFixed(3);
+                            this.finaly = (clist[c_tanker].py + 1).toFixed(3);
+                        } else {
+                            this.finalx = (elist[e_tanker].px + 1).toFixed(3);
+                            this.finaly = (elist[e_tanker].py + 1).toFixed(3);
+                        }
+                        this.first_taunt = first_taunt;
                     }
                 }
             },
@@ -946,7 +966,7 @@
                                 }
                                 if (!flag) continue;
                                 this.simulate(calcMap, 0);
-                                if ((this.tdist < 2.9 && this.cdist < 2.9 && this.ctdist > 1) && this.cdist < minans) {
+                                if ((this.tdist < 2.9 && this.cdist < 2.9 && this.ctdist > 1 && this.finaly > 7.5) && this.cdist < minans) {
                                     minans = this.cdist;
                                     ansp = [i1, i2, i3, i4];
                                 }
