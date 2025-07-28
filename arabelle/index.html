@@ -85,13 +85,14 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 暗炮计算器</b>（Beta 1.07.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 暗炮计算器</b>（Beta 1.08.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
             嘲讽卡莉距：<a style="color:blue">{{cdist}}</a><br>
             嘲讽坦克距：<a style="color:blue">{{tdist}}</a><br>
             坦克卡莉距：<a style="color:blue">{{ctdist}}</a><br>
+            银河暗炮距：<a style="color:blue">{{eadist}}</a><br>
             稳态位置：<a style="color:blue">({{finalx}}, {{finaly}})</a><br>
             嘲讽顺序：<a style="color:blue">{{first_taunt}}</a><br>
         </div>
@@ -100,6 +101,8 @@
             <a><b>嘲讽卡莉距</b>，指我方坦克开嘲讽时距离对方卡莉的距离因子，越小表示越不容易漏嘲讽。</a><br>
             <a><b>嘲讽坦克距</b>，指我方坦克开嘲讽时距离对方坦克的距离因子，越小表示越不容易漏嘲讽。</a><br>
             <a><b>坦克卡莉距</b>，指我方坦克离对方卡莉攻击线的距离因子，越大表示坦克越不容易被卡莉擦到。</a><br>
+            <a><b>银河暗炮距</b>，指我方银河离我方暗炮的距离因子，越大表示暗炮银河越不容易被一起轰到。</a><br>
+            <a><b>稳态位置</b>，我方暗盾最终的位置，y值越大表示越深入敌后。</a><br>
             <a><b>摆位</b>按钮能自动依据上述参数帮你寻找一个较优的解。<b>不保证该解一定最优。</b></a><br>
             <a><b>只有炮银卡盾可以用自动摆位。</b>如果无解可以尝试改变我方队伍顺序。</a><br>
             <a>一般嘲讽距小于3，坦克卡莉距大于1，稳态y值大于7.5，我方先手嘲讽较优。</b></a><br>
@@ -296,6 +299,7 @@
             ctdist: -1,
             finalx: -1,
             finaly: -1,
+            eadist: -1,
             characterBuffer: null,
             tileBuffer: null,
             arrowList: [],
@@ -597,14 +601,18 @@
                 let elist = this.elist;
                 this.tdist = -1;
                 this.cdist = -1;
+                this.eadist = -1;
                 if (clist.length === 4 && elist.length === 4) {
                     for (let i = 0; i < 4; ++i) {
                         clist[i].fx = clist[i].x * 1.0;
                         clist[i].fy = clist[i].y * 1.0;
                         elist[i].fx = elist[i].x * 1.0;
                         elist[i].fy = elist[i].y * 1.0;
+                        clist[i].atk = 0;
+                        elist[i].atk = 0;
                     }
                     let c_tanker = -1, e_tanker = -1, e_callie = -1;
+                    let c_eunha = -1, c_ara = -1;
                     let c_tanker_getdmg = null;
                     let e_tanker_getdmg = null;
                     let c_taunted = 0, e_taunted = 0;
@@ -612,6 +620,8 @@
                         if (clist[i].c.type === 4) c_tanker = i;
                         if (elist[i].c.type === 4) e_tanker = i;
                         if (elist[i].c.nick === "callie") e_callie = i;
+                        if (clist[i].c.nick === "arabelle") c_ara = i;
+                        if (clist[i].c.nick === "eunha") c_eunha = i;
                     }
                     if (c_tanker !== -1 || e_tanker !== -1) {
                         let ctdist = 1e6;
@@ -644,13 +654,16 @@
                                 } else { // 进攻事件
                                     clist[i].px = clist[i].fx;
                                     clist[i].py = clist[i].fy;
-                                    if (clist[i].to.c.type === 4) {
-                                        if (clist[i].c.nick === "callie") {
-                                            e_tanker_getdmg = clist[i];
-                                        } else if (clist[i].c.nick === "eunha" && (e_tanker_getdmg === null || e_tanker_getdmg.c.nick !== "callie")) {
-                                            e_tanker_getdmg = clist[i];
-                                        } else if (e_tanker_getdmg === null) {
-                                            e_tanker_getdmg = clist[i];
+                                    clist[i].atk++;
+                                    if (clist[i].atk > 16) {
+                                        if (clist[i].to.c.type === 4) {
+                                            if (clist[i].c.nick === "callie") {
+                                                e_tanker_getdmg = clist[i];
+                                            } else if (clist[i].c.nick === "eunha" && (e_tanker_getdmg === null || e_tanker_getdmg.c.nick !== "callie")) {
+                                                e_tanker_getdmg = clist[i];
+                                            } else if (e_tanker_getdmg === null) {
+                                                e_tanker_getdmg = clist[i];
+                                            }
                                         }
                                     }
                                 }
@@ -674,13 +687,16 @@
                                 } else { // 进攻事件
                                     elist[i].px = elist[i].fx;
                                     elist[i].py = elist[i].fy;
-                                    if (elist[i].to.c.type === 4) {
-                                        if (elist[i].c.nick === "callie") {
-                                            c_tanker_getdmg = elist[i];
-                                        } else if (elist[i].c.nick === "eunha" && (c_tanker_getdmg === null || c_tanker_getdmg.c.nick !== "callie")) {
-                                            c_tanker_getdmg = elist[i];
-                                        } else if (c_tanker_getdmg === null) {
-                                            c_tanker_getdmg = elist[i];
+                                    elist[i].atk++;
+                                    if (elist[i].atk > 16) {
+                                        if (elist[i].to.c.type === 4) {
+                                            if (elist[i].c.nick === "callie") {
+                                                c_tanker_getdmg = elist[i];
+                                            } else if (elist[i].c.nick === "eunha" && (c_tanker_getdmg === null || c_tanker_getdmg.c.nick !== "callie")) {
+                                                c_tanker_getdmg = elist[i];
+                                            } else if (c_tanker_getdmg === null) {
+                                                c_tanker_getdmg = elist[i];
+                                            }
                                         }
                                     }
                                 }
@@ -702,6 +718,7 @@
                                 }
                                 // 换锁
                                 if (c_tanker_getdmg !== null) clist[c_tanker].to = c_tanker_getdmg;
+                                else clist[c_tanker].to = elist[e_callie];
                                 c_taunted = 1;
                             }
                             if (this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.taunt && !e_taunted) { // 对方坦克嘲讽
@@ -721,6 +738,7 @@
                         this.cdist = dist_callie.toFixed(6);
                         this.tdist = dist_tanker.toFixed(6);
                         this.ctdist = ctdist.toFixed(6);
+                        this.eadist = (this.vecxy(clist[c_ara], clist[c_eunha])).toFixed(6);
                         if (!flag) {
                             this.finalx = (clist[c_tanker].px + 1).toFixed(3);
                             this.finaly = (clist[c_tanker].py + 1).toFixed(3);
