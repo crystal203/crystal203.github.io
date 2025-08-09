@@ -96,6 +96,8 @@
             稳态位置：<a style="color:blue">({{finalx}}, {{finaly}})</a><br>
             嘲讽顺序：<a style="color:blue">{{first_taunt}}</a><br>
             坦克路径阻挡：<a style="color:blue">{{block}}</a><br>
+            银河复锁：<a style="color:blue">{{eunhaMulti}}</a><br>
+            潜在风险：<a style="color:blue">{{warn}}</a><br>
         </div>
 
         <div style="position:absolute;left:60px;top:780px">
@@ -306,6 +308,8 @@
             arrowList: [],
             first_taunt: "",
             block: "",
+            eunhaMulti: "",
+            warn: "",
         },
         computed: {
 
@@ -438,7 +442,7 @@
                     return (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1);
                 }
                 function orientationSign(cp1, cp2) {
-                    return cp1 * cp2 <= 0; 
+                    return cp1 * cp2 < 0; 
                 }
                 const cp1 = crossProduct(x1, y1, x2, y2, x3, y3); // (p1,p2) × (p1,p3)
                 const cp2 = crossProduct(x1, y1, x2, y2, x4, y4); // (p1,p2) × (p1,p4)
@@ -448,11 +452,11 @@
                 if (orientationSign(cp1, cp2) && orientationSign(cp3, cp4)) {
                     if (cp1 === 0 && cp2 === 0 && cp3 === 0 && cp4 === 0) {
                     const xOverlap =
-                        Math.max(x1, x2) >= Math.min(x3, x4) &&
-                        Math.max(x3, x4) >= Math.min(x1, x2);
+                        Math.max(x1, x2) > Math.min(x3, x4) &&
+                        Math.max(x3, x4) > Math.min(x1, x2);
                     const yOverlap =
-                        Math.max(y1, y2) >= Math.min(y3, y4) &&
-                        Math.max(y3, y4) >= Math.min(y1, y2);
+                        Math.max(y1, y2) > Math.min(y3, y4) &&
+                        Math.max(y3, y4) > Math.min(y1, y2);
                     return xOverlap && yOverlap;
                     }
                     return true;
@@ -663,6 +667,15 @@
                     if (elist[e_tanker].to.c.nick === "callie") block2 = 0;
                     if (block1 || block2) this.block = "true";
                     else this.block = "false";
+                    
+                    this.eunhaMulti = "false";
+                    if (elist[e_callie].to.c.nick === "eunha") {
+                        for (let i = 0; i < 4; ++i) {
+                            if (elist[i].c.nick !== "callie" && elist[i].to.c.nick === "eunha") {
+                                this.eunhaMulti = "true";
+                            }
+                        }
+                    }
                     if (c_tanker !== -1 || e_tanker !== -1) {
                         let ctdist = 1e6;
                         let dist_callie = 0, dist_tanker = 0;
@@ -672,6 +685,9 @@
                         let e_callie_rushed_dist = 0;
                         let first_taunt = "";
                         let flag = 0;
+                        let warn = 0;
+                        if (clist[c_tanker].to.c.nick !== "eunha") warn++;
+
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
                                 // 我方
@@ -701,7 +717,7 @@
                                                 e_tanker_getdmg = clist[i];
                                             } else if (clist[i].c.nick === "eunha" && (e_tanker_getdmg === null || e_tanker_getdmg.c.nick !== "callie")) {
                                                 e_tanker_getdmg = clist[i];
-                                            } else if (e_tanker_getdmg === null) {
+                                            } else if (e_tanker_getdmg === null && clist[i].atk > 17) {
                                                 e_tanker_getdmg = clist[i];
                                             }
                                         }
@@ -734,7 +750,7 @@
                                                 c_tanker_getdmg = elist[i];
                                             } else if (elist[i].c.nick === "eunha" && (c_tanker_getdmg === null || c_tanker_getdmg.c.nick !== "callie")) {
                                                 c_tanker_getdmg = elist[i];
-                                            } else if (c_tanker_getdmg === null) {
+                                            } else if (c_tanker_getdmg === null && elist[i].atk > 17 ) {
                                                 c_tanker_getdmg = elist[i];
                                             }
                                         }
@@ -758,6 +774,10 @@
                                 }
                                 // 换锁
                                 if (c_tanker_getdmg !== null) clist[c_tanker].to = c_tanker_getdmg;
+                                else {
+                                    if (!(clist[c_callie].to.c.nick === "callie" || (clist[c_callie].to.c.nick === "daisy" && elist[e_callie].y <= 10)))
+                                        warn += 5;
+                                }
                                 c_taunted = 1;
                             }
                             if (this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.taunt && !e_taunted) { // 对方坦克嘲讽
@@ -775,6 +795,7 @@
                             if (this.vecxy(clist[c_tanker], clist[c_tanker].to) < clist[c_tanker].c.hand && c_taunted &&
                                 this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.hand && e_taunted) break;
                         }
+                        this.warn = warn;
                         this.cdist = dist_callie.toFixed(6);
                         this.tdist = dist_tanker.toFixed(6);
                         this.ctdist = ctdist.toFixed(6);
@@ -981,6 +1002,7 @@
                     calcMap[i] = new Array(boardWidth);
                 }
                 let minans = 0;
+                let minwarn = 1e6;
                 let ansp = [0, 0, 0, 0];
                 const character = [];
                 for (let i = 0; i < this.character_.length; ++i) {
@@ -1026,8 +1048,11 @@
                                 }
                                 if (!flag) continue;
                                 this.simulate(calcMap, 0);
-                                if ((this.tdist < 3.8 && this.cdist < 3.8 && this.ctdist > 0.5 && this.finaly > 9.5 && this.eadist > 1.0) && this.finaly > minans && this.block === "false") {
+                                if ((this.tdist < 3.8 && this.cdist < 3.8 && this.ctdist > 0.5 && this.finaly > 9.5 && this.eadist > 1.0 && this.block === "false" && this.eunhaMulti === "false") 
+                                     && (this.finaly.toFixed * 1.0 > minans && this.warn === minwarn || this.warn * 1.0 < minwarn))
+                                {
                                     minans = this.finaly;
+                                    minwarn = this.warn;
                                     ansp = [i1, i2, i3, i4];
                                 }
                             }
