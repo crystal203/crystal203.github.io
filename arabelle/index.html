@@ -980,7 +980,7 @@
                 for (let i = 0; i < boardHeight; ++i) {
                     calcMap[i] = new Array(boardWidth);
                 }
-                let minans = 1e6;
+                let minans = 0;
                 let ansp = [0, 0, 0, 0];
                 const character = [];
                 for (let i = 0; i < this.character_.length; ++i) {
@@ -1026,15 +1026,15 @@
                                 }
                                 if (!flag) continue;
                                 this.simulate(calcMap, 0);
-                                if ((this.tdist < 3.8 && this.cdist < 3.8 && this.ctdist > 0.5 && this.finaly > 9.5 && this.eadist > 1.0) && this.cdist < minans && this.block === "false") {
-                                    minans = this.cdist;
+                                if ((this.tdist < 3.8 && this.cdist < 3.8 && this.ctdist > 0.5 && this.finaly > 9.5 && this.eadist > 1.0) && this.finaly > minans && this.block === "false") {
+                                    minans = this.finaly;
                                     ansp = [i1, i2, i3, i4];
                                 }
                             }
                         }
                     }
                 }
-                if (minans > 1000) {
+                if (minans === 0) {
                     this.info("未找到合适解", 1);
                 } else {
                     this.calcList = [];
