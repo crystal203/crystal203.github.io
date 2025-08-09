@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 暗炮计算器</b>（Beta 1.08.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 暗炮计算器</b>（Beta 2.1.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -95,6 +95,7 @@
             银河暗炮距：<a style="color:blue">{{eadist}}</a><br>
             稳态位置：<a style="color:blue">({{finalx}}, {{finaly}})</a><br>
             嘲讽顺序：<a style="color:blue">{{first_taunt}}</a><br>
+            坦克路径阻挡：<a style="color:blue">{{block}}</a><br>
         </div>
 
         <div style="position:absolute;left:60px;top:780px">
@@ -105,7 +106,7 @@
             <a><b>稳态位置</b>，我方暗盾最终的位置，y值越大表示越深入敌后。</a><br>
             <a><b>摆位</b>按钮能自动依据上述参数帮你寻找一个较优的解。<b>不保证该解一定最优。</b></a><br>
             <a><b>只有炮银卡盾可以用自动摆位。</b>如果无解可以尝试改变我方队伍顺序。</a><br>
-            <a>一般嘲讽距小于3，坦克卡莉距大于1，稳态y值大于7.5，我方先手嘲讽较优。</b></a><br>
+            <a>一般嘲讽距小于4，坦克卡莉距大于1，稳态y值大于7.5较优。</b></a><br>
             <img src="https://badges.toozhao.com/badges/01JR4ABSZPMMF1SJC27MR5BZKE/green.svg" /><br>
         </div>
     </div>
@@ -258,7 +259,7 @@
 
                 { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 2, speed: 1, hand: 4 },
 
-                { name: "adela_noble_myth", nick: "daisy", element: "water", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 5.5 },
+                { name: "adela_noble_myth", nick: "daisy", element: "water", ai: 1, type: 4, speed: 1.4, hand: 0.1, taunt: 5.0 },
                 { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 3.5 },
                 { name: "demon_powergirl", nick: "paimon", element: "fire", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 1.5 },
             ],
@@ -274,7 +275,7 @@
             ],
             solution: [
                 {
-                    name: "暗炮", party: [{ nick: "arabelle" }, { nick: "eunha" }, { nick: "oghma" }, { nick: "callie" }],
+                    name: "暗炮", party: [{ nick: "arabelle" }, { nick: "callie" }, { nick: "eunha" }, { nick: "daisy" }],
                     solve: [
                         { name: "暗炮1" },
                         { name: "暗炮2" },
@@ -304,6 +305,7 @@
             tileBuffer: null,
             arrowList: [],
             first_taunt: "",
+            block: "",
         },
         computed: {
 
@@ -430,6 +432,33 @@
             disp2l(a, b, c) { // 点线距
                 if (Math.abs(this.vecxy(b, c)) < 0.01) return 0;
                 return Math.abs((c.fx - b.fx) * (a.fy - b.fy) - (c.fy - b.fy) * (a.fx - b.fx)) / this.vecxy(b, c);
+            },
+            segmentsIntersect(x1, y1, x2, y2, x3, y3, x4, y4) {
+                function crossProduct(x1, y1, x2, y2, x3, y3) {
+                    return (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1);
+                }
+                function orientationSign(cp1, cp2) {
+                    return cp1 * cp2 <= 0; 
+                }
+                const cp1 = crossProduct(x1, y1, x2, y2, x3, y3); // (p1,p2) × (p1,p3)
+                const cp2 = crossProduct(x1, y1, x2, y2, x4, y4); // (p1,p2) × (p1,p4)
+                const cp3 = crossProduct(x3, y3, x4, y4, x1, y1); // (p3,p4) × (p3,p1)
+                const cp4 = crossProduct(x3, y3, x4, y4, x2, y2); // (p3,p4) × (p3,p2)
+
+                if (orientationSign(cp1, cp2) && orientationSign(cp3, cp4)) {
+                    if (cp1 === 0 && cp2 === 0 && cp3 === 0 && cp4 === 0) {
+                    const xOverlap =
+                        Math.max(x1, x2) >= Math.min(x3, x4) &&
+                        Math.max(x3, x4) >= Math.min(x1, x2);
+                    const yOverlap =
+                        Math.max(y1, y2) >= Math.min(y3, y4) &&
+                        Math.max(y3, y4) >= Math.min(y1, y2);
+                    return xOverlap && yOverlap;
+                    }
+                    return true;
+                }
+
+                return false;
             },
             refreshLocker(calcMap = [], drawarrow = 1) { // 更新索敌
                 if (calcMap.length === 0) calcMap = this.calcMap;
@@ -612,17 +641,28 @@
                         elist[i].atk = 0;
                     }
                     let c_tanker = -1, e_tanker = -1, e_callie = -1;
-                    let c_eunha = -1, c_ara = -1;
+                    let c_eunha = -1, c_ara = -1, c_callie = -1;
                     let c_tanker_getdmg = null;
                     let e_tanker_getdmg = null;
                     let c_taunted = 0, e_taunted = 0;
                     for (let i = 0; i < 4; ++i) {
                         if (clist[i].c.type === 4) c_tanker = i;
+                        if (clist[i].c.nick === "callie") c_callie = i;
                         if (elist[i].c.type === 4) e_tanker = i;
                         if (elist[i].c.nick === "callie") e_callie = i;
                         if (clist[i].c.nick === "arabelle") c_ara = i;
                         if (clist[i].c.nick === "eunha") c_eunha = i;
                     }
+                    let block1 = this.segmentsIntersect(clist[c_tanker].fx, clist[c_tanker].fy, clist[c_tanker].to.fx, clist[c_tanker].to.fy,
+                                                   elist[e_callie].fx, elist[e_callie].fy, elist[e_callie].to.fx, elist[e_callie].to.fy
+                    );
+                    if (clist[c_tanker].to.c.nick === "callie") block1 = 0;
+                    let block2 = this.segmentsIntersect(clist[c_callie].fx, clist[c_callie].fy, clist[c_callie].to.fx, clist[c_callie].to.fy,
+                                                   elist[e_tanker].fx, elist[e_tanker].fy, elist[e_tanker].to.fx, elist[e_tanker].to.fy
+                    );
+                    if (elist[e_tanker].to.c.nick === "callie") block2 = 0;
+                    if (block1 || block2) this.block = "true";
+                    else this.block = "false";
                     if (c_tanker !== -1 || e_tanker !== -1) {
                         let ctdist = 1e6;
                         let dist_callie = 0, dist_tanker = 0;
@@ -718,16 +758,16 @@
                                 }
                                 // 换锁
                                 if (c_tanker_getdmg !== null) clist[c_tanker].to = c_tanker_getdmg;
-                                else clist[c_tanker].to = elist[e_callie];
                                 c_taunted = 1;
                             }
                             if (this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.taunt && !e_taunted) { // 对方坦克嘲讽
                                 if (e_tanker_getdmg !== null) elist[e_tanker].to = e_tanker_getdmg;
                                 if (first_taunt === "") {
                                     first_taunt = "我方后手嘲讽";
-                                    if (this.vecxy(clist[c_tanker], elist[e_tanker]) < elist[e_tanker].c.taunt) {
-                                        flag = 1;
-                                    }
+                                }
+                                if (this.vecxy(clist[c_tanker], elist[e_tanker]) < elist[e_tanker].c.taunt - 0.7 && elist[e_tanker].c.nick === "daisy" ||
+                                    this.vecxy(clist[c_tanker], elist[e_tanker]) < elist[e_tanker].c.taunt && elist[e_tanker].c.nick !== "daisy") {
+                                    flag = 1;
                                 }
                                 if (e_tanker_getdmg !== null) elist[e_tanker].to = e_tanker_getdmg;
                                 e_taunted = 1;
@@ -977,15 +1017,16 @@
                                     for (let x = 0; x < calcMap.length; ++x) {
                                         for (let y = 0; y < calcMap[x].length; ++y) {
                                             if (calcMap[x][y].character.name !== "empty") {
-                                                if (calcMap[x][y].character.type === 4 && y !== 3) flag = 0;
-                                                if (calcMap[x][y].character.type !== 4 && y === 3) flag = 0;
+                                                if (calcMap[x][y].character.nick === "daisy" && y !== 3) flag = 0;
+                                                if (calcMap[x][y].character.nick === "arabelle" && y !== 0) flag = 0;
+                                                if (calcMap[x][y].character.nick === "callie" && y !== 2) flag = 0;
                                             }
                                         }
                                     }
                                 }
                                 if (!flag) continue;
                                 this.simulate(calcMap, 0);
-                                if ((this.tdist < 2.9 && this.cdist < 2.9 && this.ctdist > 1 && this.finaly > 7.5) && this.cdist < minans) {
+                                if ((this.tdist < 3.8 && this.cdist < 3.8 && this.ctdist > 0.5 && this.finaly > 9.5 && this.eadist > 1.0) && this.cdist < minans && this.block === "false") {
                                     minans = this.cdist;
                                     ansp = [i1, i2, i3, i4];
                                 }
