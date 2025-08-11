@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 暗炮计算器</b>（Beta 2.1.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 暗炮计算器</b>（Beta 2.1.2, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -687,6 +687,7 @@
                         let flag = 0;
                         let warn = 0;
                         if (clist[c_tanker].to.c.nick !== "eunha") warn++;
+                        if (Math.abs(clist[c_ara].x - clist[c_eunha].x) <= 2) warn++;
 
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
