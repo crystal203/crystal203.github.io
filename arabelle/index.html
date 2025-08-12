@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 暗炮计算器</b>（Beta 2.1.2, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 暗炮计算器</b>（Beta 2.1.3, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -253,7 +253,7 @@
                 { name: "empty", nick: "", element: "", ai: 0, type: 0},
 
                 { name: "villain_redhood_myth", nick: "arabelle", element: "dark", ai: 2, type: 2, speed: 1, hand: 6.5 },
-                { name: "wrestler_myth", nick: "callie", element: "dark", ai: 1, type: 1, speed: 1.5, hand: 0.1 },
+                { name: "wrestler_myth", nick: "callie", element: "dark", ai: 1, type: 1, speed: 1.6, hand: 0.1 },
                 { name: "robot_tanker", nick: "oghma", element: "dark", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 3 },
 
                 { name: "dokkaebi_myth", nick: "eunha", element: "no", ai: 2, type: 2, speed: 1, hand: 5 },
@@ -261,7 +261,7 @@
 
                 { name: "watcher", nick: "yuna", element: "ground", ai: 2, type: 2, speed: 1, hand: 4 },
 
-                { name: "adela_noble_myth", nick: "daisy", element: "water", ai: 1, type: 4, speed: 1.4, hand: 0.1, taunt: 5.0 },
+                { name: "adela_noble_myth", nick: "daisy", element: "water", ai: 1, type: 4, speed: 1.45, hand: 0.1, taunt: 5.0 },
                 { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 3.5 },
                 { name: "demon_powergirl", nick: "paimon", element: "fire", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 1.5 },
             ],
@@ -683,11 +683,23 @@
                         let e_callie_rushed = 0;
                         let c_callie_rushed_dist = 0;
                         let e_callie_rushed_dist = 0;
+
+                        
+                        let c_daisy_rushed = 0;
+                        let e_daisy_rushed = 0;
+                        let c_daisy_rushed_dist = 0;
+                        let e_daisy_rushed_dist = 0;
+
                         let first_taunt = "";
                         let flag = 0;
                         let warn = 0;
-                        if (clist[c_tanker].to.c.nick !== "eunha") warn++;
-                        if (Math.abs(clist[c_ara].x - clist[c_eunha].x) <= 2) warn++;
+                        if (clist[c_tanker].to.c.nick !== "eunha") warn += 1.5;
+                        if (elist[e_tanker].to.c.nick !== "callie") warn ++;
+                        if (Math.abs(clist[c_ara].x - clist[c_eunha].x) == 2) warn++;
+                        if (Math.abs(clist[c_ara].x - clist[c_tanker].x) == 2) warn++;
+                        
+                        if (Math.abs(clist[c_ara].x - clist[c_tanker].x) < 2) warn += 2;
+                        if (Math.abs(clist[c_ara].x - clist[c_eunha].x) < 2) warn += 2;
 
                         while (1) {
                             for (let i = 0; i < 4; ++i) {
@@ -704,6 +716,12 @@
                                         clist[i].px = clist[i].fx + dx;
                                         clist[i].py = clist[i].fy + dy;
                                         c_callie_rushed_dist += Math.sqrt(dx * dx + dy * dy);
+                                    } else if (clist[i].c.nick === "daisy" && c_daisy_rushed && c_daisy_rushed_dist < 3) {
+                                        let dx = this.vecx(clist[i], clist[i].to) / 16.0 * 5;
+                                        let dy = this.vecy(clist[i], clist[i].to) / 16.0 * 5;
+                                        clist[i].px = clist[i].fx + dx;
+                                        clist[i].py = clist[i].fy + dy;
+                                        c_daisy_rushed_dist += Math.sqrt(dx * dx + dy * dy);
                                     } else {
                                         clist[i].px = clist[i].fx + this.vecx(clist[i], clist[i].to) / 16.0 * clist[i].c.speed;
                                         clist[i].py = clist[i].fy + this.vecy(clist[i], clist[i].to) / 16.0 * clist[i].c.speed;
@@ -737,6 +755,12 @@
                                         elist[i].px = elist[i].fx + dx;
                                         elist[i].py = elist[i].fy + dy;
                                         e_callie_rushed_dist += Math.sqrt(dx * dx + dy * dy);
+                                    } else if (elist[i].c.nick === "callie" && e_daisy_rushed && e_daisy_rushed_dist < 4) {
+                                        let dx = this.vecx(elist[i], elist[i].to) / 16.0 * 5;
+                                        let dy = this.vecy(elist[i], elist[i].to) / 16.0 * 5;
+                                        elist[i].px = elist[i].fx + dx;
+                                        elist[i].py = elist[i].fy + dy;
+                                        e_daisy_rushed_dist += Math.sqrt(dx * dx + dy * dy);
                                     } else {
                                         elist[i].px = elist[i].fx + this.vecx(elist[i], elist[i].to) / 16.0 * elist[i].c.speed;
                                         elist[i].py = elist[i].fy + this.vecy(elist[i], elist[i].to) / 16.0 * elist[i].c.speed;
@@ -780,6 +804,7 @@
                                         warn += 5;
                                 }
                                 c_taunted = 1;
+                                c_daisy_rushed = 1;
                             }
                             if (this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.taunt && !e_taunted) { // 对方坦克嘲讽
                                 if (e_tanker_getdmg !== null) elist[e_tanker].to = e_tanker_getdmg;
@@ -792,10 +817,12 @@
                                 }
                                 if (e_tanker_getdmg !== null) elist[e_tanker].to = e_tanker_getdmg;
                                 e_taunted = 1;
+                                e_daisy_rushed = 1;
                             }
                             if (this.vecxy(clist[c_tanker], clist[c_tanker].to) < clist[c_tanker].c.hand && c_taunted &&
                                 this.vecxy(elist[e_tanker], elist[e_tanker].to) < elist[e_tanker].c.hand && e_taunted) break;
                         }
+                        if (ctdist.toFixed(6) < 1.25) warn += 2;
                         this.warn = warn;
                         this.cdist = dist_callie.toFixed(6);
                         this.tdist = dist_tanker.toFixed(6);
