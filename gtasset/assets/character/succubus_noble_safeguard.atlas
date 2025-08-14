@@ -1,0 +1,1581 @@
+
+succubus_noble_safeguard.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 40, 13
+  size: 7, 8
+  orig: 67, 68
+  offset: 24, 12
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 40, 13
+  size: 7, 8
+  orig: 67, 68
+  offset: 24, 12
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 90, 23
+  size: 9, 12
+  orig: 67, 68
+  offset: 29, 10
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 172, 8
+  size: 7, 7
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 172, 8
+  size: 7, 7
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 46, 190
+  size: 29, 26
+  orig: 67, 68
+  offset: 19, 19
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 159, 65
+  size: 6, 8
+  orig: 67, 68
+  offset: 27, 6
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 116, 89
+  size: 4, 8
+  orig: 67, 68
+  offset: 29, 6
+  index: -1
+back/bag
+  rotate: false
+  xy: 155, 198
+  size: 42, 19
+  orig: 67, 68
+  offset: 14, 7
+  index: -1
+back/coat
+  rotate: false
+  xy: 70, 20
+  size: 15, 7
+  orig: 67, 68
+  offset: 26, 9
+  index: -1
+back/coatF
+  rotate: false
+  xy: 193, 32
+  size: 19, 6
+  orig: 67, 68
+  offset: 24, 13
+  index: -1
+back/fx_hornB
+  rotate: false
+  xy: 111, 123
+  size: 27, 18
+  orig: 67, 68
+  offset: 20, 37
+  index: -1
+front/fx_hornB
+  rotate: false
+  xy: 111, 123
+  size: 27, 18
+  orig: 67, 68
+  offset: 20, 37
+  index: -1
+back/fx_wingL
+  rotate: true
+  xy: 2, 143
+  size: 24, 26
+  orig: 67, 68
+  offset: 0, 5
+  index: -1
+back/fx_wingR
+  rotate: true
+  xy: 197, 142
+  size: 24, 26
+  orig: 67, 68
+  offset: 43, 5
+  index: -1
+back/hair
+  rotate: true
+  xy: 78, 216
+  size: 37, 30
+  orig: 67, 68
+  offset: 15, 7
+  index: -1
+back/hair2
+  rotate: true
+  xy: 221, 63
+  size: 10, 23
+  orig: 67, 68
+  offset: 18, 18
+  index: -1
+back/hairF
+  rotate: false
+  xy: 207, 120
+  size: 24, 14
+  orig: 67, 68
+  offset: 22, 27
+  index: -1
+back/hairFR
+  rotate: false
+  xy: 183, 145
+  size: 9, 20
+  orig: 67, 68
+  offset: 37, 20
+  index: -1
+back/hornB
+  rotate: true
+  xy: 110, 222
+  size: 31, 29
+  orig: 67, 68
+  offset: 18, 33
+  index: -1
+front/hornB
+  rotate: true
+  xy: 110, 222
+  size: 31, 29
+  orig: 67, 68
+  offset: 18, 34
+  index: -1
+back/hornL
+  rotate: true
+  xy: 42, 58
+  size: 14, 16
+  orig: 67, 68
+  offset: 10, 27
+  index: -1
+back/hornR
+  rotate: true
+  xy: 107, 58
+  size: 14, 16
+  orig: 67, 68
+  offset: 43, 27
+  index: -1
+back/wingL
+  rotate: true
+  xy: 229, 162
+  size: 30, 23
+  orig: 67, 68
+  offset: 1, 7
+  index: -1
+back/wingR
+  rotate: false
+  xy: 96, 146
+  size: 30, 23
+  orig: 67, 68
+  offset: 36, 7
+  index: -1
+bag_2
+  rotate: false
+  xy: 252, 233
+  size: 1, 4
+  orig: 56, 56
+  offset: 15, 26
+  index: -1
+bag_3
+  rotate: false
+  xy: 252, 227
+  size: 1, 4
+  orig: 56, 56
+  offset: 15, 23
+  index: -1
+bag_4
+  rotate: false
+  xy: 252, 221
+  size: 1, 4
+  orig: 56, 56
+  offset: 15, 20
+  index: -1
+bag_5
+  rotate: false
+  xy: 251, 156
+  size: 1, 4
+  orig: 56, 56
+  offset: 15, 17
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 181, 8
+  size: 7, 6
+  orig: 67, 68
+  offset: 24, 14
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 181, 8
+  size: 7, 6
+  orig: 67, 68
+  offset: 24, 14
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 191, 12
+  size: 8, 7
+  orig: 67, 68
+  offset: 35, 14
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 171, 17
+  size: 10, 10
+  orig: 67, 68
+  offset: 35, 11
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 42, 22
+  size: 9, 12
+  orig: 67, 68
+  offset: 29, 10
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 2, 7
+  size: 7, 7
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 2, 7
+  size: 7, 7
+  orig: 67, 68
+  offset: 22, 10
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 246, 65
+  size: 9, 8
+  orig: 67, 68
+  offset: 38, 9
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 246, 65
+  size: 9, 8
+  orig: 67, 68
+  offset: 38, 9
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 77, 188
+  size: 29, 26
+  orig: 67, 68
+  offset: 19, 19
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 91, 96
+  size: 6, 8
+  orig: 67, 68
+  offset: 27, 6
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 60, 68
+  size: 4, 8
+  orig: 67, 68
+  offset: 29, 6
+  index: -1
+front/bag
+  rotate: false
+  xy: 2, 197
+  size: 42, 19
+  orig: 67, 68
+  offset: 11, 8
+  index: -1
+front/bodydeco
+  rotate: false
+  xy: 53, 2
+  size: 5, 5
+  orig: 67, 68
+  offset: 31, 15
+  index: -1
+front/boob
+  rotate: false
+  xy: 32, 191
+  size: 9, 4
+  orig: 67, 68
+  offset: 29, 14
+  index: -1
+front/coatL
+  rotate: false
+  xy: 110, 2
+  size: 4, 6
+  orig: 67, 68
+  offset: 26, 10
+  index: -1
+front/coatR
+  rotate: false
+  xy: 110, 2
+  size: 4, 6
+  orig: 67, 68
+  offset: 26, 10
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 19, 50
+  size: 17, 10
+  orig: 67, 68
+  offset: 25, 19
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 156, 27
+  size: 13, 9
+  orig: 67, 68
+  offset: 27, 20
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 177, 48
+  size: 17, 10
+  orig: 67, 68
+  offset: 25, 20
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 57, 45
+  size: 17, 9
+  orig: 67, 68
+  offset: 25, 20
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 122, 44
+  size: 15, 10
+  orig: 67, 68
+  offset: 26, 19
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 158, 49
+  size: 17, 12
+  orig: 67, 68
+  offset: 25, 20
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 2, 39
+  size: 17, 9
+  orig: 67, 68
+  offset: 25, 20
+  index: -1
+front/face/hairF
+  rotate: false
+  xy: 249, 120
+  size: 5, 14
+  orig: 67, 68
+  offset: 32, 25
+  index: -1
+front/face/hairFL1
+  rotate: false
+  xy: 125, 56
+  size: 14, 16
+  orig: 67, 68
+  offset: 31, 27
+  index: -1
+front/face/hairFL2
+  rotate: false
+  xy: 170, 104
+  size: 7, 10
+  orig: 67, 68
+  offset: 38, 20
+  index: -1
+front/face/hairFL3
+  rotate: true
+  xy: 131, 16
+  size: 8, 11
+  orig: 67, 68
+  offset: 38, 12
+  index: -1
+front/face/helm
+  rotate: false
+  xy: 127, 87
+  size: 23, 12
+  orig: 67, 68
+  offset: 22, 26
+  index: -1
+front/fx_wingL
+  rotate: false
+  xy: 225, 136
+  size: 24, 24
+  orig: 67, 68
+  offset: 43, 7
+  index: -1
+front/fx_wingR
+  rotate: false
+  xy: 85, 120
+  size: 24, 24
+  orig: 67, 68
+  offset: 0, 7
+  index: -1
+front/hair
+  rotate: false
+  xy: 2, 219
+  size: 37, 34
+  orig: 67, 68
+  offset: 15, 7
+  index: -1
+front/hairFL4
+  rotate: true
+  xy: 60, 56
+  size: 9, 24
+  orig: 67, 68
+  offset: 40, 18
+  index: -1
+front/hairR1
+  rotate: false
+  xy: 25, 7
+  size: 7, 7
+  orig: 67, 68
+  offset: 22, 18
+  index: -1
+front/hairR2
+  rotate: false
+  xy: 102, 111
+  size: 6, 7
+  orig: 67, 68
+  offset: 23, 13
+  index: -1
+front/hairRF
+  rotate: false
+  xy: 29, 16
+  size: 9, 10
+  orig: 67, 68
+  offset: 22, 31
+  index: -1
+front/hornL
+  rotate: true
+  xy: 141, 58
+  size: 15, 16
+  orig: 67, 68
+  offset: 42, 27
+  index: -1
+front/hornR
+  rotate: true
+  xy: 203, 58
+  size: 15, 16
+  orig: 67, 68
+  offset: 10, 27
+  index: -1
+front/whistle
+  rotate: false
+  xy: 249, 112
+  size: 5, 6
+  orig: 67, 68
+  offset: 31, 16
+  index: -1
+front/whistle_1
+  rotate: false
+  xy: 80, 9
+  size: 4, 9
+  orig: 67, 68
+  offset: 32, 7
+  index: -1
+front/wingL
+  rotate: false
+  xy: 197, 168
+  size: 30, 24
+  orig: 67, 68
+  offset: 36, 6
+  index: -1
+front/wingR
+  rotate: false
+  xy: 32, 164
+  size: 30, 24
+  orig: 67, 68
+  offset: 1, 6
+  index: -1
+fx_star1
+  rotate: true
+  xy: 16, 17
+  size: 9, 11
+  orig: 9, 11
+  offset: 0, 0
+  index: -1
+lava_fx1
+  rotate: false
+  xy: 140, 122
+  size: 22, 17
+  orig: 50, 50
+  offset: 13, 32
+  index: -1
+love_f_eyeR
+  rotate: true
+  xy: 233, 15
+  size: 9, 8
+  orig: 14, 20
+  offset: 3, 6
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 67, 37
+  size: 6, 6
+  orig: 66, 66
+  offset: 39, 13
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 149, 8
+  size: 8, 6
+  orig: 66, 66
+  offset: 29, 13
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 2, 16
+  size: 9, 11
+  orig: 66, 66
+  offset: 33, 10
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 70, 11
+  size: 8, 7
+  orig: 66, 66
+  offset: 39, 8
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 98, 11
+  size: 8, 7
+  orig: 66, 66
+  offset: 28, 8
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 155, 141
+  size: 26, 24
+  orig: 66, 66
+  offset: 24, 20
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 201, 8
+  size: 6, 8
+  orig: 66, 66
+  offset: 38, 5
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 2, 51
+  size: 4, 8
+  orig: 66, 66
+  offset: 33, 5
+  index: -1
+side/bag
+  rotate: false
+  xy: 110, 199
+  size: 43, 19
+  orig: 66, 66
+  offset: 13, 6
+  index: -1
+side/bodydeco
+  rotate: false
+  xy: 60, 2
+  size: 5, 5
+  orig: 66, 66
+  offset: 36, 15
+  index: -1
+side/boob
+  rotate: false
+  xy: 44, 3
+  size: 7, 4
+  orig: 66, 66
+  offset: 36, 14
+  index: -1
+side/coatB
+  rotate: false
+  xy: 92, 34
+  size: 15, 9
+  orig: 66, 66
+  offset: 30, 10
+  index: -1
+side/coatR
+  rotate: false
+  xy: 131, 7
+  size: 7, 7
+  orig: 66, 66
+  offset: 30, 10
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 76, 36
+  size: 14, 10
+  orig: 66, 66
+  offset: 32, 20
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 149, 16
+  size: 11, 9
+  orig: 66, 66
+  offset: 34, 21
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 35, 34
+  size: 14, 10
+  orig: 66, 66
+  offset: 32, 21
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 96, 172
+  size: 14, 9
+  orig: 66, 66
+  offset: 32, 21
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 21, 36
+  size: 12, 12
+  orig: 66, 66
+  offset: 34, 19
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 237, 49
+  size: 14, 12
+  orig: 66, 66
+  offset: 32, 20
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 214, 27
+  size: 13, 9
+  orig: 66, 66
+  offset: 32, 21
+  index: -1
+side/face/hairF
+  rotate: false
+  xy: 183, 16
+  size: 6, 11
+  orig: 66, 66
+  offset: 39, 27
+  index: -1
+side/face/hairFL1
+  rotate: false
+  xy: 220, 49
+  size: 15, 12
+  orig: 66, 66
+  offset: 37, 31
+  index: -1
+side/face/hairFL2
+  rotate: false
+  xy: 246, 76
+  size: 8, 14
+  orig: 66, 66
+  offset: 44, 20
+  index: -1
+side/face/hairFL3
+  rotate: false
+  xy: 85, 148
+  size: 8, 12
+  orig: 66, 66
+  offset: 44, 12
+  index: -1
+side/face/helmR
+  rotate: false
+  xy: 52, 123
+  size: 29, 12
+  orig: 66, 66
+  offset: 27, 27
+  index: -1
+side/fx_hornB
+  rotate: true
+  xy: 196, 47
+  size: 9, 18
+  orig: 66, 66
+  offset: 42, 35
+  index: -1
+side/fx_hornR
+  rotate: true
+  xy: 105, 45
+  size: 11, 15
+  orig: 66, 66
+  offset: 22, 36
+  index: -1
+side/fx_wingL
+  rotate: true
+  xy: 29, 119
+  size: 17, 21
+  orig: 66, 66
+  offset: 44, 9
+  index: -1
+side/fx_wingR
+  rotate: true
+  xy: 57, 137
+  size: 23, 26
+  orig: 66, 66
+  offset: 0, 5
+  index: -1
+side/hair
+  rotate: true
+  xy: 199, 219
+  size: 34, 26
+  orig: 66, 66
+  offset: 17, 7
+  index: -1
+side/hairFR
+  rotate: true
+  xy: 207, 16
+  size: 9, 11
+  orig: 66, 66
+  offset: 28, 29
+  index: -1
+side/hairR1
+  rotate: true
+  xy: 87, 14
+  size: 7, 9
+  orig: 66, 66
+  offset: 29, 18
+  index: -1
+side/hairR2
+  rotate: false
+  xy: 162, 18
+  size: 6, 7
+  orig: 66, 66
+  offset: 30, 13
+  index: -1
+side/hornB
+  rotate: true
+  xy: 2, 106
+  size: 11, 28
+  orig: 66, 66
+  offset: 41, 35
+  index: -1
+side/hornL
+  rotate: false
+  xy: 86, 48
+  size: 17, 13
+  orig: 66, 66
+  offset: 41, 26
+  index: -1
+side/hornR
+  rotate: true
+  xy: 199, 194
+  size: 21, 37
+  orig: 66, 66
+  offset: 13, 26
+  index: -1
+side/whistle
+  rotate: false
+  xy: 177, 93
+  size: 8, 5
+  orig: 66, 66
+  offset: 42, 17
+  index: -1
+side/whistle2
+  rotate: false
+  xy: 227, 7
+  size: 6, 6
+  orig: 66, 66
+  offset: 54, 23
+  index: -1
+side/whistle3
+  rotate: false
+  xy: 207, 138
+  size: 8, 2
+  orig: 66, 66
+  offset: 53, 19
+  index: -1
+side/whistle4
+  rotate: false
+  xy: 145, 117
+  size: 6, 3
+  orig: 66, 66
+  offset: 53, 13
+  index: -1
+side/whistle_1
+  rotate: false
+  xy: 200, 107
+  size: 4, 10
+  orig: 66, 66
+  offset: 47, 8
+  index: -1
+side/wingL
+  rotate: true
+  xy: 183, 119
+  size: 21, 22
+  orig: 66, 66
+  offset: 40, 7
+  index: -1
+side/wingR
+  rotate: true
+  xy: 227, 217
+  size: 36, 23
+  orig: 66, 66
+  offset: 0, 5
+  index: -1
+succubus_noble_safeguard_photo
+  rotate: true
+  xy: 2, 119
+  size: 22, 25
+  orig: 22, 25
+  offset: 0, 0
+  index: -1
+succubus_noble_safeguard_tube
+  rotate: false
+  xy: 41, 218
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1
+summer_lifeguard_female/back/[base]armL
+  rotate: true
+  xy: 76, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+summer_lifeguard_female/back/[base]armR
+  rotate: true
+  xy: 76, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+summer_lifeguard_female/back/[base]body
+  rotate: true
+  xy: 193, 21
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+summer_lifeguard_female/back/[base]elbowL
+  rotate: false
+  xy: 86, 6
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+summer_lifeguard_female/back/[base]elbowR
+  rotate: false
+  xy: 86, 6
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+summer_lifeguard_female/back/[base]head
+  rotate: false
+  xy: 128, 143
+  size: 25, 25
+  orig: 55, 56
+  offset: 15, 12
+  index: -1
+summer_lifeguard_female/back/[base]legL
+  rotate: true
+  xy: 206, 41
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+summer_lifeguard_female/back/[base]legR
+  rotate: true
+  xy: 206, 41
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+summer_lifeguard_female/back/bodydeco
+  rotate: false
+  xy: 238, 195
+  size: 9, 1
+  orig: 55, 56
+  offset: 23, 6
+  index: -1
+summer_lifeguard_female/front/bodydeco
+  rotate: false
+  xy: 238, 195
+  size: 9, 1
+  orig: 55, 56
+  offset: 23, 6
+  index: -1
+summer_lifeguard_female/back/bodydecoB
+  rotate: false
+  xy: 252, 247
+  size: 2, 6
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+summer_lifeguard_female/front/[base]armL
+  rotate: true
+  xy: 69, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+summer_lifeguard_female/front/[base]armR
+  rotate: true
+  xy: 69, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+summer_lifeguard_female/front/[base]armL2
+  rotate: false
+  xy: 211, 7
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+summer_lifeguard_female/front/[base]armR2
+  rotate: false
+  xy: 211, 7
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+summer_lifeguard_female/front/[base]body
+  rotate: true
+  xy: 104, 20
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+summer_lifeguard_female/front/[base]elbowL
+  rotate: false
+  xy: 235, 6
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+summer_lifeguard_female/front/[base]elbowR
+  rotate: false
+  xy: 235, 6
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+summer_lifeguard_female/front/[base]elbowL2
+  rotate: true
+  xy: 108, 10
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+summer_lifeguard_female/front/[base]elbowR2
+  rotate: true
+  xy: 108, 10
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+summer_lifeguard_female/front/[base]head
+  rotate: false
+  xy: 30, 138
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+summer_lifeguard_female/front/[base]legL
+  rotate: true
+  xy: 243, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+summer_lifeguard_female/front/[base]legR
+  rotate: true
+  xy: 243, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+summer_lifeguard_female/front/bodyF
+  rotate: false
+  xy: 140, 7
+  size: 7, 7
+  orig: 55, 56
+  offset: 24, 9
+  index: -1
+summer_lifeguard_female/front/bodydecoB
+  rotate: false
+  xy: 252, 239
+  size: 2, 6
+  orig: 55, 56
+  offset: 32, 2
+  index: -1
+summer_lifeguard_female/front/face/[base]attack
+  rotate: false
+  xy: 38, 46
+  size: 17, 10
+  orig: 55, 56
+  offset: 19, 13
+  index: -1
+summer_lifeguard_female/front/face/[base]damaged
+  rotate: false
+  xy: 229, 26
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+summer_lifeguard_female/front/face/[base]doyagao
+  rotate: false
+  xy: 235, 37
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+summer_lifeguard_female/front/face/[base]idle
+  rotate: false
+  xy: 158, 38
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 14
+  index: -1
+summer_lifeguard_female/front/face/[base]mad
+  rotate: false
+  xy: 141, 45
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+summer_lifeguard_female/front/face/[base]smile
+  rotate: false
+  xy: 216, 38
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 14
+  index: -1
+summer_lifeguard_female/front/face/[base]tired
+  rotate: false
+  xy: 139, 34
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+summer_lifeguard_female/front/helm
+  rotate: false
+  xy: 141, 75
+  size: 25, 10
+  orig: 55, 56
+  offset: 15, 21
+  index: -1
+summer_lifeguard_female/side/[base]armL
+  rotate: true
+  xy: 94, 4
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+summer_lifeguard_female/side/[base]armR
+  rotate: true
+  xy: 102, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+summer_lifeguard_female/side/[base]body
+  rotate: false
+  xy: 244, 24
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+summer_lifeguard_female/side/[base]elbowL
+  rotate: false
+  xy: 219, 7
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+summer_lifeguard_female/side/[base]elbowR
+  rotate: true
+  xy: 117, 7
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+summer_lifeguard_female/side/[base]head
+  rotate: false
+  xy: 64, 162
+  size: 30, 24
+  orig: 56, 56
+  offset: 14, 14
+  index: -1
+summer_lifeguard_female/side/[base]legL
+  rotate: true
+  xy: 34, 7
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+summer_lifeguard_female/side/[base]legR
+  rotate: true
+  xy: 190, 6
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+summer_lifeguard_female/side/bodyF
+  rotate: false
+  xy: 187, 93
+  size: 7, 5
+  orig: 56, 56
+  offset: 30, 10
+  index: -1
+summer_lifeguard_female/side/bodydeco
+  rotate: false
+  xy: 11, 5
+  size: 9, 1
+  orig: 56, 56
+  offset: 28, 7
+  index: -1
+summer_lifeguard_female/side/face/[base]attack
+  rotate: false
+  xy: 123, 32
+  size: 13, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+summer_lifeguard_female/side/face/[base]damaged
+  rotate: false
+  xy: 118, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+summer_lifeguard_female/side/face/[base]doyagao
+  rotate: false
+  xy: 2, 27
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+summer_lifeguard_female/side/face/[base]idle
+  rotate: false
+  xy: 177, 29
+  size: 14, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+summer_lifeguard_female/side/face/[base]mad
+  rotate: false
+  xy: 109, 31
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+summer_lifeguard_female/side/face/[base]smile
+  rotate: false
+  xy: 51, 33
+  size: 14, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+summer_lifeguard_female/side/face/[base]tired
+  rotate: false
+  xy: 56, 18
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+summer_lifeguard_female/side/helm
+  rotate: false
+  xy: 200, 92
+  size: 29, 10
+  orig: 56, 56
+  offset: 18, 23
+  index: -1
+summer_lifeguard_male/back/[base]armL
+  rotate: false
+  xy: 22, 62
+  size: 18, 14
+  orig: 61, 58
+  offset: 5, 13
+  index: -1
+summer_lifeguard_male/back/[base]armR
+  rotate: false
+  xy: 22, 62
+  size: 18, 14
+  orig: 61, 58
+  offset: 5, 13
+  index: -1
+summer_lifeguard_male/back/[base]body
+  rotate: true
+  xy: 141, 220
+  size: 33, 27
+  orig: 61, 58
+  offset: 14, 3
+  index: -1
+summer_lifeguard_male/back/[base]elbowL
+  rotate: false
+  xy: 238, 198
+  size: 16, 17
+  orig: 61, 58
+  offset: 2, 4
+  index: -1
+summer_lifeguard_male/back/[base]elbowR
+  rotate: false
+  xy: 238, 198
+  size: 16, 17
+  orig: 61, 58
+  offset: 2, 4
+  index: -1
+summer_lifeguard_male/back/[base]elbowL2
+  rotate: true
+  xy: 180, 100
+  size: 17, 18
+  orig: 61, 58
+  offset: 2, 3
+  index: -1
+summer_lifeguard_male/back/[base]elbowR2
+  rotate: true
+  xy: 180, 100
+  size: 17, 18
+  orig: 61, 58
+  offset: 2, 3
+  index: -1
+summer_lifeguard_male/back/[base]head
+  rotate: false
+  xy: 108, 171
+  size: 29, 26
+  orig: 61, 58
+  offset: 16, 14
+  index: -1
+summer_lifeguard_male/back/[base]legL
+  rotate: true
+  xy: 50, 9
+  size: 7, 8
+  orig: 61, 58
+  offset: 21, 0
+  index: -1
+summer_lifeguard_male/back/[base]legR
+  rotate: true
+  xy: 50, 9
+  size: 7, 8
+  orig: 61, 58
+  offset: 21, 0
+  index: -1
+summer_lifeguard_male/back/bodydeco
+  rotate: false
+  xy: 16, 28
+  size: 24, 4
+  orig: 61, 58
+  offset: 19, 7
+  index: -1
+summer_lifeguard_male/back/bodydecoF
+  rotate: false
+  xy: 243, 14
+  size: 9, 8
+  orig: 61, 58
+  offset: 35, 2
+  index: -1
+summer_lifeguard_male/back/helm
+  rotate: false
+  xy: 177, 40
+  size: 27, 5
+  orig: 61, 58
+  offset: 17, 26
+  index: -1
+summer_lifeguard_male/front/[base]armL
+  rotate: false
+  xy: 206, 75
+  size: 18, 15
+  orig: 61, 58
+  offset: 5, 11
+  index: -1
+summer_lifeguard_male/front/[base]armR
+  rotate: false
+  xy: 206, 75
+  size: 18, 15
+  orig: 61, 58
+  offset: 5, 11
+  index: -1
+summer_lifeguard_male/front/[base]body
+  rotate: true
+  xy: 170, 220
+  size: 33, 27
+  orig: 61, 58
+  offset: 14, 3
+  index: -1
+summer_lifeguard_male/front/[base]elbowL
+  rotate: false
+  xy: 71, 67
+  size: 16, 16
+  orig: 61, 58
+  offset: 2, 3
+  index: -1
+summer_lifeguard_male/front/[base]elbowR
+  rotate: false
+  xy: 71, 67
+  size: 16, 16
+  orig: 61, 58
+  offset: 2, 3
+  index: -1
+summer_lifeguard_male/front/[base]elbowL2
+  rotate: false
+  xy: 232, 92
+  size: 17, 17
+  orig: 61, 58
+  offset: 2, 2
+  index: -1
+summer_lifeguard_male/front/[base]elbowR2
+  rotate: false
+  xy: 232, 92
+  size: 17, 17
+  orig: 61, 58
+  offset: 2, 2
+  index: -1
+summer_lifeguard_male/front/[base]head
+  rotate: false
+  xy: 139, 170
+  size: 29, 26
+  orig: 61, 58
+  offset: 16, 14
+  index: -1
+summer_lifeguard_male/front/[base]legL
+  rotate: true
+  xy: 60, 9
+  size: 7, 8
+  orig: 61, 58
+  offset: 21, 0
+  index: -1
+summer_lifeguard_male/front/[base]legR
+  rotate: true
+  xy: 60, 9
+  size: 7, 8
+  orig: 61, 58
+  offset: 21, 0
+  index: -1
+summer_lifeguard_male/front/bodyF
+  rotate: true
+  xy: 226, 75
+  size: 15, 18
+  orig: 61, 58
+  offset: 23, 10
+  index: -1
+summer_lifeguard_male/front/bodydeco
+  rotate: false
+  xy: 123, 26
+  size: 24, 4
+  orig: 61, 58
+  offset: 18, 7
+  index: -1
+summer_lifeguard_male/front/bodydecoF
+  rotate: false
+  xy: 220, 16
+  size: 11, 8
+  orig: 61, 58
+  offset: 17, 2
+  index: -1
+summer_lifeguard_male/front/face/[base]attack
+  rotate: true
+  xy: 164, 116
+  size: 23, 14
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/[base]damaged
+  rotate: false
+  xy: 145, 101
+  size: 23, 13
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/[base]doyagao
+  rotate: false
+  xy: 102, 95
+  size: 23, 13
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/[base]idle
+  rotate: true
+  xy: 32, 94
+  size: 23, 13
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/[base]mad
+  rotate: true
+  xy: 233, 111
+  size: 23, 14
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/[base]smile
+  rotate: false
+  xy: 52, 107
+  size: 23, 14
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/[base]tired
+  rotate: false
+  xy: 77, 104
+  size: 23, 14
+  orig: 61, 58
+  offset: 19, 14
+  index: -1
+summer_lifeguard_male/front/face/helm
+  rotate: false
+  xy: 177, 80
+  size: 27, 10
+  orig: 61, 58
+  offset: 17, 23
+  index: -1
+summer_lifeguard_male/side/[base]armL
+  rotate: true
+  xy: 168, 63
+  size: 15, 17
+  orig: 62, 58
+  offset: 40, 9
+  index: -1
+summer_lifeguard_male/side/[base]armR
+  rotate: false
+  xy: 2, 74
+  size: 18, 15
+  orig: 62, 58
+  offset: 14, 11
+  index: -1
+summer_lifeguard_male/side/[base]body
+  rotate: false
+  xy: 170, 167
+  size: 25, 29
+  orig: 62, 58
+  offset: 23, 4
+  index: -1
+summer_lifeguard_male/side/[base]elbowL
+  rotate: false
+  xy: 2, 57
+  size: 15, 15
+  orig: 62, 58
+  offset: 44, 4
+  index: -1
+summer_lifeguard_male/side/[base]elbowL2
+  rotate: true
+  xy: 52, 74
+  size: 16, 17
+  orig: 62, 58
+  offset: 44, 2
+  index: -1
+summer_lifeguard_male/side/[base]elbowR
+  rotate: false
+  xy: 89, 63
+  size: 16, 16
+  orig: 62, 58
+  offset: 11, 3
+  index: -1
+summer_lifeguard_male/side/[base]elbowR2
+  rotate: false
+  xy: 72, 85
+  size: 17, 17
+  orig: 62, 58
+  offset: 11, 2
+  index: -1
+summer_lifeguard_male/side/[base]head
+  rotate: false
+  xy: 2, 169
+  size: 28, 26
+  orig: 62, 58
+  offset: 25, 16
+  index: -1
+summer_lifeguard_male/side/[base]legL
+  rotate: true
+  xy: 15, 8
+  size: 7, 8
+  orig: 62, 58
+  offset: 36, 0
+  index: -1
+summer_lifeguard_male/side/[base]legR
+  rotate: true
+  xy: 162, 8
+  size: 7, 8
+  orig: 62, 58
+  offset: 26, 0
+  index: -1
+summer_lifeguard_male/side/bodyF
+  rotate: false
+  xy: 187, 60
+  size: 14, 18
+  orig: 62, 58
+  offset: 33, 11
+  index: -1
+summer_lifeguard_male/side/bodydeco
+  rotate: false
+  xy: 67, 29
+  size: 21, 5
+  orig: 62, 58
+  offset: 23, 8
+  index: -1
+summer_lifeguard_male/side/bodydecoF
+  rotate: false
+  xy: 127, 102
+  size: 12, 6
+  orig: 62, 58
+  offset: 23, 4
+  index: -1
+summer_lifeguard_male/side/face/[base]attack
+  rotate: false
+  xy: 47, 92
+  size: 23, 13
+  orig: 62, 58
+  offset: 30, 17
+  index: -1
+summer_lifeguard_male/side/face/[base]damaged
+  rotate: false
+  xy: 116, 74
+  size: 23, 11
+  orig: 62, 58
+  offset: 30, 18
+  index: -1
+summer_lifeguard_male/side/face/[base]doyagao
+  rotate: false
+  xy: 152, 87
+  size: 23, 12
+  orig: 62, 58
+  offset: 30, 17
+  index: -1
+summer_lifeguard_male/side/face/[base]idle
+  rotate: false
+  xy: 91, 81
+  size: 23, 12
+  orig: 62, 58
+  offset: 30, 17
+  index: -1
+summer_lifeguard_male/side/face/[base]mad
+  rotate: false
+  xy: 207, 104
+  size: 23, 14
+  orig: 62, 58
+  offset: 30, 17
+  index: -1
+summer_lifeguard_male/side/face/[base]smile
+  rotate: false
+  xy: 2, 91
+  size: 23, 13
+  orig: 62, 58
+  offset: 30, 17
+  index: -1
+summer_lifeguard_male/side/face/[base]tired
+  rotate: false
+  xy: 27, 78
+  size: 23, 12
+  orig: 62, 58
+  offset: 30, 18
+  index: -1
+summer_lifeguard_male/side/face/helm
+  rotate: false
+  xy: 111, 110
+  size: 32, 10
+  orig: 62, 58
+  offset: 24, 25
+  index: -1
