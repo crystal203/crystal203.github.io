@@ -264,11 +264,13 @@
                 { name: "adela_noble_myth", nick: "daisy", element: "water", ai: 1, type: 4, speed: 1.45, hand: 0.1, taunt: 5.0 },
                 { name: "tanker_ascent", nick: "craig", element: "ground", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 3.5 },
                 { name: "demon_powergirl", nick: "paimon", element: "fire", ai: 1, type: 4, speed: 1, hand: 0.1, taunt: 1.5 },
+                { name: "store_angel_myth", nick: "gabriel", element: "light", ai: 2, type: 3, speed: 1.0, hand: 5 },
             ],
             checker: [
                 // 可计算
                 { name: "暗炮1", party: ["arabelle", "callie", "eunha", "craig"] },
                 { name: "暗炮2", party: ["arabelle", "callie", "eunha", "daisy"] },
+                { name: "暗炮2x", party: ["arabelle", "gabriel", "eunha", "daisy"] },
                 { name: "暗炮3", party: ["arabelle", "callie", "eunha", "oghma"] },
                 { name: "暗炮4", party: ["arabelle", "callie", "eunha", "paimon"] },
                 // 仅参考索敌
@@ -281,6 +283,7 @@
                     solve: [
                         { name: "暗炮1" },
                         { name: "暗炮2" },
+                        { name: "暗炮2x" },
                         { name: "暗炮3" },
                         { name: "暗炮4" },
                         { name: "任意暗炮" },
@@ -653,7 +656,7 @@
                         if (clist[i].c.type === 4) c_tanker = i;
                         if (clist[i].c.nick === "callie") c_callie = i;
                         if (elist[i].c.type === 4) e_tanker = i;
-                        if (elist[i].c.nick === "callie") e_callie = i;
+                        if (elist[i].c.nick === "callie" || elist[i].c.nick === "gabriel") e_callie = i;
                         if (clist[i].c.nick === "arabelle") c_ara = i;
                         if (clist[i].c.nick === "eunha") c_eunha = i;
                     }
