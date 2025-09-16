@@ -247,12 +247,16 @@
                 { name: "future_princess", nick: "fp", element: "light", ai: 1, type: 4, speed: 1.15, hand: 0.1 },
                 { name: "kamael_myth", nick: "kamael", element: "earth", ai: 2, type: 3, speed: 1.0, hand: 3.5 },
                 { name: "festival_girl", nick: "miya", element: "fire", ai: 7, type: 3, speed: 1, hand: 7 },
+                { name: "villain_redhood_myth", nick: "arabelle", element: "dark", ai: 2, type: 2, speed: 1, hand: 6.5 },
+                { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2, speed: 1.25, hand: 7 },
+                { name: "wrestler_myth", nick: "callie", element: "dark", ai: 1, type: 1, speed: 1.6, hand: 0.1 },
 
             ],
             checker: [
                 // 可计算
                 { name: "基本偶像", party: ["idol", "eunha", "daisy", "*"] },
                 { name: "基本银河", party: ["eunha", "idol", "daisy", "*"] },
+                { name: "偶像艾草", party: ["idol", "eunha", "daisy", "estel"] },
             ],
             solution: [
                 {
@@ -305,6 +309,33 @@
                     solve: [
                         { name: "基本偶像" },
                         { name: "基本银河" },
+                    ]
+                },
+                {
+                    name: "银河", party: [{ nick: "eunha" }, { nick: "idol" }, { nick: "daisy" }, { nick: "rie" }],
+                    solve: [
+                        { name: "基本偶像" },
+                        { name: "基本银河" },
+                    ]
+                },
+                {
+                    name: "暗炮", party: [{ nick: "arabelle" }, { nick: "idol" }, { nick: "rie" }, { nick: "daisy" }],
+                    solve: [
+                        { name: "基本偶像" },
+                        { name: "基本银河" },
+                        { name: "偶像艾草" },
+                    ]
+                },
+                {
+                    name: "暗炮2", party: [{ nick: "arabelle" }, { nick: "eunha" }, { nick: "callie" }, { nick: "daisy" }],
+                    solve: [
+                        { name: "偶像艾草" },
+                    ]
+                },
+                {
+                    name: "暗炮3", party: [{ nick: "arabelle" }, { nick: "eunha" }, { nick: "idol" }, { nick: "daisy" }],
+                    solve: [
+                        { name: "偶像艾草" },
                     ]
                 },
             ],
