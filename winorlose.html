@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战斗数据计算器</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #ffcc00;
+            font-size: 28px;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ffcc00;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #555;
+            border-radius: 8px;
+            background: rgba(30, 30, 30, 0.8);
+            color: white;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #ffcc00;
+            outline: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #ff8c00, #ffcc00);
+            border: none;
+            border-radius: 8px;
+            color: #1a1a1a;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+        }
+        
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            border-left: 4px solid #ffcc00;
+            display: none;
+        }
+        
+        .result h2 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #444;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            font-weight: 600;
+        }
+        
+        .result-value {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .error {
+            color: #ff5252;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .info {
+            background: rgba(0, 100, 200, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>44战斗结果计算器</h1>
+        
+        <div class="input-group">
+            <label for="win">胜利次数:</label>
+            <input type="number" id="win" placeholder="请输入胜利总次数" min="0" value="0">
+        </div>
+        
+        <div class="input-group">
+            <label for="lose">失败次数:</label>
+            <input type="number" id="lose" placeholder="请输入失败总次数" min="0" value="0">
+        </div>
+        
+        <div class="input-group">
+            <label for="score">当前分数:</label>
+            <input type="number" id="score" placeholder="请输入当前分数" min="0" value="1300">
+        </div>
+        
+        <div class="input-group">
+            <label for="org_score">初始分数:</label>
+            <input type="number" id="org_score" placeholder="默认为1300" min="0" value="1300">
+        </div>
+        
+        <div class="input-group">
+            <label for="time">当前时间:</label>
+            <input type="datetime-local" id="time">
+        </div>
+        
+        <div class="input-group">
+            <label for="ticket">留票数（上周结余留本周的票数）:</label>
+            <input type="number" id="ticket" placeholder="默认为5" min="0" value="5">
+        </div>
+        
+        <div class="input-group">
+            <label for="now_ticket">当前票数:</label>
+            <input type="number" id="now_ticket" placeholder="默认为0" min="0" value="0">
+        </div>
+        
+        <button id="calculate">大记忆恢复术</button>
+        
+        <div class="error" id="error"></div>
+        
+        <div class="result" id="result">
+            <h2>计算结果</h2>
+            <div class="result-item">
+                <span class="result-label">进攻胜利次数:</span>
+                <span class="result-value" id="atk_win">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">进攻失败次数:</span>
+                <span class="result-value" id="atk_lose">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">防守胜利次数:</span>
+                <span class="result-value" id="def_win">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">防守失败次数:</span>
+                <span class="result-value" id="def_lose">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">实际进攻次数:</span>
+                <span class="result-value" id="actual_attack">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">原始进攻次数:</span>
+                <span class="result-value" id="original_attack">0</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">调整值:</span>
+                <span class="result-value" id="adjustment">0</span>
+            </div>
+        </div>
+        
+        <div class="info">
+            <p><strong>计算说明:</strong></p>
+            <p>1. 进攻次数 = (当前时间 - 本周周一零点) / 2.5小时 + ticket - now_ticket（向下取整）</p>
+            <p>2. 系统会自动求解以下方程组，确保所有结果为整数：</p>
+            <p>   - atk_win × 20 + def_win × 20 - atk_lose × 10 - def_lose × 5 = score - org_score</p>
+            <p>   - atk_win + atk_lose = attack</p>
+            <p>   - atk_win + def_win = win</p>
+            <p>   - atk_lose + def_lose = lose</p>
+            <p>3. 如果原始计算结果不是整数，系统会按 +1, -1, +2, -2... 顺序微调进攻次数直到获得合法解</p>
+            <p>4. 如果本周有漏票，则应在当前票数上额外增加对应值</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 设置默认时间为当前时间
+            const now = new Date();
+            const localTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+            document.getElementById('time').value = localTime.toISOString().slice(0, 16);
+            
+            document.getElementById('calculate').addEventListener('click', calculate);
+        });
+        
+        function calculate() {
+            // 获取输入值
+            const win = parseInt(document.getElementById('win').value) || 0;
+            const lose = parseInt(document.getElementById('lose').value) || 0;
+            const score = parseInt(document.getElementById('score').value) || 0;
+            const org_score = parseInt(document.getElementById('org_score').value) || 1300;
+            const ticket = parseInt(document.getElementById('ticket').value) || 5;
+            const now_ticket = parseInt(document.getElementById('now_ticket').value) || 0;
+            
+            // 获取时间
+            const timeInput = document.getElementById('time').value;
+            if (!timeInput) {
+                showError('请选择当前时间');
+                return;
+            }
+            
+            const currentTime = new Date(timeInput);
+            
+            // 计算本周周一零点
+            const monday = new Date(currentTime);
+            monday.setHours(0, 0, 0, 0);
+            monday.setDate(monday.getDate() - monday.getDay() + 1);
+            if (monday.getDay() === 0) monday.setDate(monday.getDate() - 6);
+            
+            // 计算原始进攻次数: (当前时间 - 本周周一零点) / 2.5h + ticket - now_ticket （下取整）
+            const timeDiff = currentTime - monday; // 毫秒
+            const hoursDiff = timeDiff / (1000 * 60 * 60); // 小时
+            const originalAttack = Math.floor(hoursDiff / 2.5 + ticket - now_ticket);
+            
+            // 尝试求解方程
+            let result = null;
+            let actualAttack = originalAttack;
+            let adjustment = 0;
+            const maxAdjustment = 10; // 最大调整范围
+            
+            // 首先尝试原始值 (调整值为0)
+            result = solveEquations(win, lose, score, org_score, originalAttack);
+            
+            // 如果没有解或解不是整数，则按 +1, -1, +2, -2... 顺序尝试调整
+            if (!result || !isAllIntegers(result)) {
+                let found = false;
+                for (let i = 1; i <= maxAdjustment; i++) {
+                    // 先尝试 +i
+                    result = solveEquations(win, lose, score, org_score, originalAttack + i);
+                    if (result && isAllIntegers(result)) {
+                        actualAttack = originalAttack + i;
+                        adjustment = i;
+                        found = true;
+                        break;
+                    }
+                    
+                    // 再尝试 -i
+                    result = solveEquations(win, lose, score, org_score, originalAttack - i);
+                    if (result && isAllIntegers(result)) {
+                        actualAttack = originalAttack - i;
+                        adjustment = -i;
+                        found = true;
+                        break;
+                    }
+                }
+                
+                if (!found) {
+                    showError('在调整范围内未找到有效解，请检查输入数据');
+                    return;
+                }
+            }
+            
+            // 验证结果是否合理（非负数）
+            if (result.atk_win < 0 || result.atk_lose < 0 || result.def_win < 0 || result.def_lose < 0) {
+                showError('计算结果包含负数，请检查输入数据');
+                return;
+            }
+            
+            // 显示结果
+            document.getElementById('atk_win').textContent = result.atk_win;
+            document.getElementById('atk_lose').textContent = result.atk_lose;
+            document.getElementById('def_win').textContent = result.def_win;
+            document.getElementById('def_lose').textContent = result.def_lose;
+            document.getElementById('actual_attack').textContent = actualAttack;
+            document.getElementById('original_attack').textContent = originalAttack;
+            document.getElementById('adjustment').textContent = adjustment;
+            
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('error').style.display = 'none';
+        }
+        
+        function solveEquations(win, lose, score, org_score, attack) {
+            // 方程:
+            // 1. 20*atk_win + 20*def_win - 10*atk_lose - 5*def_lose = score - org_score
+            // 2. atk_win + atk_lose = attack
+            // 3. atk_win + def_win = win
+            // 4. atk_lose + def_lose = lose
+            
+            // 从方程2: atk_lose = attack - atk_win
+            // 从方程3: def_win = win - atk_win
+            // 从方程4: def_lose = lose - atk_lose = lose - (attack - atk_win) = lose - attack + atk_win
+            
+            // 代入方程1:
+            // 20*atk_win + 20*(win - atk_win) - 10*(attack - atk_win) - 5*(lose - attack + atk_win) = score - org_score
+            // 简化:
+            // 20*atk_win + 20*win - 20*atk_win - 10*attack + 10*atk_win - 5*lose + 5*attack - 5*atk_win = score - org_score
+            // (20*atk_win - 20*atk_win + 10*atk_win - 5*atk_win) + 20*win + (-10*attack + 5*attack) - 5*lose = score - org_score
+            // 5*atk_win + 20*win - 5*attack - 5*lose = score - org_score
+            // 5*atk_win = score - org_score - 20*win + 5*attack + 5*lose
+            // atk_win = (score - org_score - 20*win + 5*attack + 5*lose) / 5
+            
+            const numerator = score - org_score - 20 * win + 5 * attack + 5 * lose;
+            const atk_win = numerator / 5;
+            
+            // 如果atk_win不是数字，返回null
+            if (isNaN(atk_win)) {
+                return null;
+            }
+            
+            const atk_lose = attack - atk_win;
+            const def_win = win - atk_win;
+            const def_lose = lose - atk_lose;
+            
+            return {
+                atk_win,
+                atk_lose,
+                def_win,
+                def_lose
+            };
+        }
+        
+        function isAllIntegers(obj) {
+            return Number.isInteger(obj.atk_win) && 
+                   Number.isInteger(obj.atk_lose) && 
+                   Number.isInteger(obj.def_win) && 
+                   Number.isInteger(obj.def_lose);
+        }
+        
+        function showError(message) {
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
