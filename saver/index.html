@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>队伍存档器</title>
+    <title>44 队伍存档器</title>
     <style>
         * {
             box-sizing: border-box;
@@ -336,15 +336,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>队伍存档器</h1>
-            <p class="subtitle">保存、查询和管理你的队伍配置</p>
+            <h1>44 队伍存档器</h1>
+            <p class="subtitle">保存、查询和管理你的 44 历史记录</p>
         </header>
         
         <div class="main-content">
             <!-- 蓝色队伍区域 -->
             <div class="team-section blue-team">
                 <div class="team-header">
-                    <div class="team-title">蓝色队伍</div>
+                    <div class="team-title">我方队伍</div>
                     <div class="team-count">已选: <span id="blue-count">0</span>/4</div>
                 </div>
                 
@@ -363,7 +363,7 @@
             <!-- 红色队伍区域 -->
             <div class="team-section red-team">
                 <div class="team-header">
-                    <div class="team-title">红色队伍</div>
+                    <div class="team-title">敌方队伍</div>
                     <div class="team-count">已选: <span id="red-count">0</span>/4</div>
                 </div>
                 
@@ -599,7 +599,7 @@
             modalContent.style.overflowY = 'auto';
             
             const title = document.createElement('h3');
-            title.textContent = `选择${team === 'blue' ? '蓝色' : '红色'}队伍角色`;
+            title.textContent = `选择${team === 'blue' ? '我方' : '敌方'}队伍角色`;
             title.style.marginBottom = '15px';
             title.style.color = team === 'blue' ? '#4da6ff' : '#ff4d4d';
             modalContent.appendChild(title);
@@ -941,6 +941,72 @@
             return flipped;
         }
 
+        function flipTeamHorizontally(teamArray) {
+            const flipped = Array(20).fill(null);
+            for (let row = 0; row < 5; row++) {
+                for (let col = 0; col < 4; col++) {
+                    const originalIndex = row * 4 + col;
+                    const flippedCol = 3 - col; // 0<->3, 1<->2
+                    const flippedIndex = row * 4 + flippedCol;
+                    flipped[flippedIndex] = teamArray[originalIndex];
+                }
+            }
+            return flipped;
+        }
+
+        function flipTeam(team, direction) {
+            if (team === 'blue') {
+                if (direction === 'vertical') {
+                    blueTeam = flipTeamVertically(blueTeam);
+                } else if (direction === 'horizontal') {
+                    blueTeam = flipTeamHorizontally(blueTeam);
+                }
+                // 注意：displayOrder 不变！
+            } else {
+                if (direction === 'vertical') {
+                    redTeam = flipTeamVertically(redTeam);
+                } else if (direction === 'horizontal') {
+                    redTeam = flipTeamHorizontally(redTeam);
+                }
+                // displayOrder 不变！
+            }
+            updateGrid(); // 会根据 displayOrder[0] 高亮首位
+            updateSelectedList(team); // 列表顺序不变
+            updateCount(team);
+            checkSaveAvailability();
+        }
+
+        function swapTeams() {
+            // 交换方阵（并镜像）
+            const newBlueTeam = flipTeamHorizontally([...redTeam]);
+            const newRedTeam = flipTeamHorizontally([...blueTeam]);
+
+            // 交换 displayOrder（不改变内部顺序）
+            const newBlueDisplayOrder = [...redDisplayOrder];
+            const newRedDisplayOrder = [...blueDisplayOrder];
+
+            // 应用
+            blueTeam = newBlueTeam;
+            redTeam = newRedTeam;
+            blueDisplayOrder = newBlueDisplayOrder;
+            redDisplayOrder = newRedDisplayOrder;
+
+            // 更新UI
+            updateGrid();
+            updateSelectedList('blue');
+            updateSelectedList('red');
+            updateCount('blue');
+            updateCount('red');
+            checkSaveAvailability();
+
+            // 取消选中
+            if (selectedSlot) {
+                selectedSlot.classList.remove('selected');
+                selectedSlot = null;
+                selectedTeam = null;
+            }
+        }
+
         // 查询匹配阵容
         function queryMatches() {
             const redSelected = getNonEmptyCharacters(redTeam);
@@ -1103,6 +1169,42 @@
                 displayCurrentResult();
             }
         }
+
+        function optimizeDatabase() {
+            const savedData = JSON.parse(localStorage.getItem('teamArchives') || '[]');
+            if (savedData.length === 0) {
+                alert('数据库为空，无需优化。');
+                return;
+            }
+
+            const seen = new Set();
+            const uniqueData = [];
+
+            for (const record of savedData) {
+                // 构造用于比较的标准化字符串（包含 blueTeam, redTeam, result）
+                const key = JSON.stringify({
+                    blueTeam: record.blueTeam,
+                    redTeam: record.redTeam,
+                    result: record.result
+                });
+                if (!seen.has(key)) {
+                    seen.add(key);
+                    uniqueData.push(record);
+                }
+            }
+
+            const removedCount = savedData.length - uniqueData.length;
+            if (removedCount > 0) {
+                localStorage.setItem('teamArchives', JSON.stringify(uniqueData));
+                alert(`数据库优化完成！已移除 ${removedCount} 条重复记录，剩余 ${uniqueData.length} 条。`);
+                // 如果当前正在查看查询结果，刷新结果
+                if (resultsSection.style.display === 'block') {
+                    queryMatches();
+                }
+            } else {
+                alert('数据库中无重复记录，无需优化。');
+            }
+        }
         
         // 初始化
 
@@ -1155,6 +1257,35 @@
             redClearBtn.textContent = '清空';
             redClearBtn.addEventListener('click', () => clearTeam('red'));
             redTeamSection.appendChild(redClearBtn);
+
+            const blueFlipBtn = document.createElement('button');
+            blueFlipBtn.className = 'btn btn-nav';
+            blueFlipBtn.style.padding = '4px 8px';
+            blueFlipBtn.style.fontSize = '0.75rem';
+            blueFlipBtn.style.minWidth = 'auto';
+            blueFlipBtn.style.width = 'auto';
+            blueFlipBtn.textContent = '上下翻转';
+            blueFlipBtn.addEventListener('click', () => flipTeam('blue', 'vertical'));
+            blueTeamSection.appendChild(blueFlipBtn);
+
+            // 添加上下翻转按钮（红色）
+            const redFlipBtn = document.createElement('button');
+            redFlipBtn.className = 'btn btn-nav';
+            redFlipBtn.style.padding = '4px 8px';
+            redFlipBtn.style.fontSize = '0.75rem';
+            redFlipBtn.style.minWidth = 'auto';
+            redFlipBtn.style.width = 'auto';
+            redFlipBtn.textContent = '上下翻转';
+            redFlipBtn.addEventListener('click', () => flipTeam('red', 'vertical'));
+            redTeamSection.appendChild(redFlipBtn);
+
+            // 添加敌我互换按钮（放在控制区上方）
+            const swapTeamsBtn = document.createElement('button');
+            swapTeamsBtn.className = 'btn btn-nav';
+            swapTeamsBtn.textContent = '敌我互换';
+            swapTeamsBtn.style.marginTop = '10px';
+            swapTeamsBtn.style.width = '100%';
+            swapTeamsBtn.addEventListener('click', swapTeams);
             
             // 调整删除按钮样式
             deleteBtn.style.padding = '8px 12px';
@@ -1180,6 +1311,7 @@
             });
 
             const controls = document.querySelector('.controls');
+            controls.parentNode.insertBefore(swapTeamsBtn, controls);
             const exportImportContainer = document.createElement('div');
             exportImportContainer.style.display = 'flex';
             exportImportContainer.style.gap = '10px';
@@ -1202,9 +1334,10 @@
             exportImportContainer.appendChild(exportBtn);
             exportImportContainer.appendChild(importBtn);
             controls.parentNode.insertBefore(exportImportContainer, controls.nextSibling);
+            
             const clearAllBtn = document.createElement('button');
             clearAllBtn.className = 'btn btn-delete';
-            clearAllBtn.textContent = '完全清除';
+            clearAllBtn.textContent = '清空数据库';
             clearAllBtn.style.marginTop = '10px';
             clearAllBtn.style.width = '100%';
             clearAllBtn.addEventListener('click', () => {
@@ -1224,7 +1357,16 @@
                     checkSaveAvailability();
                 }
             });
+            
             controls.parentNode.insertBefore(clearAllBtn, exportImportContainer.nextSibling);
+
+            const optimizeBtn = document.createElement('button');
+            optimizeBtn.className = 'btn btn-nav';
+            optimizeBtn.textContent = '优化数据库';
+            optimizeBtn.style.marginTop = '10px';
+            optimizeBtn.style.width = '100%';
+            optimizeBtn.addEventListener('click', optimizeDatabase);
+            controls.parentNode.insertBefore(optimizeBtn, clearAllBtn.nextSibling);
         
         }
 
