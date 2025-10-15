@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>队伍存档器</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .team-section {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .team-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .team-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .blue-team .team-title { color: #4da6ff; }
+        .red-team .team-title { color: #ff4d4d; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .slot {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slot:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slot.selected {
+            box-shadow: 0 0 0 3px yellow;
+        }
+        
+        .blue-team .slot {
+            background: rgba(77, 166, 255, 0.2);
+            border: 2px solid #4da6ff;
+        }
+        
+        .red-team .slot {
+            background: rgba(255, 77, 77, 0.2);
+            border: 2px solid #ff4d4d;
+        }
+        
+        .slot img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .slot-number {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+        
+        .selected-characters {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .selected-title {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .characters-list {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .character-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 2px solid transparent;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .character-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .character-item.selected {
+            border-color: yellow;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-win {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+        }
+        
+        .btn-lose {
+            background: linear-gradient(to right, #F44336, #C62828);
+            color: white;
+        }
+        
+        .btn-query {
+            background: linear-gradient(to right, #2196F3, #0D47A1);
+            color: white;
+        }
+        
+        .btn-delete {
+            background: linear-gradient(to right, #9E9E9E, #424242);
+            color: white;
+        }
+        
+        .btn-nav {
+            background: linear-gradient(to right, #FF9800, #E65100);
+            color: white;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+        
+        .checkbox-container input {
+            margin-right: 10px;
+            transform: scale(1.3);
+        }
+        
+        .results-section {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .results-title {
+            font-size: 1.5rem;
+        }
+        
+        .results-info {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .win { color: #4CAF50; }
+        .lose { color: #F44336; }
+        .match { color: #2196F3; }
+        .no-match { color: #FF9800; }
+        
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .character-placeholder {
+            width: 80%;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .swap-btn {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .grid {
+                gap: 8px;
+            }
+            
+            .slot {
+                min-height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>队伍存档器</h1>
+            <p class="subtitle">保存、查询和管理你的队伍配置</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- 蓝色队伍区域 -->
+            <div class="team-section blue-team">
+                <div class="team-header">
+                    <div class="team-title">蓝色队伍</div>
+                    <div class="team-count">已选: <span id="blue-count">0</span>/4</div>
+                </div>
+                
+                <div class="grid" id="blue-grid">
+                    <!-- 5行4列的方块将通过JS生成 -->
+                </div>
+                
+                <div class="selected-characters">
+                    <div class="selected-title">已选角色:</div>
+                    <div class="characters-list" id="blue-selected-list">
+                        <!-- 已选角色将显示在这里 -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 红色队伍区域 -->
+            <div class="team-section red-team">
+                <div class="team-header">
+                    <div class="team-title">红色队伍</div>
+                    <div class="team-count">已选: <span id="red-count">0</span>/4</div>
+                </div>
+                
+                <div class="grid" id="red-grid">
+                    <!-- 5行4列的方块将通过JS生成 -->
+                </div>
+                
+                <div class="selected-characters">
+                    <div class="selected-title">已选角色:</div>
+                    <div class="characters-list" id="red-selected-list">
+                        <!-- 已选角色将显示在这里 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button class="btn btn-query" id="query-btn">查询匹配阵容</button>
+            <div class="checkbox-container">
+                <input type="checkbox" id="save-order-checkbox">
+                <label for="save-order-checkbox">保存角色排列顺序</label>
+            </div>
+            <button class="btn btn-win" id="save-win-btn" disabled>保存为胜利</button>
+            <button class="btn btn-lose" id="save-lose-btn" disabled>保存为失败</button>
+        </div>
+        
+        <!-- 查询结果区域 -->
+        <div class="results-section" id="results-section">
+            <div class="results-header">
+                <div class="results-title">匹配结果</div>
+                <button class="btn btn-delete" id="delete-btn">删除当前记录</button>
+            </div>
+            
+            <div class="results-info">
+                <div class="info-item">匹配ID: <span id="match-id">-</span></div>
+                <div class="info-item">结果: <span id="match-result" class="win">胜利</span></div>
+                <div class="info-item">顺序匹配: <span id="order-match" class="match">是</span></div>
+                <div class="info-item">总匹配数: <span id="total-matches">0</span></div>
+                <div class="info-item">当前: <span id="current-match">0</span>/<span id="total-matches-2">0</span></div>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-nav" id="prev-btn">← 上一个</button>
+                <button class="btn btn-nav" id="next-btn">下一个 →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 角色数据（模拟角色头像）
+        const characters = [
+            { id: 1, name: "战士", color: "#4da6ff" },
+            { id: 2, name: "法师", color: "#ff4d4d" },
+            { id: 3, name: "刺客", color: "#4da6ff" },
+            { id: 4, name: "射手", color: "#ff4d4d" },
+            { id: 5, name: "坦克", color: "#4da6ff" },
+            { id: 6, name: "辅助", color: "#ff4d4d" },
+            { id: 7, name: "牧师", color: "#4da6ff" },
+            { id: 8, name: "盗贼", color: "#ff4d4d" },
+            { id: 9, name: "骑士", color: "#4da6ff" },
+            { id: 10, name: "术士", color: "#ff4d4d" }
+        ];
+        
+        // 初始化队伍数据
+        let blueTeam = Array(20).fill(null); // 5x4 = 20 slots
+        let redTeam = Array(20).fill(null);
+        
+        // 当前选中的方块
+        let selectedSlot = null;
+        let selectedTeam = null; // 'blue' or 'red'
+        
+        // 查询结果相关
+        let queryResults = [];
+        let currentResultIndex = -1;
+        
+        let usePortrait = false; // 默认使用文字显示
+        
+        // DOM元素
+        const blueGrid = document.getElementById('blue-grid');
+        const redGrid = document.getElementById('red-grid');
+        const blueSelectedList = document.getElementById('blue-selected-list');
+        const redSelectedList = document.getElementById('red-selected-list');
+        const blueCount = document.getElementById('blue-count');
+        const redCount = document.getElementById('red-count');
+        const saveWinBtn = document.getElementById('save-win-btn');
+        const saveLoseBtn = document.getElementById('save-lose-btn');
+        const queryBtn = document.getElementById('query-btn');
+        const saveOrderCheckbox = document.getElementById('save-order-checkbox');
+        const resultsSection = document.getElementById('results-section');
+        const matchId = document.getElementById('match-id');
+        const matchResult = document.getElementById('match-result');
+        const orderMatch = document.getElementById('order-match');
+        const totalMatches = document.getElementById('total-matches');
+        const currentMatch = document.getElementById('current-match');
+        const totalMatches2 = document.getElementById('total-matches-2');
+        const deleteBtn = document.getElementById('delete-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        // 获取方阵中的非空角色（最多4个）
+        function getNonEmptyCharacters(teamArray) {
+            const nonEmpty = teamArray.filter(id => id !== null);
+            return nonEmpty.length <= 4 ? nonEmpty : nonEmpty.slice(0, 4);
+        }
+        
+        // 初始化网格
+        function initGrid() {
+            // 创建蓝色队伍网格
+            blueGrid.innerHTML = '';
+            for (let i = 0; i < 20; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'slot';
+                slot.dataset.index = i;
+                slot.dataset.team = 'blue';
+                slot.innerHTML = `<div class="slot-number">${i+1}</div>`;
+                slot.addEventListener('click', () => handleSlotClick(slot, 'blue', i));
+                blueGrid.appendChild(slot);
+            }
+            
+            // 创建红色队伍网格
+            redGrid.innerHTML = '';
+            for (let i = 0; i < 20; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'slot';
+                slot.dataset.index = i;
+                slot.dataset.team = 'red';
+                slot.innerHTML = `<div class="slot-number">${i+1}</div>`;
+                slot.addEventListener('click', () => handleSlotClick(slot, 'red', i));
+                redGrid.appendChild(slot);
+            }
+        }
+        
+        // 处理方块点击
+        function handleSlotClick(slot, team, index) {
+            // 如果当前有选中的方块，先取消选中
+            if (selectedSlot && selectedSlot !== slot) {
+                selectedSlot.classList.remove('selected');
+            }
+            
+            // 如果点击的是已有角色的格子，直接清除角色
+            if ((team === 'blue' && blueTeam[index] !== null) || (team === 'red' && redTeam[index] !== null)) {
+                // 如果这是当前选中的格子，取消选中并清除
+                if (selectedSlot === slot) {
+                    removeCharacter(team, index);
+                    selectedSlot = null;
+                    selectedTeam = null;
+                } 
+                // 如果不是当前选中的格子，直接清除
+                else {
+                    removeCharacter(team, index);
+                    // 保持当前选中状态（如果有）
+                }
+                return;
+            }
+            
+            // 如果点击的是空格子
+            if (selectedSlot === slot) {
+                // 取消选中
+                selectedSlot.classList.remove('selected');
+                selectedSlot = null;
+                selectedTeam = null;
+            } else {
+                // 选中当前方块并显示角色选择列表
+                selectedSlot = slot;
+                selectedTeam = team;
+                slot.classList.add('selected');
+                showCharacterList(team);
+            }
+        }
+        
+        // 移除角色
+        function removeCharacter(team, index) {
+            if (team === 'blue') {
+                blueTeam[index] = null;
+            } else {
+                redTeam[index] = null;
+            }
+            
+            // 更新UI
+            updateGrid();
+            updateSelectedList(team);
+            updateCount(team);
+            checkSaveAvailability();
+        }
+        
+        // 显示角色选择列表
+        function showCharacterList(team) {
+            // 创建模态框
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.zIndex = '1000';
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = '#2c3e50';
+            modalContent.style.padding = '20px';
+            modalContent.style.borderRadius = '10px';
+            modalContent.style.maxWidth = '500px';
+            modalContent.style.width = '90%';
+            modalContent.style.maxHeight = '80vh';
+            modalContent.style.overflowY = 'auto';
+            
+            const title = document.createElement('h3');
+            title.textContent = `选择${team === 'blue' ? '蓝色' : '红色'}队伍角色`;
+            title.style.marginBottom = '15px';
+            title.style.color = team === 'blue' ? '#4da6ff' : '#ff4d4d';
+            modalContent.appendChild(title);
+            
+            const characterGrid = document.createElement('div');
+            characterGrid.style.display = 'grid';
+            characterGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(80px, 1fr))';
+            characterGrid.style.gap = '15px';
+            
+            // 获取当前队伍已使用的角色ID
+            const usedChars = team === 'blue' ? 
+                blueTeam.filter(id => id !== null) : 
+                redTeam.filter(id => id !== null);
+            
+            characters.forEach(char => {
+                const charItem = document.createElement('div');
+                charItem.className = 'character-item';
+                charItem.style.backgroundColor = char.color;
+                charItem.style.display = 'flex';
+                charItem.style.justifyContent = 'center';
+                charItem.style.alignItems = 'center';
+                charItem.style.color = 'white';
+                charItem.textContent = char.name;
+                
+                // 如果角色已在队伍中使用，添加选中样式
+                if (usedChars.includes(char.id)) {
+                    charItem.classList.add('selected');
+                }
+                
+                charItem.addEventListener('click', () => {
+                    selectCharacter(char.id, team);
+                    document.body.removeChild(modal);
+                });
+                
+                characterGrid.appendChild(charItem);
+            });
+            
+            modalContent.appendChild(characterGrid);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // 点击背景关闭
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                    if (selectedSlot) {
+                        selectedSlot.classList.remove('selected');
+                        selectedSlot = null;
+                        selectedTeam = null;
+                    }
+                }
+            });
+        }
+        
+        // 选择角色
+        function selectCharacter(charId, team) {
+            if (!selectedSlot || selectedTeam !== team) return;
+            
+            const index = parseInt(selectedSlot.dataset.index);
+            
+            // 检查是否已经超过4个角色（不包括要替换的位置）
+            let currentTeam = team === 'blue' ? blueTeam : redTeam;
+            let nonEmptyCount = currentTeam.filter(id => id !== null).length;
+            
+            // 如果当前位置已经有角色，则替换不算增加数量
+            if (currentTeam[index] !== null) {
+                nonEmptyCount--; // 减去要替换的位置
+            }
+            
+            // 如果已经超过4个且当前位置是空的，则不允许添加
+            if (nonEmptyCount >= 4 && currentTeam[index] === null) {
+                alert('每个队伍最多只能有4个角色！');
+                return;
+            }
+            
+            // 如果角色已在队伍中存在，先移除旧位置的角色
+            if (team === 'blue') {
+                const existingIndex = blueTeam.indexOf(charId);
+                if (existingIndex !== -1 && existingIndex !== index) {
+                    blueTeam[existingIndex] = null;
+                }
+                blueTeam[index] = charId;
+            } else {
+                const existingIndex = redTeam.indexOf(charId);
+                if (existingIndex !== -1 && existingIndex !== index) {
+                    redTeam[existingIndex] = null;
+                }
+                redTeam[index] = charId;
+            }
+            
+            // 更新UI
+            updateGrid();
+            updateSelectedList(team);
+            updateCount(team);
+            checkSaveAvailability();
+            
+            // 取消选中状态
+            selectedSlot.classList.remove('selected');
+            selectedSlot = null;
+            selectedTeam = null;
+        }
+        
+        // 更新网格显示
+        function updateGrid() {
+            // 获取首位角色ID
+            const blueFirstChar = getNonEmptyCharacters(blueTeam)[0] || null;
+            const redFirstChar = getNonEmptyCharacters(redTeam)[0] || null;
+            
+            // 更新蓝色队伍
+            const blueSlots = document.querySelectorAll('[data-team="blue"]');
+            blueSlots.forEach((slot, index) => {
+                slot.innerHTML = `<div class="slot-number">${index+1}</div>`;
+                if (blueTeam[index] !== null) {
+                    const char = characters.find(c => c.id === blueTeam[index]);
+                    if (char) {
+                        const charDiv = document.createElement('div');
+                        charDiv.style.width = '80%';
+                        charDiv.style.height = '80%';
+                        charDiv.style.borderRadius = '8px';
+                        charDiv.style.display = 'flex';
+                        charDiv.style.justifyContent = 'center';
+                        charDiv.style.alignItems = 'center';
+                        charDiv.style.color = 'white';
+                        charDiv.style.position = 'relative';
+                        
+                        if (usePortrait) {
+                            // 使用头像
+                            const img = document.createElement('img');
+                            img.src = `portrait/${char.id}.png`;
+                            img.alt = char.name;
+                            img.style.width = '100%';
+                            img.style.height = '100%';
+                            img.style.objectFit = 'cover';
+                            img.style.borderRadius = '8px';
+                            charDiv.appendChild(img);
+                        } else {
+                            // 使用文字
+                            charDiv.style.backgroundColor = char.color;
+                            charDiv.textContent = char.name;
+                        }
+                        
+                        // 如果是首位角色，添加特殊标记
+                        if (blueTeam[index] === blueFirstChar) {
+                            charDiv.style.boxShadow = '0 0 10px 3px #FFD700';
+                            charDiv.style.border = '2px solid #FFD700';
+                        }
+                        
+                        slot.appendChild(charDiv);
+                    }
+                }
+            });
+            
+            // 更新红色队伍
+            const redSlots = document.querySelectorAll('[data-team="red"]');
+            redSlots.forEach((slot, index) => {
+                slot.innerHTML = `<div class="slot-number">${index+1}</div>`;
+                if (redTeam[index] !== null) {
+                    const char = characters.find(c => c.id === redTeam[index]);
+                    if (char) {
+                        const charDiv = document.createElement('div');
+                        charDiv.style.width = '80%';
+                        charDiv.style.height = '80%';
+                        charDiv.style.borderRadius = '8px';
+                        charDiv.style.display = 'flex';
+                        charDiv.style.justifyContent = 'center';
+                        charDiv.style.alignItems = 'center';
+                        charDiv.style.color = 'white';
+                        charDiv.style.position = 'relative';
+                        
+                        if (usePortrait) {
+                            // 使用头像
+                            const img = document.createElement('img');
+                            img.src = `portrait/${char.id}.png`;
+                            img.alt = char.name;
+                            img.style.width = '100%';
+                            img.style.height = '100%';
+                            img.style.objectFit = 'cover';
+                            img.style.borderRadius = '8px';
+                            charDiv.appendChild(img);
+                        } else {
+                            // 使用文字
+                            charDiv.style.backgroundColor = char.color;
+                            charDiv.textContent = char.name;
+                        }
+                        
+                        // 如果是首位角色，添加特殊标记
+                        if (redTeam[index] === redFirstChar) {
+                            charDiv.style.boxShadow = '0 0 10px 3px #FFD700';
+                            charDiv.style.border = '2px solid #FFD700';
+                        }
+                        
+                        slot.appendChild(charDiv);
+                    }
+                }
+            });
+        }
+        
+        // 更新已选角色列表（从方阵中提取非空角色）
+        function updateSelectedList(team) {
+            const list = team === 'blue' ? blueSelectedList : redSelectedList;
+            list.innerHTML = '';
+            
+            const selected = getNonEmptyCharacters(team === 'blue' ? blueTeam : redTeam);
+            const firstCharId = selected[0] || null;
+            
+            selected.forEach((charId, index) => {
+                const char = characters.find(c => c.id === charId);
+                if (char) {
+                    const charItem = document.createElement('div');
+                    charItem.className = 'character-item';
+                    charItem.style.display = 'flex';
+                    charItem.style.justifyContent = 'center';
+                    charItem.style.alignItems = 'center';
+                    charItem.style.position = 'relative';
+                    
+                    if (usePortrait) {
+                        // 使用头像
+                        const img = document.createElement('img');
+                        img.src = `portrait/${char.id}.png`;
+                        img.alt = char.name;
+                        img.style.width = '100%';
+                        img.style.height = '100%';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '8px';
+                        charItem.appendChild(img);
+                    } else {
+                        // 使用文字
+                        charItem.style.backgroundColor = char.color;
+                        charItem.style.color = 'white';
+                        charItem.textContent = char.name;
+                    }
+                    
+                    // 如果是首位角色，添加特殊标记
+                    if (charId === firstCharId) {
+                        charItem.style.boxShadow = '0 0 8px 2px #FFD700';
+                        charItem.style.border = '2px solid #FFD700';
+                    }
+                    
+                    // 添加交换按钮（除了第一个）
+                    if (index > 0) {
+                        const swapBtn = document.createElement('div');
+                        swapBtn.className = 'swap-btn';
+                        swapBtn.textContent = '↑';
+                        swapBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            swapCharactersInList(team, index, index - 1);
+                        });
+                        charItem.appendChild(swapBtn);
+                    }
+                    
+                    list.appendChild(charItem);
+                }
+            });
+        }   
+        
+        // 交换排列列表中的角色位置（不影响方阵位置，只影响顺序）
+        function swapCharactersInList(team, index1, index2) {
+            const selected = getNonEmptyCharacters(team === 'blue' ? blueTeam : redTeam);
+            if (index1 >= selected.length || index2 >= selected.length) return;
+            
+            // 交换排列顺序
+            [selected[index1], selected[index2]] = [selected[index2], selected[index1]];
+            
+            // 重新构建方阵以反映新的顺序
+            const teamArray = team === 'blue' ? blueTeam : redTeam;
+            const newTeamArray = Array(20).fill(null);
+            let slotIndex = 0;
+            
+            // 将非空角色按新顺序放入方阵的前几个非空位置
+            for (let i = 0; i < teamArray.length; i++) {
+                if (teamArray[i] !== null) {
+                    if (slotIndex < selected.length) {
+                        newTeamArray[i] = selected[slotIndex];
+                        slotIndex++;
+                    }
+                }
+            }
+            
+            // 更新方阵
+            if (team === 'blue') {
+                blueTeam = newTeamArray;
+            } else {
+                redTeam = newTeamArray;
+            }
+            
+            // 更新UI
+            updateGrid();
+            updateSelectedList(team);
+            checkSaveAvailability();
+        }
+        
+        // 更新计数
+        function updateCount(team) {
+            const count = getNonEmptyCharacters(team === 'blue' ? blueTeam : redTeam).length;
+            if (team === 'blue') {
+                blueCount.textContent = count;
+            } else {
+                redCount.textContent = count;
+            }
+        }
+        
+        // 检查是否可以保存
+        function checkSaveAvailability() {
+            const blueCount = getNonEmptyCharacters(blueTeam).length;
+            const redCount = getNonEmptyCharacters(redTeam).length;
+            const canSave = blueCount === 4 && redCount === 4;
+            saveWinBtn.disabled = !canSave;
+            saveLoseBtn.disabled = !canSave;
+        }
+        
+        // 保存数据
+        function saveData(result) {
+            // 获取当前数据
+            const data = {
+                blueTeam: [...blueTeam],
+                redTeam: [...redTeam],
+                result: result, // 'win' or 'lose'
+                timestamp: new Date().getTime()
+            };
+            
+            // 从localStorage获取现有数据
+            let savedData = JSON.parse(localStorage.getItem('teamArchives') || '[]');
+            
+            // 添加新数据
+            savedData.push(data);
+            
+            // 保存回localStorage
+            localStorage.setItem('teamArchives', JSON.stringify(savedData));
+            
+            alert(`阵容已保存为${result === 'win' ? '胜利' : '失败'}!`);
+        }
+        
+        // 查询匹配阵容
+        function queryMatches() {
+            const redSelected = getNonEmptyCharacters(redTeam);
+            if (redSelected.length !== 4) {
+                alert('请先在红色队伍中选择4个角色!');
+                return;
+            }
+            
+            const savedData = JSON.parse(localStorage.getItem('teamArchives') || '[]');
+            if (savedData.length === 0) {
+                alert('没有保存的阵容数据!');
+                return;
+            }
+            
+            const saveOrder = saveOrderCheckbox.checked;
+            const currentRedTeam = [...redTeam];
+            
+            // 过滤匹配的阵容
+            const matches = savedData.filter(record => {
+                // 检查红色队伍是否完全匹配（包括空位）
+                const redMatch = currentRedTeam.every((charId, index) => 
+                    charId === record.redTeam[index]
+                );
+                
+                if (!redMatch) return false;
+                
+                // 如果需要检查顺序，则检查非空角色的顺序
+                if (saveOrder) {
+                    const recordRedSelected = getNonEmptyCharacters(record.redTeam);
+                    return redSelected.every((charId, index) => 
+                        charId === recordRedSelected[index]
+                    );
+                }
+                
+                return true;
+            });
+            
+            if (matches.length === 0) {
+                alert('没有找到匹配的阵容!');
+                resultsSection.style.display = 'none';
+                return;
+            }
+            
+            // 优先显示符合顺序且胜利的阵容
+            matches.sort((a, b) => {
+                // 胜利的排在前面
+                if (a.result === 'win' && b.result !== 'win') return -1;
+                if (a.result !== 'win' && b.result === 'win') return 1;
+                
+                // 如果都胜利或都失败，检查顺序匹配（如果需要）
+                if (saveOrder) {
+                    const aRedSelected = getNonEmptyCharacters(a.redTeam);
+                    const bRedSelected = getNonEmptyCharacters(b.redTeam);
+                    const aOrderMatch = redSelected.every((charId, index) => 
+                        charId === aRedSelected[index]
+                    );
+                    const bOrderMatch = redSelected.every((charId, index) => 
+                        charId === bRedSelected[index]
+                    );
+                    
+                    if (aOrderMatch && !bOrderMatch) return -1;
+                    if (!aOrderMatch && bOrderMatch) return 1;
+                }
+                
+                return 0;
+            });
+            
+            queryResults = matches;
+            currentResultIndex = 0;
+            displayCurrentResult();
+            resultsSection.style.display = 'block';
+        }
+        
+        // 显示当前查询结果
+        function displayCurrentResult() {
+            if (currentResultIndex < 0 || currentResultIndex >= queryResults.length) return;
+            
+            const result = queryResults[currentResultIndex];
+            
+            // 更新UI信息
+            matchId.textContent = currentResultIndex + 1;
+            matchResult.textContent = result.result === 'win' ? '胜利' : '失败';
+            matchResult.className = result.result === 'win' ? 'win' : 'lose';
+            
+            // 检查顺序是否匹配
+            const saveOrder = saveOrderCheckbox.checked;
+            const currentRedSelected = getNonEmptyCharacters(redTeam);
+            if (saveOrder) {
+                const recordRedSelected = getNonEmptyCharacters(result.redTeam);
+                const orderMatches = currentRedSelected.every((charId, index) => 
+                    charId === recordRedSelected[index]
+                );
+                orderMatch.textContent = orderMatches ? '是' : '否';
+                orderMatch.className = orderMatches ? 'match' : 'no-match';
+            } else {
+                orderMatch.textContent = '不检查';
+                orderMatch.className = 'match';
+            }
+            
+            totalMatches.textContent = queryResults.length;
+            totalMatches2.textContent = queryResults.length;
+            currentMatch.textContent = currentResultIndex + 1;
+            
+            // 更新蓝色队伍显示
+            blueTeam = [...result.blueTeam];
+            updateGrid();
+            updateSelectedList('blue');
+            updateCount('blue');
+        }
+        
+        // 删除当前查询结果
+        function deleteCurrentResult() {
+            if (currentResultIndex < 0 || currentResultIndex >= queryResults.length) return;
+            
+            const confirmDelete = confirm('确定要删除这个记录吗？');
+            if (!confirmDelete) return;
+            
+            // 从localStorage中删除
+            let savedData = JSON.parse(localStorage.getItem('teamArchives') || '[]');
+            const resultToDelete = queryResults[currentResultIndex];
+            
+            // 找到并删除
+            const indexToDelete = savedData.findIndex(record => 
+                JSON.stringify(record) === JSON.stringify(resultToDelete)
+            );
+            
+            if (indexToDelete !== -1) {
+                savedData.splice(indexToDelete, 1);
+                localStorage.setItem('teamArchives', JSON.stringify(savedData));
+            }
+            
+            // 从查询结果中移除
+            queryResults.splice(currentResultIndex, 1);
+            
+            if (queryResults.length === 0) {
+                resultsSection.style.display = 'none';
+                // 重置蓝色队伍
+                blueTeam = Array(20).fill(null);
+                updateGrid();
+                updateSelectedList('blue');
+                updateCount('blue');
+            } else {
+                // 调整当前索引
+                if (currentResultIndex >= queryResults.length) {
+                    currentResultIndex = queryResults.length - 1;
+                }
+                displayCurrentResult();
+            }
+        }
+        
+        // 初始化
+
+        // 在 init 函数中添加清除按钮
+        // 修改 init 函数，添加复选框和调整按钮样式
+        function init() {
+            initGrid();
+            updateGrid();
+            checkSaveAvailability();
+            
+            // 添加显示模式复选框
+            const checkboxContainer = document.querySelector('.checkbox-container');
+            const portraitCheckbox = document.createElement('div');
+            portraitCheckbox.style.marginLeft = '20px';
+            portraitCheckbox.innerHTML = `
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" id="portrait-checkbox" style="margin-right: 8px; transform: scale(1.1);">
+                    <span>使用头像显示</span>
+                </label>
+            `;
+            checkboxContainer.appendChild(portraitCheckbox);
+            
+            document.getElementById('portrait-checkbox').addEventListener('change', (e) => {
+                usePortrait = e.target.checked;
+                updateGrid();
+                updateSelectedList('blue');
+                updateSelectedList('red');
+            });
+            
+            // 添加清除按钮到DOM（调整样式）
+            const blueTeamSection = document.querySelector('.blue-team .team-header');
+            const redTeamSection = document.querySelector('.red-team .team-header');
+            
+            const blueClearBtn = document.createElement('button');
+            blueClearBtn.className = 'btn btn-delete';
+            blueClearBtn.style.padding = '4px 8px';
+            blueClearBtn.style.fontSize = '0.75rem';
+            blueClearBtn.style.minWidth = 'auto';
+            blueClearBtn.style.width = 'auto';
+            blueClearBtn.textContent = '清空';
+            blueClearBtn.addEventListener('click', () => clearTeam('blue'));
+            blueTeamSection.appendChild(blueClearBtn);
+            
+            const redClearBtn = document.createElement('button');
+            redClearBtn.className = 'btn btn-delete';
+            redClearBtn.style.padding = '4px 8px';
+            redClearBtn.style.fontSize = '0.75rem';
+            redClearBtn.style.minWidth = 'auto';
+            redClearBtn.style.width = 'auto';
+            redClearBtn.textContent = '清空';
+            redClearBtn.addEventListener('click', () => clearTeam('red'));
+            redTeamSection.appendChild(redClearBtn);
+            
+            // 调整删除按钮样式
+            deleteBtn.style.padding = '8px 12px';
+            deleteBtn.style.fontSize = '0.9rem';
+            deleteBtn.style.minWidth = 'auto';
+            
+            // 事件监听
+            saveWinBtn.addEventListener('click', () => saveData('win'));
+            saveLoseBtn.addEventListener('click', () => saveData('lose'));
+            queryBtn.addEventListener('click', queryMatches);
+            deleteBtn.addEventListener('click', deleteCurrentResult);
+            prevBtn.addEventListener('click', () => {
+                if (currentResultIndex > 0) {
+                    currentResultIndex--;
+                    displayCurrentResult();
+                }
+            });
+            nextBtn.addEventListener('click', () => {
+                if (currentResultIndex < queryResults.length - 1) {
+                    currentResultIndex++;
+                    displayCurrentResult();
+                }
+            });
+        }
+
+        // 新增清空队伍函数
+        function clearTeam(team) {
+            if (team === 'blue') {
+                blueTeam = Array(20).fill(null);
+                updateGrid();
+                updateSelectedList('blue');
+                updateCount('blue');
+            } else {
+                redTeam = Array(20).fill(null);
+                updateGrid();
+                updateSelectedList('red');
+                updateCount('red');
+            }
+            checkSaveAvailability();
+            
+            // 取消当前选中状态
+            if (selectedSlot && selectedTeam === team) {
+                selectedSlot.classList.remove('selected');
+                selectedSlot = null;
+                selectedTeam = null;
+            }
+        }
+        
+        // 启动应用
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
