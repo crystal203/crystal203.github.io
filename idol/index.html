@@ -250,6 +250,7 @@
                 { name: "villain_redhood_myth", nick: "arabelle", element: "dark", ai: 2, type: 2, speed: 1, hand: 6.5 },
                 { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2, speed: 1.25, hand: 7 },
                 { name: "wrestler_myth", nick: "callie", element: "dark", ai: 1, type: 1, speed: 1.6, hand: 0.1 },
+                { name: "randy", nick: "randy", element: "fire", ai: 1, type: 2, speed: 1, hand: 0.1 },
 
             ],
             checker: [
@@ -259,6 +260,18 @@
                 { name: "偶像艾草", party: ["idol", "eunha", "daisy", "estel"] },
             ],
             solution: [
+                {
+                    name: "偶草1", party: [{ nick: "idol" }, { nick: "eunha" }, { nick: "daisy" }, { nick: "estel" }],
+                    solve: [
+                        { name: "基本偶像" },
+                    ]
+                },
+                {
+                    name: "偶草2", party: [{ nick: "idol" }, { nick: "gabriel" }, { nick: "daisy" }, { nick: "estel" }],
+                    solve: [
+                        { name: "基本偶像" },
+                    ]
+                },
                 {
                     name: "偶像1", party: [{ nick: "idol" }, { nick: "eunha" }, { nick: "beth" }, { nick: "daisy" }],
                     solve: [
@@ -338,6 +351,12 @@
                         { name: "基本偶像" },
                         { name: "基本银河" },
                         { name: "偶像艾草" },
+                    ]
+                },
+                {
+                    name: "暗炮兰迪", party: [{ nick: "arabelle" }, { nick: "idol" }, { nick: "randy" }, { nick: "daisy" }],
+                    solve: [
+                        { name: "基本偶像" },
                     ]
                 },
                 {
