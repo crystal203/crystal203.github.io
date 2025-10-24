@@ -88,7 +88,7 @@ if __name__ == "__main__":
     asset_root = "asset"
     #for char_dir in os.listdir(asset_root):
     #    char_path = os.path.join(asset_root, char_dir)
-    char_path = "./asset/aa72"
+    char_path = "./eugene"
     #if not os.path.isdir(char_path):
         #continue
     down_path = os.path.join(char_path, "down.png")
