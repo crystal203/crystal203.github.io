@@ -1,0 +1,1 @@
+window.assetList = ['aa72'];
