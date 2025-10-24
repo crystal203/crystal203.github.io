@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>加密图片解密工具</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, button {
+      margin-top: 5px;
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    canvas {
+      display: block;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      max-width: 100%;
+      height: auto;
+    }
+    #downloadBtn {
+      margin-top: 10px;
+      background: #2196F3;
+    }
+    #downloadBtn:hover {
+      background: #1976D2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>加密图片解密工具</h2>
+    <label for="imageInput">选择加密的 PNG 图片：</label>
+    <input type="file" id="imageInput" accept=".png" />
+
+    <label for="keyInput">密钥：</label>
+    <input type="text" id="keyInput" value="your-secret-key-2025" size="40" />
+
+    <label for="blockSizeInput">划分网格（块大小）：</label>
+    <input type="number" id="blockSizeInput" value="128" min="1" max="1024" />
+
+    <button id="decryptBtn" disabled>解密</button>
+
+    <canvas id="outputCanvas"></canvas>
+    <button id="downloadBtn" style="display:none;">下载解密图像</button>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const keyInput = document.getElementById('keyInput');
+    const blockSizeInput = document.getElementById('blockSizeInput');
+    const decryptBtn = document.getElementById('decryptBtn');
+    const outputCanvas = document.getElementById('outputCanvas');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    let originalImage = null;
+
+    imageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        originalImage = img;
+        decryptBtn.disabled = false;
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    });
+
+    // ========== 纯数学工具函数（与原网页一致） ==========
+    function simpleHashU32(str) {
+      let h = 5381;
+      const bytes = new TextEncoder().encode(str);
+      for (let i = 0; i < bytes.length; i++) {
+        h = ((h * 33) ^ bytes[i]) >>> 0;
+      }
+      return h;
+    }
+
+    function simpleHashByte(str) {
+      return simpleHashU32(str) & 0xFF;
+    }
+
+    function lcgNext(state) {
+      return (1664525 * state + 1013904223) >>> 0;
+    }
+
+    function generatePerm(n, seed) {
+      if (seed === 0) seed = 1;
+      let state = seed;
+      const perm = Array.from({ length: n }, (_, i) => i);
+      for (let i = n - 1; i > 0; i--) {
+        state = lcgNext(state);
+        const j = state % (i + 1);
+        [perm[i], perm[j]] = [perm[j], perm[i]];
+      }
+      return perm;
+    }
+
+    // ========== 修改后的解密函数：仅处理完整块 ==========
+    async function decryptBlockImageData(imgData, width, height, key, BLOCK_SIZE) {
+      const data = imgData.data;
+      const blockW = Math.floor(width / BLOCK_SIZE);
+      const blockH = Math.floor(height / BLOCK_SIZE);
+      const totalBlocks = blockW * blockH;
+
+      const newData = new Uint8ClampedArray(data); // ← 边缘像素原样保留
+
+      if (totalBlocks > 0) {
+        const permSeed = simpleHashU32(key + "_block_perm");
+        const perm = generatePerm(totalBlocks, permSeed);
+        const invPerm = new Array(totalBlocks);
+        for (let i = 0; i < totalBlocks; i++) {
+          invPerm[perm[i]] = i;
+        }
+
+        for (let k = 0; k < totalBlocks; k++) {
+          const i = invPerm[k];
+          //const xorVal = simpleHashByte(key + `_xor_${i}`);
+          const xorVal = 0;
+          const srcX = (i % blockW) * BLOCK_SIZE;
+          const srcY = Math.floor(i / blockW) * BLOCK_SIZE;
+          const dstX = (k % blockW) * BLOCK_SIZE;
+          const dstY = Math.floor(k / blockW) * BLOCK_SIZE;
+
+          for (let dy = 0; dy < BLOCK_SIZE; dy++) {
+            for (let dx = 0; dx < BLOCK_SIZE; dx++) {
+              const srcIdx = ((srcY + dy) * width + (srcX + dx)) * 4;
+              const dstIdx = ((dstY + dy) * width + (dstX + dx)) * 4;
+              newData[dstIdx]     = data[srcIdx]     ^ xorVal;
+              newData[dstIdx + 1] = data[srcIdx + 1] ^ xorVal;
+              newData[dstIdx + 2] = data[srcIdx + 2] ^ xorVal;
+              newData[dstIdx + 3] = data[srcIdx + 3]; // Alpha 不 XOR
+            }
+          }
+        }
+      }
+
+      return new ImageData(newData, width, height);
+    }
+
+    // ========== 解密主流程 ==========
+    decryptBtn.addEventListener('click', async () => {
+      if (!originalImage) return;
+
+      const key = keyInput.value.trim();
+      const BLOCK_SIZE = parseInt(blockSizeInput.value);
+      if (BLOCK_SIZE <= 0) {
+        alert('块大小必须大于 0');
+        return;
+      }
+
+      const w = originalImage.naturalWidth;
+      const h = originalImage.naturalHeight;
+
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = w;
+      tempCanvas.height = h;
+      const ctx = tempCanvas.getContext('2d');
+      ctx.drawImage(originalImage, 0, 0);
+      const imageData = ctx.getImageData(0, 0, w, h);
+
+      try {
+        const decryptedData = await decryptBlockImageData(imageData, w, h, key, BLOCK_SIZE);
+        ctx.putImageData(decryptedData, 0, 0);
+
+        // 显示结果
+        outputCanvas.width = w;
+        outputCanvas.height = h;
+        const outCtx = outputCanvas.getContext('2d');
+        outCtx.drawImage(tempCanvas, 0, 0);
+
+        // 启用下载
+        downloadBtn.style.display = 'inline-block';
+        downloadBtn.onclick = () => {
+          const link = document.createElement('a');
+          link.download = 'decrypted.png';
+          link.href = outputCanvas.toDataURL('image/png');
+          link.click();
+        };
+      } catch (err) {
+        alert('解密失败：' + err.message);
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
