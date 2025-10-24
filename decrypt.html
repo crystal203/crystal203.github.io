@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>加密图片解密工具</title>
+  <title>图片加解密工具</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,7 +20,7 @@
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
       font-weight: bold;
     }
     input, button {
@@ -35,9 +35,11 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    button:hover {
-      background: #45a049;
-    }
+    button:hover { background: #45a049; }
+    #encryptBtn { background: #FF9800; }
+    #encryptBtn:hover { background: #F57C00; }
+    #decryptBtn { background: #2196F3; }
+    #decryptBtn:hover { background: #1976D2; }
     canvas {
       display: block;
       margin-top: 20px;
@@ -47,17 +49,21 @@
     }
     #downloadBtn {
       margin-top: 10px;
-      background: #2196F3;
+      background: #9C27B0;
     }
-    #downloadBtn:hover {
-      background: #1976D2;
+    #downloadBtn:hover { background: #7B1FA2; }
+    .options {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>加密图片解密工具</h2>
-    <label for="imageInput">选择加密的 PNG 图片：</label>
+    <h2>图片加解密工具  By crystal302</h2>
+    <label for="imageInput">选择图片：</label>
     <input type="file" id="imageInput" accept=".png" />
 
     <label for="keyInput">密钥：</label>
@@ -66,16 +72,26 @@
     <label for="blockSizeInput">划分网格（块大小）：</label>
     <input type="number" id="blockSizeInput" value="128" min="1" max="1024" />
 
+    <div class="options">
+      <input type="checkbox" id="enableXor" checked />
+      <label for="enableXor" style="margin-top:0; font-weight:normal;">
+        启用 XOR 混淆（取消勾选则仅块置换）
+      </label>
+    </div>
+
+    <button id="encryptBtn" disabled>加密</button>
     <button id="decryptBtn" disabled>解密</button>
 
     <canvas id="outputCanvas"></canvas>
-    <button id="downloadBtn" style="display:none;">下载解密图像</button>
+    <button id="downloadBtn" style="display:none;">下载结果</button>
   </div>
 
   <script>
     const imageInput = document.getElementById('imageInput');
     const keyInput = document.getElementById('keyInput');
     const blockSizeInput = document.getElementById('blockSizeInput');
+    const enableXorCheckbox = document.getElementById('enableXor');
+    const encryptBtn = document.getElementById('encryptBtn');
     const decryptBtn = document.getElementById('decryptBtn');
     const outputCanvas = document.getElementById('outputCanvas');
     const downloadBtn = document.getElementById('downloadBtn');
@@ -89,13 +105,14 @@
       const img = new Image();
       img.onload = () => {
         originalImage = img;
+        encryptBtn.disabled = false;
         decryptBtn.disabled = false;
         URL.revokeObjectURL(url);
       };
       img.src = url;
     });
 
-    // ========== 纯数学工具函数（与原网页一致） ==========
+    // ========== 纯数学工具函数 ==========
     function simpleHashU32(str) {
       let h = 5381;
       const bytes = new TextEncoder().encode(str);
@@ -125,14 +142,14 @@
       return perm;
     }
 
-    // ========== 修改后的解密函数：仅处理完整块 ==========
-    async function decryptBlockImageData(imgData, width, height, key, BLOCK_SIZE) {
+    // ========== 解密函数（带 XOR 开关） ==========
+    async function decryptBlockImageData(imgData, width, height, key, BLOCK_SIZE, enableXor) {
       const data = imgData.data;
       const blockW = Math.floor(width / BLOCK_SIZE);
       const blockH = Math.floor(height / BLOCK_SIZE);
       const totalBlocks = blockW * blockH;
 
-      const newData = new Uint8ClampedArray(data); // ← 边缘像素原样保留
+      const newData = new Uint8ClampedArray(data);
 
       if (totalBlocks > 0) {
         const permSeed = simpleHashU32(key + "_block_perm");
@@ -144,8 +161,8 @@
 
         for (let k = 0; k < totalBlocks; k++) {
           const i = invPerm[k];
-          //const xorVal = simpleHashByte(key + `_xor_${i}`);
-          const xorVal = 0;
+          const xorVal = enableXor ? simpleHashByte(key + `_xor_${i}`) : 0;
+
           const srcX = (i % blockW) * BLOCK_SIZE;
           const srcY = Math.floor(i / blockW) * BLOCK_SIZE;
           const dstX = (k % blockW) * BLOCK_SIZE;
@@ -163,16 +180,53 @@
           }
         }
       }
-
       return new ImageData(newData, width, height);
     }
 
-    // ========== 解密主流程 ==========
-    decryptBtn.addEventListener('click', async () => {
+    // ========== 加密函数（带 XOR 开关） ==========
+    async function encryptBlockImageData(imgData, width, height, key, BLOCK_SIZE, enableXor) {
+    const data = imgData.data;
+    const blockW = Math.floor(width / BLOCK_SIZE);
+    const blockH = Math.floor(height / BLOCK_SIZE);
+    const totalBlocks = blockW * blockH;
+    const newData = new Uint8ClampedArray(data);
+    if (totalBlocks > 0) {
+        const permSeed = simpleHashU32(key + "_block_perm");
+        const perm = generatePerm(totalBlocks, permSeed);
+
+        // 关键：遍历每个输出块位置 j
+        for (let j = 0; j < totalBlocks; j++) {
+        const xorVal = enableXor ? simpleHashByte(key + `_xor_${j}`) : 0;
+
+        // 从原始图像的 perm[j] 位置读（因为解密时会从 j 读，并认为它对应原始块 perm[j]）
+        const srcX = (perm[j] % blockW) * BLOCK_SIZE;
+        const srcY = Math.floor(perm[j] / blockW) * BLOCK_SIZE;
+
+        // 写入到位置 j
+        const dstX = (j % blockW) * BLOCK_SIZE;
+        const dstY = Math.floor(j / blockW) * BLOCK_SIZE;
+
+        for (let dy = 0; dy < BLOCK_SIZE; dy++) {
+            for (let dx = 0; dx < BLOCK_SIZE; dx++) {
+            const srcIdx = ((srcY + dy) * width + (srcX + dx)) * 4;
+            const dstIdx = ((dstY + dy) * width + (dstX + dx)) * 4;
+            newData[dstIdx]     = data[srcIdx]     ^ xorVal;
+            newData[dstIdx + 1] = data[srcIdx + 1] ^ xorVal;
+            newData[dstIdx + 2] = data[srcIdx + 2] ^ xorVal;
+            newData[dstIdx + 3] = data[srcIdx + 3]; // Alpha 不 XOR
+            }
+        }
+        }
+    }
+    return new ImageData(newData, width, height);
+    }
+
+    async function processImage(isEncrypt) {
       if (!originalImage) return;
 
       const key = keyInput.value.trim();
       const BLOCK_SIZE = parseInt(blockSizeInput.value);
+      const enableXor = enableXorCheckbox.checked;
       if (BLOCK_SIZE <= 0) {
         alert('块大小必须大于 0');
         return;
@@ -189,28 +243,35 @@
       const imageData = ctx.getImageData(0, 0, w, h);
 
       try {
-        const decryptedData = await decryptBlockImageData(imageData, w, h, key, BLOCK_SIZE);
-        ctx.putImageData(decryptedData, 0, 0);
+        let resultData;
+        if (isEncrypt) {
+          resultData = await encryptBlockImageData(imageData, w, h, key, BLOCK_SIZE, enableXor);
+        } else {
+          resultData = await decryptBlockImageData(imageData, w, h, key, BLOCK_SIZE, enableXor);
+        }
 
-        // 显示结果
+        ctx.putImageData(resultData, 0, 0);
+
         outputCanvas.width = w;
         outputCanvas.height = h;
         const outCtx = outputCanvas.getContext('2d');
         outCtx.drawImage(tempCanvas, 0, 0);
 
-        // 启用下载
         downloadBtn.style.display = 'inline-block';
         downloadBtn.onclick = () => {
           const link = document.createElement('a');
-          link.download = 'decrypted.png';
+          link.download = isEncrypt ? 'encrypted.png' : 'decrypted.png';
           link.href = outputCanvas.toDataURL('image/png');
           link.click();
         };
       } catch (err) {
-        alert('解密失败：' + err.message);
+        alert((isEncrypt ? '加密' : '解密') + '失败：' + err.message);
         console.error(err);
       }
-    });
+    }
+
+    encryptBtn.addEventListener('click', () => processImage(true));
+    decryptBtn.addEventListener('click', () => processImage(false));
   </script>
 </body>
 </html>
