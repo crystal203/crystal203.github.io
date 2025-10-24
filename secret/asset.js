@@ -1,1 +1,1 @@
-window.assetList = ['aa72'];
+window.assetList = ['aa72', 'haruka', 'eugene'];
