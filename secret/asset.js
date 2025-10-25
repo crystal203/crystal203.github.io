@@ -18,6 +18,9 @@ const assetList = [
         name: "illuni",
     },
     {
+        name: "kahlor",
+    },
+    {
         name: "lucy",
     },
     {
