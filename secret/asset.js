@@ -18,6 +18,12 @@ const assetList = [
         name: "illuni",
     },
     {
+        name: "lucy",
+    },
+    {
+        name: "wakamo",
+    },
+    {
         name: "cg_1",
     },
     {
@@ -28,5 +34,11 @@ const assetList = [
     },
     {
         name: "cg_4",
+    },
+    {
+        name: "cg_5",
+    },
+    {
+        name: "cg_6",
     },
 ];
