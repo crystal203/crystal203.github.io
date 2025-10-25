@@ -3,9 +3,15 @@ const assetList = [
         name: "aa72",
     },
     {
-        name: "haruka",
+        name: "bianca",
     },
     {
         name: "eugene",
+    },
+    {
+        name: "eunha",
+    },
+    {
+        name: "haruka",
     },
 ];
