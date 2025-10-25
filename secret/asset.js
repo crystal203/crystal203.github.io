@@ -14,4 +14,19 @@ const assetList = [
     {
         name: "haruka",
     },
+    {
+        name: "illuni",
+    },
+    {
+        name: "cg_1",
+    },
+    {
+        name: "cg_2",
+    },
+    {
+        name: "cg_3",
+    },
+    {
+        name: "cg_4",
+    },
 ];
