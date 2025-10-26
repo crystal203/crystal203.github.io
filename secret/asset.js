@@ -30,21 +30,21 @@ const assetList = [
         name: "wakamo",
     },
     {
-        name: "cg_1",
+        name: "cg-1",
     },
     {
-        name: "cg_2",
+        name: "cg-2",
     },
     {
-        name: "cg_3",
+        name: "cg-3",
     },
     {
-        name: "cg_4",
+        name: "cg-4",
     },
     {
-        name: "cg_5",
+        name: "cg-5",
     },
     {
-        name: "cg_6",
+        name: "cg-6",
     },
 ];
