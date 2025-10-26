@@ -6,6 +6,9 @@ const assetList = [
         name: "bianca",
     },
     {
+        name: "chriselle",
+    },
+    {
         name: "eugene",
     },
     {
