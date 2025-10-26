@@ -15,6 +15,9 @@ const assetList = [
         name: "eunha",
     },
     {
+        name: "hana",
+    },
+    {
         name: "haruka",
     },
     {
@@ -25,6 +28,9 @@ const assetList = [
     },
     {
         name: "lucy",
+    },
+    {
+        name: "noxia",
     },
     {
         name: "wakamo",
