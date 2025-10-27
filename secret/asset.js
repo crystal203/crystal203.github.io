@@ -9,6 +9,9 @@ const assetList = [
         name: "chriselle",
     },
     {
+        name: "dohwa",
+    },
+    {
         name: "eugene",
     },
     {
@@ -25,6 +28,9 @@ const assetList = [
     },
     {
         name: "kahlor",
+    },
+    {
+        name: "lena",
     },
     {
         name: "lucy",
