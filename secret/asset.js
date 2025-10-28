@@ -3,6 +3,9 @@ const assetList = [
         name: "aa72-myth",
     },
     {
+        name: "bianca-myth",
+    },
+    {
         name: "bianca-special",
     },
     {
@@ -43,6 +46,12 @@ const assetList = [
     },
     {
         name: "noxia",
+    },
+    {
+        name: "randy",
+    },
+    {
+        name: "randy-myth",
     },
     {
         name: "wakamo",
