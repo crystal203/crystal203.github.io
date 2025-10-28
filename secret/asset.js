@@ -1,9 +1,9 @@
 const assetList = [
     {
-        name: "aa72",
+        name: "aa72-myth",
     },
     {
-        name: "bianca",
+        name: "bianca-special",
     },
     {
         name: "chriselle",
@@ -12,10 +12,10 @@ const assetList = [
         name: "dohwa",
     },
     {
-        name: "eugene",
+        name: "eugene-myth",
     },
     {
-        name: "eunha",
+        name: "eunha-myth",
     },
     {
         name: "hana",
@@ -27,13 +27,19 @@ const assetList = [
         name: "illuni",
     },
     {
-        name: "kahlor",
+        name: "j",
+    },
+    {
+        name: "j-myth",
+    },
+    {
+        name: "kahlor-myth",
     },
     {
         name: "lena",
     },
     {
-        name: "lucy",
+        name: "lucy-myth",
     },
     {
         name: "noxia",
