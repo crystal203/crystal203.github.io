@@ -1,5 +1,8 @@
 const assetList = [
     {
+        name: "aa72",
+    },
+    {
         name: "aa72-myth",
     },
     {
@@ -10,6 +13,9 @@ const assetList = [
     },
     {
         name: "chriselle",
+    },
+    {
+        name: "chriselle-myth",
     },
     {
         name: "dohwa",
@@ -28,6 +34,9 @@ const assetList = [
     },
     {
         name: "illuni",
+    },
+    {
+        name: "illuni_myth",
     },
     {
         name: "j",
@@ -55,6 +64,9 @@ const assetList = [
     },
     {
         name: "wakamo",
+    },
+    {
+        name: "wakamo-myth",
     },
     {
         name: "cg-1",
