@@ -39,7 +39,7 @@ const assetList = [
         name: "illuni",
     },
     {
-        name: "illuni_myth",
+        name: "illuni-myth",
     },
     {
         name: "j",
