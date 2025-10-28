@@ -33,6 +33,9 @@ const assetList = [
         name: "haruka",
     },
     {
+        name: "haruka-myth",
+    },
+    {
         name: "illuni",
     },
     {
