@@ -12,6 +12,12 @@ const assetList = [
         name: "bianca-special",
     },
     {
+        name: "callie",
+    },
+    {
+        name: "callie-myth",
+    },
+    {
         name: "chriselle",
     },
     {
@@ -46,6 +52,9 @@ const assetList = [
     },
     {
         name: "j-myth",
+    },
+    {
+        name: "kahlor",
     },
     {
         name: "kahlor-myth",
