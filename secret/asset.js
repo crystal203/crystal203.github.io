@@ -66,6 +66,9 @@ const assetList = [
         name: "lucy-myth",
     },
     {
+        name: "nifty-myth",
+    },
+    {
         name: "noxia",
     },
     {
