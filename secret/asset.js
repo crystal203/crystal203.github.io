@@ -6,6 +6,9 @@ const assetList = [
         name: "aa72-myth",
     },
     {
+        name: "arabelle-myth",
+    },
+    {
         name: "bianca-myth",
     },
     {
