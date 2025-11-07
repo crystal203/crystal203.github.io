@@ -234,7 +234,7 @@
             showSolution: 0,
             posType: { normal: true },
             character_: [
-                // ai: 1 近战 2 远程 3 刺客
+                // ai: 1 近战 2 远程 3 刺客 4 索辅
                 // type: 1 战士 2 射手 3 辅助 4 坦克
                 { name: "empty", nick: "", element: "", ai: 0, type: 0 },
 
@@ -251,6 +251,7 @@
                 { name: "forest_elf", nick: "estel", element: "ground", ai: 1, type: 2, speed: 1.25, hand: 7 },
                 { name: "wrestler_myth", nick: "callie", element: "dark", ai: 1, type: 1, speed: 1.6, hand: 0.1 },
                 { name: "randy", nick: "randy", element: "fire", ai: 1, type: 2, speed: 1, hand: 0.1 },
+                { name: "kahlor", nick: "kahlor", element: "fire", ai: 4, type: 1, speed: 1, hand: 0.1 },
 
             ],
             checker: [
@@ -262,6 +263,12 @@
             solution: [
                 {
                     name: "偶草1", party: [{ nick: "idol" }, { nick: "eunha" }, { nick: "daisy" }, { nick: "estel" }],
+                    solve: [
+                        { name: "基本偶像" },
+                    ]
+                },
+                {
+                    name: "三切", party: [{ nick: "kahlor" }, { nick: "beth" }, { nick: "idol" }, { nick: "rie" }],
                     solve: [
                         { name: "基本偶像" },
                     ]
@@ -671,6 +678,51 @@
                             elist[mini].locked = 1;
                             break;
                         }
+                        case 4: { // 锁辅助
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < elist.length; ++j) {
+                                const e = elist[j];
+                                if (e.c.type !== 3 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.c.type !== 3) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < elist.length; ++j) {
+                                    const e = elist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            clist[i].to = elist[mini];
+                            elist[mini].locked = 1;
+                            break;
+                        }
                         
                         case 7: { // 火奶
                             let minx = 10000;
@@ -779,6 +831,51 @@
                                 for (let j = 0; j < clist.length; ++j) {
                                     const e = clist[j];
                                     if (e.c.type !== 2) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.locked) continue;
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    let dis = this.distance(c.x, c.y, e.x, e.y);
+                                    if (dis < minx) {
+                                        minx = dis; mini = j;
+                                    }
+                                }
+                            }
+                            if (mini === -1) break;
+                            elist[i].to = clist[mini];
+                            clist[mini].locked = 1;
+                            break;
+                        }
+                        case 4: { // 锁辅助
+                            let minx = 10000;
+                            let mini = -1;
+                            for (let j = 0; j < clist.length; ++j) {
+                                const e = clist[j];
+                                if (e.c.type !== 3 || e.locked) continue;
+                                let dis = this.distance(c.x, c.y, e.x, e.y);
+                                if (dis < minx) {
+                                    minx = dis; mini = j;
+                                }
+                            }
+                            if (mini === -1) {
+                                for (let j = 0; j < clist.length; ++j) {
+                                    const e = clist[j];
+                                    if (e.c.type !== 3) continue;
                                     let dis = this.distance(c.x, c.y, e.x, e.y);
                                     if (dis < minx) {
                                         minx = dis; mini = j;
