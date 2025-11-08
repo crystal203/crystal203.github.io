@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>44 暗炮计算器</title>
+    <title>44 计算器</title>
     <script src="js/vue.js"></script>
 </head>
 
@@ -85,7 +85,7 @@
             <button @click="resetEnemy()" class="calcButton">重置</button>
         </div>
         <div style="position:absolute;left:715px;top:30px">
-            <b>坎公 44 偶像计算器</b>（Beta 2.0.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
+            <b>坎公 44 计算器</b>（Beta 3.0.0, by <a href="https://space.bilibili.com/500388576">crystal302</a>）<br>
             <a style="color:red">{{errorInfo}}</a>
             <a style="color:green">{{succInfo}}</a>
             <br>
@@ -242,7 +242,7 @@
                 { name: "dokkaebi_myth", nick: "eunha", element: "no", ai: 2, type: 2, speed: 1, hand: 5 },
                 { name: "invader_knight_myth", nick: "beth", element: "dark", ai: 3, type: 1, speed: 1.7, hand: 0.1 },
                 { name: "adela_noble_myth", nick: "daisy", element: "water", ai: 1, type: 4, speed: 1.5, hand: 0.1, taunt: 5.0 },
-                { name: "summer_rie_myth", nick: "rie", element: "no", ai: 3, type: 3, speed: 1.66, hand: 0.1 },
+                { name: "summer_rie_myth", nick: "rie", element: "no", ai: 1, type: 1, speed: 1.66, hand: 0.1 },
                 { name: "store_angel_myth", nick: "gabriel", element: "light", ai: 2, type: 3, speed: 1.0, hand: 5 },
                 { name: "future_princess", nick: "fp", element: "light", ai: 1, type: 4, speed: 1.15, hand: 0.1 },
                 { name: "kamael_myth", nick: "kamael", element: "earth", ai: 2, type: 3, speed: 1.0, hand: 3.5 },
@@ -259,12 +259,31 @@
                 { name: "基本偶像", party: ["idol", "eunha", "daisy", "*"] },
                 { name: "基本银河", party: ["eunha", "idol", "daisy", "*"] },
                 { name: "偶像艾草", party: ["idol", "eunha", "daisy", "estel"] },
+                { name: "火龙三切", party: ["kahlor", "beth", "idol", "rie"] },
             ],
             solution: [
                 {
                     name: "偶草1", party: [{ nick: "idol" }, { nick: "eunha" }, { nick: "daisy" }, { nick: "estel" }],
                     solve: [
                         { name: "基本偶像" },
+                    ]
+                },
+                {
+                    name: "暗刀", party: [{ nick: "beth" }, { nick: "idol" }, { nick: "daisy" }, { nick: "kahlor" }],
+                    solve: [
+                        { name: "火龙三切" },
+                    ]
+                },
+                {
+                    name: "萝冰", party: [{ nick: "daisy" }, { nick: "idol" }, { nick: "beth" }, { nick: "kahlor" }],
+                    solve: [
+                        { name: "火龙三切" },
+                    ]
+                },
+                {
+                    name: "暗刀2", party: [{ nick: "beth" }, { nick: "idol" }, { nick: "daisy" }, { nick: "rie" }],
+                    solve: [
+                        { name: "火龙三切" },
                     ]
                 },
                 {
