@@ -1,10 +1,12 @@
-// ===== 工具函数 =====
 function getUnitByShort(side, short, orderList = null) {
   const order = orderList || (side === 'blue' ? STATE.blueOrder : STATE.redOrder);
   return order.find(u => u.role.short === short);
 }
+
 function getPos(unit) { return unit ? unit.pos : null; }
+
 function getX(unit) { return getPos(unit)?.[1] ?? -1; }
+
 function getY(unit) { return getPos(unit)?.[0] ?? -1; }
 
 function resolveChar(expr, blueOrder, redOrder) {
@@ -17,7 +19,6 @@ function resolveChar(expr, blueOrder, redOrder) {
     const [_, sideChar, short] = m2;
     const unit = getUnitByShort(sideChar === 'B' ? 'blue' : 'red', short, sideChar === 'B' ? blueOrder : redOrder);
     if (!unit) return null;
-    // 关键：computeTargets 改为纯函数 computeTargetsForState
     const targets = computeTargetsForState({ blueOrder, redOrder });
     const target = targets.find(t => t.from === unit)?.to;
     return target;
@@ -32,7 +33,6 @@ const REL = {
   le: (a, b) => a <= b,
 };
 
-// ===== computeTargetsForState (pure function) =====
 function computeTargetsForState(state) {
   const { blueOrder, redOrder } = state;
   const originalHitStates = new Map();
@@ -83,11 +83,8 @@ function findNearestForState(unit, candidates) {
   }, { unit: null, dist: Infinity }).unit;
 }
 
-// ===== evaluateRuleForState (pure) =====
 function evaluateRuleForState(rule, state) {
   const { blueOrder, redOrder } = state;
-
-  // --- preconditions ---
   const checkTeamMatch = (sideOrder, targetList) => {
     if (sideOrder.length !== 4) return false;
     if (sideOrder[0]?.role.short !== targetList[0]) return false;
@@ -107,7 +104,6 @@ function evaluateRuleForState(rule, state) {
     return { redMatched: false };
   }
   const blueMatched = checkTeamMatch(blueOrder, pre.team.blue);
-
   let bluePositionSatisfied = true;
   if (rule.bluePosition && rule.bluePosition.length > 0) {
     for (let [short, axis, rel, val] of rule.bluePosition) {
@@ -123,37 +119,28 @@ function evaluateRuleForState(rule, state) {
       }
     }
   }
-
-  // --- scoring: enhanced with value tracking & referencing ---
   let score = 0;
-  const values = []; // 📌 values[i] = return value of i-th command
-
-  // 辅助：解析参数，支持 [#i] 引用
+  const values = [];
   const resolveArg = (arg) => {
     if (typeof arg === 'string' && /^$#\d+$/.test(arg)) {
       const idx = parseInt(arg.slice(2, -1), 10);
       if (idx < 0 || idx >= values.length || values[idx] === undefined) {
-        return NaN; // 引用越界 → NaN
+        return NaN;
       }
       return values[idx];
     }
     return arg;
   };
-
   for (let idx = 0; idx < (rule.scoring?.length || 0); idx++) {
     const item = rule.scoring[idx];
-    let result = false;    // 默认布尔（安全）
+    let result = false;
     let ptsToAdd = 0;
-
     try {
       if (item.length === 2) {
-        // [char, axis] → number
         const [expr, axis] = item;
         const unit = resolveChar(expr, blueOrder, redOrder);
         result = (unit ? (axis === 'x-pos' ? getX(unit) : getY(unit)) : -1);
-
       } else if (item.length === 4 && item[3] === 'delta') {
-        // [c1, c2, axis, 'delta'] → number
         const [e1, e2, axis] = item;
         const u1 = resolveChar(e1, blueOrder, redOrder);
         const u2 = resolveChar(e2, blueOrder, redOrder);
@@ -164,53 +151,38 @@ function evaluateRuleForState(rule, state) {
         } else {
           result = Infinity;
         }
-
       } else if (item[0] === 'const' && item.length === 2) {
-        // const [v] → number
         result = Number(resolveArg(item[1]));
-
       } else if (item[0] === 'subabs' && item.length === 3) {
-        // subabs i j → number
         const a = Number(resolveArg(item[1]));
         const b = Number(resolveArg(item[2]));
         result = Math.abs(a - b);
-
       } else if (item[0] === 'compare' && item.length === 4) {
-        // compare v1 rel v2 → boolean
         const v1 = resolveArg(item[1]);
         const rel = item[2];
         const v2 = resolveArg(item[3]);
         result = REL[rel] ? REL[rel](v1, v2) : false;
-
       } else if (item[0] === 'and' && (item.length === 3 || item.length === 4)) {
-        // and i j [score?] → boolean
         const b1 = Boolean(values[item[1]]);
         const b2 = Boolean(values[item[2]]);
         result = b1 && b2;
         if (item.length === 4 && result) ptsToAdd = Number(item[3]);
-
       } else if (item[0] === 'or' && (item.length === 3 || item.length === 4)) {
-        // or i j [score?] → boolean
         const b1 = Boolean(values[item[1]]);
         const b2 = Boolean(values[item[2]]);
         result = b1 || b2;
         if (item.length === 4 && result) ptsToAdd = Number(item[3]);
 
       } else if (item[0] === 'not' && (item.length === 2 || item.length === 3)) {
-        // not i [score?] → boolean
         const b = Boolean(values[item[1]]);
         result = !b;
         if (item.length === 3 && result) ptsToAdd = Number(item[2]);
-
       } else if (item[0] === 'xor' && (item.length === 3 || item.length === 4)) {
-        // xor i j [score?] → boolean
         const b1 = Boolean(values[item[1]]);
         const b2 = Boolean(values[item[2]]);
         result = b1 !== b2;
         if (item.length === 4 && result) ptsToAdd = Number(item[3]);
-
       } else if (item.length === 5) {
-        // [expr, axis, rel, val, pts] → boolean (旧式位置判断)
         const [expr, axis, rel, rawVal, pts] = item;
         const unit = resolveChar(expr, blueOrder, redOrder);
         if (unit) {
@@ -219,9 +191,7 @@ function evaluateRuleForState(rule, state) {
           result = REL[rel](posVal, val);
           if (result) ptsToAdd = Number(pts);
         }
-
       } else if (item.length === 7 && item[3] === 'delta') {
-        // [e1, e2, axis, 'delta', rel, val, pts] → boolean (旧式 delta 判断)
         const [e1, e2, axis, , rel, rawVal, pts] = item;
         const u1 = resolveChar(e1, blueOrder, redOrder);
         const u2 = resolveChar(e2, blueOrder, redOrder);
@@ -233,9 +203,7 @@ function evaluateRuleForState(rule, state) {
           result = REL[rel](diff, val);
           if (result) ptsToAdd = Number(pts);
         }
-
       } else if (item.length === 4 && item[1] === 'lock') {
-        // [from, 'lock', to, pts] → boolean
         const [fromExpr, , toExpr, pts] = item;
         const fromUnit = resolveChar(fromExpr, blueOrder, redOrder);
         const toUnit = resolveChar(toExpr, blueOrder, redOrder);
@@ -246,37 +214,27 @@ function evaluateRuleForState(rule, state) {
           if (result) ptsToAdd = Number(pts);
         }
       } else {
-        // 未知格式 → false
         console.warn(`Unknown scoring command [${idx}]:`, item);
         result = false;
       }
-
     } catch (e) {
       console.error(`Scoring command [${idx}] failed:`, item, e);
       result = false;
     }
-
     values.push(result);
     score += ptsToAdd;
   }
-
-  // 强制：蓝方站位不满足 → 得分归零（保留原逻辑）
   if (!bluePositionSatisfied) score = 0;
-
-  // 计算 maxScore（兼容旧式 pts 求和 / 显式 maxScore）
   const maxScore = rule.maxScore !== undefined ? rule.maxScore :
     (rule.scoring?.reduce((s, it) => {
-      // 仅旧命令最后一项为数字时计入 max
       if (it.length === 5 || it.length === 7 || (it.length === 4 && it[1] === 'lock')) {
         return s + (Number(it[it.length - 1]) || 0);
       }
-      // 新命令：仅当有 score 参数且是加分命令时，max += score
       if (['and', 'or', 'not', 'xor'].includes(it[0]) && it.length === 4) {
         return s + (Number(it[3]) || 0);
       }
       return s;
     }, 0) || 0);
-
   return {
     redMatched: true,
     blueMatched,
@@ -284,7 +242,6 @@ function evaluateRuleForState(rule, state) {
     maxScore,
     bluePositionSatisfied,
     recommendedBlueTeam: rule.preconditions?.team?.blue || [],
-    // debug: values  // 可选：用于调试时返回 values
   };
 }
 
@@ -292,7 +249,6 @@ function evaluateRule(rule) {
   return evaluateRuleForState(rule, STATE);
 }
 
-// ===== 枚举 & 站位优化 =====
 function* permutations(arr, k) {
   if (k === 0) { yield []; return; }
   for (let i = 0; i < arr.length; i++) {
@@ -320,33 +276,26 @@ function satisfiesBluePosition(units, bluePositionRules) {
 function computeBestBluePlacementForRule(rule) {
   const blueTeamShorts = rule.preconditions?.team?.blue || [];
   if (!Array.isArray(blueTeamShorts) || blueTeamShorts.length === 0) return null;
-
   const roles = blueTeamShorts.map(s => ALL_ROLES.find(r => r.short === s)).filter(Boolean);
   if (roles.length === 0) return null;
-
   while (roles.length < 4) roles.push(roles[roles.length % roles.length]);
   roles.length = 4;
-
   const firstRole = roles[0];
   const tailRoles = roles.slice(1);
   const tailPerms = [...permutations(tailRoles, Math.min(3, tailRoles.length))];
   const teamVariants = tailPerms.length > 0 ? tailPerms.map(p => [firstRole, ...p]) : [[firstRole, ...tailRoles.slice(0, 3)]];
   teamVariants.forEach(t => { while (t.length < 4) t.push(firstRole); });
-
   const blueCells = [];
   for (let r = 0; r < 5; r++) for (let c = 0; c < 4; c++) blueCells.push([r, c]);
-
   let best = { score: -Infinity, units: null };
   for (const team of teamVariants) {
     for (const posPerm of permutations(blueCells, 4)) {
       const units = team.map((role, i) => ({ side: 'blue', role, pos: posPerm[i], index: i }));
       if (!satisfiesBluePosition(units, rule.bluePosition)) continue;
-
       const tempMap = Array(5).fill().map(() => Array(14).fill(null));
       const tempBlue = [], tempRed = STATE.redOrder.map(u => ({ ...u, pos: [...u.pos] }));
       units.forEach(u => { const [r, c] = u.pos; tempMap[r][c] = u; tempBlue.push(u); });
       tempRed.forEach(u => { const [r, c] = u.pos; if (r < 5 && c < 14) tempMap[r][c] = u; });
-
       const result = evaluateRuleForState(rule, { map: tempMap, blueOrder: tempBlue, redOrder: tempRed });
       if (result.score > best.score) {
         best = { score: result.score, units: units.map(u => ({ ...u, pos: [...u.pos] })) };
@@ -356,7 +305,6 @@ function computeBestBluePlacementForRule(rule) {
   return best.score > -Infinity ? best : null;
 }
 
-// ===== 按钮函数（安全版）=====
 window._ruleCache = {};
 window._teamCache = {};
 
@@ -369,10 +317,8 @@ function applyTactic(arg) {
   } else {
     shortList = [];
   }
-
   STATE.blueOrder.forEach(u => { const [r, c] = u.pos; STATE.map[r][c] = null; });
   STATE.blueOrder = [];
-
   const validRoles = [...new Set(shortList)].map(s => ALL_ROLES.find(r => r.short === s)).filter(Boolean);
   const cols = [0, 1, 2, 3], rows = [0, 1, 2, 3, 4];
   for (let i = 0; i < validRoles.length && i < 4; i++) {
@@ -407,7 +353,6 @@ function doOptimalPlacement(ruleId) {
         showNotification('❌ 未找到有效站位', 'warning');
         return;
       }
-
       STATE.blueOrder.forEach(u => { const [r, c] = u.pos; STATE.map[r][c] = null; });
       STATE.blueOrder = [];
       best.units.forEach(u => {
@@ -428,12 +373,9 @@ function doOptimalPlacement(ruleId) {
   }, 50);
 }
 
-// ===== checkAllRules（完整版：含评分面板 + 战术面板）=====
 async function checkAllRules() {
-  // 清理缓存
   window._ruleCache = {};
   window._teamCache = {};
-
   // ===== 1. 加载所有规则 =====
   const rulePaths = [
     './rule/暗刀火龙解火龙三切.js',
@@ -450,8 +392,7 @@ async function checkAllRules() {
       console.warn(`规则 ${url} 加载失败:`, e.message);
     }
   }
-
-  // ===== 2. 渲染评分面板（右上角，保留原功能）=====
+  // ===== 2. 渲染评分面板 =====
   const scorePanel = document.getElementById('scorePanel') ||
     (() => {
       const panel = document.createElement('div');
@@ -473,7 +414,6 @@ async function checkAllRules() {
       document.body.appendChild(panel);
       return panel;
     })();
-
   if (allResults.some(r => r.result.blueMatched)) {
     let html = '';
     allResults.filter(r => r.result.blueMatched).forEach(({ rule, result }) => {
@@ -503,8 +443,7 @@ async function checkAllRules() {
   } else {
     scorePanel.style.display = 'none';
   }
-
-  // ===== 3. 渲染战术推荐面板（中部）=====
+  // ===== 3. 渲染战术推荐面板 =====
   const orderContainer = document.querySelector('.order-container');
   let tacticPanel = document.getElementById('tacticPanel');
   if (!tacticPanel && orderContainer) {
@@ -524,12 +463,10 @@ async function checkAllRules() {
         `;
     orderContainer.parentNode.insertBefore(tacticPanel, orderContainer);
   }
-
   if (tacticPanel && allResults.length > 0) {
     let html = '';
     let ruleIdCounter = 0;
     let teamIdCounter = 0;
-
     allResults.forEach(({ rule, result }) => {
       const blueTeam = Array.isArray(result.recommendedBlueTeam) ? result.recommendedBlueTeam : [];
       const ruleId = 'rule_' + Date.now() + '_' + (ruleIdCounter++);
@@ -543,7 +480,6 @@ async function checkAllRules() {
           return role ? role.name : short;
         }).join('、')
         : '（清空现有阵容）';
-
       html += `
                 <div style="margin-bottom: 16px; padding: 14px; border: 1px solid #eee; border-radius: 8px;">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
@@ -568,7 +504,6 @@ async function checkAllRules() {
                 </div>
             `;
     });
-
     document.getElementById('tacticContent').innerHTML = html || '<div style="text-align:center; color:#999; padding:20px;">暂无战术推荐</div>';
     tacticPanel.style.display = 'block';
   } else if (tacticPanel) {
@@ -576,11 +511,7 @@ async function checkAllRules() {
   }
 }
 
-// ===== 暴露全局 =====
 window.evaluateRule = evaluateRule;
 window.checkAllRules = checkAllRules;
 window.applyTactic = applyTactic;
 window.doOptimalPlacement = doOptimalPlacement;
-
-// ===== 自动触发 =====
-// 在 renderMap 末尾添加：requestAnimationFrame(checkAllRules);

@@ -46,18 +46,14 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* ===== 全局：确保 .map-container 可居中 ===== */
         .map-section {
             text-align: center;
-            /* 关键：使 inline-block 居中 */
         }
 
         .map-section .map-container {
             text-align: initial;
-            /* 恢复内部对齐 */
         }
 
-        /* ===== 说明信息面板 ===== */
         .info-panel {
             margin-top: 30px;
             background: white;
@@ -117,25 +113,19 @@
             margin: 0 2px;
         }
 
-        /* ===== 移动端响应式优化（关键修复） ===== */
         @media (max-width: 768px) {
-
-            /* 启用横向滚动，允许地图超出屏幕 */
             .map-section {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 padding: 0 10px;
             }
 
-            /* 移除 min-width！让容器自然收缩 */
             .map-container {
                 min-width: auto !important;
                 max-width: fit-content;
-                /* 严格包裹内容 */
                 display: inline-block;
             }
 
-            /* 缩小格子：目标总宽 ≈ 14×32 + 13×1 + 2×4(padding) = 475px */
             .map {
                 grid-template-columns: repeat(14, 32px);
                 grid-template-rows: repeat(5, 32px);
@@ -156,7 +146,6 @@
                 font-size: 5px;
             }
 
-            /* 角色卡片适配 */
             .role-item {
                 width: 64px;
                 height: 86px;
@@ -191,7 +180,6 @@
             }
         }
 
-        /* Header Styles */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -217,7 +205,6 @@
             line-height: 1.6;
         }
 
-        /* Zone Headers */
         .zone-header {
             display: flex;
             align-items: center;
@@ -245,7 +232,6 @@
             font-size: 1.4rem;
         }
 
-        /* Order Lists */
         .order-container {
             display: flex;
             justify-content: center;
@@ -407,7 +393,6 @@
             display: none;
         }
 
-        /* Map Section */
         .map-title {
             text-align: center;
             margin-bottom: 20px;
@@ -447,7 +432,6 @@
             border-radius: 10px;
             box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08);
             padding: 0;
-            /* 移除 padding，避免尺寸偏差 */
             margin: 0 auto;
         }
 
@@ -535,7 +519,6 @@
             z-index: 5;
         }
 
-        /* Arrow Layer — 注意：JS 需改为相对 .map-container 定位，而非 fixed 尺寸 */
         .arrow-layer {
             position: absolute;
             top: 0;
@@ -546,7 +529,6 @@
             z-index: 15;
         }
 
-        /* Role Select Modal */
         .overlay {
             position: fixed;
             top: 0;
@@ -702,7 +684,6 @@
             transform: translateY(-2px);
         }
 
-        /* Zone Labels */
         .zone-label {
             position: absolute;
             top: -30px;
@@ -728,7 +709,6 @@
             color: #757575;
         }
 
-        /* Responsive Layout */
         @media (max-width: 1200px) {
             .order-container {
                 flex-direction: column;
@@ -741,7 +721,6 @@
             }
         }
 
-        /* Animation for new units */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -758,7 +737,6 @@
             animation: fadeInUp 0.4s ease-out;
         }
 
-        /* 模拟拖动：待移动源格子高亮（比普通 highlight 更强） */
         .cell.pending-move-source {
             box-shadow: 0 0 0 4px gold, 0 0 0 8px rgba(30, 136, 229, 0.2), 0 0 12px rgba(255, 215, 0, 0.6);
             transform: scale(1.12) !important;
@@ -766,7 +744,6 @@
             position: relative;
         }
 
-        /* 覆盖 .highlight 的 transform 冲突 */
         .highlight.pending-move-source {
             transform: scale(1.12) !important;
         }
@@ -781,27 +758,27 @@
         </div>
 
         <div id="scorePanel" style="
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            max-width: 320px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            z-index: 999;
-            font-size: 13px;
-            display: none;
-        ">
-            <div style="
-                background: linear-gradient(90deg, #1E88E5, #E53935);
-                color: white;
-                padding: 10px 16px;
-                font-weight: 600;
-                border-radius: 12px 12px 0 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                max-width: 320px;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+                z-index: 999;
+                font-size: 13px;
+                display: none;
             ">
+            <div style="
+                    background: linear-gradient(90deg, #1E88E5, #E53935);
+                    color: white;
+                    padding: 10px 16px;
+                    font-weight: 600;
+                    border-radius: 12px 12px 0 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                ">
                 <span><i class="fas fa-trophy"></i> 战术评分</span>
                 <button onclick="document.getElementById('scorePanel').style.display='none'"
                     style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;">×</button>
@@ -825,30 +802,31 @@
             </label>
         </div>
         </br>
-        <!-- Blue Team Order -->
+
         <div id="tacticPanel" style="
-    display: none;
-    margin: 20px auto;
-    max-width: 1000px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-">
+                display: none;
+                margin: 20px auto;
+                max-width: 1000px;
+                background: white;
+                border-radius: 12px;
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            ">
             <div style="
-            background: linear-gradient(90deg, #1E88E5, #7B1FA2);
-            color: white;
-            padding: 14px 20px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        ">
+                    background: linear-gradient(90deg, #1E88E5, #7B1FA2);
+                    color: white;
+                    padding: 14px 20px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                ">
                 <i class="fas fa-microchip"></i>
                 <span>智能战术推荐</span>
             </div>
             <div id="tacticContent" style="padding: 16px;"></div>
         </div>
+
         <div class="order-container">
             <div class="order-panel blue">
                 <div class="zone-header blue">
@@ -857,7 +835,6 @@
                 </div>
                 <div class="order-list" id="blueOrder"></div>
             </div>
-
             <div class="order-panel red">
                 <div class="zone-header red">
                     <i class="fas fa-shield-alt"></i>
@@ -867,7 +844,6 @@
             </div>
         </div>
 
-        <!-- Map Section -->
         <div class="map-section">
             <div class="map-container">
                 <div class="map" id="map"></div>
@@ -942,8 +918,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Role Selection Modal -->
     <div class="overlay" id="overlay">
         <div class="role-select">
             <div class="modal-header">
@@ -983,7 +957,6 @@
                 blueOrder: []
             };
 
-            // DOM refs
             const mapEl = document.getElementById('map');
             const redOrderEl = document.getElementById('redOrder');
             const blueOrderEl = document.getElementById('blueOrder');
@@ -1007,19 +980,16 @@
                         if (c < 4) cell.classList.add('blue-zone');
                         else if (c >= 10) cell.classList.add('red-zone');
                         else cell.classList.add('neutral-zone');
-
                         // 添加区域标签
                         cell.dataset.row = r;
                         cell.dataset.col = c;
                         cell.addEventListener('mousedown', (e) => {
                             if (e.button !== 0) return;
-                            // ✅ 关键：模拟拖动开启时，跳过 handleDragStart
                             if (document.getElementById('simulateDrag')?.checked) return;
                             handleDragStart(e, r, c);
                         });
                         cell.addEventListener('touchstart', (e) => {
                             if (e.touches.length === 1) {
-                                // ✅ 同样检查 simulateDrag
                                 if (document.getElementById('simulateDrag')?.checked) return;
                                 const touch = e.touches[0];
                                 dragState.touchStartX = touch.clientX;
@@ -1027,27 +997,23 @@
                                 dragState.isScrolling = false;
                             }
                         }, { passive: false });
-
                         cell.addEventListener('touchmove', (e) => {
                             if (e.touches.length !== 1 || dragState.isScrolling) return;
-
                             const touch = e.touches[0];
                             const dx = Math.abs(touch.clientX - dragState.touchStartX);
                             const dy = Math.abs(touch.clientY - dragState.touchStartY);
-
                             // 垂直滚动优先：当 dy > dx 时视为滚动
                             if (dy > dx) {
                                 dragState.isScrolling = true;
                                 return;
                             }
-
                             // 水平拖拽：阻止默认滚动
                             e.preventDefault();
                             handleDragMove(touch);
                         }, { passive: false });
                         // 恢复单击功能：添加 click 事件（原逻辑）
                         cell.addEventListener('click', (e) => {
-                            // 如果是拖拽操作，不触发点击（通过短时间检测）
+                            // 如果是拖拽操作，不触发点击
                             if (Date.now() - (dragState.lastDragEndTime || 0) < 300) return;
                             handleCellClick(r, c);
                         });
@@ -1070,7 +1036,6 @@
                         if (c < 4) cell.classList.add('blue-zone');
                         else if (c >= 10) cell.classList.add('red-zone');
                         else cell.classList.add('neutral-zone');
-
                         // 清空内容并重新添加区域标签
                         cell.innerHTML = '';
                         if (r === 0) {
@@ -1078,7 +1043,6 @@
                             label.className = 'cell-type';
                             if (label.textContent) cell.appendChild(label);
                         }
-
                         if (unit) {
                             const cellContent = document.createElement('div');
                             cellContent.style.display = 'flex';
@@ -1088,9 +1052,7 @@
                             cellContent.style.width = '100%';
                             cellContent.style.height = '100%';
                             cellContent.style.fontSize = '9px';
-
                             const showAvatars = document.getElementById('showAvatars').checked;
-
                             if (showAvatars) {
                                 const img = document.createElement('img');
                                 img.src = `./asset/${unit.role.short}.png`;
@@ -1100,8 +1062,6 @@
                                 img.style.objectFit = 'cover';
                                 img.style.borderRadius = '4px';
                                 img.style.marginBottom = '2px';
-
-                                // 加载失败时显示缩写
                                 img.onerror = () => {
                                     img.style.display = 'none';
                                     cellContent.innerHTML = `<div style="font-weight:bold; margin-bottom:1px;">${unit.role.short}</div>`;
@@ -1110,9 +1070,7 @@
                             } else {
                                 cellContent.innerHTML = `<div style="font-weight:bold; margin-bottom:1px;">${unit.role.short}</div>`;
                             }
-
                             cell.appendChild(cellContent);
-
                             cell.classList.add(unit.side === 'red' ? 'red-occupied' : 'occupied');
                             if (unit === getFirstUnit(unit.side)) {
                                 cell.classList.add('highlight');
@@ -1123,17 +1081,14 @@
                 const computedTargets = computeTargets();
                 const lockedUnits = new Set();
                 computedTargets.forEach(t => lockedUnits.add(t.to));
-
                 // 为未锁定角色添加标记
                 for (let r = 0; r < 5; r++) {
                     for (let c = 0; c < 14; c++) {
                         const unit = STATE.map[r][c];
                         const cell = mapEl.children[r * 14 + c];
-
                         // 移除旧标记
                         const oldMarker = cell.querySelector('.unlocked-marker');
                         if (oldMarker) oldMarker.remove();
-
                         // 添加新标记（仅当存在角色且未被锁定）
                         if (unit && !lockedUnits.has(unit)) {
                             const marker = document.createElement('div');
@@ -1146,7 +1101,7 @@
                 renderOrderLists();
                 drawArrows();
                 if (typeof checkAllRules === 'function') {
-                    requestAnimationFrame(checkAllRules); // 避免阻塞渲染
+                    requestAnimationFrame(checkAllRules);
                 }
             }
 
@@ -1158,10 +1113,8 @@
             // ===== 单元格点击 =====
             function handleCellClick(r, c) {
                 if (dragState.isActive || dragState.isClickPrevented) {
-                    // 清理预览
                     const preview = document.getElementById('drag-preview');
                     if (preview) preview.remove();
-                    // 重置状态
                     dragState = {
                         isActive: false,
                         isClickPrevented: false,
@@ -1176,19 +1129,14 @@
                         validDropZone: null
                     };
                 }
-
-                // 防拖拽误触
                 if (Date.now() - (dragState.lastDragEndTime || 0) < 300) return;
-
                 const unit = STATE.map[r][c];
                 const side = c < 4 ? 'blue' : c >= 10 ? 'red' : null;
-                if (!side) return; // 不在阵营区，无视
-
+                if (!side) return;
                 simulateDragMode = document.getElementById('simulateDrag')?.checked || false;
-
-                // ✅ 模拟拖动模式：分两步操作
+                // 模拟拖动模式
                 if (simulateDragMode) {
-                    // 第一步：点击一个已有角色 → 进入待移动状态
+                    // 进入待移动状态
                     if (unit && !pendingMoveUnit) {
                         pendingMoveUnit = unit;
                         pendingMoveCell = mapEl.children[r * 14 + c];
@@ -1196,8 +1144,7 @@
                         showNotification(`📌 请点击目标位置放置 ${unit.role.name}`, 'info');
                         return;
                     }
-
-                    // 第二步：已有待移动单位
+                    // 已有待移动单位
                     if (pendingMoveUnit) {
                         // 点击自己 → 取消
                         if (unit === pendingMoveUnit) {
@@ -1205,44 +1152,37 @@
                             showNotification('已取消移动', 'info');
                             return;
                         }
-
                         // 检查是否同阵营
                         if (pendingMoveUnit.side !== side) {
                             showNotification('⚠️ 不能跨阵营移动！', 'warning');
                             cancelPendingMove();
                             return;
                         }
-
                         // 合法同阵营格子：执行移动/交换
-                        const targetUnit = unit; // 可能为 null（空）或同阵营 unit
+                        const targetUnit = unit;
                         const srcR = pendingMoveUnit.pos[0];
                         const srcC = pendingMoveUnit.pos[1];
-
                         // --- 执行操作 ---
                         if (!targetUnit) {
-                            // ✅ 移动到空格
+                            // 移动到空格
                             STATE.map[srcR][srcC] = null;
                             STATE.map[r][c] = pendingMoveUnit;
                             pendingMoveUnit.pos = [r, c];
                             showNotification(`✅ 移动 ${pendingMoveUnit.role.name} 到 (${r + 1},${c + 1})`, 'success');
                         } else {
-                            // ✅ 同阵营交换
+                            // 同阵营交换
                             STATE.map[srcR][srcC] = targetUnit;
                             STATE.map[r][c] = pendingMoveUnit;
                             pendingMoveUnit.pos = [r, c];
                             targetUnit.pos = [srcR, srcC];
                             showNotification(`🔄 交换 ${pendingMoveUnit.role.name} 与 ${targetUnit.role.name}`, 'success');
                         }
-
                         renderMap();
                         cancelPendingMove();
                         return;
                     }
-
-                    // 点击空格但无待移动单位 → 仍走原逻辑（布置新角色）
                 }
-
-                // ❌ 非模拟拖动模式：走原逻辑
+                // 非模拟拖动模式
                 if (unit) {
                     removeUnit(r, c);
                 } else {
@@ -1255,6 +1195,7 @@
                     openRoleSelect();
                 }
             }
+
             function cancelPendingMove() {
                 if (pendingMoveCell) {
                     pendingMoveCell.classList.remove('highlight', 'pending-move-source');
@@ -1262,43 +1203,39 @@
                 pendingMoveUnit = null;
                 pendingMoveCell = null;
             }
+
             function openRoleSelect() {
                 roleOptions.innerHTML = '';
                 ALL_ROLES.forEach(role => {
                     const div = document.createElement('div');
                     div.className = 'role-option';
-
                     // 检查同区域是否已存在该角色
                     const isDuplicate = selectedCell &&
                         ((selectedCell.side === 'blue' && STATE.blueOrder.some(u => u.role.short === role.short)) ||
                             (selectedCell.side === 'red' && STATE.redOrder.some(u => u.role.short === role.short)));
-
                     if (isDuplicate) {
                         div.style.opacity = '0.4';
                         div.style.pointerEvents = 'none';
                         div.style.position = 'relative';
                     }
-
                     const typeClass = role.type === '战士' ? 'type-warrior' :
                         role.type === '坦克' ? 'type-tank' :
                             role.type === '辅助' ? 'type-support' : 'type-archer';
-
                     div.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 40px; height: 40px; border-radius: 6px; overflow: hidden; flex-shrink: 0;">
-                    <img src="./asset/${role.short}.png" 
-                        alt="${role.short}" 
-                        style="width: 100%; height: 100%; object-fit: cover;"
-                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#666;color:white;font-size:12px;&quot;>${role.short}</div>'">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 40px; height: 40px; border-radius: 6px; overflow: hidden; flex-shrink: 0;">
+                        <img src="./asset/${role.short}.png" 
+                            alt="${role.short}" 
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#666;color:white;font-size:12px;&quot;>${role.short}</div>'">
+                        </div>
+                        <div style="flex: 1;">
+                        <div class="name">${role.name}</div>
+                        <span class="type ${typeClass}">${role.type}</span>
+                        <div class="ai">${role.ai}</div>
+                        </div>
                     </div>
-                    <div style="flex: 1;">
-                    <div class="name">${role.name}</div>
-                    <span class="type ${typeClass}">${role.type}</span>
-                    <div class="ai">${role.ai}</div>
-                    </div>
-                </div>
-                `;
-
+                    `;
                     if (isDuplicate) {
                         const badge = document.createElement('div');
                         badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 已存在';
@@ -1315,7 +1252,6 @@
                     } else {
                         div.onclick = () => selectRoleImmediate(role);
                     }
-
                     roleOptions.appendChild(div);
                 });
                 overlay.classList.add('active');
@@ -1323,23 +1259,19 @@
 
             function selectRoleImmediate(role) {
                 if (!selectedCell) return;
-
                 const { row, col, side } = selectedCell;
                 const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
-
-                // 关键检查：同区域是否已存在相同角色
+                // 同区域是否已存在相同角色
                 const isDuplicate = order.some(u => u.role.short === role.short);
                 if (isDuplicate) {
                     showNotification(`⚠️ ${side === 'blue' ? '我方' : '敌方'}阵容中已存在 ${role.name}`, 'warning');
                     return;
                 }
-
                 // 检查数量限制
                 if (order.length >= 4) {
                     showNotification(`最多布置4个${side === 'red' ? '敌方' : '我方'}角色！`, 'warning');
                     return;
                 }
-
                 const unit = { side, role, pos: [row, col], index: order.length, isNew: true };
                 STATE.map[row][col] = unit;
                 order.push(unit);
@@ -1383,10 +1315,8 @@
                 list.forEach((unit, i) => {
                     const div = document.createElement('div');
                     div.className = 'role-item';
-
                     const computedTargets = computeTargets();
                     const lockedUnits = new Set(computedTargets.map(t => t.to));
-
                     // 为未锁定角色添加标记
                     if (unit && !lockedUnits.has(unit)) {
                         const marker = document.createElement('div');
@@ -1402,14 +1332,11 @@
                         div.appendChild(marker);
                     }
                     if (i === 0) div.classList.add('highlight');
-
-                    // 为新添加的元素添加动画
                     if (unit.isNew) {
                         div.classList.add('new');
                         setTimeout(() => div.classList.remove('new'), 400);
                         delete unit.isNew;
                     }
-
                     const avatarDiv = document.createElement('div');
                     avatarDiv.className = 'avatar';
                     avatarDiv.style.display = 'flex';
@@ -1417,10 +1344,7 @@
                     avatarDiv.style.justifyContent = 'center';
                     avatarDiv.style.fontSize = '14px';
                     avatarDiv.style.fontWeight = 'bold';
-
-                    // 检查开关状态
                     const showAvatars = document.getElementById('showAvatars').checked;
-
                     if (showAvatars) {
                         const img = document.createElement('img');
                         img.src = `./asset/${unit.role.short}.png`;
@@ -1429,8 +1353,6 @@
                         img.style.height = '100%';
                         img.style.objectFit = 'cover';
                         img.style.borderRadius = '8px';
-
-                        // 加载失败时显示首字母缩写
                         img.onerror = () => {
                             img.style.display = 'none';
                             avatarDiv.textContent = unit.role.short;
@@ -1446,7 +1368,6 @@
                             '#666';
                     }
                     div.insertBefore(avatarDiv, div.firstChild);
-
                     if (i > 0) {
                         const btn = document.createElement('div');
                         btn.className = 'swap-btn';
@@ -1474,9 +1395,7 @@
             function findTarget(attacker, candidates, isRedAttacker) {
                 const { ai } = attacker.role;
                 const unhit = candidates.filter(c => !c.isHit);
-
                 let target = null;
-
                 if (ai === '辅助刺客ai' || ai === '射手刺客ai') {
                     const targetType = ai === '辅助刺客ai' ? '辅助' : '射手';
                     target = unhit.find(u => u.role.type === targetType);
@@ -1491,7 +1410,6 @@
                 } else if (ai === '远程ai') {
                     target = findNearest(attacker, candidates);
                 }
-
                 if (target) target.isHit = true;
                 return target;
             }
@@ -1507,17 +1425,12 @@
             }
 
             function computeTargets() {
-                // 关键：直接在原始对象上操作 isHit，但需保存原始状态以便恢复
                 const originalHitStates = new Map();
-
-                // 保存原始 isHit 状态（用于后续恢复）
                 [...STATE.redOrder, ...STATE.blueOrder].forEach(u => {
                     originalHitStates.set(u, u.isHit || false);
-                    u.isHit = false; // 重置为未命中
+                    u.isHit = false;
                 });
-
                 const targets = [];
-
                 // 顺序：我方全体 → 敌方全体
                 for (const attacker of [...STATE.blueOrder, ...STATE.redOrder]) {
                     const enemyOrder = attacker.side === 'blue' ? STATE.redOrder : STATE.blueOrder;
@@ -1528,8 +1441,6 @@
                         targets.push({ from: attacker, to: target });
                     }
                 }
-
-                // 恢复原始 isHit 状态（保持数据纯净）
                 originalHitStates.forEach((value, unit) => {
                     unit.isHit = value;
                 });
@@ -1561,7 +1472,6 @@
                 return targets;
             }
 
-            // 辅助：findTarget 的 state 无关版本（纯函数）
             function findTargetForState(attacker, candidates) {
                 const { ai } = attacker.role;
                 const unhit = candidates.filter(c => !c.isHit);
@@ -1595,12 +1505,9 @@
                 const svgNS = "http://www.w3.org/2000/svg";
                 const svg = document.createElementNS(svgNS, "svg");
                 const arrowLayerRect = arrowLayer.getBoundingClientRect();
-
-                // ✅ 关键：viewBox 严格匹配 arrowLayer 实际尺寸（像素级一致）
                 svg.setAttribute("width", "100%");
                 svg.setAttribute("height", "100%");
                 svg.setAttribute("viewBox", `0 0 ${arrowLayerRect.width} ${arrowLayerRect.height}`);
-
                 // ===== 创建 marker =====
                 const defs = document.createElementNS(svgNS, "defs");
                 const createMarker = (id, color) => {
@@ -1624,12 +1531,10 @@
                 dualMarkerStart.setAttribute("orient", "auto-start-reverse");
                 defs.append(blueMarker, redMarker, dualMarkerStart, dualMarkerEnd);
                 svg.appendChild(defs);
-
                 // ===== 双向检测 =====
                 const showDualArrows = document.getElementById('showDualArrows').checked;
                 const dualPairs = new Set();
                 const processed = new Set();
-
                 if (showDualArrows) {
                     for (let i = 0; i < targets.length; i++) {
                         const t1 = targets[i];
@@ -1652,8 +1557,6 @@
                         }
                     }
                 }
-
-                // ✅ 精准：获取格子中心（相对 arrowLayer 左上角）
                 const getCenter = (r, c) => {
                     const cell = mapEl.children[r * 14 + c];
                     if (!cell) return { x: 0, y: 0 };
@@ -1664,24 +1567,19 @@
                         y: cellRect.top + cellRect.height / 2 - layerRect.top
                     };
                 };
-
                 // ===== 绘制单向箭头 =====
                 targets.forEach((target, idx) => {
                     if (processed.has(idx) && showDualArrows) return;
                     const { from, to } = target;
                     const start = getCenter(...from.pos);
                     const end = getCenter(...to.pos);
-
-                    // ✅ 确定性偏移（避免重叠）
                     const seed = from.pos[0] * 1e3 + from.pos[1] * 1e2 + to.pos[0] * 10 + to.pos[1];
-                    const offset = ((seed * 9301 + 49297) % 71 - 35) * 0.3; // [-10.5, +10.5]
-
+                    const offset = ((seed * 9301 + 49297) % 71 - 35) * 0.3;
                     const dx = end.x - start.x;
                     const dy = end.y - start.y;
                     const len = Math.hypot(dx, dy) || 1;
-                    const nx = -dy / len; // 法向量（垂直方向）
+                    const nx = -dy / len;
                     const ny = dx / len;
-
                     const path = document.createElementNS(svgNS, "path");
                     path.setAttribute("d", `M ${start.x + nx * offset} ${start.y + ny * offset} L ${end.x + nx * offset} ${end.y + ny * offset}`);
                     path.setAttribute("fill", "none");
@@ -1691,7 +1589,6 @@
                     path.setAttribute("marker-end", from.side === 'blue' ? "url(#blueArrow)" : "url(#redArrow)");
                     svg.appendChild(path);
                 });
-
                 // ===== 绘制双向箭头 =====
                 dualPairs.forEach(key => {
                     const [fromKey, toKey] = key.split('|');
@@ -1699,14 +1596,12 @@
                     const [, tr, tc] = toKey.split('-').map(Number);
                     const start = getCenter(fr, fc);
                     const end = getCenter(tr, tc);
-
                     const dx = end.x - start.x;
                     const dy = end.y - start.y;
                     const len = Math.hypot(dx, dy) || 1;
                     const nx = -dy / len;
                     const ny = dx / len;
                     const offset = 6;
-
                     const path = document.createElementNS(svgNS, "path");
                     path.setAttribute("d", `M ${start.x + nx * offset} ${start.y + ny * offset} L ${end.x - nx * offset} ${end.y - ny * offset}`);
                     path.setAttribute("fill", "none");
@@ -1717,46 +1612,37 @@
                     path.setAttribute("marker-end", "url(#dualEnd)");
                     svg.appendChild(path);
                 });
-
                 arrowLayer.innerHTML = '';
                 arrowLayer.appendChild(svg);
             }
 
             // ===== 通知系统 =====
             function showNotification(message, type = 'info') {
-                // 创建通知元素
                 const notification = document.createElement('div');
                 notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 12px 20px;
-        border-radius: 8px;
-        color: white;
-        font-weight: 500;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        z-index: 10000;
-        transform: translateX(200%);
-        transition: transform 0.3s ease;
-      `;
-
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    color: white;
+                    font-weight: 500;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    transform: translateX(200%);
+                    transition: transform 0.3s ease;
+                `;
                 let bgColor = '#2196F3';
                 if (type === 'success') bgColor = '#4CAF50';
                 else if (type === 'warning') bgColor = '#FF9800';
                 else if (type === 'error') bgColor = '#F44336';
                 else if (type === 'info') bgColor = '#2196F3';
-
                 notification.style.background = `linear-gradient(90deg, ${bgColor}, ${darkenColor(bgColor, 20)})`;
                 notification.textContent = message;
-
                 document.body.appendChild(notification);
-
-                // 触发动画
                 setTimeout(() => {
                     notification.style.transform = 'translateX(0)';
                 }, 10);
-
-                // 自动消失
                 setTimeout(() => {
                     notification.style.transform = 'translateX(200%)';
                     setTimeout(() => {
@@ -1768,7 +1654,6 @@
             }
 
             function darkenColor(color, percent) {
-                // 简单的RGB变暗
                 let r, g, b;
                 if (color.startsWith('#')) {
                     color = color.slice(1);
@@ -1784,36 +1669,32 @@
                 return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
             }
 
-            // ===== 启动 =====
             initMap();
 
-            // 添加一些初始示例（可选）
             setTimeout(() => {
-                // 示例：布置一些初始角色
-                const examples = [
-
-                ];
-
+                // 此处可以布置一些初始角色
+                const examples = [];
                 examples.forEach(ex => {
                     const unit = { side: ex.side, role: ex.role, pos: [ex.r, ex.c], index: 0, isNew: true };
                     STATE.map[ex.r][ex.c] = unit;
                     if (ex.side === 'blue') STATE.blueOrder.push(unit);
                     else STATE.redOrder.push(unit);
                 });
-
                 // 更新索引
                 STATE.blueOrder.forEach((u, i) => u.index = i);
                 STATE.redOrder.forEach((u, i) => u.index = i);
 
                 renderMap();
             }, 500);
+
             document.getElementById('showAvatars').addEventListener('change', () => {
-                renderMap(); // 重新渲染所有视图
+                renderMap();
             });
+
             let dragState = {
                 isActive: false,
                 isClickPrevented: false,
-                isScrolling: false, // 新增：滚动状态标记
+                isScrolling: false,
                 touchStartX: 0,
                 touchStartY: 0,
                 startRow: -1,
@@ -1825,7 +1706,6 @@
             };
 
             function handleDragStart(e, r, c) {
-                // 添加延迟启动，避免与点击冲突
                 setTimeout(() => {
                     if (!dragState.isClickPrevented) {
                         const unit = STATE.map[r][c];
@@ -1833,7 +1713,7 @@
 
                         dragState = {
                             isActive: true,
-                            isClickPrevented: true, // 阻止后续点击
+                            isClickPrevented: true,
                             startRow: r,
                             startCol: c,
                             currentRow: r,
@@ -1845,30 +1725,29 @@
 
                         createDragPreview(e, unit);
                     }
-                }, 150); // 150ms延迟，短于点击判定时间
+                }, 150);
             }
 
             function createDragPreview(e, unit) {
                 const preview = document.createElement('div');
                 preview.id = 'drag-preview';
                 preview.style.cssText = `
-    position: fixed;
-    width: 46px;
-    height: 46px;
-    background: ${unit.side === 'blue' ? 'rgba(30, 136, 229, 0.8)' : 'rgba(229, 57, 53, 0.8)'};
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 10px;
-    z-index: 10000;
-    pointer-events: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  `;
-
+                    position: fixed;
+                    width: 46px;
+                    height: 46px;
+                    background: ${unit.side === 'blue' ? 'rgba(30, 136, 229, 0.8)' : 'rgba(229, 57, 53, 0.8)'};
+                    border-radius: 6px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 10px;
+                    z-index: 10000;
+                    pointer-events: none;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                `;
                 // 添加头像/缩写
                 const showAvatars = document.getElementById('showAvatars')?.checked ?? true;
                 if (showAvatars) {
@@ -1884,49 +1763,33 @@
                 } else {
                     preview.textContent = unit.role.short;
                 }
-
                 preview.setAttribute('draggable', 'false');
-
-                // 添加到 body 后，立即阻止所有拖拽事件
                 document.body.appendChild(preview);
-
-                // 阻止预览元素的拖拽
                 preview.addEventListener('dragstart', e => e.preventDefault());
-
                 updateDragPreviewPosition(e);
             }
 
             function updateDragPreviewPosition(e) {
                 const preview = document.getElementById('drag-preview');
                 if (!preview) return;
-
                 preview.style.left = (e.clientX - 23) + 'px';
                 preview.style.top = (e.clientY - 23) + 'px';
             }
 
             function handleDragMove(e) {
                 if (!dragState.isActive) return;
-
                 updateDragPreviewPosition(e);
-
-                // 计算当前悬停的格子
                 const mapRect = mapEl.getBoundingClientRect();
                 const cellSize = 46;
                 const gap = 4;
-
-                const relX = e.clientX - mapRect.left - 12; // -12为.map的padding
+                const relX = e.clientX - mapRect.left - 12;
                 const relY = e.clientY - mapRect.top - 12;
-
                 const col = Math.floor(relX / (cellSize + gap));
                 const row = Math.floor(relY / (cellSize + gap));
-
-                // 检查是否在有效区域内
                 if (row >= 0 && row < 5 &&
                     col >= dragState.validDropZone.min && col <= dragState.validDropZone.max) {
                     dragState.currentRow = row;
                     dragState.currentCol = col;
-
-                    // 高亮目标格子
                     highlightTargetCell(row, col);
                 } else {
                     clearTargetHighlight();
@@ -1935,10 +1798,8 @@
 
             function highlightTargetCell(row, col) {
                 clearTargetHighlight();
-
                 const targetCell = mapEl.children[row * 14 + col];
                 if (!targetCell) return;
-
                 targetCell.style.outline = '3px dashed ' + (dragState.draggedUnit.side === 'blue' ? '#1E88E5' : '#E53935');
                 targetCell.style.outlineOffset = '2px';
                 targetCell.dataset.isTarget = 'true';
@@ -1954,24 +1815,17 @@
 
             function handleDragEnd() {
                 if (!dragState.isActive) return;
-
                 // 移除预览
                 const preview = document.getElementById('drag-preview');
                 if (preview) preview.remove();
-
                 // 清除高亮
                 clearTargetHighlight();
-
                 const { startRow, startCol, currentRow, currentCol, draggedUnit } = dragState;
-
                 // 检查是否在有效位置释放
                 if (currentRow >= 0 && currentRow < 5 &&
                     currentCol >= dragState.validDropZone.min && currentCol <= dragState.validDropZone.max) {
-
-                    // 不在同一格子才执行操作
                     if (startRow !== currentRow || startCol !== currentCol) {
                         const targetUnit = STATE.map[currentRow][currentCol];
-
                         if (!targetUnit) {
                             // 移动到空格
                             STATE.map[startRow][startCol] = null;
@@ -1986,15 +1840,12 @@
                             targetUnit.pos = [startRow, startCol];
                             showNotification(`交换 ${draggedUnit.role.name} 与 ${targetUnit.role.name}`, 'success');
                         }
-
                         renderMap();
                     }
                 }
-
-                // 关键修复：完整重置 dragState（原代码未重置 isClickPrevented）
                 dragState = {
                     isActive: false,
-                    isClickPrevented: false, // 必须重置！
+                    isClickPrevented: false,
                     lastDragEndTime: Date.now(),
                     startRow: -1,
                     startCol: -1,
@@ -2005,18 +1856,18 @@
                 };
             }
 
-            // 绑定到按钮或自动触发（例如每次 renderMap 后）
             document.addEventListener('DOMContentLoaded', () => {
-                // 例如：每次操作后检查
                 const originalRenderMap = window.renderMap;
                 window.renderMap = function () {
                     originalRenderMap();
-                    checkAllRules(); // ← 智能提示触发点
+                    checkAllRules();
                 };
             });
+
             document.getElementById('showDualArrows').addEventListener('change', () => {
-                drawArrows(); // 仅重绘箭头，不刷新整个地图
+                drawArrows();
             });
+
             window.STATE = STATE;
             window.computeTargets = computeTargets;
         </script>
