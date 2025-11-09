@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>圆形角斗场计算器</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -38,6 +38,28 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        html, body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        }
+
+        .container {
+        min-height: 100vh;
+        overflow-x: hidden;
+        }
+
+        /* 关键：允许地图容器区域滚动 */
+        @media (max-width: 768px) {
+        .map-section {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .map-container {
+            min-width: 720px; /* 保持地图最小宽度 */
+        }
         }
 
         #drag-preview {
@@ -780,8 +802,31 @@
                             handleDragStart(e, r, c);
                         });
                         cell.addEventListener('touchstart', (e) => {
-                            e.preventDefault();
-                            handleDragStart(e.touches[0], r, c);
+                        // 仅当单指触摸且垂直移动 < 水平移动时启动拖拽
+                        if (e.touches.length === 1) {
+                            const touch = e.touches[0];
+                            dragState.touchStartX = touch.clientX;
+                            dragState.touchStartY = touch.clientY;
+                            dragState.isScrolling = false;
+                        }
+                        }, { passive: false });
+
+                        cell.addEventListener('touchmove', (e) => {
+                        if (e.touches.length !== 1 || dragState.isScrolling) return;
+                        
+                        const touch = e.touches[0];
+                        const dx = Math.abs(touch.clientX - dragState.touchStartX);
+                        const dy = Math.abs(touch.clientY - dragState.touchStartY);
+                        
+                        // 垂直滚动优先：当 dy > dx 时视为滚动
+                        if (dy > dx) {
+                            dragState.isScrolling = true;
+                            return;
+                        }
+                        
+                        // 水平拖拽：阻止默认滚动
+                        e.preventDefault();
+                        handleDragMove(touch);
                         }, { passive: false });
                         // 恢复单击功能：添加 click 事件（原逻辑）
                         cell.addEventListener('click', (e) => {
@@ -791,10 +836,6 @@
                         });
                         // 添加全局拖拽监听
                         document.addEventListener('mousemove', handleDragMove);
-                        document.addEventListener('touchmove', (e) => {
-                            e.preventDefault();
-                            handleDragMove(e.touches[0]);
-                        }, { passive: false });
                         document.addEventListener('mouseup', handleDragEnd);
                         document.addEventListener('touchend', handleDragEnd);
                         mapEl.appendChild(cell);
@@ -1437,13 +1478,17 @@
                 renderMap(); // 重新渲染所有视图
             });
             let dragState = {
-                isActive: false,
-                startRow: -1,
-                startCol: -1,
-                currentRow: -1,
-                currentCol: -1,
-                draggedUnit: null,
-                validDropZone: null
+            isActive: false,
+            isClickPrevented: false,
+            isScrolling: false, // 新增：滚动状态标记
+            touchStartX: 0,
+            touchStartY: 0,
+            startRow: -1,
+            startCol: -1,
+            currentRow: -1,
+            currentCol: -1,
+            draggedUnit: null,
+            validDropZone: null
             };
 
             function handleDragStart(e, r, c) {
