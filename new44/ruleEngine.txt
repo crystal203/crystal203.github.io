@@ -1,0 +1,503 @@
+function getUnitByShort(side, short, orderList = null) {
+    const order = orderList || (side === 'blue' ? STATE.blueOrder : STATE.redOrder);
+    return order.find(u => u.role.short === short);
+}
+
+function getPos(unit) { return unit ? unit.pos : null; }
+function getX(unit) { return getPos(unit)?.[1] ?? -1; }
+function getY(unit) { return getPos(unit)?.[0] ?? -1; }
+function resolveChar(expr) {
+    const m1 = expr.match(/^([BR])\-([A-Za-z]+)$/);
+    const m2 = expr.match(/^([BR])\-([A-Za-z]+)\-lock$/);
+    if (m1) {
+        const [_, sideChar, short] = m1;
+        return getUnitByShort(sideChar === 'B' ? 'blue' : 'red', short);
+    } else if (m2) {
+        const [_, sideChar, short] = m2;
+        const unit = getUnitByShort(sideChar === 'B' ? 'blue' : 'red', short);
+        if (!unit) return null;
+        // 需调用 computeTargets() 获取其锁定目标
+        const targets = computeTargets(); // ← 你现有函数（注意：需暴露为全局或传入）
+        const target = targets.find(t => t.from === unit)?.to;
+        return target;
+    }
+    return null;
+}
+const REL = {
+    equ: (a, b) => a === b,
+    neq: (a, b) => a !== b,
+    ge: (a, b) => a >= b,
+    le: (a, b) => a <= b,
+};
+
+function evaluateRuleForState(rule, state) {
+    const { blueOrder, redOrder } = STATE;
+
+    // === Step 1：队伍匹配 ===
+    const checkTeamMatch = (sideOrder, targetList) => {
+        if (sideOrder.length !== 4) return false;
+        if (sideOrder[0]?.role.short !== targetList[0]) return false;
+        const actualSet = new Set(sideOrder.map(u => u.role.short));
+        const targetSet = new Set(targetList);
+        return actualSet.size === 4 && [...actualSet].sort().join() === [...targetSet].sort().join();
+    };
+    const pre = rule.preconditions;
+    if (!checkTeamMatch(redOrder, pre.team.red)) {
+        return {
+            redMatched: false,
+            blueMatched: false
+        };
+    }
+    // === Step 2：红方位置前提 ===
+    for (let [short, axis, rel, val] of pre.redPosition) {
+        const unit = getUnitByShort('red', short);
+        if (!unit) return { matched: false };
+        const posVal = axis === 'x-pos' ? getX(unit) : getY(unit);
+        if (!REL[rel](posVal, val))
+            return {
+                redMatched: false,
+                blueMatched: false
+            }
+    }
+
+    if (!checkTeamMatch(blueOrder, pre.team.blue)) {
+        return {
+            redMatched: true,
+            blueMatched: false,
+            recommendedBlueTeam: rule.preconditions.team.blue || null,   // ['Eunha', 'Estel', ...]
+            tacticName: rule.name,
+            tacticDesc: rule.desc || ''
+        }
+    }
+
+    let bluePositionSatisfied = true;
+    if (rule.bluePosition && rule.bluePosition.length > 0) {
+        for (let [short, axis, rel, val] of rule.bluePosition) {
+            const unit = getUnitByShort('blue', short);
+            if (!unit) {
+                bluePositionSatisfied = false;
+                break;
+            }
+            const posVal = axis === 'x-pos' ? getX(unit) : getY(unit);
+            if (!REL[rel](posVal, val)) {
+                bluePositionSatisfied = false;
+                break;
+            }
+        }
+    }
+
+    // === Step 4：评分计算（若蓝方位置未满足，score 强制为 0）===
+    let score = 0;
+    const matchedScorings = [];
+
+    // 【关键改动】先标记是否通过蓝方前置（仅影响分数，不阻断 matched）
+    const passedBluePosition = bluePositionSatisfied;
+
+    // 计算原始分（仍累加，用于显示明细）
+    for (const item of rule.scoring) {
+        let ok = false;
+        try {
+            if (item.length === 5) {
+                const [expr, axis, rel, val, pts] = item;
+                const unit = resolveChar(expr);
+                if (unit) {
+                    const posVal = axis === 'x-pos' ? getX(unit) : getY(unit);
+                    if (REL[rel](posVal, val)) {
+                        ok = true; score += pts;
+                    }
+                }
+            } else if (item.length === 7 && item[3] === 'delta') {
+                const [e1, e2, axis, _, rel, val, pts] = item;
+                const u1 = resolveChar(e1), u2 = resolveChar(e2);
+                if (u1 && u2) {
+                    const p1 = axis === 'x-pos' ? getX(u1) : getY(u1);
+                    const p2 = axis === 'x-pos' ? getX(u2) : getY(u2);
+                    if (REL[rel](Math.abs(p1 - p2), val)) {
+                        ok = true; score += pts;
+                    }
+                }
+            } else if (item.length === 4 && item[1] === 'lock') {
+                const [fromExpr, , toExpr, pts] = item;
+                const fromUnit = resolveChar(fromExpr);
+                const toUnit = resolveChar(toExpr);
+                if (fromUnit && toUnit) {
+                    const targets = computeTargets();
+                    const target = targets.find(t => t.from === fromUnit)?.to;
+                    if (target === toUnit) {
+                        ok = true; score += pts;
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn(`评分项解析失败:`, item, e);
+        }
+        if (ok) matchedScorings.push(item);
+    }
+
+    // 【强制逻辑】：若蓝方位置不满足 → 最终得分 = 0（但保留原始 matchedScorings 供展示）
+    if (!passedBluePosition) {
+        score = 0;
+    }
+
+    return {
+        redMatched: true,
+        blueMatched: true,
+        score,
+        maxScore: rule.maxScore !== undefined ? rule.maxScore : rule.scoring.reduce((s, it) => s + (it[it.length - 1] || 0), 0),
+        matchedScorings,
+        bluePositionSatisfied: passedBluePosition,
+        // ===== 新增推荐字段 =====
+        recommendedBlueTeam: rule.preconditions.team.blue || null,   // ['Eunha', 'Estel', ...]
+        tacticName: rule.name,
+        tacticDesc: rule.desc || ''
+    };
+}
+
+// === 规则评估主函数 ===
+function evaluateRule(rule) {
+    return evaluateRuleForState(rule, STATE);
+}
+
+function* permutations(arr, k) {
+    if (k === 0) {
+        yield [];
+        return;
+    }
+    for (let i = 0; i < arr.length; i++) {
+        const rest = arr.slice(0, i).concat(arr.slice(i + 1));
+        for (const perm of permutations(rest, k - 1)) {
+            yield [arr[i], ...perm];
+        }
+    }
+}
+
+// ===== 新增：检查角色站位是否满足 bluePosition 约束 =====
+function satisfiesBluePosition(units, bluePositionRules) {
+    if (!bluePositionRules || bluePositionRules.length === 0) return true;
+    for (const [short, axis, rel, val] of bluePositionRules) {
+        const unit = units.find(u => u.role.short === short);
+        if (!unit) return false;
+        const posVal = axis === 'x-pos' ? unit.pos[1] : unit.pos[0];
+        if (rel === 'equ' && posVal !== val) return false;
+        if (rel === 'neq' && posVal === val) return false;
+        if (rel === 'ge'  && posVal < val)  return false;
+        if (rel === 'le'  && posVal > val)  return false;
+    }
+    return true;
+}
+
+function computeBestBluePlacementForRule(rule) {
+    const blueTeamShorts = rule.preconditions?.team?.blue || [];
+    if (!Array.isArray(blueTeamShorts) || blueTeamShorts.length === 0) return null;
+
+    // 角色实体化
+    const roles = blueTeamShorts.map(s => ALL_ROLES.find(r => r.short === s)).filter(Boolean);
+    if (roles.length === 0) return null;
+
+    // 补足或截断为 4 人（按规则要求）
+    while (roles.length < 4 && roles.length > 0) roles.push(roles[roles.length % roles.length]);
+    roles.length = 4;
+
+    // 首位固定（规则要求蓝队首位严格匹配，故保持 roles[0] 不变）
+    const firstRole = roles[0];
+    const tailRoles = roles.slice(1); // 后3人待排列
+
+    // 生成后3人的所有排列（最多 3! = 6 种）
+    const tailPerms = [...permutations(tailRoles, 3)];
+    const teamVariants = tailPerms.map(perm => [firstRole, ...perm]);
+    if (tailPerms.length === 0) teamVariants.push([firstRole, ...tailRoles]); // 防空
+
+    // 蓝区所有格子：c ∈ [0,1,2,3], r ∈ [0,1,2,3,4] → 20个
+    const blueCells = [];
+    for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 4; c++) {
+            blueCells.push([r, c]);
+        }
+    }
+
+    let best = { score: -Infinity, units: null };
+
+    // 枚举：每个 teamVariant + 所有 4 个不重复位置的排列（P(20,4)=116280 → 可接受，因剪枝）
+    for (const team of teamVariants) {
+        // 生成所有 4 个不重复坐标的排列（共 P(20,4) = 116280，但加剪枝后大幅减少）
+        for (const posPerm of permutations(blueCells, 4)) {
+            // 构建临时单位
+            const units = team.map((role, i) => ({
+                side: 'blue',
+                role,
+                pos: posPerm[i],
+                index: i
+            }));
+
+            // ✅ 【关键剪枝】先检查是否满足 bluePosition 约束
+            if (!satisfiesBluePosition(units, rule.bluePosition)) {
+                continue;
+            }
+
+            // 构建临时 STATE（深拷贝红方，替换蓝方）
+            const tempMap = Array(5).fill().map(() => Array(14).fill(null));
+            const tempBlue = [];
+            const tempRed = STATE.redOrder.map(u => ({
+                ...u,
+                pos: [...u.pos]
+            }));
+
+            // 放入蓝方
+            units.forEach(u => {
+                const [r, c] = u.pos;
+                tempMap[r][c] = u;
+                tempBlue.push(u);
+            });
+            // 放入红方
+            tempRed.forEach(u => {
+                const [r, c] = u.pos;
+                if (r >= 0 && r < 5 && c >= 0 && c < 14) {
+                    tempMap[r][c] = u;
+                }
+            });
+
+            const tempState = {
+                map: tempMap,
+                blueOrder: tempBlue,
+                redOrder: tempRed
+            };
+
+            // 评分（使用 evaluateRuleForState）
+            const result = evaluateRuleForState(rule, tempState);
+            if (result.matched && result.score > best.score) {
+                best = {
+                    score: result.score,
+                    units: units.map(u => ({ ...u, pos: [...u.pos] })),
+                    rawScore: result.rawScore
+                };
+            }
+        }
+    }
+
+    return best.score > -Infinity ? best : null;
+}
+
+// === 批量检查所有规则 ===
+async function checkAllRules() {
+    window._ruleCache = {};
+
+    const scorePanel = document.getElementById('scorePanel');
+    const scoreContent = document.getElementById('scoreContent');
+    let allResults = [];
+
+    const rulePaths = [
+        './rule/暗刀火龙解火龙三切.js',
+        './rule/萝冰火龙解火龙三切.js',
+        // 可扩展
+    ];
+
+    for (let url of rulePaths) {
+        try {
+            const module = await import(url + '?t=' + Date.now());
+            const rule = module.default;
+            const result = evaluateRule(rule);
+            if (result.redMatched) allResults.push({ rule, result });
+        } catch (e) {
+            console.warn(`规则 ${url} 加载失败:`, e.message);
+        }
+    }
+    let ruleIdCounter = 0;
+    window._ruleCache = window._ruleCache || {};
+    const ruleCache = {}; // 全局缓存
+    // 渲染智能战术面板（仅显示推荐队伍，不依赖蓝方当前状态）
+    if (allResults.length === 0) {
+        tacticPanel.style.display = 'none';
+    } else {
+        tacticPanel.style.display = 'block';
+        let html = '';
+
+        allResults.forEach(({ rule, result }) => {
+            if (!result.recommendedBlueTeam) return; // 仅显示有推荐的
+            const ruleId = 'rule_' + Date.now() + '_' + (ruleIdCounter++);
+            ruleCache[ruleId] = rule; // 缓存原始 rule 对象
+
+            const blueTeam = Array.isArray(rule.preconditions?.team?.blue) ? rule.preconditions.team.blue : [];
+            const teamNames = blueTeam.length > 0
+                ? blueTeam.map(short => {
+                    const role = ALL_ROLES.find(r => r.short === short);
+                    return role ? role.name : short;
+                }).join('、')
+                : '（清空现有阵容）';
+
+            html += `
+            <div style="margin-bottom: 16px; padding: 14px; border: 1px solid #eee; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                    <div>
+                        <div style="font-weight: 600; color: #1E88E5; font-size: 1.1rem;">${result.tacticName}</div>
+                        <div style="font-size: 0.9rem; color: #666; margin-top: 4px;">${result.tacticDesc || ''}</div>
+                    </div>
+                    <div style="display: flex; gap: 6px;">
+                        <button class="btn btn-confirm"
+                                onclick="applyTactic(${JSON.stringify(blueTeam)})"
+                                style="padding: 6px 12px; font-size: 0.9rem;">
+                            <i class="fas fa-bolt"></i> 一键配置
+                        </button>
+                        <button class="btn"
+                                style="background:#6a1b9a; color:white; padding: 6px 12px; font-size: 0.9rem;"
+                                onclick="doOptimalPlacement('${ruleId}')">
+                            <i class="fas fa-magic"></i> 一键站位
+                        </button>
+                    </div>
+                </div>
+                <div style="font-size: 0.95rem;">推荐我方：${teamNames}</div>
+            </div>
+            `;
+        });
+
+        tacticContent.innerHTML = html || '<div style="text-align:center; color:#999; padding:20px;">暂无战术推荐</div>';
+    }
+
+    // 渲染评分面板
+    if (allResults.length === 0) {
+        scorePanel.style.display = 'none';
+        return;
+    }
+
+    scorePanel.style.display = 'block';
+    let html = '';
+
+    allResults.forEach(({ rule, result }) => {
+        if (result.blueMatched === true) {
+            const pct = (result.score / result.maxScore * 100).toFixed(1);
+            const color = pct >= 80 ? '#4CAF50' : pct >= 60 ? '#FF9800' : '#F44336';
+
+            html += `
+    <div style="margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
+      <div style="font-weight: 600; color: #333; margin-bottom: 6px;">
+        🎯 ${rule.name}
+      </div>
+      <div style="display: flex; gap: 8px; margin-top: 10px;">
+          <button class="btn btn-confirm" 
+                  onclick='applyTactic(${JSON.stringify(blueTeam)})'
+                  style="flex:1; font-size:0.9rem;">
+              <i class="fas fa-bolt"></i> 一键配置
+          </button>
+          <button class="btn" 
+                  style="background:#6a1b9a; color:white; flex:1; font-size:0.9rem;"
+                  onclick='doOptimalPlacement(${JSON.stringify(rule)})'>
+              <i class="fas fa-magic"></i> 一键站位
+          </button>
+      </div>
+      <div style="font-size: 12px; color: #666;">
+        ${rule.desc || ''}
+      </div>
+    </div>
+  `;
+        }
+
+    });
+
+    scoreContent.innerHTML = html;
+}
+
+function applyTactic(shortList) {
+    // 1. 清空现有蓝方
+    STATE.blueOrder.forEach(u => {
+        const [r, c] = u.pos;
+        STATE.map[r][c] = null;
+    });
+    STATE.blueOrder = [];
+
+    // 2. 检查角色是否存在 & 去重
+    const validRoles = [];
+    const seen = new Set();
+    for (const short of shortList) {
+        if (seen.has(short)) continue;
+        const role = ALL_ROLES.find(r => r.short === short);
+        if (role) {
+            validRoles.push({ role, short });
+            seen.add(short);
+        }
+    }
+
+    if (validRoles.length === 0) {
+        showNotification('⚠️ 无有效角色可配置', 'warning');
+        renderMap();
+        return;
+    }
+
+    // 3. 一字排开：蓝区前4列（c=0~3），从上到下 r=0,1,2,3,4 循环
+    const cols = [0, 1, 2, 3]; // 蓝区列
+    const rows = [0, 1, 2, 3, 4];
+    let placed = 0;
+
+    for (let i = 0; i < validRoles.length && placed < 4; i++) {
+        const c = cols[i % 4];
+        const r = rows[Math.floor(i / 4) % 5];
+        const { role } = validRoles[i];
+
+        // 跳过已被占用的格子（极小概率）
+        let found = false;
+        for (let dr = 0; dr < 5 && !found; dr++) {
+            const nr = (r + dr) % 5;
+            if (!STATE.map[nr][c]) {
+                const unit = { side: 'blue', role, pos: [nr, c], index: placed, isNew: true };
+                STATE.map[nr][c] = unit;
+                STATE.blueOrder.push(unit);
+                placed++;
+                found = true;
+            }
+        }
+    }
+
+    // 4. 更新索引 & 渲染
+    STATE.blueOrder.forEach((u, i) => u.index = i);
+    renderMap();
+    showNotification(`✅ 已配置战术阵容：${validRoles.map(v => v.role.name).join('、')}`, 'success');
+}
+
+
+// 改名整合（避免冲突）
+function doOptimalPlacement(ruleId) {
+    const rule = window._ruleCache[ruleId];
+    if (!rule) {
+        console.error('Rule not found:', ruleId);
+        showNotification('❌ 规则缓存失效，请重试', 'error');
+        return;
+    }
+
+    showNotification('🔍 正在计算最优站位（可能需 1~3 秒）…', 'info');
+    requestAnimationFrame(() => {
+        try {
+            const best = computeBestBluePlacementForRule(rule);
+            if (!best) {
+                showNotification('❌ 未找到满足约束的站位', 'warning');
+                return;
+            }
+
+            // 清空蓝方
+            STATE.blueOrder.forEach(u => {
+                const [r, c] = u.pos;
+                STATE.map[r][c] = null;
+            });
+            STATE.blueOrder = [];
+
+            // 部署
+            best.units.forEach(u => {
+                const [r, c] = u.pos;
+                const unit = { ...u, pos: [r, c], isNew: true };
+                STATE.map[r][c] = unit;
+                STATE.blueOrder.push(unit);
+            });
+            STATE.blueOrder.forEach((u, i) => u.index = i);
+
+            renderMap();
+            const pct = (best.score / (rule.maxScore || 100) * 100).toFixed(1);
+            showNotification(`✅ 最优站位已部署！得分: ${best.score} / ${rule.maxScore || '?'} (${pct}%)`, 'success');
+        } catch (e) {
+            console.error('站位计算失败:', e);
+            showNotification('⚠️ 站位计算出错', 'error');
+        }
+    });
+}
+
+// 暴露给全局
+window.evaluateRule = evaluateRule;
+window.checkAllRules = checkAllRules;
+window.applyTactic = applyTactic;
+window.doOptimalPlacement = doOptimalPlacement;

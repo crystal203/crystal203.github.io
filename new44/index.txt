@@ -685,39 +685,9 @@
 </head>
 
 <body>
-    <script type="module" src="./ruleEngine.js"></script>
     <div class="container">
         <div class="header">
             <h1><i class="fas fa-chess"></i> 圆形角斗场计算器</h1>
-        </div>
-
-        <div id="scorePanel" style="
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            max-width: 320px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            z-index: 999;
-            font-size: 13px;
-            display: none;
-        ">
-            <div style="
-                background: linear-gradient(90deg, #1E88E5, #E53935);
-                color: white;
-                padding: 10px 16px;
-                font-weight: 600;
-                border-radius: 12px 12px 0 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            ">
-                <span><i class="fas fa-trophy"></i> 战术评分</span>
-                <button onclick="document.getElementById('scorePanel').style.display='none'"
-                    style="background: none; border: none; color: white; font-size: 16px; cursor: pointer;">×</button>
-            </div>
-            <div id="scoreContent" style="padding: 12px;"></div>
         </div>
 
         <div style="margin-top: 12px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
@@ -737,29 +707,6 @@
         </div>
         </br>
         <!-- Blue Team Order -->
-        <div id="tacticPanel" style="
-    display: none;
-    margin: 20px auto;
-    max-width: 1000px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-">
-            <div style="
-            background: linear-gradient(90deg, #1E88E5, #7B1FA2);
-            color: white;
-            padding: 14px 20px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        ">
-                <i class="fas fa-microchip"></i>
-                <span>智能战术推荐</span>
-            </div>
-            <div id="tacticContent" style="padding: 16px;"></div>
-        </div>
         <div class="order-container">
             <div class="order-panel blue">
                 <div class="zone-header blue">
@@ -983,9 +930,6 @@
                 }
                 renderOrderLists();
                 drawArrows();
-                if (typeof checkAllRules === 'function') {
-                    requestAnimationFrame(checkAllRules); // 避免阻塞渲染
-                }
             }
 
             function getFirstUnit(side) {
@@ -1285,59 +1229,6 @@
                 });
 
                 return targets;
-            }
-
-            function computeTargetsForState(state) {
-                const { blueOrder, redOrder } = state;
-                const originalHitStates = new Map();
-                [...redOrder, ...blueOrder].forEach(u => {
-                    originalHitStates.set(u, u.isHit || false);
-                    u.isHit = false;
-                });
-
-                const targets = [];
-                for (const attacker of [...blueOrder, ...redOrder]) {
-                    const enemyOrder = attacker.side === 'blue' ? redOrder : blueOrder;
-                    if (enemyOrder.length === 0) continue;
-                    const target = findTargetForState(attacker, enemyOrder);
-                    if (target) {
-                        targets.push({ from: attacker, to: target });
-                    }
-                }
-
-                originalHitStates.forEach((value, unit) => {
-                    unit.isHit = value;
-                });
-                return targets;
-            }
-
-            // 辅助：findTarget 的 state 无关版本（纯函数）
-            function findTargetForState(attacker, candidates) {
-                const { ai } = attacker.role;
-                const unhit = candidates.filter(c => !c.isHit);
-                let target = null;
-                if (ai === '辅助刺客ai' || ai === '射手刺客ai') {
-                    const targetType = ai === '辅助刺客ai' ? '辅助' : '射手';
-                    target = unhit.find(u => u.role.type === targetType);
-                    if (!target) target = candidates.find(u => u.role.type === targetType);
-                    if (!target) target = findNearestForState(attacker, unhit.length > 0 ? unhit : candidates);
-                } else if (ai === '近战ai') {
-                    target = findNearestForState(attacker, unhit.length > 0 ? unhit : candidates);
-                } else if (ai === '远程ai') {
-                    target = findNearestForState(attacker, candidates);
-                }
-                if (target) target.isHit = true;
-                return target;
-            }
-
-            function findNearestForState(unit, candidates) {
-                if (candidates.length === 0) return null;
-                const [ar, ac] = unit.pos;
-                return candidates.reduce((best, u) => {
-                    const [br, bc] = u.pos;
-                    const d = (ar - br) ** 2 + (ac - bc) ** 2;
-                    return d < best.dist ? { unit: u, dist: d } : best;
-                }, { unit: null, dist: Infinity }).unit;
             }
 
             function drawArrows() {
@@ -1782,21 +1673,9 @@
                     validDropZone: null
                 };
             }
-
-            // 绑定到按钮或自动触发（例如每次 renderMap 后）
-            document.addEventListener('DOMContentLoaded', () => {
-                // 例如：每次操作后检查
-                const originalRenderMap = window.renderMap;
-                window.renderMap = function () {
-                    originalRenderMap();
-                    checkAllRules(); // ← 智能提示触发点
-                };
-            });
             document.getElementById('showDualArrows').addEventListener('change', () => {
                 drawArrows(); // 仅重绘箭头，不刷新整个地图
             });
-            window.STATE = STATE;
-            window.computeTargets = computeTargets;
         </script>
 </body>
 
