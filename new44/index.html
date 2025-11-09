@@ -40,26 +40,28 @@
             margin: 0 auto;
         }
 
-        html, body {
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
+        html,
+        body {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .container {
-        min-height: 100vh;
-        overflow-x: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* 关键：允许地图容器区域滚动 */
         @media (max-width: 768px) {
-        .map-section {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .map-container {
-            min-width: 720px; /* 保持地图最小宽度 */
-        }
+            .map-section {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .map-container {
+                min-width: 720px;
+                /* 保持地图最小宽度 */
+            }
         }
 
         #drag-preview {
@@ -802,31 +804,31 @@
                             handleDragStart(e, r, c);
                         });
                         cell.addEventListener('touchstart', (e) => {
-                        // 仅当单指触摸且垂直移动 < 水平移动时启动拖拽
-                        if (e.touches.length === 1) {
-                            const touch = e.touches[0];
-                            dragState.touchStartX = touch.clientX;
-                            dragState.touchStartY = touch.clientY;
-                            dragState.isScrolling = false;
-                        }
+                            // 仅当单指触摸且垂直移动 < 水平移动时启动拖拽
+                            if (e.touches.length === 1) {
+                                const touch = e.touches[0];
+                                dragState.touchStartX = touch.clientX;
+                                dragState.touchStartY = touch.clientY;
+                                dragState.isScrolling = false;
+                            }
                         }, { passive: false });
 
                         cell.addEventListener('touchmove', (e) => {
-                        if (e.touches.length !== 1 || dragState.isScrolling) return;
-                        
-                        const touch = e.touches[0];
-                        const dx = Math.abs(touch.clientX - dragState.touchStartX);
-                        const dy = Math.abs(touch.clientY - dragState.touchStartY);
-                        
-                        // 垂直滚动优先：当 dy > dx 时视为滚动
-                        if (dy > dx) {
-                            dragState.isScrolling = true;
-                            return;
-                        }
-                        
-                        // 水平拖拽：阻止默认滚动
-                        e.preventDefault();
-                        handleDragMove(touch);
+                            if (e.touches.length !== 1 || dragState.isScrolling) return;
+
+                            const touch = e.touches[0];
+                            const dx = Math.abs(touch.clientX - dragState.touchStartX);
+                            const dy = Math.abs(touch.clientY - dragState.touchStartY);
+
+                            // 垂直滚动优先：当 dy > dx 时视为滚动
+                            if (dy > dx) {
+                                dragState.isScrolling = true;
+                                return;
+                            }
+
+                            // 水平拖拽：阻止默认滚动
+                            e.preventDefault();
+                            handleDragMove(touch);
                         }, { passive: false });
                         // 恢复单击功能：添加 click 事件（原逻辑）
                         cell.addEventListener('click', (e) => {
@@ -878,8 +880,8 @@
                                 const img = document.createElement('img');
                                 img.src = `./asset/${unit.role.short}.png`;
                                 img.alt = unit.role.short;
-                                img.style.width = '48px';
-                                img.style.height = '48px';
+                                img.style.width = '100%';
+                                img.style.height = '100%';
                                 img.style.objectFit = 'cover';
                                 img.style.borderRadius = '4px';
                                 img.style.marginBottom = '2px';
@@ -1458,7 +1460,7 @@
             setTimeout(() => {
                 // 示例：布置一些初始角色
                 const examples = [
-                    
+
                 ];
 
                 examples.forEach(ex => {
@@ -1478,17 +1480,17 @@
                 renderMap(); // 重新渲染所有视图
             });
             let dragState = {
-            isActive: false,
-            isClickPrevented: false,
-            isScrolling: false, // 新增：滚动状态标记
-            touchStartX: 0,
-            touchStartY: 0,
-            startRow: -1,
-            startCol: -1,
-            currentRow: -1,
-            currentCol: -1,
-            draggedUnit: null,
-            validDropZone: null
+                isActive: false,
+                isClickPrevented: false,
+                isScrolling: false, // 新增：滚动状态标记
+                touchStartX: 0,
+                touchStartY: 0,
+                startRow: -1,
+                startCol: -1,
+                currentRow: -1,
+                currentCol: -1,
+                draggedUnit: null,
+                validDropZone: null
             };
 
             function handleDragStart(e, r, c) {
