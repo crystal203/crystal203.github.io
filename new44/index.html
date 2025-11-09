@@ -46,26 +46,76 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        .container {
-            min-height: 100vh;
-            overflow-x: hidden;
+        /* ===== 全局：确保 .map-container 可居中 ===== */
+        .map-section {
+            text-align: center;
+            /* 关键：使 inline-block 居中 */
         }
 
-        /* 关键：允许地图容器区域滚动 */
+        .map-section .map-container {
+            text-align: initial;
+            /* 恢复内部对齐 */
+        }
+
+        /* ===== 移动端响应式优化（关键修复） ===== */
         @media (max-width: 768px) {
+
+            /* 启用横向滚动，允许地图超出屏幕 */
             .map-section {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
+                padding: 0 10px;
             }
 
+            /* 移除 min-width！让容器自然收缩 */
             .map-container {
-                min-width: 720px;
-                /* 保持地图最小宽度 */
+                min-width: auto !important;
+                max-width: fit-content;
+                /* 严格包裹内容 */
+                display: inline-block;
             }
-        }
 
-        #drag-preview {
-            transition: opacity 0.1s;
+            /* 缩小格子：目标总宽 ≈ 14×32 + 13×1 + 2×4(padding) = 475px */
+            .map {
+                grid-template-columns: repeat(14, 32px);
+                grid-template-rows: repeat(5, 32px);
+                gap: 1px;
+                padding: 4px;
+                margin: 0;
+            }
+
+            .cell {
+                width: 32px;
+                height: 32px;
+                font-size: 9px;
+                border-radius: 4px;
+                position: relative;
+            }
+
+            .cell-type {
+                font-size: 5px;
+            }
+
+            /* 角色卡片适配 */
+            .role-item {
+                width: 64px;
+                height: 86px;
+            }
+
+            .role-item .avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 11px;
+            }
+
+            .role-item .name {
+                font-size: 9px;
+                height: 20px;
+            }
+
+            .role-item .type {
+                font-size: 7px;
+            }
         }
 
         /* Header Styles */
@@ -122,7 +172,7 @@
             font-size: 1.4rem;
         }
 
-        /* Order Lists - Optimized Layout */
+        /* Order Lists */
         .order-container {
             display: flex;
             justify-content: center;
@@ -285,16 +335,21 @@
         }
 
         /* Map Section */
+        .map-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #444;
+            font-weight: 600;
+        }
 
-        .map-section .map-container {
+        .map-container {
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            display: inline-block;
             padding: 20px;
-            width: calc(14 * 46px + 13 * 4px + 2 * 24px);
-            /* 720px */
-            box-sizing: border-box;
-            margin: 0 auto;
-            /* 关键：添加居中 */
-            display: block;
-            /* 确保 margin: 0 auto 生效 */
         }
 
         .map,
@@ -310,23 +365,6 @@
             user-drag: none;
         }
 
-        .map-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: #444;
-            font-weight: 600;
-        }
-
-        .map-container {
-            position: relative;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            /* 关键：移除 padding，改用精确计算 */
-        }
-
         .map {
             display: grid;
             grid-template-columns: repeat(14, 46px);
@@ -335,13 +373,14 @@
             background: var(--neutral-bg);
             border-radius: 10px;
             box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08);
-            /* 移除 padding，确保尺寸精确 */
-            margin: 0;
+            padding: 0;
+            /* 移除 padding，避免尺寸偏差 */
+            margin: 0 auto;
         }
 
         .cell {
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 6px;
             display: flex;
             flex-direction: column;
@@ -423,20 +462,15 @@
             z-index: 5;
         }
 
-        /* Arrow Layer */
+        /* Arrow Layer — 注意：JS 需改为相对 .map-container 定位，而非 fixed 尺寸 */
         .arrow-layer {
             position: absolute;
-            top: 20px;
-            /* 与 .map-container 的 padding 匹配 */
-            left: 20px;
-            /* 与 .map-container 的 padding 匹配 */
-            width: calc(14 * 46px + 13 * 4px + 2 * 12px);
-            /* 720px */
-            height: calc(5 * 46px + 4 * 4px + 2 * 12px);
-            /* 260px */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 15;
-            /* 关键：高于 .highlight 的 z-index (原为20，现调整单元格) */
         }
 
         /* Role Select Modal */
@@ -621,7 +655,7 @@
             color: #757575;
         }
 
-        /* Responsive Design */
+        /* Responsive Layout */
         @media (max-width: 1200px) {
             .order-container {
                 flex-direction: column;
@@ -631,37 +665,6 @@
             .order-panel {
                 width: 100%;
                 max-width: 600px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .map {
-                grid-template-columns: repeat(14, 36px);
-                grid-template-rows: repeat(5, 36px);
-                gap: 2px;
-                padding: 6px;
-            }
-
-            .cell {
-                width: 36px;
-                height: 36px;
-                font-size: 9px;
-                position: relative
-            }
-
-            .cell-type {
-                font-size: 6px;
-            }
-
-            .role-item {
-                width: 70px;
-                height: 95px;
-            }
-
-            .role-item .avatar {
-                width: 35px;
-                height: 35px;
-                font-size: 12px;
             }
         }
 
@@ -1344,20 +1347,15 @@
                 const targets = computeTargets();
                 const svgNS = "http://www.w3.org/2000/svg";
                 const svg = document.createElementNS(svgNS, "svg");
-
-                const mapRect = mapEl.getBoundingClientRect();
-                const containerRect = document.querySelector('.map-container').getBoundingClientRect();
-                const cellSize = 46;
-                const gap = 4;
-
+                const arrowLayerRect = arrowLayer.getBoundingClientRect();
+                
+                // ✅ 关键：viewBox 严格匹配 arrowLayer 实际尺寸（像素级一致）
                 svg.setAttribute("width", "100%");
                 svg.setAttribute("height", "100%");
-                svg.setAttribute("viewBox", `0 0 ${containerRect.width} ${containerRect.height}`);
+                svg.setAttribute("viewBox", `0 0 ${arrowLayerRect.width} ${arrowLayerRect.height}`);
 
-                // 创建箭头标记
+                // ===== 创建 marker =====
                 const defs = document.createElementNS(svgNS, "defs");
-
-                // 单向箭头
                 const createMarker = (id, color) => {
                     const marker = document.createElementNS(svgNS, "marker");
                     marker.setAttribute("id", id);
@@ -1372,48 +1370,32 @@
                     marker.appendChild(poly);
                     return marker;
                 };
-
                 const blueMarker = createMarker("blueArrow", "#1E88E5");
                 const redMarker = createMarker("redArrow", "#E53935");
-                const dualMarkerStart = createMarker("dualStart", "#7B1FA2"); // 紫色双向起点
-                const dualMarkerEnd = createMarker("dualEnd", "#7B1FA2");   // 紫色双向终点
-
-                // 双向箭头线帽
+                const dualMarkerStart = createMarker("dualStart", "#7B1FA2");
+                const dualMarkerEnd = createMarker("dualEnd", "#7B1FA2");
                 dualMarkerStart.setAttribute("orient", "auto-start-reverse");
-
-                defs.appendChild(blueMarker);
-                defs.appendChild(redMarker);
-                defs.appendChild(dualMarkerStart);
-                defs.appendChild(dualMarkerEnd);
+                defs.append(blueMarker, redMarker, dualMarkerStart, dualMarkerEnd);
                 svg.appendChild(defs);
 
-                // 检测双向关系
-
+                // ===== 双向检测 =====
                 const showDualArrows = document.getElementById('showDualArrows').checked;
                 const dualPairs = new Set();
                 const processed = new Set();
-                if (showDualArrows) {
 
+                if (showDualArrows) {
                     for (let i = 0; i < targets.length; i++) {
                         const t1 = targets[i];
-                        // 确保t1是跨阵营攻击（蓝→红 或 红→蓝）
                         if (t1.from.side === t1.to.side) continue;
-
                         for (let j = i + 1; j < targets.length; j++) {
                             const t2 = targets[j];
-                            // 确保t2是跨阵营攻击
                             if (t2.from.side === t2.to.side) continue;
-
-                            // 检查是否互指：A(蓝)→B(红) 且 B(红)→A(蓝)
                             if (t1.from === t2.to && t1.to === t2.from) {
-                                // 关键：确保一方是蓝方，一方是红方
-                                const isBlueRedPair =
+                                const isBlueRedPair = 
                                     (t1.from.side === 'blue' && t1.to.side === 'red') ||
                                     (t1.from.side === 'red' && t1.to.side === 'blue');
-
                                 if (isBlueRedPair) {
-                                    // 使用阵营+位置作为唯一键，避免序号冲突
-                                    const key = `${t1.from.side}-${t1.from.pos[0]}-${t1.from.pos[1]}|${t1.to.side}-${t1.to.pos[0]}-${t1.to.pos[1]}`;
+                                    const key = `${t1.from.side}-${t1.from.pos.join('-')}|${t1.to.side}-${t1.to.pos.join('-')}`;
                                     dualPairs.add(key);
                                     processed.add(i);
                                     processed.add(j);
@@ -1423,42 +1405,38 @@
                         }
                     }
                 }
-                // 计算基础坐标
+
+                // ✅ 精准：获取格子中心（相对 arrowLayer 左上角）
                 const getCenter = (r, c) => {
-                    const x = c * (cellSize + gap) + cellSize / 2 + gap / 2 + 12;
-                    const y = r * (cellSize + gap) + cellSize / 2 + gap / 2 + 12;
-                    return { x, y };
+                    const cell = mapEl.children[r * 14 + c];
+                    if (!cell) return { x: 0, y: 0 };
+                    const cellRect = cell.getBoundingClientRect();
+                    const layerRect = arrowLayer.getBoundingClientRect();
+                    return {
+                        x: cellRect.left + cellRect.width / 2 - layerRect.left,
+                        y: cellRect.top + cellRect.height / 2 - layerRect.top
+                    };
                 };
 
-                // 绘制箭头
+                // ===== 绘制单向箭头 =====
                 targets.forEach((target, idx) => {
-                    let isDual = processed.has(idx);
-                    if (!showDualArrows) {
-                        isDual = false;
-                        processed.clear();
-                    }
-                    if (isDual) return; // 双向箭头已处理
-
+                    if (processed.has(idx) && showDualArrows) return;
                     const { from, to } = target;
                     const start = getCenter(...from.pos);
                     const end = getCenter(...to.pos);
 
-                    // 智能偏移：基于角色位置计算确定性偏移
-                    const seed = from.pos[0] * 1000 + from.pos[1] * 100 + to.pos[0] * 10 + to.pos[1];
-                    const offset = ((seed * 9301) % 100 - 50) * 0.1; // [-15, +15] 的确定性偏移
+                    // ✅ 确定性偏移（避免重叠）
+                    const seed = from.pos[0] * 1e3 + from.pos[1] * 1e2 + to.pos[0] * 10 + to.pos[1];
+                    const offset = ((seed * 9301 + 49297) % 71 - 35) * 0.3; // [-10.5, +10.5]
 
-                    // 计算垂直偏移向量
                     const dx = end.x - start.x;
                     const dy = end.y - start.y;
                     const len = Math.hypot(dx, dy) || 1;
-                    const nx = -dy / len; // 法向量
+                    const nx = -dy / len; // 法向量（垂直方向）
                     const ny = dx / len;
 
-                    const offsetX = 0;
-                    const offsetY = ny * offset;
-
                     const path = document.createElementNS(svgNS, "path");
-                    path.setAttribute("d", `M ${start.x + offsetX} ${start.y + offsetY} L ${end.x + offsetX} ${end.y + offsetY}`);
+                    path.setAttribute("d", `M ${start.x + nx * offset} ${start.y + ny * offset} L ${end.x + nx * offset} ${end.y + ny * offset}`);
                     path.setAttribute("fill", "none");
                     path.setAttribute("stroke", from.side === 'blue' ? "#1E88E5" : "#E53935");
                     path.setAttribute("stroke-width", "2.5");
@@ -1467,26 +1445,23 @@
                     svg.appendChild(path);
                 });
 
-                // 绘制双向箭头
+                // ===== 绘制双向箭头 =====
                 dualPairs.forEach(key => {
-                    // 从key解析位置
-                    const [fromPart, toPart] = key.split('|');
-                    const [, fr, fc] = fromPart.split('-').map(x => parseInt(x));
-                    const [, tr, tc] = toPart.split('-').map(x => parseInt(x));
-
+                    const [fromKey, toKey] = key.split('|');
+                    const [, fr, fc] = fromKey.split('-').map(Number);
+                    const [, tr, tc] = toKey.split('-').map(Number);
                     const start = getCenter(fr, fc);
                     const end = getCenter(tr, tc);
 
-                    // 双向箭头偏移（固定值）
-                    const offset = 6;
                     const dx = end.x - start.x;
                     const dy = end.y - start.y;
                     const len = Math.hypot(dx, dy) || 1;
                     const nx = -dy / len;
                     const ny = dx / len;
+                    const offset = 6;
 
                     const path = document.createElementNS(svgNS, "path");
-                    path.setAttribute("d", `M ${start.x + nx * offset} ${start.y + ny * offset} L ${end.x + nx * offset} ${end.y + ny * offset}`);
+                    path.setAttribute("d", `M ${start.x + nx * offset} ${start.y + ny * offset} L ${end.x - nx * offset} ${end.y - ny * offset}`);
                     path.setAttribute("fill", "none");
                     path.setAttribute("stroke", "#7B1FA2");
                     path.setAttribute("stroke-width", "3");

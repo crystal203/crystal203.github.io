@@ -40,12 +40,13 @@ export default {
     // 类型3：锁定关系评分
     // ["B-Eunha", "lock", "R-Estel", 20]
     
-    ["B-Eva", "R-Kahlor", "y-pos", "delta", "equ", 0, 50],
-    ["B-Daisy", "R-Kahlor", "y-pos", "delta", "equ", 0, 50],
-    ["B-Eva", "lock", "R-Beth", 40],
-    ["B-Eva", "lock", "R-Rie", 40],
-    ["B-Daisy", "lock", "R-Kahlor", 50],
-    ["B-Eva-lock", "lock", "B-Daisy", 25],
-    ["R-Eva", "lock", "B-Kahlor", 35]
+    ["B-Eva", "R-Kahlor", "y-pos", "delta", "equ", 0, 50],    //#0
+    ["B-Daisy", "R-Kahlor", "y-pos", "delta", "equ", 0, 50],  //#1
+    ["B-Eva", "lock", "R-Beth", 0],                           //#2
+    ["B-Eva", "lock", "R-Rie", 0],                            //#3
+    ["or", 2, 3, 40],                                         //#4
+    ["B-Daisy", "lock", "R-Kahlor", 50],                      //#5
+    ["B-Eva-lock", "lock", "B-Daisy", 25],                    //#6
+    ["R-Eva", "lock", "B-Kahlor", 35]                         //#7
   ]
 };

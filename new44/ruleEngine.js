@@ -87,6 +87,7 @@ function findNearestForState(unit, candidates) {
 function evaluateRuleForState(rule, state) {
     const { blueOrder, redOrder } = state;
 
+    // --- preconditions ---
     const checkTeamMatch = (sideOrder, targetList) => {
         if (sideOrder.length !== 4) return false;
         if (sideOrder[0]?.role.short !== targetList[0]) return false;
@@ -94,9 +95,7 @@ function evaluateRuleForState(rule, state) {
         const targetSet = new Set(targetList);
         return actualSet.size === 4 && [...actualSet].sort().join() === [...targetSet].sort().join();
     };
-
     const pre = rule.preconditions;
-    // 仅红方匹配即触发推荐
     const redMatched = checkTeamMatch(redOrder, pre.team.red) &&
         (pre.redPosition || []).every(([short, axis, rel, val]) => {
             const unit = getUnitByShort('red', short, redOrder);
@@ -104,12 +103,11 @@ function evaluateRuleForState(rule, state) {
             const posVal = axis === 'x-pos' ? getX(unit) : getY(unit);
             return REL[rel](posVal, val);
         });
-
     if (!redMatched) {
         return { redMatched: false };
     }
-
     const blueMatched = checkTeamMatch(blueOrder, pre.team.blue);
+
     let bluePositionSatisfied = true;
     if (rule.bluePosition && rule.bluePosition.length > 0) {
         for (let [short, axis, rel, val] of rule.bluePosition) {
@@ -126,54 +124,167 @@ function evaluateRuleForState(rule, state) {
         }
     }
 
+    // --- scoring: enhanced with value tracking & referencing ---
     let score = 0;
-    for (const item of rule.scoring || []) {
-        let ok = false;
+    const values = []; // 📌 values[i] = return value of i-th command
+
+    // 辅助：解析参数，支持 [#i] 引用
+    const resolveArg = (arg) => {
+        if (typeof arg === 'string' && /^$#\d+$/.test(arg)) {
+            const idx = parseInt(arg.slice(2, -1), 10);
+            if (idx < 0 || idx >= values.length || values[idx] === undefined) {
+                return NaN; // 引用越界 → NaN
+            }
+            return values[idx];
+        }
+        return arg;
+    };
+
+    for (let idx = 0; idx < (rule.scoring?.length || 0); idx++) {
+        const item = rule.scoring[idx];
+        let result = false;    // 默认布尔（安全）
+        let ptsToAdd = 0;
+
         try {
-            if (item.length === 5) {
-                const [expr, axis, rel, val, pts] = item;
+            if (item.length === 2) {
+                // [char, axis] → number
+                const [expr, axis] = item;
                 const unit = resolveChar(expr, blueOrder, redOrder);
-                if (unit) {
-                    const posVal = axis === 'x-pos' ? getX(unit) : getY(unit);
-                    if (REL[rel](posVal, val)) {
-                        ok = true; score += pts;
-                    }
-                }
-            } else if (item.length === 7 && item[3] === 'delta') {
-                const [e1, e2, axis, _, rel, val, pts] = item;
-                const u1 = resolveChar(e1, blueOrder, redOrder), u2 = resolveChar(e2, blueOrder, redOrder);
+                result = (unit ? (axis === 'x-pos' ? getX(unit) : getY(unit)) : -1);
+
+            } else if (item.length === 4 && item[3] === 'delta') {
+                // [c1, c2, axis, 'delta'] → number
+                const [e1, e2, axis] = item;
+                const u1 = resolveChar(e1, blueOrder, redOrder);
+                const u2 = resolveChar(e2, blueOrder, redOrder);
                 if (u1 && u2) {
                     const p1 = axis === 'x-pos' ? getX(u1) : getY(u1);
                     const p2 = axis === 'x-pos' ? getX(u2) : getY(u2);
-                    if (REL[rel](Math.abs(p1 - p2), val)) {
-                        ok = true; score += pts;
-                    }
+                    result = Math.abs(p1 - p2);
+                } else {
+                    result = Infinity;
                 }
+
+            } else if (item[0] === 'const' && item.length === 2) {
+                // const [v] → number
+                result = Number(resolveArg(item[1]));
+
+            } else if (item[0] === 'subabs' && item.length === 3) {
+                // subabs i j → number
+                const a = Number(resolveArg(item[1]));
+                const b = Number(resolveArg(item[2]));
+                result = Math.abs(a - b);
+
+            } else if (item[0] === 'compare' && item.length === 4) {
+                // compare v1 rel v2 → boolean
+                const v1 = resolveArg(item[1]);
+                const rel = item[2];
+                const v2 = resolveArg(item[3]);
+                result = REL[rel] ? REL[rel](v1, v2) : false;
+
+            } else if (item[0] === 'and' && (item.length === 3 || item.length === 4)) {
+                // and i j [score?] → boolean
+                const b1 = Boolean(values[item[1]]);
+                const b2 = Boolean(values[item[2]]);
+                result = b1 && b2;
+                if (item.length === 4 && result) ptsToAdd = Number(item[3]);
+
+            } else if (item[0] === 'or' && (item.length === 3 || item.length === 4)) {
+                // or i j [score?] → boolean
+                const b1 = Boolean(values[item[1]]);
+                const b2 = Boolean(values[item[2]]);
+                result = b1 || b2;
+                if (item.length === 4 && result) ptsToAdd = Number(item[3]);
+
+            } else if (item[0] === 'not' && (item.length === 2 || item.length === 3)) {
+                // not i [score?] → boolean
+                const b = Boolean(values[item[1]]);
+                result = !b;
+                if (item.length === 3 && result) ptsToAdd = Number(item[2]);
+
+            } else if (item[0] === 'xor' && (item.length === 3 || item.length === 4)) {
+                // xor i j [score?] → boolean
+                const b1 = Boolean(values[item[1]]);
+                const b2 = Boolean(values[item[2]]);
+                result = b1 !== b2;
+                if (item.length === 4 && result) ptsToAdd = Number(item[3]);
+
+            } else if (item.length === 5) {
+                // [expr, axis, rel, val, pts] → boolean (旧式位置判断)
+                const [expr, axis, rel, rawVal, pts] = item;
+                const unit = resolveChar(expr, blueOrder, redOrder);
+                if (unit) {
+                    const posVal = axis === 'x-pos' ? getX(unit) : getY(unit);
+                    const val = resolveArg(rawVal);
+                    result = REL[rel](posVal, val);
+                    if (result) ptsToAdd = Number(pts);
+                }
+
+            } else if (item.length === 7 && item[3] === 'delta') {
+                // [e1, e2, axis, 'delta', rel, val, pts] → boolean (旧式 delta 判断)
+                const [e1, e2, axis, , rel, rawVal, pts] = item;
+                const u1 = resolveChar(e1, blueOrder, redOrder);
+                const u2 = resolveChar(e2, blueOrder, redOrder);
+                if (u1 && u2) {
+                    const p1 = axis === 'x-pos' ? getX(u1) : getY(u1);
+                    const p2 = axis === 'x-pos' ? getX(u2) : getY(u2);
+                    const diff = Math.abs(p1 - p2);
+                    const val = resolveArg(rawVal);
+                    result = REL[rel](diff, val);
+                    if (result) ptsToAdd = Number(pts);
+                }
+
             } else if (item.length === 4 && item[1] === 'lock') {
+                // [from, 'lock', to, pts] → boolean
                 const [fromExpr, , toExpr, pts] = item;
                 const fromUnit = resolveChar(fromExpr, blueOrder, redOrder);
                 const toUnit = resolveChar(toExpr, blueOrder, redOrder);
                 if (fromUnit && toUnit) {
                     const targets = computeTargetsForState({ blueOrder, redOrder });
                     const target = targets.find(t => t.from === fromUnit)?.to;
-                    if (target === toUnit) {
-                        ok = true; score += pts;
-                    }
+                    result = (target === toUnit);
+                    if (result) ptsToAdd = Number(pts);
                 }
+            } else {
+                // 未知格式 → false
+                console.warn(`Unknown scoring command [${idx}]:`, item);
+                result = false;
             }
-        } catch (e) { console.warn(item, e); }
+
+        } catch (e) {
+            console.error(`Scoring command [${idx}] failed:`, item, e);
+            result = false;
+        }
+
+        values.push(result);
+        score += ptsToAdd;
     }
 
+    // 强制：蓝方站位不满足 → 得分归零（保留原逻辑）
     if (!bluePositionSatisfied) score = 0;
+
+    // 计算 maxScore（兼容旧式 pts 求和 / 显式 maxScore）
+    const maxScore = rule.maxScore !== undefined ? rule.maxScore :
+        (rule.scoring?.reduce((s, it) => {
+            // 仅旧命令最后一项为数字时计入 max
+            if (it.length === 5 || it.length === 7 || (it.length === 4 && it[1] === 'lock')) {
+                return s + (Number(it[it.length - 1]) || 0);
+            }
+            // 新命令：仅当有 score 参数且是加分命令时，max += score
+            if (['and','or','not','xor'].includes(it[0]) && it.length === 4) {
+                return s + (Number(it[3]) || 0);
+            }
+            return s;
+        }, 0) || 0);
 
     return {
         redMatched: true,
         blueMatched,
         score,
-        maxScore: rule.maxScore !== undefined ? rule.maxScore :
-            (rule.scoring?.reduce((s, it) => s + (it[it.length - 1] || 0), 0) || 0),
+        maxScore,
         bluePositionSatisfied,
-        recommendedBlueTeam: rule.preconditions?.team?.blue || []
+        recommendedBlueTeam: rule.preconditions?.team?.blue || [],
+        // debug: values  // 可选：用于调试时返回 values
     };
 }
 
