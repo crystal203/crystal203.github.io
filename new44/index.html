@@ -684,6 +684,19 @@
         .role-item.new {
             animation: fadeInUp 0.4s ease-out;
         }
+
+        /* 模拟拖动：待移动源格子高亮（比普通 highlight 更强） */
+        .cell.pending-move-source {
+            box-shadow: 0 0 0 4px gold, 0 0 0 8px rgba(30, 136, 229, 0.2), 0 0 12px rgba(255, 215, 0, 0.6);
+            transform: scale(1.12) !important;
+            z-index: 20;
+            position: relative;
+        }
+
+        /* 覆盖 .highlight 的 transform 冲突 */
+        .highlight.pending-move-source {
+            transform: scale(1.12) !important;
+        }
     </style>
 </head>
 
@@ -788,6 +801,16 @@
                 <div class="arrow-layer" id="arrowLayer"></div>
             </div>
         </div>
+
+        <div style="margin-top: 12px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+
+            <label
+                style="display: flex; align-items: center; gap: 6px; background: white; padding: 8px 15px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <input type="checkbox" id="simulateDrag">
+                <i class="fas fa-mobile-alt"></i>
+                <span>模拟拖动</span>
+            </label>
+        </div>
     </div>
 
     <!-- Role Selection Modal -->
@@ -839,6 +862,9 @@
             const roleOptions = document.getElementById('roleOptions');
 
             let selectedCell = null;
+            let simulateDragMode = false;
+            let pendingMoveUnit = null;
+            let pendingMoveCell = null; 
             let pendingRole = null;
 
             // ===== 初始化地图 =====
@@ -856,12 +882,15 @@
                         cell.dataset.row = r;
                         cell.dataset.col = c;
                         cell.addEventListener('mousedown', (e) => {
-                            if (e.button !== 0) return; // 只响应左键
+                            if (e.button !== 0) return;
+                            // ✅ 关键：模拟拖动开启时，跳过 handleDragStart
+                            if (document.getElementById('simulateDrag')?.checked) return;
                             handleDragStart(e, r, c);
                         });
                         cell.addEventListener('touchstart', (e) => {
-                            // 仅当单指触摸且垂直移动 < 水平移动时启动拖拽
                             if (e.touches.length === 1) {
+                                // ✅ 同样检查 simulateDrag
+                                if (document.getElementById('simulateDrag')?.checked) return;
                                 const touch = e.touches[0];
                                 dragState.touchStartX = touch.clientX;
                                 dragState.touchStartY = touch.clientY;
@@ -998,10 +1027,92 @@
 
             // ===== 单元格点击 =====
             function handleCellClick(r, c) {
+                if (dragState.isActive || dragState.isClickPrevented) {
+                    // 清理预览
+                    const preview = document.getElementById('drag-preview');
+                    if (preview) preview.remove();
+                    // 重置状态
+                    dragState = {
+                        isActive: false,
+                        isClickPrevented: false,
+                        isScrolling: false,
+                        touchStartX: 0,
+                        touchStartY: 0,
+                        startRow: -1,
+                        startCol: -1,
+                        currentRow: -1,
+                        currentCol: -1,
+                        draggedUnit: null,
+                        validDropZone: null
+                    };
+                }
+
+                // 防拖拽误触
+                if (Date.now() - (dragState.lastDragEndTime || 0) < 300) return;
+
                 const unit = STATE.map[r][c];
                 const side = c < 4 ? 'blue' : c >= 10 ? 'red' : null;
-                if (!side) return;
+                if (!side) return; // 不在阵营区，无视
 
+                simulateDragMode = document.getElementById('simulateDrag')?.checked || false;
+
+                // ✅ 模拟拖动模式：分两步操作
+                if (simulateDragMode) {
+                    // 第一步：点击一个已有角色 → 进入待移动状态
+                    if (unit && !pendingMoveUnit) {
+                        pendingMoveUnit = unit;
+                        pendingMoveCell = mapEl.children[r * 14 + c];
+                        pendingMoveCell.classList.add('highlight', 'pending-move-source');
+                        showNotification(`📌 请点击目标位置放置 ${unit.role.name}`, 'info');
+                        return;
+                    }
+
+                    // 第二步：已有待移动单位
+                    if (pendingMoveUnit) {
+                        // 点击自己 → 取消
+                        if (unit === pendingMoveUnit) {
+                            cancelPendingMove();
+                            showNotification('已取消移动', 'info');
+                            return;
+                        }
+
+                        // 检查是否同阵营
+                        if (pendingMoveUnit.side !== side) {
+                            showNotification('⚠️ 不能跨阵营移动！', 'warning');
+                            cancelPendingMove();
+                            return;
+                        }
+
+                        // 合法同阵营格子：执行移动/交换
+                        const targetUnit = unit; // 可能为 null（空）或同阵营 unit
+                        const srcR = pendingMoveUnit.pos[0];
+                        const srcC = pendingMoveUnit.pos[1];
+
+                        // --- 执行操作 ---
+                        if (!targetUnit) {
+                            // ✅ 移动到空格
+                            STATE.map[srcR][srcC] = null;
+                            STATE.map[r][c] = pendingMoveUnit;
+                            pendingMoveUnit.pos = [r, c];
+                            showNotification(`✅ 移动 ${pendingMoveUnit.role.name} 到 (${r + 1},${c + 1})`, 'success');
+                        } else {
+                            // ✅ 同阵营交换
+                            STATE.map[srcR][srcC] = targetUnit;
+                            STATE.map[r][c] = pendingMoveUnit;
+                            pendingMoveUnit.pos = [r, c];
+                            targetUnit.pos = [srcR, srcC];
+                            showNotification(`🔄 交换 ${pendingMoveUnit.role.name} 与 ${targetUnit.role.name}`, 'success');
+                        }
+
+                        renderMap();
+                        cancelPendingMove();
+                        return;
+                    }
+
+                    // 点击空格但无待移动单位 → 仍走原逻辑（布置新角色）
+                }
+
+                // ❌ 非模拟拖动模式：走原逻辑
                 if (unit) {
                     removeUnit(r, c);
                 } else {
@@ -1014,7 +1125,13 @@
                     openRoleSelect();
                 }
             }
-
+            function cancelPendingMove() {
+                if (pendingMoveCell) {
+                    pendingMoveCell.classList.remove('highlight', 'pending-move-source');
+                }
+                pendingMoveUnit = null;
+                pendingMoveCell = null;
+            }
             function openRoleSelect() {
                 roleOptions.innerHTML = '';
                 ALL_ROLES.forEach(role => {
