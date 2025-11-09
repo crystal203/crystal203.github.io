@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圆形角斗场计算器</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --blue-primary: #1E88E5;
+            --blue-light: #BBDEFB;
+            --blue-dark: #0D47A1;
+            --red-primary: #E53935;
+            --red-light: #FFCDD2;
+            --red-dark: #B71C1C;
+            --neutral-bg: #F5F5F5;
+            --card-bg: #FFFFFF;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #e6e9ef 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        #drag-preview {
+            transition: opacity 0.1s;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--blue-dark), var(--red-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Zone Headers */
+        .zone-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .zone-header.blue {
+            color: var(--blue-dark);
+            border-left: 4px solid var(--blue-primary);
+        }
+
+        .zone-header.red {
+            color: var(--red-dark);
+            border-left: 4px solid var(--red-primary);
+        }
+
+        .zone-header i {
+            font-size: 1.4rem;
+        }
+
+        /* Order Lists - Optimized Layout */
+        .order-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+
+        .order-panel {
+            flex: 1;
+            max-width: 500px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+        }
+
+        .order-panel.blue {
+            border-color: var(--blue-light);
+        }
+
+        .order-panel.red {
+            border-color: var(--red-light);
+        }
+
+        .order-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .blue .order-title {
+            color: var(--blue-dark);
+        }
+
+        .red .order-title {
+            color: var(--red-dark);
+        }
+
+        .order-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            min-height: 100px;
+        }
+
+        .role-item {
+            width: 85px;
+            height: 110px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+        }
+
+        .role-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .role-item.highlight {
+            border-color: gold;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+            background: #fff9c4;
+        }
+
+        .blue .role-item {
+            border-color: var(--blue-light);
+        }
+
+        .red .role-item {
+            border-color: var(--red-light);
+        }
+
+        .role-item .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: white;
+            font-size: 16px;
+        }
+
+        .blue .role-item .avatar {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .red .role-item .avatar {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .role-item .name {
+            font-size: 10px;
+            font-weight: 600;
+            text-align: center;
+            padding: 0 4px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .role-item .type {
+            font-size: 8px;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        .role-item .swap-btn {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .blue .role-item .swap-btn:hover {
+            background: var(--blue-primary);
+            color: white;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .red .role-item .swap-btn {
+            border-color: var(--red-primary);
+        }
+
+        .red .role-item .swap-btn:hover {
+            background: var(--red-primary);
+            color: white;
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .role-item:first-child .swap-btn {
+            display: none;
+        }
+
+        /* Map Section */
+
+        .map-section .map-container {
+            padding: 20px;
+            width: calc(14 * 46px + 13 * 4px + 2 * 24px);
+            /* 720px */
+            box-sizing: border-box;
+            margin: 0 auto;
+            /* 关键：添加居中 */
+            display: block;
+            /* 确保 margin: 0 auto 生效 */
+        }
+
+        .map,
+        .cell {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+        }
+
+        .map-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .map-container {
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            /* 关键：移除 padding，改用精确计算 */
+        }
+
+        .map {
+            display: grid;
+            grid-template-columns: repeat(14, 46px);
+            grid-template-rows: repeat(5, 46px);
+            gap: 4px;
+            background: var(--neutral-bg);
+            border-radius: 10px;
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08);
+            /* 移除 padding，确保尺寸精确 */
+            margin: 0;
+        }
+
+        .cell {
+            width: 48px;
+            height: 48px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            background: white;
+        }
+
+        .cell:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .blue-zone {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid var(--blue-light);
+        }
+
+        .red-zone {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 2px solid var(--red-light);
+        }
+
+        .neutral-zone {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+        }
+
+        .occupied,
+        .red-occupied {
+            transform: scale(1.02);
+        }
+
+        .occupied {
+            background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .red-occupied {
+            background: linear-gradient(135deg, #ef9a9a 0%, #e57373 100%);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight {
+            box-shadow: 0 0 0 4px gold, 0 0 12px rgba(255, 215, 0, 0.6);
+            transform: scale(1.1) !important;
+            z-index: 10;
+        }
+
+        .cell-type {
+            font-size: 8px;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+
+        .unlocked-marker {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background: #FF5722;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+
+        /* Arrow Layer */
+        .arrow-layer {
+            position: absolute;
+            top: 20px;
+            /* 与 .map-container 的 padding 匹配 */
+            left: 20px;
+            /* 与 .map-container 的 padding 匹配 */
+            width: calc(14 * 46px + 13 * 4px + 2 * 12px);
+            /* 720px */
+            height: calc(5 * 46px + 4 * 4px + 2 * 12px);
+            /* 260px */
+            pointer-events: none;
+            z-index: 15;
+            /* 关键：高于 .highlight 的 z-index (原为20，现调整单元格) */
+        }
+
+        /* Role Select Modal */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .role-select {
+            background: white;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .overlay.active .role-select {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: linear-gradient(90deg, var(--blue-primary), var(--red-primary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .role-option {
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid #e0e0e0;
+            background: #fafafa;
+        }
+
+        .role-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--blue-primary);
+        }
+
+        .role-option .name {
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .role-option .type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        .type-warrior {
+            background: #ffecb3;
+            color: #5d4037;
+        }
+
+        .type-support {
+            background: #c8e6c9;
+            color: #1b5e20;
+        }
+
+        .type-archer {
+            background: #bbdefb;
+            color: #0d47a1;
+        }
+
+        .type-tank {
+            background: #fbbbf2;
+            color: #a10d5e;
+        }
+
+        .role-option .ai {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+            margin-right: 10px;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-confirm {
+            background: var(--blue-primary);
+            color: white;
+        }
+
+        .btn-confirm:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Zone Labels */
+        .zone-label {
+            position: absolute;
+            top: -30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blue-label {
+            left: 10px;
+            color: var(--blue-dark);
+        }
+
+        .red-label {
+            right: 10px;
+            color: var(--red-dark);
+        }
+
+        .neutral-label {
+            left: 50%;
+            transform: translateX(-50%);
+            color: #757575;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .order-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .order-panel {
+                width: 100%;
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .map {
+                grid-template-columns: repeat(14, 36px);
+                grid-template-rows: repeat(5, 36px);
+                gap: 2px;
+                padding: 6px;
+            }
+
+            .cell {
+                width: 36px;
+                height: 36px;
+                font-size: 9px;
+                position: relative
+            }
+
+            .cell-type {
+                font-size: 6px;
+            }
+
+            .role-item {
+                width: 70px;
+                height: 95px;
+            }
+
+            .role-item .avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 12px;
+            }
+        }
+
+        /* Animation for new units */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .role-item.new {
+            animation: fadeInUp 0.4s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-chess"></i> 圆形角斗场计算器</h1>
+        </div>
+
+        <div style="margin-top: 12px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <label
+                style="display: flex; align-items: center; gap: 6px; background: white; padding: 8px 15px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <input type="checkbox" id="showAvatars" checked>
+                <i class="fas fa-user-circle"></i>
+                <span>显示角色头像</span>
+            </label>
+
+            <label
+                style="display: flex; align-items: center; gap: 6px; background: white; padding: 8px 15px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                <input type="checkbox" id="showDualArrows" checked>
+                <i class="fas fa-exchange-alt"></i>
+                <span>合并互锁箭头</span>
+            </label>
+        </div>
+        </br>
+        <!-- Blue Team Order -->
+        <div class="order-container">
+            <div class="order-panel blue">
+                <div class="zone-header blue">
+                    <i class="fas fa-gun"></i>
+                    <span>我方阵容</span>
+                </div>
+                <div class="order-list" id="blueOrder"></div>
+            </div>
+
+            <div class="order-panel red">
+                <div class="zone-header red">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>敌方阵容</span>
+                </div>
+                <div class="order-list" id="redOrder"></div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <div class="map-container">
+                <div class="map" id="map"></div>
+                <div class="arrow-layer" id="arrowLayer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Role Selection Modal -->
+    <div class="overlay" id="overlay">
+        <div class="role-select">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> 选择角色</h3>
+            </div>
+            <div class="modal-body">
+                <div class="roles-grid" id="roleOptions"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" onclick="closeRoleSelect()">取消</button>
+            </div>
+        </div>
+
+        <script>
+            // ===== 预设角色库 =====
+            document.addEventListener('dragstart', e => {
+                if (e.target.tagName === 'IMG' || e.target.closest('.role-option')) {
+                    e.preventDefault();
+                }
+            }, true);
+            const ALL_ROLES = [
+                { name: "凯勒", type: "战士", ai: "辅助刺客ai", short: "Kahlor", color: "#FF5722" },
+                { name: "莉耶", type: "战士", ai: "射手刺客ai", short: "Rie", color: "#607D8B" },
+                { name: "贝丝", type: "战士", ai: "射手刺客ai", short: "Beth", color: "#9C27B0" },
+                { name: "伊娃", type: "辅助", ai: "近战ai", short: "Eva", color: "#607D8B" },
+                { name: "黛西", type: "坦克", ai: "近战ai", short: "Daisy", color: "#2196F3" },
+                { name: "银河", type: "射手", ai: "远程ai", short: "Eunha", color: "#607D8B" },
+                { name: "艾丝黛尔", type: "射手", ai: "近战ai", short: "Estel", color: "#795548" },
+                { name: "阿拉贝尔", type: "射手", ai: "远程ai", short: "Arabelle", color: "#9C27B0" },
+                // 光 FF9800 暗 9C27B0 虚 607D8B 水 2196F3 火 FF5722 土 795548
+            ];
+
+            // ===== 状态管理 =====
+            const STATE = {
+                map: Array(5).fill().map(() => Array(14).fill(null)),
+                redOrder: [],
+                blueOrder: []
+            };
+
+            // DOM refs
+            const mapEl = document.getElementById('map');
+            const redOrderEl = document.getElementById('redOrder');
+            const blueOrderEl = document.getElementById('blueOrder');
+            const arrowLayer = document.getElementById('arrowLayer');
+            const overlay = document.getElementById('overlay');
+            const roleOptions = document.getElementById('roleOptions');
+
+            let selectedCell = null;
+            let pendingRole = null;
+
+            // ===== 初始化地图 =====
+            function initMap() {
+                mapEl.innerHTML = '';
+                for (let r = 0; r < 5; r++) {
+                    for (let c = 0; c < 14; c++) {
+                        const cell = document.createElement('div');
+                        cell.className = 'cell';
+                        if (c < 4) cell.classList.add('blue-zone');
+                        else if (c >= 10) cell.classList.add('red-zone');
+                        else cell.classList.add('neutral-zone');
+
+                        // 添加区域标签
+                        cell.dataset.row = r;
+                        cell.dataset.col = c;
+                        cell.addEventListener('mousedown', (e) => {
+                            if (e.button !== 0) return; // 只响应左键
+                            handleDragStart(e, r, c);
+                        });
+                        cell.addEventListener('touchstart', (e) => {
+                            e.preventDefault();
+                            handleDragStart(e.touches[0], r, c);
+                        }, { passive: false });
+                        // 恢复单击功能：添加 click 事件（原逻辑）
+                        cell.addEventListener('click', (e) => {
+                            // 如果是拖拽操作，不触发点击（通过短时间检测）
+                            if (Date.now() - (dragState.lastDragEndTime || 0) < 300) return;
+                            handleCellClick(r, c);
+                        });
+                        // 添加全局拖拽监听
+                        document.addEventListener('mousemove', handleDragMove);
+                        document.addEventListener('touchmove', (e) => {
+                            e.preventDefault();
+                            handleDragMove(e.touches[0]);
+                        }, { passive: false });
+                        document.addEventListener('mouseup', handleDragEnd);
+                        document.addEventListener('touchend', handleDragEnd);
+                        mapEl.appendChild(cell);
+                    }
+                }
+                renderMap();
+            }
+
+            function renderMap() {
+                for (let r = 0; r < 5; r++) {
+                    for (let c = 0; c < 14; c++) {
+                        const cell = mapEl.children[r * 14 + c];
+                        const unit = STATE.map[r][c];
+                        cell.className = 'cell';
+                        if (c < 4) cell.classList.add('blue-zone');
+                        else if (c >= 10) cell.classList.add('red-zone');
+                        else cell.classList.add('neutral-zone');
+
+                        // 清空内容并重新添加区域标签
+                        cell.innerHTML = '';
+                        if (r === 0) {
+                            const label = document.createElement('div');
+                            label.className = 'cell-type';
+                            if (label.textContent) cell.appendChild(label);
+                        }
+
+                        if (unit) {
+                            const cellContent = document.createElement('div');
+                            cellContent.style.display = 'flex';
+                            cellContent.style.flexDirection = 'column';
+                            cellContent.style.alignItems = 'center';
+                            cellContent.style.justifyContent = 'center';
+                            cellContent.style.width = '100%';
+                            cellContent.style.height = '100%';
+                            cellContent.style.fontSize = '9px';
+
+                            const showAvatars = document.getElementById('showAvatars').checked;
+
+                            if (showAvatars) {
+                                const img = document.createElement('img');
+                                img.src = `./asset/${unit.role.short}.png`;
+                                img.alt = unit.role.short;
+                                img.style.width = '48px';
+                                img.style.height = '48px';
+                                img.style.objectFit = 'cover';
+                                img.style.borderRadius = '4px';
+                                img.style.marginBottom = '2px';
+
+                                // 加载失败时显示缩写
+                                img.onerror = () => {
+                                    img.style.display = 'none';
+                                    cellContent.innerHTML = `<div style="font-weight:bold; margin-bottom:1px;">${unit.role.short}</div>`;
+                                };
+                                cellContent.appendChild(img);
+                            } else {
+                                cellContent.innerHTML = `<div style="font-weight:bold; margin-bottom:1px;">${unit.role.short}</div>`;
+                            }
+
+                            cell.appendChild(cellContent);
+
+                            cell.classList.add(unit.side === 'red' ? 'red-occupied' : 'occupied');
+                            if (unit === getFirstUnit(unit.side)) {
+                                cell.classList.add('highlight');
+                            }
+                        }
+                    }
+                }
+                const computedTargets = computeTargets();
+                const lockedUnits = new Set();
+                computedTargets.forEach(t => lockedUnits.add(t.to));
+
+                // 为未锁定角色添加标记
+                for (let r = 0; r < 5; r++) {
+                    for (let c = 0; c < 14; c++) {
+                        const unit = STATE.map[r][c];
+                        const cell = mapEl.children[r * 14 + c];
+
+                        // 移除旧标记
+                        const oldMarker = cell.querySelector('.unlocked-marker');
+                        if (oldMarker) oldMarker.remove();
+
+                        // 添加新标记（仅当存在角色且未被锁定）
+                        if (unit && !lockedUnits.has(unit)) {
+                            const marker = document.createElement('div');
+                            marker.className = 'unlocked-marker';
+                            marker.innerHTML = '!';
+                            cell.appendChild(marker);
+                        }
+                    }
+                }
+                renderOrderLists();
+                drawArrows();
+            }
+
+            function getFirstUnit(side) {
+                const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
+                return order.length > 0 ? order[0] : null;
+            }
+
+            // ===== 单元格点击 =====
+            function handleCellClick(r, c) {
+                const unit = STATE.map[r][c];
+                const side = c < 4 ? 'blue' : c >= 10 ? 'red' : null;
+                if (!side) return;
+
+                if (unit) {
+                    removeUnit(r, c);
+                } else {
+                    const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
+                    if (order.length >= 4) {
+                        showNotification(`最多布置4个${side === 'red' ? '敌方' : '我方'}角色！`, 'warning');
+                        return;
+                    }
+                    selectedCell = { row: r, col: c, side };
+                    openRoleSelect();
+                }
+            }
+
+            function openRoleSelect() {
+                roleOptions.innerHTML = '';
+                ALL_ROLES.forEach(role => {
+                    const div = document.createElement('div');
+                    div.className = 'role-option';
+
+                    // 检查同区域是否已存在该角色
+                    const isDuplicate = selectedCell &&
+                        ((selectedCell.side === 'blue' && STATE.blueOrder.some(u => u.role.short === role.short)) ||
+                            (selectedCell.side === 'red' && STATE.redOrder.some(u => u.role.short === role.short)));
+
+                    if (isDuplicate) {
+                        div.style.opacity = '0.4';
+                        div.style.pointerEvents = 'none';
+                        div.style.position = 'relative';
+                    }
+
+                    const typeClass = role.type === '战士' ? 'type-warrior' :
+                        role.type === '坦克' ? 'type-tank' :
+                            role.type === '辅助' ? 'type-support' : 'type-archer';
+
+                    div.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 40px; height: 40px; border-radius: 6px; overflow: hidden; flex-shrink: 0;">
+                    <img src="./asset/${role.short}.png" 
+                        alt="${role.short}" 
+                        style="width: 100%; height: 100%; object-fit: cover;"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#666;color:white;font-size:12px;&quot;>${role.short}</div>'">
+                    </div>
+                    <div style="flex: 1;">
+                    <div class="name">${role.name}</div>
+                    <span class="type ${typeClass}">${role.type}</span>
+                    <div class="ai">${role.ai}</div>
+                    </div>
+                </div>
+                `;
+
+                    if (isDuplicate) {
+                        const badge = document.createElement('div');
+                        badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 已存在';
+                        badge.style.position = 'absolute';
+                        badge.style.top = '8px';
+                        badge.style.right = '8px';
+                        badge.style.background = 'rgba(255,193,7,0.9)';
+                        badge.style.color = '#5d4037';
+                        badge.style.padding = '2px 6px';
+                        badge.style.borderRadius = '12px';
+                        badge.style.fontSize = '10px';
+                        badge.style.fontWeight = 'bold';
+                        div.appendChild(badge);
+                    } else {
+                        div.onclick = () => selectRoleImmediate(role);
+                    }
+
+                    roleOptions.appendChild(div);
+                });
+                overlay.classList.add('active');
+            }
+
+            function selectRoleImmediate(role) {
+                if (!selectedCell) return;
+
+                const { row, col, side } = selectedCell;
+                const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
+
+                // 关键检查：同区域是否已存在相同角色
+                const isDuplicate = order.some(u => u.role.short === role.short);
+                if (isDuplicate) {
+                    showNotification(`⚠️ ${side === 'blue' ? '我方' : '敌方'}阵容中已存在 ${role.name}`, 'warning');
+                    return;
+                }
+
+                // 检查数量限制
+                if (order.length >= 4) {
+                    showNotification(`最多布置4个${side === 'red' ? '敌方' : '我方'}角色！`, 'warning');
+                    return;
+                }
+
+                const unit = { side, role, pos: [row, col], index: order.length, isNew: true };
+                STATE.map[row][col] = unit;
+                order.push(unit);
+                closeRoleSelect();
+                renderMap();
+                showNotification(`✅ 已布置 ${role.name}`, 'success');
+            }
+
+            function closeRoleSelect() {
+                overlay.classList.remove('active');
+                selectedCell = null;
+                pendingRole = null;
+                document.querySelectorAll('.role-option').forEach(el => {
+                    el.style.borderColor = '#e0e0e0';
+                    el.style.boxShadow = 'none';
+                });
+            }
+
+            function removeUnit(r, c) {
+                const unit = STATE.map[r][c];
+                if (!unit) return;
+                const order = unit.side === 'red' ? STATE.redOrder : STATE.blueOrder;
+                const idx = order.findIndex(u => u.pos[0] === r && u.pos[1] === c);
+                if (idx !== -1) {
+                    order.splice(idx, 1);
+                    order.forEach((u, i) => u.index = i);
+                }
+                STATE.map[r][c] = null;
+                renderMap();
+                showNotification(`已移除 ${unit.role.name}`, 'info');
+            }
+
+            // ===== 阵容顺序渲染 =====
+            function renderOrderLists() {
+                renderOrder(STATE.blueOrder, blueOrderEl, 'blue');
+                renderOrder(STATE.redOrder, redOrderEl, 'red');
+            }
+
+            function renderOrder(list, container, side) {
+                container.innerHTML = '';
+                list.forEach((unit, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'role-item';
+
+                    const computedTargets = computeTargets();
+                    const lockedUnits = new Set(computedTargets.map(t => t.to));
+
+                    // 为未锁定角色添加标记
+                    if (unit && !lockedUnits.has(unit)) {
+                        const marker = document.createElement('div');
+                        marker.style.cssText = `
+                        position: absolute; top: 4px; right: 4px; 
+                        width: 10px; height: 10px; 
+                        background: #FF5722; border-radius: 50%; 
+                        font-size: 8px; color: white; 
+                        display: flex; align-items: center; justify-content: center;
+                        font-weight: bold;
+                    `;
+                        marker.textContent = '!';
+                        div.appendChild(marker);
+                    }
+                    if (i === 0) div.classList.add('highlight');
+
+                    // 为新添加的元素添加动画
+                    if (unit.isNew) {
+                        div.classList.add('new');
+                        setTimeout(() => div.classList.remove('new'), 400);
+                        delete unit.isNew;
+                    }
+
+                    const avatarDiv = document.createElement('div');
+                    avatarDiv.className = 'avatar';
+                    avatarDiv.style.display = 'flex';
+                    avatarDiv.style.alignItems = 'center';
+                    avatarDiv.style.justifyContent = 'center';
+                    avatarDiv.style.fontSize = '14px';
+                    avatarDiv.style.fontWeight = 'bold';
+
+                    // 检查开关状态
+                    const showAvatars = document.getElementById('showAvatars').checked;
+
+                    if (showAvatars) {
+                        const img = document.createElement('img');
+                        img.src = `./asset/${unit.role.short}.png`;
+                        img.alt = unit.role.short;
+                        img.style.width = '100%';
+                        img.style.height = '100%';
+                        img.style.objectFit = 'cover';
+                        img.style.borderRadius = '8px';
+
+                        // 加载失败时显示首字母缩写
+                        img.onerror = () => {
+                            img.style.display = 'none';
+                            avatarDiv.textContent = unit.role.short;
+                            avatarDiv.style.background = unit.role.color ?
+                                `linear-gradient(135deg, ${unit.role.color}80, ${unit.role.color}FF)` :
+                                '#666';
+                        };
+                        avatarDiv.appendChild(img);
+                    } else {
+                        avatarDiv.textContent = unit.role.short;
+                        avatarDiv.style.background = unit.role.color ?
+                            `linear-gradient(135deg, ${unit.role.color}80, ${unit.role.color}FF)` :
+                            '#666';
+                    }
+                    div.insertBefore(avatarDiv, div.firstChild);
+
+                    if (i > 0) {
+                        const btn = document.createElement('div');
+                        btn.className = 'swap-btn';
+                        btn.innerHTML = '<i class="fas fa-exchange-alt"></i>';
+                        btn.onclick = (e) => {
+                            e.stopPropagation();
+                            swapOrder(side, i);
+                        };
+                        div.appendChild(btn);
+                    }
+                    container.appendChild(div);
+                });
+            }
+
+            function swapOrder(side, idx) {
+                if (idx <= 0) return;
+                const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
+                [order[idx - 1], order[idx]] = [order[idx], order[idx - 1]];
+                order.forEach((u, i) => u.index = i);
+                renderMap();
+                showNotification('阵容顺序已调整', 'success');
+            }
+
+            // ===== 索敌逻辑 & 箭头绘制 =====
+            function findTarget(attacker, candidates, isRedAttacker) {
+                const { ai } = attacker.role;
+                const unhit = candidates.filter(c => !c.isHit);
+
+                let target = null;
+
+                if (ai === '辅助刺客ai' || ai === '射手刺客ai') {
+                    const targetType = ai === '辅助刺客ai' ? '辅助' : '射手';
+                    target = unhit.find(u => u.role.type === targetType);
+                    if (!target) {
+                        target = candidates.find(u => u.role.type === targetType);
+                    }
+                    if (!target) {
+                        target = findNearest(attacker, unhit.length > 0 ? unhit : candidates);
+                    }
+                } else if (ai === '近战ai') {
+                    target = findNearest(attacker, unhit.length > 0 ? unhit : candidates);
+                } else if (ai === '远程ai') {
+                    target = findNearest(attacker, candidates);
+                }
+
+                if (target) target.isHit = true;
+                return target;
+            }
+
+            function findNearest(unit, candidates) {
+                if (candidates.length === 0) return null;
+                const [ar, ac] = unit.pos;
+                return candidates.reduce((best, u) => {
+                    const [br, bc] = u.pos;
+                    const d = (ar - br) ** 2 + (ac - bc) ** 2;
+                    return d < best.dist ? { unit: u, dist: d } : best;
+                }, { unit: null, dist: Infinity }).unit;
+            }
+
+            function computeTargets() {
+                // 关键：直接在原始对象上操作 isHit，但需保存原始状态以便恢复
+                const originalHitStates = new Map();
+
+                // 保存原始 isHit 状态（用于后续恢复）
+                [...STATE.redOrder, ...STATE.blueOrder].forEach(u => {
+                    originalHitStates.set(u, u.isHit || false);
+                    u.isHit = false; // 重置为未命中
+                });
+
+                const targets = [];
+
+                // 顺序：我方全体 → 敌方全体
+                for (const attacker of [...STATE.blueOrder, ...STATE.redOrder]) {
+                    const enemyOrder = attacker.side === 'blue' ? STATE.redOrder : STATE.blueOrder;
+                    if (enemyOrder.length === 0) continue;
+
+                    const target = findTarget(attacker, enemyOrder, attacker.side === 'red');
+                    if (target) {
+                        targets.push({ from: attacker, to: target });
+                    }
+                }
+
+                // 恢复原始 isHit 状态（保持数据纯净）
+                originalHitStates.forEach((value, unit) => {
+                    unit.isHit = value;
+                });
+
+                return targets;
+            }
+
+            function drawArrows() {
+                const targets = computeTargets();
+                const svgNS = "http://www.w3.org/2000/svg";
+                const svg = document.createElementNS(svgNS, "svg");
+
+                const mapRect = mapEl.getBoundingClientRect();
+                const containerRect = document.querySelector('.map-container').getBoundingClientRect();
+                const cellSize = 46;
+                const gap = 4;
+
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+                svg.setAttribute("viewBox", `0 0 ${containerRect.width} ${containerRect.height}`);
+
+                // 创建箭头标记
+                const defs = document.createElementNS(svgNS, "defs");
+
+                // 单向箭头
+                const createMarker = (id, color) => {
+                    const marker = document.createElementNS(svgNS, "marker");
+                    marker.setAttribute("id", id);
+                    marker.setAttribute("markerWidth", "8");
+                    marker.setAttribute("markerHeight", "6");
+                    marker.setAttribute("refX", "7");
+                    marker.setAttribute("refY", "3");
+                    marker.setAttribute("orient", "auto");
+                    const poly = document.createElementNS(svgNS, "polygon");
+                    poly.setAttribute("points", "0 0, 8 3, 0 6");
+                    poly.setAttribute("fill", color);
+                    marker.appendChild(poly);
+                    return marker;
+                };
+
+                const blueMarker = createMarker("blueArrow", "#1E88E5");
+                const redMarker = createMarker("redArrow", "#E53935");
+                const dualMarkerStart = createMarker("dualStart", "#7B1FA2"); // 紫色双向起点
+                const dualMarkerEnd = createMarker("dualEnd", "#7B1FA2");   // 紫色双向终点
+
+                // 双向箭头线帽
+                dualMarkerStart.setAttribute("orient", "auto-start-reverse");
+
+                defs.appendChild(blueMarker);
+                defs.appendChild(redMarker);
+                defs.appendChild(dualMarkerStart);
+                defs.appendChild(dualMarkerEnd);
+                svg.appendChild(defs);
+
+                // 检测双向关系
+
+                const showDualArrows = document.getElementById('showDualArrows').checked;
+                const dualPairs = new Set();
+                const processed = new Set();
+                if (showDualArrows) {
+
+                    for (let i = 0; i < targets.length; i++) {
+                        const t1 = targets[i];
+                        // 确保t1是跨阵营攻击（蓝→红 或 红→蓝）
+                        if (t1.from.side === t1.to.side) continue;
+
+                        for (let j = i + 1; j < targets.length; j++) {
+                            const t2 = targets[j];
+                            // 确保t2是跨阵营攻击
+                            if (t2.from.side === t2.to.side) continue;
+
+                            // 检查是否互指：A(蓝)→B(红) 且 B(红)→A(蓝)
+                            if (t1.from === t2.to && t1.to === t2.from) {
+                                // 关键：确保一方是蓝方，一方是红方
+                                const isBlueRedPair =
+                                    (t1.from.side === 'blue' && t1.to.side === 'red') ||
+                                    (t1.from.side === 'red' && t1.to.side === 'blue');
+
+                                if (isBlueRedPair) {
+                                    // 使用阵营+位置作为唯一键，避免序号冲突
+                                    const key = `${t1.from.side}-${t1.from.pos[0]}-${t1.from.pos[1]}|${t1.to.side}-${t1.to.pos[0]}-${t1.to.pos[1]}`;
+                                    dualPairs.add(key);
+                                    processed.add(i);
+                                    processed.add(j);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                // 计算基础坐标
+                const getCenter = (r, c) => {
+                    const x = c * (cellSize + gap) + cellSize / 2 + gap / 2 + 12;
+                    const y = r * (cellSize + gap) + cellSize / 2 + gap / 2 + 12;
+                    return { x, y };
+                };
+
+                // 绘制箭头
+                targets.forEach((target, idx) => {
+                    let isDual = processed.has(idx);
+                    if (!showDualArrows) {
+                        isDual = false;
+                        processed.clear();
+                    }
+                    if (isDual) return; // 双向箭头已处理
+
+                    const { from, to } = target;
+                    const start = getCenter(...from.pos);
+                    const end = getCenter(...to.pos);
+
+                    // 智能偏移：基于角色位置计算确定性偏移
+                    const seed = from.pos[0] * 1000 + from.pos[1] * 100 + to.pos[0] * 10 + to.pos[1];
+                    const offset = ((seed * 9301) % 100 - 50) * 0.1; // [-15, +15] 的确定性偏移
+
+                    // 计算垂直偏移向量
+                    const dx = end.x - start.x;
+                    const dy = end.y - start.y;
+                    const len = Math.hypot(dx, dy) || 1;
+                    const nx = -dy / len; // 法向量
+                    const ny = dx / len;
+
+                    const offsetX = 0;
+                    const offsetY = ny * offset;
+
+                    const path = document.createElementNS(svgNS, "path");
+                    path.setAttribute("d", `M ${start.x + offsetX} ${start.y + offsetY} L ${end.x + offsetX} ${end.y + offsetY}`);
+                    path.setAttribute("fill", "none");
+                    path.setAttribute("stroke", from.side === 'blue' ? "#1E88E5" : "#E53935");
+                    path.setAttribute("stroke-width", "2.5");
+                    path.setAttribute("stroke-linecap", "round");
+                    path.setAttribute("marker-end", from.side === 'blue' ? "url(#blueArrow)" : "url(#redArrow)");
+                    svg.appendChild(path);
+                });
+
+                // 绘制双向箭头
+                dualPairs.forEach(key => {
+                    // 从key解析位置
+                    const [fromPart, toPart] = key.split('|');
+                    const [, fr, fc] = fromPart.split('-').map(x => parseInt(x));
+                    const [, tr, tc] = toPart.split('-').map(x => parseInt(x));
+
+                    const start = getCenter(fr, fc);
+                    const end = getCenter(tr, tc);
+
+                    // 双向箭头偏移（固定值）
+                    const offset = 6;
+                    const dx = end.x - start.x;
+                    const dy = end.y - start.y;
+                    const len = Math.hypot(dx, dy) || 1;
+                    const nx = -dy / len;
+                    const ny = dx / len;
+
+                    const path = document.createElementNS(svgNS, "path");
+                    path.setAttribute("d", `M ${start.x + nx * offset} ${start.y + ny * offset} L ${end.x + nx * offset} ${end.y + ny * offset}`);
+                    path.setAttribute("fill", "none");
+                    path.setAttribute("stroke", "#7B1FA2");
+                    path.setAttribute("stroke-width", "3");
+                    path.setAttribute("stroke-linecap", "round");
+                    path.setAttribute("marker-start", "url(#dualStart)");
+                    path.setAttribute("marker-end", "url(#dualEnd)");
+                    svg.appendChild(path);
+                });
+
+                arrowLayer.innerHTML = '';
+                arrowLayer.appendChild(svg);
+            }
+
+            // ===== 通知系统 =====
+            function showNotification(message, type = 'info') {
+                // 创建通知元素
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 10000;
+        transform: translateX(200%);
+        transition: transform 0.3s ease;
+      `;
+
+                let bgColor = '#2196F3';
+                if (type === 'success') bgColor = '#4CAF50';
+                else if (type === 'warning') bgColor = '#FF9800';
+                else if (type === 'error') bgColor = '#F44336';
+                else if (type === 'info') bgColor = '#2196F3';
+
+                notification.style.background = `linear-gradient(90deg, ${bgColor}, ${darkenColor(bgColor, 20)})`;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                // 触发动画
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
+
+                // 自动消失
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(200%)';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.parentNode.removeChild(notification);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+
+            function darkenColor(color, percent) {
+                // 简单的RGB变暗
+                let r, g, b;
+                if (color.startsWith('#')) {
+                    color = color.slice(1);
+                    r = parseInt(color.substring(0, 2), 16);
+                    g = parseInt(color.substring(2, 4), 16);
+                    b = parseInt(color.substring(4, 6), 16);
+                } else {
+                    return color;
+                }
+                r = Math.max(0, r * (1 - percent / 100));
+                g = Math.max(0, g * (1 - percent / 100));
+                b = Math.max(0, b * (1 - percent / 100));
+                return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
+            }
+
+            // ===== 启动 =====
+            initMap();
+
+            // 添加一些初始示例（可选）
+            setTimeout(() => {
+                // 示例：布置一些初始角色
+                const examples = [
+                    { side: 'blue', r: 2, c: 1, role: ALL_ROLES[0] },
+                    { side: 'blue', r: 1, c: 2, role: ALL_ROLES[1] },
+                    { side: 'red', r: 2, c: 12, role: ALL_ROLES[4] },
+                    { side: 'red', r: 3, c: 11, role: ALL_ROLES[2] }
+                ];
+
+                examples.forEach(ex => {
+                    const unit = { side: ex.side, role: ex.role, pos: [ex.r, ex.c], index: 0, isNew: true };
+                    STATE.map[ex.r][ex.c] = unit;
+                    if (ex.side === 'blue') STATE.blueOrder.push(unit);
+                    else STATE.redOrder.push(unit);
+                });
+
+                // 更新索引
+                STATE.blueOrder.forEach((u, i) => u.index = i);
+                STATE.redOrder.forEach((u, i) => u.index = i);
+
+                renderMap();
+            }, 500);
+            document.getElementById('showAvatars').addEventListener('change', () => {
+                renderMap(); // 重新渲染所有视图
+            });
+            let dragState = {
+                isActive: false,
+                startRow: -1,
+                startCol: -1,
+                currentRow: -1,
+                currentCol: -1,
+                draggedUnit: null,
+                validDropZone: null
+            };
+
+            function handleDragStart(e, r, c) {
+                // 添加延迟启动，避免与点击冲突
+                setTimeout(() => {
+                    if (!dragState.isClickPrevented) {
+                        const unit = STATE.map[r][c];
+                        if (!unit) return;
+
+                        dragState = {
+                            isActive: true,
+                            isClickPrevented: true, // 阻止后续点击
+                            startRow: r,
+                            startCol: c,
+                            currentRow: r,
+                            currentCol: c,
+                            draggedUnit: unit,
+                            validDropZone: unit.side === 'blue' ?
+                                { min: 0, max: 3 } : { min: 10, max: 13 }
+                        };
+
+                        createDragPreview(e, unit);
+                    }
+                }, 150); // 150ms延迟，短于点击判定时间
+            }
+
+            function createDragPreview(e, unit) {
+                const preview = document.createElement('div');
+                preview.id = 'drag-preview';
+                preview.style.cssText = `
+    position: fixed;
+    width: 46px;
+    height: 46px;
+    background: ${unit.side === 'blue' ? 'rgba(30, 136, 229, 0.8)' : 'rgba(229, 57, 53, 0.8)'};
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    z-index: 10000;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  `;
+
+                // 添加头像/缩写
+                const showAvatars = document.getElementById('showAvatars')?.checked ?? true;
+                if (showAvatars) {
+                    const img = document.createElement('img');
+                    img.src = `./asset/${unit.role.short}.png`;
+                    img.alt = unit.role.short;
+                    img.style.width = '20px';
+                    img.style.height = '20px';
+                    img.style.objectFit = 'cover';
+                    img.style.marginBottom = '2px';
+                    img.onerror = () => preview.innerHTML = unit.role.short;
+                    preview.appendChild(img);
+                } else {
+                    preview.textContent = unit.role.short;
+                }
+
+                preview.setAttribute('draggable', 'false');
+
+                // 添加到 body 后，立即阻止所有拖拽事件
+                document.body.appendChild(preview);
+
+                // 阻止预览元素的拖拽
+                preview.addEventListener('dragstart', e => e.preventDefault());
+
+                updateDragPreviewPosition(e);
+            }
+
+            function updateDragPreviewPosition(e) {
+                const preview = document.getElementById('drag-preview');
+                if (!preview) return;
+
+                preview.style.left = (e.clientX - 23) + 'px';
+                preview.style.top = (e.clientY - 23) + 'px';
+            }
+
+            function handleDragMove(e) {
+                if (!dragState.isActive) return;
+
+                updateDragPreviewPosition(e);
+
+                // 计算当前悬停的格子
+                const mapRect = mapEl.getBoundingClientRect();
+                const cellSize = 46;
+                const gap = 4;
+
+                const relX = e.clientX - mapRect.left - 12; // -12为.map的padding
+                const relY = e.clientY - mapRect.top - 12;
+
+                const col = Math.floor(relX / (cellSize + gap));
+                const row = Math.floor(relY / (cellSize + gap));
+
+                // 检查是否在有效区域内
+                if (row >= 0 && row < 5 &&
+                    col >= dragState.validDropZone.min && col <= dragState.validDropZone.max) {
+                    dragState.currentRow = row;
+                    dragState.currentCol = col;
+
+                    // 高亮目标格子
+                    highlightTargetCell(row, col);
+                } else {
+                    clearTargetHighlight();
+                }
+            }
+
+            function highlightTargetCell(row, col) {
+                clearTargetHighlight();
+
+                const targetCell = mapEl.children[row * 14 + col];
+                if (!targetCell) return;
+
+                targetCell.style.outline = '3px dashed ' + (dragState.draggedUnit.side === 'blue' ? '#1E88E5' : '#E53935');
+                targetCell.style.outlineOffset = '2px';
+                targetCell.dataset.isTarget = 'true';
+            }
+
+            function clearTargetHighlight() {
+                document.querySelectorAll('.cell[data-is-target="true"]').forEach(cell => {
+                    cell.style.outline = '';
+                    cell.style.outlineOffset = '';
+                    cell.dataset.isTarget = '';
+                });
+            }
+
+            function handleDragEnd() {
+                if (!dragState.isActive) return;
+
+                // 移除预览
+                const preview = document.getElementById('drag-preview');
+                if (preview) preview.remove();
+
+                // 清除高亮
+                clearTargetHighlight();
+
+                const { startRow, startCol, currentRow, currentCol, draggedUnit } = dragState;
+
+                // 检查是否在有效位置释放
+                if (currentRow >= 0 && currentRow < 5 &&
+                    currentCol >= dragState.validDropZone.min && currentCol <= dragState.validDropZone.max) {
+
+                    // 不在同一格子才执行操作
+                    if (startRow !== currentRow || startCol !== currentCol) {
+                        const targetUnit = STATE.map[currentRow][currentCol];
+
+                        if (!targetUnit) {
+                            // 移动到空格
+                            STATE.map[startRow][startCol] = null;
+                            STATE.map[currentRow][currentCol] = draggedUnit;
+                            draggedUnit.pos = [currentRow, currentCol];
+                            showNotification(`移动 ${draggedUnit.role.name} 到 (${currentRow + 1},${currentCol + 1})`, 'success');
+                        } else if (targetUnit.side === draggedUnit.side) {
+                            // 同阵营交换
+                            STATE.map[startRow][startCol] = targetUnit;
+                            STATE.map[currentRow][currentCol] = draggedUnit;
+                            draggedUnit.pos = [currentRow, currentCol];
+                            targetUnit.pos = [startRow, startCol];
+                            showNotification(`交换 ${draggedUnit.role.name} 与 ${targetUnit.role.name}`, 'success');
+                        }
+
+                        renderMap();
+                    }
+                }
+
+                // 关键修复：完整重置 dragState（原代码未重置 isClickPrevented）
+                dragState = {
+                    isActive: false,
+                    isClickPrevented: false, // 必须重置！
+                    lastDragEndTime: Date.now(),
+                    startRow: -1,
+                    startCol: -1,
+                    currentRow: -1,
+                    currentCol: -1,
+                    draggedUnit: null,
+                    validDropZone: null
+                };
+            }
+            document.getElementById('showDualArrows').addEventListener('change', () => {
+                drawArrows(); // 仅重绘箭头，不刷新整个地图
+            });
+        </script>
+</body>
+
+</html>
