@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片加解密工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input,
+        button {
+            margin-top: 5px;
+            padding: 6px 10px;
+            font-size: 14px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #encryptBtn {
+            background: #FF9800;
+        }
+
+        #encryptBtn:hover {
+            background: #F57C00;
+        }
+
+        #decryptBtn {
+            background: #2196F3;
+        }
+
+        #decryptBtn:hover {
+            background: #1976D2;
+        }
+
+        canvas {
+            display: block;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #downloadBtn {
+            margin-top: 10px;
+            background: #9C27B0;
+        }
+
+        #downloadBtn:hover {
+            background: #7B1FA2;
+        }
+
+        .options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>图片加解密工具 By crystal302</h2>
+        <label for="imageInput">选择图片：</label>
+        <input type="file" id="imageInput" accept=".png" />
+        <label for="keyInput">密钥：</label>
+        <input type="text" id="keyInput" value="your-secret-key-2025" size="40" />
+        <label for="blockSizeInput">划分网格（块大小）：</label>
+        <input type="number" id="blockSizeInput" value="128" min="1" max="1024" />
+        <div class="options">
+            <input type="checkbox" id="enableXor" checked />
+            <label for="enableXor" style="margin-top:0; font-weight:normal;">
+                启用 XOR 混淆（取消勾选则仅块置换）
+            </label>
+        </div>
+        <div class="options">
+            <input type="checkbox" id="addFooter" />
+            <label for="addFooter" style="margin-top:0; font-weight:normal;">
+                加密时添加解密提示区域（含密钥和参数）
+            </label>
+        </div>
+        <button id="encryptBtn" disabled>加密</button>
+        <button id="decryptBtn" disabled>解密</button>
+        <canvas id="outputCanvas"></canvas>
+        <button id="downloadBtn" style="display:none;">下载结果</button>
+    </div>
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const keyInput = document.getElementById('keyInput');
+        const blockSizeInput = document.getElementById('blockSizeInput');
+        const enableXorCheckbox = document.getElementById('enableXor');
+        const addFooterCheckbox = document.getElementById('addFooter');
+        const encryptBtn = document.getElementById('encryptBtn');
+        const decryptBtn = document.getElementById('decryptBtn');
+        const outputCanvas = document.getElementById('outputCanvas');
+        const downloadBtn = document.getElementById('downloadBtn');
+        let originalImage = null;
+
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const url = URL.createObjectURL(file);
+            const img = new Image();
+            img.onload = () => {
+                originalImage = img;
+                encryptBtn.disabled = false;
+                decryptBtn.disabled = false;
+                URL.revokeObjectURL(url);
+            };
+            img.src = url;
+        });
+
+        function simpleHashU32(str) {
+            let h = 5381;
+            const bytes = new TextEncoder().encode(str);
+            for (let i = 0; i < bytes.length; i++) {
+                h = ((h * 33) ^ bytes[i]) >>> 0;
+            }
+            return h;
+        }
+        function simpleHashByte(str) {
+            return simpleHashU32(str) & 0xFF;
+        }
+        function lcgNext(state) {
+            return (1664525 * state + 1013904223) >>> 0;
+        }
+        function generatePerm(n, seed) {
+            if (seed === 0) seed = 1;
+            let state = seed;
+            const perm = Array.from({ length: n }, (_, i) => i);
+            for (let i = n - 1; i > 0; i--) {
+                state = lcgNext(state);
+                const j = state % (i + 1);
+                [perm[i], perm[j]] = [perm[j], perm[i]];
+            }
+            return perm;
+        }
+
+        async function decryptBlockImageData(imgData, width, height, key, BLOCK_SIZE, enableXor) {
+            const data = imgData.data;
+            const blockW = Math.floor(width / BLOCK_SIZE);
+            const blockH = Math.floor(height / BLOCK_SIZE);
+            const totalBlocks = blockW * blockH;
+            const newData = new Uint8ClampedArray(data);
+            if (totalBlocks > 0) {
+                const permSeed = simpleHashU32(key + "_block_perm");
+                const perm = generatePerm(totalBlocks, permSeed);
+                const invPerm = new Array(totalBlocks);
+                for (let i = 0; i < totalBlocks; i++) {
+                    invPerm[perm[i]] = i;
+                }
+                for (let k = 0; k < totalBlocks; k++) {
+                    const i = invPerm[k];
+                    const xorVal = enableXor ? simpleHashByte(key + `_xor_${i}`) : 0;
+                    const srcX = (i % blockW) * BLOCK_SIZE;
+                    const srcY = Math.floor(i / blockW) * BLOCK_SIZE;
+                    const dstX = (k % blockW) * BLOCK_SIZE;
+                    const dstY = Math.floor(k / blockW) * BLOCK_SIZE;
+                    for (let dy = 0; dy < BLOCK_SIZE; dy++) {
+                        for (let dx = 0; dx < BLOCK_SIZE; dx++) {
+                            const srcIdx = ((srcY + dy) * width + (srcX + dx)) * 4;
+                            const dstIdx = ((dstY + dy) * width + (dstX + dx)) * 4;
+                            newData[dstIdx] = data[srcIdx] ^ xorVal;
+                            newData[dstIdx + 1] = data[srcIdx + 1] ^ xorVal;
+                            newData[dstIdx + 2] = data[srcIdx + 2] ^ xorVal;
+                            newData[dstIdx + 3] = data[srcIdx + 3];
+                        }
+                    }
+                }
+            }
+            return new ImageData(newData, width, height);
+        }
+
+        async function encryptBlockImageData(imgData, width, height, key, BLOCK_SIZE, enableXor) {
+            const data = imgData.data;
+            const blockW = Math.floor(width / BLOCK_SIZE);
+            const blockH = Math.floor(height / BLOCK_SIZE);
+            const totalBlocks = blockW * blockH;
+            const newData = new Uint8ClampedArray(data);
+            if (totalBlocks > 0) {
+                const permSeed = simpleHashU32(key + "_block_perm");
+                const perm = generatePerm(totalBlocks, permSeed);
+                for (let j = 0; j < totalBlocks; j++) {
+                    const xorVal = enableXor ? simpleHashByte(key + `_xor_${j}`) : 0;
+                    const srcX = (perm[j] % blockW) * BLOCK_SIZE;
+                    const srcY = Math.floor(perm[j] / blockW) * BLOCK_SIZE;
+                    const dstX = (j % blockW) * BLOCK_SIZE;
+                    const dstY = Math.floor(j / blockW) * BLOCK_SIZE;
+                    for (let dy = 0; dy < BLOCK_SIZE; dy++) {
+                        for (let dx = 0; dx < BLOCK_SIZE; dx++) {
+                            const srcIdx = ((srcY + dy) * width + (srcX + dx)) * 4;
+                            const dstIdx = ((dstY + dy) * width + (dstX + dx)) * 4;
+                            newData[dstIdx] = data[srcIdx] ^ xorVal;
+                            newData[dstIdx + 1] = data[srcIdx + 1] ^ xorVal;
+                            newData[dstIdx + 2] = data[srcIdx + 2] ^ xorVal;
+                            newData[dstIdx + 3] = data[srcIdx + 3];
+                        }
+                    }
+                }
+            }
+            return new ImageData(newData, width, height);
+        }
+
+        async function processImage(isEncrypt) {
+            if (!originalImage) return;
+            const key = keyInput.value.trim();
+            const BLOCK_SIZE = parseInt(blockSizeInput.value);
+            const enableXor = enableXorCheckbox.checked;
+            const addFooter = isEncrypt && addFooterCheckbox.checked;
+
+            if (BLOCK_SIZE <= 0) {
+                alert('块大小必须大于 0');
+                return;
+            }
+
+            const w = originalImage.naturalWidth;
+            const h = originalImage.naturalHeight;
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = w;
+            tempCanvas.height = h;
+            const ctx = tempCanvas.getContext('2d');
+            ctx.drawImage(originalImage, 0, 0);
+
+            if (isEncrypt) {
+                const imageData = ctx.getImageData(0, 0, w, h);
+                const resultData = await encryptBlockImageData(imageData, w, h, key, BLOCK_SIZE, enableXor);
+
+                const encryptedCanvas = document.createElement('canvas');
+                encryptedCanvas.width = w;
+                encryptedCanvas.height = h;
+                encryptedCanvas.getContext('2d').putImageData(resultData, 0, 0);
+
+                if (addFooter) {
+                    const fontSize = Math.max(14, Math.min(24, w / 40));
+                    const lineHeight = fontSize * 1.4;
+                    const padding = 8;
+                    const xorText = enableXor ? '是' : '否';
+                    const lines = [
+                        `解密：crystal203.github.io/decrypt`,
+                        `块大小: ${BLOCK_SIZE} | XOR: ${xorText}`,
+                        `密钥: ${key}`
+                    ];
+                    const maxLines = 3;
+                    const usedLines = Math.min(lines.length, maxLines);
+                    const footerHeight = usedLines * lineHeight + padding * 2 + 4;
+                    const finalCanvas = document.createElement('canvas');
+                    finalCanvas.width = w;
+                    finalCanvas.height = h + footerHeight;
+                    const fCtx = finalCanvas.getContext('2d');
+                    fCtx.drawImage(encryptedCanvas, 0, 0);
+                    fCtx.fillStyle = '#ff0000';
+                    fCtx.fillRect(0, h + 1, w, 1);
+                    fCtx.fillStyle = '#000000';
+                    fCtx.font = `${fontSize}px Arial`;
+                    fCtx.textBaseline = 'top';
+                    let y = h + padding;
+                    for (let i = 0; i < usedLines; i++) {
+                        fCtx.fillText(lines[i], 6, y);
+                        y += lineHeight;
+                    }
+
+                    outputCanvas.width = w;
+                    outputCanvas.height = h + footerHeight;
+                    outputCanvas.getContext('2d').drawImage(finalCanvas, 0, 0);
+                } else {
+                    outputCanvas.width = w;
+                    outputCanvas.height = h;
+                    outputCanvas.getContext('2d').drawImage(encryptedCanvas, 0, 0);
+                }
+
+                downloadBtn.style.display = 'inline-block';
+                downloadBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.download = 'encrypted.png';
+                    link.href = outputCanvas.toDataURL('image/png');
+                    link.click();
+                };
+            } else {
+                const fullImageData = ctx.getImageData(0, 0, w, h);
+                const data = fullImageData.data;
+                let effectiveHeight = h;
+                let found = false;
+                if (h > blockSizeInput.valueAsNumber) {
+                    const scanFromY = Math.max(0, h - 300);
+                    for (let y = h - 1; y >= scanFromY; y--) {
+                        let redPixelCount = 0;
+                        for (let x = 0; x < w; x++) {
+                            const idx = (y * w + x) * 4;
+                            const r = data[idx];
+                            const g = data[idx + 1];
+                            const b = data[idx + 2];
+                            const a = data[idx + 3];
+                            if (a === 255 && r >= 250 && g <= 5 && b <= 5) {
+                                redPixelCount++;
+                            }
+                        }
+                        if (redPixelCount >= w * 0.98) {
+                            if (y > 0) {
+                                let aboveRedCount = 0;
+                                for (let x = 0; x < w; x++) {
+                                    const idx = ((y - 1) * w + x) * 4;
+                                    const r = data[idx];
+                                    const g = data[idx + 1];
+                                    const b = data[idx + 2];
+                                    if (r >= 250 && g <= 5 && b <= 5) {
+                                        aboveRedCount++;
+                                    }
+                                }
+                                if (aboveRedCount < w * 0.5) {
+                                    effectiveHeight = y;
+                                    found = true;
+                                    break;
+                                }
+                            } else {
+                                effectiveHeight = y;
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                const effectiveImageData = ctx.getImageData(0, 0, w, effectiveHeight);
+                const resultData = await decryptBlockImageData(effectiveImageData, w, effectiveHeight, key, BLOCK_SIZE, enableXor);
+                outputCanvas.width = w;
+                outputCanvas.height = effectiveHeight;
+                outputCanvas.getContext('2d').putImageData(resultData, 0, 0);
+
+                downloadBtn.style.display = 'inline-block';
+                downloadBtn.onclick = () => {
+                    const link = document.createElement('a');
+                    link.download = 'decrypted.png';
+                    link.href = outputCanvas.toDataURL('image/png');
+                    link.click();
+                };
+            }
+        }
+
+        encryptBtn.addEventListener('click', () => processImage(true));
+        decryptBtn.addEventListener('click', () => processImage(false));
+    </script>
+</body>
+
+</html>
