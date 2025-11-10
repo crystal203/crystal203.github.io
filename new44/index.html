@@ -1841,6 +1841,9 @@
                             showNotification(`交换 ${draggedUnit.role.name} 与 ${targetUnit.role.name}`, 'success');
                         }
                         renderMap();
+                    } else {
+                        removeUnit(startRow, startCol);
+                        renderMap();
                     }
                 }
                 dragState = {
