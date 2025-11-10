@@ -31,6 +31,8 @@ const REL = {
   neq: (a, b) => a !== b,
   ge: (a, b) => a >= b,
   le: (a, b) => a <= b,
+  l: (a, b) => a < b,
+  g: (a, b) => a > b,
 };
 
 function computeTargetsForState(state) {
@@ -122,8 +124,8 @@ function evaluateRuleForState(rule, state) {
   let score = 0;
   const values = [];
   const resolveArg = (arg) => {
-    if (typeof arg === 'string' && /^$#\d+$/.test(arg)) {
-      const idx = parseInt(arg.slice(2, -1), 10);
+    if (typeof arg === 'string' && /^#\d+$/.test(arg)) {
+      const idx = parseInt(arg.slice(1), 10);
       if (idx < 0 || idx >= values.length || values[idx] === undefined) {
         return NaN;
       }
@@ -157,7 +159,11 @@ function evaluateRuleForState(rule, state) {
         const a = Number(resolveArg(item[1]));
         const b = Number(resolveArg(item[2]));
         result = Math.abs(a - b);
-      } else if (item[0] === 'compare' && item.length === 4) {
+      } else if (item[0] === 'sub' && item.length === 3) {
+        const a = Number(resolveArg(item[1]));
+        const b = Number(resolveArg(item[2]));
+        result = a - b;
+      }else if (item[0] === 'compare' && item.length === 4) {
         const v1 = resolveArg(item[1]);
         const rel = item[2];
         const v2 = resolveArg(item[3]);
@@ -379,7 +385,8 @@ async function checkAllRules() {
   // ===== 1. 加载所有规则 =====
   const rulePaths = [
     './rule/暗刀火龙解火龙三切.js',
-    './rule/萝冰火龙解火龙三切.js'
+    './rule/萝冰火龙解火龙三切.js',
+    './rule/暗炮偶像解偶像艾丝.js'
   ];
   const allResults = [];
   for (let url of rulePaths) {

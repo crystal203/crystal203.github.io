@@ -15,7 +15,8 @@
 
 [ArithCmd] ::=
 'subabs' [element] [element] -> number                                  |
-'const' [number] -> number
+'const' [number] -> number                                              |
+'compare' [element] [relation] [element]
 
 [PosCmd] ::=
 [character] [axis] [relation] [element] [score] -> bool                 |
