@@ -45,7 +45,7 @@ export default {
     ["R-Daisy", "lock", "B-Arabelle", 0], //8
     ["B-Daisy-lock", "lock", "B-Daisy", 0], //9
     ["R-Daisy-lock", "lock", "R-Daisy", 0], //10
-    ["and", 7, 8, 0], //11
+    ["or", 7, 8, 0], //11
     ["and", 6, 11, 0], //12
     ["and", 5, 12, 0], //13
     ["and", 9, 10, 0], //14
@@ -53,14 +53,19 @@ export default {
 
     //我方更小
     ["compare", "#3", "l", "#4"], //16
-    ["and", 16, 16, 120], //17
+    ["B-Daisy", "lock", "R-Eva", 0], //17
+    ["or", 6, 17, 0], //18
+    ["R-Daisy", "lock", 'B-Estel', 0], //19
+    ["not", 19, 0], //20
+    ["and", 18, 20, 0], //21
+    ["and", 21, 16, 120], //22
 
-    ['B-Daisy', "lock", "R-Eunha", 0], //18
-    ['B-Daisy', "lock", "R-Eva", 0], //19
-    ["or", 18, 19, 20], //20
+    ['B-Daisy', "lock", "R-Eunha", 0], //23
+    ['B-Daisy', "lock", "R-Eva", 0], //24
+    ["or", 23, 24, 20], //25
 
-    ["R-Daisy", "lock", "B-Daisy", 0], //21
-    ["not", 21, 20],
+    ["R-Daisy", "lock", "B-Daisy", 0], //26
+    ["not", 26, 20],
 
     ["B-Eunha", "B-Eunha-lock", "y-pos", "delta", "le", 1, 10],
     ["B-Daisy", "B-Daisy-lock", "y-pos", "delta", "equ", 0, 10],
