@@ -947,6 +947,10 @@
                 { name: "银河", type: "射手", ai: "远程ai", short: "Eunha", color: "#607D8B" },
                 { name: "艾丝黛尔", type: "射手", ai: "近战ai", short: "Estel", color: "#795548" },
                 { name: "阿拉贝尔", type: "射手", ai: "远程ai", short: "Arabelle", color: "#9C27B0" },
+                { name: "美娅", type: "辅助", ai: "就近刺客ai", short: "Miya", color: "#FF5722" },
+                { name: "加百列", type: "辅助", ai: "远程ai", short: "Gabriel", color: "#FF9800" },
+                { name: "卡麦尔", type: "辅助", ai: "远程ai", short: "Kamael", color: "#795548" },
+                { name: "J", type: "射手", ai: "远程ai", short: "J", color: "#2196F3" },
                 // 光 FF9800 暗 9C27B0 虚 607D8B 水 2196F3 火 FF5722 土 795548
             ];
 
@@ -1396,6 +1400,7 @@
                 const { ai } = attacker.role;
                 const unhit = candidates.filter(c => !c.isHit);
                 let target = null;
+
                 if (ai === '辅助刺客ai' || ai === '射手刺客ai') {
                     const targetType = ai === '辅助刺客ai' ? '辅助' : '射手';
                     target = unhit.find(u => u.role.type === targetType);
@@ -1403,6 +1408,23 @@
                         target = candidates.find(u => u.role.type === targetType);
                     }
                     if (!target) {
+                        target = findNearest(attacker, unhit.length > 0 ? unhit : candidates);
+                    }
+                } else if (ai === '就近刺客ai') {
+                    const inRange = candidates.filter(u => {
+                        const [ar, ac] = attacker.pos;
+                        const [br, bc] = u.pos;
+                        const distSq = (ar - br) ** 2 + (ac - bc) ** 2;
+                        return distSq <= 65;
+                    });
+                    if (inRange.length > 0) {
+                        const unhitInRange = inRange.filter(u => !u.isHit);
+                        if (unhitInRange.length > 0) {
+                            target = findNearest(attacker, unhitInRange);
+                        } else {
+                            target = findNearest(attacker, inRange);
+                        }
+                    } else {
                         target = findNearest(attacker, unhit.length > 0 ? unhit : candidates);
                     }
                 } else if (ai === '近战ai') {
