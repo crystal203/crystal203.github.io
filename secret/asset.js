@@ -27,6 +27,12 @@ const assetList = [
         name: "chriselle-myth",
     },
     {
+        name: "daisy",
+    },
+    {
+        name: "daisy-myth",
+    },
+    {
         name: "dohwa",
     },
     {
