@@ -28,8 +28,12 @@ function resolveChar(expr, blueOrder, redOrder) {
 
 const REL = {
   equ: (a, b) => a === b,
+  eq: (a, b) => a === b,
   neq: (a, b) => a !== b,
+  ne: (a, b) => a !== b,
+  geq: (a, b) => a >= b,
   ge: (a, b) => a >= b,
+  leq: (a, b) => a <= b,
   le: (a, b) => a <= b,
   l: (a, b) => a < b,
   g: (a, b) => a > b,
