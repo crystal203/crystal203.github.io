@@ -5,7 +5,7 @@ export default {
   // 解法注释
   desc: "适用于火龙后置",
   // 满分
-  maxScore: 260,
+  maxScore: 270,
 
   // 对队伍的要求
   preconditions: {
@@ -49,5 +49,6 @@ export default {
     ["B-Eva-lock", "lock", "B-Daisy", 25],                    //#6
     ["R-Eva", "lock", "B-Kahlor", 35],                         //#7
     ["B-Kahlor", "R-Eva", "y-pos", "delta", "le", 1, 10],
+    ["B-Beth", "B-Daisy", "y-pos", "delta", "le", 2, 10],
   ]
 };

@@ -971,7 +971,7 @@
             const blueOrderEl = document.getElementById('blueOrder');
             const arrowLayer = document.getElementById('arrowLayer');
             const overlay = document.getElementById('overlay');
-            let roleOptions = document.getElementById('roleOptions');
+            const roleOptions = document.getElementById('roleOptions');
 
             let selectedCell = null;
             let simulateDragMode = false;
@@ -1214,23 +1214,7 @@
             }
 
             function openRoleSelect() {
-                // ===== 关键修复：强制还原 overlay 到标准角色选择面板结构 =====
-                overlay.innerHTML = `
-                    <div class="role-select">
-                        <div class="modal-header">
-                            <h3><i class="fas fa-user-plus"></i> 选择角色</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="roles-grid" id="roleOptions"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-cancel" onclick="closeRoleSelect()">取消</button>
-                        </div>
-                    </div>
-                `;
-                roleOptions = document.getElementById('roleOptions'); // 重新绑定！
-
-                // ===== 正常渲染角色 =====
+                roleOptions.innerHTML = '';
                 ALL_ROLES.forEach(role => {
                     const div = document.createElement('div');
                     div.className = 'role-option';
@@ -1278,8 +1262,6 @@
                     }
                     roleOptions.appendChild(div);
                 });
-
-                // ===== 添加「自定义角色」卡片 =====
                 const customDiv = document.createElement('div');
                 customDiv.className = 'role-option';
                 customDiv.style.background = '#f9f9f9';
@@ -1292,6 +1274,7 @@
                         <div style="flex: 1;">
                             <div class="name" style="color: #1E88E5;">自定义角色</div>
                             <span class="type type-support" style="background:#e3f2fd;color:#0d47a1;">点击创建新角色</span>
+                            <div class="ai" style="color:#666;">名字/类型/AI 类型</div>
                         </div>
                     </div>
                 `;
@@ -1301,11 +1284,9 @@
                     if (customDiv.dataset.locked) return;
                     customDiv.dataset.locked = '1';
                     setTimeout(() => { customDiv.dataset.locked = ''; }, 300);
-                    // ✅ 不再 closeRoleSelect！避免清 selectedCell
                     openCustomRoleForm();
                 };
                 roleOptions.appendChild(customDiv);
-
                 overlay.classList.add('active');
             }
 
@@ -1336,6 +1317,10 @@
                 overlay.classList.remove('active');
                 selectedCell = null;
                 pendingRole = null;
+                document.querySelectorAll('.role-option').forEach(el => {
+                    el.style.borderColor = '#e0e0e0';
+                    el.style.boxShadow = 'none';
+                });
             }
 
             function removeUnit(r, c) {
@@ -1683,44 +1668,53 @@
             }
 
             function openCustomRoleForm() {
-                const formHtml = `
-                    <div class="role-select" style="max-width: 400px;">
-                        <div class="modal-header" style="background: linear-gradient(90deg, #6a11cb, #2575fc);">
-                            <h3><i class="fas fa-user-edit"></i> 自定义角色</h3>
-                        </div>
-                        <div class="modal-body" style="padding: 20px;">
-                            <div style="margin-bottom: 14px;">
-                                <label style="display:block; margin-bottom:4px; font-weight:500;">角色名</label>
-                                <input type="text" id="customName" placeholder="例如：暗影法师" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                closeRoleSelect();
+                setTimeout(() => {
+                    const formHtml = `
+                        <div class="role-select" style="max-width: 400px;">
+                            <div class="modal-header" style="background: linear-gradient(90deg, #6a11cb, #2575fc);">
+                                <h3><i class="fas fa-user-edit"></i> 自定义角色</h3>
                             </div>
-                            <div style="margin-bottom: 14px;">
-                                <label style="display:block; margin-bottom:4px; font-weight:500;">类型</label>
-                                <select id="customType" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
-                                    <option value="战士">战士</option>
-                                    <option value="坦克">坦克</option>
-                                    <option value="辅助">辅助</option>
-                                    <option value="射手">射手</option>
-                                </select>
+                            <div class="modal-body" style="padding: 20px;">
+                                <div style="margin-bottom: 14px;">
+                                    <label style="display:block; margin-bottom:4px; font-weight:500;">角色名</label>
+                                    <input type="text" id="customName" placeholder="例如：暗影法师" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                                </div>
+                                <div style="margin-bottom: 14px;">
+                                    <label style="display:block; margin-bottom:4px; font-weight:500;">类型</label>
+                                    <select id="customType" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
+                                        <option value="战士">战士</option>
+                                        <option value="坦克">坦克</option>
+                                        <option value="辅助">辅助</option>
+                                        <option value="射手">射手</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 14px;">
+                                    <label style="display:block; margin-bottom:4px; font-weight:500;">AI 类型</label>
+                                    <select id="customAI" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
+                                        <option value="近战ai">近战ai</option>
+                                        <option value="远程ai">远程ai</option>
+                                        <option value="辅助刺客ai">辅助刺客ai</option>
+                                        <option value="射手刺客ai">射手刺客ai</option>
+                                        <option value="就近刺客ai">就近刺客ai</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                                    <img src="./asset/custom.png" alt="custom" 
+                                        style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd;"
+                                        onerror="this.style.background='#f0f0f0'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<span style=&quot;font-size:10px;color:#666&quot;>custom</span>'; this.onerror=null;">
+                                    <span>头像：<code>./asset/custom.png</code></span>
+                                </div>
                             </div>
-                            <div style="margin-bottom: 14px;">
-                                <label style="display:block; margin-bottom:4px; font-weight:500;">AI 类型</label>
-                                <select id="customAI" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;">
-                                    <option value="近战ai">近战ai</option>
-                                    <option value="远程ai">远程ai</option>
-                                    <option value="辅助刺客ai">辅助刺客ai</option>
-                                    <option value="射手刺客ai">射手刺客ai</option>
-                                    <option value="就近刺客ai">就近刺客ai</option>
-                                </select>
+                            <div class="modal-footer">
+                                <button class="btn btn-cancel" onclick="closeCustomForm()">取消</button>
+                                <button class="btn btn-confirm" onclick="submitCustomRole()">创建并置入</button>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-cancel" onclick="closeCustomForm()">取消</button>
-                            <button class="btn btn-confirm" onclick="submitCustomRole()">创建并置入</button>
-                        </div>
-                    </div>
-                `;
-                overlay.innerHTML = formHtml;
-                overlay.classList.add('active');
+                    `;
+                    overlay.innerHTML = formHtml;
+                    overlay.classList.add('active');
+                }, 200);
             }
 
             function closeCustomForm() {
@@ -1735,30 +1729,20 @@
                     showNotification('⚠️ 角色名不能为空！', 'warning');
                     return;
                 }
-                const short = name;
+                let idx = 1;
+                while (ALL_ROLES.some(r => r.short === `custom${idx}`)) idx++;
+                const short = `custom${idx}`;
                 const color = '#9E9E9E';
                 const customRole = { name, type, ai, short, color };
-                if (selectedCell) {
-                    const { row, col, side } = selectedCell;
-                    const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
-                    if (order.length >= 4) {
-                        showNotification(`最多布置4个${side === 'red' ? '敌方' : '我方'}角色！`, 'warning');
-                        return;
-                    }
-                    if (order.some(u => u.role.short === short)) {
-                        showNotification(`⚠️ ${side === 'blue' ? '我方' : '敌方'}阵容中已存在同缩写角色`, 'warning');
-                        return;
-                    }
-                    const unit = { side, role: customRole, pos: [row, col], index: order.length, isNew: true };
-                    STATE.map[row][col] = unit;
-                    order.push(unit);
-                    overlay.classList.remove('active');
-                    renderMap();
-                    showNotification(`✅ 已创建并布置自定义角色 "${name}"`, 'success');
+                const cellToFill = selectedCell || pendingCellForCustom; 
+                if (cellToFill) {
+                    selectedCell = cellToFill;
+                    ALL_ROLES.push(customRole);
+                    selectRoleImmediate(customRole);
                 } else {
                     ALL_ROLES.push(customRole);
+                    showNotification(`✅ 自定义角色 "${name}" 已创建`, 'success');
                     overlay.classList.remove('active');
-                    showNotification(`✅ 自定义角色 "${name}" 已保存`, 'success');
                 }
             }
 
