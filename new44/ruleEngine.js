@@ -393,6 +393,7 @@ async function checkAllRules() {
     './rule/暗炮偶像解偶像艾丝.js',
     './rule/火龙三切解偶像暗刀.js',
     './rule/火龙三切解偶像莉耶.js',
+    './rule/暗刀棒球解火龙三切.js',
     './rule/偶像艾弓解偶像暗刀.js',
   ];
   const allResults = [];

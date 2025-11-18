@@ -17,7 +17,6 @@ export default {
     // 敌方位置约束（坐标系：左上角 (0,0)）
     redPosition: [
       // 格式：[char, axis, relation, value]
-      ["Kahlor", "x-pos", "neq", 10],
     ]
   },
 

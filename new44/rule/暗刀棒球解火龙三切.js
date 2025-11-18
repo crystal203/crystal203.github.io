@@ -1,17 +1,17 @@
 // 这是一个示例
 export default {
   // 解法名称
-  name: "萝冰火龙解火龙三切",
+  name: "暗刀棒球解火龙三切",
   // 解法注释
-  desc: "适用于火龙前置",
+  desc: "适用于火龙后置，尤其是火龙很难被萝冰锁定时",
   // 满分
-  maxScore: 270,
+  maxScore: 235,
 
   // 对队伍的要求
   preconditions: {
     // 队伍匹配（双方都需4人，且首人严格匹配，其余三人集合相等）
     team: {
-      blue: ["Daisy", "Eva", "Beth", "Kahlor"],
+      blue: ["Beth", "Eva", "Daisy", "Rie"],
       red: ["Kahlor", "Rie", "Beth", "Eva"]
     },
     // 敌方位置约束（坐标系：左上角 (0,0)）
@@ -25,7 +25,7 @@ export default {
     ["Daisy", "x-pos", "ge", 2],
     ["Eva", "x-pos", "equ", 0],
     ["Beth", "x-pos", "ge", 1],
-    ["Kahlor", "x-pos", "ge", 1],
+    ["Rie", "x-pos", "ge", 1],
   ],
 
   // 评分项
@@ -45,9 +45,8 @@ export default {
     ["B-Eva", "lock", "R-Rie", 0],                            //#3
     ["or", 2, 3, 40],                                         //#4
     ["B-Daisy", "lock", "R-Kahlor", 50],                      //#5
-    ["B-Eva-lock", "lock", "B-Daisy", 25],                    //#6
-    ["R-Eva", "lock", "B-Kahlor", 35],                        //#7
-    ["B-Kahlor", "R-Eva", "y-pos", "delta", "le", 1, 10],
+    ["B-Eva-lock", "lock", "B-Daisy", 25],                      
+    ["B-Rie", "R-Eva", "y-pos", "delta", "le", 1, 10],
     ["B-Beth", "B-Daisy", "y-pos", "delta", "le", 2, 10],
   ]
 };
