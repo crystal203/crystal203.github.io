@@ -129,51 +129,6 @@ function initSimulation() {
     return { simUnits, idMap, time: 0, isRunning: true };
 }
 
-// ✅ 改进版 resolveAABBCollisions：支持零速时用速度方向
-function resolveAABBCollisions(movingUnit, allUnits) {
-    const radius = 0.4; // AABB 半宽
-    let [x0, y0] = movingUnit.pos;     // ✅ 改为 let
-    const [ox, oy] = movingUnit.oldPos;
-
-    const dx = x0 - ox;
-    const dy = y0 - oy;
-    const dist = Math.hypot(dx, dy);
-    const dirX = dist > 1e-6 ? dx / dist : 0;
-    const dirY = dist > 1e-6 ? dy / dist : 0;
-
-    for (const other of allUnits) {
-        if (other === movingUnit || other.side === movingUnit.side || !other.target) continue;
-
-        const [ox0, oy0] = other.pos;
-        const overlapR = 2 * radius - Math.abs(x0 - ox0); // 行（r）重叠
-        const overlapC = 2 * radius - Math.abs(y0 - oy0); // 列（c）重叠
-
-        if (overlapR > 0 && overlapC > 0) {
-            // 最小分离方向
-            let sepR = 0, sepC = 0;
-            if (overlapR < overlapC) {
-                sepR = overlapR * (x0 > ox0 ? -1 : 1);
-            } else {
-                sepC = overlapC * (y0 > oy0 ? -1 : 1);
-            }
-
-            // ✅ 双向分离：各承担一半
-            const halfSepR = sepR * 0.9;
-            const halfSepC = sepC * 0.1;
-
-            movingUnit.pos[0] -= halfSepR;
-            movingUnit.pos[1] -= halfSepC;
-
-            other.pos[0] += halfSepR;
-            other.pos[1] += halfSepC;
-
-            // ✅ 更新局部变量，用于后续重叠检测（同一帧内）
-            x0 = movingUnit.pos[0];
-            y0 = movingUnit.pos[1];
-        }
-    }
-}
-
 function applyTaunt(tank, allUnits) {
     allUnits.forEach(u => {
         if (u.side === tank.side) return;
@@ -387,7 +342,7 @@ function tick(simState, dt = 1/12) {
 
             if (!isSolid) continue; // 忽略有速度的 MOVING 敌人（避免过度阻挡）
 
-            const sweep = sweptAABB(u.pos, intendedEnd, other.pos, 0.4); // radius=0.4
+            const sweep = sweptAABB(u.pos, intendedEnd, other.pos, 0.1); // radius=0.4
             if (sweep.hit && sweep.tEnter < minT) {
                 minT = sweep.tEnter;
             }
