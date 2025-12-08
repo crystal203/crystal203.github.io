@@ -980,31 +980,18 @@
                 }
             }, true);
             const ALL_ROLES = [
-                { name: "凯勒", type: "战士", ai: "辅助刺客ai", short: "Kahlor", color: "#FF5722", 
-                    speed: 2.5 * 1.66, reach: 0.2, skillRange: 4.00, skillCastTime: 0.00, skillDashDist: 4.00, skillDashSpeed: 10.00, resistA: 3, resistB: 4, resistC: 100 },
-                { name: "莉耶", type: "战士", ai: "射手刺客ai", short: "Rie", color: "#607D8B", 
-                    speed: 2.5 * 1.66, reach: 0.2, skillRange: 5.66, skillCastTime: 0.75, skillDashDist: 5.00, skillDashSpeed: 10.00, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "贝丝", type: "战士", ai: "射手刺客ai", short: "Beth", color: "#9C27B0", 
-                    speed: 2.5 * 1.7, reach: 0.2, skillRange: 4.00, skillCastTime: 0.66, skillDashDist: 4.00, skillDashSpeed: 10.00, resistA: 1, resistB: 2, resistC: 1 },
-                { name: "伊娃", type: "辅助", ai: "近战ai", short: "Eva", color: "#607D8B", 
-                    speed: 2.5, reach: 6.33, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "黛西", type: "坦克", ai: "近战ai", short: "Daisy", color: "#2196F3", 
-                    speed: 2.5 * 1.5, reach: 0.2, skillRange: 5.00, tauntRadius: 4.50, skillCastTime: 0.33, skillDashDist: 5.00, skillDashSpeed: 10.00,
-                    resistA: 2, resistB: 3, resistC: 1 },
-                { name: "银河", type: "射手", ai: "远程ai", short: "Eunha", color: "#607D8B", 
-                    speed: 2.5, reach: 5.00, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "艾丝黛尔", type: "射手", ai: "近战ai", short: "Estel", color: "#795548",
-                    speed: 2.5, reach: 7.00, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "阿拉贝尔", type: "射手", ai: "远程ai", short: "Arabelle", color: "#9C27B0",
-                    speed: 2.5, reach: 6.50, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "卡莉", type: "战士", ai: "近战ai", short: "Callie", color: "#9C27B0" , 
-                    speed: 2.5 * 1.6, reach: 0.2, skillRange: 4.00, skillCastTime: 0.00, skillDashDist: 4.00, skillDashSpeed: 10.00, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "美娅", type: "辅助", ai: "就近刺客ai", short: "Miya", color: "#FF5722",
-                    speed: 2.5, reach: 7.00, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "加百列", type: "辅助", ai: "远程ai", short: "Gabriel", color: "#FF9800",
-                    speed: 2.5, reach: 5.00, resistA: 1, resistB: 2, resistC: 100 },
-                { name: "卡麦尔", type: "辅助", ai: "远程ai", short: "Kamael", color: "#795548" ,
-                    speed: 2.5, reach: 3.50, resistA: 1, resistB: 2, resistC: 100 },
+                { name: "凯勒", type: "战士", ai: "辅助刺客ai", short: "Kahlor", color: "#FF5722", speed: 2.5 * 1.66, reach: 0.2, skillRange: 4.00, skillCastTime: 0.00, skillDashDist: 4.00, dashSpeed: 10.00 },
+                { name: "莉耶", type: "战士", ai: "射手刺客ai", short: "Rie", color: "#607D8B", speed: 2.5 * 1.66, reach: 0.2, skillRange: 5.66, skillCastTime: 0.75, skillDashDist: 5.00, dashSpeed: 10.00 },
+                { name: "贝丝", type: "战士", ai: "射手刺客ai", short: "Beth", color: "#9C27B0", speed: 2.5 * 1.7, reach: 0.2, skillRange: 4.00, skillCastTime: 0.66, skillDashDist: 4.00, dashSpeed: 10.00, resistC: 1 },
+                { name: "伊娃", type: "辅助", ai: "近战ai", short: "Eva", color: "#607D8B", speed: 2.5, reach: 6.33 },
+                { name: "黛西", type: "坦克", ai: "近战ai", short: "Daisy", color: "#2196F3", speed: 2.5 * 1.5, reach: 0.2, skillRange: 5.00, tauntRadius: 4.50, skillCastTime: 0.33, skillDashDist: 5.00, dashSpeed: 10.00 },
+                { name: "银河", type: "射手", ai: "远程ai", short: "Eunha", color: "#607D8B", speed: 2.5, reach: 5.00},
+                { name: "艾丝黛尔", type: "射手", ai: "近战ai", short: "Estel", color: "#795548" },
+                { name: "阿拉贝尔", type: "射手", ai: "远程ai", short: "Arabelle", color: "#9C27B0" },
+                { name: "卡莉", type: "战士", ai: "近战ai", short: "Callie", color: "#9C27B0" },
+                { name: "美娅", type: "辅助", ai: "就近刺客ai", short: "Miya", color: "#FF5722" },
+                { name: "加百列", type: "辅助", ai: "远程ai", short: "Gabriel", color: "#FF9800" },
+                { name: "卡麦尔", type: "辅助", ai: "远程ai", short: "Kamael", color: "#795548" },
                 { name: "J", type: "射手", ai: "远程ai", short: "J", color: "#2196F3" },
                 { name: "未来骑士", type: "战士", ai: "远程ai", short: "FKnight", color: "#607D8B" },
                 { name: "汐雅", type: "辅助", ai: "远程ai", short: "Sia", color: "#2196F3" },
@@ -2036,7 +2023,7 @@
                         return;
                     }
 
-                    const dt = Math.min((now - lastTime) / 1000, 0.01); // 秒，上限 100ms 防跳帧
+                    const dt = Math.min((now - lastTime) / 1000, 0.1); // 秒，上限 100ms 防跳帧
                     lastTime = now;
 
                     tick(currentSimulation, dt);
