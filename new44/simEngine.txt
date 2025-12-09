@@ -13,9 +13,6 @@ function findNearestForSim(unit, candidates) {
     }, { unit: null, dist: Infinity }).unit;
 }
 
-// ✅ Swept AABB 检测：从 A → B 是否与目标 AABB 相交
-// 返回：{ hit: true/false, tEnter: [0,1], normal: [nx, ny] }  
-// 若 hit=true，表示在路径比例 tEnter 处发生碰撞，沿 normal 分离即可
 function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
     const [x1, y1] = startPos;
     const [x2, y2] = endPos;
@@ -24,18 +21,15 @@ function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
     const dx = x2 - x1;
     const dy = y2 - y1;
 
-    // 扩展目标 AABB：将对方 AABB 扩大自身半宽 → 自身退化为点
-    const expandedMinX = ox - radius - radius; // = ox - 0.8
-    const expandedMaxX = ox + radius + radius; // = ox + 0.8
+    const expandedMinX = ox - radius - radius; 
+    const expandedMaxX = ox + radius + radius; 
     const expandedMinY = oy - radius - radius;
     const expandedMaxY = oy + radius + radius;
 
     let tEnter = -Infinity;
     let tExit = Infinity;
 
-    // —— X 轴 Slab 检测 ——
     if (Math.abs(dx) < 1e-9) {
-        // 平行 X 轴 → 检查是否在 slab 内
         if (x1 < expandedMinX || x1 > expandedMaxX) return { hit: false };
     } else {
         const tx1 = (expandedMinX - x1) / dx;
@@ -46,7 +40,6 @@ function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
         tExit = Math.min(tExit, tMaxX);
     }
 
-    // —— Y 轴 Slab 检测 ——
     if (Math.abs(dy) < 1e-9) {
         if (y1 < expandedMinY || y1 > expandedMaxY) return { hit: false };
     } else {
@@ -58,20 +51,15 @@ function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
         tExit = Math.min(tExit, tMaxY);
     }
 
-    // 无交集 or 交点在射线反向
     if (tEnter > tExit || tExit < 0) return { hit: false };
 
-    // 入射点必须在 [0,1] 内
     const actualTEnter = Math.max(0, tEnter);
     if (actualTEnter > 1) return { hit: false };
 
-    // ✅ 计算法向（用于分离）
     let nx = 0, ny = 0;
     if (tEnter === (dx >= 0 ? (expandedMinX - x1) / dx : (expandedMaxX - x1) / dx)) {
-        // 碰 X 面：从左/右进入
         nx = dx >= 0 ? -1 : 1;
     } else {
-        // 碰 Y 面
         ny = dy >= 0 ? -1 : 1;
     }
 
@@ -129,51 +117,6 @@ function initSimulation() {
     return { simUnits, idMap, time: 0, isRunning: true };
 }
 
-// ✅ 改进版 resolveAABBCollisions：支持零速时用速度方向
-function resolveAABBCollisions(movingUnit, allUnits) {
-    const radius = 0.4; // AABB 半宽
-    let [x0, y0] = movingUnit.pos;     // ✅ 改为 let
-    const [ox, oy] = movingUnit.oldPos;
-
-    const dx = x0 - ox;
-    const dy = y0 - oy;
-    const dist = Math.hypot(dx, dy);
-    const dirX = dist > 1e-6 ? dx / dist : 0;
-    const dirY = dist > 1e-6 ? dy / dist : 0;
-
-    for (const other of allUnits) {
-        if (other === movingUnit || other.side === movingUnit.side || !other.target) continue;
-
-        const [ox0, oy0] = other.pos;
-        const overlapR = 2 * radius - Math.abs(x0 - ox0); // 行（r）重叠
-        const overlapC = 2 * radius - Math.abs(y0 - oy0); // 列（c）重叠
-
-        if (overlapR > 0 && overlapC > 0) {
-            // 最小分离方向
-            let sepR = 0, sepC = 0;
-            if (overlapR < overlapC) {
-                sepR = overlapR * (x0 > ox0 ? -1 : 1);
-            } else {
-                sepC = overlapC * (y0 > oy0 ? -1 : 1);
-            }
-
-            // ✅ 双向分离：各承担一半
-            const halfSepR = sepR * 0.5;
-            const halfSepC = sepC * 0.5;
-
-            movingUnit.pos[0] -= halfSepR;
-            movingUnit.pos[1] -= halfSepC;
-
-            other.pos[0] += halfSepR;
-            other.pos[1] += halfSepC;
-
-            // ✅ 更新局部变量，用于后续重叠检测（同一帧内）
-            x0 = movingUnit.pos[0];
-            y0 = movingUnit.pos[1];
-        }
-    }
-}
-
 function applyTaunt(tank, allUnits) {
     allUnits.forEach(u => {
         if (u.side === tank.side) return;
@@ -187,7 +130,6 @@ function applyTaunt(tank, allUnits) {
     });
 }
 
-// ✅ 冲刺：启用 swept AABB 检测
 function startDash(unit, simUnits) {
     if (!unit.target) return;
     const [tx, ty] = unit.target.pos;
@@ -206,20 +148,6 @@ function startDash(unit, simUnits) {
     ];
     unit.dashDuration = dashDist / unit.role.skillDashSpeed;
     unit.dashTimer = unit.dashDuration;
-
-    if (unit.state !== 'DASHING' && unit.markers >= unit.role.resistC) {
-        const tanks = simUnits.filter(t =>
-            t.side !== unit.side &&
-            t.role.tauntRadius > 0 &&
-            t.tauntActive
-        );
-        if (tanks.length > 0) {
-            const newTarget = findNearestForSim(unit, tanks);
-            if (newTarget) {
-                unit.target = newTarget;
-            }
-        }
-    }
     unit.state = 'DASHING';
 }
 
@@ -241,10 +169,8 @@ function updateTargetsBasedOnMarkers(simUnits) {
             }
         } else if (u.tauntActive) {
             const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
-            // ✅ 仅统计“被我方 *有效单位* 锁定”的敌人
             const lockedByAllies = new Set();
             for (const other of simUnits) {
-                // 我方 + 存活（有 target 且 target 是敌方） → 视为有效索敌者
                 if (other.side === u.side && other.target && enemies.includes(other.target)) {
                     lockedByAllies.add(other.target);
                 }
@@ -254,11 +180,9 @@ function updateTargetsBasedOnMarkers(simUnits) {
             if (unlockedEnemies.length > 0) {
                 u.target = findNearestForSim(u, unlockedEnemies);
             } else {
-                // 无空锁敌人 → 保留原 target（仅当无效时 fallback）
                 if (!u.target || !enemies.includes(u.target)) {
                     u.target = findNearestForSim(u, enemies);
                 }
-                // 否则：继续原索敌 ✅
             }
         }
     });
@@ -273,7 +197,6 @@ function tick(simState, dt = 1/12) {
         u.vel = [0, 0];
     });
 
-    // Step 1: 技能 & 冲刺
     simUnits.forEach(u => {
         if (u.state === 'CASTING') {
             u.skillTimer -= dt;
@@ -296,7 +219,6 @@ function tick(simState, dt = 1/12) {
                 ];
             }
 
-            // ✅ 检查是否与任何敌人碰撞箱重叠（边长 0.8）
             let collided = false;
             for (const other of simUnits) {
                 if (other === u || other.side === u.side || !other.target) continue;
@@ -310,7 +232,6 @@ function tick(simState, dt = 1/12) {
                 }
             }
 
-            // ✅ 检查是否已 reach target
             if (!collided && u.target) {
                 const [tr, tc] = u.target.pos;
                 const [nr, nc] = newPos;
@@ -322,7 +243,6 @@ function tick(simState, dt = 1/12) {
             }
 
             if (collided) {
-                // 中断冲刺，位置回退到 prev，进入 MOVING
                 u.pos = [...prev];
                 u.state = 'MOVING';
             } else {
@@ -335,19 +255,35 @@ function tick(simState, dt = 1/12) {
         }
     });
 
-    // Step 2: MOVING 单位移动
     simUnits.filter(u => u.state === 'MOVING').forEach(u => {
         if (!u.target) return;
-        const dx = u.target.pos[1] - u.pos[1];
-        const dy = u.target.pos[0] - u.pos[0];
+
+        const [ux, uy] = u.pos;
+        const dx = u.target.pos[1] - uy;
+        const dy = u.target.pos[0] - ux;
         const dist = Math.hypot(dx, dy);
+
         if (dist <= u.role.reach + 1e-4) {
             u.state = 'LOCKED';
             return;
         }
+
         if (u.role.skillRange > 0 && !u.hasUsedSkill && dist <= u.role.skillRange && u.skillTimer <= 0) {
             u.state = 'CASTING';
             u.skillTimer = u.role.skillCastTime;
+            if (u.markers >= u.role.resistC) {
+                const tanks = simUnits.filter(t =>
+                    t.side !== u.side &&
+                    t.role.tauntRadius > 0 &&
+                    t.tauntActive
+                );
+                if (tanks.length > 0) {
+                    const newTarget = findNearestForSim(u, tanks);
+                    if (newTarget) {
+                        u.target = newTarget;
+                    }
+                }
+            }
             if (u.role.tauntRadius > 0) {
                 u.tauntActive = true;
                 u.lastTauntTime = time;
@@ -355,27 +291,57 @@ function tick(simState, dt = 1/12) {
             }
             return;
         }
+
         const speed = u.role.speed;
-        const moveDist = Math.min(speed * dt, dist - u.role.reach);
-        if (moveDist > 0) {
-            const nx = dx / dist;
-            const ny = dy / dist;
-            u.vel = [ny * moveDist, nx * moveDist];
-            u.pos[0] += u.vel[0];
-            u.pos[1] += u.vel[1];
+        const intendedMoveDist = speed * dt;
+        const moveDist = Math.min(intendedMoveDist, dist - u.role.reach);
+        if (moveDist <= 0) return;
+
+        const nx = dx / dist;
+        const ny = dy / dist;
+        const intendedEnd = [
+            ux + ny * moveDist,
+            uy + nx * moveDist
+        ];
+
+        let finalEnd = intendedEnd;
+        let minT = 1.0;
+
+        for (const other of simUnits) {
+            if (other === u || other.side === u.side || !other.target) continue;
+
+            const isSolid = other.state !== 'MOVING' || 
+                            Math.hypot(other.vel[0], other.vel[1]) < 1e-4;
+
+            if (!isSolid) continue;
+
+            const sweep = sweptAABB(u.pos, intendedEnd, other.pos, 0.1); 
+            if (sweep.hit && sweep.tEnter < minT) {
+                minT = sweep.tEnter;
+            }
+        }
+
+        if (minT < 1.0) {
+            finalEnd = [
+                lerp(ux, intendedEnd[0], minT),
+                lerp(uy, intendedEnd[1], minT)
+            ];
+        }
+
+        u.vel = [finalEnd[0] - ux, finalEnd[1] - uy];
+        u.pos = finalEnd;
+
+        const [tr, tc] = u.target.pos;
+        const newDist = Math.hypot(tr - u.pos[0], tc - u.pos[1]);
+        if (newDist <= u.role.reach + 1e-4) {
+            u.state = 'LOCKED';
         }
     });
 
-    // ✅ Step 2.1: 阻塞式碰撞（MOVING + 未提前截断的 DASHING）
-    simUnits.filter(u => u.target && u.state === 'MOVING').forEach(u => {
-        resolveAABBCollisions(u, simUnits);
-    });
-
-    // Step 3: 持续嘲讽
+    
     simUnits.filter(u => u.tauntActive).forEach(u => {
         const elapsed = time - u.lastTauntTime;
         if (elapsed >= 1.0) {
-            // ✅ 防止因 elapsed 很大导致连续触发多次
             const count = Math.floor(elapsed / 1.0);
             for (let i = 0; i < count; i++) {
                 applyTaunt(u, simUnits);
@@ -383,10 +349,7 @@ function tick(simState, dt = 1/12) {
             u.lastTauntTime += count * 1.0;
         }
     });
-    // Step 4: 更新目标
-    //updateTargetsBasedOnMarkers(simUnits);
 
-    // Step 5: 检查结束
     const allLocked = simUnits.every(u => u.state === 'LOCKED' || !u.target);
     if (allLocked) {
         simState.isRunning = false;
@@ -407,8 +370,8 @@ function renderSimulation(simState) {
     const cellW = (mapRect.width - cellGap * 13) / 14;
     const cellH = (mapRect.height - cellGap * 4) / 5;
 
-    const avatarScale = 0.8; // 与 0.8×0.8 碰撞箱匹配
-    const avatarSize = avatarScale * Math.min(cellW, cellH); // ✅ 关键修复
+    const avatarScale = 0.8;
+    const avatarSize = avatarScale * Math.min(cellW, cellH);
 
     const svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("width", "100%");
@@ -440,21 +403,6 @@ function renderSimulation(simState) {
         const [r, c] = u.pos;
         const x = offsetX + (c - 0.5) * (cellW + cellGap) + cellGap / 2;
         const y = offsetY + (r - 0.5) * (cellH + cellGap) + cellGap / 2;
-
-        // ✅ 可选：调试用碰撞箱轮廓（开启：const DEBUG = true）
-        // const DEBUG = false;
-        // if (DEBUG) {
-        //     const box = document.createElementNS(svgNS, "rect");
-        //     box.setAttribute("x", x - avatarSize/2);
-        //     box.setAttribute("y", y - avatarSize/2);
-        //     box.setAttribute("width", avatarSize);
-        //     box.setAttribute("height", avatarSize);
-        //     box.setAttribute("fill", "none");
-        //     box.setAttribute("stroke", u.side === 'blue' ? "#BBDEFB" : "#FFCDD2");
-        //     box.setAttribute("stroke-width", "0.5");
-        //     box.setAttribute("stroke-dasharray", "1,1");
-        //     svg.appendChild(box);
-        // }
 
         // 圆点（底层）
         const circle = document.createElementNS(svgNS, "circle");
