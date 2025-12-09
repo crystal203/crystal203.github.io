@@ -891,7 +891,11 @@
         <div style="margin-top: 12px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
             <button id="btnSimulate" class="btn btn-confirm"
                 style="padding: 10px 24px; font-size: 1.1rem;">
-                <i class="fas fa-play"></i> 对局模拟
+                <i class="fas fa-play"></i> 对局模拟（测试）
+            </button>
+            <button id="btnPauseSimulate" class="btn"
+                style="background: #FF9800; color: white; display: none;">
+                <i class="fas fa-pause"></i> 暂停
             </button>
             <button id="btnStopSimulate" class="btn btn-cancel"
                 style="padding: 10px 24px; font-size: 1.1rem; display: none;">
@@ -933,7 +937,7 @@
                 ">
                     <span>
                         <i class="fas fa-code-branch" style="color: #66BB6A; margin-right: 4px;"></i>
-                        <strong>版本</strong>: 2025.11.12 | v1.1
+                        <strong>版本</strong>: 2025.12.9 | v2.0
                     </span>
                     <span>
                         <i class="fas fa-user" style="color: #2196F3; margin-right: 4px;"></i>
@@ -989,7 +993,7 @@
                 { name: "伊娃", type: "辅助", ai: "近战ai", short: "Eva", color: "#607D8B", 
                     speed: 2.5, reach: 6.33, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "黛西", type: "坦克", ai: "近战ai", short: "Daisy", color: "#2196F3", 
-                    speed: 2.5 * 1.5, reach: 0.2, skillRange: 5.00, tauntRadius: 4.50, skillCastTime: 0.33, skillDashDist: 5.00, skillDashSpeed: 10.00,
+                    speed: 2.5 * 1.5, reach: 0.2, skillRange: 5.00, tauntRadius: 4.05, skillCastTime: 0.33, skillDashDist: 5.00, skillDashSpeed: 10.00,
                     resistA: 2, resistB: 3, resistC: 1 },
                 { name: "银河", type: "射手", ai: "远程ai", short: "Eunha", color: "#607D8B", 
                     speed: 2.5, reach: 5.00, resistA: 1, resistB: 2, resistC: 100 },
@@ -1600,14 +1604,19 @@
 
                 if (ai === '辅助刺客ai' || ai === '射手刺客ai') {
                     const targetType = ai === '辅助刺客ai' ? '辅助' : '射手';
-                    target = unhit.find(u => u.role.type === targetType);
+                    const unhitTargets = unhit.filter(u => u.role.type === targetType);
+                    target = findNearest(attacker, unhitTargets);
                     if (!target) {
-                        target = candidates.find(u => u.role.type === targetType);
+                        const allTargets = candidates.filter(u => u.role.type === targetType);
+                        target = findNearest(attacker, allTargets);
                     }
                     if (!target) {
-                        target = findNearest(attacker, unhit.length > 0 ? unhit : candidates);
+                        target = findNearest(attacker, unhit);
                     }
-                } else if (ai === '就近刺客ai') {
+                    if (!target) {
+                        target = findNearest(attacker, candidates);
+                    }
+                }else if (ai === '就近刺客ai') {
                     const inRange = candidates.filter(u => {
                         const [ar, ac] = attacker.pos;
                         const [br, bc] = u.pos;
@@ -2001,7 +2010,6 @@
             function enterSimulationMode() {
                 const mask = document.getElementById('simDimMask');
                 if (mask) mask.style.opacity = '1';
-                // 淡出编辑面板（可选增强）
                 document.querySelectorAll('.order-panel').forEach(el => {
                     el.style.opacity = '0.25';
                     el.style.pointerEvents = 'none';
@@ -2017,87 +2025,87 @@
                 });
             }
             function startSimulation() {
-                // ✅ 1. 进入模拟模式：隐藏编辑 UI
                 enterSimulationMode();
-
-                // ✅ 2. 初始化模拟状态
                 currentSimulation = initSimulation();
-
-                // ✅ 3. 渲染首帧
                 renderSimulation(currentSimulation);
-
-                // ✅ 4. 启动真实时间动画循环
+                currentSimulation.isPaused = false;
                 let lastTime = performance.now();
                 function animate(now) {
                     if (!currentSimulation.isRunning) {
-                        // 模拟自然结束 → 显示重播按钮
                         document.getElementById('btnStopSimulate').style.display = 'none';
                         document.getElementById('btnReplaySimulate').style.display = 'inline-block';
                         return;
                     }
-
-                    const dt = Math.min((now - lastTime) / 1000, 0.01); // 秒，上限 100ms 防跳帧
+                    if (currentSimulation.isPaused) {
+                        animationFrameId = requestAnimationFrame(animate);
+                        return;
+                    }
+                    const dt = Math.min((now - lastTime) / 1000, 0.01);
                     lastTime = now;
-
                     tick(currentSimulation, dt);
                     renderSimulation(currentSimulation);
 
                     animationFrameId = requestAnimationFrame(animate);
                 }
-
-                // 首帧立即启动，避免首帧空跑
                 animationFrameId = requestAnimationFrame((now) => {
                     lastTime = now;
                     requestAnimationFrame(animate);
                 });
-
-                // ✅ 5. 更新按钮状态
                 document.getElementById('btnSimulate').style.display = 'none';
                 document.getElementById('btnStopSimulate').style.display = 'inline-block';
+                document.getElementById('btnPauseSimulate').style.display = 'inline-block';
                 document.getElementById('btnReplaySimulate').style.display = 'none';
             }
+            function pauseSimulation() {
+                if (!currentSimulation) return;
+                currentSimulation.isPaused = !currentSimulation.isPaused;
 
+                const btn = document.getElementById('btnPauseSimulate');
+                if (currentSimulation.isPaused) {
+                    btn.innerHTML = '<i class="fas fa-play"></i> 继续';
+                    btn.style.background = '#4CAF50';
+                } else {
+                    btn.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+                    btn.style.background = '#FF9800';
+                }
+            }
+            document.getElementById('btnPauseSimulate').onclick = pauseSimulation;
             function stopSimulation() {
-                // ✅ 1. 取消动画
                 if (animationFrameId) {
                     cancelAnimationFrame(animationFrameId);
                     animationFrameId = null;
                 }
-
-                // ✅ 2. 退出模拟模式：恢复编辑 UI
                 exitSimulationMode();
-
-                // ✅ 3. 清空可视化层
                 const overlay = document.getElementById('simOverlay');
                 if (overlay) overlay.innerHTML = '';
-
-                // ✅ 4. 恢复按钮
+                const btn = document.getElementById('btnPauseSimulate');
+                btn.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+                btn.style.background = '#FF9800';
                 document.getElementById('btnSimulate').style.display = 'inline-block';
                 document.getElementById('btnStopSimulate').style.display = 'none';
                 document.getElementById('btnReplaySimulate').style.display = 'none';
-
+                document.getElementById('btnPauseSimulate').style.display = 'none';
                 currentSimulation = null;
             }
 
             function replaySimulation() {
-                stopSimulation(); // 先清理
-                setTimeout(startSimulation, 100); // 再启动（避免状态残留）
+                stopSimulation();
+                setTimeout(startSimulation, 100);
             }
-
-            // ✅ 绑定按钮事件
-            document.getElementById('btnSimulate').onclick = startSimulation;
+            document.getElementById('btnSimulate').onclick = function() {
+                if (STATE.blueOrder.length !== 4 || STATE.redOrder.length !== 4) {
+                    showNotification('⚠️ 必须双方阵容均满 4 人才可开始模拟！', 'warning');
+                    return;
+                }
+                startSimulation();
+            };
             document.getElementById('btnStopSimulate').onclick = stopSimulation;
             document.getElementById('btnReplaySimulate').onclick = replaySimulation;
-
-            // ✅ ESC 键快速退出模拟
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && currentSimulation) {
                     stopSimulation();
                 }
             });
-
-
-
 
             setTimeout(() => {
                 // 此处可以布置一些初始角色

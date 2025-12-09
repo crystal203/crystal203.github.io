@@ -75,11 +75,16 @@ function initSimulation() {
     allUnits.forEach(unit => {
         const [r, c] = unit.pos;
         const id = `${unit.side}-${unit.index}`;
+        const effectiveTauntRadius = (unit.side !== 'blue' && unit.role.tauntRadius > 0)
+            ? unit.role.tauntRadius + 0.05
+            : unit.role.tauntRadius;
+
         const role = {
             ...unit.role,
             resistA: unit.role.resistA ?? 1,
             resistB: unit.role.resistB ?? 2,
-            resistC: unit.role.resistC ?? Infinity
+            resistC: unit.role.resistC ?? Infinity,
+            tauntRadius: effectiveTauntRadius  
         };
         const simUnit = {
             id,
@@ -123,7 +128,8 @@ function applyTaunt(tank, allUnits) {
         const dx = u.pos[1] - tank.pos[1];
         const dy = u.pos[0] - tank.pos[0];
         const dist = Math.hypot(dx, dy);
-        if (dist <= tank.role.tauntRadius + 1e-5 && !u._tauntedThisFrame.has(tank.id)) {
+        const effectiveRadius = tank.role.tauntRadius + 0.5;
+        if (dist <= effectiveRadius + 1e-5 && !u._tauntedThisFrame.has(tank.id)) {
             u.markers += 1;
             u._tauntedThisFrame.add(tank.id);
         }
@@ -349,9 +355,47 @@ function tick(simState, dt = 1/12) {
             u.lastTauntTime += count * 1.0;
         }
     });
+    /*if (simState.time >= 4.0) {
+        simUnits.filter(u => u.role.reach > 1 && u.target).forEach(u => {
+            const [ur, uc] = u.pos;
+            const [tr, tc] = u.target.pos;
+            const dx = tc - uc; 
+            const dy = tr - ur;  
+            const dist = Math.hypot(dx, dy);
+            const reach = u.role.reach;
+            const lowerBound = 0.5 * reach;
+            const upperBound = 0.7 * reach;
+            if (dist < lowerBound) {
+                const nx = dx / (dist || 1e-6);
+                const ny = dy / (dist || 1e-6); 
+                const backoffSpeed = u.role.speed * 0.7;  
+                const dt = 1/12;  
+                const deltaR = -ny * backoffSpeed * dt;
+                const deltaC = -nx * backoffSpeed * dt;
+                let newR = ur + deltaR;
+                let newC = uc + deltaC;
 
+                newR = Math.max(0.5, Math.min(4.5, newR));
+                newC = Math.max(0.5, Math.min(13.5, newC));
+
+                const actualDeltaR = newR - ur;
+                const actualDeltaC = newC - uc;
+                const actualBackDist = Math.hypot(actualDeltaR, actualDeltaC);
+
+                if (actualBackDist > 1e-6) {
+                    u.oldPos = [ur, uc];
+                    u.pos = [newR, newC];
+                    u.vel = [actualDeltaR, actualDeltaC];
+
+                    if (u.state === 'LOCKED') {
+                        u.state = 'MOVING';
+                    }
+                }
+            }
+        });
+    }*/
     const allLocked = simUnits.every(u => u.state === 'LOCKED' || !u.target);
-    if (allLocked) {
+    if (allLocked || simState.time >= 4.0) {
         simState.isRunning = false;
     }
     simState.time += dt;

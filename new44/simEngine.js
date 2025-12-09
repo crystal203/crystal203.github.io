@@ -1,4 +1,11 @@
 const svgNS = "http://www.w3.org/2000/svg";
+const SIM_WARNING = {
+    MISSING_PARAM: 'missing_param',
+    NEAR_TAUNT: 'near_taunt',
+    NEAR_COLLISION: 'near_collision',
+    // 可扩展
+};
+window.SIM_WARNING = SIM_WARNING;
 
 // --- 工具函数 ---
 function lerp(a, b, t) { return a + (b - a) * t; }
@@ -21,10 +28,10 @@ function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
     const dx = x2 - x1;
     const dy = y2 - y1;
 
-    const expandedMinX = ox - radius - radius; 
-    const expandedMaxX = ox + radius + radius; 
-    const expandedMinY = oy - radius - radius;
-    const expandedMaxY = oy + radius + radius;
+    const expandedMinX = ox - radius;
+    const expandedMaxX = ox + radius;
+    const expandedMinY = oy - radius;
+    const expandedMaxY = oy + radius;
 
     let tEnter = -Infinity;
     let tExit = Infinity;
@@ -75,16 +82,21 @@ function initSimulation() {
     allUnits.forEach(unit => {
         const [r, c] = unit.pos;
         const id = `${unit.side}-${unit.index}`;
-        const effectiveTauntRadius = (unit.side !== 'blue' && unit.role.tauntRadius > 0)
-            ? unit.role.tauntRadius + 0.05
-            : unit.role.tauntRadius;
+        
+        const globalCfg = window.SIM_CONFIG || {};
+        const enemyBonus = (unit.side !== 'blue' && unit.role.tauntRadius > 0) 
+            ? (globalCfg.enemyTauntBonus || 0.05) 
+            : 0;
+        const effectiveTauntRadius = unit.role.tauntRadius + enemyBonus;
 
+        const collisionSize = globalCfg.collisionSize || 0.8; // 默认 0.8
         const role = {
             ...unit.role,
             resistA: unit.role.resistA ?? 1,
             resistB: unit.role.resistB ?? 2,
             resistC: unit.role.resistC ?? Infinity,
-            tauntRadius: effectiveTauntRadius  
+            tauntRadius: effectiveTauntRadius,
+            collisionSize: collisionSize,
         };
         const simUnit = {
             id,
@@ -105,6 +117,8 @@ function initSimulation() {
             tauntActive: false,
             lastTauntTime: -10,
             hasUsedSkill: false,
+            startDelay: unit.role.startDelay || 0,
+            remainingDelay: unit.role.startDelay || 0,
         };
         simUnits.push(simUnit);
         idMap.set(id, simUnit);
@@ -197,10 +211,39 @@ function updateTargetsBasedOnMarkers(simUnits) {
 // --- 主循环 ---
 function tick(simState, dt = 1/12) {
     const { simUnits, time } = simState;
+
+    if (simState.time === 0) {
+        const missingParams = [];
+        simUnits.forEach(u => {
+            const r = u.role;
+            if (r.speed <= 1.01) {
+                missingParams.push(`${u.role.name}(${u.side})`);
+            }
+        });
+        if (missingParams.length > 0) {
+            showSimulationWarning(
+                `⚠️ 角色参数缺失：${missingParams.join(', ')} 缺少必要模拟参数（speed/reach/resist）`,
+                SIM_WARNING.MISSING_PARAM
+            );
+        }
+    }
     simUnits.forEach(u => {
         u._tauntedThisFrame = new Set();
         u.oldPos = [...u.pos];
         u.vel = [0, 0];
+        if (u.remainingDelay > 0) {
+            u.remainingDelay -= dt;
+            if (u.remainingDelay <= 0) {
+                u.remainingDelay = 0;
+                if (u.state === 'DELAYED') {
+                    u.state = 'MOVING';
+                }
+            } else {
+                u.state = 'DELAYED'; 
+                u.vel = [0, 0];
+                return; 
+            }
+        }
     });
 
     simUnits.forEach(u => {
@@ -230,8 +273,9 @@ function tick(simState, dt = 1/12) {
                 if (other === u || other.side === u.side || !other.target) continue;
                 const [or, oc] = other.pos;
                 const [nr, nc] = newPos;
-                const overlapR = 0.8 - Math.abs(nr - or);
-                const overlapC = 0.8 - Math.abs(nc - oc);
+                const radius = (u.role.collisionSize + other.role.collisionSize) / 4;
+                const overlapR = radius * 2 - Math.abs(nr - or);
+                const overlapC = radius * 2 - Math.abs(nc - oc);
                 if (overlapR > 1e-6 && overlapC > 1e-6) {
                     collided = true;
                     break;
@@ -293,6 +337,22 @@ function tick(simState, dt = 1/12) {
             if (u.role.tauntRadius > 0) {
                 u.tauntActive = true;
                 u.lastTauntTime = time;
+                const tauntRadius = u.role.tauntRadius;
+                simUnits.forEach(enemy => {
+                    if (enemy.side === u.side) return;
+                    const dx = enemy.pos[1] - u.pos[1];
+                    const dy = enemy.pos[0] - u.pos[0];
+                    const dist = Math.hypot(dx, dy);
+                    const eps = 0.25; // 临界阈值，可调
+                    if (Math.abs(dist - tauntRadius) < eps) {
+                        const isInside = dist < tauntRadius;
+                        showSimulationWarning(
+                            `❗ ${enemy.role.name}(${enemy.side}) 与 ${u.role.name}(${u.side}) 距离 ${dist.toFixed(3)}，`
+                            + `嘲讽半径 ${tauntRadius} → ${isInside ? '被嘲讽' : '未被嘲讽'}（临界）`,
+                            SIM_WARNING.NEAR_TAUNT
+                        );
+                    }
+                });
                 applyTaunt(u, simUnits);
             }
             return;
@@ -321,7 +381,8 @@ function tick(simState, dt = 1/12) {
 
             if (!isSolid) continue;
 
-            const sweep = sweptAABB(u.pos, intendedEnd, other.pos, 0.1); 
+            const radius = (u.role.collisionSize + other.role.collisionSize) / 4;
+            const sweep = sweptAABB(u.pos, intendedEnd, other.pos, radius);
             if (sweep.hit && sweep.tEnter < minT) {
                 minT = sweep.tEnter;
             }
