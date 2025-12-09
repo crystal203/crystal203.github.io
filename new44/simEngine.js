@@ -355,7 +355,7 @@ function tick(simState, dt = 1/12) {
             u.lastTauntTime += count * 1.0;
         }
     });
-    if (simState.time >= 4.0) {
+    /*if (simState.time >= 4.0) {
         simUnits.filter(u => u.role.reach > 1 && u.target).forEach(u => {
             const [ur, uc] = u.pos;
             const [tr, tc] = u.target.pos;
@@ -393,9 +393,9 @@ function tick(simState, dt = 1/12) {
                 }
             }
         });
-    }
+    }*/
     const allLocked = simUnits.every(u => u.state === 'LOCKED' || !u.target);
-    if (allLocked) {
+    if (allLocked || simState.time >= 4.0) {
         simState.isRunning = false;
     }
     simState.time += dt;
