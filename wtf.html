@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神秘游戏</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: #0a0a14;
+            color: #e0d6e9;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 240px 1fr 220px;
+            grid-template-rows: auto;
+            min-height: 100vh;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        /* ===== 状态栏 ===== */
+        #status-panel {
+            background: rgba(15, 10, 35, 0.85);
+            border: 1px solid #4a3a6e;
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .debt-bar-container {
+            background: #1a122e;
+            border-radius: 6px;
+            padding: 0.8rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #5a458a;
+        }
+        .debt-title {
+            font-size: 0.95em;
+            color: #ffd700;
+            margin-bottom: 0.4rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .debt-bar {
+            height: 12px;
+            background: #2c2048;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 0.4rem 0;
+        }
+        .debt-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff5252, #ff9e52);
+            border-radius: 6px;
+            transition: width 0.6s ease;
+        }
+        .cycle-info {
+            font-size: 0.9em;
+            color: #b8a9d6;
+            margin-top: 0.3rem;
+        }
+
+        .stat-group {
+            margin-bottom: 1.2rem;
+        }
+        .stat-title {
+            font-size: 0.9em;
+            color: #a99ec7;
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat-bar {
+            height: 8px;
+            background: #2c2543;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .stat-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.4s ease;
+        }
+        .stat-fill.fight { background: #ff6b6b; }
+        .stat-fill.faith { background: #4ecdc4; }
+        .stat-fill.sin { background: #ff5252; }
+        .stat-fill.vigor { background: #ffd166; }
+
+        #soul-points {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #ffd700;
+            margin: 0.6rem 0;
+        }
+        #debt-info {
+            font-size: 0.95em;
+            background: rgba(30, 20, 50, 0.6);
+            padding: 0.6rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+        .debt-highlight { color: #ff9e52; }
+
+        /* ===== 剧情窗 ===== */
+        #story-panel {
+            display: flex;
+            flex-direction: column;
+            background: rgba(8, 5, 22, 0.92);
+            border: 1px solid #3a3055;
+            border-radius: 8px;
+            padding: 1.5rem;
+            max-height: 85vh;
+            overflow: hidden;
+        }
+        #story-text {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 0 1rem;
+            font-size: 1.05em;
+            white-space: pre-wrap;
+            margin-bottom: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: #5a4a7a transparent;
+        }
+        #story-text::-webkit-scrollbar { width: 6px; }
+        #story-text::-webkit-scrollbar-track { background: transparent; }
+        #story-text::-webkit-scrollbar-thumb { background: #5a4a7a; border-radius: 3px; }
+
+        #options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin-top: auto;
+        }
+        .option-btn {
+            background: rgba(45, 35, 75, 0.75);
+            color: #f0e6ff;
+            border: 1px solid #5d4a8a;
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            font-weight: 500;
+        }
+        .option-btn:hover:not(:disabled) {
+            background: rgba(70, 55, 110, 0.9);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(100, 80, 160, 0.4);
+        }
+        .option-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* ===== 道具栏 ===== */
+        #inventory-panel {
+            background: rgba(12, 8, 30, 0.85);
+            border: 1px solid #3d335a;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .panel-title {
+            font-size: 1.1em;
+            margin-bottom: 0.8rem;
+            color: #c9b8e0;
+            border-bottom: 1px solid #4a3a6e;
+            padding-bottom: 0.3rem;
+        }
+        #inventory-list {
+            list-style: none;
+        }
+        .inventory-item {
+            background: rgba(25, 20, 50, 0.6);
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.95em;
+            border-left: 2px solid #7a60c2;
+        }
+
+        /* 风格点缀 */
+        .whisper { color: #b0a0c8; font-style: italic; }
+        .warning { color: #ff6b81; }
+        .highlight { color: #ffd166; font-weight: 500; }
+
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            #status-panel, #inventory-panel { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 左侧：状态栏 -->
+        <div id="status-panel">
+            <div class="debt-bar-container">
+                <div class="debt-title">
+                    <span>所需的灵魂</span>
+                    <span><span id="paid-val">0</span>/25500</span>
+                </div>
+                <div class="debt-bar"><div class="debt-fill" id="debt-bar" style="width:0%"></div></div>
+                <div class="cycle-info">
+                    距离下次清算还有 <span id="years-left">20</span> 年
+                </div>
+                <div class="debt-info">
+                    需上交：<span class="debt-highlight" id="target-val">100</span> 灵魂<br>
+                </div>
+            </div>
+
+            <div class="stat-group">
+                <div class="stat-title">战力 <span id="fight-val">50</span></div>
+                <div class="stat-bar"><div class="stat-fill fight" id="fight-bar" style="width:50%"></div></div>
+                
+                <div class="stat-title">信仰 <span id="faith-val">50</span></div>
+                <div class="stat-bar"><div class="stat-fill faith" id="faith-bar" style="width:50%"></div></div>
+                
+                <div class="stat-title">罪恶 <span id="sin-val">50</span></div>
+                <div class="stat-bar"><div class="stat-fill sin" id="sin-bar" style="width:50%"></div></div>
+                
+                <div class="stat-title">精力 <span id="vigor-val">50</span></div>
+                <div class="stat-bar"><div class="stat-fill vigor" id="vigor-bar" style="width:50%"></div></div>
+            </div>
+
+            <div id="soul-points">灵魂点：<span id="soul-val">0</span></div>
+            <div id="debt-info">
+                当前轮回：<span id="cycle-val">1</span> <br>
+                第<span id="turn-val">1</span>年
+            </div>
+        </div>
+
+        <!-- 中间：剧情窗 -->
+        <div id="story-panel">
+            <div id="story-text">……</div>
+            <div id="options"></div>
+        </div>
+
+        <!-- 右侧：道具栏 -->
+        <div id="inventory-panel">
+            <div class="panel-title">随身之物</div>
+            <ul id="inventory-list">
+                <li class="inventory-item">——空无一物——</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // ========== 游戏状态 ==========
+        const gameState = {
+            stats: { fight: 50, faith: 50, sin: 50, vigor: 50 },
+            soul: 0,
+            cycle: 1,
+            turn: 1,
+            inventory: [],
+            seenStories: new Set(),
+            currentStoryId: null,
+            // 核心经济系统
+            totalDebt: 25500,
+            totalPaid: 0,          // 累计已还
+            targetThisCycle: 100,  // 本期目标（20年周期）
+            cycleStartTurn: 1      // 本期开始年份
+        };
+
+        // ========== 教程剧情线性序列 ==========
+        const TUTORIAL_STEPS = [
+            { id: "tut_0", attr: null, delta: 0, text: `你……醒了。\n\n冰冷石台，幽蓝微光。\n蓝发垂落肩头。\n\n【？？？】\n“哈娜。你成为了一名冥界使者。”\n\n声音在骨髓中震颤——\n\n“你的使命，是收集灵魂。\n否则……你将被“处理”。\n\n（※ 按下按钮，开始教程）` },
+            { id: "tut_1", attr: "vigor", delta: -10, text: `【精力】\n\n它支撑你行走、感知、抵抗低语。\n\n——过低，你将跪倒，意识沉入永寂。\n——过高，身体过载，化作维系冥界的光丝。\n\n现在，试着消耗一点——\n感受那阵突如其来的疲惫。\n\n精力 -10` },
+            { id: "tut_2", attr: "sin", delta: +10, text: `【罪恶】\n\n它源于索取、掠夺、践踏边界。\n\n——过低，你成为无垢容器，再听不见任何声音。\n——过高，黑线缠绕双角，瞳孔裂开第二层……祂在你喉间低笑。\n\n现在感受它。\n罪恶 +10` },
+            { id: "tut_3", attr: "faith", delta: -10, text: `【信仰】\n\n它维系你与‘冥界’的联系，是供奉，也是锚点。\n\n——过低，你将被冥界流放。\n——过高，你自愿化作薪柴，永燃冥界。\n\n你开始怀疑‘祂’。\n信仰 -10` },
+            { id: "tut_4", attr: "fight", delta: +10, text: `【战力】\n\n它是你挥舞镰刀的力量。\n\n——过低，面对恶意，你选择闭眼，永眠于黑暗。\n——过高，你斩破门扉——门后，仍是黑暗。\n\n你挺直脊背，举起镰刀。\n战力 +10` },
+            { id: "tut_6", attr: null, delta: 0, text: `记住：\n\n每20年为一周期，到期需上交 ${gameState.targetThisCycle} 灵魂\n\n（※ 按下按钮，开始游戏）` }
+        ];
+
+        // ========== 常规事件库 ==========
+        const EVENTS = {
+            "ghost": {
+                id: "ghost",
+                text: `青白色的半透明身影在雾中飘荡，\n它没有脸，只有胸口一团微弱的、跳动的光核`,
+                options: [
+                    {
+                        text: "收割灵魂",
+                        consequence: () => {
+                            modifyStat("vigor", -10);
+                            gameState.soul += 10;
+                            updateUI();
+                            advanceTurn();
+                        },
+                        display: "灵魂+10 · 精力-10"
+                    },
+                    {
+                        text: "无视，让它飘走",
+                        consequence: () => {
+                            modifyStat("vigor", +10);
+                            modifyStat("faith", -5);
+                            updateUI();
+                            advanceTurn();
+                        },
+                        display: "精力+10 · 信仰-5"
+                    }
+                ]
+            }
+        };
+
+        // ========== 结局库 ==========
+        const ENDINGS = [
+            { id: "vigor_0", check: () => gameState.stats.vigor <= 0, title: "倦怠尘埃", desc: "精力枯竭。你跪倒在石台上，蓝发垂落，覆盖了脸。低语仍在继续……只是，再无人回应。" },
+            { id: "sin_100", check: () => gameState.stats.sin >= 100, title: "猩红低语者", desc: "罪恶满盈。黑线爬满你的角，你的瞳孔……裂开第二层。祂在你喉间低笑：‘终于……回家了。’" },
+            { id: "faith_0", check: () => gameState.stats.faith <= 0, title: "无信之锚", desc: "信仰崩解。门在你眼前碎成齑粉。你站在坍塌的回廊中央，手中空无一物——连‘任务’也失去了意义。" },
+            { id: "fight_0", check: () => gameState.stats.fight <= 0, title: "无刃之使", desc: "战力消散。面对第一缕恶意，你选择闭眼。黑暗温柔地拥抱了你……比石台更冷，比渊薮更静。" },
+            { id: "debt_clear", check: () => gameState.totalPaid >= gameState.totalDebt, title: "门后寂静", desc: `累计偿还 ${gameState.totalDebt} 灵魂。\n\n最后一粒光尘落入‘门’的缝隙。\n\n它……关上了。\n\n没有光，没有低语，没有回廊。\n只有你，站在无垠的、温柔的虚无中。\n\n这一次，没有轮回。\n\n（游戏通关。点击按钮可彻底重开）` },
+            { id: "debt_fail", check: () => false, title: "债务清算", desc: `第${gameState.turn}年，结算期至。\n\n你仅持有 ${gameState.soul} 灵魂，不足目标 ${gameState.targetThisCycle}。\n\n【？？？】\n“不足额……重置。”\n\n世界褪色。\n\n你回到石台，但这一次——\n你记得：上一轮回，你获得了 ${gameState.soul} 灵魂。\n\n本期目标调整为：${gameState.targetThisCycle - gameState.soul}。` }
+        ];
+
+        // ========== 核心函数 ==========
+        function modifyStat(stat, delta) {
+            if (stat === "soul") {
+                gameState.soul = Math.max(0, gameState.soul + delta);
+            } else if (gameState.stats[stat] !== undefined) {
+                gameState.stats[stat] = Math.max(0, Math.min(100, gameState.stats[stat] + delta));
+            }
+        }
+
+        function updateUI() {
+            // 更新属性
+            for (const key of ["fight", "faith", "sin", "vigor"]) {
+                const val = gameState.stats[key];
+                document.getElementById(`${key}-val`).textContent = val;
+                document.getElementById(`${key}-bar`).style.width = `${val}%`;
+            }
+            // 更新灵魂与轮回
+            document.getElementById('soul-val').textContent = gameState.soul;
+            document.getElementById('cycle-val').textContent = gameState.cycle;
+            document.getElementById('turn-val').textContent = gameState.turn;
+
+            // 更新债务面板
+            const paid = gameState.totalPaid;
+            const debt = gameState.totalDebt;
+            document.getElementById('paid-val').textContent = paid;
+            document.getElementById('debt-bar').style.width = `${Math.min(100, (paid / debt) * 100)}%`;
+            document.getElementById('target-val').textContent = gameState.targetThisCycle;
+
+            // 更新周期信息
+            const yearsLeft = 20 - ((gameState.turn - 1) % 20);
+            document.getElementById('years-left').textContent = yearsLeft;
+        }
+
+        let isProcessing = false;
+
+        function checkEndings() {
+            for (const ending of ENDINGS) {
+                if (ending.check()) {
+                    showEnding(ending);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function showEnding(ending) {
+            document.getElementById('story-text').innerHTML = `【${ending.title}】\n\n${ending.desc}`;
+            const optionsDiv = document.getElementById('options');
+            if (ending.id === "debt_clear") {
+                optionsDiv.innerHTML = `<button class="option-btn" onclick="hardReset()">■ 彻底重开</button>`;
+            } else if (ending.id === "debt_fail") {
+                optionsDiv.innerHTML = `<button class="option-btn" onclick="softResetAfterDebtFail()">■ 重入回廊</button>`;
+            } else {
+                optionsDiv.innerHTML = `<button class="option-btn" onclick="softReset()">■ 重入回廊</button>`;
+            }
+        }
+
+        function hardReset() {
+            // 彻底重开：清零所有进度
+            Object.assign(gameState, {
+                stats: { fight: 50, faith: 50, sin: 50, vigor: 50 },
+                soul: 0,
+                cycle: 1,
+                turn: 1,
+                inventory: [],
+                seenStories: new Set(),
+                totalPaid: 0,
+                targetThisCycle: 100,
+                cycleStartTurn: 1
+            });
+            advanceTurn();
+        }
+
+        function softReset() {
+            // 普通轮回：仅重置属性与灵魂，保留债务进度
+            gameState.stats = { fight: 50, faith: 50, sin: 50, vigor: 50 };
+            gameState.soul = 0;
+            gameState.cycle++;
+            gameState.turn = 1;
+            gameState.inventory = [];
+            gameState.seenStories.clear();
+            advanceTurn();
+        }
+
+        function softResetAfterDebtFail() {
+            // 债务失败轮回：返还本期所获灵魂（即降低目标）
+            const earnedThisCycle = gameState.soul;
+            gameState.targetThisCycle = Math.max(1, gameState.targetThisCycle - earnedThisCycle);
+            softReset();
+        }
+
+        function advanceTurn() {
+            gameState.turn++;
+            updateUI();
+
+            // 检查20年周期结算
+            if ((gameState.turn - 1) % 20 === 0) {
+                // 结算期
+                if (gameState.soul >= gameState.targetThisCycle) {
+                    // 成功
+                    gameState.totalPaid += gameState.targetThisCycle;
+                    gameState.soul -= gameState.targetThisCycle;
+                    gameState.targetThisCycle *= 2;
+                    // 不触发结局，继续游戏
+                    setTimeout(() => {
+                        playEvent("ghost"); // 暂用幽灵事件
+                    }, 600);
+                } else {
+                    // 失败 → 触发债务结局
+                    ENDINGS.find(e => e.id === "debt_fail").check = () => true;
+                    checkEndings();
+                    return;
+                }
+            }
+
+            // 检查普通结局
+            if (checkEndings()) return;
+
+            // 进入随机事件（暂固定为幽灵）
+            setTimeout(() => playEvent("ghost"), 500);
+        }
+
+        function playTutorial(stepIndex) {
+            if (stepIndex >= TUTORIAL_STEPS.length) {
+                // 教程结束，进入第一年
+                gameState.cycle--;
+                softReset();
+                return;
+            }
+
+            const step = TUTORIAL_STEPS[stepIndex];
+            document.getElementById('story-text').textContent = step.text;
+
+            // 执行属性变更（教程中直接应用）
+            if (step.attr) {
+                modifyStat(step.attr, step.delta);
+                updateUI();
+            }
+
+            // 单按钮推进
+            document.getElementById('options').innerHTML = 
+                `<button class="option-btn">……继续</button>`;
+            document.querySelector('.option-btn').onclick = () => playTutorial(stepIndex + 1);
+        }
+
+        function playEvent(eventId) {
+            const event = EVENTS[eventId];
+            document.getElementById('story-text').textContent = event.text;
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            for (const opt of event.options) {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `${opt.text}`;
+                btn.onclick = () => {
+                    opt.consequence();
+                };
+                optionsDiv.appendChild(btn);
+            }
+        }
+
+        // ========== 初始化 ==========
+        window.onload = () => {
+            updateUI();
+            playTutorial(0); // 从教程第一步开始
+        };
+    </script>
+</body>
+</html>

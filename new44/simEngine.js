@@ -20,6 +20,51 @@ function findNearestForSim(unit, candidates) {
     }, { unit: null, dist: Infinity }).unit;
 }
 
+function sweptCircleCircle(startA, endA, radiusA, startB, endB, radiusB) {
+    const [x1, y1] = startA;
+    const [x2, y2] = endA;
+    const [x3, y3] = startB;
+    const [x4, y4] = endB;
+
+    const vx = x2 - x1;
+    const vy = y2 - y1;
+    const rx = x3 - x1;
+    const ry = y3 - y1;
+
+    const radius = radiusA + radiusB;
+    const radiusSq = radius * radius;
+
+    const a = vx * vx + vy * vy;
+    const b = 2 * (vx * rx + vy * ry);
+    const c = rx * rx + ry * ry - radiusSq;
+
+    // 判别式
+    const disc = b * b - 4 * a * c;
+    if (disc < 0 || a < 1e-9) return { hit: false };
+
+    const sqrtDisc = Math.sqrt(disc);
+    let t1 = (-b - sqrtDisc) / (2 * a);
+    let t2 = (-b + sqrtDisc) / (2 * a);
+
+    // 仅考虑 [0, 1] 内的 t
+    if (t1 > t2) [t1, t2] = [t2, t1];
+    const tEnter = Math.max(0, t1);
+    if (tEnter > 1 || t2 < 0) return { hit: false };
+
+    // 碰撞点位置
+    const hitX = x1 + vx * tEnter;
+    const hitY = y1 + vy * tEnter;
+    const nx = (hitX - (x3 + (x4 - x3) * tEnter)) / radius;
+    const ny = (hitY - (y3 + (y4 - y3) * tEnter)) / radius;
+
+    return {
+        hit: true,
+        tEnter: tEnter,
+        normal: [nx, ny],               // 碰撞法向（从 B 指向 A）
+        point: [hitX, hitY]
+    };
+}
+
 function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
     const [x1, y1] = startPos;
     const [x2, y2] = endPos;
@@ -157,7 +202,10 @@ function startDash(unit, simUnits) {
     const dx = ty - uy;
     const dy = tx - ux;
     const dist = Math.hypot(dx, dy);
-    if (dist < 1e-6) return;
+    if (dist < 1e-6 || dist > unit.role.skillRange + 1) {
+        unit.state = 'MOVING';
+        return;
+    }
     const dashDist = Math.min(unit.role.skillDashDist, dist - unit.role.reach);
     const nx = dx / dist;
     const ny = dy / dist;
@@ -268,21 +316,36 @@ function tick(simState, dt = 1/12) {
                 ];
             }
 
+            const [nr, nc] = newPos;
             let collided = false;
+            const globalCfg = window.SIM_CONFIG || {};
+            const useAdvanced = globalCfg.useAdvancedCollision === true;
+
             for (const other of simUnits) {
-                if (other === u || other.side === u.side || !other.target) continue;
-                const [or, oc] = other.pos;
-                const [nr, nc] = newPos;
-                const radius = (u.role.collisionSize + other.role.collisionSize) / 4;
-                const overlapR = radius * 2 - Math.abs(nr - or);
-                const overlapC = radius * 2 - Math.abs(nc - oc);
-                if (overlapR > 1e-6 && overlapC > 1e-6) {
+                if (other === u || other.side === u.side) continue;
+
+                let overlap = false;
+                if (useAdvanced) {
+                    const radiusA = u.role.collisionSize / 2;
+                    const radiusB = other.role.collisionSize / 2;
+                    const dx = nr - other.pos[0];
+                    const dy = nc - other.pos[1];
+                    const distSq = dx * dx + dy * dy;
+                    overlap = distSq < (radiusA + radiusB) * (radiusA + radiusB);
+                } else {
+                    const radius = (u.role.collisionSize + other.role.collisionSize) / 4;
+                    const overlapR = radius * 2 - Math.abs(nr - other.pos[0]);
+                    const overlapC = radius * 2 - Math.abs(nc - other.pos[1]);
+                    overlap = overlapR > 1e-6 && overlapC > 1e-6;
+                }
+
+                if (overlap) {
                     collided = true;
                     break;
                 }
             }
 
-            if (!collided && u.target) {
+            /*if (!collided && u.target) {
                 const [tr, tc] = u.target.pos;
                 const [nr, nc] = newPos;
                 const dist = Math.hypot(tr - nr, tc - nc);
@@ -290,7 +353,7 @@ function tick(simState, dt = 1/12) {
                     u.pos = [...newPos];
                     u.state = 'LOCKED';
                 }
-            }
+            }*/
 
             if (collided) {
                 u.pos = [...prev];
@@ -313,10 +376,10 @@ function tick(simState, dt = 1/12) {
         const dy = u.target.pos[0] - ux;
         const dist = Math.hypot(dx, dy);
 
-        if (dist <= u.role.reach + 1e-4) {
+        /*if (dist <= u.role.reach + 1e-4) {
             u.state = 'LOCKED';
             return;
-        }
+        }*/
 
         if (u.role.skillRange > 0 && !u.hasUsedSkill && dist <= u.role.skillRange && u.skillTimer <= 0) {
             u.state = 'CASTING';
@@ -354,6 +417,23 @@ function tick(simState, dt = 1/12) {
                     }
                 });
                 applyTaunt(u, simUnits);
+                const blueEnemies = simUnits.filter(u => u.side === 'red');
+                const redEnemies = simUnits.filter(u => u.side === 'blue');
+                const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
+                const lockedByAllies = new Set();
+                for (const other of simUnits) {
+                    if (other.side === u.side && other.target && enemies.includes(other.target)) {
+                        lockedByAllies.add(other.target);
+                    }
+                }
+                const unlockedEnemies = enemies.filter(enemy => !lockedByAllies.has(enemy));
+                if (unlockedEnemies.length > 0) {
+                    u.target = findNearestForSim(u, unlockedEnemies);
+                } else {
+                    if (!u.target || !enemies.includes(u.target)) {
+                        u.target = findNearestForSim(u, enemies);
+                    }
+                }
             }
             return;
         }
@@ -372,19 +452,29 @@ function tick(simState, dt = 1/12) {
 
         let finalEnd = intendedEnd;
         let minT = 1.0;
+        let finalNormal = null;
+
+        const globalCfg = window.SIM_CONFIG || {};
+        const useAdvanced = globalCfg.useAdvancedCollision === true;
 
         for (const other of simUnits) {
-            if (other === u || other.side === u.side || !other.target) continue;
+            if (other === u || other.side === u.side) continue;
+            let sweep;
+            if (useAdvanced) {
+                const radiusA = u.role.collisionSize / 2;
+                const radiusB = other.role.collisionSize / 2;
+                sweep = sweptCircleCircle(
+                    u.pos, intendedEnd, radiusA,
+                    other.pos, other.oldPos, radiusB  
+                );
+            } else {
+                const radius = (u.role.collisionSize + other.role.collisionSize) / 4;
+                sweep = sweptAABB(u.pos, intendedEnd, other.pos, radius);
+            }
 
-            const isSolid = other.state !== 'MOVING' || 
-                            Math.hypot(other.vel[0], other.vel[1]) < 1e-4;
-
-            if (!isSolid) continue;
-
-            const radius = (u.role.collisionSize + other.role.collisionSize) / 4;
-            const sweep = sweptAABB(u.pos, intendedEnd, other.pos, radius);
             if (sweep.hit && sweep.tEnter < minT) {
                 minT = sweep.tEnter;
+                finalNormal = sweep.normal;
             }
         }
 
@@ -393,16 +483,26 @@ function tick(simState, dt = 1/12) {
                 lerp(ux, intendedEnd[0], minT),
                 lerp(uy, intendedEnd[1], minT)
             ];
-        }
+            if (useAdvanced && finalNormal) {
+                const [nx, ny] = finalNormal;
+                const vx = finalEnd[0] - ux;
+                const vy = finalEnd[1] - uy;
 
-        u.vel = [finalEnd[0] - ux, finalEnd[1] - uy];
-        u.pos = finalEnd;
+                const dot = vx * nx + vy * ny;
+                const normalVx = dot * nx;
+                const normalVy = dot * ny;
 
-        const [tr, tc] = u.target.pos;
-        const newDist = Math.hypot(tr - u.pos[0], tc - u.pos[1]);
-        if (newDist <= u.role.reach + 1e-4) {
-            u.state = 'LOCKED';
+                const tangentVx = vx - normalVx;
+                const tangentVy = vy - normalVy;
+                const frictionCoef = 0.95;
+                const finalVx = normalVx + tangentVx * frictionCoef;
+                const finalVy = normalVy + tangentVy * frictionCoef;
+
+                finalEnd = [ux + finalVx, uy + finalVy];
+            }
         }
+        u.vel = [finalEnd[0] - ux, finalEnd[1] - uy]; 
+        u.pos = finalEnd;                           
     });
 
     
@@ -416,45 +516,6 @@ function tick(simState, dt = 1/12) {
             u.lastTauntTime += count * 1.0;
         }
     });
-    /*if (simState.time >= 4.0) {
-        simUnits.filter(u => u.role.reach > 1 && u.target).forEach(u => {
-            const [ur, uc] = u.pos;
-            const [tr, tc] = u.target.pos;
-            const dx = tc - uc; 
-            const dy = tr - ur;  
-            const dist = Math.hypot(dx, dy);
-            const reach = u.role.reach;
-            const lowerBound = 0.5 * reach;
-            const upperBound = 0.7 * reach;
-            if (dist < lowerBound) {
-                const nx = dx / (dist || 1e-6);
-                const ny = dy / (dist || 1e-6); 
-                const backoffSpeed = u.role.speed * 0.7;  
-                const dt = 1/12;  
-                const deltaR = -ny * backoffSpeed * dt;
-                const deltaC = -nx * backoffSpeed * dt;
-                let newR = ur + deltaR;
-                let newC = uc + deltaC;
-
-                newR = Math.max(0.5, Math.min(4.5, newR));
-                newC = Math.max(0.5, Math.min(13.5, newC));
-
-                const actualDeltaR = newR - ur;
-                const actualDeltaC = newC - uc;
-                const actualBackDist = Math.hypot(actualDeltaR, actualDeltaC);
-
-                if (actualBackDist > 1e-6) {
-                    u.oldPos = [ur, uc];
-                    u.pos = [newR, newC];
-                    u.vel = [actualDeltaR, actualDeltaC];
-
-                    if (u.state === 'LOCKED') {
-                        u.state = 'MOVING';
-                    }
-                }
-            }
-        });
-    }*/
     const allLocked = simUnits.every(u => u.state === 'LOCKED' || !u.target);
     if (allLocked || simState.time >= 4.0) {
         simState.isRunning = false;
