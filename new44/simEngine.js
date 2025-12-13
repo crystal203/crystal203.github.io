@@ -219,43 +219,6 @@ function startDash(unit, simUnits) {
     unit.state = 'DASHING';
 }
 
-function updateTargetsBasedOnMarkers(simUnits) {
-    const blueEnemies = simUnits.filter(u => u.side === 'red');
-    const redEnemies = simUnits.filter(u => u.side === 'blue');
-    simUnits.forEach(u => {
-        if (u.role.tauntRadius <= 0) {
-            const tanks = simUnits.filter(t =>
-                t.side !== u.side && t.role.tauntRadius > 0 && t.tauntActive
-            );
-            if (tanks.length === 0) return;
-            if (u.markers >= u.role.resistB) {
-                u.target = findNearestForSim(u, tanks);
-                if (u.state !== 'LOCKED') u.state = 'MOVING';
-            } else if (u.state === 'LOCKED' && u.markers >= u.role.resistA) {
-                u.target = findNearestForSim(u, tanks);
-                u.state = 'MOVING';
-            }
-        } else if (u.tauntActive) {
-            const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
-            const lockedByAllies = new Set();
-            for (const other of simUnits) {
-                if (other.side === u.side && other.target && enemies.includes(other.target)) {
-                    lockedByAllies.add(other.target);
-                }
-            }
-            const unlockedEnemies = enemies.filter(enemy => !lockedByAllies.has(enemy));
-
-            if (unlockedEnemies.length > 0) {
-                u.target = findNearestForSim(u, unlockedEnemies);
-            } else {
-                if (!u.target || !enemies.includes(u.target)) {
-                    u.target = findNearestForSim(u, enemies);
-                }
-            }
-        }
-    });
-}
-
 // --- 主循环 ---
 function tick(simState, dt = 1/12) {
     const { simUnits, time } = simState;
@@ -351,7 +314,7 @@ function tick(simState, dt = 1/12) {
                 const dist = Math.hypot(tr - nr, tc - nc);
                 if (dist <= u.role.reach + 1e-4) {
                     u.pos = [...newPos];
-                    u.state = 'LOCKED';
+                    //u.state = 'LOCKED';
                 }
             }*/
 
@@ -417,23 +380,25 @@ function tick(simState, dt = 1/12) {
                     }
                 });
                 applyTaunt(u, simUnits);
-                const blueEnemies = simUnits.filter(u => u.side === 'red');
-                const redEnemies = simUnits.filter(u => u.side === 'blue');
-                const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
-                const lockedByAllies = new Set();
-                for (const other of simUnits) {
-                    if (other.side === u.side && other.target && enemies.includes(other.target)) {
-                        lockedByAllies.add(other.target);
+                /*if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) {
+                    const blueEnemies = simUnits.filter(u => u.side === 'red');
+                    const redEnemies = simUnits.filter(u => u.side === 'blue');
+                    const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
+                    const lockedByAllies = new Set();
+                    for (const other of simUnits) {
+                        if (other.side === u.side && other.target && enemies.includes(other.target)) {
+                            lockedByAllies.add(other.target);
+                        }
                     }
-                }
-                const unlockedEnemies = enemies.filter(enemy => !lockedByAllies.has(enemy));
-                if (unlockedEnemies.length > 0) {
-                    u.target = findNearestForSim(u, unlockedEnemies);
-                } else {
-                    if (!u.target || !enemies.includes(u.target)) {
-                        u.target = findNearestForSim(u, enemies);
+                    const unlockedEnemies = enemies.filter(enemy => !lockedByAllies.has(enemy));
+                    if (unlockedEnemies.length > 0) {
+                        u.target = findNearestForSim(u, unlockedEnemies);
+                    } else {
+                        if (!u.target || !enemies.includes(u.target)) {
+                            u.target = findNearestForSim(u, enemies);
+                        }
                     }
-                }
+                }*/
             }
             return;
         }
