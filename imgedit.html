@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 图像编辑 - Gitee AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      background: #f9fafb;
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      background: #0066cc;
+      color: white;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    header a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    header a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    #imageInput {
+      border: none;
+      padding: 0;
+    }
+    .preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .preview img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #eee;
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #0052a3;
+    }
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+    .log {
+      background: #f1f5f9;
+      padding: 16px;
+      border-radius: 6px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .status {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .status.pending { background: #fff3cd; color: #856404; }
+    .status.success { background: #d4edda; color: #155724; }
+    .status.error { background: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 AI 图像编辑器</h1>
+      <p>请先在 <a href="https://ai.gitee.com/" target="_blank">https://ai.gitee.com/</a> 注册账号并免费获取 API Key（每日额度 100 张）</p>
+      <p>本网站仅做 API 的封装和转发</p>
+    </header>
+
+    <div class="card">
+      <h2>1️⃣ 上传图片（支持多张）</h2>
+      <input type="file" id="imageInput" multiple accept="image/*" />
+      <div class="preview" id="preview"></div>
+    </div>
+
+    <div class="card">
+      <h2>2️⃣ 配置参数</h2>
+      <label for="apiKey">🔑 API Key（必填）</label>
+      <input type="password" id="apiKey" placeholder="请输入API Key" />
+
+      <label for="prompt">✍️ Prompt（描述你想生成的效果）</label>
+      <textarea id="prompt" placeholder="请输入文本"></textarea>
+
+      <label>⚙️ 任务类型（自动根据图片数量匹配）</label>
+      <div id="taskTypesDisplay" style="margin-bottom:16px; padding:10px; background:#f8f9fa; border-radius:4px;"></div>
+
+      <button id="generateBtn">🚀 一键生成图像</button>
+    </div>
+
+    <div class="card">
+      <h2>3️⃣ 日志 & 状态</h2>
+      <div class="log" id="log">等待操作...</div>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const previewDiv = document.getElementById('preview');
+    const apiKeyInput = document.getElementById('apiKey');
+    const promptInput = document.getElementById('prompt');
+    const generateBtn = document.getElementById('generateBtn');
+    const logDiv = document.getElementById('log');
+    const statusDiv = document.getElementById('status');
+    const taskTypesDisplay = document.getElementById('taskTypesDisplay');
+
+    let selectedFiles = [];
+
+    // 预览图片
+    imageInput.addEventListener('change', function () {
+      previewDiv.innerHTML = '';
+      selectedFiles = Array.from(this.files);
+      selectedFiles.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          previewDiv.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      updateTaskTypesDisplay();
+    });
+
+    function updateTaskTypesDisplay() {
+      const n = selectedFiles.length;
+      let types = [];
+      if (n === 1) {
+        types = ['id']; // 单图：身份保持
+      } else if (n >= 2) {
+        types = ['id', 'style']; // 至少两图：身份+风格（更多图可扩展）
+      }
+      taskTypesDisplay.textContent = `将使用任务类型：${types.join(', ')}`;
+    }
+
+    // 日志输出
+    function log(msg, isError = false) {
+      const now = new Date().toLocaleTimeString();
+      logDiv.innerHTML += `\n[${now}] ${msg}`;
+      logDiv.scrollTop = logDiv.scrollHeight;
+      if (isError) {
+        statusDiv.className = 'status error';
+        statusDiv.textContent = `❌ 错误：${msg}`;
+      }
+    }
+
+    function setStatus(msg, type = 'pending') {
+      statusDiv.className = `status ${type}`;
+      statusDiv.textContent = msg;
+    }
+
+    // 轮询任务状态
+    async function pollTask(taskId, headers) {
+      const statusUrl = `https://ai.gitee.com/v1/task/${taskId}`;
+      const retryInterval = 10 * 1000; // 10秒
+      const maxAttempts = (30 * 60) / 10; // 最多30分钟
+
+      for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        log(`⏳ 正在检查任务状态 [${attempt}/${maxAttempts}]...`);
+        try {
+          const response = await fetch(statusUrl, { headers });
+          if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
+          const result = await response.json();
+
+          if (result.error) {
+            throw new Error(`${result.error}: ${result.message || '未知错误'}`);
+          }
+
+          const status = result.status || 'unknown';
+          log(`状态：${status}`);
+
+          if (status === 'success') {
+            if (result.output?.file_url) {
+              const url = result.output.file_url;
+              log(`✅ 生成成功！图像链接：${url}`);
+              setStatus('🎉 生成成功！即将在新标签页打开图像…', 'success');
+              window.open(url, '_blank');
+              return true;
+            } else if (result.output?.text_result) {
+              log(`📝 文本结果：${result.output.text_result}`);
+              return true;
+            } else {
+              log('⚠️ 无输出内容', true);
+              return false;
+            }
+          } else if (['failed', 'cancelled'].includes(status)) {
+            log(`❌ 任务失败：${result.message || '未知原因'}`, true);
+            return false;
+          }
+
+          // 继续等待
+          await new Promise(resolve => setTimeout(resolve, retryInterval));
+        } catch (err) {
+          log(`轮询出错：${err.message}`, true);
+          return false;
+        }
+      }
+
+      log('⏰ 任务超时（超过30分钟）', true);
+      return false;
+    }
+
+    // 主生成逻辑
+    generateBtn.addEventListener('click', async () => {
+      const apiKey = apiKeyInput.value.trim();
+      const prompt = promptInput.value.trim();
+
+      if (!apiKey) return log('请填写 API Key', true);
+      if (!prompt) return log('请输入 Prompt', true);
+      if (selectedFiles.length === 0) return log('请至少上传一张图片', true);
+
+      const headers = {
+        'Authorization': `Bearer ${apiKey}`
+      };
+
+      // 构建 FormData
+      const formData = new FormData();
+      formData.append('prompt', prompt);
+      formData.append('model', 'Qwen-Image-Edit-2511');
+      formData.append('num_inference_steps', '4');
+      formData.append('guidance_scale', '1');
+
+      // 推断 task_types
+      let taskTypes = [];
+      if (selectedFiles.length === 1) {
+        taskTypes = ['id'];
+      } else if (selectedFiles.length >= 2) {
+        taskTypes = ['id', 'style'];
+      }
+      formData.append('task_types', JSON.stringify(taskTypes));
+
+      // 添加图片（按顺序）
+      selectedFiles.forEach((file, index) => {
+        formData.append('image', file, file.name);
+      });
+
+      log('📤 正在提交任务请求…');
+      generateBtn.disabled = true;
+      setStatus('📤 正在提交任务…');
+
+      try {
+        const response = await fetch('https://ai.gitee.com/v1/async/images/edits', {
+          method: 'POST',
+          headers: headers,
+          body: formData
+        });
+
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(`HTTP ${response.status}: ${text}`);
+        }
+
+        const data = await response.json();
+        if (data.error) throw new Error(`${data.error}: ${data.message || 'Unknown'}`);
+        if (!data.task_id) throw new Error('未返回 task_id');
+
+        const taskId = data.task_id;
+        log(`✅ 任务已创建，ID：${taskId}`);
+        setStatus(`✅ 任务已提交，ID：${taskId}，正在轮询结果…`);
+
+        // 开始轮询
+        const success = await pollTask(taskId, headers);
+        if (success) {
+          setStatus('✅ 图像已生成并打开', 'success');
+        }
+      } catch (err) {
+        log(`请求失败：${err.message}`, true);
+      } finally {
+        generateBtn.disabled = false;
+      }
+    });
+
+    // 初始化
+    updateTaskTypesDisplay();
+  </script>
+</body>
+</html>
