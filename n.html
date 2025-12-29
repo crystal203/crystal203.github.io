@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gitee AI 图像编辑对比工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background: #f9f9fb;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: #f0f4ff;
+      border-radius: 8px;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 8px; }
+    .api-instruction {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .api-link {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .api-link:hover { text-decoration: underline; }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #0052a3; }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin: 16px 0;
+      padding: 12px;
+      background: #eef5ff;
+      border-left: 4px solid #0066cc;
+      border-radius: 4px;
+      display: none;
+    }
+
+    #compare-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      height: 600px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: none; /* hidden until result ready */
+    }
+    #original, #edited {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      background: #eee;
+    }
+    #edited {
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+    #slider {
+      position: absolute;
+      top: 0; left: 50%;
+      width: 4px;
+      height: 100%;
+      background: #fff;
+      cursor: ew-resize;
+      z-index: 10;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+      border-radius: 2px;
+    }
+    #slider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      background: #0066cc;
+      border-radius: 50%;
+      z-index: 11;
+    }
+
+    @media (max-width: 768px) {
+      #compare-container { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎨 DeepNude</h1>
+    <p class="api-instruction">
+      请先在 <a href="https://ai.gitee.com/" target="_blank" class="api-link">https://ai.gitee.com/</a> 注册账号并获取 API Key
+    </p>
+  </header>
+
+  <main>
+    <div class="form-group">
+      <label for="apiKey">🔑 API Key</label>
+      <input type="text" id="apiKey" placeholder="请输入您的 Gitee AI API Key" />
+    </div>
+
+    <div class="form-group">
+      <label for="imageInput">🖼️ 上传图片</label>
+      <input type="file" id="imageInput" accept="image/*" />
+    </div>
+
+    <button id="processBtn">🚀 一键处理</button>
+
+    <div id="status"></div>
+
+    <div id="compare-container">
+      <img id="original" alt="原图" />
+      <img id="edited" alt="编辑后" />
+      <div id="slider"></div>
+    </div>
+  </main>
+
+  <script>
+    const API_URL = "https://ai.gitee.com/v1/async/images/edits";
+    const STATUS_URL_PREFIX = "https://ai.gitee.com/v1/task/";
+
+    const fixedPrompt = "Remove the girl's clothes in image1. masterpiece. 4k quality. best nippes, best pussy.";
+    // 可按需替换为你想要的固定 prompt，例如："make it anime style, keep face identity"
+
+    let originalImageUrl = null;
+
+    document.getElementById("processBtn").addEventListener("click", async () => {
+      const apiKey = document.getElementById("apiKey").value.trim();
+      const fileInput = document.getElementById("imageInput").files[0];
+
+      if (!apiKey) return alert("请输入 API Key");
+      if (!fileInput) return alert("请上传一张图片");
+
+      const statusDiv = document.getElementById("status");
+      statusDiv.style.display = "block";
+      statusDiv.textContent = "正在上传图片并提交任务...";
+      document.getElementById("processBtn").disabled = true;
+
+      try {
+        // 读取图片为 Blob
+        const fileReader = new FileReader();
+        fileReader.readAsArrayBuffer(fileInput);
+        const arrayBuffer = await new Promise((resolve, reject) => {
+          fileReader.onload = () => resolve(fileReader.result);
+          fileReader.onerror = reject;
+        });
+
+        const blob = new Blob([arrayBuffer], { type: fileInput.type });
+        originalImageUrl = URL.createObjectURL(blob);
+        document.getElementById("original").src = originalImageUrl;
+
+        // 构造 FormData
+        const formData = new FormData();
+        formData.append("prompt", fixedPrompt);
+        formData.append("image", blob, fileInput.name);
+        formData.append("task_types", "id");
+        formData.append("model", "Qwen-Image-Edit-2511");
+        formData.append("num_inference_steps", "4");
+        formData.append("guidance_scale", "1");
+
+        // 提交任务
+        const taskRes = await fetch(API_URL, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${apiKey}` },
+          body: formData
+        });
+
+        if (!taskRes.ok) {
+          const err = await taskRes.json().catch(() => ({}));
+          throw new Error(`提交失败：${taskRes.status} ${taskRes.statusText} — ${err.message || "未知错误"}`);
+        }
+
+        const taskData = await taskRes.json();
+        const taskId = taskData.task_id;
+        if (!taskId) throw new Error("未收到任务 ID");
+
+        statusDiv.textContent = `✅ 任务已提交，ID: ${taskId}，正在轮询结果...`;
+
+        // 轮询任务状态
+        const maxAttempts = 180; // 30 分钟 / 10 秒 = 180
+        let attempt = 0;
+        let result;
+        while (attempt < maxAttempts) {
+          attempt++;
+          statusDiv.textContent = `⏳ 轮询中 [${attempt}/${maxAttempts}]...`;
+          await new Promise(r => setTimeout(r, 10000));
+
+          const pollRes = await fetch(`${STATUS_URL_PREFIX}${taskId}`, {
+            headers: { Authorization: `Bearer ${apiKey}` }
+          });
+
+          if (!pollRes.ok) {
+            const err = await pollRes.json().catch(() => ({}));
+            throw new Error(`轮询失败：${pollRes.status} — ${err.message || "未知错误"}`);
+          }
+
+          result = await pollRes.json();
+          const status = result.status;
+
+          if (status === "success") {
+            const fileUrl = result.output?.file_url;
+            if (!fileUrl) throw new Error("成功但未返回图片 URL");
+            document.getElementById("edited").src = fileUrl;
+            document.getElementById("compare-container").style.display = "block";
+            setupSlider();
+            statusDiv.textContent = `✅ 处理完成！拖动中间滑块对比前后效果`;
+            break;
+          } else if (["failed", "cancelled"].includes(status)) {
+            throw new Error(`任务失败：${status} — ${result.message || ""}`);
+          }
+          // else: 继续轮询
+        }
+
+        if (attempt >= maxAttempts) {
+          throw new Error("轮询超时，请稍后手动查询任务状态");
+        }
+
+      } catch (err) {
+        statusDiv.textContent = `❌ 错误：${err.message}`;
+        console.error(err);
+      } finally {
+        document.getElementById("processBtn").disabled = false;
+      }
+    });
+
+    function setupSlider() {
+      const slider = document.getElementById("slider");
+      const editedImg = document.getElementById("edited");
+      const container = document.getElementById("compare-container");
+
+      let isDragging = false;
+
+      const updateClip = (x) => {
+        const percent = Math.max(0, Math.min(100, (x / container.offsetWidth) * 100));
+        editedImg.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+        slider.style.left = `${percent}%`;
+      };
+
+      slider.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        e.preventDefault();
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        updateClip(x);
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+      });
+
+      // 初始居中
+      //updateClip(container.offsetWidth / 2);
+      updateClip(0);
+    }
+  </script>
+</body>
+</html>
