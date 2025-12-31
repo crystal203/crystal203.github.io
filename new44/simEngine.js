@@ -187,7 +187,7 @@ function applyTaunt(tank, allUnits) {
         const dx = u.pos[1] - tank.pos[1];
         const dy = u.pos[0] - tank.pos[0];
         const dist = Math.hypot(dx, dy);
-        const effectiveRadius = tank.role.tauntRadius + 0.5;
+        const effectiveRadius = tank.role.tauntRadius;
         if (dist <= effectiveRadius + 1e-5 && !u._tauntedThisFrame.has(tank.id)) {
             u.markers += 1;
             u._tauntedThisFrame.add(tank.id);
