@@ -67,9 +67,31 @@ function findTargetForState(attacker, candidates) {
   let target = null;
   if (ai === '辅助刺客ai' || ai === '射手刺客ai') {
     const targetType = ai === '辅助刺客ai' ? '辅助' : '射手';
-    target = unhit.find(u => u.role.type === targetType);
-    if (!target) target = candidates.find(u => u.role.type === targetType);
-    if (!target) target = findNearestForState(attacker, unhit.length > 0 ? unhit : candidates);
+    const unhitTargets = unhit.filter(u => u.role.type === targetType);
+    target = findNearestForState(attacker, unhitTargets);
+    if (!target) {
+      const allTargets = candidates.filter(u => u.role.type === targetType);
+      target = findNearestForState(attacker, allTargets);
+    }
+    if (!target) target = findNearestForState(attacker, unhit);
+    if (!target) target = findNearestForState(attacker, candidates);
+  }else if (ai === '就近刺客ai') {
+    const inRange = candidates.filter(u => {
+        const [ar, ac] = attacker.pos;
+        const [br, bc] = u.pos;
+        const distSq = (ar - br) ** 2 + (ac - bc) ** 2;
+        return distSq <= 65;
+    });
+    if (inRange.length > 0) {
+        const unhitInRange = inRange.filter(u => !u.isHit);
+        if (unhitInRange.length > 0) {
+            target = findNearestForState(attacker, unhitInRange);
+        } else {
+            target = findNearestForState(attacker, inRange);
+        }
+    } else {
+        target = findNearestForState(attacker, unhit.length > 0 ? unhit : candidates);
+    } 
   } else if (ai === '近战ai') {
     target = findNearestForState(attacker, unhit.length > 0 ? unhit : candidates);
   } else if (ai === '远程ai') {
@@ -78,7 +100,6 @@ function findTargetForState(attacker, candidates) {
   if (target) target.isHit = true;
   return target;
 }
-
 function findNearestForState(unit, candidates) {
   if (candidates.length === 0) return null;
   const [ar, ac] = unit.pos;
@@ -395,6 +416,9 @@ async function checkAllRules() {
     './rule/火龙三切解偶像莉耶.js',
     './rule/暗刀棒球解火龙三切.js',
     './rule/偶像艾弓解偶像暗刀.js',
+    './rule/暗炮直挡解银河莉耶.js',
+    //'./rule/暗炮斜挡解银河莉耶.js',
+    './rule/偶像三奶解银河莉耶.js',
   ];
   const allResults = [];
   for (let url of rulePaths) {
