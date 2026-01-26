@@ -27,6 +27,9 @@ const assetList = [
         name: "chriselle-myth",
     },
     {
+        name: "clara-myth",
+    },
+    {
         name: "daisy",
     },
     {
@@ -36,10 +39,16 @@ const assetList = [
         name: "dohwa",
     },
     {
+        name: "erina-myth",
+    },
+    {
         name: "eugene-myth",
     },
     {
         name: "eunha-myth",
+    },
+    {
+        name: "gremony-myth",
     },
     {
         name: "hana",
@@ -49,6 +58,9 @@ const assetList = [
     },
     {
         name: "haruka-myth",
+    },
+    {
+        name: "idol-myth",
     },
     {
         name: "illuni",
@@ -75,6 +87,9 @@ const assetList = [
         name: "lucy-myth",
     },
     {
+        name: "mikke-myth",
+    },
+    {
         name: "nifty-myth",
     },
     {
@@ -87,10 +102,22 @@ const assetList = [
         name: "randy-myth",
     },
     {
+        name: "rie",
+    },
+    {
+        name: "rie-myth",
+    },
+    {
         name: "wakamo",
     },
     {
         name: "wakamo-myth",
+    },
+    {
+        name: "xiaoman",
+    },
+    {
+        name: "xiaoman-myth",
     },
     {
         name: "cg-1",
@@ -109,5 +136,11 @@ const assetList = [
     },
     {
         name: "cg-6",
+    },
+    {
+        name: "cg-7",
+    },
+    {
+        name: "cg-8",
     },
 ];
