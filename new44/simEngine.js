@@ -145,6 +145,7 @@ function initSimulation() {
         };
         const simUnit = {
             id,
+            index: unit.index,
             side: unit.side,
             role,
             pos: [r + 0.5, c + 0.5],
@@ -152,7 +153,7 @@ function initSimulation() {
             vel: [0, 0],
             target: null,
             originalTarget: null,
-            markers: 0,
+            markers: [0, 0, 0, 0],
             state: 'MOVING',
             skillTimer: 0,
             dashTimer: 0,
@@ -189,7 +190,7 @@ function applyTaunt(tank, allUnits) {
         const dist = Math.hypot(dx, dy);
         const effectiveRadius = tank.role.tauntRadius;
         if (dist <= effectiveRadius + 1e-5 && !u._tauntedThisFrame.has(tank.id)) {
-            u.markers += 1;
+            u.markers[tank.index] += 1;
             u._tauntedThisFrame.add(tank.id);
         }
     });
@@ -347,16 +348,15 @@ function tick(simState, dt = 1/12) {
         if (u.role.skillRange > 0 && !u.hasUsedSkill && dist <= u.role.skillRange && u.skillTimer <= 0) {
             u.state = 'CASTING';
             u.skillTimer = u.role.skillCastTime;
-            if (u.markers >= u.role.resistC) {
-                const tanks = simUnits.filter(t =>
-                    t.side !== u.side &&
-                    t.role.tauntRadius > 0 &&
-                    t.tauntActive
-                );
-                if (tanks.length > 0) {
-                    const newTarget = findNearestForSim(u, tanks);
-                    if (newTarget) {
-                        u.target = newTarget;
+            for (let i = 0; i < 4; ++i) {
+                if (u.markers[i] >= u.role.resistC) {
+                    const tank = simUnits.filter(t =>
+                        t.side !== u.side &&
+                        t.index === i
+                    );
+                    if (tank.length > 0) {
+                        const newTarget = findNearestForSim(u, tank);
+                        if (newTarget) u.target = newTarget;
                     }
                 }
             }
@@ -569,16 +569,22 @@ function renderSimulation(simState) {
         svg.appendChild(img);
 
         // 标记数
-        if (u.markers > 0) {
-            const text = document.createElementNS(svgNS, "text");
-            text.setAttribute("x", x + avatarSize * 0.7);
-            text.setAttribute("y", y - avatarSize * 0.7);
-            text.setAttribute("font-size", `${avatarSize * 0.75}px`);
-            text.setAttribute("fill", "#FF5722");
-            text.setAttribute("font-weight", "bold");
-            text.textContent = `×${u.markers}`;
-            svg.appendChild(text);
+        let markerCount = 0;
+        for (let i = 0; i < 4; ++i) {
+            if (u.markers[i] > 0) {
+                const text = document.createElementNS(svgNS, "text");
+                text.setAttribute("x", x + avatarSize * 0.7 + markerCount * avatarSize);
+                text.setAttribute("y", y - avatarSize * 0.7);
+                text.setAttribute("font-size", `${avatarSize * 0.75}px`);
+                if (markerCount == 0) text.setAttribute("fill", "#FF5722");
+                else text.setAttribute("fill", "#57FF22");
+                text.setAttribute("font-weight", "bold");
+                text.textContent = `×${u.markers[i]}`;
+                svg.appendChild(text);
+                markerCount++;
+            }
         }
+
 
         // 嘲讽圈
         if (u.tauntActive && u.role.tauntRadius > 0) {
