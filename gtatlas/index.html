@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>坎公图集解析器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .upload-section {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .upload-area {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .search-section {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #764ba2;
+        }
+
+        .advanced-search {
+            background: #667eea;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .content-section {
+            padding: 30px;
+        }
+
+        .spritesheet-selector {
+            margin-bottom: 20px;
+        }
+
+        .spritesheet-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .spritesheet-select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .spritesheet-select:focus {
+            border-color: #667eea;
+        }
+
+        .region-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .region-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .region-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .region-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .region-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .region-name {
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 8px 15px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .page-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .advanced-search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .advanced-search-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .search-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-option label {
+            flex: 1;
+            color: #555;
+        }
+
+        .search-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .modal-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .apply-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .region-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>坎公图集解析器</h1>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area">
+                <input type="file" id="imageInput" class="file-input" accept=".png">
+                <input type="file" id="jsonInput" class="file-input" accept=".json">
+                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                    🖼️ 上传PNG图集
+                </button>
+                <button class="upload-btn" onclick="document.getElementById('jsonInput').click()">
+                    📄 上传JSON配置
+                </button>
+                <span id="uploadStatus" style="color: #667eea;"></span>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="🔍 输入图名进行筛选..." oninput="filterRegions()">
+                <button class="advanced-search" onclick="showAdvancedSearch()">⚙️ 高级查找</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="spritesheet-selector">
+                <label class="spritesheet-label">选择图集资源：</label>
+                <select class="spritesheet-select" id="spritesheetSelect" onchange="loadSpritesheet()">
+                    <option value="">-- 请选择图集 --</option>
+                </select>
+            </div>
+
+            <div id="loadingIndicator" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>正在加载图集资源...</p>
+            </div>
+
+            <div id="regionList" class="region-list">
+                <!-- 区域列表将在这里动态生成 -->
+            </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <p>暂无匹配的资源</p>
+            </div>
+
+            <div class="pagination" id="pagination">
+                <!-- 分页按钮将在这里动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <div class="advanced-search-modal" id="advancedSearchModal">
+        <div class="advanced-search-content">
+            <h3 class="modal-title">高级查找选项</h3>
+            <div class="search-options">
+                <div class="search-option">
+                    <input type="checkbox" id="caseSensitive" checked>
+                    <label for="caseSensitive">区分大小写</label>
+                </div>
+                <div class="search-option">
+                    <input type="checkbox" id="exactMatch">
+                    <label for="exactMatch">精确匹配</label>
+                </div>
+                <div class="search-option">
+                    <input type="checkbox" id="regexMatch">
+                    <label for="regexMatch">正则表达式</label>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" onclick="closeAdvancedSearch()">取消</button>
+                <button class="modal-btn apply-btn" onclick="applyAdvancedSearch()">应用</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSpritesheet = null;
+        let allRegions = [];
+        let filteredRegions = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let searchOptions = {
+            caseSensitive: true,
+            exactMatch: false,
+            regexMatch: false
+        };
+
+        let spritesheets = [
+            { name: '物品', png: './assets/items.png', json: './assets/items.json' },
+            { name: '角色', png: './assets/characters.png', json: './assets/characters.json' },
+            { name: '头像', png: './assets/portraits.png', json: './assets/portraits.json' },
+            { name: '头像框', png: './assets/PortraitFrame.png', json: './assets/PortraitFrame.json' },
+            { name: '徽章', png: './assets/Badge.png', json: './assets/Badge.json' },
+            { name: 'Boss', png: './assets/bosses.png', json: './assets/bosses.json' },
+            { name: '战斗UI', png: './assets/battle.png', json: './assets/battle.json' },
+            { name: '贴纸', png: './assets/ProfilecardStickers.png', json: './assets/ProfilecardStickers.json' },
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            populateSpritesheetSelector();
+            document.getElementById('imageInput').addEventListener('change', handleFileUpload);
+            document.getElementById('jsonInput').addEventListener('change', handleFileUpload);
+        });
+
+        function populateSpritesheetSelector() {
+            const select = document.getElementById('spritesheetSelect');
+            select.innerHTML = '<option value="">-- 请选择图集 --</option>';
+            
+            spritesheets.forEach((sheet, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = sheet.name;
+                select.appendChild(option);
+            });
+        }
+
+        async function loadSpritesheet() {
+            const select = document.getElementById('spritesheetSelect');
+            const index = select.value;
+            
+            if (index === '') {
+                clearRegionList();
+                return;
+            }
+            
+            showLoading(true);
+            
+            try {
+                const sheet = spritesheets[index];
+                
+                const jsonResponse = await fetch(sheet.json);
+                const jsonData = await jsonResponse.json();
+                
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                
+                img.onload = function() {
+                    currentSpritesheet = {
+                        ...sheet,
+                        img: img  
+                    };
+                    
+                    allRegions = parseSpritesheetData(jsonData, img);
+                    filteredRegions = [...allRegions];
+                    currentPage = 1;
+                    renderRegionList();
+                    renderPagination();
+                    showLoading(false);
+                };
+                
+                img.onerror = function() {
+                    alert('加载图片失败，请检查路径是否正确');
+                    showLoading(false);
+                };
+                
+                img.src = sheet.png;
+            } catch (error) {
+                console.error('加载图集失败:', error);
+                alert('加载图集失败: ' + error.message);
+                showLoading(false);
+            }
+        }
+
+        function parseSpritesheetData(data, img) {
+            const regions = [];
+            
+            let frames = data.frames;
+            
+            if (Array.isArray(frames)) {
+                frames.forEach((frame, index) => {
+                    const region = {
+                        name: frame.name || `region_${index}`,
+                        x: frame.x || frame.frame?.x || 0,
+                        y: frame.y || frame.frame?.y || 0,
+                        w: frame.w || frame.frame?.w || frame.width || 0,
+                        h: frame.h || frame.frame?.h || frame.height || 0,
+                        img: img
+                    };
+                    regions.push(region);
+                });
+            } else if (typeof frames === 'object') {
+                for (const regionName in frames) {
+                    const frameData = frames[regionName];
+                    const frame = frameData.frame || frameData;
+                    
+                    const region = {
+                        name: regionName,
+                        x: frame.x || 0,
+                        y: frame.y || 0,
+                        w: frame.w || frame.width || 0,
+                        h: frame.h || frame.height || 0,
+                        img: img
+                    };
+                    regions.push(region);
+                }
+            }
+            
+            return regions;
+        }
+
+        function renderRegionList() {
+            const regionList = document.getElementById('regionList');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredRegions.length === 0) {
+                regionList.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            regionList.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, filteredRegions.length);
+            const pageRegions = filteredRegions.slice(startIndex, endIndex);
+            
+            regionList.innerHTML = '';
+            
+            pageRegions.forEach(region => {
+                const canvas = document.createElement('canvas');
+                canvas.width = region.w;
+                canvas.height = region.h;
+                
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(
+                    region.img,
+                    region.x, region.y,
+                    region.w, region.h,
+                    0, 0,
+                    region.w, region.h
+                );
+                
+                const regionItem = document.createElement('div');
+                regionItem.className = 'region-item';
+                regionItem.innerHTML = `
+                    <img src="${canvas.toDataURL()}" class="region-image" alt="${region.name}">
+                    <div class="region-info">
+                        <div class="region-name">${region.name}</div>
+                    </div>
+                    <button class="download-btn" onclick="downloadRegion('${region.name}', ${region.x}, ${region.y}, ${region.w}, ${region.h})">
+                        ⬇️ 下载
+                    </button>
+                `;
+                
+                regionList.appendChild(regionItem);
+            });
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(filteredRegions.length / itemsPerPage);
+            
+            if (totalPages <= 1) {
+                pagination.style.display = 'none';
+                return;
+            }
+            
+            pagination.style.display = 'flex';
+            pagination.innerHTML = '';
+            
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'page-btn';
+            prevBtn.textContent = '❮';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => changePage(currentPage - 1);
+            pagination.appendChild(prevBtn);
+            
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    const pageBtn = document.createElement('button');
+                    pageBtn.className = 'page-btn' + (i === currentPage ? ' active' : '');
+                    pageBtn.textContent = i;
+                    pageBtn.onclick = () => changePage(i);
+                    pagination.appendChild(pageBtn);
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.textContent = '...';
+                    ellipsis.style.padding = '8px 10px';
+                    pagination.appendChild(ellipsis);
+                }
+            }
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'page-btn';
+            nextBtn.textContent = '❯';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => changePage(currentPage + 1);
+            pagination.appendChild(nextBtn);
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredRegions.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderRegionList();
+                renderPagination();
+            }
+        }
+
+        function downloadRegion(name, x, y, w, h) {
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(
+                currentSpritesheet.img,
+                x, y,
+                w, h,
+                0, 0,
+                w, h
+            );
+            
+            const link = document.createElement('a');
+            link.download = name + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingIndicator').style.display = show ? 'block' : 'none';
+        }
+
+        function clearRegionList() {
+            document.getElementById('regionList').innerHTML = '';
+            document.getElementById('pagination').innerHTML = '';
+            document.getElementById('emptyState').style.display = 'none';
+        }
+
+        async function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const uploadStatus = document.getElementById('uploadStatus');
+            uploadStatus.textContent = `已选择: ${file.name}`;
+            
+            if (file.name.endsWith('.png')) {
+                const imgUrl = URL.createObjectURL(file);
+                window.uploadedImage = imgUrl;
+                checkAndLoadUploadedFiles();
+            } else if (file.name.endsWith('.json')) {
+                const text = await file.text();
+                try {
+                    const jsonData = JSON.parse(text);
+                    window.uploadedJson = jsonData;
+                    checkAndLoadUploadedFiles();
+                } catch (error) {
+                    alert('JSON文件格式错误: ' + error.message);
+                }
+            }
+        }
+
+        function checkAndLoadUploadedFiles() {
+            if (window.uploadedImage && window.uploadedJson) {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                
+                img.onload = function() {
+                    currentSpritesheet = {
+                        img: img,
+                        name: '上传的图集'
+                    };
+                    
+                    allRegions = parseSpritesheetData(window.uploadedJson, img);
+                    filteredRegions = [...allRegions];
+                    currentPage = 1;
+                    renderRegionList();
+                    renderPagination();
+                    
+                    document.getElementById('uploadStatus').textContent = '';
+                    window.uploadedImage = null;
+                    window.uploadedJson = null;
+                };
+                
+                img.onerror = function() {
+                    alert('加载上传的图片失败');
+                };
+                
+                img.src = window.uploadedImage;
+            }
+        }
+
+        function filterRegions() {
+            const searchTerm = document.getElementById('searchInput').value;
+            
+            if (!searchTerm.trim()) {
+                filteredRegions = [...allRegions];
+            } else {
+                filteredRegions = allRegions.filter(region => {
+                    const name = region.name;
+                    const search = searchTerm;
+                    
+                    if (searchOptions.regexMatch) {
+                        try {
+                            const regex = new RegExp(search, searchOptions.caseSensitive ? '' : 'i');
+                            return regex.test(name);
+                        } catch (e) {
+                            return false;
+                        }
+                    } else if (searchOptions.exactMatch) {
+                        return searchOptions.caseSensitive ? 
+                            name === search : 
+                            name.toLowerCase() === search.toLowerCase();
+                    } else {
+                        return searchOptions.caseSensitive ? 
+                            name.includes(search) : 
+                            name.toLowerCase().includes(search.toLowerCase());
+                    }
+                });
+            }
+            
+            currentPage = 1;
+            renderRegionList();
+            renderPagination();
+        }
+
+        function showAdvancedSearch() {
+            document.getElementById('advancedSearchModal').style.display = 'flex';
+        }
+
+        function closeAdvancedSearch() {
+            document.getElementById('advancedSearchModal').style.display = 'none';
+        }
+
+        function applyAdvancedSearch() {
+            searchOptions.caseSensitive = document.getElementById('caseSensitive').checked;
+            searchOptions.exactMatch = document.getElementById('exactMatch').checked;
+            searchOptions.regexMatch = document.getElementById('regexMatch').checked;
+            
+            closeAdvancedSearch();
+            filterRegions();
+        }
+    </script>
+</body>
+</html>
