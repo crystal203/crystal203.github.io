@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞技场回复倒计时</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #e6e6e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 20px 0 40px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff8a00, #da1b60, #6a11cb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: 8px;
+        }
+        
+        .clock-container {
+            background: rgba(25, 25, 45, 0.85);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                        0 0 25px rgba(106, 17, 203, 0.35),
+                        inset 0 0 20px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(106, 17, 203, 0.4);
+            text-align: center;
+            position: relative;
+            margin: 20px 0 50px;
+            width: 100%;
+            max-width: 600px;
+            z-index: 10;
+        }
+        
+        .clock-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff8a00, #da1b60, #6a11cb, #0f3460, #16213e);
+            z-index: -1;
+            border-radius: 26px;
+            opacity: 0.7;
+            filter: blur(10px);
+        }
+        
+        #countdown {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: -3px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                         0 0 30px rgba(106, 17, 203, 0.7),
+                         0 0 45px rgba(218, 27, 96, 0.5);
+            background: linear-gradient(45deg, #fff, #e0e0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        #ticket {
+            font-size: 2.2rem;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        }
+        
+        .status {
+            margin-top: 15px;
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            min-height: 26px;
+            font-weight: 500;
+        }
+        
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nodes-section {
+            background: rgba(30, 30, 50, 0.85);
+            border-radius: 20px;
+            padding: 25px;
+            width: 48%;
+            min-width: 300px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(100, 100, 150, 0.3);
+            margin-bottom: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .nodes-section {
+                width: 100%;
+                min-width: auto;
+            }
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(106, 17, 203, 0.6);
+            color: #c397ff;
+            font-weight: 600;
+        }
+        
+        .past-title {
+            color: #ff6b6b;
+            border-bottom-color: rgba(255, 107, 107, 0.6);
+        }
+        
+        .future-title {
+            color: #4cc9f0;
+            border-bottom-color: rgba(76, 201, 240, 0.6);
+        }
+        
+        .node-item {
+            background: rgba(40, 40, 65, 0.7);
+            border-radius: 14px;
+            padding: 16px;
+            margin: 12px 0;
+            border-left: 4px solid #6a11cb;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .node-item:hover {
+            transform: translateX(5px);
+            background: rgba(45, 45, 75, 0.9);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .past .node-item {
+            border-left-color: #ff6b6b;
+        }
+        
+        .future .node-item {
+            border-left-color: #4cc9f0;
+        }
+        
+        .node-time {
+            font-size: 1.45rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #e0e0ff;
+        }
+        
+        .node-distance {
+            font-size: 1.15rem;
+            margin: 4px 0;
+            color: #aaa;
+        }
+        
+        .node-ticket {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 4px;
+            color: #ffcc00;
+        }
+        
+        .empty-node {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 15px rgba(106, 17, 203, 0.7),
+                            0 0 25px rgba(106, 17, 203, 0.5),
+                            0 0 35px rgba(106, 17, 203, 0.3);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(106, 17, 203, 0.9),
+                            0 0 30px rgba(106, 17, 203, 0.7),
+                            0 0 40px rgba(106, 17, 203, 0.5);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #777;
+            font-size: 0.95rem;
+            padding: 15px;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .highlight {
+            color: #ffcc00;
+            font-weight: 600;
+        }
+        
+        .current-week {
+            display: inline-block;
+            background: rgba(106, 17, 203, 0.25);
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin-top: 8px;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚔️ 竞技场回复倒计时 ⚔️</h1>
+        <div class="current-week" id="current-week-range">计算中...</div>
+    </div>
+    
+    <div class="clock-container glow">
+        <div id="countdown">--:--:--</div>
+        <div id="ticket">第 - 票</div>
+        <div class="status" id="status">计算中...</div>
+    </div>
+    
+    <div class="timeline-container">
+        <div class="nodes-section past">
+            <div class="section-title past-title">上5票</div>
+            <div id="past-list">
+                <div class="empty-node">加载中...</div>
+            </div>
+        </div>
+        
+        <div class="nodes-section future">
+            <div class="section-title future-title">下5票</div>
+            <div id="future-list">
+                <div class="empty-node">加载中...</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+    </div>
+
+    <script>
+        // 格式化日期为 月-日 周几 时:分
+        function formatDateTime(date) {
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weeks = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+            const week = weeks[date.getDay()];
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${month}-${day} ${week} ${hours}:${minutes}`;
+        }
+        
+        // 格式化持续时间（毫秒）为"X天X小时X分"
+        function formatDuration(ms, isFuture = true) {
+            if (ms < 0) ms = 0;
+            
+            const totalSeconds = Math.floor(ms / 1000);
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            const totalHours = Math.floor(totalMinutes / 60);
+            const days = Math.floor(totalHours / 24);
+            
+            const hours = totalHours % 24;
+            const minutes = totalMinutes % 60;
+            
+            const parts = [];
+            if (days > 0) parts.push(`${days}天`);
+            if (hours > 0 || parts.length > 0) parts.push(`${hours}小时`);
+            if (minutes > 0 || parts.length === 0) parts.push(`${minutes}分`);
+            
+            return (isFuture ? '还有 ' : '已过 ') + parts.join('');
+        }
+        
+        // 获取本周一 0:00:00 的日期对象
+        function getMonday() {
+            const now = new Date();
+            const day = now.getDay(); // 0(周日) - 6(周六)
+            const diff = day === 0 ? 6 : day - 1; // 周日需要减6天，其他减(天数-1)
+            
+            const monday = new Date(now);
+            monday.setDate(monday.getDate() - diff);
+            monday.setHours(0, 0, 0, 0);
+            return monday;
+        }
+        
+        // 获取本周日 11:00:00 的日期对象
+        function getSunday11() {
+            const monday = getMonday();
+            const sunday = new Date(monday);
+            sunday.setDate(sunday.getDate() + 6); // 周日
+            sunday.setHours(11, 0, 0, 0);
+            return sunday;
+        }
+        
+        // 生成本周所有竞技场回复时间节点
+        function generateNodes() {
+            const monday = getMonday();
+            const sunday11 = getSunday11();
+            const nodes = [];
+            const interval = 150 * 60 * 1000; // 150分钟 = 2.5小时
+            
+            // 从周一0:00开始生成节点
+            let currentTime = new Date(monday);
+            let ticketNumber = 5; // 周一0:00是第5票
+            
+            while (currentTime <= sunday11) {
+                nodes.push({
+                    time: new Date(currentTime),
+                    ticket: ticketNumber
+                });
+                
+                // 增加150分钟
+                currentTime = new Date(currentTime.getTime() + interval);
+                ticketNumber++;
+            }
+            
+            return { nodes, monday, sunday11 };
+        }
+        
+        // 更新倒计时和节点列表
+        function update() {
+            const now = new Date();
+            const { nodes, monday, sunday11 } = generateNodes();
+            
+            // 更新当前周范围显示
+            document.getElementById('current-week-range').textContent = 
+                `当前周范围: ${formatDateTime(monday)} 至 ${formatDateTime(sunday11)}`;
+            
+            // ===== 处理中央倒计时 =====
+            const countdownEl = document.getElementById('countdown');
+            const ticketEl = document.getElementById('ticket');
+            const statusEl = document.getElementById('status');
+            
+            // 检查当前时间是否在有效范围内
+            if (now > sunday11) {
+                countdownEl.textContent = '--:--:--';
+                ticketEl.textContent = '第 - 票';
+                statusEl.textContent = '本周竞技场回复已结束，等待下周一 0:00';
+                statusEl.style.color = '#ff6b6b';
+            } else if (now < monday) {
+                // 当前时间在周一0:00之前（上周日）
+                const nextNode = nodes[0]; // 周一0:00
+                const diff = nextNode.time - now;
+                updateCountdown(diff, nextNode.ticket);
+                statusEl.textContent = '等待本周第一次回复';
+                statusEl.style.color = '#4cc9f0';
+            } else {
+                // 查找下一个节点
+                let nextNode = null;
+                for (let i = 0; i < nodes.length; i++) {
+                    if (nodes[i].time > now) {
+                        nextNode = nodes[i];
+                        break;
+                    }
+                }
+                
+                if (nextNode) {
+                    const diff = nextNode.time - now;
+                    updateCountdown(diff, nextNode.ticket);
+                    statusEl.textContent = `距离下次回复`;
+                    statusEl.style.color = '#a8e6cf';
+                } else {
+                    // 当前时间在最后一个节点之后，但在周日11:00之前
+                    countdownEl.textContent = '--:--:--';
+                    ticketEl.textContent = '第 - 票';
+                    statusEl.textContent = '本周剩余回复已结束，等待下周一 0:00';
+                    statusEl.style.color = '#ff6b6b';
+                }
+            }
+            
+            // ===== 处理下方节点列表 =====
+            // 过去的节点（已发生的）
+            const pastNodes = nodes
+                .filter(node => node.time <= now)
+                .slice(-5) // 取最后5个
+                .reverse(); // 最近的在最前面
+            
+            // 未来的节点（未发生的）
+            const futureNodes = nodes
+                .filter(node => node.time > now)
+                .slice(0, 5); // 取前5个
+            
+            // 更新过去节点列表
+            const pastList = document.getElementById('past-list');
+            if (pastNodes.length === 0) {
+                pastList.innerHTML = '<div class="empty-node">暂无历史节点记录</div>';
+            } else {
+                pastList.innerHTML = pastNodes.map(node => {
+                    const duration = now - node.time;
+                    return `
+                        <div class="node-item">
+                            <div class="node-time">${formatDateTime(node.time)}</div>
+                            <div class="node-distance">${formatDuration(duration, false)}</div>
+                            <div class="node-ticket">第 ${node.ticket} 票</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            // 更新未来节点列表
+            const futureList = document.getElementById('future-list');
+            if (futureNodes.length === 0) {
+                futureList.innerHTML = '<div class="empty-node">本周剩余回复已结束</div>';
+            } else {
+                futureList.innerHTML = futureNodes.map(node => {
+                    const duration = node.time - now;
+                    return `
+                        <div class="node-item">
+                            <div class="node-time">${formatDateTime(node.time)}</div>
+                            <div class="node-distance">${formatDuration(duration, true)}</div>
+                            <div class="node-ticket">第 ${node.ticket} 票</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+        
+        // 更新倒计时显示
+        function updateCountdown(diff, ticket) {
+            if (diff < 0) diff = 0;
+            
+            const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+            
+            document.getElementById('countdown').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('ticket').textContent = `第 ${ticket} 票`;
+        }
+        
+        // 初始化并设置定时器
+        document.addEventListener('DOMContentLoaded', () => {
+            update(); // 立即执行一次
+            setInterval(update, 1000); // 每秒更新
+            
+            // 添加一些动态效果
+            setTimeout(() => {
+                document.querySelector('.clock-container').classList.add('pulse');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
