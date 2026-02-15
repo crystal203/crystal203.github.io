@@ -267,8 +267,8 @@
             // 计算本周周一零点
             const monday = new Date(currentTime);
             monday.setHours(0, 0, 0, 0);
-            monday.setDate(monday.getDate() - monday.getDay() + 1);
             if (monday.getDay() === 0) monday.setDate(monday.getDate() - 6);
+            else monday.setDate(monday.getDate() - monday.getDay() + 1);
             
             // 计算原始进攻次数: (当前时间 - 本周周一零点) / 2.5h + ticket - now_ticket （下取整）
             const timeDiff = currentTime - monday; // 毫秒
