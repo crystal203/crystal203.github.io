@@ -134,7 +134,8 @@ function initSimulation() {
             : 0;
         const effectiveTauntRadius = unit.role.tauntRadius + enemyBonus;
 
-        const collisionSize = globalCfg.collisionSize || 0.8; // 默认 0.8
+        let collisionSize = globalCfg.collisionSize || 0.8; // 默认 0.8
+        if (unit.role.short === "Beth") collisionSize = 0;
         const role = {
             ...unit.role,
             resistA: unit.role.resistA ?? 1,
@@ -143,6 +144,8 @@ function initSimulation() {
             tauntRadius: effectiveTauntRadius,
             collisionSize: collisionSize,
         };
+        let _tauntTime = 10;
+        if (unit.role.short === "Daisy") _tauntTime = 1;
         const simUnit = {
             id,
             index: unit.index,
@@ -163,6 +166,7 @@ function initSimulation() {
             tauntActive: false,
             lastTauntTime: -10,
             hasUsedSkill: false,
+            tauntTime: _tauntTime,
             startDelay: unit.role.startDelay || 0,
             remainingDelay: unit.role.startDelay || 0,
         };
@@ -380,13 +384,15 @@ function tick(simState, dt = 1/12) {
                     }
                 });
                 applyTaunt(u, simUnits);
-                /*if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) {
+
+                if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) {
+                    let oldTarget = u.target;
                     const blueEnemies = simUnits.filter(u => u.side === 'red');
                     const redEnemies = simUnits.filter(u => u.side === 'blue');
                     const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
                     const lockedByAllies = new Set();
                     for (const other of simUnits) {
-                        if (other.side === u.side && other.target && enemies.includes(other.target)) {
+                        if (other !== u && other.side === u.side && other.target && enemies.includes(other.target)) {
                             lockedByAllies.add(other.target);
                         }
                     }
@@ -398,7 +404,12 @@ function tick(simState, dt = 1/12) {
                             u.target = findNearestForSim(u, enemies);
                         }
                     }
-                }*/
+                    if (oldTarget !== u.target) {
+                        showSimulationWarning(
+                            `❗ ${u.role.name}(${u.side}) 的索敌发生了变化（跳空锁）`
+                        );
+                    }
+                }
             }
             return;
         }
@@ -473,7 +484,7 @@ function tick(simState, dt = 1/12) {
     
     simUnits.filter(u => u.tauntActive).forEach(u => {
         const elapsed = time - u.lastTauntTime;
-        if (elapsed >= 1.0) {
+        if (elapsed >= u.tauntTime) {
             const count = Math.floor(elapsed / 1.0);
             for (let i = 0; i < count; i++) {
                 applyTaunt(u, simUnits);
