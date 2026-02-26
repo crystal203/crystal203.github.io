@@ -59,6 +59,54 @@ def fetch_battle_data_cached(_client):
     
     return data
 
+def render_type_tab(processor: BattleDataProcessor):
+    st.subheader("⚔️ 公会刀型统计")
+    team_stats = processor.get_guild_team_stats()
+    
+    if not team_stats.empty:
+        st.caption(f"共发现 {len(team_stats)} 种刀型配置")
+        top_teams = team_stats.head(20)
+        
+        for idx, row in top_teams.iterrows():
+            st.markdown(f"**🏆 #{idx+1} 刀型配置**")
+            
+            role_cols = st.columns(4)
+            all_icons = row['all_icons']
+            for role_idx, icon in enumerate(all_icons, 1):
+                with role_cols[role_idx-1]:
+                    if icon and icon != 'nan' and pd.notna(icon):
+                        cached_image(icon, width=50)
+                        st.caption(f"角色{role_idx}")
+            
+            col1, col2, col3, col4 = st.columns(4)
+            col1.metric("💥 顶伤", f"{row['max_damage']:,.0f}")
+            col2.metric("📈 均伤", f"{row['avg_damage']:,.0f}")
+            col3.metric("📊 总伤", f"{row['total_damage']:,.0f}")
+            col4.metric("⚔️ 刀数", f"{row['attack_count']}")
+            
+            with st.expander("📊 详情", expanded=False):
+                st.markdown("**⚡ 单刀伤害 Top 10**:")
+                team_id = row['team_id']
+                top_attacks = processor.get_team_single_attacks(team_id, top_n=10)
+                
+                if not top_attacks.empty:
+                    attack_cols = st.columns(2)
+                    for i, (_, attack) in enumerate(top_attacks.iterrows()):
+                        with attack_cols[i % 2]:
+                            st.markdown(f"""
+                            <div style="background: #f8f9fa; padding: 8px; border-radius: 6px; margin: 4px 0;">
+                                <div style="font-size: 12px;">
+                                    <span style="color: #666;">#{attack['rank']} 👤 {attack['user_name'][:8]}</span><br>
+                                    <span style="color: #d32f2f; font-weight: bold; font-size: 14px;">💥 {attack['damage']:,.0f}</span><br>
+                                    <span style="color: #888; font-size: 11px;">📅 {attack['battle_date']} {attack['time_str']}</span>
+                                </div>
+                            </div>
+                            """, unsafe_allow_html=True)
+                else:
+                    st.caption("暂无单刀记录")
+            
+            st.divider()
+
 def render_guild_tab(processor: BattleDataProcessor):
     col1, col2 = st.columns(2)
     
@@ -209,54 +257,6 @@ def render_guild_tab(processor: BattleDataProcessor):
                         width='stretch',
                         hide_index=True
                     )
-    
-    st.subheader("⚔️ 公会刀型统计")
-    team_stats = processor.get_guild_team_stats()
-    
-    if not team_stats.empty:
-        st.caption(f"共发现 {len(team_stats)} 种刀型配置")
-        top_teams = team_stats.head(20)
-        
-        for idx, row in top_teams.iterrows():
-            st.markdown(f"**🏆 #{idx+1} 刀型配置**")
-            
-            role_cols = st.columns(4)
-            all_icons = row['all_icons']
-            for role_idx, icon in enumerate(all_icons, 1):
-                with role_cols[role_idx-1]:
-                    if icon and icon != 'nan' and pd.notna(icon):
-                        cached_image(icon, width=50)
-                        st.caption(f"角色{role_idx}")
-            
-            col1, col2, col3, col4 = st.columns(4)
-            col1.metric("💥 顶伤", f"{row['max_damage']:,.0f}")
-            col2.metric("📈 均伤", f"{row['avg_damage']:,.0f}")
-            col3.metric("📊 总伤", f"{row['total_damage']:,.0f}")
-            col4.metric("⚔️ 刀数", f"{row['attack_count']}")
-            
-            with st.expander("📊 详情", expanded=False):
-                st.markdown("**⚡ 单刀伤害 Top 10**:")
-                team_id = row['team_id']
-                top_attacks = processor.get_team_single_attacks(team_id, top_n=10)
-                
-                if not top_attacks.empty:
-                    attack_cols = st.columns(2)
-                    for i, (_, attack) in enumerate(top_attacks.iterrows()):
-                        with attack_cols[i % 2]:
-                            st.markdown(f"""
-                            <div style="background: #f8f9fa; padding: 8px; border-radius: 6px; margin: 4px 0;">
-                                <div style="font-size: 12px;">
-                                    <span style="color: #666;">#{attack['rank']} 👤 {attack['user_name'][:8]}</span><br>
-                                    <span style="color: #d32f2f; font-weight: bold; font-size: 14px;">💥 {attack['damage']:,.0f}</span><br>
-                                    <span style="color: #888; font-size: 11px;">📅 {attack['battle_date']} {attack['time_str']}</span>
-                                </div>
-                            </div>
-                            """, unsafe_allow_html=True)
-                else:
-                    st.caption("暂无单刀记录")
-            
-            st.divider()
-    
 
 
 def render_player_tab(processor: BattleDataProcessor):
@@ -522,7 +522,7 @@ def main():
     
     st.info(f"🏰 公会: **{processor.guild_name}** | 📅 会战周期: **{len(processor.dates)}天** | 👥 成员: **{len(processor.members)}人** | ⚔️ 总出刀: **{len(processor.records)}次**")
     
-    tab1, tab2, tab3 = st.tabs(["🏢 公会数据", "👤 玩家数据", "⚔️ 出刀数据"])
+    tab1, tab2, tab3, tab4 = st.tabs(["🏢 公会数据", "👤 玩家数据", "⚔️ 出刀数据", "📭 刀型数据"])
     
     with tab1:
         render_guild_tab(processor)
@@ -530,6 +530,8 @@ def main():
         render_player_tab(processor)
     with tab3:
         render_attack_tab(processor)
+    with tab4:
+        render_type_tab(processor)
     
     st.markdown("---")
     st.caption("数据仅供参考，请以游戏内为准")
