@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公会战数据统计面板</title>
+    <!-- 引入必要库 -->
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #fb7299;
+            --primary-dark: #f25d8e;
+            --bg-dark: #18191c;
+            --bg-card: #232428;
+            --bg-hover: #2a2b2f;
+            --text-main: #e3e5e7;
+            --text-secondary: #9499a0;
+            --border: #33363d;
+            --success: #00c48c;
+            --warning: #ff9c33;
+            --danger: #ff6b6b;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border);
+        }
+        
+        .guild-info h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
+        .guild-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .status-badge {
+            background: var(--success);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-badge.loading { background: var(--warning); }
+        .status-badge.error { background: var(--danger); }
+        
+        /* Tab导航 */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-card);
+            padding: 6px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            background: var(--bg-hover);
+            color: var(--text-main);
+        }
+        
+        /* 内容区域 */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card-title::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        /* 统计卡片网格 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: var(--bg-hover);
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 8px 0;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* 图表容器 */
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+        
+        /* 玩家选择器 */
+        .player-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .player-select {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 16px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        .player-select option {
+            background: var(--bg-card);
+        }
+        
+        /* 表格样式 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .data-table th {
+            background: var(--bg-hover);
+            font-weight: 600;
+            color: var(--text-secondary);
+            position: sticky;
+            top: 0;
+        }
+        
+        .data-table tr:hover {
+            background: var(--bg-hover);
+        }
+        
+        .damage-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* 角色卡片 */
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+        
+        .role-card {
+            background: var(--bg-hover);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .role-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .role-name {
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .role-stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin: 4px 0;
+        }
+        
+        .role-stat span:last-child {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        
+        /* 分页控件 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .page-btn {
+            padding: 8px 16px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .page-btn:hover:not(:disabled) {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .page-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Boss标签 */
+        .boss-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: var(--bg-hover);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 2px;
+        }
+        
+        .boss-tag.fire { border-left: 3px solid #ff6b6b; }
+        .boss-tag.water { border-left: 3px solid #4dabf7; }
+        .boss-tag.earth { border-left: 3px solid #51cf66; }
+        .boss-tag.wind { border-left: 3px solid #9775fa; }
+        .boss-tag.light { border-left: 3px solid #ffd43b; }
+        .boss-tag.dark { border-left: 3px solid #7950f2; }
+        
+        /* 加载动画 */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            header { flex-direction: column; gap: 12px; text-align: center; }
+            .tabs { flex-wrap: wrap; }
+            .tab-btn { padding: 10px 16px; font-size: 0.9rem; }
+            .chart-container { height: 300px; }
+        }
+        
+        /* 工具提示 */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <div class="guild-info">
+                <h1 id="guildName">加载中...</h1>
+                <p>会战数据统计面板</p>
+            </div>
+            <div class="status-badge loading" id="statusBadge">数据同步中</div>
+        </header>
+        
+        <!-- Tab导航 -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="guild">📊 公会数据</button>
+            <button class="tab-btn" data-tab="player">👤 玩家数据</button>
+            <button class="tab-btn" data-tab="records">⚔️ 出刀记录</button>
+        </div>
+        
+        <!-- 公会数据 Tab -->
+        <div id="guild" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">总伤害</div>
+                    <div class="stat-value" id="totalDamage">-</div>
+                    <div class="stat-label">累计</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">参与成员</div>
+                    <div class="stat-value" id="memberCount">-</div>
+                    <div class="stat-label">人</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">会战天数</div>
+                    <div class="stat-value" id="battleDays">-</div>
+                    <div class="stat-label">天</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">本期Boss</div>
+                    <div class="stat-value" id="bossCount">-</div>
+                    <div class="stat-label">个</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">每日伤害趋势</div>
+                <div class="chart-container">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">玩家伤害排行（分Boss）</div>
+                <div class="chart-container">
+                    <canvas id="playerRankChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 玩家数据 Tab -->
+        <div id="player" class="tab-content">
+            <div class="card">
+                <div class="card-title">选择玩家</div>
+                <div class="player-selector">
+                    <select class="player-select" id="playerSelect">
+                        <option value="">-- 请选择玩家 --</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="playerDetail" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">总伤害</div>
+                        <div class="stat-value" id="playerTotalDamage">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">出刀次数</div>
+                        <div class="stat-value" id="playerAttackCount">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">平均伤害</div>
+                        <div class="stat-value" id="playerAvgDamage">-</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">每日伤害</div>
+                    <div class="chart-container">
+                        <canvas id="playerDailyChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">常用角色配置</div>
+                    <div class="role-cards" id="roleCards"></div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">出刀详情（按日期）</div>
+                    <div id="playerAttackDetails"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 出刀记录 Tab -->
+        <div id="records" class="tab-content">
+            <div class="card">
+                <div class="card-title">全部出刀记录</div>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>时间</th>
+                                <th>玩家</th>
+                                <th>Boss</th>
+                                <th>伤害</th>
+                                <th>角色配置</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTableBody">
+                            <tr><td colspan="5" class="loading">加载中...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="recordsPagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== 配置常量 ====================
+        const API_CONFIG = {
+            baseUrl: 'https://api.game.bilibili.com/game/player/tools/kan_gong',
+            appKey: 'a5e793dd8b8e425c9bff92ed79e4458f',
+            appSecret: 'xoNO7qa9761mNPyLtTn8zxPeX80iLnDonYCOzqS7bG8=',
+            cookie: 'SESSDATA=19603376%2C1787500129%2C158cc%2A21CjD1aTg4Om-uWyQD_X0NckD1YJqTMXA0v5oOXOPEKrn--N9sgAyCyd6qqXrQgoEv-dESVnROdmo5SGdSTmhLdm5mTmJUeXc3b250M1lYXzZ4bDB0Q1g1VEZ4NEc5Z1FKU1BtTzcxU211Ml96STJ0U0JHZnZjVWNDcWtobHVXSkc3TFg3djkyb21nIIEC'
+        };
+
+        // ==================== 全局数据仓库 ====================
+        const appData = {
+            guildName: '',
+            members: [],
+            bosses: [],
+            dates: [],
+            allRecords: [], // 所有出刀记录
+            playerStats: {}, // 玩家统计缓存
+            charts: {} // Chart实例缓存
+        };
+
+        // ==================== 工具函数 ====================
+        
+        // 生成随机nonce
+        function generateNonce() {
+            return Array(3).fill(0).map(() => {
+                return Array.from(crypto.getRandomValues(new Uint8Array(3)))
+                    .map(b => b.toString(16).padStart(2, '0'))
+                    .join('');
+            }).join('-');
+        }
+        
+        // 生成签名参数
+        function generateSignParams(date = null) {
+            const ts = Math.floor(Date.now() / 1000);
+            const nonce = generateNonce();
+            
+            const params = {
+                ts: ts,
+                nonce: nonce,
+                appkey: API_CONFIG.appKey
+            };
+            
+            if (date) params.date = date;
+            
+            // 排序并构建签名字符串
+            const sortedKeys = Object.keys(params).sort();
+            const paramStr = sortedKeys.map(k => `${k}=${params[k]}`).join('&');
+            const signStr = paramStr + `&secret=${API_CONFIG.appSecret}`;
+            
+            // 计算MD5签名
+            params.sign = CryptoJS.MD5(signStr).toString();
+            
+            return params;
+        }
+        
+        // 格式化数字（千分位+单位）
+        function formatNumber(num) {
+            if (num >= 1e8) return (num / 1e8).toFixed(2) + '亿';
+            if (num >= 1e4) return (num / 1e4).toFixed(2) + '万';
+            return num.toLocaleString();
+        }
+        
+        // 格式化时间戳
+        function formatTime(timestamp) {
+            const date = new Date(timestamp * 1000);
+            return date.toLocaleString('zh-CN', { 
+                month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit'
+            });
+        }
+        
+        // 格式化日期
+        function formatDate(timestamp) {
+            const date = new Date(timestamp * 1000);
+            return date.toISOString().split('T')[0];
+        }
+        
+        // Boss属性颜色映射
+        function getBossClass(elementalType) {
+            const map = {
+                '火': 'fire', '水': 'water', '土': 'earth',
+                '风': 'wind', '光': 'light', '暗': 'dark'
+            };
+            return map[elementalType] || '';
+        }
+
+        // ==================== API请求封装 ====================
+        
+        async function apiRequest(endpoint, extraParams = {}) {
+            const signParams = generateSignParams(extraParams.date);
+            const queryParams = new URLSearchParams({
+                ...signParams,
+                ...extraParams
+            }).toString();
+            
+            const url = `${API_CONFIG.baseUrl}/${endpoint}?${queryParams}`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Cookie': API_CONFIG.cookie
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const result = await response.json();
+                if (result.code !== 0) {
+                    throw new Error(result.message || 'API请求失败');
+                }
+                
+                return result.data;
+            } catch (error) {
+                console.error(`API请求失败 [${endpoint}]:`, error);
+                throw error;
+            }
+        }
+        
+        // 分页获取所有数据
+        async function fetchAllPages(endpoint, date, pageSize = 15) {
+            let pageNum = 1;
+            let allData = [];
+            let hasNext = true;
+            
+            while (hasNext) {
+                const data = await apiRequest(endpoint, {
+                    date: date,
+                    page_num: pageNum,
+                    page_size: pageSize
+                });
+                
+                if (data?.user_data) {
+                    allData = allData.concat(data.user_data);
+                }
+                
+                hasNext = data?.has_next_page === 1;
+                pageNum++;
+                
+                // 避免请求过快
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+            
+            return allData;
+        }
+
+        // ==================== 数据获取主流程 ====================
+        
+        async function initializeData() {
+            updateStatus('loading', '初始化中...');
+            
+            try {
+                // 1. 获取基础信息
+                const [userInfo, fightNews, reportDate] = await Promise.all([
+                    apiRequest('user_info'),
+                    apiRequest('fight_news'),
+                    apiRequest('fight_report_date')
+                ]);
+                
+                appData.guildName = userInfo.guild_name;
+                appData.bosses = fightNews.boss_info || [];
+                appData.members = reportDate.members || [];
+                appData.dates = (reportDate.dates || []).sort().reverse();
+                
+                // 更新头部信息
+                document.getElementById('guildName').textContent = appData.guildName;
+                document.getElementById('memberCount').textContent = appData.members.length;
+                document.getElementById('battleDays').textContent = appData.dates.length;
+                document.getElementById('bossCount').textContent = appData.bosses.length;
+                
+                // 填充玩家选择器
+                const playerSelect = document.getElementById('playerSelect');
+                appData.members.forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m.user_id;
+                    opt.textContent = m.user_name;
+                    playerSelect.appendChild(opt);
+                });
+                
+                // 2. 获取所有日期的出刀详情
+                updateStatus('loading', `正在同步 ${appData.dates.length} 天数据...`);
+                
+                for (const date of appData.dates) {
+                    const records = await fetchAllPages('fight_report_detail', date);
+                    appData.allRecords = appData.allRecords.concat(
+                        records.map(r => ({ ...r, battle_date: date }))
+                    );
+                }
+                
+                // 3. 处理统计数据
+                processStatistics();
+                
+                // 4. 渲染图表
+                renderGuildCharts();
+                renderRecordsTable(1);
+                
+                updateStatus('success', '数据已同步');
+                
+            } catch (error) {
+                updateStatus('error', '数据同步失败');
+                alert('数据加载失败，请检查网络连接或CORS设置\n错误: ' + error.message);
+            }
+        }
+        
+        // 处理统计数据
+        function processStatistics() {
+            // 玩家伤害统计
+            appData.playerStats = {};
+            
+            appData.allRecords.forEach(record => {
+                const uid = record.user_id;
+                const bossName = record.boss_info?.boss_name || '未知';
+                
+                if (!appData.playerStats[uid]) {
+                    appData.playerStats[uid] = {
+                        user_name: record.user_name,
+                        total: 0,
+                        byBoss: {},
+                        byDate: {},
+                        records: []
+                    };
+                }
+                
+                const player = appData.playerStats[uid];
+                const damage = record.damage || 0;
+                
+                player.total += damage;
+                player.byBoss[bossName] = (player.byBoss[bossName] || 0) + damage;
+                
+                const dateKey = record.battle_date || formatDate(record.server_time);
+                player.byDate[dateKey] = (player.byDate[dateKey] || 0) + damage;
+                
+                player.records.push(record);
+            });
+            
+            // 全局统计
+            const totalDamage = Object.values(appData.playerStats)
+                .reduce((sum, p) => sum + p.total, 0);
+            document.getElementById('totalDamage').textContent = formatNumber(totalDamage);
+        }
+
+        // ==================== 图表渲染 ====================
+        
+        function renderGuildCharts() {
+            // 每日伤害趋势图
+            const dailyData = {};
+            appData.dates.forEach(date => dailyData[date] = 0);
+            
+            appData.allRecords.forEach(r => {
+                const date = r.battle_date || formatDate(r.server_time);
+                dailyData[date] = (dailyData[date] || 0) + (r.damage || 0);
+            });
+            
+            const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+            if (appData.charts.daily) appData.charts.daily.destroy();
+            
+            appData.charts.daily = new Chart(dailyCtx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(dailyData).reverse(),
+                    datasets: [{
+                        label: '日伤害',
+                        data: Object.values(dailyData).reverse(),
+                        borderColor: '#fb7299',
+                        backgroundColor: 'rgba(251, 114, 153, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: value => formatNumber(value)
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 玩家伤害排行（堆叠条形图）
+            const sortedPlayers = Object.values(appData.playerStats)
+                .sort((a, b) => b.total - a.total)
+                .slice(0, 15);
+            
+            const bossNames = [...new Set(appData.bosses.map(b => b.boss_name))];
+            const datasets = bossNames.map((boss, idx) => ({
+                label: boss,
+                data: sortedPlayers.map(p => p.byBoss[boss] || 0),
+                backgroundColor: `hsl(${idx * 60}, 70%, 55%)`
+            }));
+            
+            const rankCtx = document.getElementById('playerRankChart').getContext('2d');
+            if (appData.charts.rank) appData.charts.rank.destroy();
+            
+            appData.charts.rank = new Chart(rankCtx, {
+                type: 'bar',
+                data: {
+                    labels: sortedPlayers.map(p => p.user_name),
+                    datasets: datasets
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            ticks: { callback: value => formatNumber(value) }
+                        },
+                        y: { stacked: true }
+                    }
+                }
+            });
+        }
+        
+        function renderPlayerCharts(playerId) {
+            const player = appData.playerStats[playerId];
+            if (!player) return;
+            
+            // 更新统计卡片
+            document.getElementById('playerTotalDamage').textContent = formatNumber(player.total);
+            document.getElementById('playerAttackCount').textContent = player.records.length;
+            document.getElementById('playerAvgDamage').textContent = 
+                formatNumber(Math.round(player.total / player.records.length));
+            
+            // 玩家每日伤害图
+            const sortedDates = Object.keys(player.byDate).sort();
+            const dailyCtx = document.getElementById('playerDailyChart').getContext('2d');
+            if (appData.charts.playerDaily) appData.charts.playerDaily.destroy();
+            
+            appData.charts.playerDaily = new Chart(dailyCtx, {
+                type: 'bar',
+                data: {
+                    labels: sortedDates,
+                    datasets: [{
+                        label: '日伤害',
+                        data: sortedDates.map(d => player.byDate[d]),
+                        backgroundColor: '#4dabf7'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: value => formatNumber(value) }
+                        }
+                    }
+                }
+            });
+            
+            // 渲染角色卡片
+            renderRoleCards(player.records);
+            
+            // 渲染出刀详情
+            renderPlayerAttackDetails(player.records);
+        }
+        
+        function renderRoleCards(records) {
+            const container = document.getElementById('roleCards');
+            container.innerHTML = '';
+            
+            // 提取不重复的角色配置（简化：取前10个不同配置）
+            const seenConfigs = new Set();
+            const uniqueRecords = records.filter(r => {
+                const key = r.role_list?.map(role => role.icon).join('|') || '';
+                if (seenConfigs.has(key)) return false;
+                seenConfigs.add(key);
+                return true;
+            }).slice(0, 8);
+            
+            uniqueRecords.forEach(record => {
+                (record.role_list || []).forEach(role => {
+                    const card = document.createElement('div');
+                    card.className = 'role-card';
+                    card.innerHTML = `
+                        <div class="role-icon">
+                            ${role.icon ? `<img src="${role.icon}" alt="">` : '🎭'}
+                        </div>
+                        <div class="role-name">${role.dps ? '输出' : '辅助'}</div>
+                        <div class="role-stat"><span>DPS</span><span>${formatNumber(role.dps || 0)}</span></div>
+                        <div class="role-stat"><span>韧性</span><span>${formatNumber(role.toughness || 0)}</span></div>
+                        <div class="role-stat"><span>回复</span><span>${formatNumber(role.recovery || 0)}</span></div>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+            
+            if (container.children.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-secondary);text-align:center">暂无角色数据</p>';
+            }
+        }
+        
+        function renderPlayerAttackDetails(records) {
+            const container = document.getElementById('playerAttackDetails');
+            container.innerHTML = '';
+            
+            // 按日期分组
+            const byDate = {};
+            records.forEach(r => {
+                const date = r.battle_date || formatDate(r.server_time);
+                if (!byDate[date]) byDate[date] = [];
+                byDate[date].push(r);
+            });
+            
+            Object.entries(byDate).sort((a,b) => b[0].localeCompare(a[0])).forEach(([date, dayRecords]) => {
+                const section = document.createElement('div');
+                section.style.marginBottom = '20px';
+                section.innerHTML = `
+                    <h4 style="margin:12px 0 8px;color:var(--primary)">${date}</h4>
+                    <div style="overflow-x:auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>时间</th><th>Boss</th><th>伤害</th><th>配置</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${dayRecords.map(r => `
+                                    <tr>
+                                        <td>${formatTime(r.server_time)}</td>
+                                        <td><span class="boss-tag ${getBossClass(r.boss_info?.elemental_type_cn)}">${r.boss_info?.boss_name || '-'}</span></td>
+                                        <td class="damage-value">${formatNumber(r.damage)}</td>
+                                        <td>${(r.role_list?.length || 0)}角色</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        }
+        
+        // 出刀记录表格（分页）
+        let currentRecordsPage = 1;
+        const RECORDS_PER_PAGE = 20;
+        
+        function renderRecordsTable(pageNum) {
+            currentRecordsPage = pageNum;
+            const tbody = document.getElementById('recordsTableBody');
+            const sorted = [...appData.allRecords].sort((a,b) => b.server_time - a.server_time);
+            
+            const start = (pageNum - 1) * RECORDS_PER_PAGE;
+            const pageData = sorted.slice(start, start + RECORDS_PER_PAGE);
+            const totalPages = Math.ceil(sorted.length / RECORDS_PER_PAGE);
+            
+            tbody.innerHTML = pageData.map(r => `
+                <tr>
+                    <td>${formatTime(r.server_time)}</td>
+                    <td>${r.user_name}</td>
+                    <td><span class="boss-tag ${getBossClass(r.boss_info?.elemental_type_cn)}">${r.boss_info?.boss_name || '-'}</span></td>
+                    <td class="damage-value">${formatNumber(r.damage)}</td>
+                    <td>${(r.role_list?.map(role => `<img src="${role.icon}" width="24" title="${role.dps}">`).join('') || '-')}</td>
+                </tr>
+            `).join('');
+            
+            // 渲染分页
+            const pagination = document.getElementById('recordsPagination');
+            pagination.innerHTML = `
+                <button class="page-btn" ${pageNum===1?'disabled':''} onclick="renderRecordsTable(${pageNum-1})">← 上一页</button>
+                <span class="page-info">${pageNum} / ${totalPages}</span>
+                <button class="page-btn" ${pageNum>=totalPages?'disabled':''} onclick="renderRecordsTable(${pageNum+1})">下一页 →</button>
+            `;
+        }
+
+        // ==================== UI交互 ====================
+        
+        function updateStatus(type, text) {
+            const badge = document.getElementById('statusBadge');
+            badge.className = `status-badge ${type}`;
+            badge.textContent = text;
+        }
+        
+        // Tab切换
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // 玩家选择
+        document.getElementById('playerSelect').addEventListener('change', (e) => {
+            const playerId = e.target.value;
+            const detailPanel = document.getElementById('playerDetail');
+            
+            if (!playerId) {
+                detailPanel.style.display = 'none';
+                return;
+            }
+            
+            detailPanel.style.display = 'block';
+            renderPlayerCharts(playerId);
+        });
+        
+        // ==================== 初始化 ====================
+        
+        // 暴露分页函数到全局
+        window.renderRecordsTable = renderRecordsTable;
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 提示CORS问题
+            console.log('%c⚠️ 如果API请求失败，请:', 'color:#ff9c33;font-weight:bold');
+            console.log('1. 安装Allow CORS浏览器插件（开发用）');
+            console.log('2. 或配置后端代理转发请求');
+            console.log('3. 确保Cookie中的sessdata有效');
+            
+            // 开始加载数据
+            initializeData();
+        });
+    </script>
+</body>
+</html>
