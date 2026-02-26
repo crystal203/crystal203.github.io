@@ -327,7 +327,7 @@ class BattleDataProcessor:
         
         return result
     
-    def get_team_single_attacks(self, team_id: str, top_n: int = 10) -> pd.DataFrame:
+    def get_team_single_attacks(self, team_id: str, top_n: int = -1) -> pd.DataFrame:
         if self.df.empty:
             return pd.DataFrame()
         
@@ -343,7 +343,12 @@ class BattleDataProcessor:
             return pd.DataFrame()
         
         top_attacks = team_df[['user_name', 'damage', 'battle_date', 'server_time', 'boss_name']].copy()
-        top_attacks = top_attacks.sort_values('damage', ascending=False).head(top_n)
+        
+        if (top_n != -1):
+            top_attacks = top_attacks.sort_values('damage', ascending=False).head(top_n)
+        else:
+            top_attacks = top_attacks.sort_values('damage', ascending=False)
+
         top_attacks['time_str'] = top_attacks['server_time'].apply(
             lambda x: datetime.fromtimestamp(x).strftime('%m-%d %H:%M')
         )

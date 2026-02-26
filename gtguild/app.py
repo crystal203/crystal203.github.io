@@ -235,8 +235,6 @@ def render_guild_tab(processor: BattleDataProcessor):
             col4.metric("⚔️ 刀数", f"{row['attack_count']}")
             
             with st.expander("📊 详情", expanded=False):
-                st.divider()
-                
                 st.markdown("**⚡ 单刀伤害 Top 10**:")
                 team_id = row['team_id']
                 top_attacks = processor.get_team_single_attacks(team_id, top_n=10)
@@ -333,11 +331,9 @@ def render_player_tab(processor: BattleDataProcessor):
             col4.metric("⚔️ 刀数", f"{row['attack_count']}")
             
             with st.expander("📊 查看详情", expanded=False):
-                st.divider()
-                
-                st.markdown("**⚡ 单刀伤害 Top 10**:")
+                st.markdown("**⚡ 单刀伤害**:")
                 team_id = row['team_id']
-                top_attacks = processor.get_team_single_attacks(team_id, top_n=10)
+                top_attacks = processor.get_team_single_attacks(team_id)
                 
                 player_top_attacks = top_attacks[top_attacks['user_name'] == selected_player]
                 
