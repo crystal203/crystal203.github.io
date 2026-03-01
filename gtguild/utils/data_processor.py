@@ -16,7 +16,7 @@ class BattleDataProcessor:
     def _prepare_sorted_records(self) -> pd.DataFrame:
         if self.df.empty:
             return pd.DataFrame()
-        return self.df.sort_values('server_time', ascending=False).reset_index(drop=True)
+        return self.df.sort_values('log_time', ascending=False).reset_index(drop=True)
 
     def _to_dataframe(self) -> pd.DataFrame:
         rows = []
@@ -101,7 +101,7 @@ class BattleDataProcessor:
         if player_df.empty:
             return []
             
-        player_df = player_df.sort_values('server_time', ascending=False)
+        player_df = player_df.sort_values('log_time', ascending=False)
         results = []
         
         for _, row in player_df.iterrows():
@@ -120,7 +120,7 @@ class BattleDataProcessor:
             results.append({
                 'battle_date': row['battle_date'],
                 'server_time': row['server_time'],
-                'time_str': datetime.fromtimestamp(row['server_time']).strftime('%H:%M:%S'),
+                'time_str': datetime.fromtimestamp(row['log_time']).strftime('%H:%M:%S'),
                 'boss': row['boss_name'],
                 'element': row['elemental_type'],
                 'damage': int(row['damage']),
@@ -191,7 +191,7 @@ class BattleDataProcessor:
             records.append({
                 'user_name': row['user_name'],
                 'battle_date': row['battle_date'],
-                'time': datetime.fromtimestamp(row['server_time']).strftime('%Y-%m-%d %H:%M:%S'),
+                'time': datetime.fromtimestamp(row['log_time']).strftime('%Y-%m-%d %H:%M:%S'),
                 'boss': row['boss_name'],
                 'element': row['elemental_type'],
                 'damage': int(row['damage']),
@@ -313,10 +313,10 @@ class BattleDataProcessor:
             player_avg_stats = player_avg_stats.head(top_n)
             player_avg_stats['rank'] = range(1, len(player_avg_stats) + 1)
             
-            single_attack_stats = boss_df[['user_name', 'damage', 'server_time', 'battle_date']].copy()
+            single_attack_stats = boss_df[['user_name', 'damage', 'log_time', 'battle_date']].copy()
             single_attack_stats = single_attack_stats.sort_values('damage', ascending=False).head(top_n)
             single_attack_stats['rank'] = range(1, len(single_attack_stats) + 1)
-            single_attack_stats['time_str'] = single_attack_stats['server_time'].apply(
+            single_attack_stats['time_str'] = single_attack_stats['log_time'].apply(
                 lambda x: datetime.fromtimestamp(x).strftime('%m-%d %H:%M')
             )
             
@@ -342,14 +342,14 @@ class BattleDataProcessor:
         if team_df.empty:
             return pd.DataFrame()
         
-        top_attacks = team_df[['user_name', 'damage', 'battle_date', 'server_time', 'boss_name']].copy()
+        top_attacks = team_df[['user_name', 'damage', 'battle_date', 'log_time', 'boss_name']].copy()
         
         if (top_n != -1):
             top_attacks = top_attacks.sort_values('damage', ascending=False).head(top_n)
         else:
             top_attacks = top_attacks.sort_values('damage', ascending=False)
 
-        top_attacks['time_str'] = top_attacks['server_time'].apply(
+        top_attacks['time_str'] = top_attacks['log_time'].apply(
             lambda x: datetime.fromtimestamp(x).strftime('%m-%d %H:%M')
         )
         top_attacks['rank'] = range(1, len(top_attacks) + 1)
