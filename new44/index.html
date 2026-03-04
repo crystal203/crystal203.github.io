@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>圆形角斗场计算器</title>
+    <title>圆形角斗场模拟器</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -755,7 +755,7 @@
     <script type="module" src="./simEngine.js"></script>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-chess"></i> 圆形角斗场计算器</h1>
+            <h1><i class="fas fa-chess"></i> 圆形角斗场模拟器</h1>
         </div>
 
         <div id="scorePanel" style="
@@ -891,7 +891,7 @@
         <div style="margin-top: 12px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
             <button id="btnSimulate" class="btn btn-confirm"
                 style="padding: 10px 24px; font-size: 1.1rem;">
-                <i class="fas fa-play"></i> 对局模拟（测试）
+                <i class="fas fa-play"></i> 对局模拟
             </button>
             <button id="btnPauseSimulate" class="btn"
                 style="background: #FF9800; color: white; display: none;">
@@ -948,7 +948,7 @@
                     <li><strong>战术评分</strong>：如果使用预设的攻防阵容，窗口 <i class="fas fa-trophy"></i> 将显示当前进攻摆位的合理程度。</li>
                     <li><strong>自动摆位</strong>：在智能推荐下，点击 <i class="fas fa-magic"></i> 进行自动摆位。自动摆位将最大化战术评分。建议在不降低战术评分的前提下微调站位。</li>
                     <li><strong>规则语法</strong>：战术评分的规则基于特定的规则语法。可查阅 <code>./rule/example.js</code> 示例和 <code>./grammar.txt</code> 语法树。</li>
-                    <li><strong>对局模拟</strong>：（此功能内测中）点击 <i class="fas fa-play"></i> 可启动 4 秒走位模拟，可视化角色移动、突进、锁敌、嘲讽过程。</li>
+                    <li><strong>对局模拟</strong>：点击 <i class="fas fa-play"></i> 可启动 4 秒走位模拟，可视化角色移动、突进、锁敌、嘲讽过程。</li>
                     <li><strong>嘲讽修正</strong>：可在滑块中调整「敌方坦克嘲讽修正」，使敌方嘲讽范围略大于我方，使模拟更保守。</li>
                     <li><strong>碰撞箱调节</strong>：通过「碰撞箱尺寸」滑块，控制角色体型，影响突进穿插、卡位阻挡等物理交互精度。</li>
                     <li><strong>自定义角色</strong>：在选角面板底部点击「<i class="fas fa-plus"></i> 自定义角色」可快速创建新角色。</li>
@@ -967,7 +967,7 @@
                 ">
                     <span>
                         <i class="fas fa-code-branch" style="color: #66BB6A; margin-right: 4px;"></i>
-                        <strong>版本</strong>: 2025.02.17 | v2.4 | 更新了空锁机制，优化了碰撞箱
+                        <strong>版本</strong>: 2025.03.04 | v2.4.1
                     </span>
                     <span>
                         <i class="fas fa-user" style="color: #2196F3; margin-right: 4px;"></i>
@@ -1052,12 +1052,14 @@
                 { name: "未来骑士", type: "战士", ai: "远程ai", short: "FKnight", color: "#607D8B" },
                 { name: "汐雅", type: "辅助", ai: "远程ai", short: "Sia", color: "#2196F3" ,
                     speed: 2.5 * 0.83, reach: 6.00, resistA: 1, resistB: 2, resistC: 100 },
+                { name: "伊露妮", type: "射手", ai: "近程ai", short: "Illuni", color: "#FF9800" ,
+                    speed: 2.5, reach: 6.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "维罗妮卡", type: "辅助", ai: "近战ai", short: "Veronica", color: "#2196F3",
                     speed: 2.5 * 1.33, reach: 4.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "佳岚 II", type: "射手", ai: "远程ai", short: "Garam", color: "#2196F3",
                     speed: 2.5, reach: 4.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "比安卡", type: "射手", ai: "远程ai", short: "Bianca", color: "#2196F3" },
-                { name: "未来公主", type: "坦克", ai: "近战ai", short: "FPrincess", color: "#FF9800" },
+                { name: "未来公主（无盾）", type: "坦克", ai: "近战ai", short: "FPrincess", color: "#FF9800" },
                 { name: "妲彬", type: "射手", ai: "远程ai", short: "Dabin", color: "#795548" ,
                     speed: 2.5, reach: 7.50, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "兰迪", type: "射手", ai: "近战ai", short: "Randy", color: "#FF5722" ,
