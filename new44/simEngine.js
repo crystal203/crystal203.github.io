@@ -123,7 +123,7 @@ const Nifty_Turret =
     { name: "炮台", type: "射手", ai: "远程ai", short: "Nifty_Turret", color: "#9C27B0", 
                     speed: 0.01, reach: 20, resistA: 1, resistB: 2, resistC: 100, simRadius: 5.00 };
 const Yuna_Totem =
-    { name: "炮台", type: "射手", ai: "近战ai", short: "Yuna_Totem", color: "#795548", 
+    { name: "图腾", type: "射手", ai: "近战ai", short: "Yuna_Totem", color: "#795548", 
                     speed: 0.01, reach: 20, skillRange: 20, tauntRadius: 3.05, skillCastTime: 0.00, skillDashDist: 0, skillDashSpeed: 0,
                     resistA: 2, resistB: 3, resistC: 1 };
 function createSimUnit(unitRole, index, side, xpos, ypos) {
