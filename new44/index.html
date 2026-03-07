@@ -2366,38 +2366,101 @@
             window.computeTargets = computeTargets;
             const shownWarnings = new Set(); 
 
-            function showSimulationWarning(message, type = 'info') {
-                console.log(message);
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 60px;
-                    right: 20px;
-                    padding: 12px 20px;
-                    border-radius: 8px;
-                    color: white;
-                    font-weight: 600;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-                    z-index: 10000;
-                    transform: translateX(200%);
-                    transition: transform 0.4s ease;
-                    background: linear-gradient(90deg, #FF5722, #D84315);
-                    border-left: 4px solid #FF9800;
-                `;
-                // 增加图标
-                let icon = '⚠️';
-                if (type === SIM_WARNING.NEAR_TAUNT) icon = '❗';
-                if (type === SIM_WARNING.MISSING_PARAM) icon = '⚙️';
+            const NotificationManager = {
+                container: null,
+                maxNotifications: 5, 
+                init() {
+                    if (this.container) return;
+                    
+                    this.container = document.createElement('div');
+                    this.container.style.cssText = `
+                        position: fixed;
+                        top: 60px;
+                        right: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 12px;
+                        z-index: 10000;
+                        pointer-events: none;
+                    `;
+                    this.container.id = 'notification-container';
+                    document.body.appendChild(this.container);
+                },
                 
-                notification.innerHTML = `<strong>${icon}</strong> ${message}`;
-                document.body.appendChild(notification);
+                show(message, type = 'info') {
+                    this.init();
+                    console.log(message);
+                    const notifications = this.container.querySelectorAll('.notification-item');
+                    if (notifications.length >= this.maxNotifications) {
+                        notifications[0].remove();
+                    }
+                    
+                    const notification = document.createElement('div');
+                    notification.className = 'notification-item';
+                    notification.style.cssText = `
+                        padding: 12px 20px;
+                        border-radius: 8px;
+                        color: white;
+                        font-weight: 600;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+                        transform: translateX(200%);
+                        transition: transform 0.4s ease, opacity 0.3s ease;
+                        background: linear-gradient(90deg, #FF5722, #D84315);
+                        border-left: 4px solid #FF9800;
+                        pointer-events: auto; 
+                        cursor: pointer;
+                        opacity: 0;
+                        min-width: 280px;
+                        max-width: 360px;
+                    `;
+                    
+                    const icons = {
+                        'info': '⚠️',
+                        [SIM_WARNING.NEAR_TAUNT]: '❗',
+                        [SIM_WARNING.MISSING_PARAM]: '⚙️'
+                    };
+                    const icon = icons[type] || icons['info'];
+                    
+                    notification.innerHTML = `<strong>${icon}</strong> ${message}`;
+                    
+                    notification.onclick = () => this.close(notification);
+                    
+                    this.container.appendChild(notification);
+                    
+                    requestAnimationFrame(() => {
+                        notification.style.transform = 'translateX(0)';
+                        notification.style.opacity = '1';
+                    });
+                    
+                    const autoCloseTimer = setTimeout(() => {
+                        this.close(notification);
+                    }, 3000);
+                    
+                    notification.onmouseenter = () => clearTimeout(autoCloseTimer);
+                    notification.onmouseleave = () => {
+                        setTimeout(() => this.close(notification), 3000);
+                    };
+                    
+                    return notification;
+                },
                 
-                setTimeout(() => notification.style.transform = 'translateX(0)', 10);
-                setTimeout(() => {
+                close(notification) {
+                    if (!notification || !notification.parentNode) return;
+                    
                     notification.style.transform = 'translateX(200%)';
-                    setTimeout(() => notification.remove(), 300);
-                }, 3000);
+                    notification.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }
+            };
+
+            function showSimulationWarning(message, type = 'info') {
+                return NotificationManager.show(message, type);
             }
+            
             window.showSimulationWarning = showSimulationWarning;
             document.getElementById('enemyTauntBonus').addEventListener('input', function() {
                 const val = parseFloat(this.value) / 100;

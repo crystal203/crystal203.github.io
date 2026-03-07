@@ -408,7 +408,7 @@ function tick(simState, dt = 1/12) {
                         const isInside = dist < tauntRadius;
                         showSimulationWarning(
                             `❗ ${enemy.role.name}(${enemy.side}) 与 ${u.role.name}(${u.side}) 距离 ${dist.toFixed(3)}，`
-                            + `嘲讽半径 ${tauntRadius} → ${isInside ? '被嘲讽' : '未被嘲讽'}（临界）`,
+                            + `嘲讽半径 ${tauntRadius.toFixed(3)} → ${isInside ? '被嘲讽' : '未被嘲讽'}（临界）`,
                             SIM_WARNING.NEAR_TAUNT
                         );
                     }
