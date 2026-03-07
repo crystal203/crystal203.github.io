@@ -2367,6 +2367,7 @@
             const shownWarnings = new Set(); 
 
             function showSimulationWarning(message, type = 'info') {
+                console.log(message);
                 const notification = document.createElement('div');
                 notification.style.cssText = `
                     position: fixed;
