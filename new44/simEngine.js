@@ -119,6 +119,86 @@ function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
 }
 
 // --- 核心模拟逻辑 ---
+const Nifty_Turret =
+    { name: "炮台", type: "射手", ai: "远程ai", short: "Nifty_Turret", color: "#9C27B0", 
+                    speed: 0.01, reach: 20, resistA: 1, resistB: 2, resistC: 100, simRadius: 5.00 };
+const Yuna_Totem =
+    { name: "炮台", type: "射手", ai: "近战ai", short: "Yuna_Totem", color: "#795548", 
+                    speed: 0.01, reach: 20, skillRange: 20, tauntRadius: 3.05, skillCastTime: 0.00, skillDashDist: 0, skillDashSpeed: 0,
+                    resistA: 2, resistB: 3, resistC: 1 };
+function createSimUnit(unitRole, index, side, xpos, ypos) {
+    let id = `${side}-${index}`;
+    const globalCfg = window.SIM_CONFIG || {};
+    const enemyBonus = (side !== 'blue' && unitRole.tauntRadius > 0) 
+        ? (globalCfg.enemyTauntBonus || 0.05) 
+        : 0;
+    let collisionSize = globalCfg.collisionSize || 0.8;
+    const role = {
+        ...unitRole,
+        resistA: unitRole.resistA ?? 1,
+        resistB: unitRole.resistB ?? 2,
+        resistC: unitRole.resistC ?? Infinity,
+        simRaduis: unitRole.simRadius ?? 0,
+        tauntRadius: unitRole.tauntRadius + enemyBonus,
+        collisionSize: collisionSize,
+    };
+    let _tauntTime = 10;
+    if (unitRole.short === "Daisy") _tauntTime = 1;
+    if (unitRole.short === "Yuna_Totem") _tauntTime = 1;
+    const simUnit = {
+        id,
+        index: index,
+        side: side,
+        role,
+        pos: [xpos, ypos],
+        oldPos: [xpos, ypos],
+        vel: [0, 0],
+        target: null,
+        originalTarget: null,
+        markers: [0, 0, 0, 0, 0, 0, 0, 0],
+        state: 'MOVING',
+        skillTimer: 0,
+        dashTimer: 0,
+        dashDuration: 0,
+        dashStartPos: null,
+        dashEndPos: null,
+        tauntActive: false,
+        lastTauntTime: -10,
+        hasUsedSkill: false,
+        tauntTime: _tauntTime,
+        startDelay: unitRole.startDelay || 0,
+        remainingDelay: unitRole.startDelay || 0,
+    }
+    return simUnit;
+}
+function genTarget(simUnits, u) {
+    const blueEnemies = simUnits.filter(u => u.side === 'red');
+    const redEnemies = simUnits.filter(u => u.side === 'blue');
+    const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
+    const lockedByAllies = new Set();
+    for (const other of simUnits) {
+        if (other !== u && other.side === u.side && other.target && enemies.includes(other.target)) {
+            lockedByAllies.add(other.target);
+        }
+    }
+    const unlockedEnemies = enemies.filter(enemy => !lockedByAllies.has(enemy));
+
+    if (u.role.ai === "射手刺客ai") {
+        u.target = findNearestForSim(u, unlockedEnemies.filter(v => v.role.type === "射手")) ??
+                   findNearestForSim(u, enemies.filter(v => v.role.type === "射手")) ??
+                   findNearestForSim(u, unlockedEnemies) ?? 
+                   findNearestForSim(u, enemies);
+    } else if (u.role.ai === "辅助刺客ai") {
+        u.target = findNearestForSim(u, unlockedEnemies.filter(v => v.role.type === "辅助")) ??
+                   findNearestForSim(u, enemies.filter(v => v.role.type === "辅助")) ??
+                   findNearestForSim(u, unlockedEnemies) ?? 
+                   findNearestForSim(u, enemies);
+    } else if (u.role.ai === "近战ai") {
+        u.target = findNearestForSim(u, unlockedEnemies) ?? findNearestForSim(u, enemies);
+    } else u.target = findNearestForSim(u, enemies);
+    return u;
+}
+
 function initSimulation() {
     const originalTargets = computeTargets();
     const simUnits = [];
@@ -126,51 +206,9 @@ function initSimulation() {
     const allUnits = [...STATE.blueOrder, ...STATE.redOrder];
     allUnits.forEach(unit => {
         const [r, c] = unit.pos;
-        const id = `${unit.side}-${unit.index}`;
-        
-        const globalCfg = window.SIM_CONFIG || {};
-        const enemyBonus = (unit.side !== 'blue' && unit.role.tauntRadius > 0) 
-            ? (globalCfg.enemyTauntBonus || 0.05) 
-            : 0;
-        const effectiveTauntRadius = unit.role.tauntRadius + enemyBonus;
-
-        let collisionSize = globalCfg.collisionSize || 0.8; // 默认 0.8
-        if (unit.role.short === "Beth") collisionSize = 0;
-        const role = {
-            ...unit.role,
-            resistA: unit.role.resistA ?? 1,
-            resistB: unit.role.resistB ?? 2,
-            resistC: unit.role.resistC ?? Infinity,
-            tauntRadius: effectiveTauntRadius,
-            collisionSize: collisionSize,
-        };
-        let _tauntTime = 10;
-        if (unit.role.short === "Daisy") _tauntTime = 1;
-        const simUnit = {
-            id,
-            index: unit.index,
-            side: unit.side,
-            role,
-            pos: [r + 0.5, c + 0.5],
-            oldPos: [r + 0.5, c + 0.5],
-            vel: [0, 0],
-            target: null,
-            originalTarget: null,
-            markers: [0, 0, 0, 0],
-            state: 'MOVING',
-            skillTimer: 0,
-            dashTimer: 0,
-            dashDuration: 0,
-            dashStartPos: null,
-            dashEndPos: null,
-            tauntActive: false,
-            lastTauntTime: -10,
-            hasUsedSkill: false,
-            tauntTime: _tauntTime,
-            startDelay: unit.role.startDelay || 0,
-            remainingDelay: unit.role.startDelay || 0,
-        };
+        const simUnit = createSimUnit(unit.role, unit.index, unit.side, r + 0.5, c + 0.5);
         simUnits.push(simUnit);
+        let id = `${unit.side}-${unit.index}`;
         idMap.set(id, simUnit);
     });
     originalTargets.forEach(({ from, to }) => {
@@ -202,6 +240,7 @@ function applyTaunt(tank, allUnits) {
 
 function startDash(unit, simUnits) {
     if (!unit.target) return;
+    if (unit.role.skillDashSpeed === 0) return;
     const [tx, ty] = unit.target.pos;
     const [ux, uy] = unit.pos;
     const dx = ty - uy;
@@ -313,16 +352,6 @@ function tick(simState, dt = 1/12) {
                 }
             }
 
-            /*if (!collided && u.target) {
-                const [tr, tc] = u.target.pos;
-                const [nr, nc] = newPos;
-                const dist = Math.hypot(tr - nr, tc - nc);
-                if (dist <= u.role.reach + 1e-4) {
-                    u.pos = [...newPos];
-                    //u.state = 'LOCKED';
-                }
-            }*/
-
             if (collided) {
                 u.pos = [...prev];
                 u.state = 'MOVING';
@@ -344,11 +373,6 @@ function tick(simState, dt = 1/12) {
         const dy = u.target.pos[0] - ux;
         const dist = Math.hypot(dx, dy);
 
-        /*if (dist <= u.role.reach + 1e-4) {
-            u.state = 'LOCKED';
-            return;
-        }*/
-
         if (u.role.skillRange > 0 && !u.hasUsedSkill && dist <= u.role.skillRange && u.skillTimer <= 0) {
             u.state = 'CASTING';
             u.skillTimer = u.role.skillCastTime;
@@ -363,6 +387,12 @@ function tick(simState, dt = 1/12) {
                         if (newTarget) u.target = newTarget;
                     }
                 }
+            }
+            if (u.role.short === "Nifty") {
+                simUnits.push(genTarget(simUnits,createSimUnit(Nifty_Turret, u.index + 4, u.side, ux + dy / dist * 0.9, uy + dx / dist * 0.9)));
+            }
+            if (u.role.short === "Yuna") {
+                simUnits.push(genTarget(simUnits,createSimUnit(Yuna_Totem, u.index + 4, u.side, ux + dy / dist * 1.5, uy + dx / dist * 1.5)));
             }
             if (u.role.tauntRadius > 0) {
                 u.tauntActive = true;
@@ -384,31 +414,14 @@ function tick(simState, dt = 1/12) {
                     }
                 });
                 applyTaunt(u, simUnits);
-
-                if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) {
-                    let oldTarget = u.target;
-                    const blueEnemies = simUnits.filter(u => u.side === 'red');
-                    const redEnemies = simUnits.filter(u => u.side === 'blue');
-                    const enemies = u.side === 'blue' ? blueEnemies : redEnemies ;
-                    const lockedByAllies = new Set();
-                    for (const other of simUnits) {
-                        if (other !== u && other.side === u.side && other.target && enemies.includes(other.target)) {
-                            lockedByAllies.add(other.target);
-                        }
-                    }
-                    const unlockedEnemies = enemies.filter(enemy => !lockedByAllies.has(enemy));
-                    if (unlockedEnemies.length > 0) {
-                        u.target = findNearestForSim(u, unlockedEnemies);
-                    } else {
-                        if (!u.target || !enemies.includes(u.target)) {
-                            u.target = findNearestForSim(u, enemies);
-                        }
-                    }
-                    if (oldTarget !== u.target) {
-                        showSimulationWarning(
-                            `❗ ${u.role.name}(${u.side}) 的索敌发生了变化（跳空锁）`
-                        );
-                    }
+            }
+            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) { // 没有收到坦克嘲讽，会因小技能跳空锁
+                let oldTarget = u.target;
+                u = genTarget(simUnits, u);
+                if (oldTarget !== u.target) {
+                    showSimulationWarning(
+                        `❗ ${u.role.name}(${u.side}) 的索敌发生了变化`
+                    );
                 }
             }
             return;
@@ -492,8 +505,7 @@ function tick(simState, dt = 1/12) {
             u.lastTauntTime += count * 1.0;
         }
     });
-    const allLocked = simUnits.every(u => u.state === 'LOCKED' || !u.target);
-    if (allLocked || simState.time >= 4.0) {
+    if (simState.time >= 4.0) {
         simState.isRunning = false;
     }
     simState.time += dt;
@@ -581,7 +593,7 @@ function renderSimulation(simState) {
 
         // 标记数
         let markerCount = 0;
-        for (let i = 0; i < 4; ++i) {
+        for (let i = 0; i < 8; ++i) {
             if (u.markers[i] > 0) {
                 const text = document.createElementNS(svgNS, "text");
                 text.setAttribute("x", x + avatarSize * 0.7 + markerCount * avatarSize);
@@ -605,7 +617,21 @@ function renderSimulation(simState) {
             ring.setAttribute("cy", y);
             ring.setAttribute("r", radiusPx);
             ring.setAttribute("fill", "none");
-            ring.setAttribute("stroke", "#FF9800");
+            if (u.side === "blue") ring.setAttribute("stroke", "#0098FF");
+            if (u.side === "red") ring.setAttribute("stroke", "#FF0098");
+            ring.setAttribute("stroke-width", "1.5");
+            ring.setAttribute("stroke-dasharray", "3,3");
+            svg.appendChild(ring);
+        }
+
+        if (u.role.simRaduis > 0) {
+            const radiusPx = u.role.simRaduis * (cellW + cellGap);
+            const ring = document.createElementNS(svgNS, "circle");
+            ring.setAttribute("cx", x);
+            ring.setAttribute("cy", y);
+            ring.setAttribute("r", radiusPx);
+            ring.setAttribute("fill", "none");
+            ring.setAttribute("stroke", "#98FF00");
             ring.setAttribute("stroke-width", "1.5");
             ring.setAttribute("stroke-dasharray", "3,3");
             svg.appendChild(ring);

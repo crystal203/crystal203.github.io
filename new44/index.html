@@ -967,7 +967,7 @@
                 ">
                     <span>
                         <i class="fas fa-code-branch" style="color: #66BB6A; margin-right: 4px;"></i>
-                        <strong>版本</strong>: 2025.03.06 | v2.4.2
+                        <strong>版本</strong>: 2025.03.07 | v2.5
                     </span>
                     <span>
                         <i class="fas fa-user" style="color: #2196F3; margin-right: 4px;"></i>
@@ -1040,7 +1040,9 @@
                 { name: "加百列", type: "辅助", ai: "远程ai", short: "Gabriel", color: "#FF9800",
                     speed: 2.5, reach: 5.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "妮芙缇", type: "射手", ai: "远程ai", short: "Nifty", color: "#9C27B0",
-                    speed: 2.5, reach: 6.50, resistA: 1, resistB: 2, resistC: 100 },
+                    speed: 2.5, reach: 6.50, skillRange: 6.55, sillCastTome: 0.00, sillDashDist: 0, skillDashSpeed: 0, resistA: 1, resistB: 2, resistC: 100 },
+                { name: "瑜娜", type: "辅助", ai: "远程ai", short: "Yuna", color: "#795548",
+                    speed: 2.5 * 1.33, reach: 5.50, skillRange: 5.55, sillCastTome: 0.00, sillDashDist: 0, skillDashSpeed: 0, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "卡莉", type: "战士", ai: "近战ai", short: "Callie", color: "#9C27B0" , 
                     speed: 2.5 * 1.6, reach: 0.2, skillRange: 4.00, skillCastTime: 0.00, skillDashDist: 4.00, skillDashSpeed: 10.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "伊露妮", type: "射手", ai: "近战ai", short: "Illuni", color: "#FF9800" ,
@@ -1050,16 +1052,16 @@
                 { name: "佳岚 II", type: "射手", ai: "远程ai", short: "Garam", color: "#2196F3",
                     speed: 2.5, reach: 4.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "比安卡", type: "射手", ai: "远程ai", short: "Bianca", color: "#2196F3",
-                    speed: 2.5 * 1.5, skillRange: 5.5, skillCastTime: 0.30, skillDashDist: 0.01, skillDashSpeed: 2.5 * 1.5, reach: 3.50, resistA: 1, resistB: 2, resistC: 100 },
+                    speed: 2.5 * 1.5, skillRange: 5.5, skillCastTime: 0.30, skillDashDist: 0, skillDashSpeed: 0, reach: 3.50, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "未来公主（无盾）", type: "坦克", ai: "近战ai", short: "FPrincess", color: "#FF9800",
-                    speed: 2.5, skillRange: 4.75, skillCastTime: 0.30, skillDashDist: 0.01, skillDashSpeed: 2.5, reach: 3.50, resistA: 1, resistB: 2, resistC: 100 },
+                    speed: 2.5, skillRange: 4.75, skillCastTime: 0.30, skillDashDist: 0, skillDashSpeed: 0, reach: 3.50, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "涅露露", type: "坦克", ai: "近战ai", short: "Nelluru", color: "#FF5722", 
                     speed: 2.5 * 1.55, reach: 0.2, skillRange: 5.00, tauntRadius: 3.05, skillCastTime: 0.45, skillDashDist: 5.00, skillDashSpeed: 10.00,
                     resistA: 2, resistB: 3, resistC: 1 },
                 { name: "兰迪", type: "射手", ai: "近战ai", short: "Randy", color: "#FF5722" ,
                     speed: 2.5 * 1.33, reach: 0.2, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "克莉希尔", type: "射手", ai: "远程ai", short: "Krissile", color: "#795548" ,
-                    speed: 2.5 * 1.55, skillRange: 5.50, skillCastTime: 0.30, skillDashDist: 0.01, skillDashSpeed: 2.5 * 1.55, reach: 4.00, resistA: 1, resistB: 2, resistC: 100 },
+                    speed: 2.5 * 1.55, skillRange: 5.50, skillCastTime: 0.30, skillDashDist: 0, skillDashSpeed: 0, reach: 4.00, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "卡麦尔", type: "辅助", ai: "远程ai", short: "Kamael", color: "#795548" ,
                     speed: 2.5, reach: 3.50, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "J", type: "射手", ai: "远程ai", short: "J", color: "#2196F3" ,
@@ -1080,20 +1082,6 @@
                
                 // 光 FF9800 暗 9C27B0 虚 607D8B 水 2196F3 火 FF5722 土 795548
             ];
-            /*
-                ALL_ROLES.forEach(role => {
-                    if (role.speed === undefined) {
-                        role.speed = 1.0;
-                        role.reach = 0.2;
-                        role.skillRange = -1;
-                        role.skillCastTime = 0.0;
-                        role.skillDashSpeed = 0.0;
-                        role.skillDashDist = 0.0;
-                        role.tauntRadius = 0;
-                        role.resistA = 1; role.resistB = 2; role.resistC = 100;
-                    }
-                });
-            */
 
             // ===== 状态管理 =====
             const STATE = {
@@ -2156,8 +2144,8 @@
                 setTimeout(startSimulation, 100);
             }
             document.getElementById('btnSimulate').onclick = function() {
-                if (STATE.blueOrder.length !== 4 || STATE.redOrder.length !== 4) {
-                    showNotification('⚠️ 必须双方阵容均满 4 人才可开始模拟！', 'warning');
+                if (STATE.blueOrder.length === 0 || STATE.redOrder.length === 0) {
+                    showNotification('⚠️ 必须双方阵容均有人才可开始模拟！', 'warning');
                     return;
                 }
                 startSimulation();
