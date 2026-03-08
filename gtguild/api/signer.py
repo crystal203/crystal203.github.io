@@ -3,14 +3,19 @@ import os
 import binascii
 import hashlib
 from urllib.parse import urlencode
+from datetime import datetime
 
 APP_KEY = 'a5e793dd8b8e425c9bff92ed79e4458f'
 APP_SECRET = 'xoNO7qa9761mNPyLtTn8zxPeX80iLnDonYCOzqS7bG8='
 
 
 def get_sign(date: str = None, extra_params: dict = None) -> dict:
+    if (date != None):
+        timestamp = int(datetime.strptime(date, "%Y-%m-%d").timestamp() + 86399)
+    else:
+        timestamp = int(time.time()) 
     data = {
-        'ts': int(time.time()),
+        'ts': timestamp,
         'nonce': '-'.join([binascii.hexlify(os.urandom(3)).decode() for _ in range(3)]),
         'appkey': APP_KEY
     }
