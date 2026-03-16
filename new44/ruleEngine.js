@@ -407,7 +407,6 @@ function doOptimalPlacement(ruleId) {
 async function checkAllRules() {
   window._ruleCache = {};
   window._teamCache = {};
-  // ===== 1. 加载所有规则 =====
   const rulePaths = [
     './rule/暗刀火龙解火龙三切.js',
     './rule/萝冰火龙解火龙三切.js',
@@ -431,7 +430,7 @@ async function checkAllRules() {
       console.warn(`规则 ${url} 加载失败:`, e.message);
     }
   }
-  // ===== 2. 渲染评分面板 =====
+
   const scorePanel = document.getElementById('scorePanel') ||
     (() => {
       const panel = document.createElement('div');
@@ -482,7 +481,6 @@ async function checkAllRules() {
   } else {
     scorePanel.style.display = 'none';
   }
-  // ===== 3. 渲染战术推荐面板 =====
   const orderContainer = document.querySelector('.order-container');
   let tacticPanel = document.getElementById('tacticPanel');
   if (!tacticPanel && orderContainer) {

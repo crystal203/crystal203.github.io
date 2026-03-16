@@ -3,11 +3,9 @@ const SIM_WARNING = {
     MISSING_PARAM: 'missing_param',
     NEAR_TAUNT: 'near_taunt',
     NEAR_COLLISION: 'near_collision',
-    // 可扩展
 };
 window.SIM_WARNING = SIM_WARNING;
 
-// --- 工具函数 ---
 function lerp(a, b, t) { return a + (b - a) * t; }
 
 function findNearestForSim(unit, candidates) {
@@ -38,7 +36,6 @@ function sweptCircleCircle(startA, endA, radiusA, startB, endB, radiusB) {
     const b = 2 * (vx * rx + vy * ry);
     const c = rx * rx + ry * ry - radiusSq;
 
-    // 判别式
     const disc = b * b - 4 * a * c;
     if (disc < 0 || a < 1e-9) return { hit: false };
 
@@ -46,12 +43,10 @@ function sweptCircleCircle(startA, endA, radiusA, startB, endB, radiusB) {
     let t1 = (-b - sqrtDisc) / (2 * a);
     let t2 = (-b + sqrtDisc) / (2 * a);
 
-    // 仅考虑 [0, 1] 内的 t
     if (t1 > t2) [t1, t2] = [t2, t1];
     const tEnter = Math.max(0, t1);
     if (tEnter > 1 || t2 < 0) return { hit: false };
 
-    // 碰撞点位置
     const hitX = x1 + vx * tEnter;
     const hitY = y1 + vy * tEnter;
     const nx = (hitX - (x3 + (x4 - x3) * tEnter)) / radius;
@@ -60,7 +55,7 @@ function sweptCircleCircle(startA, endA, radiusA, startB, endB, radiusB) {
     return {
         hit: true,
         tEnter: tEnter,
-        normal: [nx, ny],               // 碰撞法向（从 B 指向 A）
+        normal: [nx, ny],             
         point: [hitX, hitY]
     };
 }
@@ -118,19 +113,18 @@ function sweptAABB(startPos, endPos, otherPos, radius = 0.4) {
     return { hit: true, tEnter: actualTEnter, normal: [nx, ny] };
 }
 
-// --- 核心模拟逻辑 ---
 const Nifty_Turret =
     { name: "炮台", type: "射手", ai: "远程ai", short: "Nifty_Turret", color: "#9C27B0", 
                     speed: 0.01, reach: 20, resistA: 1, resistB: 2, resistC: 100, simRadius: 5.00 };
 const Yuna_Totem =
     { name: "图腾", type: "射手", ai: "近战ai", short: "Yuna_Totem", color: "#795548", 
-                    speed: 0.01, reach: 20, skillRange: 20, tauntRadius: 3.05, skillCastTime: 0.00, skillDashDist: 0, skillDashSpeed: 0,
-                    resistA: 2, resistB: 3, resistC: 1 };
+                    speed: 0.01, reach: 20, skillRange: 20, tauntRadius: 4.00, skillCastTime: 0.00, skillDashDist: 0, skillDashSpeed: 0,
+                    resistA: 2, resistB: 3, resistC: 1, startDelay: 0.35 };
 function createSimUnit(unitRole, index, side, xpos, ypos) {
     let id = `${side}-${index}`;
     const globalCfg = window.SIM_CONFIG || {};
     const enemyBonus = (side !== 'blue' && unitRole.tauntRadius > 0) 
-        ? (globalCfg.enemyTauntBonus || 0.05) 
+        ? (globalCfg.enemyTauntBonus) 
         : 0;
     let collisionSize = globalCfg.collisionSize || 0.8;
     const role = {
@@ -143,8 +137,10 @@ function createSimUnit(unitRole, index, side, xpos, ypos) {
         collisionSize: collisionSize,
     };
     let _tauntTime = 10;
+    let _state = 'MOVING';
     if (unitRole.short === "Daisy") _tauntTime = 1;
     if (unitRole.short === "Yuna_Totem") _tauntTime = 1;
+    if (unitRole.startDelay !== undefined) _state = 'DELAY';
     const simUnit = {
         id,
         index: index,
@@ -156,7 +152,7 @@ function createSimUnit(unitRole, index, side, xpos, ypos) {
         target: null,
         originalTarget: null,
         markers: [0, 0, 0, 0, 0, 0, 0, 0],
-        state: 'MOVING',
+        state: _state,
         skillTimer: 0,
         dashTimer: 0,
         dashDuration: 0,
@@ -263,7 +259,6 @@ function startDash(unit, simUnits) {
     unit.state = 'DASHING';
 }
 
-// --- 主循环 ---
 function tick(simState, dt = 1/12) {
     const { simUnits, time } = simState;
 
@@ -360,6 +355,11 @@ function tick(simState, dt = 1/12) {
                 u.vel = [u.pos[0] - prev[0], u.pos[1] - prev[1]];
                 if (u.dashTimer <= 0) {
                     u.state = 'MOVING';
+                    if (u.role.skillDashDummy) {
+                        u.remainingDelay = u.role.skillDashDummy;
+                        u.state = 'DELAY';
+                        u.vel = [0, 0];
+                    }
                 }
             }
         }
@@ -376,7 +376,7 @@ function tick(simState, dt = 1/12) {
         if (u.role.skillRange > 0 && !u.hasUsedSkill && dist <= u.role.skillRange && u.skillTimer <= 0) {
             u.state = 'CASTING';
             u.skillTimer = u.role.skillCastTime;
-            for (let i = 0; i < 4; ++i) {
+            for (let i = 0; i < 8; ++i) {
                 if (u.markers[i] >= u.role.resistC) {
                     const tank = simUnits.filter(t =>
                         t.side !== u.side &&
@@ -403,7 +403,7 @@ function tick(simState, dt = 1/12) {
                     const dx = enemy.pos[1] - u.pos[1];
                     const dy = enemy.pos[0] - u.pos[0];
                     const dist = Math.hypot(dx, dy);
-                    const eps = 0.25; // 临界阈值，可调
+                    const eps = 0.25; 
                     if (Math.abs(dist - tauntRadius) < eps) {
                         const isInside = dist < tauntRadius;
                         showSimulationWarning(
@@ -415,7 +415,7 @@ function tick(simState, dt = 1/12) {
                 });
                 applyTaunt(u, simUnits);
             }
-            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) { // 没有收到坦克嘲讽，会因小技能跳空锁
+            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) { 
                 let oldTarget = u.target;
                 u = genTarget(simUnits, u);
                 if (oldTarget !== u.target) {
@@ -511,7 +511,6 @@ function tick(simState, dt = 1/12) {
     simState.time += dt;
 }
 
-// --- 可视化 ---
 function renderSimulation(simState) {
     const overlay = document.getElementById('simOverlay');
     if (!overlay || !mapEl) return;
@@ -558,7 +557,6 @@ function renderSimulation(simState) {
         const x = offsetX + (c - 0.5) * (cellW + cellGap) + cellGap / 2;
         const y = offsetY + (r - 0.5) * (cellH + cellGap) + cellGap / 2;
 
-        // 圆点（底层）
         const circle = document.createElementNS(svgNS, "circle");
         circle.setAttribute("cx", x);
         circle.setAttribute("cy", y);
@@ -568,7 +566,6 @@ function renderSimulation(simState) {
         circle.setAttribute("stroke-width", "1.2");
         svg.appendChild(circle);
 
-        // 头像
         const img = document.createElementNS(svgNS, "image");
         img.setAttribute("x", x - avatarSize / 2);
         img.setAttribute("y", y - avatarSize / 2);
@@ -591,7 +588,6 @@ function renderSimulation(simState) {
         });
         svg.appendChild(img);
 
-        // 标记数
         let markerCount = 0;
         for (let i = 0; i < 8; ++i) {
             if (u.markers[i] > 0) {
@@ -608,8 +604,6 @@ function renderSimulation(simState) {
             }
         }
 
-
-        // 嘲讽圈
         if (u.tauntActive && u.role.tauntRadius > 0) {
             const radiusPx = u.role.tauntRadius * (cellW + cellGap);
             const ring = document.createElementNS(svgNS, "circle");
@@ -637,7 +631,6 @@ function renderSimulation(simState) {
             svg.appendChild(ring);
         }
 
-        // 箭头
         if (u.target) {
             const [tr, tc] = u.target.pos;
             const tx = offsetX + (tc - 0.5) * (cellW + cellGap) + cellGap / 2;
@@ -656,7 +649,6 @@ function renderSimulation(simState) {
     overlay.appendChild(svg);
 }
 
-// --- 暴露接口 ---
 window.renderSimulation = renderSimulation;
 window.initSimulation = initSimulation;
 window.tick = tick;

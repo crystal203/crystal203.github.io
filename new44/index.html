@@ -912,9 +912,9 @@
                     <label style="font-weight: 600; color: #E53935; display: flex; align-items: center; gap: 6px;">
                         <i class="fas fa-shield-alt"></i> 敌方坦克嘲讽修正
                     </label>
-                    <input type="range" id="enemyTauntBonus" min="0" max="25" step="1" value="5"
+                    <input type="range" id="enemyTauntBonus" min="0" max="25" step="1" value="0"
                         style="width: 120px; margin-top: 6px; accent-color: #E53935;">
-                    <span id="enemyTauntBonusVal" style="font-size: 0.9em; color: #555; margin-left: 8px;">+0.05</span>
+                    <span id="enemyTauntBonusVal" style="font-size: 0.9em; color: #555; margin-left: 8px;">+0.00</span>
                 </div>
                 <div style="background: white; padding: 12px 16px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
                     <label style="font-weight: 600; color: #1E88E5; display: flex; align-items: center; gap: 6px;">
@@ -967,7 +967,7 @@
                 ">
                     <span>
                         <i class="fas fa-code-branch" style="color: #66BB6A; margin-right: 4px;"></i>
-                        <strong>版本</strong>: 2025.03.07 | v2.5 | 适用召唤系，完善了跳锁机制
+                        <strong>版本</strong>: 2025.03.16 | v2.5.1| 精确了部分数值
                     </span>
                     <span>
                         <i class="fas fa-user" style="color: #2196F3; margin-right: 4px;"></i>
@@ -1011,7 +1011,6 @@
         </div>
 
         <script>
-            // ===== 预设角色库 =====
             document.addEventListener('dragstart', e => {
                 if (e.target.tagName === 'IMG' || e.target.closest('.role-option')) {
                     e.preventDefault();
@@ -1075,15 +1074,14 @@
                 { name: "妲彬", type: "射手", ai: "远程ai", short: "Dabin", color: "#795548" ,
                     speed: 2.5, reach: 7.50, resistA: 1, resistB: 2, resistC: 100 },
                 { name: "埃里娜", type: "坦克", ai: "近战ai", short: "Erina", color: "#607D8B",
-                    speed: 2.5 * 1.15, reach: 0.2, skillRange: 4.50, tauntRadius: 0.00, skillCastTime: 0.08, skillDashDist: 5.00, skillDashSpeed: 10.00,
-                    resistA: 2, resistB: 3, resistC: 1 },
+                    speed: 2.5 * 1.13, reach: 0.2, skillRange: 4.25, tauntRadius: 0.00, skillCastTime: 0.08, skillDashDist: 1.00, skillDashSpeed: 10.00,
+                    resistA: 2, resistB: 3, resistC: 1, skillDashDummy: 0.30 },
                 { name: "贝丝（无球）", type: "战士", ai: "射手刺客ai", short: "Beth2", color: "#9C27B0", 
                     speed: 2.5 * 1.7, reach: 0.2, skillRange: 4.00, skillCastTime: 0.00, skillDashDist: 4.00, skillDashSpeed: 10.00, resistA: 1, resistB: 2, resistC: 100 },
                
                 // 光 FF9800 暗 9C27B0 虚 607D8B 水 2196F3 火 FF5722 土 795548
             ];
 
-            // ===== 状态管理 =====
             const STATE = {
                 map: Array(5).fill().map(() => Array(14).fill(null)),
                 redOrder: [],
@@ -1103,7 +1101,6 @@
             let pendingMoveCell = null;
             let pendingRole = null;
 
-            // ===== 初始化地图 =====
             function initMap() {
                 mapEl.innerHTML = '';
                 for (let r = 0; r < 5; r++) {
@@ -1113,7 +1110,7 @@
                         if (c < 4) cell.classList.add('blue-zone');
                         else if (c >= 10) cell.classList.add('red-zone');
                         else cell.classList.add('neutral-zone');
-                        // 添加区域标签
+                        
                         cell.dataset.row = r;
                         cell.dataset.col = c;
                         cell.addEventListener('mousedown', (e) => {
@@ -1135,22 +1132,21 @@
                             const touch = e.touches[0];
                             const dx = Math.abs(touch.clientX - dragState.touchStartX);
                             const dy = Math.abs(touch.clientY - dragState.touchStartY);
-                            // 垂直滚动优先：当 dy > dx 时视为滚动
+                            
                             if (dy > dx) {
                                 dragState.isScrolling = true;
                                 return;
                             }
-                            // 水平拖拽：阻止默认滚动
+                            
                             e.preventDefault();
                             handleDragMove(touch);
                         }, { passive: false });
-                        // 恢复单击功能：添加 click 事件（原逻辑）
+                        
                         cell.addEventListener('click', (e) => {
-                            // 如果是拖拽操作，不触发点击
                             if (Date.now() - (dragState.lastDragEndTime || 0) < 300) return;
                             handleCellClick(r, c);
                         });
-                        // 添加全局拖拽监听
+                        
                         document.addEventListener('mousemove', handleDragMove);
                         document.addEventListener('mouseup', handleDragEnd);
                         document.addEventListener('touchend', handleDragEnd);
@@ -1169,7 +1165,6 @@
                         if (c < 4) cell.classList.add('blue-zone');
                         else if (c >= 10) cell.classList.add('red-zone');
                         else cell.classList.add('neutral-zone');
-                        // 清空内容并重新添加区域标签
                         cell.innerHTML = '';
                         if (r === 0) {
                             const label = document.createElement('div');
@@ -1215,7 +1210,7 @@
                 const lockedUnits = new Set();
                 computedTargets.forEach(t => lockedUnits.add(t.to));
                 const blockedUnits = new Set();
-                const attackerToTarget = new Map(); // attacker → target
+                const attackerToTarget = new Map();
                 computedTargets.forEach(({ from, to }) => {
                     attackerToTarget.set(from, to);
                 });
@@ -1224,7 +1219,6 @@
                     u.role.ai === '辅助刺客ai' || u.role.ai === '射手刺客ai'
                 );
 
-                // 构建「谁锁了谁」映射：target → [attackers]
                 const lockers = new Map();
                 computedTargets.forEach(({ from, to }) => {
                     if (!lockers.has(to)) lockers.set(to, []);
@@ -1234,35 +1228,29 @@
                 assassins.forEach(attacker => {
                     const enemies = attacker.side === 'blue' ? STATE.redOrder : STATE.blueOrder;
                     const tanks = enemies.filter(u => u.role.type === '坦克');
-                    const victim = attackerToTarget.get(attacker); // attacker 的目标
-                    if (!victim) return; // 无目标 → 无法构成“夹在中间”
+                    const victim = attackerToTarget.get(attacker); 
+                    if (!victim) return; 
 
                     const lockersOfAttacker = lockers.get(attacker) || [];
                     const tankLockers = lockersOfAttacker.filter(u => tanks.includes(u));
 
-                    // 检查是否存在一个坦克：同行 + 锁定刺客 + 位于刺客与目标之间
                     const [ar, ac] = attacker.pos;
                     const [vr, vc] = victim.pos;
                     for (const tank of tankLockers) {
                         const [tr, tc] = tank.pos;
-                        // 条件3：同行
                         if (tr !== ar) continue;
-                        // 条件5：坦克列严格介于刺客与目标之间
                         if (Math.min(ac, vc) < tc && tc < Math.max(ac, vc)) {
                             blockedUnits.add(attacker);
-                            break; // 找到一个即可
+                            break; 
                         }
                     }
                 });
-                // 为未锁定角色添加标记
                 for (let r = 0; r < 5; r++) {
                     for (let c = 0; c < 14; c++) {
                         const unit = STATE.map[r][c];
                         const cell = mapEl.children[r * 14 + c];
-                        // 移除旧标记
                         const oldMarker = cell.querySelector('.unlocked-marker');
                         if (oldMarker) oldMarker.remove();
-                        // 添加新标记（仅当存在角色且未被锁定）
                         if (unit && !lockedUnits.has(unit)) {
                             const marker = document.createElement('div');
                             marker.className = 'unlocked-marker';
@@ -1298,7 +1286,6 @@
                 return order.length > 0 ? order[0] : null;
             }
 
-            // ===== 单元格点击 =====
             function handleCellClick(r, c) {
                 if (dragState.isActive || dragState.isClickPrevented) {
                     const preview = document.getElementById('drag-preview');
@@ -1322,9 +1309,7 @@
                 const side = c < 4 ? 'blue' : c >= 10 ? 'red' : null;
                 if (!side) return;
                 simulateDragMode = document.getElementById('simulateDrag')?.checked || false;
-                // 模拟拖动模式
                 if (simulateDragMode) {
-                    // 进入待移动状态
                     if (unit && !pendingMoveUnit) {
                         pendingMoveUnit = unit;
                         pendingMoveCell = mapEl.children[r * 14 + c];
@@ -1332,33 +1317,26 @@
                         showNotification(`📌 请点击目标位置放置 ${unit.role.name}`, 'info');
                         return;
                     }
-                    // 已有待移动单位
                     if (pendingMoveUnit) {
-                        // 点击自己 → 取消
                         if (unit === pendingMoveUnit) {
                             cancelPendingMove();
                             showNotification('已取消移动', 'info');
                             return;
                         }
-                        // 检查是否同阵营
                         if (pendingMoveUnit.side !== side) {
                             showNotification('⚠️ 不能跨阵营移动！', 'warning');
                             cancelPendingMove();
                             return;
                         }
-                        // 合法同阵营格子：执行移动/交换
                         const targetUnit = unit;
                         const srcR = pendingMoveUnit.pos[0];
                         const srcC = pendingMoveUnit.pos[1];
-                        // --- 执行操作 ---
                         if (!targetUnit) {
-                            // 移动到空格
                             STATE.map[srcR][srcC] = null;
                             STATE.map[r][c] = pendingMoveUnit;
                             pendingMoveUnit.pos = [r, c];
                             showNotification(`✅ 移动 ${pendingMoveUnit.role.name} 到 (${r + 1},${c + 1})`, 'success');
                         } else {
-                            // 同阵营交换
                             STATE.map[srcR][srcC] = targetUnit;
                             STATE.map[r][c] = pendingMoveUnit;
                             pendingMoveUnit.pos = [r, c];
@@ -1370,7 +1348,6 @@
                         return;
                     }
                 }
-                // 非模拟拖动模式
                 if (unit) {
                     removeUnit(r, c);
                 } else {
@@ -1393,7 +1370,6 @@
             }
 
             function openRoleSelect() {
-                // ===== 关键修复：强制还原 overlay 到标准角色选择面板结构 =====
                 overlay.innerHTML = `
                     <div class="role-select">
                         <div class="modal-header">
@@ -1407,9 +1383,8 @@
                         </div>
                     </div>
                 `;
-                roleOptions = document.getElementById('roleOptions'); // 重新绑定！
+                roleOptions = document.getElementById('roleOptions'); 
 
-                // ===== 正常渲染角色 =====
                 ALL_ROLES.forEach(role => {
                     const div = document.createElement('div');
                     div.className = 'role-option';
@@ -1458,7 +1433,6 @@
                     roleOptions.appendChild(div);
                 });
 
-                // ===== 添加「自定义角色」卡片 =====
                 const customDiv = document.createElement('div');
                 customDiv.className = 'role-option';
                 customDiv.style.background = '#f9f9f9';
@@ -1480,7 +1454,6 @@
                     if (customDiv.dataset.locked) return;
                     customDiv.dataset.locked = '1';
                     setTimeout(() => { customDiv.dataset.locked = ''; }, 300);
-                    // ✅ 不再 closeRoleSelect！避免清 selectedCell
                     openCustomRoleForm();
                 };
                 roleOptions.appendChild(customDiv);
@@ -1492,13 +1465,11 @@
                 if (!selectedCell) return;
                 const { row, col, side } = selectedCell;
                 const order = side === 'red' ? STATE.redOrder : STATE.blueOrder;
-                // 同区域是否已存在相同角色
                 const isDuplicate = order.some(u => u.role.short === role.short);
                 if (isDuplicate) {
                     showNotification(`⚠️ ${side === 'blue' ? '我方' : '敌方'}阵容中已存在 ${role.name}`, 'warning');
                     return;
                 }
-                // 检查数量限制
                 if (order.length >= 4) {
                     showNotification(`最多布置4个${side === 'red' ? '敌方' : '我方'}角色！`, 'warning');
                     return;
@@ -1531,7 +1502,6 @@
                 showNotification(`已移除 ${unit.role.name}`, 'info');
             }
 
-            // ===== 阵容顺序渲染 =====
             function renderOrderLists() {
                 renderOrder(STATE.blueOrder, blueOrderEl, 'blue');
                 renderOrder(STATE.redOrder, redOrderEl, 'red');
@@ -1544,7 +1514,6 @@
                     div.className = 'role-item';
                     const computedTargets = computeTargets();
                     const lockedUnits = new Set(computedTargets.map(t => t.to));
-                    // 为未锁定角色添加标记
                     if (unit && !lockedUnits.has(unit)) {
                         const marker = document.createElement('div');
                         marker.style.cssText = `
@@ -1622,7 +1591,7 @@
                         z-index: 3;
                     `;
                     aiMarker.innerHTML = `<i class="fas fa-${aiMeta.icon}" style="font-size:8px;"></i>`;
-                    aiMarker.title = unit.role.ai; // hover 提示
+                    aiMarker.title = unit.role.ai;
                     div.appendChild(aiMarker);
                     if (i > 0) {
                         const btn = document.createElement('div');
@@ -1647,7 +1616,6 @@
                 showNotification('阵容顺序已调整', 'success');
             }
 
-            // ===== 索敌逻辑 & 箭头绘制 =====
             function findTarget(attacker, candidates, isRedAttacker) {
                 const { ai } = attacker.role;
                 const unhit = candidates.filter(c => !c.isHit);
@@ -1710,7 +1678,6 @@
                     u.isHit = false;
                 });
                 const targets = [];
-                // 顺序：我方全体 → 敌方全体
                 for (const attacker of [...STATE.blueOrder, ...STATE.redOrder]) {
                     const enemyOrder = attacker.side === 'blue' ? STATE.redOrder : STATE.blueOrder;
                     if (enemyOrder.length === 0) continue;
@@ -1787,7 +1754,6 @@
                 svg.setAttribute("width", "100%");
                 svg.setAttribute("height", "100%");
                 svg.setAttribute("viewBox", `0 0 ${arrowLayerRect.width} ${arrowLayerRect.height}`);
-                // ===== 创建 marker =====
                 const defs = document.createElementNS(svgNS, "defs");
                 const createMarker = (id, color) => {
                     const marker = document.createElementNS(svgNS, "marker");
@@ -1810,7 +1776,6 @@
                 dualMarkerStart.setAttribute("orient", "auto-start-reverse");
                 defs.append(blueMarker, redMarker, dualMarkerStart, dualMarkerEnd);
                 svg.appendChild(defs);
-                // ===== 双向检测 =====
                 const showDualArrows = document.getElementById('showDualArrows').checked;
                 const dualPairs = new Set();
                 const processed = new Set();
@@ -1846,7 +1811,6 @@
                         y: cellRect.top + cellRect.height / 2 - layerRect.top
                     };
                 };
-                // ===== 绘制单向箭头 =====
                 targets.forEach((target, idx) => {
                     if (processed.has(idx) && showDualArrows) return;
                     const { from, to } = target;
@@ -1868,7 +1832,6 @@
                     path.setAttribute("marker-end", from.side === 'blue' ? "url(#blueArrow)" : "url(#redArrow)");
                     svg.appendChild(path);
                 });
-                // ===== 绘制双向箭头 =====
                 dualPairs.forEach(key => {
                     const [fromKey, toKey] = key.split('|');
                     const [, fr, fc] = fromKey.split('-').map(Number);
@@ -1958,6 +1921,7 @@
                     skillCastTime: 0.0,
                     skillDashSpeed: 0.0,
                     skillDashDist: 0.0,
+                    skillDashDummy: 0.0,
                     tauntRadius: 0,
                     resistA: 1, resistB: 2, resistC: 100,
                 };
@@ -1985,7 +1949,6 @@
                 }
             }
 
-            // ===== 通知系统 =====
             function showNotification(message, type = 'info') {
                 const notification = document.createElement('div');
                 notification.style.cssText = `
@@ -2047,6 +2010,7 @@
                     role.skillCastTime = 0.0;
                     role.skillDashSpeed = 0.0;
                     role.skillDashDist = 0.0;
+                    role.skillDashDummy = 0.0;
                     role.tauntRadius = 0;
                     role.resistA = 1; role.resistB = 2; role.resistC = 100;
                 }
@@ -2163,7 +2127,6 @@
             });
 
             setTimeout(() => {
-                // 此处可以布置一些初始角色
                 const examples = [];
                 examples.forEach(ex => {
                     const unit = { side: ex.side, role: ex.role, pos: [ex.r, ex.c], index: 0, isNew: true };
@@ -2171,7 +2134,6 @@
                     if (ex.side === 'blue') STATE.blueOrder.push(unit);
                     else STATE.redOrder.push(unit);
                 });
-                // 更新索引
                 STATE.blueOrder.forEach((u, i) => u.index = i);
                 STATE.redOrder.forEach((u, i) => u.index = i);
 
@@ -2239,7 +2201,6 @@
                     pointer-events: none;
                     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
                 `;
-                // 添加头像/缩写
                 const showAvatars = document.getElementById('showAvatars')?.checked ?? true;
                 if (showAvatars) {
                     const img = document.createElement('img');
@@ -2306,25 +2267,23 @@
 
             function handleDragEnd() {
                 if (!dragState.isActive) return;
-                // 移除预览
+                
                 const preview = document.getElementById('drag-preview');
                 if (preview) preview.remove();
-                // 清除高亮
+                
                 clearTargetHighlight();
                 const { startRow, startCol, currentRow, currentCol, draggedUnit } = dragState;
-                // 检查是否在有效位置释放
+                
                 if (currentRow >= 0 && currentRow < 5 &&
                     currentCol >= dragState.validDropZone.min && currentCol <= dragState.validDropZone.max) {
                     if (startRow !== currentRow || startCol !== currentCol) {
                         const targetUnit = STATE.map[currentRow][currentCol];
                         if (!targetUnit) {
-                            // 移动到空格
                             STATE.map[startRow][startCol] = null;
                             STATE.map[currentRow][currentCol] = draggedUnit;
                             draggedUnit.pos = [currentRow, currentCol];
                             showNotification(`移动 ${draggedUnit.role.name} 到 (${currentRow + 1},${currentCol + 1})`, 'success');
                         } else if (targetUnit.side === draggedUnit.side) {
-                            // 同阵营交换
                             STATE.map[startRow][startCol] = targetUnit;
                             STATE.map[currentRow][currentCol] = draggedUnit;
                             draggedUnit.pos = [currentRow, currentCol];
