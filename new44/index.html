@@ -1888,6 +1888,38 @@
                                     <option value="就近刺客ai">就近刺客ai</option>
                                 </select>
                             </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">移速（以银河的速度为基准）</label>
+                                <input type="text" id="customSpeed" value="1.0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">手长（近战角色填 0.2）</label>
+                                <input type="text" id="customHand" value="5.0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">小技能释放距离（若无则填 0）</label>
+                                <input type="text" id="customSkillRange" value="0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">小技能释放时间（若无则填 0）</label>
+                                <input type="text" id="customSkillTime" value="0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">小技能冲刺距离（若无则填 0）</label>
+                                <input type="text" id="customSkillDash" value="0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">小技能冲刺后摇（若无则填 0）</label>
+                                <input type="text" id="customSkillDummy" value="0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">嘲讽半径（若无则填 0）</label>
+                                <input type="text" id="customTaunt" value="0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
+                            <div style="margin-bottom: 14px;">
+                                <label style="display:block; margin-bottom:4px; font-weight:500;">开局停顿（若无则填 0）</label>
+                                <input type="text" id="customDummy" value="0" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px;" autofocus>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-cancel" onclick="closeCustomForm()">取消</button>
@@ -1913,16 +1945,27 @@
                 }
                 const short = name;
                 const color = '#9E9E9E';
+                const speed = document.getElementById('customSpeed')?.value;
+                const skillRange = document.getElementById('customSkillRange')?.value;
+                const hand = document.getElementById('customHand')?.value;
+                const skillTime = document.getElementById('customSkillTime')?.value;
+                const skillDash = document.getElementById('customSkillDash')?.value;
+                const skillDummy = document.getElementById('customSkillDummy')?.value;
+                const dummy = document.getElementById('customDummy')?.value;
+                const taunt = document.getElementById('customTaunt')?.value;
+                const skillSpeed = (skillRange??0)<0.01?0.0:10.0;
+                
                 const customRole = { 
                     name, type, ai, short, color,
-                    speed: 1.0,
-                    reach: 0.2,
-                    skillRange: -1,
-                    skillCastTime: 0.0,
-                    skillDashSpeed: 0.0,
-                    skillDashDist: 0.0,
-                    skillDashDummy: 0.0,
-                    tauntRadius: 0,
+                    speed: 2.5*speed??2.5,
+                    reach: Number(hand)??0.2,
+                    skillRange: Number(skillRange)??-1,
+                    skillCastTime: Number(skillTime)??0.0,
+                    skillDashSpeed: Number(skillSpeed)??0.0,
+                    skillDashDist: Number(skillDash)??0.0,
+                    skillDashDummy: Number(skillDummy)??0.0,
+                    tauntRadius: Number(taunt)??0,
+                    startDelay: (dummy??0)<0.01?undefined:Number(dummy),
                     resistA: 1, resistB: 2, resistC: 100,
                 };
                 if (selectedCell) {

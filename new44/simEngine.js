@@ -133,7 +133,7 @@ function createSimUnit(unitRole, index, side, xpos, ypos) {
         resistB: unitRole.resistB ?? 2,
         resistC: unitRole.resistC ?? Infinity,
         simRaduis: unitRole.simRadius ?? 0,
-        tauntRadius: unitRole.tauntRadius + enemyBonus,
+        tauntRadius:  Number(unitRole.tauntRadius) + enemyBonus,
         collisionSize: collisionSize,
     };
     let _tauntTime = 10;
