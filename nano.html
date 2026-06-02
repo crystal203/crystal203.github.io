@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 绘图工具 (双模型)</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f5f5f5; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h2 { margin-top: 0; color: #333; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; font-size: 14px; }
+        input[type="text"], textarea, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px; background: #fff; }
+        textarea { height: 80px; resize: vertical; }
+        /* 文件上传样式 */
+        .file-upload-wrapper { position: relative; width: 100%; height: 40px; border: 2px dashed #ccc; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; overflow: hidden; }
+        .file-upload-wrapper:hover { border-color: #007bff; background: #f0f8ff; }
+        .file-upload-wrapper input[type="file"] { position: absolute; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        .file-hint { color: #888; font-size: 14px; pointer-events: none; }
+        .file-list { margin-top: 8px; font-size: 12px; color: #666; }
+        
+        button { background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; transition: background 0.2s; margin-top: 10px; }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        
+        #result-area { margin-top: 30px; text-align: center; min-height: 200px; display: flex; align-items: center; justify-content: center; background: #fafafa; border-radius: 8px; border: 2px dashed #ddd; position: relative; }
+        #result-img { max-width: 100%; max-height: 600px; border-radius: 8px; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .loading { color: #666; font-style: italic; display: none; }
+        .error { color: #dc3545; margin-top: 10px; text-align: center; display: none; background: #fff0f0; padding: 10px; border-radius: 4px; }
+        
+        /* 参数区域切换 */
+        .param-section { display: none; animation: fadeIn 0.3s; }
+        .param-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>AI 图像生成</h2>
+    
+    <!-- 1. 模型选择 -->
+    <div class="form-group">
+        <label>选择模型</label>
+        <select id="model-select" onchange="toggleParams()">
+            <option value="nano">NanoBanana (nanoBanana2) - 高清/重绘</option>
+            <option value="gpt">通用模型 (image_gpt)</option>
+        </select>
+    </div>
+
+    <!-- 2. API Key -->
+    <div class="form-group">
+        <label>API Key</label>
+        <input type="text" id="api-key" placeholder="请输入您的 API Key">
+    </div>
+
+    <!-- 3. 提示词 -->
+    <div class="form-group">
+        <label>提示词 (Prompt)</label>
+        <textarea id="prompt" placeholder="请输入画面描述..."></textarea>
+    </div>
+
+    <!-- 3. 动态参数区域 -->
+    
+    <!-- 模型 1: GPT 参数 (只有比例) -->
+    <div id="params-gpt" class="param-section">
+        <div class="form-group">
+            <label>图片比例 (Size)</label>
+            <select id="gpt-size">
+                <option value="auto">Auto (自动)</option>
+                <option value="1:1">1:1 (正方形)</option>
+                <option value="16:9">16:9 (宽屏)</option>
+                <option value="9:16">9:16 (手机壁纸)</option>
+                <option value="3:2">3:2</option>
+                <option value="2:3">2:3</option>
+                <option value="4:3">4:3</option>
+                <option value="3:4">3:4</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 模型 2: NanoBanana 参数 (分辨率 + 比例) -->
+    <div id="params-nano" class="param-section active">
+        <div class="form-group">
+            <label>分辨率 (Size)</label>
+            <select id="nano-size">
+                <option value="1K">1K (默认)</option>
+                <option value="2K">2K</option>
+                <option value="4K">4K (较慢)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>图片比例 (Aspect Ratio)</label>
+            <select id="nano-ratio">
+                <option value="auto">Auto (默认)</option>
+                <option value="1:1">1:1</option>
+                <option value="16:9">16:9</option>
+                <option value="9:16">9:16</option>
+                <option value="4:3">4:3</option>
+                <option value="3:4">3:4</option>
+                <option value="3:2">3:2</option>
+                <option value="2:3">2:3</option>
+                <option value="5:4">5:4</option>
+                <option value="4:5">4:5</option>
+                <option value="21:9">21:9</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 4. 参考图片上传 (Base64) -->
+    <div class="form-group">
+        <label>参考图片 (可选，支持多选，自动转Base64)</label>
+        <div class="file-upload-wrapper">
+            <input type="file" id="ref-files" multiple accept="image/*" onchange="updateFileList()">
+            <span class="file-hint" id="file-hint-text">点击或拖拽上传参考图</span>
+        </div>
+        <div class="file-list" id="file-list"></div>
+    </div>
+
+    <button id="generate-btn" onclick="startGeneration()">生成图片</button>
+    <div id="error-msg" class="error"></div>
+    <div id="task-id" style="text-align:center; margin-top:8px; font-size:13px; color:#666; display:none;"></div>
+    <details id="debug-panel" style="margin-top:12px; background:#f9f9f9; border:1px solid #ddd; border-radius:6px; padding:10px; display:none;">
+        <summary style="cursor:pointer; font-weight:600; font-size:13px; color:#555;">调试信息</summary>
+        <div style="margin-top:8px; font-size:12px;">
+            <b>请求 URL:</b> <span id="debug-url" style="word-break:break-all;"></span>
+            <br><br><b>请求 Body:</b> <pre id="debug-body" style="background:#eee; padding:8px; border-radius:4px; overflow-x:auto; max-height:200px; white-space:pre-wrap; word-break:break-all;"></pre>
+            <b>响应 Status:</b> <span id="debug-status"></span>
+            <br><b>响应 Body:</b> <pre id="debug-resp" style="background:#eee; padding:8px; border-radius:4px; overflow-x:auto; max-height:200px; white-space:pre-wrap; word-break:break-all;"></pre>
+        </div>
+    </details>
+
+    <div id="result-area">
+        <div id="loading-text" class="loading">正在生成中，请稍候（可能需要几十秒）...</div>
+        <img id="result-img" alt="Generated Image">
+    </div>
+</div>
+
+<script>
+    // 配置
+    function getApiKey() { return document.getElementById('api-key').value.trim(); }
+    const BASE_URL = 'https://api.wuyinkeji.com/api/async';
+
+    // 切换参数显示
+    function toggleParams() {
+        const model = document.getElementById('model-select').value;
+        document.getElementById('params-gpt').classList.remove('active');
+        document.getElementById('params-nano').classList.remove('active');
+        
+        if (model === 'gpt') {
+            document.getElementById('params-gpt').classList.add('active');
+        } else {
+            document.getElementById('params-nano').classList.add('active');
+        }
+    }
+
+    // 更新文件列表显示
+    function updateFileList() {
+        const files = document.getElementById('ref-files').files;
+        const list = document.getElementById('file-list');
+        const hint = document.getElementById('file-hint-text');
+        
+        if (files.length > 0) {
+            hint.innerText = `已选择 ${files.length} 张图片`;
+            let names = Array.from(files).map(f => f.name).join(', ');
+            if (names.length > 50) names = names.substring(0, 50) + '...';
+            list.innerText = names;
+        } else {
+            hint.innerText = '点击或拖拽上传参考图';
+            list.innerText = '';
+        }
+    }
+
+    // 上传图片到 imgbb 图床，返回 URL 数组
+    async function filesToUrls(files) {
+        const IMGBB_KEY = '87345eb63aa4fd9127e8f977c4021cc6';
+        const urls = [];
+        for (let i = 0; i < files.length; i++) {
+            const form = new FormData();
+            form.append('key', IMGBB_KEY);
+            form.append('image', files[i]);
+            form.append('expiration', '300'); // 5分钟后自动删除
+
+            const res = await fetch('https://api.imgbb.com/1/upload', {
+                method: 'POST',
+                body: form
+            });
+            const data = await res.json();
+            console.log('imgbb 上传 #' + (i + 1) + ':', data);
+            if (data.success) {
+                urls.push(data.data.url);
+            } else {
+                throw new Error('图床上传失败: ' + JSON.stringify(data));
+            }
+        }
+        return urls;
+    }
+
+    async function startGeneration() {
+        const btn = document.getElementById('generate-btn');
+        const model = document.getElementById('model-select').value;
+        const prompt = document.getElementById('prompt').value.trim();
+        const loading = document.getElementById('loading-text');
+        const img = document.getElementById('result-img');
+        const errorDiv = document.getElementById('error-msg');
+        const files = document.getElementById('ref-files').files;
+
+        // 重置
+        errorDiv.style.display = 'none';
+        img.style.display = 'none';
+        loading.style.display = 'block';
+        btn.disabled = true;
+        btn.innerText = '生成中...';
+
+        if (!getApiKey()) {
+            showError('请输入 API Key');
+            resetBtn();
+            return;
+        }
+
+        if (!prompt) {
+            showError('请输入提示词');
+            resetBtn();
+            return;
+        }
+
+        try {
+            // 上传图片到图床获取 URL
+            let urls = [];
+            if (files.length > 0) {
+                loading.innerText = '正在上传参考图到图床...';
+                urls = await filesToUrls(files);
+                loading.innerText = '正在生成中，请稍候（可能需要几十秒）...';
+            }
+
+            // 构建请求体
+            let body = { prompt, urls };
+            let endpoint = '';
+
+            if (model === 'gpt') {
+                // 模型 1: image_gpt
+                endpoint = 'image_gpt';
+                body.size = document.getElementById('gpt-size').value;
+            } else {
+                // 模型 2: nanoBanana2
+                endpoint = 'image_nanoBanana2';
+                body.size = document.getElementById('nano-size').value; // 分辨率 1K/2K
+                body.aspectRatio = document.getElementById('nano-ratio').value; // 比例
+            }
+            body.key = getApiKey();
+
+            // 1. 提交任务
+            const requestUrl = `${BASE_URL}/${endpoint}`;
+            const requestBody = JSON.stringify(body);
+
+            // 调试面板
+            document.getElementById('debug-panel').style.display = 'block';
+            document.getElementById('debug-url').innerText = requestUrl;
+            document.getElementById('debug-body').innerText = requestBody;
+            document.getElementById('debug-status').innerText = '...';
+            document.getElementById('debug-resp').innerText = '...';
+
+            console.log('=== 提交任务 ===');
+            console.log('URL:', requestUrl);
+            console.log('Body:', requestBody);
+
+            const submitRes = await fetch(requestUrl, {
+                method: 'POST',
+                headers: {
+                    'Authorization': getApiKey(),
+                    'Content-Type': 'application/json'
+                },
+                body: requestBody
+            });
+
+            console.log('Status:', submitRes.status);
+            const responseText = await submitRes.text();
+            document.getElementById('debug-status').innerText = submitRes.status + ' ' + submitRes.statusText;
+            document.getElementById('debug-resp').innerText = responseText;
+            console.log('Response:', responseText);
+
+            let submitData;
+            try {
+                submitData = JSON.parse(responseText);
+            } catch (e) {
+                throw new Error('响应非JSON: ' + responseText.substring(0, 200));
+            }
+
+            if (submitData.code !== 200) {
+                throw new Error(submitData.msg || '提交失败');
+            }
+
+            const taskId = submitData.data.id;
+            document.getElementById('task-id').innerText = '任务ID: ' + taskId;
+            document.getElementById('task-id').style.display = 'block';
+            
+            // 2. 轮询结果
+            pollResult(taskId);
+
+        } catch (err) {
+            showError(err.message);
+            resetBtn();
+        }
+    }
+
+    async function pollResult(taskId) {
+        const loading = document.getElementById('loading-text');
+        const img = document.getElementById('result-img');
+        const taskIdEl = document.getElementById('task-id');
+        let attempts = 0;
+        const maxAttempts = 60;
+
+        const check = async () => {
+            try {
+                const pollUrl = `${BASE_URL}/detail?key=${getApiKey()}&id=${taskId}`;
+                const res = await fetch(pollUrl);
+                const data = await res.json();
+
+                console.log('=== 轮询 #' + (attempts + 1) + ' ===');
+                console.log('URL:', pollUrl);
+                console.log('Response:', JSON.stringify(data));
+
+                document.getElementById('debug-url').innerText = pollUrl;
+                document.getElementById('debug-status').innerText = '轮询 #' + (attempts + 1) + ': ' + res.status;
+                document.getElementById('debug-resp').innerText = JSON.stringify(data, null, 2);
+
+                if (data.code !== 200) {
+                    throw new Error(data.msg || '查询任务状态失败');
+                }
+
+                const result = data.data;
+
+                // status === 2 表示任务完成
+                if (result.status === 2 && Array.isArray(result.result) && result.result.length > 0) {
+                    img.src = result.result[0];
+                    img.style.display = 'block';
+                    loading.style.display = 'none';
+                    taskIdEl.style.display = 'none';
+                    resetBtn();
+                    return;
+                }
+
+                // 未知状态视为失败
+                const statusMap = { 0: '排队中', 1: '处理中' };
+                if (!statusMap[result.status]) {
+                    throw new Error('任务状态异常 (status=' + result.status + ')，请重试');
+                }
+
+                // 更新任务状态提示
+                taskIdEl.innerText = '任务ID: ' + taskId + ' [' + statusMap[result.status] + ']';
+
+                if (attempts < maxAttempts) {
+                    attempts++;
+                    setTimeout(check, 25000);
+                } else {
+                    throw new Error('生成超时，请稍后重试');
+                }
+
+            } catch (e) {
+                showError(e.message);
+                loading.style.display = 'none';
+                resetBtn();
+            }
+        };
+
+        check();
+    }
+
+    function showError(msg) {
+        const el = document.getElementById('error-msg');
+        el.innerText = msg;
+        el.style.display = 'block';
+        document.getElementById('loading-text').style.display = 'none';
+    }
+
+    function resetBtn() {
+        const btn = document.getElementById('generate-btn');
+        btn.disabled = false;
+        btn.innerText = '生成图片';
+        document.getElementById('task-id').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
