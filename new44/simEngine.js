@@ -120,11 +120,11 @@ const Yuna_Totem =
     { name: "图腾", type: "射手", ai: "近战ai", short: "Yuna_Totem", color: "#795548", 
                     speed: 0.01, reach: 20, skillRange: 20, tauntRadius: 4.00, skillCastTime: 0.00, skillDashDist: 0, skillDashSpeed: 0,
                     resistA: 2, resistB: 3, resistC: 1, startDelay: 0.35 };
-function createSimUnit(unitRole, index, side, xpos, ypos) {
+function createSimUnit(unitRole, index, side, xpos, ypos, seiraDebuffed = false) {
     let id = `${side}-${index}`;
     const globalCfg = window.SIM_CONFIG || {};
-    const enemyBonus = (side !== 'blue' && unitRole.tauntRadius > 0) 
-        ? (globalCfg.enemyTauntBonus) 
+    const enemyBonus = (side !== 'blue' && unitRole.tauntRadius > 0)
+        ? (globalCfg.enemyTauntBonus)
         : 0;
     let collisionSize = globalCfg.collisionSize || 0.8;
     const role = {
@@ -141,6 +141,16 @@ function createSimUnit(unitRole, index, side, xpos, ypos) {
     if (unitRole.short === "Daisy") _tauntTime = 1;
     if (unitRole.short === "Yuna_Totem") _tauntTime = 1;
     if (unitRole.startDelay !== undefined) _state = 'DELAY';
+    let remainingDelay = unitRole.startDelay || 0;
+    if (seiraDebuffed) {
+        // 塞拉debuff：近战角色skillCastTime视为0
+        if (role.reach === 0.2) {
+            role.skillCastTime = 0;
+        }
+        // 塞拉debuff：startDelay视为0
+        remainingDelay = 0;
+        _state = 'MOVING';
+    }
     const simUnit = {
         id,
         index: index,
@@ -163,7 +173,8 @@ function createSimUnit(unitRole, index, side, xpos, ypos) {
         hasUsedSkill: false,
         tauntTime: _tauntTime,
         startDelay: unitRole.startDelay || 0,
-        remainingDelay: unitRole.startDelay || 0,
+        remainingDelay: remainingDelay,
+        seiraDebuffed: seiraDebuffed,
     }
     return simUnit;
 }
@@ -200,9 +211,15 @@ function initSimulation() {
     const simUnits = [];
     const idMap = new Map();
     const allUnits = [...STATE.blueOrder, ...STATE.redOrder];
+    // 检测塞拉所在方，另一方受到debuff
+    const seiraUnit = allUnits.find(u => u.role.short === "Seira");
+    const debuffedSide = seiraUnit
+        ? (seiraUnit.side === 'blue' ? 'red' : 'blue')
+        : null;
     allUnits.forEach(unit => {
         const [r, c] = unit.pos;
-        const simUnit = createSimUnit(unit.role, unit.index, unit.side, r + 0.5, c + 0.5);
+        const isDebuffed = debuffedSide && unit.side === debuffedSide;
+        const simUnit = createSimUnit(unit.role, unit.index, unit.side, r + 0.5, c + 0.5, isDebuffed);
         simUnits.push(simUnit);
         let id = `${unit.side}-${unit.index}`;
         idMap.set(id, simUnit);
@@ -388,13 +405,13 @@ function tick(simState, dt = 1/12) {
                     }
                 }
             }
-            if (u.role.short === "Nifty") {
+            if (u.role.short === "Nifty" && !u.seiraDebuffed) {
                 simUnits.push(genTarget(simUnits,createSimUnit(Nifty_Turret, u.index + 4, u.side, ux + dy / dist * 0.9, uy + dx / dist * 0.9)));
             }
-            if (u.role.short === "Yuna") {
+            if (u.role.short === "Yuna" && !u.seiraDebuffed) {
                 simUnits.push(genTarget(simUnits,createSimUnit(Yuna_Totem, u.index + 4, u.side, ux + dy / dist * 1.5, uy + dx / dist * 1.5)));
             }
-            if (u.role.tauntRadius > 0) {
+            if (u.role.tauntRadius > 0 && !u.seiraDebuffed) {
                 u.tauntActive = true;
                 u.lastTauntTime = time;
                 const tauntRadius = u.role.tauntRadius;
@@ -403,7 +420,7 @@ function tick(simState, dt = 1/12) {
                     const dx = enemy.pos[1] - u.pos[1];
                     const dy = enemy.pos[0] - u.pos[0];
                     const dist = Math.hypot(dx, dy);
-                    const eps = 0.25; 
+                    const eps = 0.25;
                     if (Math.abs(dist - tauntRadius) < eps) {
                         const isInside = dist < tauntRadius;
                         showSimulationWarning(
@@ -415,7 +432,7 @@ function tick(simState, dt = 1/12) {
                 });
                 applyTaunt(u, simUnits);
             }
-            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive)) { 
+            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive) && !u.seiraDebuffed) {
                 let oldTarget = u.target;
                 u = genTarget(simUnits, u);
                 if (oldTarget !== u.target) {
