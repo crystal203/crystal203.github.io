@@ -1,300 +1,774 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8">
     <meta name="nightmode" content="disable">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>坎公练度计算器</title>
     <style>
-        .button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            width: 100%;
+        :root {
+            --bg: #f0f4f8;
+            --card-bg: #ffffff;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #e0e7ff;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.06);
+            --radius: 10px;
+            --radius-sm: 6px;
+            --transition: 0.2s ease;
         }
 
-        .buttonx {
-            background-color: #1dcaca;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            width: 100%;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        .container {
-            left: 50%;
-            top: 50%;
-            font-family: Arial;
-            border: 2px solid #379082;
-            border-radius: 20px;
-            padding: 20px 20px;
-            width: auto;
-            justify-content: center;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #eef1f5;
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px 16px;
+        }
+
+        .main-wrapper {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            padding-bottom: 32px;
+        }
+
+        /* ---- 头部 ---- */
+        .header {
+            background: #ffffff;
+            border-radius: var(--radius);
+            padding: 22px 28px;
+            text-align: center;
+            color: var(--text);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .header .subtitle {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+
+        .header .subtitle .ver-name {
+            font-weight: 700;
+        }
+
+        .header .subtitle .ver-date {
+            color: #94a3b8;
+        }
+
+        /* ---- 卡片 ---- */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        /* ---- 输入表格 ---- */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         table {
-            border-spacing: 3;
             width: 100%;
-            border: 2px solid;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.88rem;
         }
 
-        th,
-        td {
-            border: "3";
+        table thead th {
+            background: #f1f5f9;
+            font-weight: 700;
+            padding: 10px 8px;
             text-align: center;
-            padding: 8px;
+            border-bottom: 2px solid #cbd5e1;
         }
 
-        input,
+        table thead th:first-child {
+            border-radius: var(--radius-sm) 0 0 0;
+        }
+
+        table thead th:last-child {
+            border-radius: 0 var(--radius-sm) 0 0;
+        }
+
+        table tbody td {
+            padding: 9px 7px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        table tbody tr:last-child td:first-child {
+            border-radius: 0 0 0 var(--radius-sm);
+        }
+
+        table tbody tr:last-child td:last-child {
+            border-radius: 0 0 var(--radius-sm) 0;
+        }
+
+        td.col-label {
+            background: #fefce8 !important;
+            font-weight: 600;
+            color: #92400e;
+            min-width: 88px;
+        }
+
+        td.col-atk {
+            background: #fef2f2;
+        }
+
+        td.col-def {
+            background: #ecfeff;
+        }
+
+        td.col-hp {
+            background: #ecfdf5;
+        }
+
+        td.col-na {
+            color: #cbd5e1;
+            font-style: italic;
+            background: #fafafa;
+        }
+
+        input[type="text"] {
+            width: 56px;
+            padding: 5px 7px;
+            border: 2px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 0.88rem;
+            text-align: center;
+            transition: all var(--transition);
+            background: #ffffff;
+            color: var(--text);
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+            background: #fafaff;
+        }
+
+        /* ---- 模式选择 ---- */
+        .mode-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 18px;
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .mode-selector .mode-title {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .mode-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 2px solid transparent;
+            font-size: 0.88rem;
+        }
+
+        .mode-option:hover {
+            background: #e0e7ff;
+        }
+
+        .mode-option:has(input:checked) {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .mode-option input[type="radio"] {
+            accent-color: var(--primary);
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+        }
+
+        .mode-option label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        /* ---- 按钮 ---- */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            width: 60px;
+            flex: 1;
+            min-width: 140px;
+            padding: 11px 18px;
             border: none;
-            border-radius: 4px;
-            margin: 3px 0;
-            opacity: 0.85;
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .btn-fill {
+            background: #0891b2;
+            color: #ffffff;
+        }
+
+        .btn-fill:hover {
+            background: #0e7490;
+        }
+
+        .btn-calc {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-calc:hover {
+            background: var(--primary-dark);
+        }
+
+        .status-msg {
             display: inline-block;
-            font-size: 17px;
-            line-height: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-msg.success {
+            color: var(--success);
+        }
+
+        .status-msg.error {
+            color: var(--danger);
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            display: block;
+            max-width: 100%;
+        }
+
+        /* ---- 结果区 ---- */
+        .result-mode {
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            border-radius: 16px;
+            display: inline-block;
+        }
+
+        .result-table thead th {
+            background: #6366f1;
+            color: #ffffff;
+            border-bottom: 2px solid #4f46e5;
+        }
+
+        .score-cell {
+            font-weight: 700;
+            font-size: 0.86rem;
+        }
+
+        .res-atk { color: #dc2626; font-weight: 600; }
+        .res-def { color: #0891b2; font-weight: 600; }
+        .res-hp { color: #059669; font-weight: 600; }
+
+        /* ---- 分享区 ---- */
+        .share-section {
+            margin-top: 18px;
+            padding: 14px 16px;
+            background: #fefce8;
+            border-radius: var(--radius-sm);
+            border: 1px solid #fde68a;
+        }
+
+        .share-inline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-link {
+            flex: 1;
+            padding: 8px 12px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            color: #6366f1;
+            word-break: break-all;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .btn-copy {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 5px;
+            background: #6366f1;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .btn-copy:hover {
+            background: #4f46e5;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.95);
+        }
+
+        .btn-copy svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .copy-status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* ---- 页脚 ---- */
+        .footer {
+            background: #ffffff;
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow);
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.9;
+            text-align: center;
+        }
+
+        .footer .motto {
+            display: block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #f59e0b;
+            margin-bottom: 4px;
+        }
+
+        .footer a {
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 600;
         }
 
-        td:nth-child(1) {
-            background-color: #F7F6D5
+        .footer a:hover {
+            text-decoration: underline;
         }
 
-        td:nth-child(2) {
-            background-color: #FBE2E2
+        .footer .sep {
+            color: #cbd5e1;
+            margin: 0 8px;
         }
 
-        td:nth-child(3) {
-            background-color: #D9FDFB
+        .footer .powered {
+            font-weight: 600;
         }
 
-        td:nth-child(4) {
-            background-color: #D5F9DA
+        .footer .contact-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            margin: 4px 0;
         }
 
-        td:nth-child(5) {
-            background-color: #FFFFFF
+        .footer .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-secondary);
+            font-size: 0.83rem;
+        }
+
+        .footer .contact-item svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+            opacity: 0.65;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .btn-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                min-width: auto;
+            }
+
+            table {
+                font-size: 0.76rem;
+            }
+
+            input[type="text"] {
+                width: 46px;
+                padding: 4px 5px;
+                font-size: 0.76rem;
+            }
+
+            .share-inline {
+                flex-wrap: wrap;
+            }
+
+            .share-link {
+                white-space: normal;
+            }
+
+            .footer .contact-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1 align="center">坎公练度计算器</h1>
-    <h4 align="center">更新至<span style="color: rgb(30, 166, 64);">【埃里娜】</span>版本（26.13, Jul 2nd）</h4>
-    <div class="container">
-        <table border="2" class="table1">
-            <tbody>
-                <tr>
-                    <td><b>项目</b></td>
-                    <td><b>攻击</b></td>
-                    <td><b>防御</b></td>
-                    <td><b>生命</b></td>
-                </tr>
-                <tr>
-                    <td>英雄羁绊</td>
-                    <td><input type="text" id="a1" value="">/<a id="a1m">70.0</a></td>
-                    <td><input type="text" id="d1" value="">/<a id="d1m">40.9</a></td>
-                    <td><input type="text" id="h1" value="">/<a id="h1m">39.8</a></td>
-                </tr>
-                <tr>
-                    <td>装备羁绊</td>
-                    <td><input type="text" id="a2" value="">/<a id="a2m">99.7</a></td>
-                    <td><input type="text" id="d2" value="">/<a id="d2m">58.6</a></td>
-                    <td><input type="text" id="h2" value="">/<a id="h2m">52.6</a></td>
-                </tr>
-                <tr>
-                    <td>武/饰/盾</td>
-                    <td><input type="text" id="a3" value="">/<a id="a3m">10.0</a></td>
-                    <td><input type="text" id="d3" value="">/<a id="d3m">8.6</a></td>
-                    <td><input type="text" id="h3" value="">/<a id="h3m">8.2</a></td>
-                </tr>
-                <tr>
-                    <td>遗物图鉴</td>
-                    <td><input type="text" id="a4" value="">/<a id="a4m">2.0</a></td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td>英雄时装</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td><input type="text" id="h4" value="">/<a id="h4m">10.0</a></td>
-                </tr>
-                <tr>
-                    <td>武器外观</td>
-                    <td><input type="text" id="a5" value="">/<a id="a5m">10.0</a></td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td>超级时装</td>
-                    <td><input type="text" id="a6" value="">/<a id="a6m">2.2</a></td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td>魔卡图鉴</td>
-                    <td><input type="text" id="a7" value="">/<a id="a7m">10.0</a></td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td>周边图鉴</td>
-                    <td><input type="text" id="a8" value="">/<a id="a8m">4.0</a></td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td>宝石图鉴</td>
-                    <td><input type="text" id="a9" value="">/<a id="a9m">2.0</a></td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td>浮游城建筑</td>
-                    <td><input type="text" id="a10" value="">/<a id="a10m">10.0</a></td>
-                    <td>N/A</td>
-                    <td><input type="text" id="h5" value="">/<a id="h5m">10.0</a></td>
-                </tr>
-                <tr>
-                    <td>守护者等级</td>
-                    <td><input type="text" id="a11" value="">/<a id="a11m">39.8</a></td>
-                    <td><input type="text" id="d4" value="">/<a id="d4m">10.7</a></td>
-                    <td><input type="text" id="h6" value="">/<a id="h6m">10.7</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <p>
-            <input type="radio" id="optional" name="options" value="0">
-            <label>仅羁绊</label>
+    <div class="main-wrapper">
+
+        <!-- 头部 -->
+        <div class="header">
+            <h1>坎公练度计算器</h1>
+            <div class="subtitle" id="headerSub"></div>
+        </div>
+
+        <!-- 输入区 -->
+        <div class="card">
+            <div class="card-title">属性输入</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>项目</th>
+                            <th>攻击</th>
+                            <th>防御</th>
+                            <th>生命</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inputTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="mode-selector">
+                <div class="mode-title">计算模式</div>
+                <div class="mode-option">
+                    <input type="radio" id="mode0" name="options" value="0">
+                    <label for="mode0">仅羁绊</label>
+                </div>
+                <div class="mode-option">
+                    <input type="radio" id="mode1" name="options" value="1" checked>
+                    <label for="mode1">经典（不包括守护者等级与浮游城建筑）</label>
+                </div>
+                <div class="mode-option">
+                    <input type="radio" id="mode2" name="options" value="2">
+                    <label for="mode2">经典 + 浮游城建筑</label>
+                </div>
+                <div class="mode-option">
+                    <input type="radio" id="mode3" name="options" value="3">
+                    <label for="mode3">全部（仅供参考，守护者等级增益不与其余项共享乘区）</label>
+                </div>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-fill" onclick="setEmpty()">填充空项为最大值</button>
+                <button class="btn btn-calc" onclick="calc()">计算</button>
+            </div>
+            <div style="text-align:center;margin-top:8px;">
+                <span class="status-msg" id="stat"></span>
+            </div>
+        </div>
+
+        <!-- 结果区 -->
+        <div class="card result-card">
+            <div class="card-title">计算结果</div>
+            <div style="text-align:center;">
+                <span class="result-mode" id="mode">等待计算</span>
+            </div>
+            <div class="table-wrapper">
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>项目</th>
+                            <th>你的练度</th>
+                            <th>最高练度</th>
+                            <th>百分比</th>
+                            <th>评分</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="res-atk">攻击</td>
+                            <td><a id="ca1">-</a></td>
+                            <td><a id="ca2">-</a></td>
+                            <td><a id="ca3">-</a></td>
+                            <td class="score-cell"><a id="ca4">-</a></td>
+                        </tr>
+                        <tr>
+                            <td class="res-def">防御</td>
+                            <td><a id="cd1">-</a></td>
+                            <td><a id="cd2">-</a></td>
+                            <td><a id="cd3">-</a></td>
+                            <td class="score-cell"><a id="cd4">-</a></td>
+                        </tr>
+                        <tr>
+                            <td class="res-hp">生命</td>
+                            <td><a id="ch1">-</a></td>
+                            <td><a id="ch2">-</a></td>
+                            <td><a id="ch3">-</a></td>
+                            <td class="score-cell"><a id="ch4">-</a></td>
+                        </tr>
+                        <tr style="background:#f1f5f9;font-weight:700;">
+                            <td>合计</td>
+                            <td><a id="cs1">-</a></td>
+                            <td><a id="cs2">-</a></td>
+                            <td><a id="cs3">-</a></td>
+                            <td class="score-cell"><a id="cs4">-</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 分享区 -->
+            <div class="share-section">
+                <div class="share-inline">
+                    <span class="share-link" id="share">尚未计算</span>
+                    <button class="btn-copy" onclick="copy2pb()" title="复制到剪贴板">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                    <span class="copy-status" id="stat2"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <span class="motto">Ciallo～(∠・ω&lt; )⌒☆</span>
+            Powered by <span class="powered">crystal302</span>
             <br>
-            <input type="radio" id="optional" name="options" value="1" checked>
-            <label>经典（不包括守护者等级与浮游城建筑）</label>
+            本练度计算表将在版本更新日当天更新。如果表格数据有误，可以联系如下：
+            <div class="contact-row">
+                <span class="contact-item">
+                    E-Mail: realzombie462@gmail.com
+                </span>
+                <span class="contact-item">
+                    QQ: 2770931135
+                </span>
+                <span class="contact-item">
+                    群: 779618992
+                </span>
+            </div>
+            如果觉得这个计算器对你很有帮助，请转发一下谢谢喵！
             <br>
-            <input type="radio" id="optional" name="options" value="2">
-            <label>经典+浮游城建筑</label>
-            <br>
-            <input type="radio" id="optional" name="options" value="3">
-            <label>全部（仅供参考，守护者等级增益不与其余项共享乘区）</label>
-            <br>
-        </p>
-        <p>
-            <button onclick="setEmpty()" class="buttonx">填充所有空项为最大值</button>
-        </p>
-        <p>
-            <button onclick="calc()" class="button">计算</button>
-            <a id="stat"></a>
-        </p>
-        <h2 align="center">结果</h2>
-        <h3 align="center" id="mode"></h3>
-        <table border="2">
-            <tbody>
-                <tr>
-                    <td><b>项目</b></td>
-                    <td><b>你的练度</b></td>
-                    <td><b>最高练度</b></td>
-                    <td><b>百分比</b></td>
-                    <td><b>评分</b></td>
-                </tr>
-                <tr>
-                    <td>攻击</td>
-                    <td><a id="ca1">尚未计算</a></td>
-                    <td><a id="ca2">尚未计算</a></td>
-                    <td><a id="ca3">尚未计算</a></td>
-                    <td><a id="ca4">尚未计算</a></td>
-                </tr>
-                <tr>
-                    <td>防御</td>
-                    <td><a id="cd1">尚未计算</a></td>
-                    <td><a id="cd2">尚未计算</a></td>
-                    <td><a id="cd3">尚未计算</a></td>
-                    <td><a id="cd4">尚未计算</a></td>
-                </tr>
-                <tr>
-                    <td>生命</td>
-                    <td><a id="ch1">尚未计算</a></td>
-                    <td><a id="ch2">尚未计算</a></td>
-                    <td><a id="ch3">尚未计算</a></td>
-                    <td><a id="ch4">尚未计算</a></td>
-                </tr>
-                <tr>
-                    <td>合计</td>
-                    <td><a id="cs1">尚未计算</a></td>
-                    <td><a id="cs2">尚未计算</a></td>
-                    <td><a id="cs3">尚未计算</a></td>
-                    <td><a id="cs4">尚未计算</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <p>
-            <a color="green">分享你的练度：</a><a id="share">尚未计算</a>
-            <br>
-            <button onclick="copy2pb()" class="buttonx">复制到剪贴板</button>
-            <a id="stat2"></a>
-        </p>
+            bilibili: 
+            <a href="https://space.bilibili.com/500388576" target="_blank">zombie462</a>
+            <span class="sep">|</span>
+            <a href="https://crystal203.github.io/new44/index.html" target="_blank">【新版44计算器】正在内测！</a>
+            <span class="sep">|</span>
+            <a href="https://crystal203.github.io/gt_backup.html" target="_blank">返回旧版 UI</a>
+        </div>
     </div>
-    <p></p>
-    <p>Powered by crystal302</p>
-    <p><a style="color:orange;font-weight:bold">Ciallo～(∠・ω< )⌒☆</a><br>
-                本练度计算表将在版本更新日当天更新。如果表格数据有误，可以联系：<br>
-                E-mail: realzombie462@gmail.com | QQ: 2770931135 | 群: 779618992<br>
-                如果觉得这个计算器对你很有帮助，请转发一下谢谢喵！<br>
-                bilibili: <a href="https://space.bilibili.com/500388576">zombie462</a>
-                <a href="https://crystal203.github.io/new44/index.html">【新版44计算器】</a>正在内测！</p>
+
     <script>
-        const upd_date = "2026-07-02 14:00:00";
+        // ############################################################
+        //  配 置 区 域  -  修改以下数值即可更新计算器
+        // ############################################################
+        const CONFIG = {
+            // 版本信息
+            version: '26.14',
+            versionName: '长草',
+            versionNameColor: '#1ea640',
+            updateDate: '2026-07-16 14:00:00',
+
+            // 计算模式名称
+            modeNames: ['羁绊模式', '经典模式', '扩展模式 I', '扩展模式 II'],
+
+            // 各模式包含的项数 [攻击, 生命, 防御] — 模式0~3
+            maxInd: [
+                [2, 2, 2],
+                [9, 4, 3],
+                [10, 5, 3],
+                [11, 6, 4]
+            ],
+
+            // 过期提醒天数
+            staleThresholdDays: 14,
+
+            // 表格行: { label, atk: [id, max] | null, def, hp }
+            // 修改 max 即可更新各属性最大值
+            rows: [
+                { label: '英雄羁绊',   atk: ['a1',  70.0], def: ['d1', 40.9], hp: ['h1', 39.8] },
+                { label: '装备羁绊',   atk: ['a2',  99.7], def: ['d2', 58.6], hp: ['h2', 52.6] },
+                { label: '武/饰/盾',   atk: ['a3',  10.0], def: ['d3', 8.6],  hp: ['h3', 8.2]  },
+                { label: '遗物图鉴',   atk: ['a4',   2.0], def: null,          hp: null           },
+                { label: '英雄时装',   atk: null,           def: null,          hp: ['h4', 10.0]  },
+                { label: '武器外观',   atk: ['a5',  10.0], def: null,          hp: null           },
+                { label: '超级时装',   atk: ['a6',   2.2], def: null,          hp: null           },
+                { label: '魔卡图鉴',   atk: ['a7',  10.0], def: null,          hp: null           },
+                { label: '周边图鉴',   atk: ['a8',   4.0], def: null,          hp: null           },
+                { label: '宝石图鉴',   atk: ['a9',   2.0], def: null,          hp: null           },
+                { label: '浮游城建筑', atk: ['a10', 10.0], def: null,          hp: ['h5', 10.0]  },
+                { label: '守护者等级', atk: ['a11', 39.8], def: ['d4', 10.7],  hp: ['h6', 10.7]  },
+            ],
+
+            // 评分阈值 [百分比上限, 颜色, 标签]
+            scoreThresholds: [
+                [0.6,   'grey',   '超低练'],
+                [0.75,  'green',  '低练'],
+                [0.85,  'blue',   '普通'],
+                [0.93,  'purple', '中练'],
+                [0.96,  'gold',   '高练'],
+                [0.98,  'red',    '小满'],
+                [0.995, 'pink',   '中满'],
+                [Infinity, 'brown', '满中满'],
+            ],
+        };
+
+        // 别名（兼容原有代码）
+        const upd_date = CONFIG.updateDate;
+        const maxInd = CONFIG.maxInd;
+
+        // ---- 生成输入表格 ----
+        function buildInputTable() {
+            const tbody = document.getElementById('inputTableBody');
+            tbody.innerHTML = '';
+            CONFIG.rows.forEach(row => {
+                const tr = document.createElement('tr');
+                const tdLabel = document.createElement('td');
+                tdLabel.className = 'col-label';
+                tdLabel.innerHTML = '<b>' + row.label + '</b>';
+                tr.appendChild(tdLabel);
+                [row.atk, row.def, row.hp].forEach((cell, ci) => {
+                    const td = document.createElement('td');
+                    if (cell) {
+                        const [id, max] = cell;
+                        td.className = ['col-atk', 'col-def', 'col-hp'][ci];
+                        td.innerHTML = '<input type="text" id="' + id + '" value="" placeholder="0">/<a id="' + id + 'm">' + max.toFixed(1) + '</a>';
+                    } else {
+                        td.className = 'col-na';
+                        td.textContent = 'N/A';
+                    }
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+        }
+
+        // ---- 设置头部版本信息 ----
+        function setHeaderInfo() {
+            var sub = document.getElementById('headerSub');
+            sub.innerHTML = 'v' + CONFIG.version + ' <span class="ver-name" style="color:' + CONFIG.versionNameColor + ';">【' + CONFIG.versionName + '】</span>版本'
+                + ' <span class="ver-date">&middot; 更新于 ' + CONFIG.updateDate.slice(0, 10) + '</span>';
+        }
+
+        // ---- 编解码模块 (分享链接) ----
         const { encode, decode } = (() => {
             const C = 126 - 33 + 1;
             const PADDING = "G";
-            const ENCODE_P = { 33: 125, 34: 84, 35: 44, 36: 102, 37: 57, 38: 68, 39: 50, 40: 69, 41: 59, 42: 83, 43: 100, 44: 72, 45: 116, 46: 35, 47: 108, 48: 89, 49: 92, 50: 51, 51: 65, 52: 73, 53: 124, 54: 119, 55: 90, 56: 45, 57: 47, 58: 75, 59: 60, 60: 95, 61: 96, 62: 91, 63: 63, 64: 111, 65: 46, 66: 101, 67: 36, 68: 120, 69: 104, 70: 97, 71: 42, 72: 55, 73: 99, 74: 113, 75: 53, 76: 112, 77: 122, 78: 114, 79: 106, 80: 33, 81: 79, 82: 74, 83: 121, 84: 61, 85: 85, 86: 76, 87: 49, 88: 93, 89: 82, 90: 40, 91: 117, 92: 105, 93: 62, 94: 94, 95: 39, 96: 78, 97: 86, 98: 109, 99: 41, 100: 66, 101: 70, 102: 48, 103: 58, 104: 88, 105: 103, 106: 64, 107: 115, 108: 80, 109: 81, 110: 43, 111: 123, 112: 67, 113: 56, 114: 107, 115: 110, 116: 52, 117: 118, 118: 77, 119: 126, 120: 87, 121: 98, 122: 34, 123: 71, 124: 38, 125: 37, 126: 54, };
-            const DECODE_P = { 125: 33, 84: 34, 44: 35, 102: 36, 57: 37, 68: 38, 50: 39, 69: 40, 59: 41, 83: 42, 100: 43, 72: 44, 116: 45, 35: 46, 108: 47, 89: 48, 92: 49, 51: 50, 65: 51, 73: 52, 124: 53, 119: 54, 90: 55, 45: 56, 47: 57, 75: 58, 60: 59, 95: 60, 96: 61, 91: 62, 63: 63, 111: 64, 46: 65, 101: 66, 36: 67, 120: 68, 104: 69, 97: 70, 42: 71, 55: 72, 99: 73, 113: 74, 53: 75, 112: 76, 122: 77, 114: 78, 106: 79, 33: 80, 79: 81, 74: 82, 121: 83, 61: 84, 85: 85, 76: 86, 49: 87, 93: 88, 82: 89, 40: 90, 117: 91, 105: 92, 62: 93, 94: 94, 39: 95, 78: 96, 86: 97, 109: 98, 41: 99, 66: 100, 70: 101, 48: 102, 58: 103, 88: 104, 103: 105, 64: 106, 115: 107, 80: 108, 81: 109, 43: 110, 123: 111, 67: 112, 56: 113, 107: 114, 110: 115, 52: 116, 118: 117, 77: 118, 126: 119, 87: 120, 98: 121, 34: 122, 71: 123, 38: 124, 37: 125, 54: 126, };
+            const ENCODE_P = { 33: 125, 34: 84, 35: 44, 36: 102, 37: 57, 38: 68, 39: 50, 40: 69, 41: 59, 42: 83, 43: 100, 44: 72, 45: 116, 46: 35, 47: 108, 48: 89, 49: 92, 50: 51, 51: 65, 52: 73, 53: 124, 54: 119, 55: 90, 56: 45, 57: 47, 58: 75, 59: 60, 60: 95, 61: 96, 62: 91, 63: 63, 64: 111, 65: 46, 66: 101, 67: 36, 68: 120, 69: 104, 70: 97, 71: 42, 72: 55, 73: 99, 74: 113, 75: 53, 76: 112, 77: 122, 78: 114, 79: 106, 80: 33, 81: 79, 82: 74, 83: 121, 84: 61, 85: 85, 86: 76, 87: 49, 88: 93, 89: 82, 90: 40, 91: 117, 92: 105, 93: 62, 94: 94, 95: 39, 96: 78, 97: 86, 98: 109, 99: 41, 100: 66, 101: 70, 102: 48, 103: 58, 104: 88, 105: 103, 106: 64, 107: 115, 108: 80, 109: 81, 110: 43, 111: 123, 112: 67, 113: 56, 114: 107, 115: 110, 116: 52, 117: 118, 118: 77, 119: 126, 120: 87, 121: 98, 122: 34, 123: 71, 124: 38, 125: 37, 126: 54 };
+            const DECODE_P = { 125: 33, 84: 34, 44: 35, 102: 36, 57: 37, 68: 38, 50: 39, 69: 40, 59: 41, 83: 42, 100: 43, 72: 44, 116: 45, 35: 46, 108: 47, 89: 48, 92: 49, 51: 50, 65: 51, 73: 52, 124: 53, 119: 54, 90: 55, 45: 56, 47: 57, 75: 58, 60: 59, 95: 60, 96: 61, 91: 62, 63: 63, 111: 64, 46: 65, 101: 66, 36: 67, 120: 68, 104: 69, 97: 70, 42: 71, 55: 72, 99: 73, 113: 74, 53: 75, 112: 76, 122: 77, 114: 78, 106: 79, 33: 80, 79: 81, 74: 82, 121: 83, 61: 84, 85: 85, 76: 86, 49: 87, 93: 88, 82: 89, 40: 90, 117: 91, 105: 92, 62: 93, 94: 94, 39: 95, 78: 96, 86: 97, 109: 98, 41: 99, 66: 100, 70: 101, 48: 102, 58: 103, 88: 104, 103: 105, 64: 106, 115: 107, 80: 108, 81: 109, 43: 110, 123: 111, 67: 112, 56: 113, 107: 114, 110: 115, 52: 116, 118: 117, 77: 118, 126: 119, 87: 120, 98: 121, 34: 122, 71: 123, 38: 124, 37: 125, 54: 126 };
+
             function encode_compress(obj) {
                 obj = JSON.parse(JSON.stringify(obj));
-                let data = [];
-                let dataMap = new Map();
+                let data = [], dataMap = new Map();
                 function getData(d) {
                     let index = JSON.stringify(d);
-                    if (!dataMap.has(index)) {
-                        let id = data.length;
-                        data.push(d);
-                        dataMap.set(index, id);
-                    }
+                    if (!dataMap.has(index)) { let id = data.length; data.push(d); dataMap.set(index, id); }
                     return dataMap.get(index);
                 }
                 function transverse(obj) {
                     if (obj !== null && typeof obj === 'object') {
-                        if (obj instanceof Array) {
-                            return getData(obj.map(transverse));
-                        } else {
-                            let keys = getData([{}, ...Object.keys(obj).map(transverse)]);
-                            return getData([keys, ...Object.values(obj).map(transverse)]);
-                        }
-                    } else {
-                        return getData(obj);
-                    }
+                        if (obj instanceof Array) return getData(obj.map(transverse));
+                        else { let keys = getData([{}, ...Object.keys(obj).map(transverse)]); return getData([keys, ...Object.values(obj).map(transverse)]); }
+                    } else return getData(obj);
                 }
                 transverse(obj);
                 return data;
             }
             function decode_compress(data) {
                 data = JSON.parse(JSON.stringify(data));
-                function isKeys(arr) {
-                    return arr instanceof Array && typeof arr[0] === 'object' && !(arr[0] instanceof Array);
-                }
+                function isKeys(arr) { return arr instanceof Array && typeof arr[0] === 'object' && !(arr[0] instanceof Array); }
                 function getObj(index) {
                     let x = data[index];
                     if (x instanceof Array) {
@@ -303,29 +777,19 @@
                             let [, ...values] = x;
                             values = values.map(getObj);
                             let f = Object.create(null);
-                            for (let i = 0; i < keys.length; i++) {
-                                f[keys[i]] = values[i];
-                            }
+                            for (let i = 0; i < keys.length; i++) f[keys[i]] = values[i];
                             return f;
-                        } else {
-                            return x.map(getObj);
-                        }
-                    } else {
-                        return x;
-                    }
+                        } else return x.map(getObj);
+                    } else return x;
                 }
                 return getObj(data.length - 1);
             }
             function encodeArr(arr) {
-                function encodeChar(x) {
-                    return String.fromCharCode(ENCODE_P[x + 33]);
-                }
+                function encodeChar(x) { return String.fromCharCode(ENCODE_P[x + 33]); }
                 return arr.map((x, i) => encodeChar((x + Number(i) * (C - 21)) % C)).join('');
             }
             function decodeArr(str) {
-                function decodeChar(ch) {
-                    return DECODE_P[ch.charCodeAt(0)] - 33;
-                }
+                function decodeChar(ch) { return DECODE_P[ch.charCodeAt(0)] - 33; }
                 return str.split('').map((ch, i) => (decodeChar(ch) + Number(i) * 21) % C);
             }
             const FLAG_COMPRESS = '-';
@@ -333,35 +797,31 @@
                 encode(x) {
                     let arr = decodeArr(JSON.stringify(encode_compress(x)));
                     let l = arr.length;
-                    for (let i = l - 1; i > 0; i--) {
-                        arr[i] = (arr[i] - arr[i - 1] + C) % C;
-                    }
+                    for (let i = l - 1; i > 0; i--) arr[i] = (arr[i] - arr[i - 1] + C) % C;
                     return PADDING + encodeArr(arr) + PADDING + FLAG_COMPRESS;
                 },
                 decode(x) {
                     let compressed = false;
-                    if (x[x.length - 1] === FLAG_COMPRESS) {
-                        x = x.slice(0, -1);
-                        compressed = true;
-                    }
+                    if (x[x.length - 1] === FLAG_COMPRESS) { x = x.slice(0, -1); compressed = true; }
                     let arr = decodeArr(x.slice(PADDING.length, -PADDING.length));
                     let l = arr.length;
-                    for (let i = 1; i < l; i++) {
-                        arr[i] = (arr[i] + arr[i - 1]) % C;
-                    }
+                    for (let i = 1; i < l; i++) arr[i] = (arr[i] + arr[i - 1]) % C;
                     let result = JSON.parse(encodeArr(arr));
-                    if (compressed) { result = decode_compress(result); }
+                    if (compressed) result = decode_compress(result);
                     return result;
                 },
             };
         })();
+
+        // ---- URL 参数读取 ----
         function getPar(par) {
             var local_url = document.location.href;
             var get = local_url.indexOf(par + "=");
             if (get == -1) return false;
-            var get_par = local_url.slice(par.length + get + 1);
-            return get_par;
+            return local_url.slice(par.length + get + 1);
         }
+
+        // ---- 输入验证 ----
         function check(a, b) {
             for (var i = 0; i < a.length; i++)
                 if (a[i] > b[i] || a[i] < 0) return 0;
@@ -369,133 +829,152 @@
                 if (Math.abs(a[i] * 10 - Math.round(a[i] * 10, 0)) > 1e-7) return 0;
             return 1;
         }
+
+        // ---- 评分 ----
         function work(s, a, b) {
-            var p = a / b; var col = "color:"; var txt = "";
-            /*if (p<0.6) col+="grey",txt="低练";
-            else if (p<0.75) col+="green",txt="普通";
-            else if (p<0.85) col+="blue",txt="中练";
-            else if (p<0.93) col+="purple",txt="高练";
-            else if (p<0.96) col+="gold",txt="小满";
-            else if (p<0.98) col+="red",txt="中满";
-            else col+="brown",txt="满中满"*/
-            if (p < 0.6) col += "grey", txt = "超低练";
-            else if (p < 0.75) col += "green", txt = "低练";
-            else if (p < 0.85) col += "blue", txt = "普通";
-            else if (p < 0.93) col += "purple", txt = "中练";
-            else if (p < 0.96) col += "gold", txt = "高练";
-            else if (p < 0.98) col += "red", txt = "小满";
-            else if (p < 0.995) col += "pink", txt = "中满";
-            else col += "brown", txt = "满中满";
+            var p = a / b, col = "color:", txt = "";
+            for (var i = 0; i < CONFIG.scoreThresholds.length; i++) {
+                if (p < CONFIG.scoreThresholds[i][0]) { col += CONFIG.scoreThresholds[i][1]; txt = CONFIG.scoreThresholds[i][2]; break; }
+            }
             s.innerHTML = txt;
             s.style = col;
         }
+
+        // ---- 剪贴板 ----
         const copyText = async (val) => {
             if (navigator.clipboard && navigator.permissions) {
                 await navigator.clipboard.writeText(val);
             } else {
                 const textArea = document.createElement('textArea');
                 textArea.value = val;
-                textArea.style.width = 0;
-                textArea.style.position = 'fixed';
-                textArea.style.left = '-999px';
-                textArea.style.top = '10px';
+                textArea.style.width = 0; textArea.style.position = 'fixed'; textArea.style.left = '-999px'; textArea.style.top = '10px';
                 textArea.setAttribute('readonly', 'readonly');
                 document.body.appendChild(textArea);
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
             }
-        }
+        };
+
         var shareinfo = "";
+
         function copy2pb() {
             copyText(shareinfo);
-            document.getElementById("stat2").innerHTML = "复制成功！";
+            document.getElementById("stat2").innerHTML = "已复制";
             document.getElementById("stat2").style = "color:green";
         }
-        const maxInd = [[2, 2, 2], [9, 4, 3], [10, 5, 3], [11, 6, 4]];
+
+        // ---- 填充空项 ----
         function setEmpty() {
-            for (var i = 0; i < maxInd[3][0]; ++i) if (document.getElementById("a" + String(i + 1)).value == "") document.getElementById("a" + String(i + 1)).value = Number(document.getElementById("a" + String(i + 1) + "m").innerHTML);
-            for (var i = 0; i < maxInd[3][1]; ++i) if (document.getElementById("h" + String(i + 1)).value == "") document.getElementById("h" + String(i + 1)).value = Number(document.getElementById("h" + String(i + 1) + "m").innerHTML);
-            for (var i = 0; i < maxInd[3][2]; ++i) if (document.getElementById("d" + String(i + 1)).value == "") document.getElementById("d" + String(i + 1)).value = Number(document.getElementById("d" + String(i + 1) + "m").innerHTML);
+            for (var i = 0; i < maxInd[3][0]; ++i)
+                if (document.getElementById("a" + (i + 1)).value == "")
+                    document.getElementById("a" + (i + 1)).value = Number(document.getElementById("a" + (i + 1) + "m").innerHTML);
+            for (var i = 0; i < maxInd[3][1]; ++i)
+                if (document.getElementById("h" + (i + 1)).value == "")
+                    document.getElementById("h" + (i + 1)).value = Number(document.getElementById("h" + (i + 1) + "m").innerHTML);
+            for (var i = 0; i < maxInd[3][2]; ++i)
+                if (document.getElementById("d" + (i + 1)).value == "")
+                    document.getElementById("d" + (i + 1)).value = Number(document.getElementById("d" + (i + 1) + "m").innerHTML);
         }
+
+        // ---- 核心计算 ----
         function calc() {
             var k = Number(document.querySelector('input[name="options"]:checked').value);
-            if (k == 0) document.getElementById("mode").innerHTML = "羁绊模式";
-            else if (k == 1) document.getElementById("mode").innerHTML = "经典模式";
-            else if (k == 2) document.getElementById("mode").innerHTML = "扩展模式 I";
-            else if (k == 3) document.getElementById("mode").innerHTML = "扩展模式 II";
-            var am = new Array(maxInd[k][0]); var hm = new Array(maxInd[k][1]); var dm = new Array(maxInd[k][2]);
-            //Get the max value of each blank
-            for (var i = 0; i < maxInd[k][0]; ++i) am[i] = Number(document.getElementById("a" + String(i + 1) + "m").innerHTML);
-            for (var i = 0; i < maxInd[k][1]; ++i) hm[i] = Number(document.getElementById("h" + String(i + 1) + "m").innerHTML);
-            for (var i = 0; i < maxInd[k][2]; ++i) dm[i] = Number(document.getElementById("d" + String(i + 1) + "m").innerHTML);
-            var amax = eval(am.join("+"));
-            var dmax = eval(dm.join("+"));
-            var hmax = eval(hm.join("+"));
-            var a = new Array(maxInd[k][0]); var h = new Array(maxInd[k][1]); var d = new Array(maxInd[k][2]);
-            //Get the current value of each blank
-            for (var i = 0; i < maxInd[k][0]; ++i) a[i] = Number(document.getElementById("a" + String(i + 1)).value);
-            for (var i = 0; i < maxInd[k][1]; ++i) h[i] = Number(document.getElementById("h" + String(i + 1)).value);
-            for (var i = 0; i < maxInd[k][2]; ++i) d[i] = Number(document.getElementById("d" + String(i + 1)).value);
-            var asum = eval(a.join("+"));
-            var dsum = eval(d.join("+"));
-            var hsum = eval(h.join("+"));
+            document.getElementById("mode").innerHTML = CONFIG.modeNames[k];
+
+            var am = new Array(maxInd[k][0]), hm = new Array(maxInd[k][1]), dm = new Array(maxInd[k][2]);
+            for (var i = 0; i < maxInd[k][0]; ++i) am[i] = Number(document.getElementById("a" + (i + 1) + "m").innerHTML);
+            for (var i = 0; i < maxInd[k][1]; ++i) hm[i] = Number(document.getElementById("h" + (i + 1) + "m").innerHTML);
+            for (var i = 0; i < maxInd[k][2]; ++i) dm[i] = Number(document.getElementById("d" + (i + 1) + "m").innerHTML);
+            var amax = eval(am.join("+")), dmax = eval(dm.join("+")), hmax = eval(hm.join("+"));
+
+            var a = new Array(maxInd[k][0]), h = new Array(maxInd[k][1]), d = new Array(maxInd[k][2]);
+            for (var i = 0; i < maxInd[k][0]; ++i) a[i] = Number(document.getElementById("a" + (i + 1)).value);
+            for (var i = 0; i < maxInd[k][1]; ++i) h[i] = Number(document.getElementById("h" + (i + 1)).value);
+            for (var i = 0; i < maxInd[k][2]; ++i) d[i] = Number(document.getElementById("d" + (i + 1)).value);
+            var asum = eval(a.join("+")), dsum = eval(d.join("+")), hsum = eval(h.join("+"));
+
             if (check(a, am) && check(d, dm) && check(h, hm)) {
                 document.getElementById("stat").innerHTML = "计算成功";
-                document.getElementById("stat").style = "color:green;";
+                document.getElementById("stat").className = "status-msg success";
             } else {
-                document.getElementById("stat").innerHTML = "计算失败。失败原因：参与运算的数值超出限制（请检查数值大小与小数位数）";
-                document.getElementById("stat").style = "color:red;";
+                document.getElementById("stat").innerHTML = "计算失败：参与运算的数值超出限制（请检查数值大小与小数位数）";
+                document.getElementById("stat").className = "status-msg error";
+                // 清空旧结果
+                document.getElementById("ca1").innerHTML =
+                document.getElementById("ca2").innerHTML =
+                document.getElementById("ca3").innerHTML =
+                document.getElementById("cd1").innerHTML =
+                document.getElementById("cd2").innerHTML =
+                document.getElementById("cd3").innerHTML =
+                document.getElementById("ch1").innerHTML =
+                document.getElementById("ch2").innerHTML =
+                document.getElementById("ch3").innerHTML =
+                document.getElementById("cs1").innerHTML =
+                document.getElementById("cs2").innerHTML =
+                document.getElementById("cs3").innerHTML = "-";
+                document.getElementById("ca4").innerHTML =
+                document.getElementById("cd4").innerHTML =
+                document.getElementById("ch4").innerHTML =
+                document.getElementById("cs4").innerHTML = "-";
+                document.getElementById("share").innerHTML = "尚未计算";
+                shareinfo = "";
                 return;
             }
 
             document.getElementById("ca1").innerHTML = asum.toFixed(1);
             document.getElementById("ca2").innerHTML = amax.toFixed(1);
-            document.getElementById("ca3").innerHTML = (asum / amax * 100).toFixed(2).toString() + "%";
+            document.getElementById("ca3").innerHTML = (asum / amax * 100).toFixed(2) + "%";
             document.getElementById("cd1").innerHTML = dsum.toFixed(1);
             document.getElementById("cd2").innerHTML = dmax.toFixed(1);
-            document.getElementById("cd3").innerHTML = (dsum / dmax * 100).toFixed(2).toString() + "%";
+            document.getElementById("cd3").innerHTML = (dsum / dmax * 100).toFixed(2) + "%";
             document.getElementById("ch1").innerHTML = hsum.toFixed(1);
             document.getElementById("ch2").innerHTML = hmax.toFixed(1);
-            document.getElementById("ch3").innerHTML = (hsum / hmax * 100).toFixed(2).toString() + "%";
+            document.getElementById("ch3").innerHTML = (hsum / hmax * 100).toFixed(2) + "%";
             document.getElementById("cs1").innerHTML = (asum + dsum + hsum).toFixed(1);
             document.getElementById("cs2").innerHTML = (amax + dmax + hmax).toFixed(1);
-            document.getElementById("cs3").innerHTML = ((asum + dsum + hsum) / (amax + dmax + hmax) * 100).toFixed(2).toString() + "%";
+            document.getElementById("cs3").innerHTML = ((asum + dsum + hsum) / (amax + dmax + hmax) * 100).toFixed(2) + "%";
+
             work(document.getElementById("ca4"), asum, amax);
             work(document.getElementById("cd4"), dsum, dmax);
             work(document.getElementById("ch4"), hsum, hmax);
             work(document.getElementById("cs4"), asum + dsum + hsum, amax + dmax + hmax);
 
+            // 分享数据
             a = new Array(maxInd[3][0]); h = new Array(maxInd[3][1]); d = new Array(maxInd[3][2]);
-            for (var i = 0; i < maxInd[3][0]; ++i) a[i] = Number(document.getElementById("a" + String(i + 1)).value);
-            for (var i = 0; i < maxInd[3][1]; ++i) h[i] = Number(document.getElementById("h" + String(i + 1)).value);
-            for (var i = 0; i < maxInd[3][2]; ++i) d[i] = Number(document.getElementById("d" + String(i + 1)).value);
+            for (var i = 0; i < maxInd[3][0]; ++i) a[i] = Number(document.getElementById("a" + (i + 1)).value);
+            for (var i = 0; i < maxInd[3][1]; ++i) h[i] = Number(document.getElementById("h" + (i + 1)).value);
+            for (var i = 0; i < maxInd[3][2]; ++i) d[i] = Number(document.getElementById("d" + (i + 1)).value);
             var savedata = a.concat(h.concat(d));
-            console.log(savedata);
             var sd = encode.call(this, savedata);
-
             document.getElementById("share").innerHTML = shareinfo = "crystal203.github.io/gt.html?s=" + encodeURI(sd);
         }
-        checkUpd();
-        getShare();
+
+        // ---- 过期检查 ----
         function checkUpd() {
-            d = Math.ceil((new Date() - new Date(upd_date)) / 1000 / 3600 / 24);
-            if (d >= 14) {
-                alert("注意：距离计算器最近一次更新已达到 " + String(d) + " 天！（按确定进入计算器）");
+            var d = Math.ceil((new Date() - new Date(upd_date)) / 1000 / 3600 / 24);
+            if (d >= CONFIG.staleThresholdDays) {
+                alert("注意：距离计算器最近一次更新已达到 " + d + " 天！\n\n数据可能已过时，请留意最新版本。\n（按确定进入计算器）");
             }
         }
+
+        // ---- 读取分享链接 ----
         function getShare() {
-            s = decodeURI(getPar("s"));
+            var s = decodeURI(getPar("s"));
             if (s !== 'false') {
-                console.log(s);
-                f = decode.call(this, s);
-                console.log(f);
-                for (var i = 0; i < maxInd[3][0]; ++i) document.getElementById("a" + String(i + 1)).value = f[i];
-                for (var i = 0; i < maxInd[3][1]; ++i) document.getElementById("h" + String(i + 1)).value = f[i + maxInd[3][0]];
-                for (var i = 0; i < maxInd[3][2]; ++i) document.getElementById("d" + String(i + 1)).value = f[i + maxInd[3][1] + maxInd[3][0]];
+                var f = decode.call(this, s);
+                for (var i = 0; i < maxInd[3][0]; ++i) document.getElementById("a" + (i + 1)).value = f[i];
+                for (var i = 0; i < maxInd[3][1]; ++i) document.getElementById("h" + (i + 1)).value = f[i + maxInd[3][0]];
+                for (var i = 0; i < maxInd[3][2]; ++i) document.getElementById("d" + (i + 1)).value = f[i + maxInd[3][1] + maxInd[3][0]];
                 calc();
             }
         }
+
+        // ---- 初始化 ----
+        buildInputTable();
+        setHeaderInfo();
+        checkUpd();
+        getShare();
     </script>
 </body>
 
