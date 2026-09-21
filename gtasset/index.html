@@ -217,6 +217,10 @@
       <label>背景色:
         <input type="color" id="exportBgColor" value="#00ff00">
       </label>
+
+      <label>透明背景:
+        <input type="checkbox" id="exportTransparentBg">
+      </label>
     </div>
 
     <div class="export-group">
@@ -236,7 +240,7 @@
   </div>
 
   <script src="spine-webgl.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gifshot@0.3.2/build/gifshot.min.js"></script>
+  <script src="gifshot.js"></script>
   <script>
     const canvas = document.getElementById("canvas");
     const gl = canvas.getContext("webgl", { alpha: false });
@@ -658,7 +662,11 @@
       tempCanvas.width = width;
       tempCanvas.height = height;
       const tempCtx = tempCanvas.getContext("2d");
+      const flipCanvas = document.createElement("canvas");
+      const flipCtx = flipCanvas.getContext("2d");
       const frameList = [];
+      const rgbaFrames = [];
+      const transparentBg = document.getElementById("exportTransparentBg").checked;
       const bgColorHex = document.getElementById("exportBgColor").value;
       const r = parseInt(bgColorHex.slice(1, 3), 16) / 255;
       const g = parseInt(bgColorHex.slice(3, 5), 16) / 255;
@@ -668,16 +676,95 @@
         state.update((1 / fps) * speed);
         state.apply(skeleton);
         skeleton.updateWorldTransform();
-        gl.clearColor(r, g, b, 1);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        renderer.begin();
-        renderer.drawSkeleton(skeleton, true);
-        renderer.end();
-        tempCtx.clearRect(0, 0, width, height);
-        tempCtx.drawImage(canvas, 0, 0, width, height);
-        frameList.push(tempCanvas.toDataURL("image/png"));
+        if (transparentBg) {
+          // 两次渲染计算真实透明度：分别以黑底、白底渲染，由色差反推 alpha。
+          // 用 gl.readPixels 直读帧缓冲，避免 drawImage 读取 WebGL 画布被缓存导致黑白相同。
+          const cw = canvas.width, ch = canvas.height;
+          const cn = cw * ch * 4;
+
+          gl.clearColor(0, 0, 0, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          renderer.begin();
+          renderer.drawSkeleton(skeleton, true);
+          renderer.end();
+          const blackData = new Uint8Array(cn);
+          gl.readPixels(0, 0, cw, ch, gl.RGBA, gl.UNSIGNED_BYTE, blackData);
+
+          gl.clearColor(1, 1, 1, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          renderer.begin();
+          renderer.drawSkeleton(skeleton, true);
+          renderer.end();
+          const whiteData = new Uint8Array(cn);
+          gl.readPixels(0, 0, cw, ch, gl.RGBA, gl.UNSIGNED_BYTE, whiteData);
+
+          const rgba = new Uint8Array(cn);
+          for (let i = 0; i < cn; i += 4) {
+            const diff = ((whiteData[i] - blackData[i]) + (whiteData[i + 1] - blackData[i + 1]) + (whiteData[i + 2] - blackData[i + 2])) / 3;
+            const a = Math.max(0, Math.min(255, Math.round(255 - diff)));
+            rgba[i + 3] = a;
+            if (a > 0) {
+              rgba[i] = Math.min(255, Math.round(blackData[i] * 255 / a));
+              rgba[i + 1] = Math.min(255, Math.round(blackData[i + 1] * 255 / a));
+              rgba[i + 2] = Math.min(255, Math.round(blackData[i + 2] * 255 / a));
+            }
+          }
+          // readPixels 是自下而上，翻转后缩放到导出尺寸
+          flipCanvas.width = cw;
+          flipCanvas.height = ch;
+          const img = flipCtx.createImageData(cw, ch);
+          for (let y = 0; y < ch; y++) {
+            img.data.set(rgba.subarray((ch - 1 - y) * cw * 4, (ch - y) * cw * 4), y * cw * 4);
+          }
+          flipCtx.putImageData(img, 0, 0);
+          tempCtx.clearRect(0, 0, width, height);
+          tempCtx.drawImage(flipCanvas, 0, 0, width, height);
+          const frameData = tempCtx.getImageData(0, 0, width, height).data;
+          rgbaFrames.push(frameData.buffer.slice(frameData.byteOffset, frameData.byteOffset + frameData.byteLength));
+        } else {
+          gl.clearColor(r, g, b, 1);
+          gl.clear(gl.COLOR_BUFFER_BIT);
+          renderer.begin();
+          renderer.drawSkeleton(skeleton, true);
+          renderer.end();
+          tempCtx.clearRect(0, 0, width, height);
+          tempCtx.drawImage(canvas, 0, 0, width, height);
+          frameList.push(tempCanvas.toDataURL("image/png"));
+        }
         if (++frame < frames) {
           requestAnimationFrame(captureFrame);
+        } else if (transparentBg) {
+          // 透明背景用 GIF（gifenc 编码：原生透明 + disposal 2，各查看器都能正常动画）
+          (async () => {
+            try {
+              const { GIFEncoder, quantize, applyPalette } = await import("./gifenc.esm.js");
+              const palette = quantize(new Uint8Array(rgbaFrames[0]), 256, { format: "rgba4444", oneBitAlpha: true });
+              const gif = GIFEncoder();
+              const delayMs = Math.round(1000 / fps);
+              for (let i = 0; i < rgbaFrames.length; i++) {
+                const index = applyPalette(new Uint8Array(rgbaFrames[i]), palette, "rgba4444");
+                gif.writeFrame(index, width, height, { palette: palette, transparent: true, transparentIndex: 0, delay: delayMs, dispose: 2, repeat: 0 });
+              }
+              const bytes = gif.bytes();
+              let binary = "";
+              for (let i = 0; i < bytes.length; i += 0x4000) {
+                binary += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x4000));
+              }
+              const dataUrl = "data:image/gif;base64," + btoa(binary);
+              const link = document.createElement("a");
+              link.href = dataUrl;
+              link.download = "spine_export.gif";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              btn.disabled = false;
+              btn.textContent = "导出 GIF";
+            } catch (e) {
+              btn.disabled = false;
+              btn.textContent = "导出 GIF";
+              alert("导出失败: " + (e && e.message ? e.message : e));
+            }
+          })();
         } else {
           gifshot.createGIF({
             images: frameList,
