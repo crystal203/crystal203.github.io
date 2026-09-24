@@ -134,6 +134,7 @@ function createSimUnit(unitRole, index, side, xpos, ypos, seiraDebuffed = false)
         resistC: unitRole.resistC ?? Infinity,
         simRaduis: unitRole.simRadius ?? 0,
         tauntRadius:  Number(unitRole.tauntRadius) + enemyBonus,
+        dashTauntRadius: Number(unitRole.dashTauntRadius) || 0,
         collisionSize: collisionSize,
     };
     let _tauntTime = 10;
@@ -172,12 +173,20 @@ function createSimUnit(unitRole, index, side, xpos, ypos, seiraDebuffed = false)
         lastTauntTime: -10,
         hasUsedSkill: false,
         tauntTime: _tauntTime,
+        dashTauntUsed: false,
+        dashTauntCenter: null,
+        dashTauntHit: null,
+        _tauntedThisFrame: new Set(),
         startDelay: unitRole.startDelay || 0,
         remainingDelay: remainingDelay,
         seiraDebuffed: seiraDebuffed,
     }
     return simUnit;
 }
+function enemyHasSeira(simUnits, unit) {
+    return simUnits.some(u => u.side !== unit.side && u.role.short === "Seira");
+}
+
 function genTarget(simUnits, u) {
     const blueEnemies = simUnits.filter(u => u.side === 'red');
     const redEnemies = simUnits.filter(u => u.side === 'blue');
@@ -251,6 +260,60 @@ function applyTaunt(tank, allUnits) {
     });
 }
 
+function findBulletHitUnit(tank, allUnits) {
+    if (!tank.target) return null;
+    const ax = tank.pos[1];
+    const ay = tank.pos[0];
+    const dx = tank.target.pos[1] - ax;
+    const dy = tank.target.pos[0] - ay;
+    const a = dx * dx + dy * dy;
+    if (a < 1e-9) return tank.target;
+    let hit = tank.target;
+    let bestT = Infinity;
+    allUnits.forEach(v => {
+        if (v.side === tank.side) return;
+        const r = (v.role.collisionSize || 0.8) / 2;
+        const fx = ax - v.pos[1];
+        const fy = ay - v.pos[0];
+        const b = 2 * (fx * dx + fy * dy);
+        const c = fx * fx + fy * fy - r * r;
+        const disc = b * b - 4 * a * c;
+        if (disc < 0) return;
+        let t = (-b - Math.sqrt(disc)) / (2 * a);
+        if (t < 0) t = 0;
+        if (t > 1) return;
+        if (t < bestT) {
+            bestT = t;
+            hit = v;
+        }
+    });
+    return hit;
+}
+
+function applyDashTaunt(tank, allUnits) {
+    if (!tank.target) return false;
+    const radius = tank.role.dashTauntRadius;
+    if (!(radius > 0)) return false;
+    if (tank.dashTauntUsed) return false;
+    const hitUnit = findBulletHitUnit(tank, allUnits);
+    if (!hitUnit) return false;
+    const center = [hitUnit.pos[0], hitUnit.pos[1]];
+    allUnits.forEach(u => {
+        if (u.side === tank.side) return;
+        const dx = u.pos[1] - center[1];
+        const dy = u.pos[0] - center[0];
+        const dist = Math.hypot(dx, dy);
+        if (dist <= radius + 1e-5 && !u._tauntedThisFrame.has(tank.id)) {
+            u.markers[tank.index] += 1;
+            u._tauntedThisFrame.add(tank.id);
+        }
+    });
+    tank.dashTauntUsed = true;
+    tank.dashTauntCenter = center;
+    tank.dashTauntHit = hitUnit;
+    return true;
+}
+
 function startDash(unit, simUnits) {
     if (!unit.target) return;
     if (unit.role.skillDashSpeed === 0) return;
@@ -318,6 +381,9 @@ function tick(simState, dt = 1/12) {
             u.skillTimer -= dt;
             if (u.skillTimer <= 0) {
                 u.hasUsedSkill = true;
+                if (u.role.dashTauntRadius > 0 && (window.SIM_CONFIG || {}).erinaTaunt !== false) {
+                    applyDashTaunt(u, simUnits);
+                }
                 startDash(u, simUnits);
             }
         }
@@ -393,15 +459,17 @@ function tick(simState, dt = 1/12) {
         if (u.role.skillRange > 0 && !u.hasUsedSkill && dist <= u.role.skillRange && u.skillTimer <= 0) {
             u.state = 'CASTING';
             u.skillTimer = u.role.skillCastTime;
-            for (let i = 0; i < 8; ++i) {
-                if (u.markers[i] >= u.role.resistC) {
-                    const tank = simUnits.filter(t =>
-                        t.side !== u.side &&
-                        t.index === i
-                    );
-                    if (tank.length > 0) {
-                        const newTarget = findNearestForSim(u, tank);
-                        if (newTarget) u.target = newTarget;
+            if (!enemyHasSeira(simUnits, u)) {
+                for (let i = 0; i < 8; ++i) {
+                    if (u.markers[i] >= u.role.resistC) {
+                        const tank = simUnits.filter(t =>
+                            t.side !== u.side &&
+                            t.index === i
+                        );
+                        if (tank.length > 0) {
+                            const newTarget = findNearestForSim(u, tank);
+                            if (newTarget) u.target = newTarget;
+                        }
                     }
                 }
             }
@@ -432,7 +500,7 @@ function tick(simState, dt = 1/12) {
                 });
                 applyTaunt(u, simUnits);
             }
-            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive) && !u.seiraDebuffed) {
+            if (!(u.target.role.tauntRadius > 0 && u.target.tauntActive) && !enemyHasSeira(simUnits, u)) {
                 let oldTarget = u.target;
                 u = genTarget(simUnits, u);
                 if (oldTarget !== u.target) {
@@ -626,6 +694,23 @@ function renderSimulation(simState) {
             const ring = document.createElementNS(svgNS, "circle");
             ring.setAttribute("cx", x);
             ring.setAttribute("cy", y);
+            ring.setAttribute("r", radiusPx);
+            ring.setAttribute("fill", "none");
+            if (u.side === "blue") ring.setAttribute("stroke", "#0098FF");
+            if (u.side === "red") ring.setAttribute("stroke", "#FF0098");
+            ring.setAttribute("stroke-width", "1.5");
+            ring.setAttribute("stroke-dasharray", "3,3");
+            svg.appendChild(ring);
+        }
+
+        if (u.dashTauntUsed && u.role.dashTauntRadius > 0) {
+            const [cr, cc] = u.dashTauntHit ? u.dashTauntHit.pos : (u.dashTauntCenter || u.pos);
+            const cx = offsetX + (cc - 0.5) * (cellW + cellGap) + cellGap / 2;
+            const cy = offsetY + (cr - 0.5) * (cellH + cellGap) + cellGap / 2;
+            const radiusPx = u.role.dashTauntRadius * (cellW + cellGap);
+            const ring = document.createElementNS(svgNS, "circle");
+            ring.setAttribute("cx", cx);
+            ring.setAttribute("cy", cy);
             ring.setAttribute("r", radiusPx);
             ring.setAttribute("fill", "none");
             if (u.side === "blue") ring.setAttribute("stroke", "#0098FF");

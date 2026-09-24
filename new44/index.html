@@ -930,6 +930,12 @@
                         </label>
                     </div>
                 </div>
+                <div style="background: white; padding: 12px 16px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                    <label style="font-weight: 600; color: #607D8B; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-bullhorn"></i> 开启埃里娜嘲讽
+                        <input type="checkbox" id="erinaTaunt" checked style="margin-top: 6px; accent-color: #607D8B;">
+                    </label>
+                </div>
             </div>
         </div>
         <div class="info-panel" id="infoPanel">
@@ -1039,7 +1045,7 @@
                 { name: "贝丝", type: "战士", ai: "射手刺客ai", short: "Beth", color: "#9C27B0", 
                     speed: 2.5 * 1.7, reach: 0.2, skillRange: 4.00, skillCastTime: 0.66, skillDashDist: 4.00, skillDashSpeed: 10.00, resistA: 1, resistB: 2, resistC: 1 },
                 { name: "埃里娜", type: "坦克", ai: "近战ai", short: "Erina", color: "#607D8B",
-                    speed: 2.5 * 1.13, reach: 0.2, skillRange: 4.25, tauntRadius: 0.00, skillCastTime: 0.08, skillDashDist: 1.00, skillDashSpeed: 10.00,
+                    speed: 2.5 * 1.13, reach: 0.2, skillRange: 4.25, tauntRadius: 0.00, dashTauntRadius: 5.00, skillCastTime: 0.08, skillDashDist: 1.00, skillDashSpeed: 10.00,
                     resistA: 2, resistB: 3, resistC: 1, skillDashDummy: 0.30 },
                 { name: "艾丝黛尔", type: "射手", ai: "近战ai", short: "Estel", color: "#795548",
                     speed: 2.5, reach: 7.00, resistA: 1, resistB: 2, resistC: 100 },
@@ -2478,8 +2484,13 @@
                 window.SIM_CONFIG = window.SIM_CONFIG || {};
                 window.SIM_CONFIG.collisionSize = val;
             });
+            document.getElementById('erinaTaunt').addEventListener('change', function() {
+                window.SIM_CONFIG = window.SIM_CONFIG || {};
+                window.SIM_CONFIG.erinaTaunt = this.checked;
+            });
             document.getElementById('enemyTauntBonus').dispatchEvent(new Event('input'));
             document.getElementById('collisionSize').dispatchEvent(new Event('input'));
+            document.getElementById('erinaTaunt').dispatchEvent(new Event('change'));
     </script>
 </body>
 
