@@ -253,6 +253,7 @@
         .ps-item {
             display: flex;
             align-items: baseline;
+            flex-wrap: wrap;
             gap: 8px;
             padding: 9px 12px;
             cursor: pointer;
@@ -309,6 +310,48 @@
         .ps-status.loading {
             color: var(--text-secondary);
         }
+
+        .ps-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 7px;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .ps-toggle input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .ps-item .ps-stats {
+            display: inline-flex;
+            gap: 4px;
+            margin-left: 6px;
+        }
+
+        .ps-stat {
+            display: inline-block;
+            min-width: 44px;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-style: normal;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .ps-stat.atk { background: #dc2626; }
+        .ps-stat.hp  { background: #059669; }
+        .ps-stat.def { background: #0891b2; }
+        .ps-stat.mastery { background: #7c3aed; }
+        .ps-stat:empty { display: none; }
 
         /* ---- 模式选择 ---- */
         .mode-selector {
@@ -644,6 +687,9 @@
                     <button class="btn-search" id="psBtn" onclick="doSearch()">搜索</button>
                     <div class="ps-dropdown" id="psList"></div>
                 </div>
+                <label class="ps-toggle">
+                    <input type="checkbox" id="psStats">同时显示三维练度
+                </label>
                 <div class="ps-status" id="psStatus"></div>
             </div>
         </div>
@@ -871,9 +917,9 @@
             { g: 'itemcollection', id: 30, cell: 'h3', mode: 'tier', label: '盾牌生命加成' },
             // 其余分层项
             { g: 'itemcollection', id: 69, cell: 'a4', mode: 'tier', label: '遗物攻击提升' },
-            { g: 'itemcollection', id: 47, cell: 'a5', mode: 'tier', label: '装备外观攻击' },
+            { g: 'itemcollection', id: 66, cell: 'a5', mode: 'tier', label: '武器外观攻击' },
             { g: 'itemcollection', id: 67, cell: 'a6', mode: 'tier', label: '超级时装攻击' },
-            { g: 'itemcollection', id: 66, cell: 'a7', mode: 'tier', label: '魔卡攻击提升' },
+            { g: 'itemcollection', id: 47, cell: 'a7', mode: 'tier', label: '魔卡攻击提升' },
             { g: 'itemcollection', id: 68, cell: 'a8', mode: 'tier', label: '周边商品攻击' },
             { g: 'itemcollection', id: 71, cell: 'a9', mode: 'tier', label: '宝石攻击提升' },
             { g: 'itemcollection', id: 32, cell: 'h4', mode: 'tier', label: '英雄时装生命' },
@@ -1154,6 +1200,8 @@
         //  玩家数据抓取
         // ############################################################
 
+        var psListSeq = 0;   // 候选列表代次，用于丢弃过期的异步练度结果
+
         function esc(s) {
             return String(s).replace(/[&<>"]/g, function (c) {
                 return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
@@ -1181,6 +1229,7 @@
 
         function closePsList() {
             var box = document.getElementById('psList');
+            psListSeq++;
             box.className = 'ps-dropdown';
             box.innerHTML = '';
         }
@@ -1230,17 +1279,45 @@
 
         function renderPsList(list) {
             var box = document.getElementById('psList');
+            var showStats = document.getElementById('psStats').checked;
+            var seq = ++psListSeq;
             box.innerHTML = '';
-            list.forEach(function (u) {
+
+            list.forEach(function (u, idx) {
                 var div = document.createElement('div');
                 div.className = 'ps-item';
                 div.innerHTML = '<span class="ps-name">' + esc(u.name) + '</span>'
                     + '<span class="ps-tag">#' + esc(u.hashtag) + '</span>'
-                    + '<span class="ps-uid">ID ' + esc(u.userid) + '</span>';
+                    + '<span class="ps-uid">ID ' + esc(u.userid) + '</span>'
+                    + (showStats
+                        ? '<i class="ps-stat mastery" id="psMast' + idx + '"></i>'
+                          + '<span class="ps-stats" id="psStat' + idx + '"></span>'
+                        : '');
                 div.onclick = function () { selectUser(u); };
                 box.appendChild(div);
             });
             box.className = 'ps-dropdown open';
+
+            if (!showStats) return;
+
+            // 只有勾选后才额外拉取每个候选人的数据，按「经典模式」算三维练度
+            list.forEach(function (u, idx) {
+                apiGet('type=user_card&user_id=' + encodeURIComponent(u.userid))
+                    .then(function (data) {
+                        if (seq !== psListSeq) return;   // 列表已刷新，丢弃过期结果
+                        if (!data || !data.userprofilecard) return;
+                        var card = data.userprofilecard;
+                        var mast = document.getElementById('psMast' + idx);
+                        if (mast) mast.textContent = 'Lv.' + masteryLevel(card);
+                        var p = cardPercent(card, 1);
+                        var el = document.getElementById('psStat' + idx);
+                        if (!el) return;
+                        el.innerHTML = '<i class="ps-stat atk">' + p[0].toFixed(1) + '%</i>'
+                            + '<i class="ps-stat hp">' + p[1].toFixed(1) + '%</i>'
+                            + '<i class="ps-stat def">' + p[2].toFixed(1) + '%</i>';
+                    })
+                    .catch(function () { });
+            });
         }
 
         function selectUser(u) {
@@ -1263,9 +1340,21 @@
             return level / 10;
         }
 
-        function applyCard(card, picked) {
-            var user = card.user || {};
-            var options = user.options || {};
+        // 守护者精通等级 = guardianmasteryskill 各技能等级之和
+        function masteryLevel(card) {
+            var sk = card.user && card.user.options
+                && card.user.options.guardianmastery
+                && card.user.options.guardianmastery.guardianmasteryskill;
+            if (!sk) return 0;
+            var sum = 0;
+            Object.keys(sk).forEach(function (k) { sum += Number(sk[k]) || 0; });
+            return sum;
+        }
+
+        // 把接口数据换算成「输入框 id → 百分比」
+        function cardCellValues(card) {
+            var options = (card.user && card.user.options) || {};
+            var values = {};
 
             // 每个映射项：单 id 直接取，ids 列表则取其中最高的 level（如 20~29 不同武器取最高）
             OPTION_MAP.forEach(function (m) {
@@ -1282,8 +1371,34 @@
                     }
                 });
 
+                values[m.cell] = toPercent(best === null ? 0 : best, m.mode);
+            });
+
+            return values;
+        }
+
+        // 按指定模式算出 [攻击, 生命, 防御] 三维百分比（只算不写表，供候选列表预览用）
+        function cardPercent(card, modeIndex) {
+            var values = cardCellValues(card);
+            return ['a', 'h', 'd'].map(function (prefix, ci) {
+                var n = maxInd[modeIndex][ci];
+                var sum = 0, max = 0;
+                for (var i = 1; i <= n; i++) {
+                    if (values[prefix + i] !== undefined) sum += values[prefix + i];
+                    var mEl = document.getElementById(prefix + i + 'm');
+                    if (mEl) max += Number(mEl.innerHTML);
+                }
+                return max ? sum / max * 100 : 0;
+            });
+        }
+
+        function applyCard(card, picked) {
+            var user = card.user || {};
+            var values = cardCellValues(card);
+
+            OPTION_MAP.forEach(function (m) {
                 var el = document.getElementById(m.cell);
-                if (el) el.value = toPercent(best === null ? 0 : best, m.mode).toFixed(1);
+                if (el) el.value = values[m.cell].toFixed(1);
             });
 
             var name = user.name || (picked && picked.name) || '';
@@ -1305,7 +1420,15 @@
             if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
         });
         document.addEventListener('click', function (e) {
-            if (!(e.target && e.target.closest && e.target.closest('.ps-row'))) closePsList();
+            if (!(e.target && e.target.closest && e.target.closest('.player-search'))) closePsList();
+        });
+
+        // 取消勾选时清掉已显示的练度，避免残留
+        document.getElementById('psStats').addEventListener('change', function () {
+            if (this.checked) return;
+            Array.prototype.forEach.call(document.querySelectorAll('#psList .ps-stats'), function (el) {
+                el.innerHTML = '';
+            });
         });
     </script>
 </body>
