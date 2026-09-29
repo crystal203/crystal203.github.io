@@ -187,129 +187,6 @@
             background: #fafaff;
         }
 
-        /* ---- 玩家数据抓取 ---- */
-        .player-search {
-            margin-bottom: 16px;
-        }
-
-        .ps-row {
-            display: flex;
-            gap: 8px;
-            position: relative;
-        }
-
-        /* 需要压过全局 input[type="text"] 与媒体查询里的宽度设定 */
-        .player-search input.ps-input {
-            flex: 1;
-            width: auto;
-            min-width: 0;
-            text-align: left;
-            padding: 9px 12px;
-            font-size: 0.88rem;
-        }
-
-        .btn-search {
-            flex-shrink: 0;
-            padding: 9px 20px;
-            border: none;
-            border-radius: var(--radius-sm);
-            background: var(--primary);
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 0.88rem;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all var(--transition);
-        }
-
-        .btn-search:hover {
-            background: var(--primary-dark);
-        }
-
-        .btn-search:disabled {
-            background: #cbd5e1;
-            cursor: not-allowed;
-        }
-
-        .ps-dropdown {
-            position: absolute;
-            top: calc(100% + 4px);
-            left: 0;
-            right: 0;
-            z-index: 50;
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-lg);
-            max-height: 264px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .ps-dropdown.open {
-            display: block;
-        }
-
-        .ps-item {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            padding: 9px 12px;
-            cursor: pointer;
-            border-bottom: 1px solid #f1f5f9;
-            font-size: 0.86rem;
-            transition: background var(--transition);
-        }
-
-        .ps-item:last-child {
-            border-bottom: none;
-        }
-
-        .ps-item:hover,
-        .ps-item.active {
-            background: var(--primary-light);
-        }
-
-        .ps-item .ps-name {
-            font-weight: 700;
-        }
-
-        .ps-item .ps-tag {
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            font-size: 0.78rem;
-            color: var(--primary);
-            background: #eef2ff;
-            padding: 1px 5px;
-            border-radius: 4px;
-        }
-
-        .ps-item .ps-uid {
-            margin-left: auto;
-            color: #94a3b8;
-            font-size: 0.74rem;
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-        }
-
-        .ps-status {
-            margin-top: 8px;
-            font-size: 0.82rem;
-            min-height: 1.3em;
-        }
-
-        .ps-status.ok {
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        .ps-status.err {
-            color: var(--danger);
-            font-weight: 600;
-        }
-
-        .ps-status.loading {
-            color: var(--text-secondary);
-        }
-
         /* ---- 模式选择 ---- */
         .mode-selector {
             display: flex;
@@ -634,20 +511,6 @@
             <div class="subtitle" id="headerSub"></div>
         </div>
 
-        <!-- 玩家数据抓取 -->
-        <div class="card">
-            <div class="card-title">一键导入玩家数据</div>
-            <div class="player-search">
-                <div class="ps-row">
-                    <input type="text" class="ps-input" id="psName" autocomplete="off" spellcheck="false"
-                        placeholder="输入游戏名">
-                    <button class="btn-search" id="psBtn" onclick="doSearch()">搜索</button>
-                    <div class="ps-dropdown" id="psList"></div>
-                </div>
-                <div class="ps-status" id="psStatus"></div>
-            </div>
-        </div>
-
         <!-- 输入区 -->
         <div class="card">
             <div class="card-title">属性输入</div>
@@ -826,7 +689,7 @@
                 { label: '周边图鉴',   atk: ['a8',   4.0], def: null,          hp: null           },
                 { label: '宝石图鉴',   atk: ['a9',   2.0], def: null,          hp: null           },
                 { label: '浮游城建筑', atk: ['a10', 10.0], def: null,          hp: ['h5', 10.0]  },
-                { label: '守护者等级', atk: ['a11', 39.9], def: ['d4', 10.8],  hp: ['h6', 10.8]  },
+                { label: '守护者等级', atk: ['a11', 39.8], def: ['d4', 10.7],  hp: ['h6', 10.7]  },
             ],
 
             // 评分阈值 [百分比上限, 颜色, 标签]
@@ -845,49 +708,6 @@
         // 别名（兼容原有代码）
         const upd_date = CONFIG.updateDate;
         const maxInd = CONFIG.maxInd;
-
-        // ############################################################
-        //  接口配置区域  -  修改以下映射即可适配新接口
-        // ############################################################
-        const API_BASE = 'https://open.ww2.ren/api/gt-top';
-        const API_CH = 'cn';
-
-        // options 里 level 与增益的换算（用接口自带的 count 累加值反推，320 个账号全部精确配平）：
-        //   mode='count'：增益 = level / 10        —— 英雄图鉴、道具羁绊（计数式）
-        //   mode='tier' ：增益 = level / 10 + 0.1  —— 分层式图鉴/时装/外观/守护者等级（99 → 10.0%）
-        //   mode='flat' ：增益 = level × 1         —— 浮游城建筑
-        const OPTION_MAP = [
-            // 英雄图鉴（攻击/防御/生命）
-            { g: 'herocollection', id: 36, cell: 'a1', mode: 'count', label: '英雄图鉴 攻击' },
-            { g: 'herocollection', id: 37, cell: 'd1', mode: 'count', label: '英雄图鉴 防御' },
-            { g: 'herocollection', id: 38, cell: 'h1', mode: 'count', label: '英雄图鉴 生命' },
-            // 道具羁绊（攻击/防御/生命）
-            { g: 'itemcollection', id: 36, cell: 'a2', mode: 'count', label: '道具羁绊 攻击' },
-            { g: 'itemcollection', id: 37, cell: 'd2', mode: 'count', label: '道具羁绊 防御' },
-            { g: 'itemcollection', id: 38, cell: 'h2', mode: 'count', label: '道具羁绊 生命' },
-            // 道具图鉴：20~29 是不同武器的加成，练度取其中最高的一项
-            { g: 'itemcollection', ids: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29], cell: 'a3', mode: 'tier', label: '武器攻击加成' },
-            { g: 'itemcollection', id: 31, cell: 'd3', mode: 'tier', label: '饰品防御加成' },
-            { g: 'itemcollection', id: 30, cell: 'h3', mode: 'tier', label: '盾牌生命加成' },
-            // 其余分层项
-            { g: 'itemcollection', id: 69, cell: 'a4', mode: 'tier', label: '遗物攻击提升' },
-            { g: 'itemcollection', id: 47, cell: 'a5', mode: 'tier', label: '装备外观攻击' },
-            { g: 'itemcollection', id: 67, cell: 'a6', mode: 'tier', label: '超级时装攻击' },
-            { g: 'itemcollection', id: 66, cell: 'a7', mode: 'tier', label: '魔卡攻击提升' },
-            { g: 'itemcollection', id: 68, cell: 'a8', mode: 'tier', label: '周边商品攻击' },
-            { g: 'itemcollection', id: 71, cell: 'a9', mode: 'tier', label: '宝石攻击提升' },
-            { g: 'itemcollection', id: 32, cell: 'h4', mode: 'tier', label: '英雄时装生命' },
-            // 浮游城建筑（id 10 → 攻击，id 9 → 生命）
-            { g: 'heavenhold', id: 10, cell: 'a10', mode: 'flat', label: '浮游城建筑 攻击' },
-            { g: 'heavenhold', id: 9, cell: 'h5', mode: 'flat', label: '浮游城建筑 生命' },
-            // 守护者等级（63/64/65 = 攻击/生命/防御，与游戏内显示顺序一致）
-            { g: 'guardianlevel', id: 63, cell: 'a11', mode: 'tier', label: '守护者等级 攻击' },
-            { g: 'guardianlevel', id: 64, cell: 'h6', mode: 'tier', label: '守护者等级 生命' },
-            { g: 'guardianlevel', id: 65, cell: 'd4', mode: 'tier', label: '守护者等级 防御' },
-        ];
-
-        // 一处顺序未能从数据中判定（两者取值长期相同），如需修正只改上面的 cell 即可：
-        //   a4/a9  遗物攻击提升 ↔ 宝石攻击提升（itemcollection 69 / 71）
 
         // ---- 生成输入表格 ----
         function buildInputTable() {
@@ -1150,163 +970,11 @@
             }
         }
 
-        // ############################################################
-        //  玩家数据抓取
-        // ############################################################
-
-        function esc(s) {
-            return String(s).replace(/[&<>"]/g, function (c) {
-                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
-            });
-        }
-
-        function setPsStatus(msg, cls) {
-            var el = document.getElementById('psStatus');
-            el.innerHTML = msg;
-            el.className = 'ps-status' + (cls ? ' ' + cls : '');
-        }
-
-        // 注意：该接口成功与失败都返回 HTTP 200，必须判 code
-        function apiGet(qs) {
-            return fetch(API_BASE + '?' + qs + '&ch=' + API_CH)
-                .then(function (res) {
-                    if (!res.ok) throw new Error('网络错误：HTTP ' + res.status);
-                    return res.json();
-                })
-                .then(function (j) {
-                    if (j.code !== 0) throw new Error(j.msg || ('接口返回 code=' + j.code));
-                    return j.data;
-                });
-        }
-
-        function closePsList() {
-            var box = document.getElementById('psList');
-            box.className = 'ps-dropdown';
-            box.innerHTML = '';
-        }
-
-        function doSearch() {
-            var raw = document.getElementById('psName').value.trim();
-            if (!raw) { setPsStatus('请输入游戏名', 'err'); return; }
-
-            // 支持直接粘贴「名字#哈希」
-            var parts = raw.split('#');
-            var name = parts[0].trim();
-            var wantTag = parts.length > 1 ? parts[1].trim().toUpperCase() : '';
-
-            if (!name) { setPsStatus('请输入游戏名', 'err'); return; }
-            if (/^\d+$/.test(name)) {
-                setPsStatus('请输入游戏名（不支持数字 ID）', 'err');
-                return;
-            }
-
-            var btn = document.getElementById('psBtn');
-            btn.disabled = true;
-            setPsStatus('搜索中…', 'loading');
-            closePsList();
-
-            apiGet('type=user_search&name=' + encodeURIComponent(name))
-                .then(function (list) {
-                    if (!Array.isArray(list) || list.length === 0) {
-                        setPsStatus('未找到该玩家', 'err');
-                        return;
-                    }
-                    if (wantTag) {
-                        var hit = null;
-                        for (var i = 0; i < list.length; i++) {
-                            if (String(list[i].hashtag).toUpperCase() === wantTag) hit = list[i];
-                        }
-                        if (hit) { selectUser(hit); return; }
-                    }
-                    if (list.length === 1) { selectUser(list[0]); return; }
-                    setPsStatus('', '');
-                    renderPsList(list);
-                })
-                .catch(function () {
-                    setPsStatus('搜索失败', 'err');
-                })
-                .then(function () { btn.disabled = false; });
-        }
-
-        function renderPsList(list) {
-            var box = document.getElementById('psList');
-            box.innerHTML = '';
-            list.forEach(function (u) {
-                var div = document.createElement('div');
-                div.className = 'ps-item';
-                div.innerHTML = '<span class="ps-name">' + esc(u.name) + '</span>'
-                    + '<span class="ps-tag">#' + esc(u.hashtag) + '</span>'
-                    + '<span class="ps-uid">ID ' + esc(u.userid) + '</span>';
-                div.onclick = function () { selectUser(u); };
-                box.appendChild(div);
-            });
-            box.className = 'ps-dropdown open';
-        }
-
-        function selectUser(u) {
-            closePsList();
-            setPsStatus('加载中…', 'loading');
-            apiGet('type=user_card&user_id=' + encodeURIComponent(u.userid))
-                .then(function (data) {
-                    if (!data || !data.userprofilecard) throw new Error('empty');
-                    applyCard(data.userprofilecard, u);
-                })
-                .catch(function () {
-                    setPsStatus('获取数据失败', 'err');
-                });
-        }
-
-        // level → 增益百分比
-        function toPercent(level, mode) {
-            if (mode === 'tier') return level / 10 + 0.1;
-            if (mode === 'flat') return level;
-            return level / 10;
-        }
-
-        function applyCard(card, picked) {
-            var user = card.user || {};
-            var options = user.options || {};
-
-            // 每个映射项：单 id 直接取，ids 列表则取其中最高的 level（如 20~29 不同武器取最高）
-            OPTION_MAP.forEach(function (m) {
-                var ids = m.ids || [m.id];
-                var arr = Array.isArray(options[m.g]) ? options[m.g] : [];
-                var best = null;
-
-                ids.forEach(function (id) {
-                    for (var i = 0; i < arr.length; i++) {
-                        if (!arr[i] || arr[i].optionid !== id) continue;
-                        var lv = (arr[i].level === undefined || arr[i].level === null) ? 0 : Number(arr[i].level);
-                        if (best === null || lv > best) best = lv;
-                        break;
-                    }
-                });
-
-                var el = document.getElementById(m.cell);
-                if (el) el.value = toPercent(best === null ? 0 : best, m.mode).toFixed(1);
-            });
-
-            var name = user.name || (picked && picked.name) || '';
-            var tag = user.hashtag || (picked && picked.hashtag) || '';
-            setPsStatus('已导入 <b>' + esc(name) + '#' + esc(tag) + '</b>'
-                + (card.guildname ? ' · 公会：' + esc(card.guildname) : ''), 'ok');
-
-            calc();
-        }
-
         // ---- 初始化 ----
         buildInputTable();
         setHeaderInfo();
         checkUpd();
         getShare();
-
-        // 搜索框交互：回车搜索、点击空白关闭候选列表
-        document.getElementById('psName').addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
-        });
-        document.addEventListener('click', function (e) {
-            if (!(e.target && e.target.closest && e.target.closest('.ps-row'))) closePsList();
-        });
     </script>
 </body>
 

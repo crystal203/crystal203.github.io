@@ -163,7 +163,9 @@ function evaluateRuleForState(rule, state) {
     let result = false;
     let ptsToAdd = 0;
     try {
-      if (item.length === 2) {
+      if (item[0] === 'const' && item.length === 2) {
+        result = Number(resolveArg(item[1]));
+      } else if (item.length === 2) {
         const [expr, axis] = item;
         const unit = resolveChar(expr, blueOrder, redOrder);
         result = (unit ? (axis === 'x-pos' ? getX(unit) : getY(unit)) : -1);
@@ -178,8 +180,6 @@ function evaluateRuleForState(rule, state) {
         } else {
           result = Infinity;
         }
-      } else if (item[0] === 'const' && item.length === 2) {
-        result = Number(resolveArg(item[1]));
       } else if (item[0] === 'subabs' && item.length === 3) {
         const a = Number(resolveArg(item[1]));
         const b = Number(resolveArg(item[2]));
@@ -418,12 +418,18 @@ async function checkAllRules() {
     './rule/暗炮直挡解银河莉耶.js',
     //'./rule/暗炮斜挡解银河莉耶.js',
     './rule/偶像三奶解银河莉耶.js',
+    './rule/火龙塞拉镜像解火龙塞拉.js',
   ];
   const allResults = [];
   for (let url of rulePaths) {
     try {
       const mod = await import(url + '?t=' + Date.now());
-      const rule = mod.default;
+      // .js 规则用 export default；.json 规则没有 default，需要兜底取模块命名空间
+      const rule = mod.default || (mod.preconditions ? mod : null);
+      if (!rule) {
+        console.warn(`规则 ${url} 加载失败: 未找到 default 导出（.json 规则请改写为 export default { ... } 的 .js）`);
+        continue;
+      }
       const result = evaluateRule(rule);
       if (result.redMatched) allResults.push({ rule, result });
     } catch (e) {
