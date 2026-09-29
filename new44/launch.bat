@@ -1,13 +1,16 @@
 @echo off
 setlocal
 rem ============================================================
-rem  圆形角斗场模拟器 - 本地启动脚本
+rem  Circular Colosseum Simulator - local launcher
 rem
-rem  站点根必须是「仓库根目录」（即 new44 的上一级），
-rem  因为 new44/index.html 里的玩家查询会用 iframe 去取
-rem  ../gt.html 来算练度。若把根设在 new44 目录内，
-rem  ../gt.html 会落到站点根之外，练度就会显示 N/A。
-rem  这与部署到 GitHub Pages 时的目录结构一致。
+rem  The site root MUST be the repository root (the parent of
+rem  new44), because new44/index.html loads ../gt.html in an
+rem  iframe to compute player stats. Same layout as GitHub Pages.
+rem
+rem  Keep this file ASCII-only + CRLF. Non-ASCII text in a .bat is
+rem  read with the console code page and can break parsing (cmd
+rem  then splits lines at stray bytes) if the file is re-saved as
+rem  UTF-8. English messages are used on purpose.
 rem ============================================================
 
 cd /d "%~dp0.."
@@ -18,7 +21,7 @@ if not defined PY (
     where py >nul 2>nul && set "PY=py -3"
 )
 if not defined PY (
-    echo [错误] 未找到 python，请先安装 Python 并加入 PATH。
+    echo [ERROR] python not found. Install Python and add it to PATH.
     pause
     exit /b 1
 )
@@ -26,13 +29,14 @@ if not defined PY (
 set "PORT=8000"
 set "URL=http://127.0.0.1:%PORT%/new44/index.html"
 
-echo 站点根目录 : %CD%
-echo 启动地址   : %URL%
-echo 停止服务器 : 关闭标题为 "new44-server" 的窗口
+echo.
+echo   Site root : %CD%
+echo   URL       : %URL%
+echo   To stop   : close the window titled "new44-server"
 echo.
 
 start "new44-server" cmd /k "%PY% -m http.server %PORT% --bind 127.0.0.1"
-timeout /t 2 /nobreak >nul
+ping -n 3 127.0.0.1 >nul
 start "" "%URL%"
 
 endlocal
