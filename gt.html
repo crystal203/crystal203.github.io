@@ -284,6 +284,17 @@
             border-radius: 4px;
         }
 
+        .ps-item .ps-ch {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #0891b2;
+            background: #ecfeff;
+            border: 1px solid #a5f3fc;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
         .ps-item .ps-uid {
             margin-left: auto;
             color: #94a3b8;
@@ -896,7 +907,9 @@
         //  接口配置区域  -  修改以下映射即可适配新接口
         // ############################################################
         const API_BASE = 'https://open.ww2.ren/api/gt-top';
-        const API_CH = 'cn';
+        // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
+        // 所以两边都要查（取并集），且取卡片时优先用搜索命中的那个服
+        const API_CHANNELS = ['cn', 'yofun'];
 
         // options 里 level 与增益的换算（用接口自带的 count 累加值反推，320 个账号全部精确配平）：
         //   mode='count'：增益 = level / 10        —— 英雄图鉴、道具羁绊（计数式）
@@ -1215,8 +1228,8 @@
         }
 
         // 注意：该接口成功与失败都返回 HTTP 200，必须判 code
-        function apiGet(qs) {
-            return fetch(API_BASE + '?' + qs + '&ch=' + API_CH)
+        function apiChannel(qs, ch) {
+            return fetch(API_BASE + '?' + qs + '&ch=' + ch)
                 .then(function (res) {
                     if (!res.ok) throw new Error('网络错误：HTTP ' + res.status);
                     return res.json();
@@ -1225,6 +1238,55 @@
                     if (j.code !== 0) throw new Error(j.msg || ('接口返回 code=' + j.code));
                     return j.data;
                 });
+        }
+
+        // 每个渠道都查一遍，失败的渠道按空处理
+        function apiAll(qs) {
+            return Promise.all(API_CHANNELS.map(function (ch) {
+                return apiChannel(qs, ch).then(
+                    function (data) { return { ch: ch, data: data }; },
+                    function () { return { ch: ch, data: null }; }
+                );
+            }));
+        }
+
+        // 搜索：两个服的结果取并集；仅当 名字+哈希+userid 全都相同才合并成一条
+        function apiSearch(name) {
+            return apiAll('type=user_search&name=' + encodeURIComponent(name)).then(function (res) {
+                var out = [], seen = {};
+                res.forEach(function (r) {
+                    if (!Array.isArray(r.data)) return;
+                    r.data.forEach(function (u) {
+                        var key = u.name + '|' + u.hashtag + '|' + u.userid;
+                        if (seen[key]) return;
+                        seen[key] = 1;
+                        out.push({
+                            name: u.name,
+                            hashtag: u.hashtag,
+                            userid: u.userid,
+                            avatar: u.avatar,
+                            guildid: u.guildid,
+                            ch: r.ch
+                        });
+                    });
+                });
+                return out;
+            });
+        }
+
+        // 取玩家数据：优先搜索命中的那个服，失败再依次试其它服
+        function apiCard(userid, preferCh) {
+            var order = [];
+            if (preferCh && API_CHANNELS.indexOf(preferCh) >= 0) order.push(preferCh);
+            API_CHANNELS.forEach(function (ch) { if (order.indexOf(ch) < 0) order.push(ch); });
+
+            var qs = 'type=user_card&user_id=' + encodeURIComponent(userid);
+            var i = 0;
+            function next(err) {
+                if (i >= order.length) throw (err || new Error('未找到该玩家'));
+                return apiChannel(qs, order[i++]).catch(next);
+            }
+            return Promise.resolve().then(function () { return next(null); });
         }
 
         function closePsList() {
@@ -1254,7 +1316,7 @@
             setPsStatus('搜索中…', 'loading');
             closePsList();
 
-            apiGet('type=user_search&name=' + encodeURIComponent(name))
+            apiSearch(name)
                 .then(function (list) {
                     if (!Array.isArray(list) || list.length === 0) {
                         setPsStatus('未找到该玩家', 'err');
@@ -1288,6 +1350,7 @@
                 div.className = 'ps-item';
                 div.innerHTML = '<span class="ps-name">' + esc(u.name) + '</span>'
                     + '<span class="ps-tag">#' + esc(u.hashtag) + '</span>'
+                    + (u.ch && u.ch !== API_CHANNELS[0] ? '<span class="ps-ch">' + esc(u.ch) + '</span>' : '')
                     + '<span class="ps-uid">ID ' + esc(u.userid) + '</span>'
                     + (showStats
                         ? '<i class="ps-stat mastery" id="psMast' + idx + '"></i>'
@@ -1302,7 +1365,7 @@
 
             // 只有勾选后才额外拉取每个候选人的数据，按「经典模式」算三维练度
             list.forEach(function (u, idx) {
-                apiGet('type=user_card&user_id=' + encodeURIComponent(u.userid))
+                apiCard(u.userid, u.ch)
                     .then(function (data) {
                         if (seq !== psListSeq) return;   // 列表已刷新，丢弃过期结果
                         if (!data || !data.userprofilecard) return;
@@ -1323,7 +1386,7 @@
         function selectUser(u) {
             closePsList();
             setPsStatus('加载中…', 'loading');
-            apiGet('type=user_card&user_id=' + encodeURIComponent(u.userid))
+            apiCard(u.userid, u.ch)
                 .then(function (data) {
                     if (!data || !data.userprofilecard) throw new Error('empty');
                     applyCard(data.userprofilecard, u);
@@ -1391,6 +1454,15 @@
                 return max ? sum / max * 100 : 0;
             });
         }
+
+        // 对外接口：供其他页面（如 new44 的玩家查询）直接复用这一套映射与算法
+        //   gtApi.percent(userprofilecard, 模式索引) → [攻击, 生命, 防御] 百分比
+        //   模式索引：0 羁绊 / 1 经典 / 2 扩展I / 3 扩展II
+        window.gtApi = {
+            percent: cardPercent,
+            cellValues: cardCellValues,
+            modeNames: CONFIG.modeNames
+        };
 
         function applyCard(card, picked) {
             var user = card.user || {};

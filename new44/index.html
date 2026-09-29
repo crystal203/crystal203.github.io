@@ -747,6 +747,434 @@
         .highlight.pending-move-source {
             transform: scale(1.12) !important;
         }
+
+        /* ---- 玩家查询 ---- */
+        .player-panel {
+            /* 与上方地图容器同宽（14×46 + 13×4 + 40 padding），不喧宾夺主 */
+            max-width: 736px;
+            margin: 30px auto 0;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .player-header {
+            background: linear-gradient(90deg, #7B1FA2, #1E88E5);
+            color: white;
+            padding: 14px 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .player-header i {
+            font-size: 1.3rem;
+        }
+
+        .player-content {
+            padding: 20px;
+        }
+
+        .pl-search {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pl-search input[type="text"] {
+            padding: 9px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .pl-search input[type="text"]:focus {
+            border-color: #7B1FA2;
+        }
+
+        #plName {
+            flex: 2;
+            min-width: 130px;
+        }
+
+        #plMastery {
+            flex: 1;
+            min-width: 110px;
+        }
+
+        .pl-btn {
+            padding: 9px 22px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #7B1FA2, #1E88E5);
+            color: white;
+            font-weight: 600;
+            font-size: 0.92rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .pl-btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .pl-list {
+            margin-top: 10px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .pl-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 9px;
+            font-size: 0.78rem;
+            color: #777;
+            cursor: pointer;
+        }
+
+        .pl-toggle input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            accent-color: #7B1FA2;
+            cursor: pointer;
+        }
+
+        .pl-pager {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .pl-pager.open {
+            display: flex;
+        }
+
+        .pl-pager button {
+            padding: 3px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            color: #555;
+            font-family: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .pl-pager button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .pl-pager button:not(:disabled):hover {
+            border-color: #7B1FA2;
+            color: #7B1FA2;
+        }
+
+        .pl-list.open {
+            display: block;
+        }
+
+        .pl-item {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 9px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #f2f2f2;
+            font-size: 0.88rem;
+            transition: background 0.2s;
+        }
+
+        .pl-item:last-child {
+            border-bottom: none;
+        }
+
+        .pl-item:hover {
+            background: #F3E5F5;
+        }
+
+        .pl-name {
+            font-weight: 700;
+        }
+
+        .pl-tag {
+            font-family: Consolas, monospace;
+            font-size: 0.8rem;
+            color: #7B1FA2;
+            background: #F3E5F5;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        .pl-uid {
+            margin-left: auto;
+            color: #999;
+            font-size: 0.76rem;
+            font-family: Consolas, monospace;
+        }
+
+        .pl-ch {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #0891b2;
+            background: #ecfeff;
+            border: 1px solid #a5f3fc;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        /* 候选列表里的小徽章（与练度计算器同款） */
+        .pl-badges {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .pl-badge {
+            display: inline-block;
+            min-width: 40px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-style: normal;
+            color: #fff;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .pl-badge:empty {
+            display: none;
+        }
+
+        .pl-badge.lv { background: #7c3aed; }
+        .pl-badge.r1 { background: #C9A227; }
+        .pl-badge.r2 { background: #9AA7AE; }
+        .pl-badge.r3 { background: #B9722F; }
+        .pl-badge.r10 { background: #4FC3F7; }
+        .pl-badge.r50 { background: #ECEFF1; color: #607D8B; }
+        .pl-badge.r100 { background: #9E9E9E; }
+        .pl-badge.rother { background: #E0E0E0; color: #757575; }
+
+        .pl-status {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            min-height: 1.3em;
+            color: #777;
+        }
+
+        .pl-status.err {
+            color: #E53935;
+            font-weight: 600;
+        }
+
+        .pl-card {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px dashed #e0e0e0;
+        }
+
+        .pl-who {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .pl-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* 44 最高排名 / 最高分数 */
+        .pl-rank {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+            padding: 3px 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 7px;
+            background: #fff;
+            line-height: 1.35;
+            flex-shrink: 0;
+        }
+
+        .pl-rank .lv {
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        .pl-rank .sc {
+            font-size: 0.68rem;
+            color: #888;
+            font-family: Consolas, monospace;
+        }
+
+        .pl-rank.r1 {
+            border-color: #D4AF37;
+            color: #A67C00;
+            background: linear-gradient(180deg, #FFFDF4, #FFF3D2);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 2px 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .pl-rank.r2 {
+            border-color: #B0BEC5;
+            color: #607D8B;
+            background: linear-gradient(180deg, #FFFFFF, #F1F5F7);
+            box-shadow: 0 0 0 2px rgba(176, 190, 197, 0.45), 0 2px 10px rgba(144, 164, 174, 0.35);
+        }
+
+        .pl-rank.r3 {
+            border-color: #CD7F32;
+            color: #A0522D;
+            background: linear-gradient(180deg, #FFF9F3, #FBEADA);
+            box-shadow: 0 0 0 2px rgba(205, 127, 50, 0.33), 0 2px 10px rgba(205, 127, 50, 0.33);
+        }
+
+        .pl-rank.r10 {
+            border-color: #4FC3F7;
+            color: #0277BD;
+            background: #F1FAFE;
+        }
+
+        .pl-rank.r50 {
+            border-color: #CFD8DC;
+            color: #546E7A;
+        }
+
+        .pl-rank.r100 {
+            border-color: #9E9E9E;
+            color: #616161;
+        }
+
+        .pl-rank.rother {
+            border-color: #E0E0E0;
+            color: #9E9E9E;
+        }
+
+        .pl-sub {
+            font-size: 0.82rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .pl-section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #9e9e9e;
+            letter-spacing: 0.05em;
+            margin: 16px 0 8px;
+        }
+
+        .pl-dims {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .pl-dim {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 5px;
+            padding: 2px 8px;
+            border-radius: 5px;
+            color: white;
+            line-height: 1.5;
+        }
+
+        .pl-dim .k {
+            font-size: 0.7rem;
+            opacity: 0.9;
+        }
+
+        .pl-dim .v {
+            font-size: 0.78rem;
+            font-weight: 700;
+            font-family: Consolas, monospace;
+        }
+
+        .pl-dim.atk {
+            background: #E53935;
+        }
+
+        .pl-dim.def {
+            background: #1E88E5;
+        }
+
+        .pl-dim.hp {
+            background: #43A047;
+        }
+
+        .pl-mtable {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.86rem;
+        }
+
+        .pl-mtable th,
+        .pl-mtable td {
+            padding: 7px 6px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pl-mtable th {
+            font-weight: 600;
+            font-size: 0.78rem;
+            color: #9e9e9e;
+        }
+
+        .pl-mtable td:first-child,
+        .pl-mtable th:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .pl-mtable td {
+            font-family: Consolas, monospace;
+            font-size: 0.95rem;
+        }
+
+        .c-atk { color: #E53935; }
+        .c-sk { color: #FB8C00; }
+        .c-hp { color: #43A047; }
+        .c-def { color: #1E88E5; }
+
+        .pl-summary {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.02rem;
+            text-align: center;
+        }
+
+        .pl-summary.balance { background: #26A69A; }
+        .pl-summary.raid { background: #E53935; }
+        .pl-summary.pvp { background: #1E88E5; }
     </style>
 </head>
 
@@ -938,6 +1366,483 @@
                 </div>
             </div>
         </div>
+        <!-- 玩家查询 -->
+        <div class="player-panel">
+            <div class="player-header">
+                <i class="fas fa-user-magnifying-glass"></i>
+                <span>玩家查询</span>
+            </div>
+            <div class="player-content">
+                <div class="pl-search">
+                    <input type="text" id="plName" placeholder="游戏名，如 crystal302" autocomplete="off">
+                    <input type="text" id="plMastery" placeholder="精通等级（可选）" autocomplete="off">
+                    <button class="pl-btn" id="plBtn">查询</button>
+                </div>
+                <label class="pl-toggle">
+                    <input type="checkbox" id="plFetch">
+                    查询摘要（守护者精通等级 / 历史排名），并按排名排序
+                </label>
+                <div class="pl-list" id="plList"></div>
+                <div class="pl-pager" id="plPager"></div>
+                <div class="pl-status" id="plStatus"></div>
+                <div id="plResult"></div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                var API = 'https://open.ww2.ren/api/gt-top';
+                // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
+                // 所以两边都要查（取并集），取卡片时优先用搜索命中的那个服
+                var CHANNELS = ['cn', 'yofun'];
+
+                // 守护者精通：X01=攻击, X02=生命, X03=防御, X04=技伤；1/2/3/4xx = 战士/射手/坦克/辅助
+                var M_GROUPS = [{ p: 1, name: '战士' }, { p: 2, name: '射手' }, { p: 3, name: '坦克' }, { p: 4, name: '辅助' }];
+                var M_SLOTS = [
+                    { s: 1, name: '攻击', cls: 'c-atk' },
+                    { s: 4, name: '技伤', cls: 'c-sk' },
+                    { s: 2, name: '生命', cls: 'c-hp' },
+                    { s: 3, name: '防御', cls: 'c-def' }
+                ];
+
+                // 机械式总结的判定阈值：四列均值 最大值 / 最小值 ≤ 该值 → 均衡加点
+                var BALANCE_RATIO = 1.25;
+
+                // ---------- 工具 ----------
+                function esc(s) {
+                    return String(s).replace(/[&<>"]/g, function (c) {
+                        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+                    });
+                }
+
+                function apiChannel(qs, ch) {
+                    return fetch(API + '?' + qs + '&ch=' + ch)
+                        .then(function (r) {
+                            if (!r.ok) throw new Error('HTTP ' + r.status);
+                            return r.json();
+                        })
+                        .then(function (j) {
+                            if (j.code !== 0) throw new Error(j.msg || ('code=' + j.code));
+                            return j.data;
+                        });
+                }
+
+                // 每个渠道都查一遍，失败的渠道按空处理
+                function apiAll(qs) {
+                    return Promise.all(CHANNELS.map(function (ch) {
+                        return apiChannel(qs, ch).then(
+                            function (data) { return { ch: ch, data: data }; },
+                            function () { return { ch: ch, data: null }; }
+                        );
+                    }));
+                }
+
+                // 搜索：两个服的结果取并集；仅当 名字+哈希+userid 全都相同才合并成一条
+                function apiSearch(name) {
+                    return apiAll('type=user_search&name=' + encodeURIComponent(name)).then(function (res) {
+                        var out = [], seen = {};
+                        res.forEach(function (r) {
+                            if (!Array.isArray(r.data)) return;
+                            r.data.forEach(function (u) {
+                                var key = u.name + '|' + u.hashtag + '|' + u.userid;
+                                if (seen[key]) return;
+                                seen[key] = 1;
+                                out.push({
+                                    name: u.name,
+                                    hashtag: u.hashtag,
+                                    userid: u.userid,
+                                    avatar: u.avatar,
+                                    guildid: u.guildid,
+                                    ch: r.ch
+                                });
+                            });
+                        });
+                        return out;
+                    });
+                }
+
+                // 取玩家数据：优先搜索命中的那个服，失败再依次试其它服
+                function apiCard(userid, preferCh) {
+                    var order = [];
+                    if (preferCh && CHANNELS.indexOf(preferCh) >= 0) order.push(preferCh);
+                    CHANNELS.forEach(function (ch) { if (order.indexOf(ch) < 0) order.push(ch); });
+
+                    var qs = 'type=user_card&user_id=' + encodeURIComponent(userid);
+                    var i = 0;
+                    function next(err) {
+                        if (i >= order.length) throw (err || new Error('未找到该玩家'));
+                        return apiChannel(qs, order[i++]).catch(next);
+                    }
+                    return Promise.resolve().then(function () { return next(null); });
+                }
+
+                function setStatus(msg, isErr) {
+                    var el = document.getElementById('plStatus');
+                    el.textContent = msg || '';
+                    el.className = 'pl-status' + (isErr ? ' err' : '');
+                }
+
+                var listSeq = 0;   // 候选列表代次，用于丢弃过期的异步徽章结果
+
+                function closeList() {
+                    var box = document.getElementById('plList');
+                    listSeq++;
+                    box.className = 'pl-list';
+                    box.innerHTML = '';
+                    var pg = document.getElementById('plPager');
+                    pg.className = 'pl-pager';
+                    pg.innerHTML = '';
+                }
+
+                function clearResult() {
+                    document.getElementById('plResult').innerHTML = '';
+                }
+
+                // ---------- 守护者精通 ----------
+                function masteryTable(card) {
+                    var o = (card && card.user && card.user.options) || {};
+                    var sk = ((o.guardianmastery || {}).guardianmasteryskill) || {};
+                    return M_GROUPS.map(function (g) {
+                        return {
+                            name: g.name,
+                            values: M_SLOTS.map(function (sl) {
+                                var v = sk[g.p * 100 + sl.s];
+                                return v == null ? 0 : Number(v);
+                            })
+                        };
+                    });
+                }
+
+                function masteryTotal(card) {
+                    return masteryTable(card).reduce(function (a, g) {
+                        return a + g.values.reduce(function (x, y) { return x + y; }, 0);
+                    }, 0);
+                }
+
+                // 机械式总结：四列均值够平均 → 均衡；否则看偏向 攻击+技伤 还是 生命+防御
+                function masterySummary(table) {
+                    var colAvg = M_SLOTS.map(function (sl, ci) {
+                        return table.reduce(function (a, g) { return a + g.values[ci]; }, 0) / table.length;
+                    });
+                    var max = Math.max.apply(null, colAvg);
+                    var min = Math.min.apply(null, colAvg);
+                    if (max <= 0) return { key: 'balance', text: '均衡加点' };
+                    if (min > 0 && max / min <= BALANCE_RATIO) return { key: 'balance', text: '均衡加点' };
+                    var off = (colAvg[0] + colAvg[1]) / 2;    // 攻击 + 技伤
+                    var tank = (colAvg[2] + colAvg[3]) / 2;   // 生命 + 防御
+                    if (off > tank) return { key: 'raid', text: '会战加点' };
+                    return { key: 'pvp', text: 'PVP加点' };
+                }
+
+                // ---------- 与 gt.html 对接（同源 iframe，复用它的映射与算法）----------
+                var gtFramePromise = null;
+
+                function gtFrame() {
+                    if (!gtFramePromise) {
+                        gtFramePromise = new Promise(function (resolve, reject) {
+                            var f = document.createElement('iframe');
+                            // 不给 allow-modals：gt.html 的过期 alert 会被静默；allow-same-origin 才能读写它
+                            f.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+                            f.style.cssText = 'display:none';
+                            f.src = '../gt.html';
+                            f.addEventListener('load', function () { resolve(f); });
+                            f.addEventListener('error', function () { reject(new Error('gt.html 加载失败')); });
+                            document.body.appendChild(f);
+                        });
+                    }
+                    return gtFramePromise;
+                }
+
+                // 返回 [攻击, 生命, 防御] 的经典模式百分比
+                function gtPercent(card) {
+                    return gtFrame().then(function (f) {
+                        var g = f.contentWindow && f.contentWindow.gtApi;
+                        if (!g) throw new Error('gt.html 未暴露 gtApi');
+                        return g.percent(card, 1);
+                    });
+                }
+
+                // 44 最高排名分档：1/2/3/前十/前五十/前百/其他 → 金/银/铜/浅蓝/白/灰
+                function rankInfo(card) {
+                    var rank = Number(card.colosseumrank || 0);
+                    if (rank === 1) return { cls: 'r1', text: '第 1 名' };
+                    if (rank === 2) return { cls: 'r2', text: '第 2 名' };
+                    if (rank === 3) return { cls: 'r3', text: '第 3 名' };
+                    if (rank > 0 && rank <= 10) return { cls: 'r10', text: '前 10 名' };
+                    if (rank > 0 && rank <= 50) return { cls: 'r50', text: '前 50 名' };
+                    if (rank > 0 && rank <= 100) return { cls: 'r100', text: '前 100 名' };
+                    if (rank > 0) return { cls: 'rother', text: '第 ' + rank + ' 名' };
+                    return { cls: 'rother', text: '未上榜' };
+                }
+
+                // 结果卡右上角：排名在上、最高分数在下
+                function rankBadge(card) {
+                    var info = rankInfo(card);
+                    return '<div class="pl-rank ' + info.cls + '">'
+                        + '<span class="lv">' + info.text + '</span>'
+                        + '<span class="sc">' + Number(card.colosseumtrophy || 0) + ' 分</span>'
+                        + '</div>';
+                }
+
+                // 候选行里的两个小徽章：守护者精通等级 + 历史排名
+                function fillBadges(idx, card) {
+                    var box = document.getElementById('plb' + idx);
+                    if (!box || !card) return;
+                    var info = rankInfo(card);
+                    box.children[0].textContent = 'Lv.' + masteryTotal(card);
+                    box.children[1].className = 'pl-badge ' + info.cls;
+                    box.children[1].textContent = info.text;
+                    box.style.display = 'inline-flex';
+                }
+
+                // ---------- 列表：排序 + 分页 ----------
+                var PAGE_SIZE = 10;
+                var allRows = [];    // 当前完整结果集
+                var pageNo = 1;
+
+                // 按历史排名排序：有名次的在前（名次升序），无名次的保持原顺序排在后面
+                function sortByRank(rows) {
+                    return rows.slice().sort(function (a, b) {
+                        var ra = a.card ? Number(a.card.colosseumrank || 0) : 0;
+                        var rb = b.card ? Number(b.card.colosseumrank || 0) : 0;
+                        if (ra && rb) return ra - rb;
+                        if (ra) return -1;
+                        if (rb) return 1;
+                        return 0;
+                    });
+                }
+
+                function renderPager(pages) {
+                    var el = document.getElementById('plPager');
+                    if (pages <= 1) { el.className = 'pl-pager'; el.innerHTML = ''; return; }
+                    el.innerHTML =
+                        '<button data-p="' + (pageNo - 1) + '"' + (pageNo <= 1 ? ' disabled' : '') + '>‹ 上一页</button>'
+                        + '<span>第 ' + pageNo + ' / ' + pages + ' 页 · 共 ' + allRows.length + ' 人</span>'
+                        + '<button data-p="' + (pageNo + 1) + '"' + (pageNo >= pages ? ' disabled' : '') + '>下一页 ›</button>';
+                    el.className = 'pl-pager open';
+                }
+
+                function drawList() {
+                    var box = document.getElementById('plList');
+                    listSeq++;   // 让在途的旧结果作废
+                    box.innerHTML = '';
+
+                    var total = allRows.length;
+                    if (!total) { box.className = 'pl-list'; renderPager(0); return; }
+
+                    var pages = Math.ceil(total / PAGE_SIZE);
+                    if (pageNo < 1) pageNo = 1;
+                    if (pageNo > pages) pageNo = pages;
+                    var start = (pageNo - 1) * PAGE_SIZE;
+
+                    allRows.slice(start, start + PAGE_SIZE).forEach(function (r, i) {
+                        var idx = start + i;
+                        var div = document.createElement('div');
+                        div.className = 'pl-item';
+                        div.innerHTML = '<span class="pl-name">' + esc(r.u.name) + '</span>'
+                            + '<span class="pl-tag">#' + esc(r.u.hashtag) + '</span>'
+                            + (r.u.ch && r.u.ch !== CHANNELS[0] ? '<span class="pl-ch">' + esc(r.u.ch) + '</span>' : '')
+                            + '<span class="pl-badges" id="plb' + idx + '" style="display:none">'
+                            + '<i class="pl-badge lv"></i><i class="pl-badge"></i>'
+                            + '</span>'
+                            + '<span class="pl-uid">ID ' + esc(r.u.userid) + '</span>';
+                        div.onclick = function () { pick(r.u, r.card); };
+                        box.appendChild(div);
+                        if (r.card) fillBadges(idx, r.card);
+                    });
+
+                    box.className = 'pl-list open';
+                    renderPager(pages);
+                }
+
+                function showRows(rows) {
+                    allRows = rows;
+                    pageNo = 1;
+                    drawList();
+                }
+
+                // 逐个拉取候选卡片补齐摘要（仅在勾选 checkbox 或填了精通等级时才走）
+                function fetchSummaries() {
+                    var pending = allRows.filter(function (r) { return !r.card; });
+                    if (!pending.length) return Promise.resolve();
+                    return Promise.all(pending.map(function (r) {
+                        return apiCard(r.u.userid, r.u.ch).then(function (d) {
+                            r.card = (d && d.userprofilecard) || null;
+                        }).catch(function () { });
+                    }));
+                }
+
+                function renderResult(u, card) {
+                    setStatus('');
+                    var table = masteryTable(card);
+                    var summary = masterySummary(table);
+                    var name = (card.user && card.user.name) || u.name;
+                    var tag = (card.user && card.user.hashtag) || u.hashtag;
+
+                    var html = '<div class="pl-card">';
+                    html += '<div class="pl-head">'
+                        + '<div>'
+                        + '<div class="pl-who">' + esc(name) + '#' + esc(tag) + '</div>'
+                        + '<div class="pl-sub">ID ' + esc((card.user && card.user.id) || u.userid)
+                        + (card.guildname ? ' · 公会：' + esc(card.guildname) : '')
+                        + ' · 守护者精通等级 Lv.' + masteryTotal(card) + '</div>'
+                        + '</div>'
+                        + rankBadge(card)
+                        + '</div>';
+
+                    html += '<div class="pl-section-title">练度（经典模式）</div>';
+                    html += '<div class="pl-dims" id="plDims">'
+                        + '<div class="pl-dim atk"><div class="k">攻击</div><div class="v">—</div></div>'
+                        + '<div class="pl-dim def"><div class="k">防御</div><div class="v">—</div></div>'
+                        + '<div class="pl-dim hp"><div class="k">生命</div><div class="v">—</div></div>'
+                        + '</div>';
+
+                    html += '<div class="pl-section-title">守护者精通加点</div>';
+                    html += '<table class="pl-mtable"><thead><tr><th></th>'
+                        + M_SLOTS.map(function (s) { return '<th class="' + s.cls + '">' + s.name + '</th>'; }).join('')
+                        + '</tr></thead><tbody>'
+                        + table.map(function (g) {
+                            return '<tr><td>' + g.name + '</td>'
+                                + g.values.map(function (v, i) {
+                                    return '<td class="' + M_SLOTS[i].cls + '">' + v + '</td>';
+                                }).join('') + '</tr>';
+                        }).join('')
+                        + '</tbody></table>';
+
+                    html += '<div class="pl-summary ' + summary.key + '">' + summary.text + '</div>';
+                    html += '</div>';
+
+                    document.getElementById('plResult').innerHTML = html;
+
+                    // 练度异步取（首次会加载 gt.html）
+                    gtPercent(card).then(function (p) {
+                        var box = document.getElementById('plDims');
+                        if (!box) return;
+                        // gtApi 返回 [攻击, 生命, 防御]
+                        box.children[0].querySelector('.v').textContent = p[0].toFixed(1) + '%';
+                        box.children[1].querySelector('.v').textContent = p[2].toFixed(1) + '%';
+                        box.children[2].querySelector('.v').textContent = p[1].toFixed(1) + '%';
+                    }).catch(function () {
+                        var box = document.getElementById('plDims');
+                        if (!box) return;
+                        Array.prototype.forEach.call(box.querySelectorAll('.v'), function (v) { v.textContent = 'N/A'; });
+                    });
+                }
+
+                // ---------- 查询 ----------
+                function pick(u, card) {
+                    closeList();
+                    if (card) { renderResult(u, card); return; }
+                    setStatus('读取中…');
+                    apiCard(u.userid, u.ch)
+                        .then(function (d) {
+                            if (!d || !d.userprofilecard) throw new Error('empty');
+                            renderResult(u, d.userprofilecard);
+                        })
+                        .catch(function () { setStatus('获取数据失败', true); });
+                }
+
+                function doSearch() {
+                    var rawName = document.getElementById('plName').value.trim();
+                    var rawLv = document.getElementById('plMastery').value.trim();
+                    if (!rawName) { setStatus('请输入游戏名', true); return; }
+
+                    var parts = rawName.split('#');
+                    var name = parts[0].trim();
+                    var wantTag = parts.length > 1 ? parts[1].trim().toUpperCase() : '';
+                    if (!name) { setStatus('请输入游戏名', true); return; }
+                    if (/^\d+$/.test(name)) { setStatus('请输入游戏名（不支持数字 ID）', true); return; }
+
+                    var wantLv = null;
+                    if (rawLv) {
+                        if (!/^\d+$/.test(rawLv)) { setStatus('精通等级请填数字', true); return; }
+                        wantLv = Number(rawLv);
+                    }
+
+                    // 勾选 checkbox 或填了精通等级，才逐个查卡片
+                    var needFetch = document.getElementById('plFetch').checked || wantLv !== null;
+
+                    var btn = document.getElementById('plBtn');
+                    btn.disabled = true;
+                    setStatus('查询中…');
+                    closeList();
+                    clearResult();
+
+                    apiSearch(name)
+                        .then(function (list) {
+                            if (!Array.isArray(list) || !list.length) { setStatus('未找到该玩家', true); return; }
+
+                            // 不查摘要时：命中唯一就直接出结果，否则直接列出
+                            if (!needFetch) {
+                                if (wantTag) {
+                                    var hit = list.filter(function (u) {
+                                        return String(u.hashtag).toUpperCase() === wantTag;
+                                    })[0];
+                                    if (hit) { pick(hit, null); return; }
+                                }
+                                if (list.length === 1) { pick(list[0], null); return; }
+                                showRows(list.map(function (u) { return { u: u, card: null }; }));
+                                setStatus('');
+                                return;
+                            }
+
+                            // 查摘要：先出未排序列表，再逐个查询 → 过筛 → 按排名排序重绘
+                            var rows = list.map(function (u) { return { u: u, card: null }; });
+                            showRows(rows);
+                            setStatus(wantLv === null ? '查询摘要中…' : '按精通等级筛选…');
+
+                            return fetchSummaries().then(function () {
+                                var out = rows;
+                                if (wantLv !== null) {
+                                    out = rows.filter(function (r) {
+                                        return r.card && masteryTotal(r.card) === wantLv;
+                                    });
+                                    if (!out.length) {
+                                        showRows([]);
+                                        setStatus('没有精通等级 Lv.' + wantLv + ' 的同名玩家', true);
+                                        return;
+                                    }
+                                }
+                                showRows(sortByRank(out));
+                                setStatus('');
+                                if (out.length === 1) pick(out[0].u, out[0].card);
+                            });
+                        })
+                        .catch(function () { setStatus('查询失败', true); })
+                        .then(function () { btn.disabled = false; });
+                }
+
+                window.plSearch = doSearch;
+
+                document.getElementById('plBtn').addEventListener('click', doSearch);
+                ['plName', 'plMastery'].forEach(function (id) {
+                    document.getElementById(id).addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+                    });
+                });
+
+                // 翻页
+                document.getElementById('plPager').addEventListener('click', function (e) {
+                    var b = e.target.closest ? e.target.closest('button[data-p]') : null;
+                    if (!b || b.disabled) return;
+                    pageNo = Number(b.getAttribute('data-p'));
+                    drawList();
+                });
+
+                // 中途勾选 checkbox：对当前列表补查摘要并重排
+                document.getElementById('plFetch').addEventListener('change', function () {
+                    if (!this.checked) return;
+                    if (!document.getElementById('plList').className.match(/open/)) return;
+                    if (!allRows.some(function (r) { return !r.card; })) return;
+                    setStatus('查询摘要中…');
+                    fetchSummaries().then(function () {
+                        showRows(sortByRank(allRows));
+                        setStatus('');
+                    });
+                });
+            })();
+        </script>
+
         <div class="info-panel" id="infoPanel">
             <div class="info-header">
                 <i class="fas fa-info-circle"></i>
