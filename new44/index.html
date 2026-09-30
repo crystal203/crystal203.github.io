@@ -1377,6 +1377,8 @@
                     <input type="text" id="plName" placeholder="游戏名，如 crystal302" autocomplete="off">
                     <input type="text" id="plMastery" placeholder="精通等级（可选）" autocomplete="off">
                     <button class="pl-btn" id="plBtn">查询</button>
+                    <button class="pl-btn" id="dlBtn" onclick="downloadSelf()"
+                        title="把本页存成本地文件离线保存">下载到本地</button>
                 </div>
                 <label class="pl-toggle">
                     <input type="checkbox" id="plFetch">
@@ -3589,6 +3591,31 @@
             document.getElementById('enemyTauntBonus').dispatchEvent(new Event('input'));
             document.getElementById('collisionSize').dispatchEvent(new Event('input'));
             document.getElementById('erinaTaunt').dispatchEvent(new Event('change'));
+    </script>
+
+    <script>
+        function downloadSelf() {
+            var btn = document.getElementById('dlBtn');
+            var old = btn ? btn.textContent : '';
+            var restore = function () { if (btn) { btn.disabled = false; btn.textContent = old; } };
+            if (btn) { btn.disabled = true; btn.textContent = '准备中…'; }
+
+            fetch(location.pathname || 'index.html')
+                .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+                .then(function (text) {
+                    var url = URL.createObjectURL(new Blob([text], { type: 'text/html;charset=utf-8' }));
+                    var a = document.createElement('a');
+                    a.href = url; a.download = 'new44.html';
+                    document.body.appendChild(a); a.click(); a.remove();
+                    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+                    if (btn) btn.textContent = '已保存';
+                    setTimeout(restore, 1500);
+                })
+                .catch(function () {
+                    alert('读取页面源码失败。\n\n若本页是以 file:// 打开的，浏览器默认禁止脚本读取本地文件，请改用 http 方式打开，或直接用浏览器的“另存为”。');
+                    restore();
+                });
+        }
     </script>
 </body>
 
