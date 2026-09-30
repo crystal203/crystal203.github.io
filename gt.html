@@ -916,7 +916,14 @@
             return new TextDecoder().decode(new Uint8Array(b));
         };
 
-        var API_BASE = gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
+        // 本地开发走本地代理（node gtlc/cors-proxy.mjs），其它环境走正式地址
+        var API_BASE = (function () {
+            var h = location.hostname;
+            if (location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1') {
+                return 'http://127.0.0.1:8799/api/gt' + '-top';
+            }
+            return gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
+        })();
         // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
         // 所以两边都要查（取并集），且取卡片时优先用搜索命中的那个服
         var API_CHANNELS = ['cn', 'yofun'];
