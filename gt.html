@@ -690,7 +690,7 @@
 
         <!-- 玩家数据抓取 -->
         <div class="card">
-            <div class="card-title">一键导入玩家数据</div>
+            <div class="card-title">一键导入玩家数据（只导入最终结果，不导入分项数据）</div>
             <div class="player-search">
                 <div class="ps-row">
                     <input type="text" class="ps-input" id="psName" autocomplete="off" spellcheck="false"
@@ -1368,8 +1368,8 @@
                 apiCard(u.userid, u.ch)
                     .then(function (data) {
                         if (seq !== psListSeq) return;   // 列表已刷新，丢弃过期结果
-                        if (!data || !data.userprofilecard) return;
-                        var card = data.userprofilecard;
+                        if (!data) return;
+                        var card = normCard(data);
                         var mast = document.getElementById('psMast' + idx);
                         if (mast) mast.textContent = 'Lv.' + masteryLevel(card);
                         var p = cardPercent(card, 1);
@@ -1388,8 +1388,8 @@
             setPsStatus('加载中…', 'loading');
             apiCard(u.userid, u.ch)
                 .then(function (data) {
-                    if (!data || !data.userprofilecard) throw new Error('empty');
-                    applyCard(data.userprofilecard, u);
+                    if (!data) throw new Error('empty');
+                    applyCard(data, u);
                 })
                 .catch(function () {
                     setPsStatus('获取数据失败', 'err');
@@ -1403,8 +1403,51 @@
             return level / 10;
         }
 
+        // 接口有两种返回格式：
+        //   旧：{ userprofilecard: { user: { options: {...} }, ... } } —— 有分项数据
+        //   新：{ name, uid, count, guardianmasterylevel, rank-44, ... } —— 只剩 count 合计
+        // 用「有没有 user 对象」区分
+        function normCard(data) {
+            return (data && data.userprofilecard) ? data.userprofilecard : data;
+        }
+
+        function countOnly(card) {
+            return !!card && !card.user;
+        }
+
+        // 指定模式下三维的上限合计
+        function modeMaxTotal(modeIndex) {
+            return ['a', 'h', 'd'].map(function (prefix, ci) {
+                var sum = 0;
+                for (var i = 1; i <= maxInd[modeIndex][ci]; i++) {
+                    var el = document.getElementById(prefix + i + 'm');
+                    if (el) sum += Number(el.innerHTML);
+                }
+                return sum;
+            });
+        }
+
+        // 新格式没有分项，把 count 合计按「扩展模式 II」贪心摊回各输入框（每格不超过自身上限）
+        function fillFromCount(card) {
+            var c = card.count || {};
+            var keys = ['atk', 'hp', 'def'];
+            ['a', 'h', 'd'].forEach(function (prefix, ci) {
+                var rest = Math.round(((c[keys[ci]] || 0) / 10) * 10) / 10;
+                for (var i = 1; i <= maxInd[3][ci]; i++) {
+                    var el = document.getElementById(prefix + i);
+                    if (!el) continue;
+                    var mEl = document.getElementById(prefix + i + 'm');
+                    var max = mEl ? Number(mEl.innerHTML) : 0;
+                    var v = Math.round(Math.min(max, Math.max(0, rest)) * 10) / 10;
+                    rest = Math.round((rest - v) * 10) / 10;
+                    el.value = v.toFixed(1);
+                }
+            });
+        }
+
         // 守护者精通等级 = guardianmasteryskill 各技能等级之和
         function masteryLevel(card) {
+            if (countOnly(card)) return Number(card.guardianmasterylevel || 0);
             var sk = card.user && card.user.options
                 && card.user.options.guardianmastery
                 && card.user.options.guardianmastery.guardianmasteryskill;
@@ -1442,6 +1485,15 @@
 
         // 按指定模式算出 [攻击, 生命, 防御] 三维百分比（只算不写表，供候选列表预览用）
         function cardPercent(card, modeIndex) {
+            // 新格式只有 count 合计，只能用「扩展模式 II」的上限换算
+            if (countOnly(card)) {
+                var mx = modeMaxTotal(3), c = card.count || {};
+                return [
+                    mx[0] ? (c.atk || 0) / 10 / mx[0] * 100 : 0,
+                    mx[1] ? (c.hp || 0) / 10 / mx[1] * 100 : 0,
+                    mx[2] ? (c.def || 0) / 10 / mx[2] * 100 : 0
+                ];
+            }
             var values = cardCellValues(card);
             return ['a', 'h', 'd'].map(function (prefix, ci) {
                 var n = maxInd[modeIndex][ci];
@@ -1461,10 +1513,28 @@
         window.gtApi = {
             percent: cardPercent,
             cellValues: cardCellValues,
+            masteryLevel: masteryLevel,
+            normCard: normCard,
+            countOnly: countOnly,
             modeNames: CONFIG.modeNames
         };
 
-        function applyCard(card, picked) {
+        function applyCard(data, picked) {
+            var card = normCard(data);
+            if (!card) { setPsStatus('获取数据失败', 'err'); return; }
+
+            // 新格式：没有分项，只能按「扩展模式 II」把 count 合计摊回各格
+            if (countOnly(card)) {
+                fillFromCount(card);
+                var m3 = document.getElementById('mode3');
+                if (m3) m3.checked = true;
+                setPsStatus('已导入 <b>' + esc(card.name || (picked && picked.name) || '') + '#'
+                    + esc(card.uid || (picked && picked.hashtag) || '') + '</b>'
+                    + (card.guildname ? ' · 公会：' + esc(card.guildname) : ''), 'ok');
+                calc();
+                return;
+            }
+
             var user = card.user || {};
             var values = cardCellValues(card);
 

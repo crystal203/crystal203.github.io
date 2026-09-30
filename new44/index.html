@@ -1499,8 +1499,18 @@
                 }
 
                 // ---------- 守护者精通 ----------
+                function normCard(d) {
+                    return (d && d.userprofilecard) ? d.userprofilecard : d;
+                }
+
+                function isOldCard(card) {
+                    return !!(card && card.user);
+                }
+
+                // 新格式没有分项 → 返回 null，调用方据此隐藏精通表
                 function masteryTable(card) {
-                    var o = (card && card.user && card.user.options) || {};
+                    if (!isOldCard(card)) return null;
+                    var o = (card.user && card.user.options) || {};
                     var sk = ((o.guardianmastery || {}).guardianmasteryskill) || {};
                     return M_GROUPS.map(function (g) {
                         return {
@@ -1514,7 +1524,10 @@
                 }
 
                 function masteryTotal(card) {
-                    return masteryTable(card).reduce(function (a, g) {
+                    var t = masteryTable(card);
+                    // 新格式没有技能分项，直接用 guardianmasterylevel
+                    if (!t) return Number((card && card.guardianmasterylevel) || 0);
+                    return t.reduce(function (a, g) {
                         return a + g.values.reduce(function (x, y) { return x + y; }, 0);
                     }, 0);
                 }
@@ -1564,7 +1577,9 @@
 
                 // 44 最高排名分档：1/2/3/前十/前五十/前百/其他 → 金/银/铜/浅蓝/白/灰
                 function rankInfo(card) {
-                    var rank = Number(card.colosseumrank || 0);
+                    // 旧格式 colosseumrank / 新格式 rank-44
+                    var raw = card.colosseumrank != null ? card.colosseumrank : card['rank-44'];
+                    var rank = Number(raw || 0);
                     if (rank === 1) return { cls: 'r1', text: '第 1 名' };
                     if (rank === 2) return { cls: 'r2', text: '第 2 名' };
                     if (rank === 3) return { cls: 'r3', text: '第 3 名' };
@@ -1575,12 +1590,15 @@
                     return { cls: 'rother', text: '未上榜' };
                 }
 
-                // 结果卡右上角：排名在上、最高分数在下
+                // 结果卡右上角：排名在上、最高分数在下（新格式没有分数则不显示那一行）
                 function rankBadge(card) {
                     var info = rankInfo(card);
+                    var score = card.colosseumtrophy;
+                    var sc = (score == null || score === '')
+                        ? ''
+                        : '<span class="sc">' + Number(score) + ' 分</span>';
                     return '<div class="pl-rank ' + info.cls + '">'
-                        + '<span class="lv">' + info.text + '</span>'
-                        + '<span class="sc">' + Number(card.colosseumtrophy || 0) + ' 分</span>'
+                        + '<span class="lv">' + info.text + '</span>' + sc
                         + '</div>';
                 }
 
@@ -1667,49 +1685,53 @@
                     if (!pending.length) return Promise.resolve();
                     return Promise.all(pending.map(function (r) {
                         return apiCard(r.u.userid, r.u.ch).then(function (d) {
-                            r.card = (d && d.userprofilecard) || null;
+                            r.card = normCard(d) || null;
                         }).catch(function () { });
                     }));
                 }
 
                 function renderResult(u, card) {
                     setStatus('');
-                    var table = masteryTable(card);
-                    var summary = masterySummary(table);
-                    var name = (card.user && card.user.name) || u.name;
-                    var tag = (card.user && card.user.hashtag) || u.hashtag;
+                    card = normCard(card) || {};
+                    var table = masteryTable(card);   // 新格式为 null → 精通表与总结都不渲染
+                    var name = card.name || (card.user && card.user.name) || u.name || '';
+                    var tag = card.uid || (card.user && card.user.hashtag) || u.hashtag || '';
+                    var cid = (card.user && card.user.id) || u.userid || card.id || '';
 
                     var html = '<div class="pl-card">';
                     html += '<div class="pl-head">'
                         + '<div>'
                         + '<div class="pl-who">' + esc(name) + '#' + esc(tag) + '</div>'
-                        + '<div class="pl-sub">ID ' + esc((card.user && card.user.id) || u.userid)
+                        + '<div class="pl-sub">ID ' + esc(cid)
                         + (card.guildname ? ' · 公会：' + esc(card.guildname) : '')
                         + ' · 守护者精通等级 Lv.' + masteryTotal(card) + '</div>'
                         + '</div>'
                         + rankBadge(card)
                         + '</div>';
 
-                    html += '<div class="pl-section-title">练度（经典模式）</div>';
+                    html += '<div class="pl-section-title">练度（' + (table ? '经典模式' : '扩展模式 II') + '）</div>';
                     html += '<div class="pl-dims" id="plDims">'
                         + '<div class="pl-dim atk"><div class="k">攻击</div><div class="v">—</div></div>'
                         + '<div class="pl-dim def"><div class="k">防御</div><div class="v">—</div></div>'
                         + '<div class="pl-dim hp"><div class="k">生命</div><div class="v">—</div></div>'
                         + '</div>';
 
-                    html += '<div class="pl-section-title">守护者精通加点</div>';
-                    html += '<table class="pl-mtable"><thead><tr><th></th>'
-                        + M_SLOTS.map(function (s) { return '<th class="' + s.cls + '">' + s.name + '</th>'; }).join('')
-                        + '</tr></thead><tbody>'
-                        + table.map(function (g) {
-                            return '<tr><td>' + g.name + '</td>'
-                                + g.values.map(function (v, i) {
-                                    return '<td class="' + M_SLOTS[i].cls + '">' + v + '</td>';
-                                }).join('') + '</tr>';
-                        }).join('')
-                        + '</tbody></table>';
+                    if (table) {
+                        html += '<div class="pl-section-title">守护者精通加点</div>';
+                        html += '<table class="pl-mtable"><thead><tr><th></th>'
+                            + M_SLOTS.map(function (s) { return '<th class="' + s.cls + '">' + s.name + '</th>'; }).join('')
+                            + '</tr></thead><tbody>'
+                            + table.map(function (g) {
+                                return '<tr><td>' + g.name + '</td>'
+                                    + g.values.map(function (v, i) {
+                                        return '<td class="' + M_SLOTS[i].cls + '">' + v + '</td>';
+                                    }).join('') + '</tr>';
+                            }).join('')
+                            + '</tbody></table>';
 
-                    html += '<div class="pl-summary ' + summary.key + '">' + summary.text + '</div>';
+                        var summary = masterySummary(table);
+                        html += '<div class="pl-summary ' + summary.key + '">' + summary.text + '</div>';
+                    }
                     html += '</div>';
 
                     document.getElementById('plResult').innerHTML = html;
@@ -1736,8 +1758,9 @@
                     setStatus('读取中…');
                     apiCard(u.userid, u.ch)
                         .then(function (d) {
-                            if (!d || !d.userprofilecard) throw new Error('empty');
-                            renderResult(u, d.userprofilecard);
+                            var card = normCard(d);
+                            if (!card) throw new Error('empty');
+                            renderResult(u, card);
                         })
                         .catch(function () { setStatus('获取数据失败', true); });
                 }
