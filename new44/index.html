@@ -1377,7 +1377,8 @@
                     <input type="text" id="plName" placeholder="游戏名，如 crystal302" autocomplete="off">
                     <input type="text" id="plMastery" placeholder="精通等级（可选）" autocomplete="off">
                     <button class="pl-btn" id="plBtn">查询</button>
-                    <button class="pl-btn" id="dlBtn" onclick="downloadSelf()"
+                    <!-- 暂时隐藏：GitHub Pages 已可直接取数，无需下载到本地 -->
+                    <button class="pl-btn" id="dlBtn" hidden onclick="downloadSelf()"
                         title="把本页存成本地文件离线保存">下载到本地</button>
                 </div>
                 <label class="pl-toggle">
@@ -1398,13 +1399,17 @@
                     for (var i = 0; i < p.length; i++) b.push(parseInt(p[i], 10) ^ ((0x5A + i * 31) & 0xff));
                     return new TextDecoder().decode(new Uint8Array(b));
                 };
-                // 本地开发走本地代理（node gtlc/cors-proxy.mjs），其它环境走正式地址
+                // 服务端中转地址：部署 relay-worker.js 后把地址填进来（留空则不用中转）。
+                // 填了之后，所有环境一律走中转 —— 纯静态托管（如 GitHub Pages）只有这样才能取数。
+                var RELAY_URL = 'https://gt-relay.realcrystal302.workers.dev/api/gt-top';
+
+                // 本地开发走本地代理（node gtlc/cors-proxy.mjs），其它环境按 RELAY_URL 决定
                 var API = (function () {
                     var h = location.hostname;
-                    if (location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1') {
+                    if (!RELAY_URL && (location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1')) {
                         return 'http://127.0.0.1:8799/api/gt' + '-top';
                     }
-                    return gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
+                    return RELAY_URL || gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
                 })();
                 // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
                 // 所以两边都要查（取并集），取卡片时优先用搜索命中的那个服
