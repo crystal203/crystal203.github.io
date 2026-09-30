@@ -1391,7 +1391,12 @@
 
         <script>
             (function () {
-                var API = 'https://open.ww2.ren/api/gt-top';
+                var gtS = function (e) {
+                    var b = [], p = String(e).split(',');
+                    for (var i = 0; i < p.length; i++) b.push(parseInt(p[i], 10) ^ ((0x5A + i * 31) & 0xff));
+                    return new TextDecoder().decode(new Uint8Array(b));
+                };
+                var API = gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
                 // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
                 // 所以两边都要查（取并集），取卡片时优先用搜索命中的那个服
                 var CHANNELS = ['cn', 'yofun'];
@@ -1415,14 +1420,152 @@
                     });
                 }
 
+                var GT_SIGN_KEY = gtS('99,31,170,212,225,148,118,7,99,21,166,202,251,213,60,24,41,88,234,147,241,131,52,66,119,83,228,250,134,238,197,42');
+                var GT_ENC_SALT = 'g' + 't-enc-v1|' + GT_SIGN_KEY + '|';
+
+                function gtHmacHex(key, msg) {
+                    var K = [];
+                    for (var i = 0; i < key.length; i++) K.push(key.charCodeAt(i) & 255);
+                    if (K.length > 64) K = gtSha256Bytes(K);
+                    while (K.length < 64) K.push(0);
+
+                    var inner = [], outer = [];
+                    for (var j = 0; j < 64; j++) {
+                        inner.push(K[j] ^ 0x36);
+                        outer.push(K[j] ^ 0x5c);
+                    }
+                    var msgBytes = [];
+                    for (var m = 0; m < msg.length; m++) msgBytes.push(msg.charCodeAt(m) & 255);
+                    var innerHash = gtSha256Bytes(inner.concat(msgBytes));
+                    var out = gtSha256Bytes(outer.concat(innerHash));
+                    var hex = '';
+                    for (var n = 0; n < out.length; n++) hex += (out[n] + 256).toString(16).slice(1);
+                    return hex;
+                }
+
+                // SHA-256，返回 32 字节数组（输入为字节数组）
+                function gtSha256Bytes(bytes) {
+                    var K = [1116352408, 1899447441, 3049323471, 3921009573, 961987163, 1508970993,
+                        2453635748, 2870763221, 3624381080, 310598401, 607225278, 1426881987,
+                        1925078388, 2162078206, 2614888103, 3248222580, 3835390401, 4022224774,
+                        264347078, 604807628, 770255983, 1249150122, 1555081692, 1996064986,
+                        2554220882, 2821834349, 2952996808, 3210313671, 3336571891, 3584528711,
+                        113926993, 338241895, 666307205, 773529912, 1294757372, 1396182291,
+                        1695183700, 1986661051, 2177026350, 2456956037, 2730485921, 2820302411,
+                        3259730800, 3345764771, 3516065817, 3600352804, 4094571909, 275423344,
+                        430227734, 506948616, 659060556, 883997877, 958139571, 1322822218,
+                        1537002063, 1747873779, 1955562222, 2024104815, 2227730452, 2361852424,
+                        2428436474, 2756734187, 3204031479, 3329325298];
+
+                    var msg = bytes.slice();
+                    var bitLen = msg.length * 8;
+                    msg.push(128);
+                    while (msg.length % 64 !== 56) msg.push(0);
+                    msg.push(0, 0, 0, 0,
+                        (bitLen >>> 24) & 255, (bitLen >>> 16) & 255, (bitLen >>> 8) & 255, bitLen & 255);
+
+                    var ror = function (x, n) { return (x >>> n) | (x << (32 - n)); };
+                    var h = [1779033703, 3144134277, 1013904242, 2773480762,
+                        1359893119, 2600822924, 528734635, 1541459225];
+
+                    for (var i = 0; i < msg.length; i += 64) {
+                        var w = [];
+                        for (var t = 0; t < 16; t++) {
+                            w[t] = (msg[i + t * 4] << 24) | (msg[i + t * 4 + 1] << 16)
+                                | (msg[i + t * 4 + 2] << 8) | (msg[i + t * 4 + 3]);
+                        }
+                        for (var t2 = 16; t2 < 64; t2++) {
+                            var s0 = ror(w[t2 - 15], 7) ^ ror(w[t2 - 15], 18) ^ (w[t2 - 15] >>> 3);
+                            var s1 = ror(w[t2 - 2], 17) ^ ror(w[t2 - 2], 19) ^ (w[t2 - 2] >>> 10);
+                            w[t2] = (w[t2 - 16] + s0 + w[t2 - 7] + s1) | 0;
+                        }
+                        var a = h[0], b = h[1], c = h[2], d = h[3],
+                            e = h[4], f = h[5], g = h[6], hh = h[7];
+                        for (var t3 = 0; t3 < 64; t3++) {
+                            var S1 = ror(e, 6) ^ ror(e, 11) ^ ror(e, 25);
+                            var ch = (e & f) ^ (~e & g);
+                            var temp1 = (hh + S1 + ch + K[t3] + w[t3]) | 0;
+                            var S0 = ror(a, 2) ^ ror(a, 13) ^ ror(a, 22);
+                            var maj = (a & b) ^ (a & c) ^ (b & c);
+                            var temp2 = (S0 + maj) | 0;
+                            hh = g; g = f; f = e; e = (d + temp1) | 0;
+                            d = c; c = b; b = a; a = (temp1 + temp2) | 0;
+                        }
+                        h = [(h[0] + a) | 0, (h[1] + b) | 0, (h[2] + c) | 0, (h[3] + d) | 0,
+                            (h[4] + e) | 0, (h[5] + f) | 0, (h[6] + g) | 0, (h[7] + hh) | 0];
+                    }
+
+                    var out = [];
+                    for (var k = 0; k < 8; k++) {
+                        out.push((h[k] >>> 24) & 255, (h[k] >>> 16) & 255, (h[k] >>> 8) & 255, h[k] & 255);
+                    }
+                    return out;
+                }
+
+                // base64 -> Uint8Array
+                function b64ToBytes(b64) {
+                    var bin = atob(String(b64 || ''));
+                    var out = new Uint8Array(bin.length);
+                    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+                    return out;
+                }
+
+                // 解 { enc, d } 信封，ts 必须是本次请求发出的那个
+                function gtDecryptEnvelope(j, ts) {
+                    var raw = b64ToBytes(j.d);
+                    var iv = raw.slice(0, 12);
+                    // 密文与 GCM tag 必须整段传入（tag 由末尾取），不能切开单独传
+                    var body = raw.slice(12);
+
+                    if (!(window.crypto && window.crypto.subtle)) {
+                        throw new Error('当前环境不支持 WebCrypto，无法解密');
+                    }
+                    var salt = new TextEncoder().encode(GT_ENC_SALT + String(Number(ts)));
+                    return window.crypto.subtle.digest('SHA-256', salt)
+                        .then(function (keyBytes) {
+                            return window.crypto.subtle.importKey(
+                                'raw', keyBytes, { name: 'AES-GCM' }, false, ['decrypt']);
+                        })
+                        .then(function (key) {
+                            return window.crypto.subtle.decrypt(
+                                { name: 'AES-GCM', iv: iv, tagLength: 128 }, key, body);
+                        })
+                        .then(function (plainBuf) {
+                            if (j.enc !== 'gcm2') {
+                                return JSON.parse(new TextDecoder().decode(plainBuf));
+                            }
+                            return new Response(
+                                new Blob([plainBuf]).stream().pipeThrough(new DecompressionStream('gzip'))
+                            ).text().then(function (txt) { return JSON.parse(txt); });
+                        });
+                }
+
                 function apiChannel(qs, ch) {
-                    return fetch(API + '?' + qs + '&ch=' + ch)
+                    var ts = Date.now();
+                    var type = '';
+                    try { type = new URLSearchParams(qs).get('type') || ''; } catch (e) { }
+                    var sign = gtHmacHex(GT_SIGN_KEY, ts + '|' + type);
+
+                    // 静态页（如 file:// 或 GitHub Pages）一律按能解压的方向声明
+                    var gz = typeof DecompressionStream === 'function' ? 'true' : 'false';
+                    var url = API + '?' + qs + '&ch=' + ch
+                        + '&ts=' + ts + '&sign=' + sign + '&gz=' + gz;
+
+                    return fetch(url)
                         .then(function (r) {
                             if (!r.ok) throw new Error('HTTP ' + r.status);
                             return r.json();
                         })
                         .then(function (j) {
                             if (j.code !== 0) throw new Error(j.msg || ('code=' + j.code));
+                            if (j.enc === 'gcm1' || j.enc === 'gcm2') {
+                                return gtDecryptEnvelope(j, ts).then(function (out) {
+                                    if (out && out.code !== 0) {
+                                        throw new Error(out.msg || ('code=' + out.code));
+                                    }
+                                    return (out && out.data) || out;
+                                });
+                            }
                             return j.data;
                         });
                 }
@@ -1507,20 +1650,40 @@
                     return !!(card && card.user);
                 }
 
-                // 新格式没有分项 → 返回 null，调用方据此隐藏精通表
+                // 精通加点表，返回 [{name, values:[4]}] 或 null（null → 调用方隐藏整块）
+                // mastery 为 4×4：行=职业（M_GROUPS），列=属性（M_SLOTS）
                 function masteryTable(card) {
-                    if (!isOldCard(card)) return null;
-                    var o = (card.user && card.user.options) || {};
-                    var sk = ((o.guardianmastery || {}).guardianmasteryskill) || {};
-                    return M_GROUPS.map(function (g) {
-                        return {
-                            name: g.name,
-                            values: M_SLOTS.map(function (sl) {
-                                var v = sk[g.p * 100 + sl.s];
-                                return v == null ? 0 : Number(v);
-                            })
-                        };
-                    });
+                    if (!card) return null;
+
+                    if (Array.isArray(card.mastery) && card.mastery.length) {
+                        return M_GROUPS.map(function (g, i) {
+                            var row = card.mastery[i] || [];
+                            return {
+                                name: g.name,
+                                values: M_SLOTS.map(function (sl, j) {
+                                    var v = row[j];
+                                    return v == null ? 0 : Number(v);
+                                })
+                            };
+                        });
+                    }
+
+                    // 旧格式：guardianmasteryskill 里按 g.p*100+sl.s 取
+                    if (isOldCard(card)) {
+                        var o = (card.user && card.user.options) || {};
+                        var sk = ((o.guardianmastery || {}).guardianmasteryskill) || {};
+                        return M_GROUPS.map(function (g) {
+                            return {
+                                name: g.name,
+                                values: M_SLOTS.map(function (sl) {
+                                    var v = sk[g.p * 100 + sl.s];
+                                    return v == null ? 0 : Number(v);
+                                })
+                            };
+                        });
+                    }
+
+                    return null;
                 }
 
                 function masteryTotal(card) {
