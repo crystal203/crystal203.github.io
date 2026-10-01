@@ -1450,16 +1450,16 @@
             return NAME_INDEX_LOADING;
         }
 
-        // 名字 -> [{uuid, ch}]（byName 存的是 [names下标, [ids下标...]] 按服分组）
+        // 名字 -> [{uuid, ch}]（byName 每项是 [名字下标, [uuid下标...]]，按服分组）
+        // 服标签取自 chs[uuid下标] —— 不能用 servers[名字下标]，那是两套不同的下标空间
         function playersByName(name) {
             if (!NAME_INDEX) return [];
             var groups = NAME_INDEX.byName[String(name).trim()];
             if (!groups) return [];
             var out = [];
             groups.forEach(function (g) {
-                var ch = NAME_INDEX.servers[g[0]];
                 g[1].forEach(function (i) {
-                    out.push({ uuid: NAME_INDEX.ids[i], ch: ch });
+                    out.push({ uuid: NAME_INDEX.ids[i], ch: NAME_INDEX.chs[i] });
                 });
             });
             return out;

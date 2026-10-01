@@ -1639,8 +1639,7 @@
                     if (!groups) return [];
                     var out = [];
                     groups.forEach(function (g) {
-                        var ch = NAME_INDEX.servers[g[0]];
-                        g[1].forEach(function (i) { out.push({ uuid: NAME_INDEX.ids[i], ch: ch }); });
+                        g[1].forEach(function (i) { out.push({ uuid: NAME_INDEX.ids[i], ch: NAME_INDEX.chs[i] }); });
                     });
                     return out;
                 }
