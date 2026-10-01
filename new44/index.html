@@ -1374,7 +1374,7 @@
             </div>
             <div class="player-content">
                 <div class="pl-search">
-                    <input type="text" id="plName" placeholder="游戏名，如 crystal302" autocomplete="off">
+                    <input type="text" id="plName" placeholder="游戏名 或 好友码" autocomplete="off">
                     <input type="text" id="plMastery" placeholder="精通等级（可选）" autocomplete="off">
                     <button class="pl-btn" id="plBtn">查询</button>
                     <!-- 暂时隐藏：GitHub Pages 已可直接取数，无需下载到本地 -->
@@ -1562,7 +1562,7 @@
 
                     // 静态页（如 file:// 或 GitHub Pages）一律按能解压的方向声明
                     var gz = typeof DecompressionStream === 'function' ? 'true' : 'false';
-                    var url = API + '?' + qs + '&ch=' + ch
+                    var url = API + '?' + qs + (ch ? '&ch=' + ch : '')
                         + '&ts=' + ts + '&sign=' + sign + '&gz=' + gz;
 
                     return fetch(url)
@@ -1594,37 +1594,112 @@
                     }));
                 }
 
-                // 搜索：两个服的结果取并集；仅当 名字+哈希+userid 全都相同才合并成一条
-                function apiSearch(name) {
-                    return apiAll('type=user_search&name=' + encodeURIComponent(name)).then(function (res) {
-                        var out = [], seen = {};
+                // ---------- 离线索引（按游戏名查人）----------
+                // 索引是加密的（AES-256-GCM，文件头 GTIX），避免明文暴露 uuid / 玩家名 / 公会名。
+                // 密钥在此硬编码 —— 只是不让文件被直接读，不是真正的保密。
+                var GT_IDX_KEY = '9f2c7ab41d6e5803c1b47f0a52de8391';
+                var NAME_INDEX = null, NAME_INDEX_LOADING = null;
+
+                function decodeIndexBlob(buf) {
+                    var raw = new Uint8Array(buf);
+                    if (raw.length < 17) throw new Error('索引文件损坏');
+                    if (!(raw[0] === 0x47 && raw[1] === 0x54 && raw[2] === 0x49 && raw[3] === 0x58)) {
+                        throw new Error('索引文件格式不对');
+                    }
+                    var iv = raw.slice(5, 17);
+                    var body = raw.slice(17);       // 密文 + tag（整段交给 WebCrypto）
+                    return window.crypto.subtle.digest('SHA-256',
+                        new TextEncoder().encode('gt-idx-v1|' + GT_IDX_KEY)
+                    ).then(function (kb) {
+                        return window.crypto.subtle.importKey('raw', kb, { name: 'AES-GCM' }, false, ['decrypt']);
+                    }).then(function (key) {
+                        return window.crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv, tagLength: 128 }, key, body);
+                    }).then(function (plainBuf) {
+                        return JSON.parse(new TextDecoder().decode(plainBuf));
+                    });
+                }
+
+                function loadNameIndex() {
+                    if (NAME_INDEX) return Promise.resolve(NAME_INDEX);
+                    if (NAME_INDEX_LOADING) return NAME_INDEX_LOADING;
+                    NAME_INDEX_LOADING = fetch('name-index.bin')
+                        .then(function (r) {
+                            if (!r.ok) throw new Error('HTTP ' + r.status);
+                            return r.arrayBuffer();
+                        })
+                        .then(decodeIndexBlob)
+                        .then(function (j) { NAME_INDEX = j; return j; })
+                        .catch(function (e) { NAME_INDEX_LOADING = null; throw e; });
+                    return NAME_INDEX_LOADING;
+                }
+                // 名字 -> [{uuid, ch}]（byName 存的是 [names下标, [ids下标...]] 按服分组）
+                function playersByName(name) {
+                    if (!NAME_INDEX) return [];
+                    var groups = NAME_INDEX.byName[String(name).trim()];
+                    if (!groups) return [];
+                    var out = [];
+                    groups.forEach(function (g) {
+                        var ch = NAME_INDEX.servers[g[0]];
+                        g[1].forEach(function (i) { out.push({ uuid: NAME_INDEX.ids[i], ch: ch }); });
+                    });
+                    return out;
+                }
+                // 直接按 uuid 取卡（uuid 全局唯一，无需 ch）
+                function cardByUuid(uu) {
+                    return apiChannel('type=user_card&uuid=' + encodeURIComponent(uu), '');
+                }
+                // 对一批玩家并发取卡，返回 [{card, ch}]；失败的丢弃
+                function cardsByPlayers(list, limit) {
+                    var arr = limit ? list.slice(0, limit) : list;
+                    return Promise.all(arr.map(function (p) {
+                        return cardByUuid(p.uuid)
+                            .then(function (c) { return { card: c, ch: p.ch }; })
+                            .catch(function () { return null; });
+                    })).then(function (rs) {
+                        return rs.filter(function (x) { return x && x.card && x.card.id; });
+                    });
+                }
+
+                // 好友码：6~7 位字母或数字（如 0KQ89Q3、YPGXQQ3、NQ1UBC、UPYKTC）。
+                // 不符的直接判定找不到，不去打 friend_search —— 避免中文名、带空格等明显不是码的输入白跑一趟。
+                function isHashtag(s) {
+                    return /^[0-9A-Z]{6,7}$/.test(String(s || '').trim().toUpperCase());
+                }
+
+                // 按好友码（hashtag）查人：friend_search 是 hashtag 唯一的入口，返回里带数字 user_id
+                function apiSearchByTag(tag) {
+                    var t = String(tag || '').trim().replace(/^#+/, '').toUpperCase();
+                    if (!t) return Promise.resolve([]);
+                    var out = [], seen = {};
+                    return apiAll('type=friend_search&hashtag=' + encodeURIComponent(t)).then(function (res) {
                         res.forEach(function (r) {
-                            if (!Array.isArray(r.data)) return;
-                            r.data.forEach(function (u) {
-                                var key = u.name + '|' + u.hashtag + '|' + u.userid;
-                                if (seen[key]) return;
-                                seen[key] = 1;
-                                out.push({
-                                    name: u.name,
-                                    hashtag: u.hashtag,
-                                    userid: u.userid,
-                                    avatar: u.avatar,
-                                    guildid: u.guildid,
-                                    ch: r.ch
-                                });
+                            var fi = r.data && r.data.friendinfo;
+                            if (!fi || !fi.userid) return;
+                            var key = fi.name + '|' + fi.hashtag + '|' + fi.userid;
+                            if (seen[key]) return;
+                            seen[key] = 1;
+                            out.push({
+                                name: fi.name,
+                                hashtag: fi.hashtag,
+                                userid: fi.userid,
+                                avatar: (fi.avatar && fi.avatar.characterid) || fi.avatar,
+                                ch: r.ch
                             });
                         });
                         return out;
                     });
                 }
 
-                // 取玩家数据：优先搜索命中的那个服，失败再依次试其它服
-                function apiCard(userid, preferCh) {
+                // 取玩家数据：user_id 与 uuid 都支持（32 位 hex 视为 uuid 直接透传）
+                function apiCard(id, preferCh) {
+                    if (/^[0-9a-f]{32}$/i.test(String(id))) {
+                        return cardByUuid(id).catch(function (e) { throw e || new Error('未找到该玩家'); });
+                    }
                     var order = [];
                     if (preferCh && CHANNELS.indexOf(preferCh) >= 0) order.push(preferCh);
                     CHANNELS.forEach(function (ch) { if (order.indexOf(ch) < 0) order.push(ch); });
 
-                    var qs = 'type=user_card&user_id=' + encodeURIComponent(userid);
+                    var qs = 'type=user_card&user_id=' + encodeURIComponent(id);
                     var i = 0;
                     function next(err) {
                         if (i >= order.length) throw (err || new Error('未找到该玩家'));
@@ -1817,6 +1892,17 @@
                     el.className = 'pl-pager open';
                 }
 
+                // 候选行 / 摘要取卡：候选可能来自索引（有 uuid）或好友码（有 userid）
+                function fetchCardFor(u) {
+                    if (u && u.uuid) return cardByUuid(u.uuid);
+                    return apiCard(u && u.userid, u && u.ch);
+                }
+                // 候选行右侧标签：索引候选显示服，好友码候选显示数字 ID
+                function candLabel(u) {
+                    if (u && u.uuid) return u.ch ? ('服 ' + esc(u.ch)) : '';
+                    return (u && u.userid != null) ? ('ID ' + esc(u.userid)) : '';
+                }
+
                 function drawList() {
                     var box = document.getElementById('plList');
                     listSeq++;   // 让在途的旧结果作废
@@ -1840,7 +1926,7 @@
                             + '<span class="pl-badges" id="plb' + idx + '" style="display:none">'
                             + '<i class="pl-badge lv"></i><i class="pl-badge"></i>'
                             + '</span>'
-                            + '<span class="pl-uid">ID ' + esc(r.u.userid) + '</span>';
+                            + '<span class="pl-uid">' + candLabel(r.u) + '</span>';
                         div.onclick = function () { pick(r.u, r.card); };
                         box.appendChild(div);
                         if (r.card) fillBadges(idx, r.card);
@@ -1861,7 +1947,7 @@
                     var pending = allRows.filter(function (r) { return !r.card; });
                     if (!pending.length) return Promise.resolve();
                     return Promise.all(pending.map(function (r) {
-                        return apiCard(r.u.userid, r.u.ch).then(function (d) {
+                        return fetchCardFor(r.u).then(function (d) {
                             r.card = normCard(d) || null;
                         }).catch(function () { });
                     }));
@@ -1873,14 +1959,16 @@
                     var table = masteryTable(card);   // 新格式为 null → 精通表与总结都不渲染
                     var name = card.name || (card.user && card.user.name) || u.name || '';
                     var tag = card.uid || (card.user && card.user.hashtag) || u.hashtag || '';
-                    var cid = (card.user && card.user.id) || u.userid || card.id || '';
+                    // 不在界面上展示 uuid：优先显示数字 user_id，没有就显示所在服
+                    var cid = u.userid != null ? ('ID ' + u.userid)
+                        : (u.ch ? ('服 ' + u.ch) : '');
 
                     var html = '<div class="pl-card">';
                     html += '<div class="pl-head">'
                         + '<div>'
                         + '<div class="pl-who">' + esc(name) + '#' + esc(tag) + '</div>'
-                        + '<div class="pl-sub">ID ' + esc(cid)
-                        + (card.guildname ? ' · 公会：' + esc(card.guildname) : '')
+                        + '<div class="pl-sub">' + esc(cid)
+                        + (card.guildname ? (cid ? ' · ' : '') + '公会：' + esc(card.guildname) : '')
                         + ' · 守护者精通等级 Lv.' + masteryTotal(card) + '</div>'
                         + '</div>'
                         + rankBadge(card)
@@ -1933,7 +2021,7 @@
                     closeList();
                     if (card) { renderResult(u, card); return; }
                     setStatus('读取中…');
-                    apiCard(u.userid, u.ch)
+                    fetchCardFor(u)
                         .then(function (d) {
                             var card = normCard(d);
                             if (!card) throw new Error('empty');
@@ -1945,13 +2033,7 @@
                 function doSearch() {
                     var rawName = document.getElementById('plName').value.trim();
                     var rawLv = document.getElementById('plMastery').value.trim();
-                    if (!rawName) { setStatus('请输入游戏名', true); return; }
-
-                    var parts = rawName.split('#');
-                    var name = parts[0].trim();
-                    var wantTag = parts.length > 1 ? parts[1].trim().toUpperCase() : '';
-                    if (!name) { setStatus('请输入游戏名', true); return; }
-                    if (/^\d+$/.test(name)) { setStatus('请输入游戏名（不支持数字 ID）', true); return; }
+                    if (!rawName) { setStatus('请输入游戏名 或 好友码', true); return; }
 
                     var wantLv = null;
                     if (rawLv) {
@@ -1968,52 +2050,85 @@
                     closeList();
                     clearResult();
 
-                    apiSearch(name)
-                        .then(function (list) {
-                            if (!Array.isArray(list) || !list.length) { setStatus('未找到该玩家', true); return; }
+                    var namePart = rawName.split('#')[0].trim();
 
-                            // 不查摘要时：命中唯一就直接出结果，否则直接列出
-                            if (!needFetch) {
-                                if (wantTag) {
-                                    var hit = list.filter(function (u) {
-                                        return String(u.hashtag).toUpperCase() === wantTag;
-                                    })[0];
-                                    if (hit) { pick(hit, null); return; }
-                                }
-                                if (list.length === 1) { pick(list[0], null); return; }
-                                showRows(list.map(function (u) { return { u: u, card: null }; }));
-                                setStatus('');
-                                return;
-                            }
-
-                            // 查摘要：先出未排序列表，再逐个查询 → 过筛 → 按排名排序重绘
-                            var rows = list.map(function (u) { return { u: u, card: null }; });
-                            showRows(rows);
-                            setStatus(wantLv === null ? '查询摘要中…' : '按精通等级筛选…');
-
-                            return fetchSummaries().then(function () {
-                                var out = rows;
-                                if (wantLv !== null) {
-                                    out = rows.filter(function (r) {
-                                        return r.card && masteryTotal(r.card) === wantLv;
-                                    });
-                                    if (!out.length) {
-                                        showRows([]);
-                                        setStatus('没有精通等级 Lv.' + wantLv + ' 的同名玩家', true);
-                                        return;
-                                    }
-                                }
-                                showRows(sortByRank(out));
-                                setStatus('');
-                                if (out.length === 1) pick(out[0].u, out[0].card);
-                            });
+                    loadNameIndex()
+                        .then(function () {
+                            var players = playersByName(namePart);
+                            if (!players.length) return searchByTagFlow(rawName, wantLv, needFetch);
+                            return searchByNameFlow(players, wantLv, needFetch);
                         })
-                        .catch(function () { setStatus('查询失败', true); })
+                        .catch(function () {
+                            setStatus('索引加载失败（首次使用需联网加载一次）', true);
+                        })
                         .then(function () { btn.disabled = false; });
                 }
 
-                window.plSearch = doSearch;
+                // 索引里没有该名字 → 当作好友码走 friend_search
+                function searchByTagFlow(raw, wantLv, needFetch) {
+                    var tag = (raw.indexOf('#') >= 0 ? raw.split('#')[1] : raw).trim().replace(/^#+/, '');
+                    if (!isHashtag(tag)) {
+                        setStatus('索引里没有这个游戏名（若是好友码，形如 0KQ89Q3）', true);
+                        return Promise.resolve();
+                    }
+                    return apiSearchByTag(tag).then(function (list) {
+                        if (!list.length) { setStatus('未找到该好友码，请确认是否准确', true); return; }
+                        return runRows(list.map(function (u) { return { u: u, card: null }; }), wantLv, needFetch);
+                    });
+                }
 
+                // 索引命中 → 取卡；重名时列出让用户选（不展示 uuid）
+                function searchByNameFlow(players, wantLv, needFetch) {
+                    if (players.length === 1) {
+                        var p0 = players[0];
+                        return cardByUuid(p0.uuid).then(function (card) {
+                            return runRows([{ u: { name: card.name, hashtag: card.uid, uuid: p0.uuid, ch: p0.ch }, card: card, ch: p0.ch }], wantLv, needFetch);
+                        });
+                    }
+                    setStatus('发现 ' + players.length + ' 个同名玩家，正在读取…');
+                    return cardsByPlayers(players, 40).then(function (cards) {
+                        if (!cards.length) { setStatus('同名玩家卡片都读取失败', true); return; }
+                        var rows = cards.map(function (x) {
+                            return { u: { name: x.card.name, hashtag: x.card.uid, uuid: x.card.id, ch: x.ch }, card: x.card, ch: x.ch };
+                        });
+                        if (wantLv !== null) {
+                            var hit = rows.filter(function (r) { return masteryTotal(r.card) === wantLv; });
+                            if (!hit.length) { showRows([]); setStatus('没有精通等级 Lv.' + wantLv + ' 的同名玩家', true); return; }
+                            rows = hit;
+                        }
+                        if (rows.length === 1) { pick(rows[0].u, rows[0].card); return; }
+                        showRows(sortByRank(rows));
+                        setStatus('共 ' + rows.length + ' 个同名玩家（已按排名排序），请选择', false);
+                    });
+                }
+
+                // 统一走原来的列表/摘要流程
+                function runRows(rows, wantLv, needFetch) {
+                    if (!needFetch) {
+                        if (rows.length === 1) { pick(rows[0].u, null); return Promise.resolve(); }
+                        showRows(rows);
+                        setStatus('');
+                        return Promise.resolve();
+                    }
+                    showRows(rows);
+                    setStatus(wantLv === null ? '查询摘要中…' : '按精通等级筛选…');
+                    return fetchSummaries().then(function () {
+                        var out = rows;
+                        if (wantLv !== null) {
+                            out = rows.filter(function (r) { return r.card && masteryTotal(r.card) === wantLv; });
+                            if (!out.length) {
+                                showRows([]);
+                                setStatus('没有精通等级 Lv.' + wantLv + ' 的同名玩家', true);
+                                return;
+                            }
+                        }
+                        showRows(sortByRank(out));
+                        setStatus('');
+                        if (out.length === 1) pick(out[0].u, out[0].card);
+                    });
+                }
+
+                window.plSearch = doSearch;
                 document.getElementById('plBtn').addEventListener('click', doSearch);
                 ['plName', 'plMastery'].forEach(function (id) {
                     document.getElementById(id).addEventListener('keydown', function (e) {

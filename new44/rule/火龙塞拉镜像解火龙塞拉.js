@@ -3,7 +3,7 @@ export default {
   // 解法名称
   name: "火龙塞拉镜像解火龙塞拉",
   // 解法注释
-  desc: "适用于火龙前置的情形。",
+  desc: "适用于火龙前置的情形。暗刀可以换火腿。",
   // 满分（30 + 50 + 60 + 30 + 10）
   maxScore: 180,
 
@@ -23,7 +23,7 @@ export default {
   // 我方位置约束（x-pos 即列下标，0 起算；equ 3 = 第 4 列）
   bluePosition: [
     // 格式：[char, axis, relation, value]
-    ["Kahlor", "x-pos", "equ", 3],
+    ["Kahlor", "x-pos", "ge", 2],
     ["Beth", "x-pos", "equ", 3],
   ],
 
