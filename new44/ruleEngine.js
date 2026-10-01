@@ -419,6 +419,7 @@ async function checkAllRules() {
     //'./rule/暗炮斜挡解银河莉耶.js',
     './rule/偶像三奶解银河莉耶.js',
     './rule/火龙塞拉镜像解火龙塞拉.js',
+    './rule/火龙偶像解火龙塞拉.js',
   ];
   const allResults = [];
   for (let url of rulePaths) {
