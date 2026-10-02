@@ -919,9 +919,9 @@
             return new TextDecoder().decode(new Uint8Array(b));
         };
 
-        // 服务端中转地址：部署 relay-worker.js 后把地址填进来（留空则不用中转）。
-        // 填了之后，所有环境一律走中转 —— 纯静态托管（如 GitHub Pages）只有这样才能取数。
-        var RELAY_URL = 'https://gt-relay.realcrystal302.workers.dev/api/gt-top';
+        // 服务端中转地址（中继脚本见 gtlc/relay-valtown.ts）。
+        // 填了之后所有环境一律走中转 —— 纯静态托管（如 GitHub Pages）只有这样才能取数。
+        var RELAY_URL = 'https://crystal203--66ebbe36be0211f1964c1607ee4eb77e.web.val.run/api/gt-top';
 
         // 本地开发走本地代理（node gtlc/cors-proxy.mjs），其它环境按 RELAY_URL 决定
         var API_BASE = (function () {
