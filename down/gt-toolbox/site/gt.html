@@ -322,49 +322,6 @@
             color: var(--text-secondary);
         }
 
-        /* ---- 非本机环境（如 GitHub Pages）：把查询区换成下载入口 ---- */
-        .gt-dl {
-            text-align: center;
-            padding: 8px 0 4px;
-        }
-
-        .btn-dl {
-            display: inline-block;
-            padding: 13px 30px;
-            border-radius: 8px;
-            background: var(--primary);
-            color: #fff;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-            transition: background 0.15s;
-        }
-
-        .btn-dl:hover {
-            background: var(--primary-dark);
-        }
-
-        .gt-dl-tip {
-            margin-top: 14px;
-            font-size: 0.83rem;
-            line-height: 1.75;
-            color: var(--text-secondary);
-            text-align: left;
-        }
-
-        .gt-dl-tip b {
-            color: var(--text);
-        }
-
-        .gt-dl-tip code {
-            padding: 1px 5px;
-            border-radius: 4px;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            font-size: 0.95em;
-        }
-
         /* ---- 手动兜底面板（仅在自动取数失败时出现）---- */
         .gtm-bar {
             margin-top: 10px;
@@ -785,40 +742,27 @@
         <div class="card">
             <div class="card-title">一键导入玩家数据（只导入最终结果，不导入分项数据）</div>
             <div class="player-search">
-                <!-- 本机环境才显示查询区；非本机（GitHub Pages 等）整块隐藏，改显示下面的下载入口 -->
-                <div id="psOnlineOnly">
-                    <div class="ps-row">
-                        <input type="text" class="ps-input" id="psName" autocomplete="off" spellcheck="false"
-                            placeholder="游戏名 或 好友码">
-                        <button class="btn-search" id="psBtn" onclick="doSearch()">查询</button>
-                        <button class="btn-search" id="dlBtn" hidden onclick="downloadSelf()"
-                            title="把本页存成本地文件离线保存">下载到本地</button>
-                        <div class="ps-dropdown" id="psList"></div>
-                    </div>
-                    <label class="ps-toggle">
-                        <input type="checkbox" id="psStats">同时显示三维练度
-                    </label>
-                    <div class="ps-status" id="psStatus"></div>
-                    <!-- 自动取数不可用时的兜底：把签名链接交给用户自己的浏览器打开 -->
-                    <div class="gtm-bar" id="gtmBar" hidden>
-                        <button class="btn-search" id="gtmOpen">打开并复制</button>
-                        <button class="btn-search" id="gtmRead" hidden>读取剪贴板</button>
-                        <button class="btn-search" id="gtmRetry" hidden>重试自动取数</button>
-                        <div class="gtm-tip" id="gtmTip"></div>
-                        <textarea class="gtm-paste" id="gtmPaste" rows="3" spellcheck="false" hidden
-                            placeholder="把新标签页里的内容原样粘到这里，然后按 Ctrl+Enter"></textarea>
-                    </div>
+                <div class="ps-row">
+                    <input type="text" class="ps-input" id="psName" autocomplete="off" spellcheck="false"
+                        placeholder="游戏名 或 好友码">
+                    <button class="btn-search" id="psBtn" onclick="doSearch()">查询</button>
+                    <!-- 暂时隐藏：GitHub Pages 已可直接取数，无需下载到本地 -->
+                    <button class="btn-search" id="dlBtn" hidden onclick="downloadSelf()"
+                        title="把本页存成本地文件离线保存">下载到本地</button>
+                    <div class="ps-dropdown" id="psList"></div>
                 </div>
-
-                <div class="gt-dl" id="gtDl" hidden>
-                    <a class="btn-dl" id="gtDlLink" href="down/gt-toolbox.zip" download>下载完整版 gt-toolbox.zip</a>
-                    <div class="gt-dl-tip">
-                        网页版拿不到玩家数据：接口会校验请求来源，而<b>浏览器不允许网页伪造来源</b>，
-                        这是浏览器的安全规则，不是页面坏了。<br>
-                        下载后解压，双击 <code>launch.bat</code>，即可在本机使用<b>完整功能</b> ——
-                        按名字 / 好友码查询、三维练度、会战加点。<br>
-                        需要 <b>Node.js 18+</b>（装一次即可，压缩包里的 <code>README.txt</code> 有说明）。
-                    </div>
+                <label class="ps-toggle">
+                    <input type="checkbox" id="psStats">同时显示三维练度
+                </label>
+                <div class="ps-status" id="psStatus"></div>
+                <!-- 自动取数不可用时的兜底：把签名链接交给用户自己的浏览器打开 -->
+                <div class="gtm-bar" id="gtmBar" hidden>
+                    <button class="btn-search" id="gtmOpen">打开并复制</button>
+                    <button class="btn-search" id="gtmRead" hidden>读取剪贴板</button>
+                    <button class="btn-search" id="gtmRetry" hidden>重试自动取数</button>
+                    <div class="gtm-tip" id="gtmTip"></div>
+                    <textarea class="gtm-paste" id="gtmPaste" rows="3" spellcheck="false" hidden
+                        placeholder="把新标签页里的内容原样粘到这里，然后按 Ctrl+Enter"></textarea>
                 </div>
             </div>
         </div>
@@ -2197,26 +2141,8 @@
             modeNames: CONFIG.modeNames
         };
 
-        // ---------- 环境判定：本机可用查询，远端（GitHub Pages 等）改为引导下载 ----------
-        // 只有本机（localhost / 127.0.0.1 / file://）才能取数：本机可以跑那层补 Referer 的代理。
-        // 纯静态托管拿不到数据（接口校验来源，浏览器不允许网页伪造），所以在那边直接把
-        // 查询区换成下载入口，省得用户白输一遍再看报错。
-        var GT_LOCAL = (function () {
-            var h = location.hostname;
-            return location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1';
-        })();
-
-        function gtApplyEnvMode() {
-            if (GT_LOCAL) return;
-            var online = document.getElementById('psOnlineOnly');
-            var dl = document.getElementById('gtDl');
-            if (online) online.hidden = true;
-            if (dl) dl.hidden = false;
-        }
-
         // 手动兜底的按钮与剪贴板监听
         gtInitManual();
-        gtApplyEnvMode();
 
         function applyCard(data, picked) {
             var card = normCard(data);
