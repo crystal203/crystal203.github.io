@@ -20,7 +20,10 @@
  * 用法:  node launcher.mjs [--port 8000]      或双击 launch.bat
  */
 import { createServer } from 'node:http';
-import { readFile, stat, existsSync } from 'node:fs';
+// 注意：readFile / stat 必须来自 node:fs/promises。
+// 从 node:fs 引入的是回调版，无回调调用会直接抛错（曾因此全部 404）。
+import { readFile, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { extname, join, normalize, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
