@@ -75,6 +75,50 @@ const MIME = {
 };
 
 // ---------------------------------------------------------------- API proxy
+//
+// 三条路径：
+//   /api/gt-top     透传 JSON 接口（现在返回明文了，不再需要解密）
+//   /api/card-image 下载玩家名片图 —— 请求由服务端发出，所以**不受**浏览器跨源规则
+//                   约束（CORP / Referer 防盗链 / cookie 门禁都拦不住它），
+//                   是网页直连 <img> 之外的可靠路径
+//   /api/card-ocr   OCR：把名片图读成结构化数值（图鉴分项只有图里有，见下方说明）
+//
+// 关于 OCR：名片图里包含接口已经不返回的分项数据（图鉴加成、守护者等级、浮游城、
+// 精通矩阵），所以这些只能从图上读。实现见 card-ocr.mjs。
+
+// ---------------- OCR（名片图 → 结构化数值）----------------
+//
+// 背景：接口现在只返回 17 个字段，图鉴分项（图鉴加成 / 守护者等级 / 浮游城 /
+// 精通矩阵）**只有名片图里有**，所以这些数据必须从图上读。
+//
+// 实现见 card-ocr.mjs：PNG 用内置 zlib 解，版面固定（实测 900x3201 恒定），
+// 数字识别用模板匹配；模板是**自监督**生成的 —— 接口仍返回的 rank-* /
+// guardianmasterylevel / coopexpeditionlike 同时也渲染在图上，两者自动配对，
+// 不需要人工标注。实测 112/112 已知值全部读对。
+import { extractCard, loadTemplates } from './card-ocr.mjs';
+
+const TEMPLATES_PATH = join(SITE_ROOT, 'new44', 'ocr-templates.json');
+let OCR_TEMPLATES = null;
+let OCR_ERROR = null;
+try {
+  OCR_TEMPLATES = loadTemplates(TEMPLATES_PATH);
+} catch (e) {
+  OCR_ERROR = '模板加载失败（' + TEMPLATES_PATH + '）：' + e.message;
+}
+
+const IMG_HEADERS = () => ({
+  'User-Agent': FALLBACK_UA,
+  Accept: 'image/avif,image/webp,image/png,*/*',
+  Referer: UPSTREAM_REFERER,
+});
+
+// ext="webp" 给人看（小），ext="png" 给 OCR 用（Node 侧能解）
+function cardImageUrl(uuid, ch, name, ext = 'webp') {
+  return UPSTREAM + '/screenshot/data_card/w600/img.' + ext
+    + '?uuid=' + encodeURIComponent(uuid || '') + '&ch=' + encodeURIComponent(ch || 'cn')
+    + '&name=' + encodeURIComponent(name || '') + '&hide=1&diytheme=light';
+}
+
 function startProxy() {
   createServer(async (req, res) => {
     const cors = {
@@ -84,6 +128,59 @@ function startProxy() {
       'Access-Control-Max-Age': '600',
     };
     if (req.method === 'OPTIONS') { res.writeHead(204, cors); res.end(); return; }
+
+    const u = new URL(req.url, 'http://127.0.0.1');
+
+    // ---- 名片图（服务端下载，不受跨源规则约束）----
+    if (u.pathname === '/api/card-image') {
+      const name = u.searchParams.get('name') || '';
+      try {
+        const up = await fetch(cardImageUrl(u.searchParams.get('uuid'), u.searchParams.get('ch'), name), { headers: IMG_HEADERS() });
+        const buf = Buffer.from(await up.arrayBuffer());
+        res.writeHead(up.status, {
+          ...cors,
+          'Content-Type': up.headers.get('content-type') || 'image/webp',
+          'Content-Length': buf.length,
+          'Cache-Control': 'public, max-age=86400',
+        });
+        res.end(buf);
+        console.log('  [img] ' + up.status + '  ' + (buf.length / 1024).toFixed(0) + 'KB  ' + name);
+      } catch (e) {
+        res.writeHead(502, { ...cors, 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('image proxy error: ' + e.message);
+        console.log('  [img] 502  ' + e.message);
+      }
+      return;
+    }
+
+    // ---- OCR：名片图 → 结构化数值 ----
+    if (u.pathname === '/api/card-ocr') {
+      const name = u.searchParams.get('name') || '';
+      if (!OCR_TEMPLATES) {
+        res.writeHead(501, { ...cors, 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ ok: false, reason: OCR_ERROR }));
+        return;
+      }
+      try {
+        const t0 = Date.now();
+        // OCR 必须用 PNG —— Node 侧的解码器只解 PNG（webp 没有内置解码器）
+        const up = await fetch(cardImageUrl(u.searchParams.get('uuid'), u.searchParams.get('ch'), name, 'png'), { headers: IMG_HEADERS() });
+        if (!up.ok) throw new Error('上游返回 ' + up.status);
+        const buf = Buffer.from(await up.arrayBuffer());
+        const r = extractCard(buf, OCR_TEMPLATES);
+        r.ms = Date.now() - t0;
+        res.writeHead(r.ok ? 200 : 500, { ...cors, 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify(r));
+        console.log('  [ocr] ' + (r.ok ? 'ok' : '失败') + '  ' + (r.ms) + 'ms  ' + name);
+      } catch (e) {
+        res.writeHead(502, { ...cors, 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ ok: false, reason: String((e && e.message) || e) }));
+        console.log('  [ocr] 502  ' + e.message);
+      }
+      return;
+    }
+
+    // ---- JSON 接口透传 ----
     if (!req.url.startsWith('/api/')) {
       res.writeHead(404, { ...cors, 'Content-Type': 'text/plain' });
       res.end('only /api/* is proxied');
@@ -94,8 +191,9 @@ function startProxy() {
         headers: {
           Referer: UPSTREAM_REFERER,
           Origin: UPSTREAM_REFERER.replace(/\/$/, ''),
-          'User-Agent': (req.headers['user-agent'] && req.headers['user-agent'].length > 40)
-            ? req.headers['user-agent'] : FALLBACK_UA,
+          // 固定用浏览器 UA，不透传调用方的：
+          // 上游只认"完整浏览器 UA"，透传会让 curl / PowerShell 这类调用方一律 403。
+          'User-Agent': FALLBACK_UA,
           Accept: '*/*',
         },
       });
@@ -113,6 +211,8 @@ function startProxy() {
     }
   }).listen(PROXY_PORT, '127.0.0.1', () => {
     console.log('  api  proxy : http://127.0.0.1:' + PROXY_PORT + '/api/gt-top');
+    console.log('               http://127.0.0.1:' + PROXY_PORT + '/api/card-image');
+    console.log('               http://127.0.0.1:' + PROXY_PORT + '/api/card-ocr   (OCR 未接入)');
   }).on('error', (e) => {
     if (e.code === 'EADDRINUSE') {
       console.log('  api  proxy : port ' + PROXY_PORT + ' in use - assuming a proxy is already running.');

@@ -322,6 +322,29 @@
             color: var(--text-secondary);
         }
 
+        /* ---- 玩家名片图 ---- */
+        .gt-card {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .gt-card img {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .gt-card-note {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
         /* ---- 非本机环境（如 GitHub Pages）：把查询区换成下载入口 ---- */
         .gt-dl {
             text-align: center;
@@ -785,31 +808,40 @@
         <div class="card">
             <div class="card-title">一键导入玩家数据（只导入最终结果，不导入分项数据）</div>
             <div class="player-search">
-                <!-- 本机环境才显示查询区；非本机（GitHub Pages 等）整块隐藏，改显示下面的下载入口 -->
-                <div id="psOnlineOnly">
-                    <div class="ps-row">
-                        <input type="text" class="ps-input" id="psName" autocomplete="off" spellcheck="false"
-                            placeholder="游戏名 或 好友码">
-                        <button class="btn-search" id="psBtn" onclick="doSearch()">查询</button>
-                        <button class="btn-search" id="dlBtn" hidden onclick="downloadSelf()"
-                            title="把本页存成本地文件离线保存">下载到本地</button>
-                        <div class="ps-dropdown" id="psList"></div>
-                    </div>
-                    <label class="ps-toggle">
-                        <input type="checkbox" id="psStats">同时显示三维练度
-                    </label>
-                    <div class="ps-status" id="psStatus"></div>
-                    <!-- 自动取数不可用时的兜底：把签名链接交给用户自己的浏览器打开 -->
-                    <div class="gtm-bar" id="gtmBar" hidden>
-                        <button class="btn-search" id="gtmOpen">打开并复制</button>
-                        <button class="btn-search" id="gtmRead" hidden>读取剪贴板</button>
-                        <button class="btn-search" id="gtmRetry" hidden>重试自动取数</button>
-                        <div class="gtm-tip" id="gtmTip"></div>
-                        <textarea class="gtm-paste" id="gtmPaste" rows="3" spellcheck="false" hidden
-                            placeholder="把新标签页里的内容原样粘到这里，然后按 Ctrl+Enter"></textarea>
-                    </div>
+                <div class="ps-row">
+                    <input type="text" class="ps-input" id="psName" autocomplete="off" spellcheck="false"
+                        placeholder="游戏名 或 好友码">
+                    <button class="btn-search" id="psBtn" onclick="doSearch()">查询</button>
+                    <button class="btn-search" id="dlBtn" hidden onclick="downloadSelf()"
+                        title="把本页存成本地文件离线保存">下载到本地</button>
+                    <div class="ps-dropdown" id="psList"></div>
                 </div>
 
+                <!-- 本机才有：候选摘要 + 手动兜底面板 -->
+                <!-- 摘要只显示"接口还拿得到"的字段（守护者精通等级）。
+                     三维练度需要图鉴分项，而接口已不再返回，只有名片图里有 → 已从摘要移除，
+                     改由下方名片图 + OCR 提供。 -->
+                <label class="ps-toggle" id="psLocalOnly">
+                    <input type="checkbox" id="psStats">同时显示守护者精通等级
+                </label>
+                <div class="ps-status" id="psStatus"></div>
+                <div class="gtm-bar" id="gtmBar" hidden>
+                    <button class="btn-search" id="gtmOpen">打开并复制</button>
+                    <button class="btn-search" id="gtmRead" hidden>读取剪贴板</button>
+                    <button class="btn-search" id="gtmRetry" hidden>重试自动取数</button>
+                    <div class="gtm-tip" id="gtmTip"></div>
+                    <textarea class="gtm-paste" id="gtmPaste" rows="3" spellcheck="false" hidden
+                        placeholder="把新标签页里的内容原样粘到这里，然后按 Ctrl+Enter"></textarea>
+                </div>
+
+                <!-- 玩家名片图：图片端点不校验来源，<img> 也不需要 CORS，所以远端也能直接显示。
+                     本机 OCR 成功时会自动隐藏（数据已经回填进表格，不必再看图）。 -->
+                <div class="gt-card" id="gtCard" hidden>
+                    <img id="gtCardImg" alt="玩家名片" referrerpolicy="no-referrer">
+                    <div class="gt-card-note" id="gtCardNote"></div>
+                </div>
+
+                <!-- 名片图拿不到时的兜底（上游加了防盗链就会走这里） -->
                 <div class="gt-dl" id="gtDl" hidden>
                     <a class="btn-dl" id="gtDlLink" href="down/gt-toolbox.zip" download>下载完整版 gt-toolbox.zip</a>
                     <div class="gt-dl-tip">下载到本地部署以解锁此功能</div>
@@ -1963,6 +1995,24 @@
             loadNameIndex()
                 .then(function () {
                     var players = playersByName(namePart);
+
+                    // ---------- 远端（GitHub Pages 等）：只能靠离线索引 + 名片图 ----------
+                    // 接口没有 CORS 头，网页读不到响应；但名片图是 <img>，跨源可直接显示。
+                    if (!GT_LOCAL) {
+                        if (!players.length) {
+                            setPsStatus('离线索引里没有这个游戏名（远端环境无法按好友码查，'
+                                + '因为读不到接口响应）', 'err');
+                            return;
+                        }
+                        var p = players[0];
+                        gtShowCardImage(p.uuid, p.ch, namePart);
+                        setPsStatus(players.length > 1
+                            ? ('找到 ' + players.length + ' 个同名玩家，先显示第 1 个（远端无法批量读取）')
+                            : '', players.length > 1 ? 'loading' : '');
+                        return;
+                    }
+
+                    // ---------- 本机：完整流程 ----------
                     if (!players.length) {
                         // 索引里没有 → 只有形如 xxxxxxQ3 的才可能是好友码，否则直接判定找不到
                         var tag = (raw.indexOf('#') >= 0 ? raw.split('#')[1] : raw).trim().replace(/^#+/, '');
@@ -1971,6 +2021,7 @@
                         return;
                     }
                     if (players.length === 1) {
+                        gtShowCardImage(players[0].uuid, players[0].ch, namePart);
                         return apiChannel('type=user_card&uuid=' + encodeURIComponent(players[0].uuid), '', '玩家卡片')
                             .then(function (d) { closePsList(); applyCard(d, { name: d.name, hashtag: d.uid }); })
                             .catch(function () { setPsStatus('读取卡片失败', 'err'); });
@@ -2024,10 +2075,7 @@
                     + '<span class="ps-tag">#' + esc(u.hashtag) + '</span>'
                     + (u.ch && u.ch !== API_CHANNELS[0] ? '<span class="ps-ch">' + esc(u.ch) + '</span>' : '')
                     + '<span class="ps-uid">ID ' + esc(u.userid) + '</span>'
-                    + (showStats
-                        ? '<i class="ps-stat mastery" id="psMast' + idx + '"></i>'
-                          + '<span class="ps-stats" id="psStat' + idx + '"></span>'
-                        : '');
+                    + (showStats ? '<i class="ps-stat mastery" id="psMast' + idx + '"></i>' : '');
                 div.onclick = function () { selectUser(u); };
                 box.appendChild(div);
             });
@@ -2035,21 +2083,16 @@
 
             if (!showStats) return;
 
-            // 只有勾选后才额外拉取每个候选人的数据，按「经典模式」算三维练度
+            // 摘要只显示守护者精通等级 —— 它来自接口的 guardianmasterylevel。
+            // 三维练度需要图鉴分项（itemcollection / herocollection / guardianlevel / heavenhold），
+            // 而接口已经不再返回这些字段，只有名片图里有，所以摘要里不再计算它（算出来必然是 0 或假值）。
             list.forEach(function (u, idx) {
                 apiCard(u.userid, u.ch)
                     .then(function (data) {
                         if (seq !== psListSeq) return;   // 列表已刷新，丢弃过期结果
                         if (!data) return;
-                        var card = normCard(data);
                         var mast = document.getElementById('psMast' + idx);
-                        if (mast) mast.textContent = 'Lv.' + masteryLevel(card);
-                        var p = cardPercent(card, 1);
-                        var el = document.getElementById('psStat' + idx);
-                        if (!el) return;
-                        el.innerHTML = '<i class="ps-stat atk">' + p[0].toFixed(1) + '%</i>'
-                            + '<i class="ps-stat hp">' + p[1].toFixed(1) + '%</i>'
-                            + '<i class="ps-stat def">' + p[2].toFixed(1) + '%</i>';
+                        if (mast) mast.textContent = 'Lv.' + masteryLevel(normCard(data));
                     })
                     .catch(function () { });
             });
@@ -2188,7 +2231,12 @@
             masteryLevel: masteryLevel,
             normCard: normCard,
             countOnly: countOnly,
-            modeNames: CONFIG.modeNames
+            modeNames: CONFIG.modeNames,
+            // 给 new44 复用：把 OCR 结果合成为卡片的图鉴分项。
+            // 格子表、百分比换算、上限钳制都在这边（CONFIG.rows / OPTION_MAP），
+            // 在那边重写一份必然会跟这里不同步。
+            // 注意：函数定义在 gt.html 作用域，所以取上限读的是 gt.html 自己的表格 —— 正确。
+            mergeOcr: gtMergeOcr
         };
 
         // ---------- 环境判定：本机可用查询，远端（GitHub Pages 等）改为引导下载 ----------
@@ -2202,19 +2250,260 @@
 
         function gtApplyEnvMode() {
             if (GT_LOCAL) return;
-            var online = document.getElementById('psOnlineOnly');
+            // 远端（GitHub Pages 等）：留输入框 + 名片图，隐藏只有本机才有意义的东西
+            var localOnly = document.getElementById('psLocalOnly');
+            if (localOnly) localOnly.hidden = true;
+            // 下载入口默认收起，只在名片图拿不到时才显示
             var dl = document.getElementById('gtDl');
-            if (online) online.hidden = true;
-            if (dl) dl.hidden = false;
+            if (dl) dl.hidden = true;
+        }
+
+        // ---------- 玩家名片图 ----------
+        // 上游的 /screenshot/data_card/... 是"实时截图"端点，实测**不校验 Referer / Origin / UA**，
+        // 而 <img> 属于 no-cors 资源、本来就不需要 CORS 授权，所以远端环境也能直接显示。
+        //
+        // ⚠️ 这条路是"借来的"：对方只要加一个 `Cross-Origin-Resource-Policy: same-origin`
+        // 或者做 Referer 防盗链，浏览器就会拒载。所以：
+        //   - 用 onerror 兜底 → 回落到"下载到本地"
+        //   - 本机环境改走本地代理（服务端下载，不受任何跨源规则约束，也是以后接 OCR 的入口）
+        //
+        // ⚠️ 即使图能显示，canvas 也读不到像素（跨源污染），所以网页端**永远只能看、不能自动读数**。
+        function gtCardImageUrl(uuid, ch, name) {
+            var base = GT_LOCAL ? 'http://127.0.0.1:8799/api/card-image' : GT_UPSTREAM.replace('/api/gt-top', '');
+            if (GT_LOCAL) {
+                return base + '?uuid=' + encodeURIComponent(uuid) + '&ch=' + encodeURIComponent(ch || 'cn')
+                    + '&name=' + encodeURIComponent(name || '');
+            }
+            return base + '/screenshot/data_card/w600/img.webp?uuid=' + encodeURIComponent(uuid)
+                + '&ch=' + encodeURIComponent(ch || 'cn') + '&name=' + encodeURIComponent(name || '')
+                + '&hide=1&diytheme=light';
+        }
+
+        function gtShowCardImage(uuid, ch, name) {
+            var box = document.getElementById('gtCard');
+            var img = document.getElementById('gtCardImg');
+            var note = document.getElementById('gtCardNote');
+            var dl = document.getElementById('gtDl');
+            if (!box || !img) return;
+
+            box.hidden = false;
+            if (dl) dl.hidden = true;
+            if (note) {
+                note.textContent = (name ? name + ' 的名片' : '名片')
+                    + (GT_LOCAL ? '（本地 OCR 未能读取，请对照图片）' : '（图片由上游实时生成；数字请对照图片）');
+            }
+            img.onerror = function () {
+                // 上游加了防盗链/CORP，或者图挂了 → 回落到下载入口
+                box.hidden = true;
+                if (dl) dl.hidden = false;
+                setPsStatus('名片图已不可用（上游可能加了防盗链），请下载到本地使用', 'err');
+            };
+            // 加个时间戳参数没用（图的 URL 是确定性的），直接赋值即可；
+            // 同一个玩家重复查会走浏览器缓存，不会重复消耗上游的截图开销。
+            img.src = gtCardImageUrl(uuid, ch, name);
+        }
+
+        function gtHideCardImage() {
+            var box = document.getElementById('gtCard');
+            if (box) box.hidden = true;
+            var dl = document.getElementById('gtDl');
+            if (dl) dl.hidden = true;
+        }
+
+        // ---------- 名片图 OCR（静默回填）----------
+        // 接口已不再返回图鉴分项（itemcollection / herocollection / guardianlevel /
+        // heavenhold），而名片图上还有这些分类合计 —— 只能从图上读。
+        //
+        // OCR 跑在本地服务端（/api/card-ocr）。读出来后**直接合成卡片分项、走原来
+        // 那条填充路径**（不另开结果面板）；成功就不显示图片，失败才把图摆出来让
+        // 人眼对照。远端没有服务端，所以照旧只显示图片。
+        //
+        // level ↔ 百分比是可逆的（见上方 OPTION_MAP 的换算）：
+        //   count: P = level/10      → level = round(P*10)
+        //   tier : P = level/10+0.1  → level = round((P-0.1)*10)
+        //   flat : P = level         → level = round(P)
+        //
+        // ⚠️ 一个真实局限：名片图给的是**分类合计**，不是逐格等级。
+        //   "装备攻击图鉴" 一个数对应计算器的 7 格（武器/遗物/外观/超时装/魔卡/周边/宝石），
+        //   所以这几格只能**按平均值摊开** —— 总和能对上，逐格是推算值。
+        //   其余 12 格（英雄图鉴 3、道具羁绊 3、守护者等级 3、浮游城 2、装备防御 1）
+        //   都是 1:1 精确对应。
+        function gtOcrLevel(p, mode) {
+            if (p == null) return null;
+            if (mode === 'count') return Math.round(p * 10);
+            if (mode === 'tier') return Math.max(0, Math.round((p - 0.1) * 10));
+            return Math.round(p);   // flat
+        }
+
+        // 把 OCR 结果合成为 card 的分项数组（形态与接口原来的 itemcollection 等一致）
+        //
+        // 名片图的分类号有两类：
+        //   1) 1:1 —— 英雄羁绊、装备羁绊、浮游城建筑、守护者等级，这四个条目在图上
+        //             都有各自的具体数值，直接取。adj 是修正量，见下。
+        //   2) 组   —— "装备攻击/生命/防御图鉴" 是**其余条目的数值和**
+        //             （即该属性的全部格子，去掉上面那四个条目）。
+        //             图上一个数 → 多格，按**各格上限的比例**摊开
+        //             （不要平均摊：上限差很多，平均会出现 a6=5.7% 超过它 2.2% 上限这种不可能值）。
+        //
+        // adj 说明：名片图上叫"道具攻击/生命/防御羁绊"，对应表格的"装备羁绊"行，
+        // 但**图上比表格多 0.1**，回填时要减掉 —— 实测三个值整齐地各多 0.1
+        // （102.8/53.7/60.7 vs 表格上限 102.7/53.6/60.6），减完正好等于上限。
+        // 英雄羁绊不用减（图上 71.0 = a1 上限 71.0）。
+        var GT_OCR_CELLS = {
+            heroAtk: { cell: 'a1' }, heroDef: { cell: 'd1' }, heroHp: { cell: 'h1' },
+            itemAtkBond: { cell: 'a2', adj: -0.1 },
+            itemHpBond: { cell: 'h2', adj: -0.1 },
+            itemDefBond: { cell: 'd2', adj: -0.1 },
+            gdAtk: { cell: 'a11' }, gdHp: { cell: 'h6' }, gdDef: { cell: 'd4' },
+            towerAtk: { cell: 'a10' }, towerHp: { cell: 'h5' },
+        };
+        // 装备图鉴要排除的条目（就是上面那四个 1:1 的）
+        var GT_GEAR_EXCL = { '英雄羁绊': 1, '装备羁绊': 1, '浮游城建筑': 1, '守护者等级': 1 };
+
+        // 从表格结构推导"装备图鉴"覆盖哪些格子：该属性的全部格子 − 上面四个条目。
+        // 用推导而不是写死格子号 —— 以后表格加行也不会漏。
+        function gtGearCells(attr) {
+            var out = [];
+            CONFIG.rows.forEach(function (row) {
+                var c = row[attr];
+                if (!c || GT_GEAR_EXCL[row.label]) return;
+                out.push(c[0]);          // row[attr] = [格子id, 上限]
+            });
+            return out;
+        }
+        var GT_OCR_GROUPS = {
+            gearAtk: gtGearCells('atk'),
+            gearHp: gtGearCells('hp'),
+            gearDef: gtGearCells('def'),
+        };
+
+        function gtCellMax(cell) {
+            var el = document.getElementById(cell + 'm');
+            return el ? (Number(el.innerHTML) || 0) : 0;
+        }
+
+        function gtMergeOcr(card, r) {
+            var f = r.fields || {};
+            var byCell = {};
+
+            // 1:1 的格子（带修正量）
+            Object.keys(GT_OCR_CELLS).forEach(function (k) {
+                if (f[k] == null) return;
+                var spec = GT_OCR_CELLS[k];
+                byCell[spec.cell] = f[k] + (spec.adj || 0);
+            });
+
+            // 组：按各格上限比例摊开
+            Object.keys(GT_OCR_GROUPS).forEach(function (k) {
+                if (f[k] == null) return;
+                var cells = GT_OCR_GROUPS[k];
+                var maxes = cells.map(gtCellMax);
+                var sum = maxes.reduce(function (a, b) { return a + b; }, 0);
+                // 比例上限 1：图上的组值若超过各格上限之和（表格过期时会发生），
+                // 就整体缩到满格，否则会有格子超上限、check() 直接判失败
+                var scale = sum > 0 ? Math.min(1, f[k] / sum) : 0;
+                cells.forEach(function (c, i) {
+                    byCell[c] = scale * maxes[i];
+                });
+            });
+
+            // 百分比 → level，按 OPTION_MAP 的组/id 归并回接口原来的数组形态
+            var groups = { herocollection: [], itemcollection: [], guardianlevel: [], heavenhold: [] };
+            var clamped = [];
+            OPTION_MAP.forEach(function (m) {
+                var p = byCell[m.cell];
+                if (p == null) return;
+                // 钳到格子上限。check() 要求每格 ≤ 上限，而名片图的分类值可能比表格
+                // 上限高一点点 —— CONFIG.rows 的上限是某个版本的数据，会过期
+                // （实测装备羁绊那一行整体比表格高 0.1：102.8/60.7/53.7 vs 102.7/60.6/53.6）。
+                // 不钳就会整表算不出来，只报"数值超出限制"。
+                var max = gtCellMax(m.cell);
+                if (max > 0 && p > max) { clamped.push(m.label + ' ' + p.toFixed(1) + '→' + max.toFixed(1)); p = max; }
+                var lv = gtOcrLevel(p, m.mode);
+                if (lv == null) return;
+                groups[m.g].push({ optionid: (m.ids || [m.id])[0], level: lv });
+            });
+            if (clamped.length && window.console) console.info('OCR 分项已按表格上限钳制：' + clamped.join('，'));
+
+            card.herocollection = groups.herocollection;
+            card.itemcollection = groups.itemcollection;
+            card.guardianlevel = groups.guardianlevel;
+            card.heavenhold = groups.heavenhold;
+            card.user = null;          // 让 cardCellValues 走顶层数组
+            // 兜底：万一上面某组为空，还有合计值可按扩展模式 II 摊
+            card.count = {
+                // count 是"等级累加值"，等于百分比 ×10（263.4% → 2634）。
+                // 别直接放百分比：fillFromCount 会再 /10，cardPercent 也会再 /10。
+                atk: (f.atkTotal || 0) * 10,
+                hp: (f.hpTotal || 0) * 10,
+                def: (f.defTotal || 0) * 10,
+            };
+            card.gtOcrDone = true;
+
+            // 切到扩展模式 II：OCR 拿到的是 11/6/4 格的全套分项，
+            // 用只覆盖 9/4/3 格的经典模式会把浮游城、守护者等级排除在练度之外。
+            // （原估算路径也是这么切的）
+            var m3 = document.getElementById('mode3');
+            if (m3) m3.checked = true;
+        }
+
+        // 同步校验：用 OCR 的分类值算出总和，与图上"图鉴总和"比对
+        function gtOcrSanity(r) {
+            var f = r.fields || {};
+            var sum = function (arr) {
+                var t = 0, n = 0;
+                arr.forEach(function (k) { if (f[k] != null) { t += f[k]; n++; } });
+                return n ? t : null;
+            };
+            var a = sum(['heroAtk', 'itemAtkBond', 'gearAtk', 'gdAtk', 'towerAtk']);
+            var d = sum(['heroDef', 'itemDefBond', 'gearDef', 'gdDef']);
+            var h = sum(['heroHp', 'itemHpBond', 'gearHp', 'gdHp', 'towerHp']);
+            var bad = [];
+            if (a != null && f.atkTotal != null && Math.abs(a - f.atkTotal) > 0.5) bad.push('攻击');
+            if (d != null && f.defTotal != null && Math.abs(d - f.defTotal) > 0.5) bad.push('防御');
+            if (h != null && f.hpTotal != null && Math.abs(h - f.hpTotal) > 0.5) bad.push('生命');
+            return bad;
         }
 
         // 手动兜底的按钮与剪贴板监听
         gtInitManual();
         gtApplyEnvMode();
 
+        // 本机专用：OCR → 合并分项 → 再走正常填充。
+        // 成功：不显示图片（数据已经进表格了）。
+        // 失败：把名片图摆出来让人眼对照，并保留"下载到本地"兜底。
+        function gtOcrThenApply(card, picked) {
+            var ch = (picked && picked.ch) || '';
+            var url = 'http://127.0.0.1:8799/api/card-ocr?uuid=' + encodeURIComponent(card.id)
+                + '&ch=' + encodeURIComponent(ch || 'cn') + '&name=' + encodeURIComponent(card.name || '');
+            setPsStatus('正在读取名片数据…', 'loading');
+            fetch(url)
+                .then(function (r) { return r.json(); })
+                .then(function (r) {
+                    if (!r || !r.ok) throw new Error((r && r.reason) || 'OCR 失败');
+                    // 自检：分类值之和应等于图上的"图鉴总和"，对不上说明可能读错
+                    var bad = gtOcrSanity(r);
+                    if (bad.length) throw new Error('自检未通过（' + bad.join('/') + ' 合计对不上）');
+                    gtMergeOcr(card, r);
+                    gtHideCardImage();
+                    applyCard(card, picked);          // 重新进入，这次直接填真值
+                })
+                .catch(function () {
+                    gtShowCardImage(card.id, ch, card.name);
+                    applyCard(card, picked);          // 退回按 count 的估算路径
+                });
+        }
+
         function applyCard(data, picked) {
             var card = normCard(data);
             if (!card) { setPsStatus('获取数据失败', 'err'); return; }
+
+            // 本机：先跑 OCR 把图鉴分项补进卡片，再走下面的正常填充。
+            // 这样用户看到的就只是"数据填好了"，不需要额外面板、也不需要看图。
+            if (GT_LOCAL && card.id && !card.gtOcrDone) {
+                gtOcrThenApply(card, picked);
+                return;
+            }
 
             var hasBreakdown = ['itemcollection', 'herocollection', 'guardianlevel', 'heavenhold']
                 .some(function (k) { return Array.isArray(card[k]) && card[k].length; });
@@ -2228,7 +2517,8 @@
                 setPsStatus('已导入 <b>' + esc(card.name || (picked && picked.name) || '') + '#'
                     + esc(card.uid || (picked && picked.hashtag) || '') + '</b>'
                     + (card.guildname ? ' · 公会：' + esc(card.guildname) : '')
-                    + ' <span class="ps-est">（该玩家无分项数据，各格为按合计摊平的估算值）</span>', 'ok');
+                    + ' <span class="ps-est">（接口已不再返回分项数据，各格为估算值；'
+                    + '实际加成请对照上方名片图 —— 图上数据比接口更全）</span>', 'ok');
                 calc();
                 return;
             }

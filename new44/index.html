@@ -826,6 +826,29 @@
             cursor: not-allowed;
         }
 
+        /* ---- 玩家名片图 ---- */
+        .gt-card {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .gt-card img {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .gt-card-note {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #757575;
+        }
+
         /* ---- 非本机环境（如 GitHub Pages）：把查询区换成下载入口 ---- */
         .gt-dl {
             text-align: center;
@@ -1411,25 +1434,34 @@
                 <span>玩家查询</span>
             </div>
             <div class="player-content">
-                <!-- 本机环境才显示查询区；非本机（GitHub Pages 等）整块隐藏，改显示下面的下载入口 -->
-                <div id="plOnlineOnly">
-                    <div class="pl-search">
-                        <input type="text" id="plName" placeholder="游戏名 或 好友码" autocomplete="off">
-                        <input type="text" id="plMastery" placeholder="精通等级（可选）" autocomplete="off">
-                        <button class="pl-btn" id="plBtn">查询</button>
-                        <button class="pl-btn" id="dlBtn" hidden onclick="downloadSelf()"
-                            title="把本页存成本地文件离线保存">下载到本地</button>
-                    </div>
+                <div class="pl-search">
+                    <input type="text" id="plName" placeholder="游戏名 或 好友码" autocomplete="off">
+                    <input type="text" id="plMastery" placeholder="精通等级（可选）" autocomplete="off">
+                    <button class="pl-btn" id="plBtn">查询</button>
+                    <button class="pl-btn" id="dlBtn" hidden onclick="downloadSelf()"
+                        title="把本页存成本地文件离线保存">下载到本地</button>
+                </div>
+
+                <!-- 本机才有：摘要选项 + 候选列表 -->
+                <div id="plLocalOnly">
                     <label class="pl-toggle">
                         <input type="checkbox" id="plFetch">
                         查询摘要（守护者精通等级 / 历史排名），并按排名排序
                     </label>
                     <div class="pl-list" id="plList"></div>
                     <div class="pl-pager" id="plPager"></div>
-                    <div class="pl-status" id="plStatus"></div>
                     <div id="plResult"></div>
                 </div>
+                <div class="pl-status" id="plStatus"></div>
 
+                <!-- 玩家名片图：图片端点不校验来源，<img> 也不需要 CORS，所以远端也能直接显示。
+                     本机 OCR 成功时会自动隐藏（数据已经回填进表格，不必再看图）。 -->
+                <div class="gt-card" id="gtCard" hidden>
+                    <img id="gtCardImg" alt="玩家名片" referrerpolicy="no-referrer">
+                    <div class="gt-card-note" id="gtCardNote"></div>
+                </div>
+
+                <!-- 名片图拿不到时的兜底（上游加了防盗链就会走这里） -->
                 <div class="gt-dl" id="gtDl" hidden>
                     <a class="btn-dl" id="gtDlLink" href="../down/gt-toolbox.zip" download>下载完整版 gt-toolbox.zip</a>
                     <div class="gt-dl-tip">下载到本地部署以解锁此功能</div>
@@ -1866,12 +1898,15 @@
                     return gtFramePromise;
                 }
 
-                // 返回 [攻击, 生命, 防御] 的经典模式百分比
+                // 返回 [攻击, 生命, 防御] 的百分比。
+                // 固定用**扩展模式 II**（索引 3）：它覆盖 11/6/4 格，是经典模式的超集；
+                // 而且 gt.html 在没有分项数据时本来就是按扩展模式 II 的上限去算的，
+                // 所以无论卡片有没有分项，用模式 3 都一致。
                 function gtPercent(card) {
                     return gtFrame().then(function (f) {
                         var g = f.contentWindow && f.contentWindow.gtApi;
                         if (!g) throw new Error('gt.html 未暴露 gtApi');
-                        return g.percent(card, 1);
+                        return g.percent(card, 3);
                     });
                 }
 
@@ -2022,7 +2057,7 @@
                         + rankBadge(card)
                         + '</div>';
 
-                    html += '<div class="pl-section-title">练度（' + (table ? '经典模式' : '扩展模式 II') + '）</div>';
+                    html += '<div class="pl-section-title">练度（扩展模式 II）</div>';
                     html += '<div class="pl-dims" id="plDims">'
                         + '<div class="pl-dim atk"><div class="k">攻击</div><div class="v">—</div></div>'
                         + '<div class="pl-dim def"><div class="k">防御</div><div class="v">—</div></div>'
@@ -2067,13 +2102,14 @@
                 // ---------- 查询 ----------
                 function pick(u, card) {
                     closeList();
-                    if (card) { renderResult(u, card); return; }
+                    // 本机：先跑 OCR 把精通矩阵补进卡片，再渲染（用户只会看到表格被填好）
+                    if (card) { gtOcrThenRender(u, card); return; }
                     setStatus('读取中…');
                     fetchCardFor(u)
                         .then(function (d) {
                             var card = normCard(d);
                             if (!card) throw new Error('empty');
-                            renderResult(u, card);
+                            gtOcrThenRender(u, card);
                         })
                         .catch(function () { setStatus('获取数据失败', true); });
                 }
@@ -2103,6 +2139,20 @@
                     loadNameIndex()
                         .then(function () {
                             var players = playersByName(namePart);
+
+                            // 远端（GitHub Pages 等）：读不到接口，只能靠离线索引 + 名片图
+                            if (!GT_LOCAL) {
+                                if (!players.length) {
+                                    setStatus('离线索引里没有这个游戏名（远端无法按好友码查，因为读不到接口响应）', true);
+                                    return;
+                                }
+                                var p = players[0];
+                                gtShowCardImage(p.uuid, p.ch, namePart);
+                                setStatus(players.length > 1
+                                    ? ('找到 ' + players.length + ' 个同名玩家，先显示第 1 个（远端无法批量读取）') : '', false);
+                                return;
+                            }
+
                             if (!players.length) return searchByTagFlow(rawName, wantLv, needFetch);
                             return searchByNameFlow(players, wantLv, needFetch);
                         })
@@ -2178,19 +2228,123 @@
 
                 window.plSearch = doSearch;
 
-                // ---------- 环境判定：本机可用查询，远端（GitHub Pages 等）改为引导下载 ----------
-                // 只有本机（localhost / 127.0.0.1 / file://）才能取数：本机可以跑那层补 Referer 的代理。
-                // 纯静态托管拿不到数据（接口校验来源，浏览器不允许网页伪造），所以在那边直接把
-                // 查询区换成下载入口，省得用户白输一遍再看报错。
+                // ---------- 环境判定：本机走完整流程，远端只显示名片图 ----------
+                // 接口没有 CORS 头，网页读不到响应；但名片图是 <img>，
+                // 跨源本来就不需要 CORS 授权，所以远端也能直接显示。
                 var GT_LOCAL = (function () {
                     var h = location.hostname;
                     return location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1';
                 })();
                 if (!GT_LOCAL) {
-                    var elOnline = document.getElementById('plOnlineOnly');
+                    var elLocal = document.getElementById('plLocalOnly');
+                    if (elLocal) elLocal.hidden = true;
+                    var elMastery = document.getElementById('plMastery');
+                    if (elMastery) elMastery.hidden = true;   // 远端没法按精通等级筛选
                     var elDl = document.getElementById('gtDl');
-                    if (elOnline) elOnline.hidden = true;
-                    if (elDl) elDl.hidden = false;
+                    if (elDl) elDl.hidden = true;             // 只在名片图失败时才显示
+                }
+
+                // ---------- 玩家名片图 ----------
+                // ⚠️ 这条路是"借来的"：上游只要加 Cross-Origin-Resource-Policy: same-origin
+                // 或做 Referer 防盗链，浏览器就会拒载 → 用 onerror 回落到下载入口。
+                // ⚠️ 即使图能显示，canvas 也读不到像素（跨源污染），远端永远只能看、不能自动读数。
+                // 本机走本地代理（服务端下载，不受跨源规则约束），也是以后接 OCR 的入口。
+                function gtCardImageUrl(uuid, ch, name) {
+                    if (GT_LOCAL) {
+                        return 'http://127.0.0.1:8799/api/card-image?uuid=' + encodeURIComponent(uuid)
+                            + '&ch=' + encodeURIComponent(ch || 'cn') + '&name=' + encodeURIComponent(name || '');
+                    }
+                    var base = API.replace('/api/gt-top', '').replace(/\/$/, '');
+                    return base + '/screenshot/data_card/w600/img.webp?uuid=' + encodeURIComponent(uuid)
+                        + '&ch=' + encodeURIComponent(ch || 'cn') + '&name=' + encodeURIComponent(name || '')
+                        + '&hide=1&diytheme=light';
+                }
+
+                function gtShowCardImage(uuid, ch, name) {
+                    var box = document.getElementById('gtCard');
+                    var img = document.getElementById('gtCardImg');
+                    var note = document.getElementById('gtCardNote');
+                    var dl = document.getElementById('gtDl');
+                    if (!box || !img) return;
+                    box.hidden = false;
+                    if (dl) dl.hidden = true;
+                    if (note) {
+                        note.textContent = (name ? name + ' 的名片' : '名片')
+                            + (GT_LOCAL ? '（本地 OCR 未能读取，请对照图片）' : '（图片由上游实时生成；数字请对照图片）');
+                    }
+                    img.onerror = function () {
+                        box.hidden = true;
+                        if (dl) dl.hidden = false;
+                        setStatus('名片图已不可用（上游可能加了防盗链），请下载到本地使用', true);
+                    };
+                    img.src = gtCardImageUrl(uuid, ch, name);
+                }
+
+                function gtHideCardImage() {
+                    var box = document.getElementById('gtCard');
+                    if (box) box.hidden = true;
+                    var dl = document.getElementById('gtDl');
+                    if (dl) dl.hidden = true;
+                }
+
+                // ---------- 名片图 OCR（静默回填）----------
+                // 接口已不再返回守护者精通分项（guardianmasteryskill），而名片图上还有
+                // 完整的 4 职业 × 4 属性矩阵 —— 只能从图上读。
+                //
+                // OCR 跑在本地服务端（/api/card-ocr）。读出来后**直接合成为 card.mastery
+                // 4×4 矩阵**，走 masteryTable() 原来的渲染路径（不另开结果面板）；
+                // 成功就不显示图片，失败才把图摆出来让人眼对照。
+                //
+                // ⚠️ 列的顺序必须与 M_SLOTS 一致：[攻击, 防御, 生命, 技伤]
+                //    （不是 [攻击, 技伤, 生命, 防御] —— 弄错整张表就串位了）
+                function gtMergeMastery(card, r) {
+                    var m = r.mastery || {};
+                    card.mastery = [
+                        [m.warriorAtk, m.warriorDef, m.warriorHp, m.warriorSkill],   // 战士
+                        [m.archerAtk, m.archerDef, m.archerHp, m.archerSkill],       // 射手
+                        [m.tankAtk, m.tankDef, m.tankHp, m.tankSkill],               // 坦克
+                        [m.supportAtk, m.supportDef, m.supportHp, m.supportSkill],   // 辅助
+                    ].map(function (row) { return row.map(function (v) { return Number(v) || 0; }); });
+
+                    // 练度百分比只需要"图鉴总和"，不需要逐格分项 ——
+                    // gt.html 的 cardPercent 在没有分项时会直接按扩展模式 II 算：
+                    //   count 合计 ÷ 扩展模式 II 的上限
+                    // ⚠️ count 是"等级累加值" = 百分比 ×10（263.4% → 2634），
+                    //    它内部还要再 /10，直接放百分比会差 10 倍。
+                    var f = r.fields || {};
+                    if (f.atkTotal != null) {
+                        card.count = { atk: f.atkTotal * 10, hp: f.hpTotal * 10, def: f.defTotal * 10 };
+                    }
+                    card.gtOcrDone = true;
+                    return card.mastery;
+                }
+
+                function gtOcrThenRender(u, card) {
+                    var uuid = card.id || (u && u.uuid);
+                    var ch = (u && u.ch) || 'cn';
+                    var name = card.name || (u && u.name) || '';
+                    // 远端没有本地服务端；没有 uuid 也跑不了 OCR
+                    if (!GT_LOCAL || !uuid || card.gtOcrDone) {
+                        renderResult(u, card);
+                        return;
+                    }
+                    var url = 'http://127.0.0.1:8799/api/card-ocr?uuid=' + encodeURIComponent(uuid)
+                        + '&ch=' + encodeURIComponent(ch) + '&name=' + encodeURIComponent(name);
+                    fetch(url)
+                        .then(function (r) { return r.json(); })
+                        .then(function (r) {
+                            if (r && r.ok && r.mastery && Object.keys(r.mastery).length >= 16) {
+                                gtMergeMastery(card, r);
+                                gtHideCardImage();
+                            } else {
+                                gtShowCardImage(uuid, ch, name);
+                            }
+                            renderResult(u, card);
+                        })
+                        .catch(function () {
+                            gtShowCardImage(uuid, ch, name);
+                            renderResult(u, card);
+                        });
                 }
                 document.getElementById('plBtn').addEventListener('click', doSearch);
                 ['plName', 'plMastery'].forEach(function (id) {
