@@ -1053,19 +1053,22 @@
             return new TextDecoder().decode(new Uint8Array(b));
         };
 
-        // 服务端中转地址（中继脚本见 gtlc/relay-valtown.ts）。
-        // 注意：云主机出口在"边缘 IP"那一关会被 403（实测 Cloudflare / Val.town 都不行），
-        // 所以本地运行时优先走本机代理 —— 家宽出口才能过那一关。
-        var RELAY_URL = 'https://crystal203--66ebbe36be0211f1964c1607ee4eb77e.web.val.run/api/gt-top';
-
-        // 本机一律优先走本地代理（node gtlc/cors-proxy.mjs，它会补上 Referer）；
-        // 其它环境才用 RELAY_URL，最后兜底直连。
+        // 接口地址。
+        //   本机：走本地代理（launcher.mjs 的 8799，服务端补 Referer 并按需转发）
+        //   远端：直接用上游地址。但**远端实际取不到 JSON 数据** —— 接口不返回
+        //         CORS 头，跨源 fetch 读不到响应；所以远端只走名片图 <img>，
+        //         这个分支只是留给"以后上游开了 CORS"的语义正确兜底。
+        //
+        // 曾经这里挂过一个云函数中继（Val.town）。它已经废了：上游对机房出口 IP
+        // 直接 403，而且那个中继还只代理 /api/gt-top，图片路径会把 URL 拼坏。
+        // 这里用混淆字面量而不是 GT_UPSTREAM 变量 —— 后者定义在文件后面，
+        // 变量提升会让这里拿到 undefined。
         var API_BASE = (function () {
             var h = location.hostname;
             if (location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1') {
                 return 'http://127.0.0.1:8799/api/gt' + '-top';
             }
-            return RELAY_URL || gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
+            return gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
         })();
         // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
         // 所以两边都要查（取并集），且取卡片时优先用搜索命中的那个服

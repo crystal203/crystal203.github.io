@@ -1476,19 +1476,25 @@
                     for (var i = 0; i < p.length; i++) b.push(parseInt(p[i], 10) ^ ((0x5A + i * 31) & 0xff));
                     return new TextDecoder().decode(new Uint8Array(b));
                 };
-                // 服务端中转地址（中继脚本见 gtlc/relay-valtown.ts）。
-                // 注意：云主机出口在"边缘 IP"那一关会被 403（实测 Cloudflare / Val.town 都不行），
-                // 所以本地运行时优先走本机代理 —— 家宽出口才能过那一关。
-                var RELAY_URL = 'https://crystal203--66ebbe36be0211f1964c1607ee4eb77e.web.val.run/api/gt-top';
+                // 上游地址（混淆存储，避免明文出现在源码里）。
+                // 拆成两半拼接，跟 gt.html 的写法一致。
+                var UPSTREAM = gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
+                // 图片基址：去掉 /api/gt-top 后缀。**图片始终直连上游** ——
+                // 图片端点不校验来源，而 <img> 属于 no-cors 资源、本来就不需要 CORS，
+                // 所以远端也能显示，不需要任何中转。
+                var IMG_BASE = UPSTREAM.replace('/api/gt-top', '');
 
-                // 本机一律优先走本地代理（node gtlc/cors-proxy.mjs，它会补上 Referer）；
-                // 其它环境才用 RELAY_URL，最后兜底直连。
+                // JSON 接口地址。
+                //   本机：走本地代理（launcher.mjs 的 8799，服务端补 Referer）
+                //   远端：直接用上游。但远端**实际取不到** —— 接口不返回 CORS 头，
+                //         跨源 fetch 读不到响应；远端只走名片图 <img>。
+                // 曾经这里挂过一个云函数中继（Val.town）：已废弃（上游对机房出口 IP 直接 403）。
                 var API = (function () {
                     var h = location.hostname;
                     if (location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1') {
                         return 'http://127.0.0.1:8799/api/gt' + '-top';
                     }
-                    return RELAY_URL || gtS('50,13,236,199,165,207,59,28,61,1,245,193,224,154,123,25,100,27,237,201,233,132,116,74,109,6,244,178,202,178,140');
+                    return UPSTREAM;
                 })();
                 // 分服渠道（cn / yofun / kr）。userid 空间两边重叠，同一个数字在不同服可能是不同玩家，
                 // 所以两边都要查（取并集），取卡片时优先用搜索命中的那个服
@@ -2254,8 +2260,9 @@
                         return 'http://127.0.0.1:8799/api/card-image?uuid=' + encodeURIComponent(uuid)
                             + '&ch=' + encodeURIComponent(ch || 'cn') + '&name=' + encodeURIComponent(name || '');
                     }
-                    var base = API.replace('/api/gt-top', '').replace(/\/$/, '');
-                    return base + '/screenshot/data_card/w600/img.webp?uuid=' + encodeURIComponent(uuid)
+                    // 远端直连上游（原来这里用 API 拼，而 API 在远端是那个已经废弃的
+                    // 云函数中继 —— 它只代理 /api/gt-top，图片路径会拼成 404）
+                    return IMG_BASE + '/screenshot/data_card/w600/img.webp?uuid=' + encodeURIComponent(uuid)
                         + '&ch=' + encodeURIComponent(ch || 'cn') + '&name=' + encodeURIComponent(name || '')
                         + '&hide=1&diytheme=light';
                 }
