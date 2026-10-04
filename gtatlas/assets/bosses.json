@@ -2,7 +2,7 @@
 
 "admiral_b":
 {
-	"frame": {"x":472,"y":568,"w":67,"h":44},
+	"frame": {"x":470,"y":664,"w":67,"h":44},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":67,"h":44},
@@ -10,7 +10,7 @@
 },
 "boss_carmen_b":
 {
-	"frame": {"x":527,"y":425,"w":34,"h":47},
+	"frame": {"x":527,"y":572,"w":34,"h":47},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":47},
@@ -18,7 +18,7 @@
 },
 "boss_carmen_b_kong":
 {
-	"frame": {"x":527,"y":474,"w":34,"h":41},
+	"frame": {"x":527,"y":621,"w":34,"h":41},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":41},
@@ -34,7 +34,7 @@
 },
 "boss_demon_b":
 {
-	"frame": {"x":301,"y":183,"w":268,"h":186},
+	"frame": {"x":575,"y":285,"w":268,"h":186},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":268,"h":186},
@@ -42,15 +42,23 @@
 },
 "boss_evil_fairy_b":
 {
-	"frame": {"x":472,"y":656,"w":43,"h":49},
+	"frame": {"x":527,"y":467,"w":43,"h":49},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":43,"h":49},
 	"sourceSize": {"w":43,"h":49}
 },
+"boss_fallen_queen_p2":
+{
+	"frame": {"x":811,"y":792,"w":202,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":8,"w":202,"h":208},
+	"sourceSize": {"w":217,"h":243}
+},
 "boss_graboid_b":
 {
-	"frame": {"x":640,"y":1124,"w":94,"h":165},
+	"frame": {"x":665,"y":1151,"w":94,"h":165},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":165},
@@ -58,7 +66,7 @@
 },
 "boss_harvester":
 {
-	"frame": {"x":736,"y":1166,"w":182,"h":260},
+	"frame": {"x":191,"y":1424,"w":182,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":260},
@@ -66,7 +74,7 @@
 },
 "boss_harvester_b":
 {
-	"frame": {"x":218,"y":1155,"w":188,"h":244},
+	"frame": {"x":1,"y":1315,"w":188,"h":244},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":188,"h":244},
@@ -82,7 +90,7 @@
 },
 "boss_invader_director_b":
 {
-	"frame": {"x":472,"y":614,"w":47,"h":40},
+	"frame": {"x":470,"y":710,"w":47,"h":40},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":47,"h":40},
@@ -90,7 +98,7 @@
 },
 "boss_invader_terrorist_b":
 {
-	"frame": {"x":527,"y":371,"w":34,"h":52},
+	"frame": {"x":527,"y":518,"w":34,"h":52},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":52},
@@ -98,7 +106,7 @@
 },
 "boss_lava_slime_king":
 {
-	"frame": {"x":439,"y":948,"w":199,"h":196},
+	"frame": {"x":1,"y":1117,"w":199,"h":196},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":199,"h":196},
@@ -106,7 +114,7 @@
 },
 "boss_lava_slime_king_b":
 {
-	"frame": {"x":779,"y":979,"w":196,"h":185},
+	"frame": {"x":437,"y":1190,"w":196,"h":185},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":1,"w":196,"h":185},
@@ -122,7 +130,7 @@
 },
 "boss_magwi_enhanced_b":
 {
-	"frame": {"x":267,"y":371,"w":258,"h":195},
+	"frame": {"x":267,"y":467,"w":258,"h":195},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":258,"h":195},
@@ -130,7 +138,7 @@
 },
 "boss_mech":
 {
-	"frame": {"x":242,"y":568,"w":228,"h":155},
+	"frame": {"x":563,"y":603,"w":228,"h":155},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":228,"h":155},
@@ -138,7 +146,7 @@
 },
 "boss_mech_b":
 {
-	"frame": {"x":541,"y":578,"w":224,"h":153},
+	"frame": {"x":1,"y":747,"w":224,"h":153},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":224,"h":153},
@@ -146,7 +154,7 @@
 },
 "boss_minister_b":
 {
-	"frame": {"x":439,"y":1146,"w":192,"h":176},
+	"frame": {"x":202,"y":1246,"w":192,"h":176},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":192,"h":176},
@@ -154,7 +162,7 @@
 },
 "boss_minotaur":
 {
-	"frame": {"x":1,"y":454,"w":239,"h":128},
+	"frame": {"x":1,"y":617,"w":239,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":239,"h":128},
@@ -162,7 +170,7 @@
 },
 "boss_minotaurs_b":
 {
-	"frame": {"x":563,"y":448,"w":239,"h":128},
+	"frame": {"x":572,"y":473,"w":239,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":239,"h":128},
@@ -170,7 +178,7 @@
 },
 "boss_nine_tailed_fox_b":
 {
-	"frame": {"x":1,"y":1166,"w":188,"h":233},
+	"frame": {"x":761,"y":1217,"w":188,"h":233},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":233},
@@ -178,7 +186,7 @@
 },
 "boss_portrait_b":
 {
-	"frame": {"x":177,"y":1401,"w":170,"h":176},
+	"frame": {"x":1,"y":1561,"w":170,"h":176},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":176},
@@ -186,7 +194,7 @@
 },
 "boss_robot_knight_b":
 {
-	"frame": {"x":1,"y":584,"w":226,"h":175},
+	"frame": {"x":242,"y":664,"w":226,"h":175},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":226,"h":175},
@@ -194,7 +202,7 @@
 },
 "boss_sandmonster":
 {
-	"frame": {"x":667,"y":890,"w":110,"h":115},
+	"frame": {"x":689,"y":917,"w":110,"h":115},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":115},
@@ -202,7 +210,7 @@
 },
 "boss_sandmonster_b":
 {
-	"frame": {"x":640,"y":1007,"w":110,"h":115},
+	"frame": {"x":665,"y":1034,"w":110,"h":115},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":115},
@@ -210,7 +218,7 @@
 },
 "boss_sapa":
 {
-	"frame": {"x":349,"y":1459,"w":138,"h":171},
+	"frame": {"x":375,"y":1619,"w":138,"h":171},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":138,"h":171},
@@ -218,7 +226,7 @@
 },
 "boss_sapa_b":
 {
-	"frame": {"x":142,"y":1579,"w":138,"h":171},
+	"frame": {"x":173,"y":1686,"w":138,"h":171},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":1,"y":1,"w":138,"h":171},
@@ -226,7 +234,7 @@
 },
 "boss_shadow_beast_b":
 {
-	"frame": {"x":1,"y":976,"w":215,"h":188},
+	"frame": {"x":220,"y":1056,"w":215,"h":188},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":215,"h":188},
@@ -234,7 +242,7 @@
 },
 "boss_snowman_general_b":
 {
-	"frame": {"x":837,"y":331,"w":185,"h":240},
+	"frame": {"x":396,"y":1377,"w":185,"h":240},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":0,"w":185,"h":240},
@@ -242,7 +250,7 @@
 },
 "boss_wolf":
 {
-	"frame": {"x":408,"y":1324,"w":177,"h":133},
+	"frame": {"x":845,"y":331,"w":177,"h":133},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":133},
@@ -250,7 +258,7 @@
 },
 "boss_wolf_b":
 {
-	"frame": {"x":731,"y":1428,"w":177,"h":133},
+	"frame": {"x":845,"y":466,"w":177,"h":133},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":133},
@@ -274,7 +282,7 @@
 },
 "dark_magician":
 {
-	"frame": {"x":1,"y":1565,"w":139,"h":152},
+	"frame": {"x":583,"y":1541,"w":139,"h":152},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":139,"h":152},
@@ -288,9 +296,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":272,"h":282},
 	"sourceSize": {"w":272,"h":282}
 },
+"exp_boss_arachne_b":
+{
+	"frame": {"x":301,"y":183,"w":272,"h":282},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":272,"h":282},
+	"sourceSize": {"w":272,"h":282}
+},
 "exp_boss_balock":
 {
-	"frame": {"x":1,"y":1401,"w":174,"h":162},
+	"frame": {"x":583,"y":1377,"w":174,"h":162},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":174,"h":162},
@@ -298,7 +314,7 @@
 },
 "exp_boss_salamandra":
 {
-	"frame": {"x":667,"y":733,"w":120,"h":155},
+	"frame": {"x":689,"y":760,"w":120,"h":155},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":2,"y":2,"w":120,"h":155},
@@ -306,7 +322,7 @@
 },
 "exp_boss_ungoliant":
 {
-	"frame": {"x":587,"y":1324,"w":142,"h":138},
+	"frame": {"x":759,"y":1452,"w":142,"h":138},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":138},
@@ -314,7 +330,7 @@
 },
 "punchking_boss_slime.darkness":
 {
-	"frame": {"x":804,"y":573,"w":217,"h":213},
+	"frame": {"x":470,"y":760,"w":217,"h":213},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":217,"h":213},
@@ -322,7 +338,7 @@
 },
 "punchking_boss_slime.earth":
 {
-	"frame": {"x":229,"y":725,"w":217,"h":213},
+	"frame": {"x":801,"y":1002,"w":217,"h":213},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":217,"h":213},
@@ -330,7 +346,7 @@
 },
 "punchking_boss_slime.ice":
 {
-	"frame": {"x":1,"y":761,"w":217,"h":213},
+	"frame": {"x":227,"y":841,"w":217,"h":213},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":217,"h":213},
@@ -338,7 +354,7 @@
 },
 "punchking_boss_slime.light":
 {
-	"frame": {"x":448,"y":733,"w":217,"h":213},
+	"frame": {"x":1,"y":902,"w":217,"h":213},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":217,"h":213},
@@ -346,7 +362,7 @@
 },
 "punchking_boss_slime.none":
 {
-	"frame": {"x":220,"y":940,"w":217,"h":213},
+	"frame": {"x":446,"y":975,"w":217,"h":213},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":5,"w":217,"h":213},
@@ -354,7 +370,7 @@
 },
 "punchking_boss_slime.super":
 {
-	"frame": {"x":789,"y":788,"w":208,"h":189},
+	"frame": {"x":813,"y":601,"w":208,"h":189},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":5,"y":25,"w":208,"h":189},
@@ -362,7 +378,7 @@
 },
 "raid_boss_redhood":
 {
-	"frame": {"x":571,"y":285,"w":264,"h":161},
+	"frame": {"x":1,"y":291,"w":264,"h":161},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":161},
@@ -370,7 +386,7 @@
 },
 "raid_boss_redhood_desert":
 {
-	"frame": {"x":1,"y":291,"w":264,"h":161},
+	"frame": {"x":1,"y":454,"w":264,"h":161},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":161},
@@ -383,6 +399,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f63f5fafe91509eb8e7d8833150e528b:58c2abc346982b87a3654501cfb271ee:480445fcc1ef53c0fb2c08da4c212c2f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:807fbf3a172ea2700688785bccde0f73:e9e4e58db5a17770b27a8fdea310e441:480445fcc1ef53c0fb2c08da4c212c2f$"
 }
 }

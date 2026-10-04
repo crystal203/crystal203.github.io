@@ -5,352 +5,360 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>坎公图集解析器</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #f4f5f7;
+            --panel: #ffffff;
+            --border: #e5e7eb;
+            --border-strong: #d6dae1;
+            --text: #1f2430;
+            --muted: #6b7280;
+            --faint: #9aa1ad;
+            --accent: #4a628f;
+            --accent-hover: #3c5179;
+            --accent-soft: #eef1f7;
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px rgba(16, 24, 40, .05);
+            --shadow-md: 0 4px 16px rgba(16, 24, 40, .07);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
+                         'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
-            padding: 20px;
+            padding: 28px 20px 56px;
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
             overflow: hidden;
         }
 
+        /* ---------- header ---------- */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px 30px;
-            text-align: center;
+            padding: 26px 32px 22px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, #fcfcfd 0%, var(--panel) 100%);
         }
 
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: .01em;
         }
 
         .header p {
-            opacity: 0.9;
-            font-size: 14px;
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
         }
 
+        /* ---------- toolbar ---------- */
         .upload-section {
-            padding: 20px 30px;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
+            padding: 16px 32px;
+            background: #fafbfc;
+            border-bottom: 1px solid var(--border);
         }
 
         .upload-area {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
             flex-wrap: wrap;
         }
 
-        .upload-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
+        .file-input { display: none; }
+
+        button {
+            font-family: inherit;
+            font-size: 13px;
             cursor: pointer;
-            font-size: 14px;
-            transition: transform 0.2s;
+            border-radius: 8px;
+            transition: background-color .15s, border-color .15s, color .15s;
         }
 
-        .upload-btn:hover {
-            transform: translateY(-2px);
+        .upload-btn {
+            padding: 8px 15px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--text);
         }
 
-        .file-input {
-            display: none;
-        }
+        .upload-btn:hover { background: #f2f4f7; border-color: var(--faint); }
 
+        #uploadStatus { color: var(--muted); font-size: 13px; }
+
+        /* ---------- search ---------- */
         .search-section {
-            padding: 20px 30px;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
+            padding: 16px 32px;
+            border-bottom: 1px solid var(--border);
         }
 
         .search-container {
             display: flex;
             gap: 10px;
-            max-width: 600px;
+            max-width: 720px;
             margin: 0 auto;
         }
 
         .search-input {
             flex: 1;
-            padding: 12px 15px;
-            border: 2px solid #667eea;
+            padding: 10px 14px;
+            border: 1px solid var(--border-strong);
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--panel);
             outline: none;
+            transition: border-color .15s, box-shadow .15s;
         }
 
+        .search-input::placeholder { color: var(--faint); }
+
         .search-input:focus {
-            border-color: #764ba2;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
         }
 
         .advanced-search {
-            background: #667eea;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
+            padding: 10px 16px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--muted);
+            white-space: nowrap;
         }
 
-        .content-section {
-            padding: 30px;
-        }
+        .advanced-search:hover { background: #f2f4f7; color: var(--text); }
 
-        .spritesheet-selector {
-            margin-bottom: 20px;
-        }
-
-        .spritesheet-label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #333;
-        }
+        /* ---------- content ---------- */
+        .content-section { padding: 24px 32px 32px; }
 
         .spritesheet-select {
             width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
+            padding: 10px 12px;
+            border: 1px solid var(--border-strong);
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--panel);
             outline: none;
+            cursor: pointer;
+            transition: border-color .15s, box-shadow .15s;
         }
 
         .spritesheet-select:focus {
-            border-color: #667eea;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
         }
 
         .region-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 12px;
             margin-top: 20px;
         }
 
         .region-item {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            gap: 14px;
+            padding: 12px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color .15s, box-shadow .15s;
         }
 
         .region-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-sm);
         }
 
+        /* checkerboard so transparent sprite edges are visible */
         .region-image {
-            width: 60px;
-            height: 60px;
+            flex: none;
+            width: 56px;
+            height: 56px;
             object-fit: contain;
-            background: white;
-            padding: 5px;
+            /* these are pixel-art sprites: nearest-neighbour, never interpolated,
+               so a small icon blown up to the box stays crisp instead of blurry */
+            image-rendering: pixelated;
+            border: 1px solid var(--border);
             border-radius: 8px;
-            border: 1px solid #ddd;
+            background-color: #fff;
+            background-image:
+                linear-gradient(45deg, #eef0f3 25%, transparent 25%, transparent 75%, #eef0f3 75%),
+                linear-gradient(45deg, #eef0f3 25%, transparent 25%, transparent 75%, #eef0f3 75%);
+            background-size: 12px 12px;
+            background-position: 0 0, 6px 6px;
         }
 
-        .region-info {
-            flex: 1;
-            min-width: 0;
-        }
+        .region-info { flex: 1; min-width: 0; }
 
         .region-name {
-            font-weight: bold;
-            color: #333;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .region-meta {
+            margin-top: 3px;
+            font-size: 12px;
+            color: var(--faint);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .download-btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            flex: none;
+            padding: 6px 13px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--accent);
             font-size: 12px;
-            transition: transform 0.2s;
         }
 
         .download-btn:hover {
-            transform: scale(1.05);
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
         }
 
+        /* ---------- pagination ---------- */
         .pagination {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
+            align-items: center;
+            gap: 6px;
+            margin-top: 26px;
             flex-wrap: wrap;
         }
 
         .page-btn {
-            padding: 8px 15px;
-            border: 2px solid #667eea;
-            background: white;
-            color: #667eea;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
+            min-width: 34px;
+            padding: 7px 10px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
         }
 
-        .page-btn:hover {
-            background: #667eea;
-            color: white;
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         .page-btn.active {
-            background: #667eea;
-            color: white;
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
         }
 
-        .page-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        .page-btn:disabled { opacity: .45; cursor: not-allowed; }
 
+        .page-gap { padding: 7px 4px; color: var(--faint); }
+
+        /* ---------- states ---------- */
         .loading {
-            text-align: center;
-            padding: 40px;
-            color: #667eea;
-            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 56px 20px;
+            color: var(--muted);
         }
 
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            width: 26px;
+            height: 26px;
+            border: 2px solid var(--border-strong);
+            border-top-color: var(--accent);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            animation: spin .7s linear infinite;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
-        }
+        .empty-state { padding: 64px 20px; text-align: center; color: var(--faint); }
+        .empty-state svg { color: var(--border-strong); }
+        .empty-state p { margin-top: 12px; font-size: 14px; }
 
-        .empty-state p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
+        /* ---------- modal ---------- */
         .advanced-search-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            inset: 0;
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            background: rgba(24, 28, 36, .38);
+            padding: 20px;
         }
 
         .advanced-search-content {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 500px;
-            width: 90%;
+            width: 100%;
+            max-width: 400px;
+            padding: 24px;
+            background: var(--panel);
+            border-radius: 14px;
+            box-shadow: 0 16px 48px rgba(16, 24, 40, .18);
         }
 
-        .modal-title {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #333;
-        }
+        .modal-title { font-size: 16px; font-weight: 600; margin-bottom: 18px; }
 
-        .search-options {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .search-options { display: flex; flex-direction: column; gap: 4px; }
 
         .search-option {
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .search-option label {
-            flex: 1;
-            color: #555;
-        }
-
-        .search-option input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-        }
-
-        .modal-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-        }
-
-        .modal-btn {
-            padding: 10px 25px;
-            border: none;
+            padding: 9px 10px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
         }
 
-        .apply-btn {
-            background: #667eea;
-            color: white;
+        .search-option:hover { background: #f6f7f9; }
+        .search-option label { flex: 1; color: #414855; cursor: pointer; font-size: 13px; }
+
+        .search-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent);
+            cursor: pointer;
         }
 
-        .cancel-btn {
-            background: #e9ecef;
-            color: #333;
-        }
+        .modal-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
 
-        @media (max-width: 768px) {
-            .region-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .search-container {
-                flex-direction: column;
-            }
-            
-            .search-input {
-                width: 100%;
-            }
+        .modal-btn { padding: 9px 20px; border: 1px solid transparent; }
+
+        .apply-btn { background: var(--accent); color: #fff; }
+        .apply-btn:hover { background: var(--accent-hover); }
+
+        .cancel-btn { background: var(--panel); border-color: var(--border-strong); color: var(--muted); }
+        .cancel-btn:hover { background: #f2f4f7; color: var(--text); }
+
+        @media (max-width: 700px) {
+            body { padding: 16px 12px 40px; }
+            .header, .upload-section, .search-section { padding-left: 18px; padding-right: 18px; }
+            .content-section { padding: 18px; }
+            .region-list { grid-template-columns: 1fr; }
+            .search-container { flex-direction: column; }
         }
     </style>
 </head>
@@ -358,57 +366,47 @@
     <div class="container">
         <div class="header">
             <h1>坎公图集解析器</h1>
+            <p>选择图集后可按名称筛选、预览并下载单个切片</p>
         </div>
 
         <div class="upload-section">
             <div class="upload-area">
                 <input type="file" id="imageInput" class="file-input" accept=".png">
                 <input type="file" id="jsonInput" class="file-input" accept=".json">
-                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
-                    🖼️ 上传PNG图集
-                </button>
-                <button class="upload-btn" onclick="document.getElementById('jsonInput').click()">
-                    📄 上传JSON配置
-                </button>
-                <span id="uploadStatus" style="color: #667eea;"></span>
+                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">上传 PNG 图集</button>
+                <button class="upload-btn" onclick="document.getElementById('jsonInput').click()">上传 JSON 配置</button>
+                <span id="uploadStatus"></span>
             </div>
         </div>
 
         <div class="search-section">
             <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="🔍 输入图名进行筛选..." oninput="filterRegions()">
-                <button class="advanced-search" onclick="showAdvancedSearch()">⚙️ 高级查找</button>
+                <input type="text" id="searchInput" class="search-input" placeholder="输入内码或中文名进行筛选…" oninput="filterRegions()">
+                <button class="advanced-search" onclick="showAdvancedSearch()">高级查找</button>
             </div>
         </div>
 
         <div class="content-section">
-            <div class="spritesheet-selector">
-                <label class="spritesheet-label">选择图集资源：</label>
-                <select class="spritesheet-select" id="spritesheetSelect" onchange="loadSpritesheet()">
-                    <option value="">-- 请选择图集 --</option>
-                </select>
-            </div>
+            <select class="spritesheet-select" id="spritesheetSelect" onchange="loadSpritesheet()">
+                <option value="">— 请选择图集 —</option>
+            </select>
 
             <div id="loadingIndicator" class="loading" style="display: none;">
                 <div class="spinner"></div>
-                <p>正在加载图集资源...</p>
+                <span>正在加载图集资源…</span>
             </div>
 
-            <div id="regionList" class="region-list">
-                <!-- 区域列表将在这里动态生成 -->
-            </div>
+            <div id="regionList" class="region-list"></div>
 
             <div id="emptyState" class="empty-state" style="display: none;">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M20 20l-3.5-3.5"></path>
                 </svg>
                 <p>暂无匹配的资源</p>
             </div>
 
-            <div class="pagination" id="pagination">
-                <!-- 分页按钮将在这里动态生成 -->
-            </div>
+            <div class="pagination" id="pagination"></div>
         </div>
     </div>
 
@@ -441,34 +439,56 @@
         let allRegions = [];
         let filteredRegions = [];
         let currentPage = 1;
-        const itemsPerPage = 10;
+        let zhNames = {};
+        const itemsPerPage = 12;
         let searchOptions = {
             caseSensitive: true,
             exactMatch: false,
             regexMatch: false
         };
 
+        // `zh` is an optional sidecar of {internalCode: 中文名}; when present the
+        // Chinese name is shown first and is searchable alongside the internal code
         let spritesheets = [
-            { name: '物品', png: './assets/items.png', json: './assets/items.json' },
-            { name: '角色', png: './assets/characters.png', json: './assets/characters.json' },
-            { name: '头像', png: './assets/portraits.png', json: './assets/portraits.json' },
-            { name: '头像框', png: './assets/PortraitFrame.png', json: './assets/PortraitFrame.json' },
-            { name: '徽章', png: './assets/Badge.png', json: './assets/Badge.json' },
-            { name: 'Boss', png: './assets/bosses.png', json: './assets/bosses.json' },
+            { name: '物品', png: './assets/items.png', json: './assets/items.json', zh: './assets/items.zh.json' },
+            { name: '角色', png: './assets/characters.png', json: './assets/characters.json', zh: './assets/characters.zh.json' },
+            { name: '头像', png: './assets/portraits.png', json: './assets/portraits.json', zh: './assets/portraits.zh.json' },
+            { name: '头像框', png: './assets/PortraitFrame.png', json: './assets/PortraitFrame.json', zh: './assets/PortraitFrame.zh.json' },
+            { name: '徽章', png: './assets/Badge.png', json: './assets/Badge.json', zh: './assets/Badge.zh.json' },
+            { name: 'Boss', png: './assets/bosses.png', json: './assets/bosses.json', zh: './assets/bosses.zh.json' },
             { name: '战斗UI', png: './assets/battle.png', json: './assets/battle.json' },
-            { name: '贴纸', png: './assets/ProfilecardStickers.png', json: './assets/ProfilecardStickers.json' },
+            { name: '贴纸', png: './assets/ProfilecardStickers.png', json: './assets/ProfilecardStickers.json', zh: './assets/ProfilecardStickers.zh.json' },
+            { name: '任务物品', png: './assets/questItems.png', json: './assets/questItems.json' },
+            { name: '农场物品', png: './assets/farmItems.png', json: './assets/farmItems.json', zh: './assets/farmItems.zh.json' },
+            { name: '贴纸2', png: './assets/ProfilecardStickers2.png', json: './assets/ProfilecardStickers2.json', zh: './assets/ProfilecardStickers2.zh.json' },
+            { name: '贴纸包', png: './assets/StickerPack.png', json: './assets/StickerPack.json', zh: './assets/StickerPack.zh.json' },
+            { name: '公会徽章', png: './assets/emblems.png', json: './assets/emblems.json' },
+            { name: '主界面UI', png: './assets/main_ui.png', json: './assets/main_ui.json' },
+            { name: '主界面UI S3', png: './assets/MainUiS3.png', json: './assets/MainUiS3.json' },
+            { name: '卡马逊', png: './assets/Kamazon.png', json: './assets/Kamazon.json', zh: './assets/Kamazon.zh.json' },
+            { name: '天空城建造', png: './assets/construction_hh.png', json: './assets/construction_hh.json' },
+            { name: '裂隙', png: './assets/rift.png', json: './assets/rift.json' },
+            { name: '本地化文字', png: './assets/localization.png', json: './assets/localization.json' },
+            { name: '本地化文字 补充', png: './assets/LocalizationSub.png', json: './assets/LocalizationSub.json' },
         ];
 
         document.addEventListener('DOMContentLoaded', function() {
             populateSpritesheetSelector();
             document.getElementById('imageInput').addEventListener('change', handleFileUpload);
             document.getElementById('jsonInput').addEventListener('change', handleFileUpload);
+            document.getElementById('advancedSearchModal').addEventListener('click', function(e) {
+                if (e.target === this) closeAdvancedSearch();
+            });
         });
 
         function populateSpritesheetSelector() {
             const select = document.getElementById('spritesheetSelect');
-            select.innerHTML = '<option value="">-- 请选择图集 --</option>';
-            
+            select.innerHTML = '';
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = '— 请选择图集 —';
+            select.appendChild(placeholder);
+
             spritesheets.forEach((sheet, index) => {
                 const option = document.createElement('option');
                 option.value = index;
@@ -478,44 +498,51 @@
         }
 
         async function loadSpritesheet() {
-            const select = document.getElementById('spritesheetSelect');
-            const index = select.value;
-            
+            const index = document.getElementById('spritesheetSelect').value;
             if (index === '') {
-                clearRegionList();
+                currentSpritesheet = null;
+                allRegions = filteredRegions = [];
+                zhNames = {};
+                renderRegionList();
+                renderPagination();
                 return;
             }
-            
+
             showLoading(true);
-            
             try {
                 const sheet = spritesheets[index];
-                
-                const jsonResponse = await fetch(sheet.json);
-                const jsonData = await jsonResponse.json();
-                
+
+                const response = await fetch(sheet.json);
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                const jsonData = await response.json();
+
+                // a missing sidecar just means this atlas shows internal codes only
+                zhNames = {};
+                if (sheet.zh) {
+                    try {
+                        const zhResponse = await fetch(sheet.zh);
+                        if (zhResponse.ok) zhNames = await zhResponse.json();
+                    } catch (e) {
+                        console.warn('未找到中文名映射:', sheet.zh);
+                    }
+                }
+
                 const img = new Image();
                 img.crossOrigin = 'anonymous';
-                
                 img.onload = function() {
-                    currentSpritesheet = {
-                        ...sheet,
-                        img: img  
-                    };
-                    
-                    allRegions = parseSpritesheetData(jsonData, img);
+                    currentSpritesheet = { ...sheet, img: img };
+                    allRegions = filterBlankRegions(parseSpritesheetData(jsonData, img), img);
+                    for (const region of allRegions) region.zh = zhNames[region.name] || '';
                     filteredRegions = [...allRegions];
                     currentPage = 1;
                     renderRegionList();
                     renderPagination();
                     showLoading(false);
                 };
-                
                 img.onerror = function() {
                     alert('加载图片失败，请检查路径是否正确');
                     showLoading(false);
                 };
-                
                 img.src = sheet.png;
             } catch (error) {
                 console.error('加载图集失败:', error);
@@ -526,130 +553,227 @@
 
         function parseSpritesheetData(data, img) {
             const regions = [];
-            
-            let frames = data.frames;
-            
+            const push = (name, frame, rotated) => {
+                regions.push({
+                    name: name,
+                    x: frame.x || 0,
+                    y: frame.y || 0,
+                    w: frame.w || frame.width || 0,
+                    h: frame.h || frame.height || 0,
+                    rotated: !!rotated,
+                    zh: '',
+                    img: img
+                });
+            };
+
+            const frames = data.frames;
+
             if (Array.isArray(frames)) {
                 frames.forEach((frame, index) => {
-                    const region = {
-                        name: frame.name || `region_${index}`,
-                        x: frame.x || frame.frame?.x || 0,
-                        y: frame.y || frame.frame?.y || 0,
-                        w: frame.w || frame.frame?.w || frame.width || 0,
-                        h: frame.h || frame.frame?.h || frame.height || 0,
-                        img: img
-                    };
-                    regions.push(region);
+                    push(frame.name || `region_${index}`, frame.frame || frame, frame.rotated);
                 });
-            } else if (typeof frames === 'object') {
+            } else if (frames && typeof frames === 'object') {
                 for (const regionName in frames) {
                     const frameData = frames[regionName];
-                    const frame = frameData.frame || frameData;
-                    
-                    const region = {
-                        name: regionName,
-                        x: frame.x || 0,
-                        y: frame.y || 0,
-                        w: frame.w || frame.width || 0,
-                        h: frame.h || frame.height || 0,
-                        img: img
-                    };
-                    regions.push(region);
+                    push(regionName, frameData.frame || frameData, frameData.rotated);
                 }
             }
-            
+
             return regions;
+        }
+
+        // Drop fully transparent frames on load - that covers both spare padding and
+        // the game's deliberate 1x1 "no sprite" placeholders (items/empty,
+        // characters/big_boss, portraits/bounty_hunter).
+        // One full-image read plus an alpha prefix sum answers "is this rect empty?"
+        // in O(1) per frame, so even the 2858-frame items atlas is a single pass.
+        function filterBlankRegions(regions, img) {
+            if (!regions.length) return regions;
+
+            const width = img.naturalWidth || img.width;
+            const height = img.naturalHeight || img.height;
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            ctx.drawImage(img, 0, 0);
+
+            let pixels;
+            try {
+                pixels = ctx.getImageData(0, 0, width, height).data;
+            } catch (e) {
+                // tainted canvas: show everything rather than nothing
+                return regions;
+            }
+
+            const stride = width + 1;
+            const sums = new Uint32Array(stride * (height + 1));
+            for (let y = 0; y < height; y++) {
+                let rowHits = 0;
+                const rowStart = y * stride;
+                const nextStart = rowStart + stride;
+                for (let x = 0; x < width; x++) {
+                    if (pixels[(y * width + x) * 4 + 3] !== 0) rowHits++;
+                    sums[nextStart + x + 1] = sums[rowStart + x + 1] + rowHits;
+                }
+            }
+
+            const visible = [];
+            for (const region of regions) {
+                // a rotated frame is stored turned 90 degrees, so its packed
+                // footprint is the transpose of its display size
+                const packedW = region.rotated ? region.h : region.w;
+                const packedH = region.rotated ? region.w : region.h;
+                const x0 = Math.max(0, region.x);
+                const y0 = Math.max(0, region.y);
+                const x1 = Math.min(width, region.x + packedW);
+                const y1 = Math.min(height, region.y + packedH);
+
+                let hits = 0;
+                if (x1 > x0 && y1 > y0) {
+                    hits = sums[y1 * stride + x1] - sums[y0 * stride + x1]
+                         - sums[y1 * stride + x0] + sums[y0 * stride + x0];
+                }
+
+                if (hits > 0) visible.push(region);
+            }
+
+            return visible;
+        }
+
+        // Draw one sprite into a canvas sized to its display (un-rotated) size.
+        // `rotated` means the atlas holds it turned 90 degrees clockwise inside an
+        // (h x w) rect, so it is drawn back through a 90 degree counter-clockwise turn.
+        // Smoothing is always off: the art is pixel art, so any resampling would
+        // blur it. The CSS side matches with `image-rendering: pixelated`.
+        function drawRegion(ctx, img, region, targetW, targetH) {
+            ctx.imageSmoothingEnabled = false;
+            if (region.rotated) {
+                ctx.save();
+                ctx.translate(0, targetH);
+                ctx.rotate(-Math.PI / 2);
+                ctx.drawImage(img, region.x, region.y, region.h, region.w, 0, 0, targetH, targetW);
+                ctx.restore();
+            } else {
+                ctx.drawImage(img, region.x, region.y, region.w, region.h, 0, 0, targetW, targetH);
+            }
+        }
+
+        function makeThumbnail(region) {
+            // cap the preview so a 1000px-wide frame does not allocate a full-size
+            // canvas and a multi-megabyte data URL just for a 56px box
+            const scale = Math.min(1, 128 / Math.max(region.w, region.h, 1));
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.max(1, Math.round(region.w * scale));
+            canvas.height = Math.max(1, Math.round(region.h * scale));
+            drawRegion(canvas.getContext('2d'), region.img, region, canvas.width, canvas.height);
+            return canvas.toDataURL();
         }
 
         function renderRegionList() {
             const regionList = document.getElementById('regionList');
             const emptyState = document.getElementById('emptyState');
-            
+
+            if (!currentSpritesheet) {
+                regionList.innerHTML = '';
+                regionList.style.display = 'none';
+                emptyState.style.display = 'none';
+                return;
+            }
+
             if (filteredRegions.length === 0) {
                 regionList.style.display = 'none';
                 emptyState.style.display = 'block';
                 return;
             }
-            
+
             regionList.style.display = 'grid';
             emptyState.style.display = 'none';
-            
+
             const startIndex = (currentPage - 1) * itemsPerPage;
-            const endIndex = Math.min(startIndex + itemsPerPage, filteredRegions.length);
-            const pageRegions = filteredRegions.slice(startIndex, endIndex);
-            
+            const pageRegions = filteredRegions.slice(startIndex, startIndex + itemsPerPage);
+
             regionList.innerHTML = '';
-            
             pageRegions.forEach(region => {
-                const canvas = document.createElement('canvas');
-                canvas.width = region.w;
-                canvas.height = region.h;
-                
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(
-                    region.img,
-                    region.x, region.y,
-                    region.w, region.h,
-                    0, 0,
-                    region.w, region.h
-                );
-                
-                const regionItem = document.createElement('div');
-                regionItem.className = 'region-item';
-                regionItem.innerHTML = `
-                    <img src="${canvas.toDataURL()}" class="region-image" alt="${region.name}">
-                    <div class="region-info">
-                        <div class="region-name">${region.name}</div>
-                    </div>
-                    <button class="download-btn" onclick="downloadRegion('${region.name}', ${region.x}, ${region.y}, ${region.w}, ${region.h})">
-                        ⬇️ 下载
-                    </button>
-                `;
-                
-                regionList.appendChild(regionItem);
+                const item = document.createElement('div');
+                item.className = 'region-item';
+
+                const thumb = document.createElement('img');
+                thumb.className = 'region-image';
+                thumb.src = makeThumbnail(region);
+                thumb.alt = region.zh || region.name;
+                thumb.loading = 'lazy';
+
+                const info = document.createElement('div');
+                info.className = 'region-info';
+
+                // the Chinese name wins; the internal code stays underneath as the
+                // thing you would actually reference or search for
+                const nameEl = document.createElement('div');
+                nameEl.className = 'region-name';
+                nameEl.textContent = region.zh || region.name;
+                nameEl.title = region.zh ? `${region.zh}  ·  ${region.name}` : region.name;
+
+                const subParts = [];
+                if (region.zh) subParts.push(region.name);
+                if (region.rotated) subParts.push('已旋转');
+
+                info.appendChild(nameEl);
+                if (subParts.length) {
+                    const metaEl = document.createElement('div');
+                    metaEl.className = 'region-meta';
+                    metaEl.textContent = subParts.join(' · ');
+                    info.appendChild(metaEl);
+                }
+
+                const btn = document.createElement('button');
+                btn.className = 'download-btn';
+                btn.textContent = '下载';
+                // downloaded files keep the internal code, which stays unique
+                btn.addEventListener('click', () => downloadRegion(region));
+
+                item.appendChild(thumb);
+                item.appendChild(info);
+                item.appendChild(btn);
+                regionList.appendChild(item);
             });
         }
 
         function renderPagination() {
             const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
             const totalPages = Math.ceil(filteredRegions.length / itemsPerPage);
-            
-            if (totalPages <= 1) {
+            if (!currentSpritesheet || totalPages <= 1) {
                 pagination.style.display = 'none';
                 return;
             }
-            
+
             pagination.style.display = 'flex';
-            pagination.innerHTML = '';
-            
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'page-btn';
-            prevBtn.textContent = '❮';
-            prevBtn.disabled = currentPage === 1;
-            prevBtn.onclick = () => changePage(currentPage - 1);
-            pagination.appendChild(prevBtn);
-            
+
+            const addBtn = (label, page, opts = {}) => {
+                const btn = document.createElement('button');
+                btn.className = 'page-btn' + (opts.active ? ' active' : '');
+                btn.textContent = label;
+                btn.disabled = !!opts.disabled;
+                if (!opts.disabled && !opts.active) btn.onclick = () => changePage(page);
+                pagination.appendChild(btn);
+            };
+
+            addBtn('‹', currentPage - 1, { disabled: currentPage === 1 });
+
             for (let i = 1; i <= totalPages; i++) {
-                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
-                    const pageBtn = document.createElement('button');
-                    pageBtn.className = 'page-btn' + (i === currentPage ? ' active' : '');
-                    pageBtn.textContent = i;
-                    pageBtn.onclick = () => changePage(i);
-                    pagination.appendChild(pageBtn);
-                } else if (i === currentPage - 3 || i === currentPage + 3) {
-                    const ellipsis = document.createElement('span');
-                    ellipsis.textContent = '...';
-                    ellipsis.style.padding = '8px 10px';
-                    pagination.appendChild(ellipsis);
+                if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+                    addBtn(String(i), i, { active: i === currentPage });
+                } else if (Math.abs(i - currentPage) === 3) {
+                    const gap = document.createElement('span');
+                    gap.className = 'page-gap';
+                    gap.textContent = '…';
+                    pagination.appendChild(gap);
                 }
             }
-            
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'page-btn';
-            nextBtn.textContent = '❯';
-            nextBtn.disabled = currentPage === totalPages;
-            nextBtn.onclick = () => changePage(currentPage + 1);
-            pagination.appendChild(nextBtn);
+
+            addBtn('›', currentPage + 1, { disabled: currentPage === totalPages });
         }
 
         function changePage(page) {
@@ -658,121 +782,101 @@
                 currentPage = page;
                 renderRegionList();
                 renderPagination();
+                document.getElementById('regionList').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        function downloadRegion(name, x, y, w, h) {
+        function downloadRegion(region) {
             const canvas = document.createElement('canvas');
-            canvas.width = w;
-            canvas.height = h;
-            
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(
-                currentSpritesheet.img,
-                x, y,
-                w, h,
-                0, 0,
-                w, h
-            );
-            
+            canvas.width = Math.max(1, region.w);
+            canvas.height = Math.max(1, region.h);
+            drawRegion(canvas.getContext('2d'), region.img, region, canvas.width, canvas.height);
+
             const link = document.createElement('a');
-            link.download = name + '.png';
+            link.download = region.name + '.png';
             link.href = canvas.toDataURL('image/png');
             link.click();
         }
 
         function showLoading(show) {
-            document.getElementById('loadingIndicator').style.display = show ? 'block' : 'none';
-        }
-
-        function clearRegionList() {
-            document.getElementById('regionList').innerHTML = '';
-            document.getElementById('pagination').innerHTML = '';
-            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('loadingIndicator').style.display = show ? 'flex' : 'none';
         }
 
         async function handleFileUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
-            
+
             const uploadStatus = document.getElementById('uploadStatus');
             uploadStatus.textContent = `已选择: ${file.name}`;
-            
-            if (file.name.endsWith('.png')) {
-                const imgUrl = URL.createObjectURL(file);
-                window.uploadedImage = imgUrl;
+
+            if (file.name.toLowerCase().endsWith('.png')) {
+                window.uploadedImage = URL.createObjectURL(file);
                 checkAndLoadUploadedFiles();
-            } else if (file.name.endsWith('.json')) {
-                const text = await file.text();
+            } else if (file.name.toLowerCase().endsWith('.json')) {
                 try {
-                    const jsonData = JSON.parse(text);
-                    window.uploadedJson = jsonData;
+                    window.uploadedJson = JSON.parse(await file.text());
                     checkAndLoadUploadedFiles();
                 } catch (error) {
                     alert('JSON文件格式错误: ' + error.message);
                 }
             }
+            event.target.value = '';
         }
 
         function checkAndLoadUploadedFiles() {
-            if (window.uploadedImage && window.uploadedJson) {
-                const img = new Image();
-                img.crossOrigin = 'anonymous';
-                
-                img.onload = function() {
-                    currentSpritesheet = {
-                        img: img,
-                        name: '上传的图集'
-                    };
-                    
-                    allRegions = parseSpritesheetData(window.uploadedJson, img);
-                    filteredRegions = [...allRegions];
-                    currentPage = 1;
-                    renderRegionList();
-                    renderPagination();
-                    
-                    document.getElementById('uploadStatus').textContent = '';
-                    window.uploadedImage = null;
-                    window.uploadedJson = null;
-                };
-                
-                img.onerror = function() {
-                    alert('加载上传的图片失败');
-                };
-                
-                img.src = window.uploadedImage;
-            }
+            if (!window.uploadedImage || !window.uploadedJson) return;
+
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                currentSpritesheet = { img: img, name: '上传的图集' };
+                allRegions = filterBlankRegions(parseSpritesheetData(window.uploadedJson, img), img);
+                filteredRegions = [...allRegions];
+                currentPage = 1;
+                document.getElementById('spritesheetSelect').value = '';
+                renderRegionList();
+                renderPagination();
+
+                document.getElementById('uploadStatus').textContent = '';
+                window.uploadedImage = null;
+                window.uploadedJson = null;
+            };
+            img.onerror = function() {
+                alert('加载上传的图片失败');
+            };
+            img.src = window.uploadedImage;
         }
 
         function filterRegions() {
             const searchTerm = document.getElementById('searchInput').value;
-            
+
             if (!searchTerm.trim()) {
                 filteredRegions = [...allRegions];
             } else {
-                filteredRegions = allRegions.filter(region => {
-                    const name = region.name;
-                    const search = searchTerm;
-                    
+                // a region matches on its internal code OR its Chinese name, so both
+                // "admiral" and "海军" find the same portrait
+                const test = (text) => {
+                    if (!text) return false;
                     if (searchOptions.regexMatch) {
                         try {
-                            const regex = new RegExp(search, searchOptions.caseSensitive ? '' : 'i');
-                            return regex.test(name);
+                            return new RegExp(searchTerm, searchOptions.caseSensitive ? '' : 'i').test(text);
                         } catch (e) {
                             return false;
                         }
-                    } else if (searchOptions.exactMatch) {
-                        return searchOptions.caseSensitive ? 
-                            name === search : 
-                            name.toLowerCase() === search.toLowerCase();
-                    } else {
-                        return searchOptions.caseSensitive ? 
-                            name.includes(search) : 
-                            name.toLowerCase().includes(search.toLowerCase());
                     }
-                });
+                    if (searchOptions.exactMatch) {
+                        return searchOptions.caseSensitive
+                            ? text === searchTerm
+                            : text.toLowerCase() === searchTerm.toLowerCase();
+                    }
+                    return searchOptions.caseSensitive
+                        ? text.includes(searchTerm)
+                        : text.toLowerCase().includes(searchTerm.toLowerCase());
+                };
+
+                filteredRegions = allRegions.filter(region => test(region.name) || test(region.zh));
             }
-            
+
             currentPage = 1;
             renderRegionList();
             renderPagination();
@@ -790,7 +894,6 @@
             searchOptions.caseSensitive = document.getElementById('caseSensitive').checked;
             searchOptions.exactMatch = document.getElementById('exactMatch').checked;
             searchOptions.regexMatch = document.getElementById('regexMatch').checked;
-            
             closeAdvancedSearch();
             filterRegions();
         }
