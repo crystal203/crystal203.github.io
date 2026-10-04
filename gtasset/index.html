@@ -186,6 +186,27 @@
     .region .h.sw { left: 0; top: 100%; cursor: nesw-resize; }
     .region .h.w { left: 0; top: 50%; cursor: ew-resize; }
 
+    /* ------------- 选中组件的画布标注（组件名） -------------
+       只为「标注」而存在：pointer-events:none，不挡画布上的拖动、滚轮和导出框手柄。 */
+    .slot-tag {
+      position: absolute;
+      left: 0; top: 0;
+      z-index: 2;
+      display: none;
+      padding: 2px 8px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #0d1117;
+      background: var(--accent-2);
+      border-radius: 999px;
+      white-space: nowrap;
+      pointer-events: none;
+      transform: translate(-50%, -100%);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, .5);
+    }
+
+    .slot-tag.on { display: block; }
+
     /* ---------------- 侧栏 ---------------- */
     .sidebar {
       flex: none;
@@ -456,6 +477,8 @@
           <span class="h sw" data-dir="sw"></span>
           <span class="h w" data-dir="w"></span>
         </div>
+
+        <div class="slot-tag" id="slotTag"></div>
       </main>
 
       <aside class="sidebar">
@@ -545,6 +568,11 @@
 
         <section class="card">
           <h3>组件 <span class="badge" id="slotCount">0</span></h3>
+          <div class="row" style="margin-bottom:7px">
+            <label class="chip">
+              <input type="checkbox" id="pickToggle" checked> 点选组件（画布⇄列表）
+            </label>
+          </div>
           <div class="slot-list" id="slotSliders"></div>
         </section>
 
@@ -643,6 +671,7 @@
         tracks: { action: "", emote: "", sub: "" },
         opacity: {},
         enabled: {},
+        pickEnabled: true,
         slotRows: [],
         zh: {},
         current: null,
@@ -935,13 +964,27 @@
 
       // gtasset 里星阶有两种形态：有的导出成独立资源（admiral_3 在清单里），
       // 有的留在同一个骨骼里当皮肤（adela_noble 的皮肤有 adela_noble_3/4/5）。
-      // 所以 GET 收到基名_星阶时：清单里有就直接用；没有就退回基名，并记下星阶去切皮肤。
+      // 所以 GET 收到别处的名字时，先原样试，再逐层还原：
+      //   1. 剥掉 gtatlas 的变体后缀 _kong / _circle / _myth
+      //      （Kong 区、圆形头像、开花形态 —— 这三个正来自 gtatlas 自己的 SAFE_SUFFIXES，
+      //        剥掉不改变名称含义；_ex / _cm 是独立档位，不能剥，剥了会串名）
+      //   2. 剥掉星阶 _1~_99，退回基名，并记下星阶交给皮肤去还原
+      var VARIANT_SUFFIX_RE = /_(kong|circle|myth)$/;
+      var TIER_SUFFIX_RE = /^(.+)_(\d{1,2})$/;
+
       function resolveTargetName(name) {
         if (!name) return { name: name, tier: null };
-        if (app.all.indexOf(name) >= 0) return { name: name, tier: null };
-        var m = /^(.+)_(\d{1,2})$/.exec(name);
-        if (m && app.all.indexOf(m[1]) >= 0) return { name: m[1], tier: m[2] };
-        return { name: name, tier: null };
+        var raw = String(name);
+        var candidates = [raw];
+        var stripped = raw.replace(VARIANT_SUFFIX_RE, "");
+        if (stripped !== raw) candidates.push(stripped);
+
+        for (var i = 0; i < candidates.length; i++) {
+          if (app.all.indexOf(candidates[i]) >= 0) return { name: candidates[i], tier: null };
+          var m = TIER_SUFFIX_RE.exec(candidates[i]);
+          if (m && app.all.indexOf(m[1]) >= 0) return { name: m[1], tier: m[2] };
+        }
+        return { name: raw, tier: null };
       }
 
       // 搜索：中文名与内码都能命中。**只过滤列表，不加载资源** ——
@@ -1566,9 +1609,8 @@
           toggle.title = "显示 / 隐藏该组件";
 
           var label = document.createElement("label");
-          label.htmlFor = id;
           label.textContent = name;
-          label.title = name;
+          label.title = "点这一行即选中该组件（画布上会描出它的范围）";
 
           var range = document.createElement("input");
           range.type = "range";
@@ -1592,10 +1634,22 @@
             toggleEl.addEventListener("change", function () {
               app.enabled[slotName] = toggleEl.checked;
               rowEl.classList.toggle("off", !toggleEl.checked);
+              // 刚被隐藏的组件如果正被选中，取消选中
+              if (!toggleEl.checked && app.picked === slotName) highlightSlot(null);
             });
             rangeEl.addEventListener("input", function () {
               app.opacity[slotName] = parseFloat(rangeEl.value);
               pctEl.textContent = Math.round(app.opacity[slotName] * 100) + "%";
+            });
+            // 点行即选中：与「在画布上点组件」是同一个状态，画布会描出它的范围并打上名字标签。
+            // 点在开关/滑块上时不抢，交给控件自己处理；双击取消选中。
+            rowEl.addEventListener("click", function (event) {
+              var tag = event.target && event.target.tagName;
+              if (tag === "INPUT") return;
+              highlightSlot(slotName);
+            });
+            rowEl.addEventListener("dblclick", function () {
+              highlightSlot(null);
             });
           })(name, row, toggle, range, pct);
         }
@@ -2195,6 +2249,7 @@
         skeleton.y = app.pos.y;
         skeleton.updateWorldTransform();
         applySlotColors();
+        updateSlotTag();
 
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
@@ -2226,6 +2281,63 @@
         app.pos.y = point.glY - next * worldY;
         setScale(next);
         app.viewTouched = true;
+      }
+
+      // 单个组件在世界坐标里的包围盒（画布标注用）
+      function slotBounds(slot) {
+        if (!slot || (slot.bone && slot.bone.active === false)) return null;
+        var att = slot.getAttachment();
+        if (!att) return null;
+        var verts = null;
+        try {
+          if (att instanceof spine.RegionAttachment) {
+            verts = new Float32Array(8);
+            att.computeWorldVertices(slot.bone, verts, 0, 2);
+          } else if (att instanceof spine.MeshAttachment) {
+            var count = att.worldVerticesLength;
+            if (!count) return null;
+            verts = new Float32Array(count);
+            att.computeWorldVertices(slot, 0, count, verts, 0, 2);
+          }
+        } catch (e) {
+          return null;
+        }
+        if (!verts || verts.length < 2) return null;
+        var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        for (var i = 0; i < verts.length; i += 2) {
+          if (verts[i] < minX) minX = verts[i];
+          if (verts[i] > maxX) maxX = verts[i];
+          if (verts[i + 1] < minY) minY = verts[i + 1];
+          if (verts[i + 1] > maxY) maxY = verts[i + 1];
+        }
+        if (!isFinite(minX) || !isFinite(maxX)) return null;
+        return { minX: minX, minY: minY, maxX: maxX, maxY: maxY };
+      }
+
+      // 选中组件的画布标注：把组件名贴在它包围盒的上方（每帧跟着动画走）
+      function updateSlotTag() {
+        var tag = $("slotTag");
+        if (!tag) return;
+        if (!app.picked || !app.skeleton) {
+          tag.classList.remove("on");
+          return;
+        }
+        var slot = null;
+        for (var i = 0; i < app.skeleton.slots.length; i++) {
+          if (app.skeleton.slots[i].data.name === app.picked) {
+            slot = app.skeleton.slots[i];
+            break;
+          }
+        }
+        var box = slotBounds(slot);
+        if (!box) {
+          tag.classList.remove("on");
+          return;
+        }
+        tag.textContent = app.picked;
+        tag.style.left = ((box.minX + box.maxX) / 2).toFixed(1) + "px";
+        tag.style.top = (canvas.height - box.maxY - 8).toFixed(1) + "px";
+        tag.classList.add("on");
       }
 
       // 点是否落在三角形内
@@ -2278,6 +2390,12 @@
       }
 
       function highlightSlot(name) {
+        // 三条规则集中在这里，所有调用点自然一致：
+        //   1. 关了「点选组件」→ 不允许选中
+        //   2. 组件被隐藏 → 不允许选中（隐藏的东西不该能被点出来）
+        //   3. name 传空（双击、点空白处）→ 取消选中
+        if (!app.pickEnabled) name = null;
+        if (name && app.enabled[name] === false) name = null;
         app.picked = name || null;
         var rows = $("slotSliders").querySelectorAll(".slot-control");
         for (var i = 0; i < rows.length; i++) {
@@ -2310,8 +2428,19 @@
         if (!wasDragging || !app.skeleton) return;
         // 位移很小才算「点击」，否则是在平移拖动，不能抢这个操作
         if (Math.abs(event.clientX - app.downAt.x) + Math.abs(event.clientY - app.downAt.y) > 5) return;
+        if (!app.pickEnabled) return;                       // 关了「点选组件」就不做命中检测
         var point = canvasPoint(event.clientX, event.clientY);
         highlightSlot(pickSlotAt(point.x, point.glY));
+      });
+
+      // 双击画布取消选中
+      canvas.addEventListener("dblclick", function () {
+        highlightSlot(null);
+      });
+
+      $("pickToggle").addEventListener("change", function () {
+        app.pickEnabled = this.checked;
+        if (!app.pickEnabled) highlightSlot(null);          // 关掉时清掉已有的选中
       });
 
       canvas.addEventListener("wheel", function (event) {
