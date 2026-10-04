@@ -272,38 +272,50 @@ export function readDigits(gray, w, glyphs, y0, y1, T) {
 
 // ---------------- 生产版：整张名片提取 ----------------
 //
-// 版面映射（实测不同玩家尺寸完全恒定 900x3201，见 ocr-layout-map.mjs）：
-//   #3/#5/#7   历史最高 6 格（接口仍返回，可用于自检）
-//   #10/#12    其他资料（协力伤害 / 史莱姆分数 / 点赞 / 守护者精通等级）
-//   #15 #17    图鉴总和（不算精通）：攻击 / 防御 / 生命
-//   #20 #22    英雄图鉴：攻击 / 防御 / 生命
-//   #25 #27 #29 道具羁绊装备图鉴：道具攻/生、道具防/装备攻、装备生/装备防
-//   #32 #34    守护者等级：攻击 / 生命 / 防御
-//   #37        浮游城：攻击塔 / 生命塔
-//   #40 #41 #43 #44  守护者精通矩阵（战士/射手 与 坦克/辅助）
+// ⚠️ **不要写死带序号。** 上游改过版：加了一行标题栏、把字号调小，
+//    图高从 900x3201 变成 900x2865 —— 固定序号会整体错位（各区块全串行）。
 //
-// 注意：`%` 也会被当成一个字形的宽度读出来，所以"百分比"的读取是
+// 改成两步：
+//   1) 先用**结构特征**定位一个锚点带 ——「其他资料」第 2 行的右列「等级.N」。
+//      它的字形序列是 [汉字, 汉字, 小数点, 数字, 数字, 数字]，
+//      第 3 个字形是极窄的小数点。这个特征足够独特，不会跟别的行混
+//      （唯一另一个带小数点的行是左列「上期74.13亿」，小数点在第 4~5 位且末尾还有汉字）。
+//   2) 再按**固定的相对偏移**取其余各带 —— 各区块之间的相对位置是稳定的。
+//
+// 这样上游插标题栏、改字号都不会影响。
+//
+// 注意：`%` 也会被当成一个字形读出来，所以"百分比"的读取是
 // "读完整列、丢掉最后一个字形（那就是 %）"，剩下的解析成数字。
-const FIELD_MAP = [
-  [15, 0, 'atkTotal'], [15, 1, 'defTotal'], [17, 0, 'hpTotal'],
-  [20, 0, 'heroAtk'], [20, 1, 'heroDef'], [22, 0, 'heroHp'],
-  [25, 0, 'itemAtkBond'], [25, 1, 'itemHpBond'],
-  [27, 0, 'itemDefBond'], [27, 1, 'gearAtk'],
-  [29, 0, 'gearHp'], [29, 1, 'gearDef'],
-  [32, 0, 'gdAtk'], [32, 1, 'gdHp'], [34, 0, 'gdDef'],
-  [37, 0, 'towerAtk'], [37, 1, 'towerHp'],
+const FIELD_OFFSETS = [
+  // [相对锚点带的偏移, 列号, 字段名]
+  [3, 0, 'atkTotal'], [3, 1, 'defTotal'], [5, 0, 'hpTotal'],
+  [8, 0, 'heroAtk'], [8, 1, 'heroDef'], [10, 0, 'heroHp'],
+  [13, 0, 'itemAtkBond'], [13, 1, 'itemHpBond'],
+  [15, 0, 'itemDefBond'], [15, 1, 'gearAtk'],
+  [17, 0, 'gearHp'], [17, 1, 'gearDef'],
+  [20, 0, 'gdAtk'], [20, 1, 'gdHp'], [22, 0, 'gdDef'],
+  [25, 0, 'towerAtk'], [25, 1, 'towerHp'],
 ];
+
 // 精通矩阵：每条带 4 列，每列是"汉字标签 + 数字"
-const MASTERY_MAP = [
-  [40, ['warriorAtk', 'warriorSkill', 'archerAtk', 'archerSkill']],
-  [41, ['warriorHp', 'warriorDef', 'archerHp', 'archerDef']],
-  [43, ['tankAtk', 'tankSkill', 'supportAtk', 'supportSkill']],
-  [44, ['tankHp', 'tankDef', 'supportHp', 'supportDef']],
+const MASTERY_OFFSETS = [
+  [28, ['warriorAtk', 'warriorSkill', 'archerAtk', 'archerSkill']],
+  [29, ['warriorHp', 'warriorDef', 'archerHp', 'archerDef']],
+  [31, ['tankAtk', 'tankSkill', 'supportAtk', 'supportSkill']],
+  [32, ['tankHp', 'tankDef', 'supportHp', 'supportDef']],
 ];
+
+// 接口仍返回、图上也有 → 可用于自检
+const ANCHOR_OFFSETS = {
+  rank44: [-9, 0], rank33: [-9, 1],
+  rankChampion: [-7, 0], rankDeath: [-7, 1],
+  rankTower: [-5, 0], rankTts: [-5, 1],
+  like: [0, 0], gml: [0, 1],
+};
 
 /** 把每一带切成列（列间用大间隔 60px 分隔），并记下每个字形的水墨高度。
  *  水墨高度是区分"汉字 / 数字"的关键：实测同一带里数字明显更矮
- *  （精通网格：数字 15，汉字 18-19；等级带：数字 19，汉字 23-24）。
+ *  （精通网格：数字 15，汉字 18-20；等级带：数字 19，汉字 23-24）。
  *  只按宽度分不行 —— 有些汉字（如"御"）会被切成窄块，混进数字里。 */
 export function bandsToColumns(gray, w, h) {
   const bands = findTextBands(rowDark(gray, w, h));
@@ -324,10 +336,23 @@ export function bandsToColumns(gray, w, h) {
   });
 }
 
+/** 定位锚点带（右列 = 等级.N） */
+function findAnchorBand(bands) {
+  for (let i = 0; i < bands.length; i++) {
+    const cols = bands[i].cols;
+    if (cols.length !== 2) continue;
+    const r = cols[1];
+    if (r.length < 5 || r.length > 7) continue;
+    // [汉字, 汉字, 小数点(极窄), 数字...]
+    if (r[2].w <= 5 && r[0].w >= 12 && r[1].w >= 9) return i;
+  }
+  return -1;
+}
+
 /** 数字/小数点字形：水墨高度明显小于带高就当数字（用来排除混在列里的汉字）。
  *
- *  但**图鉴那几个区块的数字本身就是满高**（ih = 带高 = 19），此时严格过滤会
- *  把数字也滤掉 —— 所以做成自适应：滤完为空就退回全列。
+ *  但**图鉴那几个区块的数字本身就是满高**，此时严格过滤会把数字也滤掉 ——
+ *  所以做成自适应：滤完为空就退回全列。
  *  这样做是安全的：百分比列已经按位置丢掉了末尾的 `%`，剩下的本来就都是数字。 */
 const digitGlyphs = (col, bandH) => {
   const strict = col.filter(b => b.ih <= bandH - 3);
@@ -361,31 +386,41 @@ function readInt(gray, w, col, y0, y1, bandH, T) {
 
 /**
  * 从一张名片 PNG 里提取全部字段。
- * 返回 { fields, mastery, anchors, ok, reason }
- *   anchors 是接口仍返回、可用于自检的那几个值（图上也有）。
+ * 返回 { fields, mastery, anchors, ok, reason, anchorBand }
  */
 export function extractCard(pngBuffer, T) {
   const img = decodePng(pngBuffer);
   const gray = toGray(img);
   const bands = bandsToColumns(gray, img.w, img.h);
 
-  if (bands.length < 45) {
-    return { ok: false, reason: '版面不符合预期（文字带 ' + bands.length + ' 条，期望 ≥45）', fields: null, mastery: null };
+  const G = findAnchorBand(bands);
+  if (G < 0) {
+    return {
+      ok: false, fields: null, mastery: null,
+      reason: '版面不符合预期：找不到锚点带（右列为「等级.N」）',
+      size: { w: img.w, h: img.h }, bandCount: bands.length,
+    };
   }
+
+  const pick = (off, ci) => {
+    const band = bands[G + off];
+    if (!band) return null;
+    const col = band.cols[ci];
+    return col ? { band, col } : null;
+  };
 
   const fields = {};
   const missing = [];
-  for (const [bi, ci, name] of FIELD_MAP) {
-    const band = bands[bi];
-    const col = band && band.cols[ci];
-    const v = col ? readPercent(gray, img.w, col, band.y0, band.y1, band.h, T) : null;
+  for (const [off, ci, name] of FIELD_OFFSETS) {
+    const p = pick(off, ci);
+    const v = p ? readPercent(gray, img.w, p.col, p.band.y0, p.band.y1, p.band.h, T) : null;
     if (v == null) missing.push(name);
     else fields[name] = v;
   }
 
   const mastery = {};
-  for (const [bi, names] of MASTERY_MAP) {
-    const band = bands[bi];
+  for (const [off, names] of MASTERY_OFFSETS) {
+    const band = bands[G + off];
     if (!band) continue;
     names.forEach((nm, i) => {
       const col = band.cols[i];
@@ -394,19 +429,18 @@ export function extractCard(pngBuffer, T) {
     });
   }
 
-  // 接口仍返回、可用来自检的锚点
-  const A = (bi, ci) => readInt(gray, img.w, bands[bi].cols[ci], bands[bi].y0, bands[bi].y1, bands[bi].h, T);
-  const anchors = {
-    rank44: A(3, 0), rank33: A(3, 1),
-    rankChampion: A(5, 0), rankDeath: A(5, 1),
-    rankTower: A(7, 0), rankTts: A(7, 1),
-    like: A(12, 0), gml: A(12, 1),
-  };
+  const anchors = {};
+  for (const k of Object.keys(ANCHOR_OFFSETS)) {
+    const [off, ci] = ANCHOR_OFFSETS[k];
+    const p = pick(off, ci);
+    anchors[k] = p ? readInt(gray, img.w, p.col, p.band.y0, p.band.y1, p.band.h, T) : null;
+  }
 
   return {
     ok: missing.length === 0,
     reason: missing.length ? '有字段没读出来：' + missing.join(',') : null,
     fields, mastery, anchors,
+    anchorBand: G, bandCount: bands.length,
     size: { w: img.w, h: img.h },
   };
 }
