@@ -650,6 +650,7 @@
         listLimit: 20,
         sheets: {},
         pendingTarget: null,
+        pendingSkinTier: null,
         paused: false,
         nearest: true,
         debug: false,
@@ -904,15 +905,18 @@
           // 免得它落在「显示条数」之外、看不到高亮。
           var target = app.pendingTarget;
           app.pendingTarget = null;
-          if (target && target.folder === app.folder && target.name
-            && app.all.indexOf(target.name) >= 0) {
-            app.shown = [target.name].concat(app.shown.filter(function (n) {
-              return n !== target.name;
-            }));
-            renderAssetList();
-            selectAsset(target.name);
-          } else if (target && target.name && window.console && console.debug) {
-            console.debug("[gtasset] 跳转目标不在当前清单里:", target.folder, target.name);
+          if (target && target.folder === app.folder && target.name) {
+            var resolved = resolveTargetName(target.name);
+            if (resolved.name && app.all.indexOf(resolved.name) >= 0) {
+              app.pendingSkinTier = resolved.tier;
+              app.shown = [resolved.name].concat(app.shown.filter(function (n) {
+                return n !== resolved.name;
+              }));
+              renderAssetList();
+              selectAsset(resolved.name);
+            } else if (window.console && console.debug) {
+              console.debug("[gtasset] 跳转目标不在当前清单里:", target.folder, target.name);
+            }
           }
           if (app.shown.length && app.current === null) selectAsset(app.shown[0]);
         }).catch(function (err) {
@@ -927,6 +931,17 @@
 
       function displayName(name) {
         return app.zh[name] || name;
+      }
+
+      // gtasset 里星阶有两种形态：有的导出成独立资源（admiral_3 在清单里），
+      // 有的留在同一个骨骼里当皮肤（adela_noble 的皮肤有 adela_noble_3/4/5）。
+      // 所以 GET 收到基名_星阶时：清单里有就直接用；没有就退回基名，并记下星阶去切皮肤。
+      function resolveTargetName(name) {
+        if (!name) return { name: name, tier: null };
+        if (app.all.indexOf(name) >= 0) return { name: name, tier: null };
+        var m = /^(.+)_(\d{1,2})$/.exec(name);
+        if (m && app.all.indexOf(m[1]) >= 0) return { name: m[1], tier: m[2] };
+        return { name: name, tier: null };
       }
 
       // 搜索：中文名与内码都能命中。**只过滤列表，不加载资源** ——
@@ -983,6 +998,48 @@
         return entry;
       }
 
+      // 两边帧名体系不完全一致，按可信度依次试：
+      //   精确        —— 多数命中
+      //   星阶分档    —— gtasset 存基名（captain_rabbit），gtatlas 只存 captain_rabbit_3/4/5
+      //   去/加 _b    —— 一边有 _b 变体、另一边没有
+      // 只认「数字结尾」和「_b」这两种受控后缀，绝不做任意前缀匹配，免得张冠李戴。
+      var TIER_RE = /_\d{1,2}$/;
+
+      function buildFrameIndex(entry) {
+        if (entry.index) return entry.index;
+        var index = { tier: {}, stripB: {} };
+        for (var key in entry.frames) {
+          if (!Object.prototype.hasOwnProperty.call(entry.frames, key)) continue;
+          var m = TIER_RE.exec(key);
+          if (m) {
+            var base = key.slice(0, -m[0].length);
+            var digit = parseInt(m[0].slice(1), 10);
+            // 同一基名有多个分档时取最小的，结果稳定可预期
+            if (index.tier[base] === undefined || digit < index.tier[base]) index.tier[base] = digit;
+          }
+          if (key.slice(-2) === "_b") {
+            var bare = key.slice(0, -2);
+            if (index.stripB[bare] === undefined) index.stripB[bare] = key;
+          }
+        }
+        entry.index = index;
+        return index;
+      }
+
+      function findFrame(entry, name) {
+        if (!entry || !entry.frames) return null;
+        var index = buildFrameIndex(entry);
+        var keys = [name];
+        if (TIER_RE.test(name)) keys.push(name.replace(TIER_RE, ""));
+        if (index.tier[name] !== undefined) keys.push(name + "_" + index.tier[name]);
+        if (name.slice(-2) === "_b") keys.push(name.slice(0, -2));
+        keys.push(name + "_b");
+        for (var i = 0; i < keys.length; i++) {
+          if (entry.frames[keys[i]]) return entry.frames[keys[i]];
+        }
+        return null;
+      }
+
       // 把精灵图里某一帧按 contain 摆进 box×box 的方框（居中）
       function thumbStyle(entry, frame) {
         var w = frame.frame.w, h = frame.frame.h;
@@ -999,7 +1056,7 @@
       function thumbStyleFor(entry, name) {
         if (!entry || !entry.frames || !entry.img) return null;
         var key = app.folder === "illust" ? String(name).replace(/^illust_/, "") : name;
-        var frame = entry.frames[key];
+        var frame = findFrame(entry, key);
         if (!frame || !frame.frame || frame.rotated) return null;   // 旋转帧的摆法不同，宁可不显示
         return thumbStyle(entry, frame);
       }
@@ -1324,6 +1381,37 @@
           select.value = skins[skins.length - 1].name;
           app.skeleton.setSkinByName(select.value);
           app.skeleton.setSlotsToSetupPose();
+        }
+
+        // 从 gtatlas 带星阶跳进来时（帧名 adela_noble_3 在 gtasset 里不是独立资源，
+        // 而是 adela_noble 这个骨骼里的一套皮肤），把皮肤切到对应那套。
+        // 优先精确同名，其次 _3 结尾，最后才用「名字里含 3」兜底。
+        var tier = app.pendingSkinTier;
+        app.pendingSkinTier = null;
+        if (tier && skins.length && app.skeleton) {
+          var exact = (app.current ? app.current + "_" + tier : null);
+          var picked = null;
+          var i;
+          if (exact) {
+            for (i = 0; i < skins.length; i++) {
+              if (skins[i].name === exact) { picked = skins[i].name; break; }
+            }
+          }
+          if (!picked) {
+            for (i = 0; i < skins.length; i++) {
+              if (skins[i].name.slice(-tier.length - 1) === "_" + tier) { picked = skins[i].name; break; }
+            }
+          }
+          if (!picked) {
+            for (i = 0; i < skins.length; i++) {
+              if (skins[i].name.indexOf(tier) >= 0) { picked = skins[i].name; break; }
+            }
+          }
+          if (picked) {
+            select.value = picked;
+            app.skeleton.setSkinByName(picked);
+            app.skeleton.setSlotsToSetupPose();
+          }
         }
       }
 
