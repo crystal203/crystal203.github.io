@@ -1,0 +1,300 @@
+
+boss_invader_director_drone_b.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/drone_body1
+  rotate: false
+  xy: 2, 52
+  size: 21, 16
+  orig: 58, 59
+  offset: 4, 34
+  index: -1
+back/drone_body1_line
+  rotate: false
+  xy: 2, 36
+  size: 23, 14
+  orig: 58, 59
+  offset: 3, 37
+  index: -1
+back/drone_body2
+  rotate: true
+  xy: 28, 102
+  size: 21, 9
+  orig: 58, 59
+  offset: 4, 29
+  index: -1
+front/drone_body2
+  rotate: true
+  xy: 28, 102
+  size: 21, 9
+  orig: 59, 60
+  offset: 5, 37
+  index: -1
+back/drone_body2_line
+  rotate: false
+  xy: 2, 7
+  size: 23, 10
+  orig: 58, 59
+  offset: 3, 28
+  index: -1
+back/drone_bottom
+  rotate: true
+  xy: 39, 102
+  size: 13, 10
+  orig: 58, 59
+  offset: 8, 24
+  index: -1
+back/drone_center
+  rotate: true
+  xy: 27, 36
+  size: 25, 8
+  orig: 58, 59
+  offset: 2, 32
+  index: -1
+front/drone_center
+  rotate: true
+  xy: 27, 36
+  size: 25, 8
+  orig: 59, 60
+  offset: 3, 40
+  index: -1
+back/drone_earL
+  rotate: false
+  xy: 53, 42
+  size: 3, 7
+  orig: 58, 59
+  offset: 1, 33
+  index: -1
+front/drone_earR
+  rotate: false
+  xy: 53, 42
+  size: 3, 7
+  orig: 59, 60
+  offset: 2, 41
+  index: -1
+back/drone_earL_line
+  rotate: true
+  xy: 37, 8
+  size: 5, 9
+  orig: 58, 59
+  offset: 0, 32
+  index: -1
+back/drone_earR
+  rotate: false
+  xy: 53, 8
+  size: 3, 7
+  orig: 58, 59
+  offset: 25, 33
+  index: -1
+front/drone_earL
+  rotate: false
+  xy: 53, 8
+  size: 3, 7
+  orig: 59, 60
+  offset: 26, 41
+  index: -1
+back/drone_earR_line
+  rotate: true
+  xy: 39, 117
+  size: 5, 9
+  orig: 58, 59
+  offset: 24, 32
+  index: -1
+front/drone_body1
+  rotate: false
+  xy: 2, 19
+  size: 21, 15
+  orig: 59, 60
+  offset: 5, 43
+  index: -1
+front/drone_body1_line
+  rotate: false
+  xy: 2, 88
+  size: 23, 16
+  orig: 59, 60
+  offset: 4, 43
+  index: -1
+front/drone_body2_line
+  rotate: true
+  xy: 26, 63
+  size: 23, 10
+  orig: 59, 60
+  offset: 4, 36
+  index: -1
+front/drone_bottom
+  rotate: false
+  xy: 27, 89
+  size: 13, 11
+  orig: 59, 60
+  offset: 9, 32
+  index: -1
+front/drone_bottom1
+  rotate: false
+  xy: 2, 4
+  size: 5, 1
+  orig: 59, 60
+  offset: 13, 35
+  index: -1
+front/drone_bottom2
+  rotate: false
+  xy: 9, 4
+  size: 5, 1
+  orig: 59, 60
+  offset: 13, 35
+  index: -1
+front/drone_bottom3
+  rotate: false
+  xy: 16, 4
+  size: 5, 1
+  orig: 59, 60
+  offset: 13, 35
+  index: -1
+front/drone_center_line
+  rotate: true
+  xy: 27, 9
+  size: 25, 8
+  orig: 59, 60
+  offset: 3, 40
+  index: -1
+front/drone_earL_line
+  rotate: false
+  xy: 47, 28
+  size: 5, 9
+  orig: 59, 60
+  offset: 25, 40
+  index: -1
+front/drone_earR_line
+  rotate: false
+  xy: 47, 17
+  size: 5, 9
+  orig: 59, 60
+  offset: 1, 40
+  index: -1
+front/drone_eye1
+  rotate: false
+  xy: 27, 3
+  size: 13, 3
+  orig: 59, 60
+  offset: 9, 41
+  index: -1
+front/drone_eye2
+  rotate: true
+  xy: 48, 2
+  size: 13, 3
+  orig: 59, 60
+  offset: 9, 41
+  index: -1
+front/drone_eye3
+  rotate: true
+  xy: 51, 110
+  size: 13, 3
+  orig: 59, 60
+  offset: 9, 41
+  index: -1
+side/drone_body1
+  rotate: false
+  xy: 2, 70
+  size: 22, 16
+  orig: 60, 60
+  offset: 11, 42
+  index: -1
+side/drone_body1_line
+  rotate: false
+  xy: 2, 106
+  size: 24, 17
+  orig: 60, 60
+  offset: 10, 42
+  index: -1
+side/drone_body2
+  rotate: true
+  xy: 46, 39
+  size: 22, 5
+  orig: 60, 60
+  offset: 11, 38
+  index: -1
+side/drone_body2_line
+  rotate: true
+  xy: 37, 36
+  size: 25, 7
+  orig: 60, 60
+  offset: 10, 37
+  index: -1
+side/drone_bottom
+  rotate: true
+  xy: 38, 63
+  size: 13, 11
+  orig: 60, 60
+  offset: 16, 32
+  index: -1
+side/drone_bottom1
+  rotate: false
+  xy: 51, 102
+  size: 4, 1
+  orig: 60, 60
+  offset: 22, 36
+  index: -1
+side/drone_bottom2
+  rotate: false
+  xy: 42, 5
+  size: 3, 1
+  orig: 60, 60
+  offset: 24, 36
+  index: -1
+side/drone_bottom3
+  rotate: false
+  xy: 42, 5
+  size: 3, 1
+  orig: 60, 60
+  offset: 21, 36
+  index: -1
+side/drone_center
+  rotate: true
+  xy: 37, 15
+  size: 19, 8
+  orig: 60, 60
+  offset: 14, 40
+  index: -1
+side/drone_earL
+  rotate: false
+  xy: 42, 89
+  size: 6, 9
+  orig: 60, 60
+  offset: 29, 39
+  index: -1
+side/drone_earR
+  rotate: false
+  xy: 50, 93
+  size: 6, 7
+  orig: 60, 60
+  offset: 9, 40
+  index: -1
+side/drone_earR_line
+  rotate: false
+  xy: 42, 78
+  size: 7, 9
+  orig: 60, 60
+  offset: 8, 39
+  index: -1
+side/drone_eye1
+  rotate: true
+  xy: 51, 79
+  size: 12, 3
+  orig: 60, 60
+  offset: 18, 42
+  index: -1
+side/drone_eye2
+  rotate: true
+  xy: 51, 65
+  size: 12, 3
+  orig: 60, 60
+  offset: 18, 42
+  index: -1
+side/drone_eye3
+  rotate: true
+  xy: 53, 51
+  size: 12, 3
+  orig: 60, 60
+  offset: 18, 42
+  index: -1
