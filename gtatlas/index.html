@@ -240,6 +240,14 @@
             color: #fff;
         }
 
+        /* jump links reuse the download button look; they are <a>, so reset the
+           inline defaults */
+        a.download-btn {
+            display: inline-block;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
         /* ---------- pagination ---------- */
         .pagination {
             display: flex;
@@ -735,6 +743,20 @@
                 item.appendChild(thumb);
                 item.appendChild(info);
                 item.appendChild(btn);
+
+                // 与 gtasset 联动：头像表跳立绘、角色表跳角色
+                const target = gtassetTargetFor(region);
+                if (target) {
+                    const jump = document.createElement('a');
+                    jump.className = 'download-btn';
+                    jump.textContent = target.label;
+                    jump.title = '在 gtasset 中打开：' + target.name;
+                    jump.href = target.href;
+                    jump.target = '_blank';
+                    jump.rel = 'noopener';
+                    item.appendChild(jump);
+                }
+
                 regionList.appendChild(item);
             });
         }
@@ -784,6 +806,32 @@
                 renderPagination();
                 document.getElementById('regionList').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+        }
+
+        // 与 gtasset 的联动目标。
+        // 换算很简单：立绘在 gtasset 里就是本表帧名加个 illust_ 前缀，角色名两边完全一致。
+        //   portraits.png  帧 adela_noble  ->  ../gtasset/index.html?folder=illust&name=illust_adela_noble
+        //   characters.png 帧 adela_noble_3 ->  ../gtasset/index.html?folder=character&name=adela_noble_3
+        // 两个项目在同一仓库、同一站点根下，所以用相对路径 ../gtasset/。
+        function gtassetTargetFor(region) {
+            if (!currentSpritesheet || !region || !region.name) return null;
+            const src = String(currentSpritesheet.json || '');
+            if (src.indexOf('portraits') >= 0) {
+                const name = 'illust_' + region.name;
+                return {
+                    name: name,
+                    label: '看立绘',
+                    href: '../gtasset/index.html?folder=illust&name=' + encodeURIComponent(name)
+                };
+            }
+            if (src.indexOf('characters') >= 0) {
+                return {
+                    name: region.name,
+                    label: '看角色',
+                    href: '../gtasset/index.html?folder=character&name=' + encodeURIComponent(region.name)
+                };
+            }
+            return null;
         }
 
         function downloadRegion(region) {

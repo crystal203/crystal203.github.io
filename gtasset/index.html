@@ -58,7 +58,9 @@
     }
 
     .asset-item {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 7px;
       width: 100%;
       text-align: left;
       padding: 4px 7px;
@@ -73,6 +75,20 @@
     .asset-item:hover { background: #1b212a; border-color: var(--line); }
     .asset-item.on { background: var(--accent-dim); border-color: var(--accent-line); }
     .asset-item.cursor { background: #232b38; border-color: var(--line-2); }
+
+    /* 缩略图：用背景图定位到 gtasset 联动过来的 gtatlas 精灵图某一帧。
+       这样只需加载一次整张精灵图，每行只是改 background-position。 */
+    .asset-item .thumb {
+      flex: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      background-color: #0d1014;
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+    }
+
+    .asset-item .asset-text { flex: 1 1 auto; min-width: 0; }
 
     .asset-item .zh {
       display: block;
@@ -95,7 +111,17 @@
     }
 
     .asset-more { margin-top: 7px; font-size: 11px; color: var(--mute); }
-    .load-status { min-height: 15px; margin: 0 0 5px; font-size: 11px; color: var(--accent-2); }
+
+    /* 仅在载入时出现的轻提示；预留高度，出现/消失都不会让下面的列表跳动 */
+    .loading-hint {
+      min-height: 16px;
+      margin: 2px 0 2px;
+      font-size: 11.5px;
+      color: var(--accent-2);
+      visibility: hidden;
+    }
+
+    .loading-hint.on { visibility: visible; }
 
     /* ---------------- 布局 ---------------- */
     .layout { flex: 1 1 auto; display: flex; min-height: 0; }
@@ -390,26 +416,18 @@
     .bar.on { display: block; }
     .bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .12s linear; }
 
-    /* ---------------- 自定义上传 ---------------- */
+    /* ---------------- 本地资源（内嵌在「资源」卡里，不再是画布上的弹窗） ---------------- */
     .upload { display: none; }
+    .upload.on { display: block; }
+    .upload label.field > span { min-width: 62px; }
 
-    .upload.on {
-      display: block;
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 5;
-      width: min(400px, calc(100% - 40px));
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
+    .upload input[type=file] {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-size: 11px;
+      color: var(--dim);
+      overflow: hidden;
     }
-
-    .upload h3 { margin: 0 0 12px; font-size: 13px; }
-    .upload label.field > span { min-width: 66px; }
-    .upload input[type=file] { flex: 1 1 auto; min-width: 0; font-size: 11.5px; color: var(--dim); }
 
     @media (max-width: 900px) {
       .layout { flex-direction: column; }
@@ -438,16 +456,6 @@
           <span class="h sw" data-dir="sw"></span>
           <span class="h w" data-dir="w"></span>
         </div>
-
-        <div class="upload" id="customUploadPanel">
-          <h3>加载本地 Spine 资源</h3>
-          <label class="field"><span>图片 .png</span><input type="file" id="customImage" accept=".png"></label>
-          <label class="field"><span>图集 .atlas</span><input type="file" id="customAtlas" accept=".atlas,.txt"></label>
-          <label class="field"><span>骨骼 .json</span><input type="file" id="customSkeleton" accept=".json,.bytes"></label>
-          <div class="row" style="margin-top:12px; justify-content:flex-end">
-            <button type="button" id="customLoadBtn" class="primary" disabled>加载动画</button>
-          </div>
-        </div>
       </main>
 
       <aside class="sidebar">
@@ -461,13 +469,30 @@
               <option value="custom">custom</option>
             </select>
           </label>
-          <label class="field">
-            <span>搜索</span>
-            <input type="text" id="assetSearchBox" placeholder="中文名或内码 · ↑↓ 选择 Enter 载入" autocomplete="off" spellcheck="false">
-          </label>
-          <div class="load-status" id="loadStatus"></div>
-          <div class="asset-list" id="assetList"></div>
-          <div class="asset-more" id="assetMore"></div>
+
+          <div class="loading-hint" id="loadingHint">加载中……</div>
+
+          <div id="searchBlock">
+            <label class="field">
+              <span>搜索</span>
+              <input type="text" id="assetSearchBox" placeholder="中文名或内码 · ↑↓ 选择 Enter 载入" autocomplete="off" spellcheck="false">
+            </label>
+            <label class="field">
+              <span>显示条数</span>
+              <input type="number" id="listLimit" min="5" max="500" step="5" value="20">
+            </label>
+            <div class="asset-list" id="assetList"></div>
+            <div class="asset-more" id="assetMore"></div>
+          </div>
+
+          <div class="upload" id="customUploadPanel">
+            <label class="field"><span>图片 .png</span><input type="file" id="customImage" accept=".png"></label>
+            <label class="field"><span>图集 .atlas</span><input type="file" id="customAtlas" accept=".atlas,.txt"></label>
+            <label class="field"><span>骨骼 .json</span><input type="file" id="customSkeleton" accept=".json,.bytes"></label>
+            <div class="row" style="margin-top:10px">
+              <button type="button" id="customLoadBtn" class="primary" style="flex:1 1 auto" disabled>加载动画</button>
+            </div>
+          </div>
         </section>
 
         <section class="card">
@@ -622,6 +647,9 @@
         zh: {},
         current: null,
         cursor: -1,
+        listLimit: 20,
+        sheets: {},
+        pendingTarget: null,
         paused: false,
         nearest: true,
         debug: false,
@@ -833,13 +861,22 @@
       // 目录 / 资源选择
       // =====================================================================
 
+      // 仅在载入期间出现的轻提示
+      function setLoading(on) {
+        var hint = $("loadingHint");
+        if (hint) hint.classList.toggle("on", !!on);
+      }
+
       function setFolder(folder) {
         app.folder = folder;
         var isCustom = folder === "custom";
+        // custom 时用「本地资源」表单顶掉搜索那一块，不再往画布上弹窗
+        $("searchBlock").style.display = isCustom ? "none" : "block";
         $("customUploadPanel").classList.toggle("on", isCustom);
         $("skeletonVariantWrapper").style.display = "none";
 
         if (isCustom) {
+          setLoading(false);
           app.all = [];
           app.shown = [];
           app.zh = {};
@@ -862,7 +899,22 @@
           app.current = null;
           $("assetSearchBox").value = "";
           applyFilter();
-          if (app.shown.length) selectAsset(app.shown[0]);
+
+          // 从 gtatlas 之类外部跳进来的目标：把它顶到列表最前面并选中，
+          // 免得它落在「显示条数」之外、看不到高亮。
+          var target = app.pendingTarget;
+          app.pendingTarget = null;
+          if (target && target.folder === app.folder && target.name
+            && app.all.indexOf(target.name) >= 0) {
+            app.shown = [target.name].concat(app.shown.filter(function (n) {
+              return n !== target.name;
+            }));
+            renderAssetList();
+            selectAsset(target.name);
+          } else if (target && target.name && window.console && console.debug) {
+            console.debug("[gtasset] 跳转目标不在当前清单里:", target.folder, target.name);
+          }
+          if (app.shown.length && app.current === null) selectAsset(app.shown[0]);
         }).catch(function (err) {
           app.all = [];
           app.shown = [];
@@ -889,13 +941,76 @@
         renderAssetList();
       }
 
-      var LIST_CAP = 300;
+      // ---------------------------------------------------------------------
+      // 与 gtatlas 联动：列表行显示缩略图
+      //
+      // gtatlas 的精灵图是 TexturePacker 格式（frames + meta.image），帧名就是内码，
+      // 所以换算很简单：illust 去掉 illust_ 前缀去 portraits 表里查，character 原样查 characters 表。
+      // 两个项目在同一仓库、同一站点根下，用相对路径 ../gtatlas/ 即可。
+      // ---------------------------------------------------------------------
+      var GTATLAS_ASSETS = "../gtatlas/assets/";
+      var THUMB_SHEET = { illust: "portraits", character: "characters" };
+      var THUMB_BOX = 30;
+
+      function ensureThumbSheet(sheet) {
+        var entry = app.sheets[sheet];
+        if (entry) return entry;
+        entry = { name: sheet, frames: null, img: null, w: 0, h: 0, failed: false };
+        app.sheets[sheet] = entry;
+        fetch(GTATLAS_ASSETS + sheet + ".json")
+          .then(function (res) {
+            if (!res.ok) throw new Error(res.status);
+            return res.json();
+          })
+          .then(function (data) {
+            entry.frames = (data && data.frames) || {};
+            var img = new Image();
+            img.onload = function () {
+              entry.img = img;
+              entry.w = img.naturalWidth;
+              entry.h = img.naturalHeight;
+              renderAssetList();        // 图到位后重画一次，缩略图就显出来了
+            };
+            img.onerror = function () { entry.failed = true; };
+            img.src = GTATLAS_ASSETS + sheet + ".png";
+          })
+          .catch(function (err) {
+            entry.failed = true;
+            if (window.console && console.debug) {
+              console.debug("[gtasset] 缩略图不可用（" + sheet + "）:", err && err.message ? err.message : err);
+            }
+          });
+        return entry;
+      }
+
+      // 把精灵图里某一帧按 contain 摆进 box×box 的方框（居中）
+      function thumbStyle(entry, frame) {
+        var w = frame.frame.w, h = frame.frame.h;
+        if (!w || !h || !entry.w || !entry.h) return null;
+        var scale = Math.min(THUMB_BOX / w, THUMB_BOX / h);
+        var sw = entry.w * scale, sh = entry.h * scale;
+        var px = (THUMB_BOX - w * scale) / 2 - frame.frame.x * scale;
+        var py = (THUMB_BOX - h * scale) / 2 - frame.frame.y * scale;
+        return "background-image:url(" + GTATLAS_ASSETS + entry.name + ".png);"
+          + "background-size:" + sw.toFixed(2) + "px " + sh.toFixed(2) + "px;"
+          + "background-position:" + px.toFixed(2) + "px " + py.toFixed(2) + "px;";
+      }
+
+      function thumbStyleFor(entry, name) {
+        if (!entry || !entry.frames || !entry.img) return null;
+        var key = app.folder === "illust" ? String(name).replace(/^illust_/, "") : name;
+        var frame = entry.frames[key];
+        if (!frame || !frame.frame || frame.rotated) return null;   // 旋转帧的摆法不同，宁可不显示
+        return thumbStyle(entry, frame);
+      }
 
       function renderAssetList() {
         var list = $("assetList");
         list.innerHTML = "";
         var total = app.shown.length;
-        var shown = Math.min(total, LIST_CAP);
+        var shown = Math.min(total, app.listLimit);
+        var sheet = THUMB_SHEET[app.folder];
+        var entry = sheet ? ensureThumbSheet(sheet) : null;
         var frag = document.createDocumentFragment();
         for (var i = 0; i < shown; i++) {
           var name = app.shown[i];
@@ -904,16 +1019,28 @@
           item.className = "asset-item" + (name === app.current ? " on" : "");
           item.dataset.name = name;
 
+          if (entry) {
+            var thumb = document.createElement("span");
+            thumb.className = "thumb";
+            var style = thumbStyleFor(entry, name);
+            if (style) thumb.setAttribute("style", style);
+            item.appendChild(thumb);
+          }
+
+          var text = document.createElement("span");
+          text.className = "asset-text";
+
           var zh = document.createElement("span");
           zh.className = "zh";
           zh.textContent = displayName(name);
-          item.appendChild(zh);
+          text.appendChild(zh);
           if (displayName(name) !== name) {
             var code = document.createElement("span");
             code.className = "code";
             code.textContent = name;
-            item.appendChild(code);
+            text.appendChild(code);
           }
+          item.appendChild(text);
 
           item.addEventListener("click", function () { selectAsset(this.dataset.name); });
           frag.appendChild(item);
@@ -924,7 +1051,7 @@
           ? String(total)
           : total + " / " + app.all.length;
         $("assetMore").textContent = total > shown
-          ? "仅列出前 " + shown + " 条，还有 " + (total - shown) + " 条 —— 继续输入缩小范围"
+          ? "显示前 " + shown + " 条，另有 " + (total - shown) + " 条（可改「显示条数」或继续输入缩小范围）"
           : "";
       }
 
@@ -946,26 +1073,27 @@
         loadAsset(app.folder, name);
       }
 
-      // 载入耗时与缓存占用直接显示出来，省得靠猜。耗时拆成 取/解析/界面/适配 四段。
-      function reportLoad(started, cached) {
-        var status = $("loadStatus");
-        if (!status) return;
+      // 载入耗时与缓存占用不再显示在界面上，改成写控制台（要排查时按 F12 看）。
+      // 分段：取 / 解析 / 界面 / 适配。
+      function logLoad(started, cached) {
         var stats = cacheStats();
         var t = app.timing || {};
         var parts = [];
         if (t.fetch) {
           var kb = (t.bytes || 0) / 1024;
           var rate = t.fetch > 0 ? Math.round(kb / (t.fetch / 1000)) : 0;
-          parts.push(kb > 1
-            ? "取 " + Math.round(t.fetch) + " ms（" + Math.round(kb) + " KB · " + rate + " KB/s）"
-            : "取 " + Math.round(t.fetch));
+          parts.push("取 " + Math.round(t.fetch) + " ms"
+            + (kb > 1 ? "（" + Math.round(kb) + " KB · " + rate + " KB/s）" : ""));
         }
         if (t.parse) parts.push("解析 " + Math.round(t.parse));
         if (t.ui) parts.push("界面 " + Math.round(t.ui));
         if (t.fit) parts.push("适配 " + Math.round(t.fit));
-        status.textContent = (cached ? "缓存命中 " : "载入 ") + Math.round(performance.now() - started)
-          + " ms" + (parts.length ? "（" + parts.join(" / ") + "）" : "")
-          + " · 缓存 " + stats.count + " 条 / " + stats.mb.toFixed(0) + " MB";
+        if (window.console && console.debug) {
+          console.debug("[gtasset]", (cached ? "缓存命中 " : "载入 ")
+            + Math.round(performance.now() - started) + " ms "
+            + (parts.length ? "(" + parts.join(" / ") + ") " : "")
+            + "缓存 " + stats.count + " 条 / " + stats.mb.toFixed(0) + " MB");
+        }
       }
 
       function loadAsset(folder, name) {
@@ -985,7 +1113,6 @@
 
         refreshVariantSelector(folder, name);
         var variant = currentVariant(folder, name);
-        var status = $("loadStatus");
 
         // 解析结果命中缓存就直接复用：character 一个骨骼 170~200 个动画，
         // 重新解析要 20~100ms，来回对比时这一下最值钱。
@@ -994,10 +1121,11 @@
         if (cached) {
           app.activeKey = key;
           activateSkeleton(cached.atlas, cached.data);
-          reportLoad(started, true);
+          setLoading(false);
+          logLoad(started, true);
           return;
         }
-        if (status) status.textContent = "载入中 … " + name;
+        setLoading(true);
 
         var atlasUrls = suffixUrls("assets/" + folder + "/" + name, ATLAS_EXT);
         var bytesUrls = (variant ? suffixUrls("assets/" + folder + "/" + name + "_" + variant, BYTES_EXT) : [])
@@ -1024,11 +1152,12 @@
           if (token !== app.loadToken) return;
           app.activeKey = key;
           buildSkeleton(triple[0], triple[1], triple[2], key);
-          reportLoad(started, false);
+          setLoading(false);
+          logLoad(started, false);
         }).catch(function (err) {
           if (err && err.name === "AbortError") return;   // 被新的一次切换取消，属正常
           if (token !== app.loadToken) return;
-          if (status) status.textContent = "";
+          setLoading(false);
           window.alert("加载失败：" + name + "\n" + (err && err.message ? err.message : err));
         });
       }
@@ -1212,9 +1341,14 @@
           buckets[classify(name)].push(name);
         }
         var variant = currentVariant(app.folder, app.current);
+        // character 默认三条轨都停在 idle：动作 idle_方向、表情 [emo]idle_方向、子动画 [sub]idle_方向。
+        // 都是「找到了才开」，找不到就留空。illust 不参与（只按原规则开动作轨）。
+        var withIdle = app.folder === "character";
         fillTrackSelect($("trackAction"), buckets.action, pickDefault(buckets.action, variant));
-        fillTrackSelect($("trackEmote"), buckets.emote, "");
-        fillTrackSelect($("trackSub"), buckets.sub, "");
+        fillTrackSelect($("trackEmote"), buckets.emote,
+          withIdle ? pickIdle(buckets.emote, "[emo]idle", variant) : "");
+        fillTrackSelect($("trackSub"), buckets.sub,
+          withIdle ? pickIdle(buckets.sub, "[sub]idle", variant) : "");
         app.tracks = {
           action: $("trackAction").value,
           emote: $("trackEmote").value,
@@ -1222,6 +1356,17 @@
         };
         app.animState = new spine.AnimationState(new spine.AnimationStateData(app.skeleton.data));
         applyTracks();
+      }
+
+      // 只在确实存在时才选中：先试带方向的 idle_<方向>，再试不带方向的 idle。
+      function pickIdle(names, prefix, variant) {
+        if (!names.length) return "";
+        if (variant) {
+          var withVariant = prefix + "_" + variant;
+          if (names.indexOf(withVariant) >= 0) return withVariant;
+        }
+        if (names.indexOf(prefix) >= 0) return prefix;
+        return "";
       }
 
       function pickDefault(names, variant) {
@@ -2136,6 +2281,14 @@
         }, 70);
       });
 
+      // 显示条数：默认为 20，避免一次拉太多缩略图
+      $("listLimit").addEventListener("change", function () {
+        var value = parseInt(this.value, 10);
+        app.listLimit = Math.max(5, Math.min(500, isNaN(value) ? 20 : value));
+        this.value = app.listLimit;
+        renderAssetList();
+      });
+
       $("assetSearchBox").addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === "ArrowDown" || event.key === "ArrowUp") {
           flushFilter();
@@ -2449,6 +2602,36 @@
       });
 
       // =====================================================================
+      // 对外跳转接口（GET）
+      //   index.html?folder=illust&name=illust_akayuki
+      //   index.html?folder=character&name=akayuki_2
+      // folder 缺省或非法时按 name 猜：带 illust_ 前缀按立绘，否则按角色。
+      // =====================================================================
+
+      function readUrlTarget() {
+        var query = String(location.search || "").replace(/^\?/, "");
+        if (!query) return null;
+        var out = {};
+        query.split("&").forEach(function (pair) {
+          if (!pair) return;
+          var eq = pair.indexOf("=");
+          var key = eq < 0 ? pair : pair.slice(0, eq);
+          var value = eq < 0 ? "" : pair.slice(eq + 1).replace(/\+/g, " ");
+          try {
+            out[decodeURIComponent(key)] = decodeURIComponent(value);
+          } catch (e) {
+            out[key] = value;
+          }
+        });
+        var folder = out.folder;
+        if (folder !== "illust" && folder !== "character" && folder !== "custom") {
+          if (!out.name) return null;
+          folder = String(out.name).indexOf("illust_") === 0 ? "illust" : "character";
+        }
+        return { folder: folder, name: out.name || "" };
+      }
+
+      // =====================================================================
       // 启动
       // =====================================================================
 
@@ -2459,6 +2642,12 @@
       syncRegion(true);
       applyAutoDuration();
       requestAnimationFrame(render);
+
+      var urlTarget = readUrlTarget();
+      if (urlTarget) {
+        $("folderSelector").value = urlTarget.folder;
+        app.pendingTarget = urlTarget;
+      }
       setFolder($("folderSelector").value);
     })();
   </script>
