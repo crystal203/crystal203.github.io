@@ -12,5 +12,5 @@
   }
   return result.href;
  }
- global.GTResources={url,fetch:(value,options)=>fetch(url(value),options),root:root.href};
+ global.GTResources={url,fetch:(value,options)=>(global.GTDelivery?.fetch||fetch)(url(value),options),image:(value,options)=>global.GTDelivery.image(url(value),options),root:root.href};
 })(globalThis);

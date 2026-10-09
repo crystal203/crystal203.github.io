@@ -195,7 +195,7 @@ export class FxRuntime {
     for(const m of (Array.isArray(this.grid.material)?this.grid.material:[this.grid.material]))m.dispose();
     this.renderer.dispose();this.renderer.forceContextLoss();
   }
-  async load(index,resolveUrl,{effect=null}={}) {
+  async load(index,resolveUrl,{effect=null,loadImage=null}={}) {
     if(effect){
       // Follow references through sprite records, including animation frames and masks.
       const textureKeys=new Set(),meshKeys=new Set(),visited=new Set();
@@ -205,7 +205,8 @@ export class FxRuntime {
     const loaded={}, generation=(this.loadGeneration||0)+1;this.loadGeneration=generation;
     try {
       await Promise.all(Object.entries(index.textures).map(async([key,t])=>{
-        const tex=await new THREE.TextureLoader().loadAsync(resolveUrl(t.url));
+        const tex=loadImage?new THREE.Texture(await loadImage(resolveUrl(t.url))):await new THREE.TextureLoader().loadAsync(resolveUrl(t.url));
+        if(loadImage)tex.needsUpdate=true;
         tex.colorSpace=THREE.SRGBColorSpace;tex.wrapS=tex.wrapT=t.repeat?THREE.RepeatWrapping:THREE.ClampToEdgeWrapping;
         tex.minFilter=tex.magFilter=THREE.NearestFilter;tex.generateMipmaps=false;loaded[key]=tex;
       }));

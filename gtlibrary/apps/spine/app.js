@@ -177,16 +177,14 @@
       }
 
       function loadManifest(folder) {
-        return new Promise(function (resolve, reject) {
-          var previous = $("assetsScript");
-          if (previous) previous.remove();
-          var script = document.createElement("script");
-          script.id = "assetsScript";
-          script.src = GTResources.url("../../resources/spine/" + folder + "/assets.js" + QUERY);
-          script.onload = function () { resolve(); };
-          script.onerror = function () { reject(new Error("无法加载 assets/" + folder + "/assets.js")); };
-          document.head.appendChild(script);
-        });
+        return GTResources.fetch("../../resources/spine/" + folder + "/assets.js" + QUERY)
+          .then(function(response) { return checkResponse(response, folder).text(); })
+          .then(function(text) {
+            // Export files contain one JSON assignment, not arbitrary executable code.
+            var match = text.match(/(?:window\.)?spineAssets\s*=\s*([\s\S]*?);?\s*$/);
+            if (!match) throw new Error("资源清单格式不可用: " + folder);
+            window.spineAssets = JSON.parse(match[1].replace(/;\s*$/, ""));
+          });
       }
 
       // 兼容三种清单形态：数组 / 对象数组 / {assets, variants}
@@ -400,22 +398,18 @@
         if (entry) return entry;
         entry = { name: sheet, frames: null, img: null, w: 0, h: 0, failed: false };
         app.sheets[sheet] = entry;
-        GTResources.fetch(GTATLAS_ASSETS + sheet + ".json")
+        GTResources.fetch("../../resources/previews/" + sheet + ".json")
           .then(function (res) {
             if (!res.ok) throw new Error(res.status);
             return res.json();
           })
           .then(function (data) {
             entry.frames = (data && data.frames) || {};
-            var img = new Image();
-            img.onload = function () {
-              entry.img = img;
-              entry.w = img.naturalWidth;
-              entry.h = img.naturalHeight;
-              renderAssetList();        // 图到位后重画一次，缩略图就显出来了
-            };
-            img.onerror = function () { entry.failed = true; };
-            img.src = GTResources.url(GTATLAS_ASSETS + sheet + ".png");
+            return GTResources.image("../../resources/previews/" + sheet + ".webp").then(function(img) {
+              if(disposed)return;
+              entry.img = img; entry.w = img.naturalWidth; entry.h = img.naturalHeight;
+              renderAssetList();
+            });
           })
           .catch(function (err) {
             entry.failed = true;

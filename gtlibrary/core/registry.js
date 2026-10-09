@@ -12,5 +12,20 @@
     const target=entity[view];if(!target)return null;
     return {view,resource:entity.id,...target};
   }
-  global.GTRegistry={normalize,resolve,route};
+  let pending;
+  function load(){
+    if(global.GTLibraryRegistry)return Promise.resolve(global.GTLibraryRegistry);
+    if(global.parent!==global){try{if(global.parent.GTRegistry)return global.parent.GTRegistry.load().then(value=>(global.GTLibraryRegistry=value));}catch{}}
+    if(!pending)pending=new Promise((resolve,reject)=>{
+      const script=document.createElement('script'),url=new URL('../resources/registry.js',source);
+      if(global.GT_CACHE_VERSION)url.searchParams.set('gtv',global.GT_CACHE_VERSION);
+      script.src=url.href;
+      script.onload=()=>global.GTLibraryRegistry?resolve(global.GTLibraryRegistry):reject(new Error('Missing registry'));
+      script.onerror=()=>{pending=null;script.remove();reject(new Error('人物索引加载失败，请刷新重试。'));};
+      document.head.append(script);
+    });
+    return pending;
+  }
+  const source=document.currentScript.src;
+  global.GTRegistry={normalize,resolve,route,load};
 })(globalThis);

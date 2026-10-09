@@ -3,21 +3,23 @@ import {outputSize} from '../../gtfx/gif-sizing.js';
 const $=id=>document.getElementById(id);
 let manifestUrl,effectGeneration=0,loadedEffect=null,disposed=false;
 let runtime,catalog,index,character,effect,playing=false,time=0,last=performance.now(),queue=null,gap=0,generation=0,exporting=false,cancelled=false,worker=null,downloadUrl=null,measuring=false,nativePlan=null;
-const avatarImage=new Image();avatarImage.src=GTResources.url('../../resources/atlas/characters.png');
-const portraitImage=new Image();portraitImage.src=GTResources.url('../../resources/atlas/portraits.png');
+let avatarImage=null,avatarFrames={};
 function message(text=''){$('message').textContent=text;$('message').hidden=!text;}
 function error(e){message(e.message||String(e));playing=false;update();}
 async function json(url){const response=await GTResources.fetch(url);if(!response.ok)throw new Error('文件读取失败：'+url);return response.json();}
 function avatar(char){
   const canvas=document.createElement('canvas');canvas.width=canvas.height=40;canvas.className='avatar';
-  let usePortrait=!!char.portrait;
-  const draw=()=>{const context=canvas.getContext('2d'),entry=usePortrait?char.portrait:char.avatar,image=usePortrait?portraitImage:avatarImage;
+  const draw=()=>{const context=canvas.getContext('2d'),entry=avatarFrames[char.id],image=avatarImage;
     context.clearRect(0,0,40,40);
-    if(!entry){context.fillStyle='#93aee6';context.font='19px system-ui';context.textAlign='center';context.fillText(char.name[0]||'·',20,27);return;}
+    if(!entry||!image){context.fillStyle='#93aee6';context.font='19px system-ui';context.textAlign='center';context.fillText(char.name[0]||'·',20,27);return;}
     const r=entry.frame,w=entry.rotated?r.h:r.w,h=entry.rotated?r.w:r.h,scale=Math.min(36/w,36/h);
     context.save();context.imageSmoothingEnabled=false;context.translate(20,20);if(entry.rotated)context.rotate(-Math.PI/2);context.drawImage(image,r.x,r.y,r.w,r.h,-r.w*scale/2,-r.h*scale/2,r.w*scale,r.h*scale);context.restore();};
-  const ready=()=>{const image=usePortrait?portraitImage:avatarImage;if(image.complete&&image.naturalWidth)draw();else image.addEventListener('load',draw,{once:true});};
-  if(usePortrait)portraitImage.addEventListener('error',()=>{usePortrait=false;ready();},{once:true});ready();return canvas;
+  draw();return canvas;
+}
+async function loadAvatars(){
+  try{const [data,image]=await Promise.all([json('../../resources/previews/fx.json'),GTResources.image('../../resources/previews/fx.webp')]);
+    if(disposed)return;avatarFrames=data.frames;avatarImage=image;renderCharacters();
+  }catch(error){console.debug('列表头像暂不可用',error);}
 }
 function renderCharacters(){
   const query=$('search').value.trim().toLowerCase(),list=catalog.characters.filter(c=>c.name.toLowerCase().includes(query)||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query));
@@ -53,7 +55,7 @@ async function selectEffect(position,auto=true){
     $('download-gif').hidden=true;$('export-status').textContent='';nativePlan=null;const selected=index.effects[position];if(!selected||selected.unavailable)return;
     const current=++effectGeneration;playing=false;effect=null;message('加载中');
     for(const id of ['replay','play','step','export','all'])$(id).disabled=true;
-    if(loadedEffect!==selected){await runtime.load(index,p=>GTResources.url(p,manifestUrl),{effect:selected});if(current!==effectGeneration||disposed)return;loadedEffect=selected;}
+    if(loadedEffect!==selected){await runtime.load(index,p=>GTResources.url(p,manifestUrl),{effect:selected,loadImage:p=>GTResources.image(p)});if(current!==effectGeneration||disposed)return;loadedEffect=selected;}
     effect=selected;$('all').disabled=false;
     $('effect').value=String(position);runtime.build(effect,Number($('seed').value)>>>0);runtime.autoFit();
     GTBridge.selection({character:character.id,effect:effect.id});
@@ -148,7 +150,7 @@ $('canvas').onpointerup=()=>{drag=null;};$('canvas').onpointercancel=()=>{drag=n
 $('export').onclick=exportGif;$('cancel').onclick=()=>{cancelled=true;};
 $('info').onclick=()=>{$('info-text').textContent=effect?`${character.name} / ${character.id}\n${effect.assetName}\n${effect.preset}\n${effect.systems.length} 个粒子系统 · ${effect.statics?.length||0} 个静态图层\n${runtime.duration.toFixed(3)} s\n\n${effect.limitations?.length?'近似项：'+effect.limitations.join('、'):'基础粒子渲染'}\n\n全部素材随站点打包。GIF 支持 1 位透明，半透明边缘会量化。\n原始尺寸：按素材 PPU（无记录时 100 px / Unity 单位）与整段动画可见边界计算，倍率采用最近邻缩放。`:'角色特效播放器';$('info-dialog').showModal();};
 $('close-info').onclick=()=>$('info-dialog').close();
-async function init(){try{runtime=new FxRuntime($('canvas'));runtime.grid.visible=false;runtime.setBackground('checker');new ResizeObserver(()=>{if(!exporting&&!measuring){runtime.resize();sample();}}).observe($('stage'));runtime.resize();catalog=await json('../../resources/fx/catalog.json');renderCharacters();const desired=new URL(location.href).searchParams.get('character')||'hana';const selected=catalog.characters.find(c=>c.id===desired);if(selected)await selectCharacter(selected);else message('当前索引没有对应角色：'+desired);}catch(e){error(e);}requestAnimationFrame(tick);}
+async function init(){try{runtime=new FxRuntime($('canvas'));runtime.grid.visible=false;runtime.setBackground('checker');new ResizeObserver(()=>{if(!exporting&&!measuring){runtime.resize();sample();}}).observe($('stage'));runtime.resize();catalog=await json('../../resources/fx/catalog.json');renderCharacters();const desired=new URL(location.href).searchParams.get('character')||'hana';const selected=catalog.characters.find(c=>c.id===desired);if(selected)await selectCharacter(selected);else message('当前索引没有对应角色：'+desired);if(!disposed)loadAvatars();}catch(e){error(e);}requestAnimationFrame(tick);}
 init();
 
 window.addEventListener("gt-dispose",()=>{disposed=true;++generation;++effectGeneration;cancelled=true;worker?.terminate();if(downloadUrl)URL.revokeObjectURL(downloadUrl);runtime?.dispose();});

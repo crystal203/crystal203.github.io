@@ -79,42 +79,21 @@ let currentSpritesheet = null;
             try {
                 const sheet = spritesheets[index];
 
-                const response = await GTResources.fetch(sheet.json,{signal});
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-                const jsonData = await response.json();
-
-                // a missing sidecar just means this atlas shows internal codes only
-                zhNames = {};
-                if (sheet.zh) {
-                    try {
-                        const zhResponse = await GTResources.fetch(sheet.zh,{signal});
-                        if (zhResponse.ok) zhNames = await zhResponse.json();
-                    } catch (e) {
-                        console.warn('未找到中文名映射:', sheet.zh);
-                    }
-                }
-
-                const img = new Image();
-                img.crossOrigin = 'anonymous';
-                img.onload = function() {
-                    if(generation!==loadGeneration)return;
-                    currentSpritesheet = { ...sheet, img: img };
-                    allRegions = filterBlankRegions(parseSpritesheetData(jsonData, img), img);
-                    for (const region of allRegions) region.zh = zhNames[region.name] || '';
-                    filteredRegions = [...allRegions];
-                    const target=new URLSearchParams(location.search).get('query');
-                    if(target)document.getElementById('searchInput').value=target;
-                    filterRegions();
-                    currentPage = 1;
-                    renderRegionList();
-                    renderPagination();
-                    showLoading(false);
-                };
-                img.onerror = function() {
-                    alert('加载图片失败，请检查路径是否正确');
-                    showLoading(false);
-                };
-                img.src = GTResources.url(sheet.png);
+                const [jsonData, names, img] = await Promise.all([
+                    GTResources.fetch(sheet.json,{signal}).then(response=>{if(!response.ok)throw new Error('HTTP '+response.status);return response.json();}),
+                    sheet.zh ? GTResources.fetch(sheet.zh,{signal}).then(response=>response.ok?response.json():{}).catch(error=>{if(signal.aborted)throw error;return {};}) : {},
+                    GTResources.image(sheet.png,{signal})
+                ]);
+                if(generation!==loadGeneration)return;
+                zhNames=names;
+                currentSpritesheet = { ...sheet, img };
+                allRegions = filterBlankRegions(parseSpritesheetData(jsonData, img), img);
+                for (const region of allRegions) region.zh = zhNames[region.name] || '';
+                filteredRegions = [...allRegions];
+                const target=new URLSearchParams(location.search).get('query');
+                if(target)document.getElementById('searchInput').value=target;
+                filterRegions();
+                showLoading(false);
             } catch (error) {
                 if(generation!==loadGeneration||error.name==='AbortError')return;
                 console.error('加载图集失败:', error);
@@ -204,7 +183,7 @@ let currentSpritesheet = null;
                 const sheetCode=String(currentSpritesheet.json||'').split('/').pop().replace('.json','');
                 if(['characters','portraits','bosses'].includes(sheetCode)){
                     const selection={name:region.name,sheet:sheetCode,query:region.name};
-                    const entity=GTRegistry.resolve(GTLibraryRegistry,selection);
+                    const entity=GTRegistry.resolve(globalThis.GTLibraryRegistry||{aliases:{},entities:{}},selection);
                     if(entity){
                       for(const view of ['spine','fx'])if(entity[view]){const jump=document.createElement('button');jump.className='download-btn';jump.textContent=view==='spine'?'像素动画':'特效';jump.onclick=()=>GTBridge.navigate(view,selection,view==='spine'&&sheetCode==='characters'&&entity.spine.folder==='character'?{name:region.name,folder:'character'}:{});actions.append(jump);}
                       if(entity.illust){const jump=document.createElement('button');jump.className='download-btn';jump.textContent='立绘';jump.onclick=()=>GTBridge.navigate('spine',selection,entity.illust);actions.append(jump);}
@@ -380,3 +359,5 @@ let currentSpritesheet = null;
             filterRegions();
         }
 window.addEventListener("gt-dispose",()=>{++loadGeneration;loadAbort?.abort();});
+
+GTRegistry.load().then(()=>{if(currentSpritesheet)renderRegionList();}).catch(error=>console.debug(error));

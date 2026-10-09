@@ -1,8 +1,7 @@
 const $=id=>document.getElementById(id),views=['atlas','spine','fx'],titles={atlas:'图集',spine:'像素动画',fx:'特效'};
-const registry=globalThis.GTLibraryRegistry;
-if(!registry){$('status').textContent='资源索引加载失败，请刷新重试。';throw new Error('Missing registry');}
+let registry=null;
 let active=null,frame=null,entity=null,route=null;
-const states={},searchItems=Object.values(registry.entities);
+const states={};let searchItems=[];
 function readRoute(){const params=new URLSearchParams(location.hash.slice(1));const result=Object.fromEntries(params);result.view=views.includes(result.view)?result.view:'atlas';return result;}
 function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect'])if(state[key])params.set(key,state[key]);return params.toString();}
 function navigate(state){if(state)location.hash=encode(state);}
@@ -14,7 +13,7 @@ function renderContext(){
 function open(){
   const next=readRoute();if(route&&encode(next)===encode(route))return;
   if(active&&route)states[active]={...route};
-  route=next;active=next.view;entity=GTRegistry.resolve(registry,next);renderContext();
+  route=next;active=next.view;entity=registry?GTRegistry.resolve(registry,next):null;renderContext();
   document.title=(entity?entity.name+' · ':'')+titles[active]+' | 坎公资源库';
   for(const b of document.querySelectorAll('nav button')){b.setAttribute('aria-current',b.dataset.view===active?'page':'false');}
   if(frame){try{frame.contentWindow.GTBridge?.dispose();}catch{}frame.remove();}
@@ -34,9 +33,9 @@ for(const b of document.querySelectorAll('nav button'))b.onclick=()=>{
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame?.contentWindow||event.data?.channel!=='gt-library')return;
   const data=event.data;
-  if(data.type==='navigate'){const target=GTRegistry.route(GTRegistry.resolve(registry,data.selection),data.view);if(target)navigate({...target,...data.params});return;}
+  if(data.type==='navigate'){if(!registry)return;const target=GTRegistry.route(GTRegistry.resolve(registry,data.selection),data.view);if(target)navigate({...target,...data.params});return;}
   if(data.type==='selection'){
-    const selected=GTRegistry.resolve(registry,data.selection);entity=selected;
+    const selected=registry?GTRegistry.resolve(registry,data.selection):null;entity=selected;
     route={view:active,...data.selection,...(selected?{resource:selected.id}:{resource:''})};
     history.replaceState(null,'','#'+encode(route));renderContext();
     document.title=(entity?entity.name+' · ':'')+titles[active]+' | 坎公资源库';
@@ -53,3 +52,12 @@ $('search-form').onsubmit=e=>{e.preventDefault();search();};let timer;$('library
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$('results').hidden=true;});document.addEventListener('click',e=>{if(!e.target.closest('#results,#search-form'))$('results').hidden=true;});
 $('help').onclick=()=>$('help-dialog').showModal();$('close-help').onclick=()=>$('help-dialog').close();
 window.addEventListener('hashchange',open);open();
+GTRegistry.load().then(value=>{
+  registry=value;searchItems=Object.values(registry.entities);entity=GTRegistry.resolve(registry,route);renderContext();
+  if($('library-search').value)search();
+}).catch(error=>{$('context').textContent=error.message;});
+// Register after the workspace starts; never precache the entire resource library.
+if('serviceWorker' in navigator&&location.protocol==='https:'){
+  const register=()=>navigator.serviceWorker.register('sw.js',{scope:'./',updateViaCache:'none'}).catch(error=>console.debug('资源缓存未启用',error));
+  if('requestIdleCallback' in window)requestIdleCallback(register,{timeout:2000});else setTimeout(register,0);
+}
