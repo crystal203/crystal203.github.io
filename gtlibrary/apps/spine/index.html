@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><script>if(window===window.top){const p=new URLSearchParams(location.search);p.set('view','spine');location.replace('../../index.html#'+p);}</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>坎公美术资源管理器</title>
+  <style>
+    :root {
+      --bg: #0f1116;
+      --panel: #161a21;
+      --panel-2: #1c212a;
+      --panel-3: #232936;
+      --line: #252b35;
+      --line-2: #303845;
+      --text: #e8ebf1;
+      --dim: #9aa3b3;
+      --mute: #6b7484;
+      --accent: #6d8fd4;
+      --accent-2: #93aee6;
+      --accent-dim: rgba(109, 143, 212, .15);
+      --accent-line: rgba(109, 143, 212, .40);
+      --r: 10px;
+      --rs: 7px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 13px/1.55 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: #2b323e;
+      border: 3px solid transparent;
+      background-clip: content-box;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #3a4350; background-clip: content-box; }
+    ::-webkit-scrollbar-corner { background: transparent; }
+
+    .app { display: flex; flex-direction: column; height: 100vh; }
+
+    /* ---------------- 资源列表（搜索 + 选择合一） ---------------- */
+    .asset-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin: 0 -5px;
+      padding: 2px 5px;
+    }
+
+    .asset-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      width: 100%;
+      text-align: left;
+      padding: 4px 7px;
+      margin: 0 0 2px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      line-height: 1.35;
+    }
+
+    .asset-item:hover { background: #1b212a; border-color: var(--line); }
+    .asset-item.on { background: var(--accent-dim); border-color: var(--accent-line); }
+    .asset-item.cursor { background: #232b38; border-color: var(--line-2); }
+
+    /* 缩略图仅绘制帧内像素，非正方形帧的其余区域保持透明。 */
+    .asset-item .thumb {
+      flex: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      background-color: #0d1014;
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+      cursor: inherit;
+    }
+
+    .equipped-list { list-style: none; padding: 0; margin: 8px 0 0; }
+    .equipped-row { display: flex; align-items: center; gap: 7px; padding: 8px 0; border-top: 1px solid var(--line); }
+    .equipped-row .asset-text { flex: 1; min-width: 0; }
+    .equipped-row .zh { display: block; color: var(--text); }
+    .equipped-row .code, .equipped-row .mount { display: block; font-size: 10.5px; color: var(--dim); overflow-wrap: anywhere; }
+    .equipped-row .thumb { flex: none; width: 30px; height: 30px; background: #0d1014; image-rendering: pixelated; cursor: default; }
+
+    .asset-item .asset-text { flex: 1 1 auto; min-width: 0; }
+
+    .asset-item .zh {
+      display: block;
+      font-size: 12px;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .asset-item.on .zh { color: var(--accent-2); }
+
+    .asset-item .code {
+      display: block;
+      font-size: 10.5px;
+      color: var(--mute);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .asset-more { margin-top: 7px; font-size: 11px; color: var(--mute); }
+
+    /* 仅在载入时出现的轻提示；预留高度，出现/消失都不会让下面的列表跳动 */
+    .loading-hint {
+      min-height: 16px;
+      margin: 2px 0 2px;
+      font-size: 11.5px;
+      color: var(--accent-2);
+      visibility: hidden;
+    }
+
+    .loading-hint.on { visibility: visible; }
+
+    /* ---------------- 布局 ---------------- */
+    .layout { flex: 1 1 auto; display: flex; min-height: 0; }
+
+    .stage {
+      position: relative;
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      background: radial-gradient(120% 120% at 50% 0%, #171c24 0%, #0e1014 70%);
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      cursor: grab;
+    }
+
+    canvas:active { cursor: grabbing; }
+
+    /* ---------------- 导出范围预览框 ----------------
+       框体和内部对鼠标透明（事件穿透到画布，不影响正常拖动/缩放）；
+       只有 8 个手柄（四角+四边中点）负责拉伸，边上其余位置负责平移。 */
+    .region {
+      position: absolute;
+      left: 0; top: 0; width: 0; height: 0;
+      border: 1px dashed var(--accent-2);
+      box-shadow: 0 0 0 9999px rgba(6, 8, 11, .55);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .region .edge {
+      position: absolute;
+      pointer-events: auto;
+      cursor: move;
+    }
+
+    .region .edge.top { left: 11px; right: 11px; top: -4px; height: 8px; }
+    .region .edge.bottom { left: 11px; right: 11px; bottom: -4px; height: 8px; }
+    .region .edge.left { top: 11px; bottom: 11px; left: -4px; width: 8px; }
+    .region .edge.right { top: 11px; bottom: 11px; right: -4px; width: 8px; }
+
+    .region .h {
+      position: absolute;
+      width: 10px; height: 10px;
+      margin: -6px 0 0 -6px;
+      background: var(--accent-2);
+      border: 2px solid #10131a;
+      border-radius: 3px;
+      pointer-events: auto;
+    }
+
+    .region .h.nw { left: 0; top: 0; cursor: nwse-resize; }
+    .region .h.n { left: 50%; top: 0; cursor: ns-resize; }
+    .region .h.ne { left: 100%; top: 0; cursor: nesw-resize; }
+    .region .h.e { left: 100%; top: 50%; cursor: ew-resize; }
+    .region .h.se { left: 100%; top: 100%; cursor: nwse-resize; }
+    .region .h.s { left: 50%; top: 100%; cursor: ns-resize; }
+    .region .h.sw { left: 0; top: 100%; cursor: nesw-resize; }
+    .region .h.w { left: 0; top: 50%; cursor: ew-resize; }
+
+    /* ------------- 选中组件的画布标注（组件名） -------------
+       只为「标注」而存在：pointer-events:none，不挡画布上的拖动、滚轮和导出框手柄。 */
+    .slot-tag {
+      position: absolute;
+      left: 0; top: 0;
+      z-index: 2;
+      display: none;
+      padding: 2px 8px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #0d1117;
+      background: var(--accent-2);
+      border-radius: 999px;
+      white-space: nowrap;
+      pointer-events: none;
+      transform: translate(-50%, -100%);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, .5);
+    }
+
+    .slot-tag.on { display: block; }
+
+    /* ---------------- 侧栏 ---------------- */
+    .sidebar {
+      flex: none;
+      width: 336px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+      overflow-y: auto;
+      background: #12151b;
+      border-left: 1px solid var(--line);
+    }
+
+    .card {
+      flex: none;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 12px;
+    }
+
+    .card > h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 11px;
+      font-size: 10.5px;
+      font-weight: 650;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    .card > h3 .badge { margin-left: auto; }
+
+    /* ---------------- 控件 ---------------- */
+    label.field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 9px;
+      color: var(--dim);
+      font-size: 12px;
+    }
+
+    label.field:last-child { margin-bottom: 0; }
+    label.field > span { flex: none; min-width: 46px; }
+    label.field > select,
+    label.field > input[type=text],
+    label.field > .grow { flex: 1 1 auto; min-width: 0; }
+
+    select,
+    input[type=text],
+    input[type=number] {
+      width: 100%;
+      min-width: 0;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: var(--rs);
+      padding: 6px 8px;
+      font: inherit;
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+
+    select:hover, input[type=text]:hover, input[type=number]:hover { border-color: var(--line-2); }
+
+    select:focus, input[type=text]:focus, input[type=number]:focus {
+      border-color: var(--accent-line);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+    }
+
+    input:disabled { opacity: .5; }
+
+    input[type=color] {
+      width: 100%;
+      height: 30px;
+      padding: 2px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: var(--rs);
+      cursor: pointer;
+    }
+
+    input[type=checkbox] { accent-color: var(--accent); width: 14px; height: 14px; margin: 0; cursor: pointer; }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 18px;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: var(--panel-3); }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 13px; height: 13px;
+      margin-top: -4.5px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #10131a;
+      box-shadow: 0 0 0 1px var(--accent-line);
+    }
+
+    input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: var(--panel-3); }
+
+    input[type=range]::-moz-range-thumb {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #10131a;
+    }
+
+    button {
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: var(--rs);
+      padding: 6px 11px;
+      font: inherit;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, transform .06s;
+      white-space: nowrap;
+    }
+
+    button:hover:not(:disabled) { background: var(--panel-3); border-color: var(--line-2); }
+    button:active:not(:disabled) { transform: translateY(1px); }
+    button:disabled { opacity: .45; cursor: not-allowed; }
+
+    button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d1117;
+      font-weight: 620;
+    }
+
+    button.primary:hover:not(:disabled) { background: var(--accent-2); border-color: var(--accent-2); }
+
+    button.tiny { padding: 4px 9px; font-size: 11.5px; }
+
+    .badge {
+      flex: none;
+      font-size: 10.5px;
+      font-variant-numeric: tabular-nums;
+      color: var(--mute);
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 1px 8px;
+      white-space: nowrap;
+    }
+
+    .row { display: flex; align-items: center; gap: 7px; }
+    .row + .row { margin-top: 7px; }
+
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .grid2 label.field { margin-bottom: 0; }
+    .grid2 label.field > span { min-width: 30px; }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      font-size: 12px;
+      color: var(--dim);
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .chip:hover { color: var(--text); border-color: var(--line-2); }
+
+    /* ---------------- 轨道 ---------------- */
+    .track { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 8px; margin-bottom: 9px; }
+    .track:last-child { margin-bottom: 0; }
+    .track > span { font-size: 11.5px; color: var(--mute); }
+
+    /* ---------------- 组件列表 ---------------- */
+    .slot-list { max-height: 300px; overflow-y: auto; margin: 0 -5px; padding: 2px 5px; }
+
+    .slot-control {
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr) 84px 34px;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 3px;
+      border-radius: 6px;
+    }
+
+    .slot-control:hover { background: #1b212a; }
+
+    .slot-control > label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 11.5px;
+      color: var(--dim);
+      cursor: pointer;
+    }
+
+    .slot-control.off > label { color: #5b6373; text-decoration: line-through; text-decoration-color: rgba(255,255,255,.22); }
+    .slot-control.off input[type=range] { opacity: .35; }
+
+    .slot-control.picked { background: var(--accent-dim); box-shadow: inset 0 0 0 1px var(--accent-line); }
+    .slot-control.picked > label { color: var(--accent-2); }
+
+    .slot-pct { font-size: 10.5px; color: var(--mute); text-align: right; font-variant-numeric: tabular-nums; }
+
+    /* ---------------- 导出 ---------------- */
+    .bar {
+      height: 5px;
+      margin-top: 10px;
+      border-radius: 3px;
+      background: var(--panel-3);
+      overflow: hidden;
+      display: none;
+    }
+
+    .bar.on { display: block; }
+    .bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .12s linear; }
+
+    /* ---------------- 本地资源（内嵌在「资源」卡里，不再是画布上的弹窗） ---------------- */
+    .upload { display: none; }
+    .upload.on { display: block; }
+    .upload label.field > span { min-width: 62px; }
+
+    .upload input[type=file] {
+      flex: 1 1 auto;
+      min-width: 0;
+      font-size: 11px;
+      color: var(--dim);
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .layout { flex-direction: column; }
+      .sidebar { width: auto; border-left: 0; border-top: 1px solid var(--line); max-height: 52vh; }
+      .stage { min-height: 300px; }
+    }
+  </style>
+<link rel="stylesheet" href="../../shared/theme.css"></head>
+
+<body data-app="spine">
+  <div class="app">
+    <div class="layout">
+      <main class="stage" id="stage">
+        <canvas id="canvas"></canvas>
+        <div class="region" id="exportRegion">
+          <span class="edge top" data-edge="top"></span>
+          <span class="edge right" data-edge="right"></span>
+          <span class="edge bottom" data-edge="bottom"></span>
+          <span class="edge left" data-edge="left"></span>
+          <span class="h nw" data-dir="nw"></span>
+          <span class="h n" data-dir="n"></span>
+          <span class="h ne" data-dir="ne"></span>
+          <span class="h e" data-dir="e"></span>
+          <span class="h se" data-dir="se"></span>
+          <span class="h s" data-dir="s"></span>
+          <span class="h sw" data-dir="sw"></span>
+          <span class="h w" data-dir="w"></span>
+        </div>
+
+        <div class="slot-tag" id="slotTag"></div>
+      </main>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h3>资源 <span class="badge" id="assetCount">0</span></h3>
+          <label class="field">
+            <span>目录</span>
+            <select id="folderSelector">
+              <option value="illust">illust</option>
+              <option value="character">character</option>
+              <option value="custom">custom</option>
+            </select>
+          </label>
+
+          <div class="loading-hint" id="loadingHint">加载中……</div>
+
+          <div id="searchBlock">
+            <label class="field">
+              <span>搜索</span>
+              <input type="text" id="assetSearchBox" placeholder="中文名或内码 · ↑↓ 选择 Enter 载入" autocomplete="off" spellcheck="false">
+            </label>
+            <div class="asset-list" id="assetList"></div>
+            <div class="asset-more" id="assetMore"></div>
+          </div>
+
+          <div class="upload" id="customUploadPanel">
+            <label class="field"><span>图片 .png</span><input type="file" id="customImage" accept=".png"></label>
+            <label class="field"><span>图集 .atlas</span><input type="file" id="customAtlas" accept=".atlas,.txt"></label>
+            <label class="field"><span>骨骼 .json</span><input type="file" id="customSkeleton" accept=".json,.bytes"></label>
+            <div class="row" style="margin-top:10px">
+              <button type="button" id="customLoadBtn" class="primary" style="flex:1 1 auto" disabled>加载动画</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>视图</h3>
+          <div class="row">
+            <button type="button" class="tiny" id="fitBtn">适配窗口</button>
+            <button type="button" class="tiny" id="actualSizeBtn">原尺寸</button>
+            <label class="chip"><input type="checkbox" id="nearestToggle" checked> 最近邻</label>
+            <label class="chip"><input type="checkbox" id="debugToggle"> 骨骼</label>
+          </div>
+          <label class="field" style="margin-top:10px">
+            <span>画布底色</span>
+            <input type="color" id="canvasBgColor" value="#111111">
+          </label>
+        </section>
+
+        <section class="card">
+          <h3>显示</h3>
+          <div class="row" id="skeletonVariantWrapper" style="display:none; margin-bottom:10px">
+            <span>骨骼视角</span>
+            <div class="row" id="skeletonVariantButtons" role="group" aria-label="骨骼视角"></div>
+          </div>
+          <label class="field">
+            <span>皮肤</span>
+            <select id="skinSelector"></select>
+          </label>
+          <label class="field">
+            <span>缩放</span>
+            <div class="row" style="flex:1 1 auto">
+              <input type="range" id="scaleSlider" min="0" max="100" step="0.5" value="50" style="flex:1 1 auto">
+              <span class="badge" id="scaleValue">×1.00</span>
+            </div>
+          </label>
+          <label class="field">
+            <span>速度</span>
+            <div class="row" style="flex:1 1 auto">
+              <input type="range" id="speedSlider" min="0" max="2" step="0.05" value="1" style="flex:1 1 auto">
+              <span class="badge" id="speedValue">×1.00</span>
+              <button type="button" class="tiny" id="pauseBtn" title="暂停 / 继续动画">暂停</button>
+            </div>
+          </label>
+        </section>
+
+        <section class="card">
+          <h3>动画轨道</h3>
+          <div class="track"><span>动作</span><select id="trackAction"></select></div>
+          <div class="track"><span>表情</span><select id="trackEmote"></select></div>
+          <div class="track"><span>子动画</span><select id="trackSub"></select></div>
+        </section>
+
+        <section class="card" id="equipmentPanel" style="display:none">
+          <h3>装备物品 <span class="badge" id="itemCount">0</span></h3>
+          <label class="field">
+            <span>挂点骨骼</span>
+            <select id="equipmentSlot" aria-label="挂点骨骼与动画槽位"></select>
+          </label>
+          <label class="field">
+            <span>搜索物品</span>
+            <input type="text" id="itemSearch" placeholder="中文名或英文内码" autocomplete="off">
+          </label>
+          <div class="asset-list" id="itemList"></div>
+          <div class="asset-more" id="itemMore"></div>
+          <div class="row" style="margin-top:8px">
+            <button type="button" class="primary" id="equipBtn" disabled>装备</button>
+            <button type="button" class="tiny" id="unequipAllBtn" disabled>脱下全部</button>
+          </div>
+          <div class="asset-more" id="equipmentStatus" role="status"></div>
+          <ul class="equipped-list" id="equippedList" aria-label="已启用挂载列表"></ul>
+        </section>
+
+        <section class="card">
+          <h3>组件 <span class="badge" id="slotCount">0</span></h3>
+          <div class="row" style="margin-bottom:7px">
+            <label class="chip">
+              <input type="checkbox" id="pickToggle" checked> 点选组件（画布⇄列表）
+            </label>
+          </div>
+          <div class="slot-list" id="slotSliders"></div>
+        </section>
+
+        <section class="card">
+          <h3>导出 GIF</h3>
+
+          <div class="grid2">
+            <label class="field"><span>帧率</span><input type="number" id="exportFps" min="1" max="100" value="30"></label>
+            <label class="field"><span>时长</span><input type="number" id="exportDuration" min="0.1" step="0.1" value="3"></label>
+          </div>
+
+          <label class="row" style="margin-top:9px; font-size:12px; color:var(--dim)">
+            <input type="checkbox" id="exportAutoDuration" checked> 时长自动锁定为动画一周
+          </label>
+
+          <div class="row" style="margin-top:9px">
+            <span style="font-size:12px;color:var(--dim);min-width:30px">背景</span>
+            <input type="color" id="exportBgColor" value="#00ff00" style="flex:0 0 54px">
+            <label class="row" style="font-size:12px;color:var(--dim);flex:1 1 auto">
+              <input type="checkbox" id="exportTransparentBg"> 透明背景
+            </label>
+          </div>
+
+          <div style="margin-top:11px; font-size:11.5px; color:var(--mute)">导出范围（可在画布上拖动方框）</div>
+          <div class="grid2" style="margin-top:7px">
+            <label class="field"><span>X</span><input type="number" id="regionX" min="0" value="0"></label>
+            <label class="field"><span>Y</span><input type="number" id="regionY" min="0" value="0"></label>
+            <label class="field"><span>宽</span><input type="number" id="regionW" min="1" value="256"></label>
+            <label class="field"><span>高</span><input type="number" id="regionH" min="1" value="256"></label>
+          </div>
+          <div class="row" style="margin-top:8px">
+            <button type="button" class="tiny" id="regionFull">整幅画布</button>
+            <button type="button" class="tiny" id="regionFit">贴住模型</button>
+          </div>
+
+          <div class="row" style="margin-top:11px">
+            <button type="button" class="primary" id="recordGifBtn" style="flex:1 1 auto">导出 GIF</button>
+          </div>
+          <div class="bar" id="exportBar"><i></i></div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <script src="../../core/resources.js"></script><script src="../../core/bridge.js"></script><script src="../../gtasset/core.js"></script><script src="../../vendor/spine-webgl.js"></script>
+  <script src="../../gtasset/equipment.js"></script>
+  <script src="../../gtasset/emotion.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

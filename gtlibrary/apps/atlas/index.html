@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script>if(window===window.top){const p=new URLSearchParams(location.search);p.set('view','atlas');location.replace('../../index.html#'+p);}</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>坎公图集解析器</title>
+    <style>
+        :root {
+            --bg: #f4f5f7;
+            --panel: #ffffff;
+            --border: #e5e7eb;
+            --border-strong: #d6dae1;
+            --text: #1f2430;
+            --muted: #6b7280;
+            --faint: #9aa1ad;
+            --accent: #4a628f;
+            --accent-hover: #3c5179;
+            --accent-soft: #eef1f7;
+            --radius: 12px;
+            --shadow-sm: 0 1px 2px rgba(16, 24, 40, .05);
+            --shadow-md: 0 4px 16px rgba(16, 24, 40, .07);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
+                         'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 28px 20px 56px;
+            font-size: 14px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        /* ---------- header ---------- */
+        .header {
+            padding: 26px 32px 22px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, #fcfcfd 0%, var(--panel) 100%);
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: .01em;
+        }
+
+        .header p {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* ---------- toolbar ---------- */
+        .upload-section {
+            padding: 16px 32px;
+            background: #fafbfc;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .upload-area {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .file-input { display: none; }
+
+        button {
+            font-family: inherit;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color .15s, border-color .15s, color .15s;
+        }
+
+        .upload-btn {
+            padding: 8px 15px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--text);
+        }
+
+        .upload-btn:hover { background: #f2f4f7; border-color: var(--faint); }
+
+        #uploadStatus { color: var(--muted); font-size: 13px; }
+
+        /* ---------- search ---------- */
+        .search-section {
+            padding: 16px 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-container {
+            display: flex;
+            gap: 10px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border-strong);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--panel);
+            outline: none;
+            transition: border-color .15s, box-shadow .15s;
+        }
+
+        .search-input::placeholder { color: var(--faint); }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .advanced-search {
+            padding: 10px 16px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .advanced-search:hover { background: #f2f4f7; color: var(--text); }
+
+        /* ---------- content ---------- */
+        .content-section { padding: 24px 32px 32px; }
+
+        .spritesheet-select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-strong);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--panel);
+            outline: none;
+            cursor: pointer;
+            transition: border-color .15s, box-shadow .15s;
+        }
+
+        .spritesheet-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+
+        .region-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .region-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: border-color .15s, box-shadow .15s;
+        }
+
+        .region-item:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* checkerboard so transparent sprite edges are visible */
+        .region-image {
+            flex: none;
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
+            /* these are pixel-art sprites: nearest-neighbour, never interpolated,
+               so a small icon blown up to the box stays crisp instead of blurry */
+            image-rendering: pixelated;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background-color: #fff;
+            background-image:
+                linear-gradient(45deg, #eef0f3 25%, transparent 25%, transparent 75%, #eef0f3 75%),
+                linear-gradient(45deg, #eef0f3 25%, transparent 25%, transparent 75%, #eef0f3 75%);
+            background-size: 12px 12px;
+            background-position: 0 0, 6px 6px;
+        }
+
+        .region-info { flex: 1; min-width: 0; }
+
+        .region-name {
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .region-meta {
+            margin-top: 3px;
+            font-size: 12px;
+            color: var(--faint);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .download-btn {
+            flex: none;
+            padding: 6px 13px;
+            border: 1px solid var(--border-strong);
+            background: var(--panel);
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        .download-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        /* jump links reuse the download button look; they are <a>, so reset the
+           inline defaults */
+        a.download-btn {
+            display: inline-block;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* ---------- pagination ---------- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 26px;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            min-width: 34px;
+            padding: 7px 10px;
+            border: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .page-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .page-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+        .page-gap { padding: 7px 4px; color: var(--faint); }
+
+        /* ---------- states ---------- */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 56px 20px;
+            color: var(--muted);
+        }
+
+        .spinner {
+            width: 26px;
+            height: 26px;
+            border: 2px solid var(--border-strong);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .empty-state { padding: 64px 20px; text-align: center; color: var(--faint); }
+        .empty-state svg { color: var(--border-strong); }
+        .empty-state p { margin-top: 12px; font-size: 14px; }
+
+        /* ---------- modal ---------- */
+        .advanced-search-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            background: rgba(24, 28, 36, .38);
+            padding: 20px;
+        }
+
+        .advanced-search-content {
+            width: 100%;
+            max-width: 400px;
+            padding: 24px;
+            background: var(--panel);
+            border-radius: 14px;
+            box-shadow: 0 16px 48px rgba(16, 24, 40, .18);
+        }
+
+        .modal-title { font-size: 16px; font-weight: 600; margin-bottom: 18px; }
+
+        .search-options { display: flex; flex-direction: column; gap: 4px; }
+
+        .search-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .search-option:hover { background: #f6f7f9; }
+        .search-option label { flex: 1; color: #414855; cursor: pointer; font-size: 13px; }
+
+        .search-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .modal-buttons { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+
+        .modal-btn { padding: 9px 20px; border: 1px solid transparent; }
+
+        .apply-btn { background: var(--accent); color: #fff; }
+        .apply-btn:hover { background: var(--accent-hover); }
+
+        .cancel-btn { background: var(--panel); border-color: var(--border-strong); color: var(--muted); }
+        .cancel-btn:hover { background: #f2f4f7; color: var(--text); }
+
+        @media (max-width: 700px) {
+            body { padding: 16px 12px 40px; }
+            .header, .upload-section, .search-section { padding-left: 18px; padding-right: 18px; }
+            .content-section { padding: 18px; }
+            .region-list { grid-template-columns: 1fr; }
+            .search-container { flex-direction: column; }
+        }
+    </style>
+<link rel="stylesheet" href="../../shared/theme.css"></head>
+<body data-app="atlas">
+    <div class="container">
+        <div class="header">
+            <h1>坎公图集解析器</h1>
+            <p>选择图集后可按名称筛选、预览并下载单个切片</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-area">
+                <input type="file" id="imageInput" class="file-input" accept=".png">
+                <input type="file" id="jsonInput" class="file-input" accept=".json">
+                <button class="upload-btn" onclick="document.getElementById('imageInput').click()">上传 PNG 图集</button>
+                <button class="upload-btn" onclick="document.getElementById('jsonInput').click()">上传 JSON 配置</button>
+                <span id="uploadStatus"></span>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="输入内码或中文名进行筛选…" oninput="filterRegions()">
+                <button class="advanced-search" onclick="showAdvancedSearch()">高级查找</button>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <select class="spritesheet-select" id="spritesheetSelect" onchange="loadSpritesheet()">
+                <option value="">— 请选择图集 —</option>
+            </select>
+
+            <div id="loadingIndicator" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <span>正在加载图集资源…</span>
+            </div>
+
+            <div id="regionList" class="region-list"></div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="M20 20l-3.5-3.5"></path>
+                </svg>
+                <p>暂无匹配的资源</p>
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+
+    <div class="advanced-search-modal" id="advancedSearchModal">
+        <div class="advanced-search-content">
+            <h3 class="modal-title">高级查找选项</h3>
+            <div class="search-options">
+                <div class="search-option">
+                    <input type="checkbox" id="caseSensitive" checked>
+                    <label for="caseSensitive">区分大小写</label>
+                </div>
+                <div class="search-option">
+                    <input type="checkbox" id="exactMatch">
+                    <label for="exactMatch">精确匹配</label>
+                </div>
+                <div class="search-option">
+                    <input type="checkbox" id="regexMatch">
+                    <label for="regexMatch">正则表达式</label>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" onclick="closeAdvancedSearch()">取消</button>
+                <button class="modal-btn apply-btn" onclick="applyAdvancedSearch()">应用</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../core/resources.js"></script><script src="../../core/registry.js"></script><script src="../../core/bridge.js"></script><script src="../../resources/registry.js"></script><script src="../../gtatlas/core.js"></script><script src="app.js"></script>
+</body>
+</html>
