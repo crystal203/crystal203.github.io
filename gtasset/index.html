@@ -76,8 +76,7 @@
     .asset-item.on { background: var(--accent-dim); border-color: var(--accent-line); }
     .asset-item.cursor { background: #232b38; border-color: var(--line-2); }
 
-    /* 缩略图：用背景图定位到 gtasset 联动过来的 gtatlas 精灵图某一帧。
-       这样只需加载一次整张精灵图，每行只是改 background-position。 */
+    /* 缩略图仅绘制帧内像素，非正方形帧的其余区域保持透明。 */
     .asset-item .thumb {
       flex: none;
       width: 30px;
@@ -86,7 +85,15 @@
       background-color: #0d1014;
       background-repeat: no-repeat;
       image-rendering: pixelated;
+      cursor: inherit;
     }
+
+    .equipped-list { list-style: none; padding: 0; margin: 8px 0 0; }
+    .equipped-row { display: flex; align-items: center; gap: 7px; padding: 8px 0; border-top: 1px solid var(--line); }
+    .equipped-row .asset-text { flex: 1; min-width: 0; }
+    .equipped-row .zh { display: block; color: var(--text); }
+    .equipped-row .code, .equipped-row .mount { display: block; font-size: 10.5px; color: var(--dim); overflow-wrap: anywhere; }
+    .equipped-row .thumb { flex: none; width: 30px; height: 30px; background: #0d1014; image-rendering: pixelated; cursor: default; }
 
     .asset-item .asset-text { flex: 1 1 auto; min-width: 0; }
 
@@ -500,10 +507,6 @@
               <span>搜索</span>
               <input type="text" id="assetSearchBox" placeholder="中文名或内码 · ↑↓ 选择 Enter 载入" autocomplete="off" spellcheck="false">
             </label>
-            <label class="field">
-              <span>显示条数</span>
-              <input type="number" id="listLimit" min="5" max="500" step="5" value="20">
-            </label>
             <div class="asset-list" id="assetList"></div>
             <div class="asset-more" id="assetMore"></div>
           </div>
@@ -534,10 +537,10 @@
 
         <section class="card">
           <h3>显示</h3>
-          <label class="field" id="skeletonVariantWrapper" style="display:none">
+          <div class="row" id="skeletonVariantWrapper" style="display:none; margin-bottom:10px">
             <span>骨骼视角</span>
-            <select id="skeletonVariantSelector"></select>
-          </label>
+            <div class="row" id="skeletonVariantButtons" role="group" aria-label="骨骼视角"></div>
+          </div>
           <label class="field">
             <span>皮肤</span>
             <select id="skinSelector"></select>
@@ -564,6 +567,26 @@
           <div class="track"><span>动作</span><select id="trackAction"></select></div>
           <div class="track"><span>表情</span><select id="trackEmote"></select></div>
           <div class="track"><span>子动画</span><select id="trackSub"></select></div>
+        </section>
+
+        <section class="card" id="equipmentPanel" style="display:none">
+          <h3>装备物品 <span class="badge" id="itemCount">0</span></h3>
+          <label class="field">
+            <span>挂点骨骼</span>
+            <select id="equipmentSlot" aria-label="挂点骨骼与动画槽位"></select>
+          </label>
+          <label class="field">
+            <span>搜索物品</span>
+            <input type="text" id="itemSearch" placeholder="中文名或英文内码" autocomplete="off">
+          </label>
+          <div class="asset-list" id="itemList"></div>
+          <div class="asset-more" id="itemMore"></div>
+          <div class="row" style="margin-top:8px">
+            <button type="button" class="primary" id="equipBtn" disabled>装备</button>
+            <button type="button" class="tiny" id="unequipAllBtn" disabled>脱下全部</button>
+          </div>
+          <div class="asset-more" id="equipmentStatus" role="status"></div>
+          <ul class="equipped-list" id="equippedList" aria-label="已启用挂载列表"></ul>
         </section>
 
         <section class="card">
@@ -618,6 +641,8 @@
   </div>
 
   <script src="spine-webgl.js"></script>
+  <script src="equipment.js"></script>
+  <script src="emotion.js"></script>
   <script>
     (function () {
       "use strict";
@@ -677,7 +702,16 @@
         current: null,
         cursor: -1,
         listLimit: 20,
+        variant: "",
+        emotionData: null, emotionLoading: null, emotion: null,
+        expressionByCharacter: Object.create(null), expressionCatalog: Object.create(null),
         sheets: {},
+        itemSheet: null,
+        selectedItem: null,
+        itemLimit: 20,
+        equipment: null,
+        equipmentByCharacter: Object.create(null),
+        model: null,
         pendingTarget: null,
         pendingSkinTier: null,
         paused: false,
@@ -866,24 +900,25 @@
 
       function currentVariant(folder, name) {
         var list = variantsOf(folder, name);
-        var select = $("skeletonVariantSelector");
         if (list.length <= 1) return list[0] || "";
-        return list.indexOf(select.value) >= 0 ? select.value : list[0];
+        return list.indexOf(app.variant) >= 0 ? app.variant : list[0];
       }
 
       function refreshVariantSelector(folder, name) {
         var list = variantsOf(folder, name);
         var wrapper = $("skeletonVariantWrapper");
-        var select = $("skeletonVariantSelector");
-        var wanted = select.value;
-        select.innerHTML = "";
+        var buttons = $("skeletonVariantButtons");
+        app.variant = currentVariant(folder, name);
+        buttons.innerHTML = "";
         for (var i = 0; i < list.length; i++) {
-          var option = document.createElement("option");
-          option.value = list[i];
-          option.textContent = variantLabel(list[i]);
-          select.appendChild(option);
+          var button = document.createElement("button");
+          button.type = "button";
+          button.className = "tiny" + (list[i] === app.variant ? " primary" : "");
+          button.dataset.variant = list[i];
+          button.setAttribute("aria-pressed", list[i] === app.variant ? "true" : "false");
+          button.textContent = variantLabel(list[i]);
+          buttons.appendChild(button);
         }
-        select.value = list.indexOf(wanted) >= 0 ? wanted : (list[0] || "");
         wrapper.style.display = (folder === "character" && list.length > 1) ? "flex" : "none";
       }
 
@@ -899,6 +934,10 @@
 
       function setFolder(folder) {
         app.folder = folder;
+        app.model = null;
+        $("equipmentPanel").style.display = folder === "character" ? "block" : "none";
+        refreshEquipmentPanel();
+        if (folder === "character") ensureItems();
         var isCustom = folder === "custom";
         // custom 时用「本地资源」表单顶掉搜索那一块，不再往画布上弹窗
         $("searchBlock").style.display = isCustom ? "none" : "block";
@@ -931,7 +970,7 @@
           applyFilter();
 
           // 从 gtatlas 之类外部跳进来的目标：把它顶到列表最前面并选中，
-          // 免得它落在「显示条数」之外、看不到高亮。
+          // 免得它落在首批结果之外、看不到高亮。
           var target = app.pendingTarget;
           app.pendingTarget = null;
           if (target && target.folder === app.folder && target.name) {
@@ -992,6 +1031,8 @@
       function applyFilter() {
         var keyword = $("assetSearchBox").value.trim().toLowerCase();
         app.cursor = -1;
+        app.listLimit = 20;
+        $("assetList").scrollTop = 0;
         app.shown = !keyword ? app.all.slice() : app.all.filter(function (name) {
           return name.toLowerCase().indexOf(keyword) >= 0
             || displayName(name).toLowerCase().indexOf(keyword) >= 0;
@@ -1084,25 +1125,289 @@
       }
 
       // 把精灵图里某一帧按 contain 摆进 box×box 的方框（居中）
-      function thumbStyle(entry, frame) {
-        var w = frame.frame.w, h = frame.frame.h;
-        if (!w || !h || !entry.w || !entry.h) return null;
+      function makeThumb(entry, frame) {
+        var thumb = document.createElement("canvas");
+        thumb.className = "thumb";
+        thumb.width = thumb.height = THUMB_BOX;
+        if (!entry || !entry.img || !frame || !frame.frame) return thumb;
+        var rect = frame.frame;
+        var w = frame.rotated ? rect.h : rect.w, h = frame.rotated ? rect.w : rect.h;
+        if (!w || !h) return thumb;
         var scale = Math.min(THUMB_BOX / w, THUMB_BOX / h);
-        var sw = entry.w * scale, sh = entry.h * scale;
-        var px = (THUMB_BOX - w * scale) / 2 - frame.frame.x * scale;
-        var py = (THUMB_BOX - h * scale) / 2 - frame.frame.y * scale;
-        return "background-image:url(" + GTATLAS_ASSETS + entry.name + ".png);"
-          + "background-size:" + sw.toFixed(2) + "px " + sh.toFixed(2) + "px;"
-          + "background-position:" + px.toFixed(2) + "px " + py.toFixed(2) + "px;";
+        var context = thumb.getContext("2d");
+        context.imageSmoothingEnabled = false;
+        context.translate(THUMB_BOX / 2, THUMB_BOX / 2);
+        if (frame.rotated) context.rotate(-Math.PI / 2);
+        // The source rectangle is always the packed frame, never a square
+        // expanded into neighboring sprites. Contain padding is transparent.
+        context.drawImage(entry.img, rect.x, rect.y, rect.w, rect.h,
+          -rect.w * scale / 2, -rect.h * scale / 2, rect.w * scale, rect.h * scale);
+        return thumb;
       }
 
-      function thumbStyleFor(entry, name) {
-        if (!entry || !entry.frames || !entry.img) return null;
+      function thumbFor(entry, name) {
+        if (!entry || !entry.frames || !entry.img) return makeThumb(null, null);
         var key = app.folder === "illust" ? String(name).replace(/^illust_/, "") : name;
         var frame = findFrame(entry, key);
-        if (!frame || !frame.frame || frame.rotated) return null;   // 旋转帧的摆法不同，宁可不显示
-        return thumbStyle(entry, frame);
+        return makeThumb(entry, frame);
       }
+
+      // =====================================================================
+      // Character equipment (one shared item atlas, independent character state)
+      // =====================================================================
+      function equipmentReady() {
+        return app.folder === "character" && app.model && app.model.folder === "character"
+          && app.model.name === app.current && app.equipment;
+      }
+
+      function equipmentState() {
+        var name = app.model.name;
+        return app.equipmentByCharacter[name]
+          || (app.equipmentByCharacter[name] = Object.create(null));
+      }
+
+      function ensureItems() {
+        if (app.itemSheet && !app.itemSheet.failed) return;
+        var entry = app.itemSheet = { name: "items", frames: null, zh: {}, img: null };
+        $("equipmentStatus").textContent = "正在加载物品图集……";
+        Promise.all([
+          fetch(GTATLAS_ASSETS + "items.json" + QUERY).then(function (res) {
+            return checkResponse(res, "items.json").json();
+          }),
+          fetch(GTATLAS_ASSETS + "items.zh.json" + QUERY).then(function (res) {
+            return res.ok ? res.json() : {};
+          }).catch(function () { return {}; })
+        ]).then(function (pair) {
+          entry.frames = pair[0].frames || {};
+          entry.zh = pair[1];
+          return loadImage(GTATLAS_ASSETS + (pair[0].meta.image || "items.png") + QUERY);
+        }).then(function (img) {
+          entry.img = img;
+          entry.w = img.naturalWidth;
+          entry.h = img.naturalHeight;
+          // items.png is straight alpha; the character renderer uses premultiplied alpha.
+          var previous = gl.getParameter(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL);
+          gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+          try { entry.texture = makeTexture(img); }
+          finally { gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, previous); }
+          entry.attachments = Object.create(null);
+          restoreEquipment();
+        }).catch(function (err) {
+          entry.failed = true;
+          $("equipmentStatus").textContent = "物品加载失败：" + err.message + "（切回 character 可重试）";
+          refreshEquipmentPanel();
+        });
+      }
+
+      function itemAttachment(name) {
+        var sheet = app.itemSheet;
+        if (!sheet || !sheet.texture || !sheet.frames[name]) return null;
+        return sheet.attachments[name] || (sheet.attachments[name] = GTEquipment.createAttachment(
+          spine, name, sheet.frames[name], sheet.texture, sheet.w, sheet.h));
+      }
+
+      function restoreEquipment() {
+        if (!app.model || app.model.folder !== "character") {
+          app.equipment = null;
+          refreshEquipmentPanel();
+          return;
+        }
+        if (app.equipment && app.equipment.skeleton === app.skeleton) app.equipment.clear();
+        else app.equipment = new GTEquipment.Equipment(app.skeleton);
+        var state = equipmentState();
+        app.skeleton.slots.forEach(function (slot) {
+          var item = state[GTEquipment.slotKey(slot.data.name)];
+          var attachment = item && itemAttachment(item);
+          if (attachment) app.equipment.equip(slot, attachment);
+        });
+        app.animState.apply(app.skeleton);
+        populateEquipmentSlots();
+        renderItemList();
+      }
+
+      function populateEquipmentSlots() {
+        var select = $("equipmentSlot");
+        var wanted = select.value;
+        select.innerHTML = "";
+        if (!equipmentReady()) return;
+        var slots = app.skeleton.slots.filter(function (slot) {
+          // A clipping slot must retain its clipping attachment.
+          return !app.skeleton.data.skins.some(function (skin) {
+            return skin.getAttachments().some(function (entry) {
+              return entry.slotIndex === slot.data.index && entry.attachment instanceof spine.ClippingAttachment;
+            });
+          });
+        });
+        slots.sort(function (a, b) {
+          function rank(slot) { return /weapon1/i.test(slot.data.name) ? 0 : /weapon|item/i.test(slot.data.name) ? 1 : 2; }
+          return rank(a) - rank(b) || a.data.index - b.data.index;
+        });
+        slots.forEach(function (slot) {
+          var option = document.createElement("option");
+          option.value = GTEquipment.slotKey(slot.data.name);
+          option.textContent = slot.bone.data.name + " · " + slot.data.name;
+          select.appendChild(option);
+        });
+        if (Array.prototype.some.call(select.options, function (o) { return o.value === wanted; })) select.value = wanted;
+        refreshEquipmentPanel();
+      }
+
+      function renderItemList() {
+        var list = $("itemList");
+        list.innerHTML = "";
+        var sheet = app.itemSheet;
+        if (!sheet || !sheet.img) { refreshEquipmentPanel(); return; }
+        var keyword = $("itemSearch").value.trim().toLowerCase();
+        var names = Object.keys(sheet.frames).filter(function (name) {
+          var frame = sheet.frames[name].frame;
+          return (frame.w > 1 || frame.h > 1) && (!keyword || name.toLowerCase().indexOf(keyword) >= 0
+            || (sheet.zh[name] || "").toLowerCase().indexOf(keyword) >= 0);
+        });
+        names.sort(function (a, b) {
+          return Number(GTEquipment.isPreferredItem(b, app.current)) - Number(GTEquipment.isPreferredItem(a, app.current))
+            || a.localeCompare(b);
+        });
+        if (names.indexOf(app.selectedItem) < 0) app.selectedItem = names[0] || null;
+        var fragment = document.createDocumentFragment();
+        names.slice(0, app.itemLimit).forEach(function (name) {
+          var button = document.createElement("button");
+          button.type = "button";
+          button.className = "asset-item" + (name === app.selectedItem ? " on" : "");
+          button.dataset.name = name;
+          var thumb = makeThumb(sheet, sheet.frames[name]);
+          var text = document.createElement("span");
+          text.className = "asset-text";
+          var title = document.createElement("span");
+          title.className = "zh";
+          title.textContent = sheet.zh[name] || "未命名物品";
+          var code = document.createElement("span");
+          code.className = "code";
+          code.textContent = name;
+          text.appendChild(title);
+          text.appendChild(code);
+          button.appendChild(thumb);
+          button.appendChild(text);
+          button.addEventListener("click", function () {
+            app.selectedItem = name;
+            list.querySelectorAll(".asset-item").forEach(function (item) {
+              item.classList.toggle("on", item.dataset.name === name);
+            });
+            refreshEquipmentPanel();
+          });
+          button.addEventListener("dblclick", function () {
+            app.selectedItem = name;
+            equipSelectedItem();
+          });
+          fragment.appendChild(button);
+        });
+        list.appendChild(fragment);
+        list.dataset.hasMore = names.length > app.itemLimit ? "true" : "false";
+        $("itemCount").textContent = names.length;
+        $("itemMore").textContent = "已显示 " + Math.min(names.length, app.itemLimit) + " / " + names.length + " 件物品"
+          + (names.length > app.itemLimit ? "（向下滚动继续显示）" : "");
+        refreshEquipmentPanel();
+      }
+
+      function refreshEquipmentPanel() {
+        var ready = equipmentReady();
+        var key = $("equipmentSlot").value;
+        var state = ready ? equipmentState() : {};
+        var sheet = app.itemSheet;
+        $("equipmentSlot").disabled = !ready;
+        $("equipBtn").disabled = !ready || !key || !sheet || !sheet.texture || !app.selectedItem;
+        $("unequipAllBtn").disabled = !ready || !Object.keys(state).length;
+        if (ready && sheet && sheet.texture) {
+          $("equipmentStatus").textContent = "";
+        }
+        renderEquippedList();
+      }
+
+      function renderEquippedList() {
+        var list = $("equippedList");
+        list.innerHTML = "";
+        if (!equipmentReady()) return;
+        var state = equipmentState(), sheet = app.itemSheet;
+        var keys = Object.keys(state);
+        if (!keys.length) {
+          var empty = document.createElement("li");
+          empty.className = "asset-more";
+          empty.textContent = "暂无挂载";
+          list.appendChild(empty);
+        }
+        keys.forEach(function (key) {
+          var item = state[key];
+          var slot = app.skeleton.slots.find(function (slot) { return GTEquipment.slotKey(slot.data.name) === key; });
+          var row = document.createElement("li");
+          row.className = "equipped-row";
+          row.dataset.slotKey = key;
+          row.appendChild(makeThumb(sheet, sheet && sheet.frames && sheet.frames[item]));
+          var text = document.createElement("span");
+          text.className = "asset-text";
+          var title = document.createElement("span");
+          title.className = "zh";
+          title.textContent = sheet && sheet.zh[item] || "未命名物品";
+          var code = document.createElement("span");
+          code.className = "code";
+          code.textContent = item;
+          var mount = document.createElement("span");
+          mount.className = "mount";
+          mount.textContent = slot ? slot.bone.data.name + " · " + slot.data.name : key + "（本朝向无此挂点，状态保留）";
+          text.appendChild(title);
+          text.appendChild(code);
+          text.appendChild(mount);
+          row.appendChild(text);
+          var remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "tiny";
+          remove.textContent = "删除";
+          remove.setAttribute("aria-label", "脱下 " + item + " · " + (slot ? slot.data.name : key));
+          remove.addEventListener("click", function () { removeEquipment(key); });
+          row.appendChild(remove);
+          list.appendChild(row);
+        });
+      }
+
+      function removeEquipment(key) {
+        if (!equipmentReady()) return;
+        delete equipmentState()[key];
+        app.skeleton.slots.forEach(function (slot) {
+          if (GTEquipment.slotKey(slot.data.name) === key) app.equipment.remove(slot);
+        });
+        app.animState.apply(app.skeleton);
+        refreshEquipmentPanel();
+      }
+
+      $("itemSearch").addEventListener("input", function () { app.itemLimit = 20; renderItemList(); });
+      $("itemList").addEventListener("scroll", function () {
+        if (this.dataset.hasMore !== "true") return;
+        if (this.scrollTop + this.clientHeight < this.scrollHeight - 10) return;
+        var scrollTop = this.scrollTop;
+        app.itemLimit += 40;
+        renderItemList();
+        this.scrollTop = scrollTop;
+      });
+      $("equipmentSlot").addEventListener("change", refreshEquipmentPanel);
+      function equipSelectedItem() {
+        if (!equipmentReady()) return;
+        var key = $("equipmentSlot").value;
+        if (!key) return;
+        var attachment = itemAttachment(app.selectedItem);
+        if (!attachment) return;
+        equipmentState()[key] = app.selectedItem;
+        app.skeleton.slots.forEach(function (slot) {
+          if (GTEquipment.slotKey(slot.data.name) === key) app.equipment.equip(slot, attachment);
+        });
+        app.animState.apply(app.skeleton);
+        refreshEquipmentPanel();
+      }
+      $("equipBtn").addEventListener("click", equipSelectedItem);
+      $("unequipAllBtn").addEventListener("click", function () {
+        if (!equipmentReady()) return;
+        app.equipment.clear();
+        app.equipmentByCharacter[app.model.name] = Object.create(null);
+        app.animState.apply(app.skeleton);
+        refreshEquipmentPanel();
+      });
 
       function renderAssetList() {
         var list = $("assetList");
@@ -1120,10 +1425,7 @@
           item.dataset.name = name;
 
           if (entry) {
-            var thumb = document.createElement("span");
-            thumb.className = "thumb";
-            var style = thumbStyleFor(entry, name);
-            if (style) thumb.setAttribute("style", style);
+            var thumb = thumbFor(entry, name);
             item.appendChild(thumb);
           }
 
@@ -1150,9 +1452,8 @@
         $("assetCount").textContent = total === app.all.length
           ? String(total)
           : total + " / " + app.all.length;
-        $("assetMore").textContent = total > shown
-          ? "显示前 " + shown + " 条，另有 " + (total - shown) + " 条（可改「显示条数」或继续输入缩小范围）"
-          : "";
+        list.dataset.hasMore = total > shown ? "true" : "false";
+        $("assetMore").textContent = total > shown ? "向下滚动继续显示" : "";
       }
 
       function markCurrent(scroll) {
@@ -1196,10 +1497,12 @@
         }
       }
 
-      function loadAsset(folder, name) {
+      function loadAsset(folder, name, inheritedTracks) {
         if (!name) return;
         var started = performance.now();
         var token = ++app.loadToken;
+        app.model = null;
+        refreshEquipmentPanel();
         // 关键：切换时取消上一次还在飞的请求。
         // 不取消的话每次加载都留 3 个请求在队列里，快速连点会越堆越多，
         // 而本地静态服务（python -m http.server）是单线程的，于是越切越慢。
@@ -1219,10 +1522,14 @@
         var key = cacheKey(folder, name, variant);
         var cached = cacheGet(key);
         if (cached) {
-          app.activeKey = key;
-          activateSkeleton(cached.atlas, cached.data);
-          setLoading(false);
-          logLoad(started, true);
+          (folder === "character" ? ensureEmotionData() : Promise.resolve()).then(function () {
+            if (token !== app.loadToken) return;
+            app.activeKey = key;
+            app.model = { folder: folder, name: name, variant: variant };
+            activateSkeleton(cached.atlas, cached.data, inheritedTracks);
+            setLoading(false);
+            logLoad(started, true);
+          });
           return;
         }
         setLoading(true);
@@ -1233,7 +1540,8 @@
         var imageUrls = suffixUrls("assets/" + folder + "/" + name, PNG_EXT);
 
         // 图集与骨骼互不依赖，并行取，别串成三段往返
-        Promise.all([fetchText(atlasUrls, signal), fetchBinary(bytesUrls, signal)]).then(function (pair) {
+        Promise.all([fetchText(atlasUrls, signal), fetchBinary(bytesUrls, signal),
+          folder === "character" ? ensureEmotionData() : Promise.resolve()]).then(function (pair) {
           app.timing.fetch = performance.now() - started;
           var atlasText = pair[0];
           var bytes = pair[1];
@@ -1251,7 +1559,8 @@
         }).then(function (triple) {
           if (token !== app.loadToken) return;
           app.activeKey = key;
-          buildSkeleton(triple[0], triple[1], triple[2], key);
+          app.model = { folder: folder, name: name, variant: variant };
+          buildSkeleton(triple[0], triple[1], triple[2], key, inheritedTracks);
           setLoading(false);
           logLoad(started, false);
         }).catch(function (err) {
@@ -1267,6 +1576,28 @@
         var filter = app.nearest ? gl.NEAREST : gl.LINEAR;
         texture.setFilters(filter, filter);
         return texture;
+      }
+
+      function ensureEmotionData() {
+        if (app.emotionLoading) return app.emotionLoading;
+        app.emotionLoading = Promise.all([
+          fetchText(["assets/emotion/human_emotion.atlas" + QUERY]),
+          fetchBinary(["assets/emotion/human_emotion.bytes" + QUERY]),
+          loadImage("assets/emotion/human_emotion.png" + QUERY)
+        ]).then(function (files) {
+          var texture = makeTexture(files[2]);
+          var atlas = new spine.TextureAtlas(files[0], function () { return texture; });
+          var data = new spine.SkeletonBinary(new spine.AtlasAttachmentLoader(atlas))
+            .readSkeletonData(new Uint8Array(files[1]));
+          app.emotionData = { atlas: atlas, data: data };
+          applyTextureFilter(atlas);
+          return app.emotionData;
+        }).catch(function (err) {
+          app.emotionLoading = null;
+          console.error("表情资源加载失败", err);
+          return null;
+        });
+        return app.emotionLoading;
       }
 
       function applyTextureFilter(atlas) {
@@ -1362,7 +1693,7 @@
         }
       }
 
-      function buildSkeleton(atlasText, bytes, images, key) {
+      function buildSkeleton(atlasText, bytes, images, key, inheritedTracks) {
         var t0 = performance.now();
         var textures = images.map(makeTexture);
         var page = 0;
@@ -1378,10 +1709,10 @@
           cachePut(key, { atlas: atlas, data: data, bytes: cost });
         }
         app.timing.parse = performance.now() - t0;
-        activateSkeleton(atlas, data);
+        activateSkeleton(atlas, data, inheritedTracks);
       }
 
-      function activateSkeleton(atlas, data) {
+      function activateSkeleton(atlas, data, inheritedTracks) {
         var t0 = performance.now();
         app.atlas = atlas;
         app.skeleton = new spine.Skeleton(data);   // data 共享，姿势各自独立
@@ -1390,7 +1721,11 @@
         app.picked = null;
 
         populateSkins(data.skins);
-        setupTracks(data.animations);
+        app.emotion = app.model && app.model.folder === "character" && app.emotionData
+          ? new GTEmotion.Overlay(spine, app.skeleton, app.emotionData.data) : null;
+        setupTracks(data.animations, inheritedTracks);
+        restoreEquipment();
+        app.animState.apply(app.skeleton);
         buildSlots(app.skeleton.slots);
         applyTextureFilter(atlas);
         app.timing.ui = performance.now() - t0;
@@ -1465,7 +1800,7 @@
         return "action";
       }
 
-      function setupTracks(animations) {
+      function setupTracks(animations, inheritedTracks) {
         var buckets = { action: [], emote: [], sub: [] };
         for (var i = 0; i < animations.length; i++) {
           var name = animations[i].name;
@@ -1475,18 +1810,60 @@
         // character 默认三条轨都停在 idle：动作 idle_方向、表情 [emo]idle_方向、子动画 [sub]idle_方向。
         // 都是「找到了才开」，找不到就留空。illust 不参与（只按原规则开动作轨）。
         var withIdle = app.folder === "character";
-        fillTrackSelect($("trackAction"), buckets.action, pickDefault(buckets.action, variant));
-        fillTrackSelect($("trackEmote"), buckets.emote,
-          withIdle ? pickIdle(buckets.emote, "[emo]idle", variant) : "");
-        fillTrackSelect($("trackSub"), buckets.sub,
-          withIdle ? pickIdle(buckets.sub, "[sub]idle", variant) : "");
+        var defaults = {
+          action: pickDefault(buckets.action, variant),
+          emote: withIdle ? pickIdle(buckets.emote, "[emo]idle", variant) : "",
+          sub: withIdle ? pickIdle(buckets.sub, "[sub]idle", variant) : ""
+        };
+        [["action", "trackAction"], ["emote", "trackEmote"], ["sub", "trackSub"]].forEach(function (pair) {
+          var key = pair[0], wanted = defaults[key];
+          if (inheritedTracks) wanted = GTEquipment.inheritAnimation(buckets[key], inheritedTracks[key], variant, wanted);
+          fillTrackSelect($(pair[1]), buckets[key], wanted);
+        });
         app.tracks = {
           action: $("trackAction").value,
           emote: $("trackEmote").value,
           sub: $("trackSub").value
         };
+        if (app.model && app.model.folder === "character") setupExpressions(buckets.emote, variant);
         app.animState = new spine.AnimationState(new spine.AnimationStateData(app.skeleton.data));
         applyTracks();
+      }
+
+      function setupExpressions(names, variant) {
+        var character = app.model.name;
+        var catalog = app.expressionCatalog[character] || (app.expressionCatalog[character] = []);
+        names.forEach(function (name) {
+          var expression = GTEmotion.key(name);
+          if (catalog.indexOf(expression) < 0) catalog.push(expression);
+        });
+        if (!Object.prototype.hasOwnProperty.call(app.expressionByCharacter, character)) {
+          app.expressionByCharacter[character] = variant === "back" ? "idle" : GTEmotion.key(app.tracks.emote);
+        }
+        var selected = app.expressionByCharacter[character];
+        var options = catalog.slice();
+        var advanced = app.emotion ? app.emotion.skeleton.data.animations : [];
+        advanced.forEach(function (animation) {
+          var expression = GTEmotion.key(animation.name);
+          if (expression !== "empty" && options.indexOf(expression) < 0) options.push(expression);
+        });
+        if (selected && options.indexOf(selected) < 0) options.push(selected);
+        options.sort();
+        fillTrackSelect($("trackEmote"), options, selected);
+        resolveExpression();
+      }
+
+      function resolveExpression() {
+        if (!app.model || app.model.folder !== "character") return;
+        var nativeNames = app.skeleton.data.animations.filter(function (animation) {
+          return classify(animation.name) === "emote";
+        }).map(function (animation) { return animation.name; });
+        var advancedNames = app.emotion && app.emotion.face ? app.emotion.skeleton.data.animations.map(function (animation) {
+          return animation.name;
+        }) : [];
+        var resolved = GTEmotion.route(nativeNames, advancedNames, app.expressionByCharacter[app.model.name], app.model.variant);
+        app.tracks.emote = resolved.native;
+        if (app.emotion) app.emotion.select(resolved.advanced);
       }
 
       // 只在确实存在时才选中：先试带方向的 idle_<方向>，再试不带方向的 idle。
@@ -1541,8 +1918,14 @@
       }
 
       function onTrackChange(key, value) {
-        app.tracks[key] = value;
+        if (key === "emote" && app.model && app.model.folder === "character") {
+          app.expressionByCharacter[app.model.name] = value;
+          resolveExpression();
+          // Clearing a track does not restore its last animated pose in Spine.
+          app.skeleton.setToSetupPose();
+        } else app.tracks[key] = value;
         applyTracks();
+        app.animState.apply(app.skeleton);
         applyAutoDuration();
       }
 
@@ -1560,6 +1943,10 @@
               longest = Math.max(longest, entry.animation.duration);
             }
           }
+        }
+        if (app.emotion && app.emotion.animation) {
+          var expression = app.emotion.state.getCurrent(0);
+          if (expression) longest = Math.max(longest, expression.animation.duration);
         }
         return longest;
       }
@@ -1842,14 +2229,14 @@
         gl.clearColor(0, 0, 0, 1);
         gl.clear(gl.COLOR_BUFFER_BIT);
         renderer.begin();
-        renderer.drawSkeleton(app.skeleton, true);
+        drawScene();
         renderer.end();
         gl.readPixels(0, 0, mw, mh, gl.RGBA, gl.UNSIGNED_BYTE, t.black);
 
         gl.clearColor(1, 1, 1, 1);
         gl.clear(gl.COLOR_BUFFER_BIT);
         renderer.begin();
-        renderer.drawSkeleton(app.skeleton, true);
+        drawScene();
         renderer.end();
         gl.readPixels(0, 0, mw, mh, gl.RGBA, gl.UNSIGNED_BYTE, t.white);
 
@@ -2231,6 +2618,11 @@
 
       var lastFrame = performance.now();
 
+      function drawScene() {
+        renderer.drawSkeleton(app.skeleton, true);
+        if (app.emotion && app.emotion.update()) renderer.drawSkeleton(app.emotion.skeleton, true);
+      }
+
       function render(now) {
         requestAnimationFrame(render);
         var skeleton = app.skeleton;
@@ -2241,7 +2633,10 @@
         var speed = parseFloat($("speedSlider").value) || 0;
 
         // 暂停时不推进动画（仍然绘制，所以平移/缩放/取景照常可用）
-        if (!app.exporting && !app.paused) app.animState.update(delta * speed);
+        if (!app.exporting && !app.paused) {
+          app.animState.update(delta * speed);
+          if (app.emotion && app.emotion.animation) app.emotion.state.update(delta * speed);
+        }
         app.animState.apply(skeleton);
         skeleton.scaleX = app.scale;
         skeleton.scaleY = app.scale;
@@ -2254,7 +2649,7 @@
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
         renderer.begin();
-        renderer.drawSkeleton(skeleton, true);
+        drawScene();
         renderer.end();
 
         if (app.debug || app.picked) drawDebugOverlay();
@@ -2464,6 +2859,11 @@
       $("nearestToggle").addEventListener("change", function () {
         app.nearest = $("nearestToggle").checked;
         applyTextureFilter(app.atlas);
+        if (app.emotionData) applyTextureFilter(app.emotionData.atlas);
+        if (app.itemSheet && app.itemSheet.texture) {
+          var filter = app.nearest ? gl.NEAREST : gl.LINEAR;
+          app.itemSheet.texture.setFilters(filter, filter);
+        }
       });
 
       $("debugToggle").addEventListener("change", function () {
@@ -2474,8 +2874,11 @@
         setFolder($("folderSelector").value);
       });
 
-      $("skeletonVariantSelector").addEventListener("change", function () {
-        if (app.current) loadAsset(app.folder, app.current);
+      $("skeletonVariantButtons").addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-variant]");
+        if (!button || !app.current || app.variant === button.dataset.variant) return;
+        app.variant = button.dataset.variant;
+        loadAsset(app.folder, app.current, Object.assign({}, app.tracks));
       });
 
       // 输入只过滤列表，不加载资源；↑↓ 在结果里移动，Enter 载入。
@@ -2498,17 +2901,17 @@
         }, 70);
       });
 
-      // 显示条数：默认为 20，避免一次拉太多缩略图
-      $("listLimit").addEventListener("change", function () {
-        var value = parseInt(this.value, 10);
-        app.listLimit = Math.max(5, Math.min(500, isNaN(value) ? 20 : value));
-        this.value = app.listLimit;
+      $("assetList").addEventListener("scroll", function () {
+        if (this.dataset.hasMore !== "true" || this.scrollTop + this.clientHeight < this.scrollHeight - 10) return;
+        var scrollTop = this.scrollTop;
+        app.listLimit += 40;
         renderAssetList();
+        this.scrollTop = scrollTop;
       });
 
       $("assetSearchBox").addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === "ArrowDown" || event.key === "ArrowUp") {
-          flushFilter();
+          if (filterTimer) flushFilter();
         }
         if (event.key === "Enter") {
           event.preventDefault();
@@ -2524,6 +2927,10 @@
           ? (step > 0 ? 0 : app.shown.length - 1)
           : (app.cursor + step + app.shown.length) % app.shown.length;
         var cursorName = app.shown[app.cursor];
+        if (app.cursor >= app.listLimit) {
+          app.listLimit = app.cursor + 20;
+          renderAssetList();
+        }
         var nodes = $("assetList").querySelectorAll(".asset-item");
         for (var i = 0; i < nodes.length; i++) {
           var on = nodes[i].dataset.name === cursorName;
@@ -2603,14 +3010,14 @@
         gl.clearColor(0, 0, 0, 1);
         gl.clear(gl.COLOR_BUFFER_BIT);
         renderer.begin();
-        renderer.drawSkeleton(app.skeleton, true);
+        drawScene();
         renderer.end();
         gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, black);
 
         gl.clearColor(1, 1, 1, 1);
         gl.clear(gl.COLOR_BUFFER_BIT);
         renderer.begin();
-        renderer.drawSkeleton(app.skeleton, true);
+        drawScene();
         renderer.end();
         gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, white);
 
@@ -2798,6 +3205,7 @@
             if (frame < frames) {
               // 相位只由导出推进，且步长恒定 = 一轮 / 帧数
               app.animState.update(stepAnim);
+              if (app.emotion && app.emotion.animation) app.emotion.state.update(stepAnim);
               requestAnimationFrame(capture);
               return;
             }
