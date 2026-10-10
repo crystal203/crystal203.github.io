@@ -1,0 +1,559 @@
+
+boss_mech_b__page0.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FX_boost_core
+  rotate: false
+  xy: 1, 155
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+FX_boost_ring
+  rotate: true
+  xy: 256, 100
+  size: 93, 38
+  orig: 93, 38
+  offset: 0, 0
+  index: -1
+FX_boost_tail
+  rotate: false
+  xy: 425, 90
+  size: 52, 165
+  orig: 52, 165
+  offset: 0, 0
+  index: -1
+FX_boost_tail2
+  rotate: true
+  xy: 203, 194
+  size: 61, 167
+  orig: 61, 167
+  offset: 0, 0
+  index: -1
+arm_l/arm1
+  rotate: false
+  xy: 404, 128
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+arm_l/armL
+  rotate: false
+  xy: 338, 126
+  size: 43, 40
+  orig: 43, 40
+  offset: 0, 0
+  index: -1
+arm_l/armL2
+  rotate: false
+  xy: 378, 99
+  size: 27, 26
+  orig: 27, 26
+  offset: 0, 0
+  index: -1
+arm_l/armL_up
+  rotate: true
+  xy: 184, 38
+  size: 43, 40
+  orig: 43, 40
+  offset: 0, 0
+  index: -1
+arm_l/elbowL
+  rotate: true
+  xy: 48, 49
+  size: 59, 39
+  orig: 59, 39
+  offset: 0, 0
+  index: -1
+arm_l/gearF
+  rotate: false
+  xy: 153, 33
+  size: 29, 29
+  orig: 29, 29
+  offset: 0, 0
+  index: -1
+arm_l/gearR
+  rotate: false
+  xy: 292, 62
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+arm_l/ring
+  rotate: true
+  xy: 254, 3
+  size: 15, 19
+  orig: 15, 19
+  offset: 0, 0
+  index: -1
+arm_l/triggerF
+  rotate: true
+  xy: 295, 167
+  size: 26, 61
+  orig: 26, 61
+  offset: 0, 0
+  index: -1
+arm_l/triggerR
+  rotate: false
+  xy: 131, 19
+  size: 21, 43
+  orig: 21, 43
+  offset: 0, 0
+  index: -1
+arm_l/wrist2
+  rotate: true
+  xy: 102, 121
+  size: 57, 42
+  orig: 57, 42
+  offset: 0, 0
+  index: -1
+arm_l/wristF
+  rotate: false
+  xy: 295, 94
+  size: 49, 28
+  orig: 49, 28
+  offset: 0, 0
+  index: -1
+arm_l/wristR
+  rotate: true
+  xy: 1, 4
+  size: 50, 25
+  orig: 50, 25
+  offset: 0, 0
+  index: -1
+arm_r/FX_launch
+  rotate: true
+  xy: 225, 57
+  size: 37, 30
+  orig: 37, 30
+  offset: 0, 0
+  index: -1
+arm_r/FX_redlight
+  rotate: false
+  xy: 88, 63
+  size: 95, 36
+  orig: 95, 36
+  offset: 0, 0
+  index: -1
+arm_r/FX_spark
+  rotate: true
+  xy: 183, 1
+  size: 15, 31
+  orig: 15, 31
+  offset: 0, 0
+  index: -1
+arm_r/FX_spark_1
+  rotate: false
+  xy: 203, 82
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+arm_r/arm1
+  rotate: false
+  xy: 48, 12
+  size: 35, 36
+  orig: 35, 36
+  offset: 0, 0
+  index: -1
+arm_r/cable
+  rotate: true
+  xy: 382, 149
+  size: 17, 38
+  orig: 17, 38
+  offset: 0, 0
+  index: -1
+arm_r/camera
+  rotate: false
+  xy: 109, 2
+  size: 16, 23
+  orig: 16, 23
+  offset: 0, 0
+  index: -1
+arm_r/cover
+  rotate: false
+  xy: 345, 92
+  size: 32, 33
+  orig: 32, 33
+  offset: 0, 0
+  index: -1
+arm_r/cover2
+  rotate: false
+  xy: 321, 22
+  size: 22, 30
+  orig: 22, 30
+  offset: 0, 0
+  index: -1
+arm_r/cover_outer
+  rotate: true
+  xy: 99, 103
+  size: 17, 63
+  orig: 17, 63
+  offset: 0, 0
+  index: -1
+arm_r/launcherF
+  rotate: false
+  xy: 295, 123
+  size: 42, 43
+  orig: 42, 43
+  offset: 0, 0
+  index: -1
+arm_r/launcherF_acc
+  rotate: true
+  xy: 27, 1
+  size: 11, 18
+  orig: 11, 18
+  offset: 0, 0
+  index: -1
+arm_r/launcherR
+  rotate: false
+  xy: 1, 101
+  size: 46, 53
+  orig: 46, 53
+  offset: 0, 0
+  index: -1
+arm_r/light
+  rotate: true
+  xy: 382, 129
+  size: 19, 21
+  orig: 19, 21
+  offset: 0, 0
+  index: -1
+backpack/backpackL
+  rotate: true
+  xy: 88, 26
+  size: 36, 42
+  orig: 36, 42
+  offset: 0, 0
+  index: -1
+backpack/backpackR
+  rotate: false
+  xy: 256, 53
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+backpack/wing
+  rotate: false
+  xy: 357, 168
+  size: 10, 25
+  orig: 10, 25
+  offset: 0, 0
+  index: -1
+body/bodyF
+  rotate: true
+  xy: 203, 95
+  size: 98, 52
+  orig: 98, 52
+  offset: 0, 0
+  index: -1
+body/bodyR
+  rotate: false
+  xy: 102, 179
+  size: 100, 76
+  orig: 100, 76
+  offset: 0, 0
+  index: -1
+body/bumper
+  rotate: true
+  xy: 371, 167
+  size: 88, 53
+  orig: 88, 53
+  offset: 0, 0
+  index: -1
+body/cylinderL
+  rotate: false
+  xy: 324, 53
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: -1
+body/cylinderR
+  rotate: false
+  xy: 345, 52
+  size: 21, 39
+  orig: 21, 39
+  offset: 0, 0
+  index: -1
+body/fx_reactor
+  rotate: false
+  xy: 163, 102
+  size: 39, 34
+  orig: 39, 34
+  offset: 0, 0
+  index: -1
+body/fx_smoke1
+  rotate: false
+  xy: 406, 93
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+body/fx_smoke2
+  rotate: false
+  xy: 92, 100
+  size: 6, 54
+  orig: 6, 54
+  offset: 0, 0
+  index: -1
+body/lever_blue
+  rotate: false
+  xy: 216, 82
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+body/lever_red
+  rotate: true
+  xy: 378, 93
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+body/lever_yellow
+  rotate: true
+  xy: 391, 93
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+body/pelvis
+  rotate: false
+  xy: 84, 2
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+body/reactor
+  rotate: true
+  xy: 255, 19
+  size: 33, 27
+  orig: 33, 27
+  offset: 0, 0
+  index: -1
+body/sofa
+  rotate: false
+  xy: 145, 137
+  size: 57, 41
+  orig: 57, 41
+  offset: 0, 0
+  index: -1
+leg/ankle
+  rotate: false
+  xy: 131, 1
+  size: 40, 17
+  orig: 40, 17
+  offset: 0, 0
+  index: -1
+leg/exteriorFL
+  rotate: false
+  xy: 48, 109
+  size: 43, 45
+  orig: 43, 45
+  offset: 0, 0
+  index: -1
+leg/exteriorFR
+  rotate: false
+  xy: 1, 55
+  size: 43, 45
+  orig: 43, 45
+  offset: 0, 0
+  index: -1
+leg/exteriorR
+  rotate: true
+  xy: 367, 61
+  size: 30, 26
+  orig: 30, 26
+  offset: 0, 0
+  index: -1
+leg/foot1
+  rotate: true
+  xy: 184, 82
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+leg/foot2
+  rotate: true
+  xy: 406, 108
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+leg/foot3
+  rotate: false
+  xy: 420, 71
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+leg/foot4
+  rotate: true
+  xy: 172, 8
+  size: 14, 10
+  orig: 14, 10
+  offset: 0, 0
+  index: -1
+leg/frame1
+  rotate: true
+  xy: 394, 62
+  size: 30, 25
+  orig: 30, 25
+  offset: 0, 0
+  index: -1
+leg/frame2L
+  rotate: false
+  xy: 27, 13
+  size: 20, 41
+  orig: 20, 41
+  offset: 0, 0
+  index: -1
+leg/frame2R
+  rotate: true
+  xy: 183, 17
+  size: 20, 41
+  orig: 20, 41
+  offset: 0, 0
+  index: -1
+trio/1/arm_sit
+  rotate: true
+  xy: 283, 27
+  size: 25, 8
+  orig: 25, 8
+  offset: 0, 0
+  index: -1
+trio/1/body
+  rotate: false
+  xy: 145, 121
+  size: 17, 15
+  orig: 17, 15
+  offset: 0, 0
+  index: -1
+trio/1/face
+  rotate: false
+  xy: 63, 1
+  size: 15, 10
+  orig: 15, 10
+  offset: 0, 0
+  index: -1
+trio/1/face_attack
+  rotate: false
+  xy: 153, 21
+  size: 15, 11
+  orig: 15, 11
+  offset: 0, 0
+  index: -1
+trio/1/face_damage
+  rotate: true
+  xy: 440, 74
+  size: 15, 11
+  orig: 15, 11
+  offset: 0, 0
+  index: -1
+trio/1/hair
+  rotate: false
+  xy: 225, 25
+  size: 29, 31
+  orig: 29, 31
+  offset: 0, 0
+  index: -1
+trio/1/hairB
+  rotate: true
+  xy: 292, 31
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+trio/1/leg
+  rotate: false
+  xy: 126, 20
+  size: 4, 5
+  orig: 4, 5
+  offset: 0, 0
+  index: -1
+trio/2/body
+  rotate: false
+  xy: 440, 57
+  size: 9, 16
+  orig: 9, 16
+  offset: 0, 0
+  index: -1
+trio/2/face
+  rotate: false
+  xy: 169, 23
+  size: 13, 9
+  orig: 13, 9
+  offset: 0, 0
+  index: -1
+trio/2/face_attack
+  rotate: true
+  xy: 344, 38
+  size: 13, 9
+  orig: 13, 9
+  offset: 0, 0
+  index: -1
+trio/2/face_damage
+  rotate: true
+  xy: 215, 1
+  size: 15, 9
+  orig: 15, 9
+  offset: 0, 0
+  index: -1
+trio/2/hand_control
+  rotate: false
+  xy: 172, 1
+  size: 6, 6
+  orig: 6, 6
+  offset: 0, 0
+  index: -1
+trio/2/head
+  rotate: false
+  xy: 292, 1
+  size: 25, 29
+  orig: 25, 29
+  offset: 0, 0
+  index: -1
+trio/3/body
+  rotate: true
+  xy: 274, 1
+  size: 10, 11
+  orig: 10, 11
+  offset: 0, 0
+  index: -1
+trio/3/face_attack
+  rotate: true
+  xy: 283, 12
+  size: 14, 6
+  orig: 14, 6
+  offset: 0, 0
+  index: -1
+trio/3/face_damage
+  rotate: false
+  xy: 46, 1
+  size: 16, 10
+  orig: 16, 10
+  offset: 0, 0
+  index: -1
+trio/3/hand_control
+  rotate: false
+  xy: 126, 15
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1
+trio/3/head
+  rotate: false
+  xy: 225, 4
+  size: 28, 20
+  orig: 28, 20
+  offset: 0, 0
+  index: -1
+trio/3/tail
+  rotate: true
+  xy: 394, 47
+  size: 14, 9
+  orig: 14, 9
+  offset: 0, 0
+  index: -1

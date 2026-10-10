@@ -1,0 +1,48 @@
+
+arcade_rabbit__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back1
+  rotate: false
+  xy: 29, 2
+  size: 10, 10
+  orig: 16, 13
+  offset: 3, 0
+  index: -1
+back2
+  rotate: false
+  xy: 29, 14
+  size: 10, 11
+  orig: 16, 13
+  offset: 3, 0
+  index: -1
+front1
+  rotate: false
+  xy: 17, 13
+  size: 10, 12
+  orig: 16, 13
+  offset: 3, 0
+  index: -1
+front2
+  rotate: false
+  xy: 41, 14
+  size: 10, 11
+  orig: 16, 13
+  offset: 3, 0
+  index: -1
+side1
+  rotate: true
+  xy: 53, 13
+  size: 12, 9
+  orig: 16, 13
+  offset: 2, 0
+  index: -1
+side2
+  rotate: false
+  xy: 2, 13
+  size: 13, 12
+  orig: 16, 13
+  offset: 2, 0
+  index: -1

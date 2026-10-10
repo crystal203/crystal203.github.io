@@ -1,0 +1,132 @@
+
+pixy_girl_role_butterfly__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+attack/back/body
+  rotate: false
+  xy: 40, 52
+  size: 9, 9
+  orig: 56, 56
+  offset: 24, 4
+  index: -1
+attack/front/body
+  rotate: false
+  xy: 40, 52
+  size: 9, 9
+  orig: 56, 56
+  offset: 24, 4
+  index: -1
+attack/side/body
+  rotate: false
+  xy: 40, 52
+  size: 9, 9
+  orig: 56, 56
+  offset: 32, 4
+  index: -1
+attack/back/wingL
+  rotate: false
+  xy: 2, 47
+  size: 11, 14
+  orig: 56, 56
+  offset: 27, 2
+  index: -1
+attack/back/wingR
+  rotate: false
+  xy: 2, 31
+  size: 11, 14
+  orig: 56, 56
+  offset: 18, 2
+  index: -1
+attack/front/wingL
+  rotate: false
+  xy: 18, 15
+  size: 10, 14
+  orig: 56, 56
+  offset: 27, 4
+  index: -1
+attack/front/wingR
+  rotate: true
+  xy: 18, 3
+  size: 10, 14
+  orig: 56, 56
+  offset: 19, 4
+  index: -1
+attack/side/wingL
+  rotate: false
+  xy: 34, 15
+  size: 8, 14
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+attack/side/wingR
+  rotate: false
+  xy: 2, 15
+  size: 11, 14
+  orig: 56, 56
+  offset: 26, 3
+  index: -1
+protect/back/body
+  rotate: false
+  xy: 42, 41
+  size: 9, 9
+  orig: 56, 56
+  offset: 24, 4
+  index: -1
+protect/front/body
+  rotate: false
+  xy: 42, 41
+  size: 9, 9
+  orig: 56, 56
+  offset: 24, 4
+  index: -1
+protect/side/body
+  rotate: false
+  xy: 42, 41
+  size: 9, 9
+  orig: 56, 56
+  offset: 32, 4
+  index: -1
+protect/back/wingL
+  rotate: true
+  xy: 2, 2
+  size: 11, 14
+  orig: 56, 56
+  offset: 27, 2
+  index: -1
+protect/back/wingR
+  rotate: false
+  xy: 15, 47
+  size: 11, 14
+  orig: 56, 56
+  offset: 18, 2
+  index: -1
+protect/front/wingL
+  rotate: false
+  xy: 28, 47
+  size: 10, 14
+  orig: 56, 56
+  offset: 27, 4
+  index: -1
+protect/front/wingR
+  rotate: false
+  xy: 30, 31
+  size: 10, 14
+  orig: 56, 56
+  offset: 19, 4
+  index: -1
+protect/side/wingL
+  rotate: true
+  xy: 34, 5
+  size: 8, 14
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+protect/side/wingR
+  rotate: false
+  xy: 15, 31
+  size: 11, 14
+  orig: 56, 56
+  offset: 26, 3
+  index: -1

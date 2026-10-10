@@ -1,0 +1,5060 @@
+
+cw_soldier__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cw_agent_female/back/[base]armL
+  rotate: true
+  xy: 248, 228
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_female/back/[base]armR
+  rotate: true
+  xy: 248, 228
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_female/back/[base]body
+  rotate: true
+  xy: 95, 89
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_agent_female/back/[base]elbowL
+  rotate: false
+  xy: 107, 61
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+cw_agent_female/back/[base]elbowR
+  rotate: false
+  xy: 107, 61
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+cw_agent_female/back/[base]legL
+  rotate: true
+  xy: 231, 139
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_female/back/[base]legR
+  rotate: true
+  xy: 231, 139
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_female/back/hornL
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_agent_female/front/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_agent_female/side/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 56, 56
+  offset: 18, 28
+  index: -1
+cw_agent_male/back/hornL
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_agent_male/front/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_agent_male/side/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 56, 56
+  offset: 18, 28
+  index: -1
+cw_medic/back/hornL
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_medic/front/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_medic/side/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 56, 56
+  offset: 18, 28
+  index: -1
+cw_soldier/back/hornL
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_soldier/front/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_soldier/side/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 56, 56
+  offset: 18, 28
+  index: -1
+cw_soldier_female/back/hornL
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_soldier_female/front/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_soldier_female/side/hornR
+  rotate: false
+  xy: 85, 105
+  size: 9, 13
+  orig: 56, 56
+  offset: 18, 28
+  index: -1
+cw_agent_female/back/hornR
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_agent_female/front/hornL
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_agent_male/back/hornR
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_agent_male/front/hornL
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_medic/back/hornR
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_medic/front/hornL
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_soldier/back/hornR
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_soldier/front/hornL
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_soldier_female/back/hornR
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_soldier_female/front/hornL
+  rotate: false
+  xy: 209, 105
+  size: 9, 13
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_agent_female/back/shoulderL
+  rotate: false
+  xy: 97, 72
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_agent_female/back/shoulderR
+  rotate: false
+  xy: 97, 72
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_agent_female/front/shoulderL
+  rotate: false
+  xy: 97, 72
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_agent_female/front/shoulderR
+  rotate: false
+  xy: 97, 72
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_agent_female/front/[base]armL
+  rotate: true
+  xy: 57, 125
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_female/front/[base]armR
+  rotate: false
+  xy: 135, 54
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_female/front/[base]body
+  rotate: true
+  xy: 109, 89
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_agent_female/front/[base]elbowL
+  rotate: false
+  xy: 116, 61
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+cw_agent_female/front/[base]elbowL2
+  rotate: false
+  xy: 28, 73
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_agent_female/front/[base]elbowR2
+  rotate: false
+  xy: 28, 73
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_agent_female/front/[base]elbowR
+  rotate: false
+  xy: 187, 61
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+cw_agent_female/front/[base]legL
+  rotate: true
+  xy: 143, 61
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_female/front/[base]legR
+  rotate: true
+  xy: 143, 61
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_female/front/face/[base]attack
+  rotate: false
+  xy: 2, 145
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+cw_agent_female/front/face/[base]damaged
+  rotate: false
+  xy: 108, 134
+  size: 13, 12
+  orig: 55, 56
+  offset: 21, 11
+  index: -1
+cw_agent_female/front/face/[base]doyagao
+  rotate: false
+  xy: 74, 148
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+cw_agent_female/front/face/[base]idle
+  rotate: false
+  xy: 150, 145
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+cw_agent_female/front/face/[base]mad
+  rotate: false
+  xy: 167, 145
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+cw_agent_female/front/face/[base]smile
+  rotate: false
+  xy: 91, 146
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+cw_agent_female/front/face/[base]tired
+  rotate: false
+  xy: 50, 144
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+cw_agent_female/side/[base]armR
+  rotate: true
+  xy: 114, 54
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+cw_agent_female/side/[base]body
+  rotate: true
+  xy: 186, 96
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_agent_female/side/[base]elbowL
+  rotate: true
+  xy: 116, 167
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_agent_female/side/[base]elbowR
+  rotate: false
+  xy: 39, 69
+  size: 8, 7
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+cw_agent_female/side/[base]legL
+  rotate: false
+  xy: 250, 104
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_agent_female/side/[base]legR
+  rotate: true
+  xy: 12, 60
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_agent_female/side/face/[base]attack
+  rotate: false
+  xy: 14, 120
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+cw_agent_female/side/face/[base]damaged
+  rotate: true
+  xy: 182, 120
+  size: 11, 12
+  orig: 56, 56
+  offset: 30, 13
+  index: -1
+cw_agent_female/side/face/[base]doyagao
+  rotate: true
+  xy: 123, 134
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+cw_agent_female/side/face/[base]idle
+  rotate: false
+  xy: 184, 133
+  size: 13, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+cw_agent_female/side/face/[base]mad
+  rotate: false
+  xy: 28, 120
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+cw_agent_female/side/face/[base]smile
+  rotate: true
+  xy: 199, 133
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+cw_agent_female/side/face/[base]tired
+  rotate: false
+  xy: 83, 120
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+cw_agent_female/side/shoulderL
+  rotate: false
+  xy: 142, 54
+  size: 6, 5
+  orig: 56, 56
+  offset: 34, 11
+  index: -1
+cw_agent_female/side/shoulderR
+  rotate: false
+  xy: 183, 54
+  size: 6, 5
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+cw_agent_male/back/[base]armL
+  rotate: true
+  xy: 191, 54
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_male/back/[base]armR
+  rotate: true
+  xy: 191, 54
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_male/back/[base]elbowL
+  rotate: false
+  xy: 49, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_agent_male/back/[base]elbowR
+  rotate: false
+  xy: 49, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_agent_male/back/[base]legL
+  rotate: true
+  xy: 153, 60
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_male/back/[base]legR
+  rotate: true
+  xy: 153, 60
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_male/back/helm
+  rotate: true
+  xy: 184, 227
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_agent_female/back/helm
+  rotate: true
+  xy: 184, 227
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_agent_male/back/shoulderL
+  rotate: false
+  xy: 199, 54
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_agent_male/back/shoulderR
+  rotate: false
+  xy: 199, 54
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_agent_male/front/[base]armL
+  rotate: true
+  xy: 207, 54
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_male/front/[base]armR
+  rotate: true
+  xy: 207, 54
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_agent_male/front/[base]body
+  rotate: true
+  xy: 123, 88
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_agent_male/front/[base]elbowL
+  rotate: false
+  xy: 59, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_agent_male/front/[base]elbowR
+  rotate: false
+  xy: 59, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_agent_male/front/[base]elbowL2
+  rotate: false
+  xy: 76, 71
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_agent_male/front/[base]elbowR2
+  rotate: false
+  xy: 76, 71
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_agent_male/front/[base]legL
+  rotate: true
+  xy: 163, 59
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_male/front/[base]legR
+  rotate: true
+  xy: 163, 59
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_agent_male/front/face/[base]attack
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/face/[base]damaged
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/face/[base]doyagao
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/face/[base]idle
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/face/[base]mad
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/face/[base]smile
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/face/[base]tired
+  rotate: false
+  xy: 74, 163
+  size: 21, 12
+  orig: 55, 56
+  offset: 17, 11
+  index: -1
+cw_agent_male/front/helm
+  rotate: false
+  xy: 39, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+cw_agent_female/front/helm
+  rotate: false
+  xy: 39, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+cw_agent_male/front/shoulderL
+  rotate: false
+  xy: 215, 54
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_agent_male/front/shoulderR
+  rotate: false
+  xy: 215, 54
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_agent_male/side/[base]body
+  rotate: true
+  xy: 2, 95
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_agent_male/side/[base]elbowL
+  rotate: false
+  xy: 87, 69
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_agent_male/side/[base]elbowR
+  rotate: false
+  xy: 105, 70
+  size: 9, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+cw_agent_male/side/[base]legL
+  rotate: true
+  xy: 22, 58
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_agent_male/side/[base]legR
+  rotate: true
+  xy: 44, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_agent_male/side/face/[base]attack
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/face/[base]damaged
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/face/[base]doyagao
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/face/[base]idle
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/face/[base]mad
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/face/[base]smile
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/face/[base]tired
+  rotate: true
+  xy: 238, 235
+  size: 19, 12
+  orig: 56, 56
+  offset: 27, 13
+  index: -1
+cw_agent_male/side/helmR
+  rotate: true
+  xy: 211, 227
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+cw_agent_female/side/helmR
+  rotate: true
+  xy: 211, 227
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+cw_agent_male/side/shoulderL
+  rotate: false
+  xy: 223, 54
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+cw_agent_male/side/shoulderR
+  rotate: false
+  xy: 238, 228
+  size: 8, 5
+  orig: 56, 56
+  offset: 22, 11
+  index: -1
+cw_commander_female/back/[base]armL
+  rotate: true
+  xy: 8, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_female/back/[base]armR
+  rotate: true
+  xy: 8, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_male/back/[base]armL
+  rotate: true
+  xy: 8, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_male/back/[base]armR
+  rotate: true
+  xy: 8, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_female/back/[base]body
+  rotate: true
+  xy: 137, 87
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_commander_female/back/[base]elbowL
+  rotate: false
+  xy: 127, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_female/back/[base]elbowR
+  rotate: false
+  xy: 127, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_male/back/[base]elbowL
+  rotate: false
+  xy: 127, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_male/back/[base]elbowR
+  rotate: false
+  xy: 127, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_female/back/[base]head
+  rotate: false
+  xy: 147, 202
+  size: 26, 23
+  orig: 55, 56
+  offset: 15, 12
+  index: -1
+cw_commander_female/back/coat1
+  rotate: false
+  xy: 172, 134
+  size: 9, 9
+  orig: 55, 56
+  offset: 23, 6
+  index: -1
+cw_commander_female/back/coat2
+  rotate: false
+  xy: 119, 79
+  size: 13, 7
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+cw_commander_female/back/coatcollar
+  rotate: false
+  xy: 57, 78
+  size: 17, 4
+  orig: 55, 56
+  offset: 19, 12
+  index: -1
+cw_commander_male/back/coatcollar
+  rotate: false
+  xy: 57, 78
+  size: 17, 4
+  orig: 55, 56
+  offset: 19, 12
+  index: -1
+cw_commander_female/back/helm
+  rotate: false
+  xy: 2, 230
+  size: 35, 24
+  orig: 55, 56
+  offset: 10, 23
+  index: -1
+cw_commander_male/back/helm
+  rotate: false
+  xy: 2, 230
+  size: 35, 24
+  orig: 55, 56
+  offset: 10, 23
+  index: -1
+cw_commander_female/front/[base]armL
+  rotate: true
+  xy: 150, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_female/front/[base]armR
+  rotate: true
+  xy: 150, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_male/front/[base]armL
+  rotate: true
+  xy: 150, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_male/front/[base]armR
+  rotate: true
+  xy: 150, 53
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_commander_female/front/[base]armL2
+  rotate: true
+  xy: 242, 62
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_commander_female/front/[base]armR2
+  rotate: true
+  xy: 242, 62
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_commander_male/front/[base]armL2
+  rotate: true
+  xy: 242, 62
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_commander_male/front/[base]armR2
+  rotate: true
+  xy: 242, 62
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_commander_female/front/[base]body
+  rotate: true
+  xy: 151, 87
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_commander_female/front/[base]elbowL
+  rotate: false
+  xy: 137, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_female/front/[base]elbowR
+  rotate: false
+  xy: 137, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_male/front/[base]elbowL
+  rotate: false
+  xy: 137, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_male/front/[base]elbowR
+  rotate: false
+  xy: 137, 69
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_commander_female/front/[base]elbowL2
+  rotate: false
+  xy: 185, 71
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_commander_female/front/[base]elbowR2
+  rotate: false
+  xy: 185, 71
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_commander_male/front/[base]elbowL2
+  rotate: false
+  xy: 185, 71
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_commander_male/front/[base]elbowR2
+  rotate: false
+  xy: 185, 71
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_commander_female/front/[base]head
+  rotate: false
+  xy: 175, 203
+  size: 26, 22
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_commander_female/front/coatB
+  rotate: false
+  xy: 2, 74
+  size: 11, 8
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+cw_commander_male/front/coatB
+  rotate: false
+  xy: 2, 74
+  size: 11, 8
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+cw_commander_female/front/coatL1
+  rotate: false
+  xy: 67, 149
+  size: 4, 7
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+cw_commander_female/front/coatL2
+  rotate: true
+  xy: 116, 161
+  size: 4, 7
+  orig: 55, 56
+  offset: 30, 2
+  index: -1
+cw_commander_female/front/coatR1
+  rotate: true
+  xy: 130, 48
+  size: 4, 7
+  orig: 55, 56
+  offset: 22, 7
+  index: -1
+cw_commander_female/front/coatR2
+  rotate: true
+  xy: 139, 48
+  size: 4, 7
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+cw_commander_female/front/coatcollarL
+  rotate: false
+  xy: 182, 48
+  size: 7, 4
+  orig: 55, 56
+  offset: 29, 12
+  index: -1
+cw_commander_male/front/coatcollarL
+  rotate: false
+  xy: 182, 48
+  size: 7, 4
+  orig: 55, 56
+  offset: 29, 12
+  index: -1
+cw_commander_female/front/coatcollarR
+  rotate: false
+  xy: 191, 48
+  size: 7, 4
+  orig: 55, 56
+  offset: 19, 12
+  index: -1
+cw_commander_male/front/coatcollarR
+  rotate: false
+  xy: 191, 48
+  size: 7, 4
+  orig: 55, 56
+  offset: 19, 12
+  index: -1
+cw_commander_female/front/face/[base]attack
+  rotate: false
+  xy: 19, 134
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_commander_female/front/face/[base]doyagao
+  rotate: false
+  xy: 67, 136
+  size: 16, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_commander_female/front/face/[base]idle
+  rotate: false
+  xy: 97, 123
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_commander_female/front/face/[base]mad
+  rotate: false
+  xy: 85, 134
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_commander_female/front/face/[base]smile
+  rotate: false
+  xy: 138, 133
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_commander_female/front/face/[base]tired
+  rotate: false
+  xy: 114, 123
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_commander_female/front/helm
+  rotate: false
+  xy: 126, 160
+  size: 25, 16
+  orig: 55, 56
+  offset: 16, 23
+  index: -1
+cw_commander_male/front/helm
+  rotate: false
+  xy: 126, 160
+  size: 25, 16
+  orig: 55, 56
+  offset: 16, 23
+  index: -1
+cw_commander_female/front/hornL
+  rotate: false
+  xy: 39, 136
+  size: 8, 19
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_commander_male/front/hornL
+  rotate: false
+  xy: 39, 136
+  size: 8, 19
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_commander_female/side/[base]armL
+  rotate: true
+  xy: 158, 52
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_commander_female/side/[base]armR
+  rotate: true
+  xy: 16, 51
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+cw_commander_female/side/[base]body
+  rotate: true
+  xy: 15, 95
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_commander_female/side/[base]elbowL
+  rotate: false
+  xy: 196, 61
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_commander_female/side/[base]elbowR
+  rotate: false
+  xy: 205, 61
+  size: 7, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+cw_commander_female/side/[base]head
+  rotate: false
+  xy: 203, 204
+  size: 25, 21
+  orig: 56, 56
+  offset: 19, 15
+  index: -1
+cw_commander_female/side/coatL1
+  rotate: false
+  xy: 102, 137
+  size: 3, 7
+  orig: 56, 56
+  offset: 37, 8
+  index: -1
+cw_commander_male/side/coatL1
+  rotate: false
+  xy: 102, 137
+  size: 3, 7
+  orig: 56, 56
+  offset: 37, 8
+  index: -1
+cw_commander_female/side/coatL2
+  rotate: false
+  xy: 248, 127
+  size: 4, 9
+  orig: 56, 56
+  offset: 37, 2
+  index: -1
+cw_commander_male/side/coatL2
+  rotate: false
+  xy: 248, 127
+  size: 4, 9
+  orig: 56, 56
+  offset: 37, 2
+  index: -1
+cw_commander_female/side/coatR1
+  rotate: true
+  xy: 232, 62
+  size: 6, 8
+  orig: 56, 56
+  offset: 28, 8
+  index: -1
+cw_commander_male/side/coatR1
+  rotate: true
+  xy: 232, 62
+  size: 6, 8
+  orig: 56, 56
+  offset: 28, 8
+  index: -1
+cw_commander_female/side/coatR2
+  rotate: true
+  xy: 196, 70
+  size: 8, 9
+  orig: 56, 56
+  offset: 25, 2
+  index: -1
+cw_commander_male/side/coatR2
+  rotate: true
+  xy: 196, 70
+  size: 8, 9
+  orig: 56, 56
+  offset: 25, 2
+  index: -1
+cw_commander_female/side/coatcollarL
+  rotate: false
+  xy: 218, 49
+  size: 8, 3
+  orig: 56, 56
+  offset: 34, 14
+  index: -1
+cw_commander_male/side/coatcollarL
+  rotate: false
+  xy: 218, 49
+  size: 8, 3
+  orig: 56, 56
+  offset: 34, 14
+  index: -1
+cw_commander_female/side/coatcollarR
+  rotate: false
+  xy: 126, 179
+  size: 11, 3
+  orig: 56, 56
+  offset: 24, 14
+  index: -1
+cw_commander_male/side/coatcollarR
+  rotate: false
+  xy: 126, 179
+  size: 11, 3
+  orig: 56, 56
+  offset: 24, 14
+  index: -1
+cw_commander_female/side/face/[base]attack
+  rotate: false
+  xy: 28, 95
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+cw_commander_female/side/face/[base]damaged
+  rotate: true
+  xy: 244, 79
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_commander_female/side/face/[base]doyagao
+  rotate: false
+  xy: 181, 108
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_commander_female/side/face/[base]idle
+  rotate: false
+  xy: 220, 103
+  size: 13, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_commander_female/side/face/[base]mad
+  rotate: false
+  xy: 142, 109
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+cw_commander_male/side/face/[base]mad
+  rotate: false
+  xy: 142, 109
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+cw_commander_female/side/face/[base]smile
+  rotate: false
+  xy: 155, 109
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+cw_commander_female/side/face/[base]tired
+  rotate: false
+  xy: 235, 103
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+cw_commander_female/side/helmR
+  rotate: false
+  xy: 51, 181
+  size: 27, 17
+  orig: 56, 56
+  offset: 19, 22
+  index: -1
+cw_commander_male/side/helmR
+  rotate: false
+  xy: 51, 181
+  size: 27, 17
+  orig: 56, 56
+  offset: 19, 22
+  index: -1
+cw_commander_female/side/hornL
+  rotate: true
+  xy: 19, 146
+  size: 9, 18
+  orig: 56, 56
+  offset: 36, 30
+  index: -1
+cw_commander_male/side/hornL
+  rotate: true
+  xy: 19, 146
+  size: 9, 18
+  orig: 56, 56
+  offset: 36, 30
+  index: -1
+cw_commander_female/side/hornR
+  rotate: true
+  xy: 108, 148
+  size: 10, 19
+  orig: 56, 56
+  offset: 17, 29
+  index: -1
+cw_commander_male/side/hornR
+  rotate: true
+  xy: 108, 148
+  size: 10, 19
+  orig: 56, 56
+  offset: 17, 29
+  index: -1
+cw_commander_female/side/shoulderL
+  rotate: false
+  xy: 54, 62
+  size: 7, 5
+  orig: 56, 56
+  offset: 34, 11
+  index: -1
+cw_commander_male/back/[base]head
+  rotate: true
+  xy: 230, 202
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_commander_male/back/coat1
+  rotate: false
+  xy: 205, 80
+  size: 11, 9
+  orig: 55, 56
+  offset: 22, 6
+  index: -1
+cw_commander_male/back/coat2
+  rotate: false
+  xy: 134, 78
+  size: 13, 7
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+cw_commander_male/front/[base]head
+  rotate: false
+  xy: 203, 180
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_commander_male/front/coatL1
+  rotate: false
+  xy: 79, 62
+  size: 5, 7
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+cw_commander_male/front/coatL2
+  rotate: true
+  xy: 200, 48
+  size: 4, 7
+  orig: 55, 56
+  offset: 30, 2
+  index: -1
+cw_commander_male/front/coatR1
+  rotate: true
+  xy: 86, 62
+  size: 5, 7
+  orig: 55, 56
+  offset: 21, 7
+  index: -1
+cw_commander_male/front/coatR2
+  rotate: true
+  xy: 209, 48
+  size: 4, 7
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+cw_commander_male/front/face/[base]attack
+  rotate: false
+  xy: 42, 120
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+cw_commander_male/front/face/[base]mad
+  rotate: false
+  xy: 155, 133
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_commander_male/side/[base]armL
+  rotate: false
+  xy: 24, 50
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_commander_male/side/[base]armR
+  rotate: true
+  xy: 42, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+cw_commander_male/side/[base]elbowL
+  rotate: false
+  xy: 147, 67
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_commander_male/side/[base]elbowR
+  rotate: false
+  xy: 116, 70
+  size: 9, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+cw_commander_male/side/[base]head
+  rotate: false
+  xy: 27, 177
+  size: 22, 21
+  orig: 56, 56
+  offset: 20, 14
+  index: -1
+cw_commander_male/side/coatB
+  rotate: false
+  xy: 105, 79
+  size: 12, 8
+  orig: 56, 56
+  offset: 28, 3
+  index: -1
+cw_commander_male/side/shoulderL
+  rotate: false
+  xy: 125, 62
+  size: 7, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+cw_medic/back/B_creatureL
+  rotate: false
+  xy: 2, 159
+  size: 22, 18
+  orig: 55, 56
+  offset: 0, 32
+  index: -1
+cw_medic/back/B_creatureR
+  rotate: false
+  xy: 223, 158
+  size: 22, 18
+  orig: 55, 56
+  offset: 33, 32
+  index: -1
+cw_medic/back/[base]armL
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_medic/back/[base]armR
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_medic/front/[base]armL
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_medic/front/[base]armR
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier/front/[base]armL
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier/front/[base]armR
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_female/front/[base]armR
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_super/front/[base]armL
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_super/front/[base]armR
+  rotate: true
+  xy: 50, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_medic/back/[base]body
+  rotate: true
+  xy: 196, 120
+  size: 11, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_medic/back/[base]elbowL
+  rotate: false
+  xy: 15, 66
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_medic/back/[base]elbowR
+  rotate: false
+  xy: 15, 66
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_medic/back/[base]legL
+  rotate: true
+  xy: 54, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_medic/back/[base]legR
+  rotate: true
+  xy: 54, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_medic/back/bag
+  rotate: false
+  xy: 126, 184
+  size: 17, 14
+  orig: 55, 56
+  offset: 19, 4
+  index: -1
+cw_medic/back/helm
+  rotate: false
+  xy: 2, 203
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_medic/back/shoulderL
+  rotate: false
+  xy: 58, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_medic/back/shoulderR
+  rotate: false
+  xy: 58, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_medic/front/shoulderL
+  rotate: false
+  xy: 58, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_medic/front/shoulderR
+  rotate: false
+  xy: 58, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_medic/front/F_creatureL
+  rotate: false
+  xy: 172, 159
+  size: 23, 18
+  orig: 55, 56
+  offset: 31, 34
+  index: -1
+cw_medic/front/F_creatureR
+  rotate: false
+  xy: 172, 159
+  size: 23, 18
+  orig: 55, 56
+  offset: 1, 34
+  index: -1
+cw_medic/front/[base]body
+  rotate: true
+  xy: 210, 120
+  size: 11, 12
+  orig: 55, 56
+  offset: 21, 4
+  index: -1
+cw_medic/front/[base]elbowL
+  rotate: false
+  xy: 157, 66
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_medic/front/[base]elbowR
+  rotate: false
+  xy: 157, 66
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_medic/front/[base]elbowL2
+  rotate: false
+  xy: 207, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_medic/front/[base]elbowR2
+  rotate: false
+  xy: 207, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_medic/front/[base]legL
+  rotate: true
+  xy: 64, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_medic/front/[base]legR
+  rotate: true
+  xy: 64, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_medic/front/bag
+  rotate: false
+  xy: 97, 161
+  size: 17, 14
+  orig: 55, 56
+  offset: 19, 4
+  index: -1
+cw_medic/front/helm
+  rotate: false
+  xy: 68, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+cw_medic/side/S_creatureL
+  rotate: false
+  xy: 26, 157
+  size: 22, 18
+  orig: 56, 56
+  offset: 33, 32
+  index: -1
+cw_medic/side/S_creatureR
+  rotate: false
+  xy: 26, 157
+  size: 22, 18
+  orig: 56, 56
+  offset: 2, 32
+  index: -1
+cw_medic/side/[base]body
+  rotate: false
+  xy: 168, 109
+  size: 11, 11
+  orig: 56, 56
+  offset: 27, 5
+  index: -1
+cw_medic/side/[base]elbowL
+  rotate: false
+  xy: 2, 65
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_medic/side/[base]elbowR
+  rotate: false
+  xy: 167, 65
+  size: 8, 7
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+cw_medic/side/[base]head
+  rotate: false
+  xy: 80, 177
+  size: 21, 21
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+cw_medic/side/[base]legL
+  rotate: true
+  xy: 74, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_medic/side/[base]legR
+  rotate: true
+  xy: 84, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_medic/side/bag
+  rotate: true
+  xy: 153, 159
+  size: 17, 13
+  orig: 56, 56
+  offset: 17, 5
+  index: -1
+cw_medic/side/face/[base]doyagao
+  rotate: false
+  xy: 69, 95
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_medic/side/face/[base]mad
+  rotate: false
+  xy: 2, 107
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+cw_medic/side/face/[base]smile
+  rotate: false
+  xy: 41, 94
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_medic/side/helmR
+  rotate: false
+  xy: 31, 200
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+cw_medic/side/shoulderL
+  rotate: false
+  xy: 66, 49
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+cw_medic/side/shoulderR
+  rotate: false
+  xy: 2, 121
+  size: 8, 5
+  orig: 56, 56
+  offset: 23, 11
+  index: -1
+cw_soldier/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/coat1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/coat2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/coatcollar
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_female/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/coat1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/coat2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/coatcollar
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_agent_male/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/hornL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/back/hornR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_female/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/hornL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/back/hornR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_commander_male/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/back/coat1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/back/coat2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/back/coatcollar
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_medic/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/coat1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/coat2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/coatcollar
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/coat1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/coat2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/coatcollar
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_female/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/B_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/B_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/coat1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/coat2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/coatcollar
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/back/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/F_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/F_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/front/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/S_creatureL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/S_creatureR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/bag
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/cloak
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatB
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatL1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatL2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatR1
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatR2
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatcollarL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/coatcollarR
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/hair
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier_super/side/helmL
+  rotate: false
+  xy: 252, 253
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+cw_soldier/back/[base]armL
+  rotate: true
+  xy: 74, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier/back/[base]armR
+  rotate: true
+  xy: 74, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_super/back/[base]armL
+  rotate: true
+  xy: 74, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_super/back/[base]armR
+  rotate: true
+  xy: 74, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier/back/[base]body
+  rotate: true
+  xy: 165, 86
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_agent_male/back/[base]body
+  rotate: true
+  xy: 165, 86
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_commander_male/back/[base]body
+  rotate: true
+  xy: 165, 86
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_soldier_super/back/[base]body
+  rotate: true
+  xy: 165, 86
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_soldier/back/[base]elbowL
+  rotate: false
+  xy: 25, 64
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier/back/[base]elbowR
+  rotate: false
+  xy: 25, 64
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_female/back/[base]elbowL
+  rotate: false
+  xy: 25, 64
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_female/back/[base]elbowR
+  rotate: false
+  xy: 25, 64
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_super/back/[base]elbowL
+  rotate: false
+  xy: 25, 64
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_super/back/[base]elbowR
+  rotate: false
+  xy: 25, 64
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier/back/[base]head
+  rotate: false
+  xy: 2, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_agent_female/back/[base]head
+  rotate: false
+  xy: 2, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_agent_male/back/[base]head
+  rotate: false
+  xy: 2, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_medic/back/[base]head
+  rotate: false
+  xy: 2, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_soldier_female/back/[base]head
+  rotate: false
+  xy: 2, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_soldier_super/back/[base]head
+  rotate: false
+  xy: 2, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_soldier/back/[base]legL
+  rotate: true
+  xy: 125, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_male/back/[base]legL
+  rotate: true
+  xy: 125, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_male/back/[base]legR
+  rotate: true
+  xy: 125, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier/back/[base]legR
+  rotate: true
+  xy: 125, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_super/back/[base]legL
+  rotate: true
+  xy: 125, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_super/back/[base]legR
+  rotate: true
+  xy: 125, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier/back/helm
+  rotate: false
+  xy: 60, 200
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_soldier_female/back/helm
+  rotate: false
+  xy: 60, 200
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_soldier_super/back/helm
+  rotate: false
+  xy: 60, 200
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+cw_soldier/back/shoulderL
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_commander_female/back/shoulderL
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_commander_female/back/shoulderR
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_commander_male/back/shoulderL
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_commander_male/back/shoulderR
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier/back/shoulderR
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier_super/back/shoulderL
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier_super/back/shoulderR
+  rotate: false
+  xy: 82, 49
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier/front/[base]armL2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_agent_female/front/[base]armL2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_agent_female/front/[base]armR2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_agent_male/front/[base]armL2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_agent_male/front/[base]armR2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_medic/front/[base]armL2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_medic/front/[base]armR2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_soldier/front/[base]armR2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_soldier_female/front/[base]armL2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_soldier_female/front/[base]armR2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_soldier_super/front/[base]armL2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_soldier_super/front/[base]armR2
+  rotate: true
+  xy: 35, 61
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+cw_soldier/front/[base]body
+  rotate: true
+  xy: 179, 85
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_commander_male/front/[base]body
+  rotate: true
+  xy: 179, 85
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_soldier_super/front/[base]body
+  rotate: true
+  xy: 179, 85
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_soldier/front/[base]elbowL
+  rotate: false
+  xy: 69, 62
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier/front/[base]elbowR
+  rotate: false
+  xy: 69, 62
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_female/front/[base]elbowL
+  rotate: false
+  xy: 69, 62
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_female/front/[base]elbowR
+  rotate: false
+  xy: 69, 62
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_super/front/[base]elbowL
+  rotate: false
+  xy: 69, 62
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier_super/front/[base]elbowR
+  rotate: false
+  xy: 69, 62
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+cw_soldier/front/[base]elbowL2
+  rotate: false
+  xy: 218, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_soldier/front/[base]elbowR2
+  rotate: false
+  xy: 218, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_soldier_super/front/[base]elbowL2
+  rotate: false
+  xy: 218, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_soldier_super/front/[base]elbowR2
+  rotate: false
+  xy: 218, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_soldier/front/[base]head
+  rotate: false
+  xy: 175, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_agent_male/front/[base]head
+  rotate: false
+  xy: 175, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_medic/front/[base]head
+  rotate: false
+  xy: 175, 179
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_soldier/front/[base]legL
+  rotate: true
+  xy: 173, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_male/front/[base]legL
+  rotate: true
+  xy: 173, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_male/front/[base]legR
+  rotate: true
+  xy: 173, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier/front/[base]legR
+  rotate: true
+  xy: 173, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_super/front/[base]legL
+  rotate: true
+  xy: 173, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_super/front/[base]legR
+  rotate: true
+  xy: 173, 56
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier/front/face/[base]attack
+  rotate: false
+  xy: 224, 114
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+cw_medic/front/face/[base]attack
+  rotate: false
+  xy: 224, 114
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+cw_soldier/front/face/[base]damaged
+  rotate: false
+  xy: 54, 101
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_medic/front/face/[base]damaged
+  rotate: false
+  xy: 54, 101
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier/front/face/[base]doyagao
+  rotate: false
+  xy: 239, 114
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_medic/front/face/[base]doyagao
+  rotate: false
+  xy: 239, 114
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier/front/face/[base]idle
+  rotate: false
+  xy: 96, 100
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_medic/front/face/[base]idle
+  rotate: false
+  xy: 96, 100
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier/front/face/[base]mad
+  rotate: false
+  xy: 214, 133
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_medic/front/face/[base]mad
+  rotate: false
+  xy: 214, 133
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_soldier/front/face/[base]smile
+  rotate: false
+  xy: 57, 112
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_medic/front/face/[base]smile
+  rotate: false
+  xy: 57, 112
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier/front/face/[base]tired
+  rotate: false
+  xy: 131, 122
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_medic/front/face/[base]tired
+  rotate: false
+  xy: 131, 122
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_soldier/front/helm
+  rotate: false
+  xy: 97, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+cw_soldier/front/weapon
+  rotate: false
+  xy: 247, 164
+  size: 5, 12
+  orig: 55, 56
+  offset: 20, 4
+  index: -1
+cw_soldier_female/front/weapon
+  rotate: false
+  xy: 247, 164
+  size: 5, 12
+  orig: 55, 56
+  offset: 20, 4
+  index: -1
+cw_soldier/side/[base]armL
+  rotate: true
+  xy: 122, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_agent_male/side/[base]armL
+  rotate: true
+  xy: 122, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_medic/side/[base]armL
+  rotate: true
+  xy: 122, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_soldier_super/side/[base]armL
+  rotate: true
+  xy: 122, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_soldier/side/[base]armR
+  rotate: true
+  xy: 166, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+cw_agent_male/side/[base]armR
+  rotate: true
+  xy: 166, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+cw_medic/side/[base]armR
+  rotate: true
+  xy: 166, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+cw_soldier_super/side/[base]armR
+  rotate: true
+  xy: 166, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+cw_soldier/side/[base]body
+  rotate: true
+  xy: 218, 80
+  size: 9, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_commander_male/side/[base]body
+  rotate: true
+  xy: 218, 80
+  size: 9, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_soldier_super/side/[base]body
+  rotate: true
+  xy: 218, 80
+  size: 9, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_soldier/side/[base]elbowL
+  rotate: false
+  xy: 177, 62
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_soldier_super/side/[base]elbowL
+  rotate: false
+  xy: 177, 62
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_soldier/side/[base]elbowR
+  rotate: false
+  xy: 97, 61
+  size: 8, 7
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+cw_soldier/side/[base]head
+  rotate: false
+  xy: 103, 177
+  size: 21, 21
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+cw_agent_male/side/[base]head
+  rotate: false
+  xy: 103, 177
+  size: 21, 21
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+cw_soldier/side/[base]legL
+  rotate: true
+  xy: 232, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_commander_male/side/[base]legL
+  rotate: true
+  xy: 232, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_soldier_super/side/[base]legL
+  rotate: true
+  xy: 232, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_soldier/side/[base]legR
+  rotate: true
+  xy: 242, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_commander_male/side/[base]legR
+  rotate: true
+  xy: 242, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_soldier_super/side/[base]legR
+  rotate: true
+  xy: 242, 56
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_soldier/side/face/[base]attack
+  rotate: false
+  xy: 80, 81
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_medic/side/face/[base]attack
+  rotate: false
+  xy: 80, 81
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_soldier/side/face/[base]damaged
+  rotate: false
+  xy: 149, 76
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_medic/side/face/[base]damaged
+  rotate: false
+  xy: 149, 76
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier/side/face/[base]doyagao
+  rotate: false
+  xy: 82, 93
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier/side/face/[base]idle
+  rotate: false
+  xy: 2, 84
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_medic/side/face/[base]idle
+  rotate: false
+  xy: 2, 84
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier/side/face/[base]mad
+  rotate: false
+  xy: 15, 107
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+cw_soldier/side/face/[base]smile
+  rotate: true
+  xy: 199, 93
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_soldier/side/face/[base]tired
+  rotate: false
+  xy: 231, 80
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_medic/side/face/[base]tired
+  rotate: false
+  xy: 231, 80
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_soldier/side/helmR
+  rotate: false
+  xy: 89, 200
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+cw_soldier_female/side/helmR
+  rotate: false
+  xy: 89, 200
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+cw_soldier/side/hornL
+  rotate: true
+  xy: 15, 75
+  size: 7, 11
+  orig: 56, 56
+  offset: 39, 30
+  index: -1
+cw_agent_female/side/hornL
+  rotate: true
+  xy: 15, 75
+  size: 7, 11
+  orig: 56, 56
+  offset: 39, 30
+  index: -1
+cw_agent_male/side/hornL
+  rotate: true
+  xy: 15, 75
+  size: 7, 11
+  orig: 56, 56
+  offset: 39, 30
+  index: -1
+cw_medic/side/hornL
+  rotate: true
+  xy: 15, 75
+  size: 7, 11
+  orig: 56, 56
+  offset: 39, 30
+  index: -1
+cw_soldier_female/side/hornL
+  rotate: true
+  xy: 15, 75
+  size: 7, 11
+  orig: 56, 56
+  offset: 39, 30
+  index: -1
+cw_soldier/side/shoulderL
+  rotate: false
+  xy: 174, 49
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+cw_soldier_super/side/shoulderL
+  rotate: false
+  xy: 174, 49
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+cw_soldier/side/shoulderR
+  rotate: false
+  xy: 134, 62
+  size: 7, 5
+  orig: 56, 56
+  offset: 23, 11
+  index: -1
+cw_soldier_female/back/[base]armL
+  rotate: true
+  xy: 231, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_female/back/[base]armR
+  rotate: true
+  xy: 231, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_female/back/[base]body
+  rotate: true
+  xy: 16, 84
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_soldier_female/back/[base]legL
+  rotate: false
+  xy: 2, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_female/back/[base]legL
+  rotate: false
+  xy: 2, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_female/back/[base]legR
+  rotate: false
+  xy: 2, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_female/back/[base]legR
+  rotate: false
+  xy: 2, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_female/back/shoulderL
+  rotate: false
+  xy: 114, 48
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_commander_female/front/shoulderL
+  rotate: false
+  xy: 114, 48
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_commander_female/front/shoulderR
+  rotate: false
+  xy: 114, 48
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_soldier_female/back/shoulderR
+  rotate: false
+  xy: 114, 48
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_soldier_female/front/shoulderL
+  rotate: false
+  xy: 114, 48
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_soldier_female/front/shoulderR
+  rotate: false
+  xy: 114, 48
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+cw_soldier_female/front/[base]armL
+  rotate: true
+  xy: 239, 49
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+cw_soldier_female/front/[base]body
+  rotate: true
+  xy: 66, 84
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+cw_soldier_female/front/[base]elbowL2
+  rotate: false
+  xy: 229, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_soldier_female/front/[base]elbowR2
+  rotate: false
+  xy: 229, 70
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+cw_soldier_female/front/[base]head
+  rotate: false
+  xy: 147, 178
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_agent_female/front/[base]head
+  rotate: false
+  xy: 147, 178
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_soldier_female/front/[base]legL
+  rotate: true
+  xy: 32, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_female/front/[base]legL
+  rotate: true
+  xy: 32, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_commander_female/front/[base]legR
+  rotate: true
+  xy: 32, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_female/front/[base]legR
+  rotate: true
+  xy: 32, 55
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+cw_soldier_female/front/face/[base]attack
+  rotate: false
+  xy: 49, 132
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_soldier_female/front/face/[base]damaged
+  rotate: false
+  xy: 111, 100
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_female/front/face/[base]doyagao
+  rotate: true
+  xy: 2, 128
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_soldier_female/front/face/[base]idle
+  rotate: false
+  xy: 148, 122
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_soldier_female/front/face/[base]mad
+  rotate: false
+  xy: 231, 126
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_soldier_female/front/face/[base]smile
+  rotate: false
+  xy: 66, 124
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_soldier_female/front/face/[base]tired
+  rotate: false
+  xy: 165, 122
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+cw_soldier_female/front/helm
+  rotate: false
+  xy: 126, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+cw_soldier_female/side/[base]armL
+  rotate: true
+  xy: 247, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_agent_female/side/[base]armL
+  rotate: true
+  xy: 247, 49
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+cw_soldier_female/side/[base]armR
+  rotate: true
+  xy: 31, 48
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+cw_soldier_female/side/[base]body
+  rotate: true
+  xy: 212, 91
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+cw_soldier_female/side/[base]elbowL
+  rotate: false
+  xy: 214, 61
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+cw_soldier_female/side/[base]elbowR
+  rotate: false
+  xy: 223, 61
+  size: 7, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+cw_soldier_female/side/[base]head
+  rotate: false
+  xy: 200, 158
+  size: 21, 20
+  orig: 56, 56
+  offset: 21, 15
+  index: -1
+cw_agent_female/side/[base]head
+  rotate: false
+  xy: 200, 158
+  size: 21, 20
+  orig: 56, 56
+  offset: 21, 15
+  index: -1
+cw_soldier_female/side/[base]legL
+  rotate: true
+  xy: 94, 55
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_commander_female/side/[base]legL
+  rotate: true
+  xy: 94, 55
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+cw_soldier_female/side/[base]legR
+  rotate: true
+  xy: 104, 55
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_commander_female/side/[base]legR
+  rotate: true
+  xy: 104, 55
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+cw_soldier_female/side/face/[base]attack
+  rotate: false
+  xy: 225, 91
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+cw_soldier_female/side/face/[base]damaged
+  rotate: false
+  xy: 161, 75
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier_female/side/face/[base]doyagao
+  rotate: false
+  xy: 195, 108
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_soldier_female/side/face/[base]idle
+  rotate: false
+  xy: 126, 99
+  size: 13, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_soldier_female/side/face/[base]mad
+  rotate: false
+  xy: 28, 107
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+cw_soldier_female/side/face/[base]smile
+  rotate: false
+  xy: 41, 107
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+cw_soldier_female/side/face/[base]tired
+  rotate: false
+  xy: 44, 78
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_soldier_female/side/shoulderL
+  rotate: false
+  xy: 90, 48
+  size: 6, 5
+  orig: 56, 56
+  offset: 34, 11
+  index: -1
+cw_soldier_female/side/shoulderR
+  rotate: false
+  xy: 98, 48
+  size: 6, 5
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+cw_commander_female/side/shoulderR
+  rotate: false
+  xy: 98, 48
+  size: 6, 5
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+cw_soldier_super/back/hornL
+  rotate: true
+  xy: 184, 147
+  size: 9, 19
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_commander_female/front/hornR
+  rotate: true
+  xy: 184, 147
+  size: 9, 19
+  orig: 55, 56
+  offset: 11, 28
+  index: -1
+cw_commander_male/front/hornR
+  rotate: true
+  xy: 184, 147
+  size: 9, 19
+  orig: 55, 56
+  offset: 11, 28
+  index: -1
+cw_soldier_super/front/hornR
+  rotate: true
+  xy: 184, 147
+  size: 9, 19
+  orig: 55, 56
+  offset: 10, 28
+  index: -1
+cw_soldier_super/back/hornR
+  rotate: true
+  xy: 205, 147
+  size: 9, 19
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_soldier_super/front/hornL
+  rotate: true
+  xy: 205, 147
+  size: 9, 19
+  orig: 55, 56
+  offset: 36, 28
+  index: -1
+cw_soldier_super/front/[base]head
+  rotate: false
+  xy: 228, 178
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+cw_soldier_super/front/face/[base]attack
+  rotate: false
+  xy: 97, 111
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+cw_soldier_super/front/face/[base]damaged
+  rotate: false
+  xy: 141, 98
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_commander_female/front/face/[base]damaged
+  rotate: false
+  xy: 141, 98
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_commander_male/front/face/[base]damaged
+  rotate: false
+  xy: 141, 98
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_super/front/face/[base]doyagao
+  rotate: false
+  xy: 112, 111
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_commander_male/front/face/[base]doyagao
+  rotate: false
+  xy: 112, 111
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_super/front/face/[base]idle
+  rotate: false
+  xy: 156, 98
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_commander_male/front/face/[base]idle
+  rotate: false
+  xy: 156, 98
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_super/front/face/[base]mad
+  rotate: false
+  xy: 226, 145
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+cw_soldier_super/front/face/[base]smile
+  rotate: false
+  xy: 127, 110
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_commander_male/front/face/[base]smile
+  rotate: false
+  xy: 127, 110
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_super/front/face/[base]tired
+  rotate: false
+  xy: 171, 97
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_commander_male/front/face/[base]tired
+  rotate: false
+  xy: 171, 97
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_super/front/helm
+  rotate: false
+  xy: 155, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+cw_soldier_super/front/shoulderL
+  rotate: false
+  xy: 106, 47
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_commander_male/front/shoulderL
+  rotate: false
+  xy: 106, 47
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_commander_male/front/shoulderR
+  rotate: false
+  xy: 106, 47
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier/front/shoulderL
+  rotate: false
+  xy: 106, 47
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier/front/shoulderR
+  rotate: false
+  xy: 106, 47
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier_super/front/shoulderR
+  rotate: false
+  xy: 106, 47
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+cw_soldier_super/side/[base]elbowR
+  rotate: false
+  xy: 240, 70
+  size: 9, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+cw_soldier_super/side/[base]head
+  rotate: false
+  xy: 51, 158
+  size: 21, 21
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+cw_soldier_super/side/face/[base]attack
+  rotate: false
+  xy: 193, 81
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_commander_male/side/face/[base]attack
+  rotate: false
+  xy: 193, 81
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_soldier_super/side/face/[base]damaged
+  rotate: false
+  xy: 173, 74
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_commander_male/side/face/[base]damaged
+  rotate: false
+  xy: 173, 74
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier_super/side/face/[base]doyagao
+  rotate: false
+  xy: 238, 91
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_commander_male/side/face/[base]doyagao
+  rotate: false
+  xy: 238, 91
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier_super/side/face/[base]idle
+  rotate: false
+  xy: 30, 83
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_commander_male/side/face/[base]idle
+  rotate: false
+  xy: 30, 83
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+cw_soldier_super/side/face/[base]mad
+  rotate: false
+  xy: 72, 107
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+cw_soldier_super/side/face/[base]smile
+  rotate: true
+  xy: 53, 89
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_commander_male/side/face/[base]smile
+  rotate: true
+  xy: 53, 89
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+cw_soldier_super/side/face/[base]tired
+  rotate: false
+  xy: 92, 78
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_commander_male/side/face/[base]tired
+  rotate: false
+  xy: 92, 78
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+cw_soldier_super/side/helmR
+  rotate: false
+  xy: 118, 200
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+cw_soldier_super/side/hornL
+  rotate: false
+  xy: 243, 138
+  size: 9, 18
+  orig: 56, 56
+  offset: 37, 30
+  index: -1
+cw_soldier_super/side/hornR
+  rotate: true
+  xy: 129, 148
+  size: 10, 19
+  orig: 56, 56
+  offset: 18, 29
+  index: -1
+cw_soldier_super/side/shoulderR
+  rotate: false
+  xy: 44, 62
+  size: 8, 5
+  orig: 56, 56
+  offset: 22, 11
+  index: -1
+cw_commander_male/side/shoulderR
+  rotate: false
+  xy: 44, 62
+  size: 8, 5
+  orig: 56, 56
+  offset: 22, 11
+  index: -1

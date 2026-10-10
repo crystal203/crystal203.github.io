@@ -1,0 +1,230 @@
+
+exp_snowmountain_ogre.earth__page0.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 1, 54
+  size: 33, 28
+  orig: 33, 28
+  offset: 0, 0
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 100, 90
+  size: 23, 27
+  orig: 23, 27
+  offset: 0, 0
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 64, 114
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 39, 96
+  size: 24, 29
+  orig: 24, 29
+  offset: 0, 0
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 91, 36
+  size: 25, 22
+  orig: 25, 22
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 1, 104
+  size: 37, 21
+  orig: 37, 21
+  offset: 0, 0
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 109, 14
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 109, 14
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 1, 24
+  size: 29, 30
+  orig: 29, 30
+  offset: 0, 0
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 61, 39
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 72, 167
+  size: 57, 53
+  orig: 57, 53
+  offset: 0, 0
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 39, 66
+  size: 24, 29
+  orig: 24, 29
+  offset: 0, 0
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 1, 1
+  size: 22, 23
+  orig: 22, 23
+  offset: 0, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 64, 60
+  size: 35, 23
+  orig: 35, 23
+  offset: 0, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 87, 17
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 87, 17
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 126, 223
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 126, 223
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 126, 223
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 126, 223
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 126, 223
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 126, 223
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 64, 84
+  size: 29, 35
+  orig: 29, 35
+  offset: 0, 0
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 35, 32
+  size: 25, 33
+  orig: 25, 33
+  offset: 0, 0
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 1, 126
+  size: 62, 46
+  orig: 62, 46
+  offset: 0, 0
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 100, 59
+  size: 26, 30
+  orig: 26, 30
+  offset: 0, 0
+  index: -1
+side/[base]handL
+  rotate: true
+  xy: 117, 40
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 1, 83
+  size: 37, 20
+  orig: 37, 20
+  offset: 0, 0
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 61, 20
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 32, 14
+  size: 25, 17
+  orig: 25, 17
+  offset: 0, 0
+  index: -1
+weapon1
+  rotate: false
+  xy: 1, 199
+  size: 70, 25
+  orig: 70, 25
+  offset: 0, 0
+  index: -1
+weapon2
+  rotate: false
+  xy: 1, 173
+  size: 68, 25
+  orig: 68, 25
+  offset: 0, 0
+  index: -1

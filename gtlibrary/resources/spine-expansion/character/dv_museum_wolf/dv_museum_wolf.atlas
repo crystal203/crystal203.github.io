@@ -1,0 +1,209 @@
+
+dv_museum_wolf__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FX_glow
+  rotate: false
+  xy: 119, 10
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+fx_trail
+  rotate: false
+  xy: 1, 156
+  size: 140, 64
+  orig: 140, 64
+  offset: 0, 0
+  index: -1
+side/arm_F
+  rotate: true
+  xy: 223, 93
+  size: 36, 31
+  orig: 42, 34
+  offset: 6, 0
+  index: -1
+side/body
+  rotate: false
+  xy: 142, 161
+  size: 80, 59
+  orig: 80, 59
+  offset: 0, 0
+  index: -1
+side/claw_B1
+  rotate: false
+  xy: 57, 33
+  size: 10, 10
+  orig: 46, 30
+  offset: 25, 7
+  index: -1
+side/claw_B2
+  rotate: false
+  xy: 57, 44
+  size: 11, 10
+  orig: 46, 30
+  offset: 30, 7
+  index: -1
+side/claw_B3
+  rotate: false
+  xy: 119, 88
+  size: 9, 9
+  orig: 46, 30
+  offset: 34, 7
+  index: -1
+side/claw_F1
+  rotate: true
+  xy: 123, 110
+  size: 12, 13
+  orig: 46, 30
+  offset: 17, 3
+  index: -1
+side/claw_F2
+  rotate: true
+  xy: 123, 98
+  size: 11, 14
+  orig: 46, 30
+  offset: 26, 4
+  index: -1
+side/claw_F3
+  rotate: true
+  xy: 57, 55
+  size: 10, 12
+  orig: 46, 30
+  offset: 32, 5
+  index: -1
+side/elbow_B
+  rotate: false
+  xy: 223, 130
+  size: 31, 41
+  orig: 36, 52
+  offset: 1, 8
+  index: -1
+side/elbow_F
+  rotate: false
+  xy: 223, 172
+  size: 31, 48
+  orig: 36, 52
+  offset: 1, 3
+  index: -1
+side/foot_B
+  rotate: true
+  xy: 208, 83
+  size: 21, 12
+  orig: 28, 16
+  offset: 3, 2
+  index: -1
+side/foot_F
+  rotate: true
+  xy: 208, 105
+  size: 23, 12
+  orig: 28, 16
+  offset: 2, 2
+  index: -1
+side/hand_B
+  rotate: false
+  xy: 1, 65
+  size: 35, 17
+  orig: 46, 30
+  offset: 2, 8
+  index: -1
+side/hand_F
+  rotate: false
+  xy: 1, 83
+  size: 34, 16
+  orig: 46, 30
+  offset: 4, 6
+  index: -1
+side/head
+  rotate: false
+  xy: 1, 103
+  size: 60, 52
+  orig: 84, 68
+  offset: 9, 5
+  index: -1
+side/head2
+  rotate: false
+  xy: 62, 104
+  size: 60, 51
+  orig: 84, 68
+  offset: 9, 6
+  index: -1
+side/head3
+  rotate: true
+  xy: 142, 100
+  size: 60, 65
+  orig: 84, 100
+  offset: 9, 12
+  index: -1
+side/head_damaged
+  rotate: true
+  xy: 73, 43
+  size: 60, 45
+  orig: 84, 68
+  offset: 9, 7
+  index: -1
+side/leg2_B
+  rotate: false
+  xy: 208, 129
+  size: 14, 31
+  orig: 20, 36
+  offset: 4, 3
+  index: -1
+side/leg2_F
+  rotate: false
+  xy: 123, 123
+  size: 16, 32
+  orig: 20, 36
+  offset: 2, 2
+  index: -1
+side/leg_B
+  rotate: false
+  xy: 189, 52
+  size: 30, 30
+  orig: 38, 36
+  offset: 5, 2
+  index: -1
+side/leg_F
+  rotate: true
+  xy: 221, 61
+  size: 31, 33
+  orig: 38, 36
+  offset: 4, 1
+  index: -1
+side/neck
+  rotate: false
+  xy: 1, 1
+  size: 55, 59
+  orig: 70, 68
+  offset: 10, 7
+  index: -1
+side/neck_B
+  rotate: false
+  xy: 138, 51
+  size: 50, 48
+  orig: 68, 68
+  offset: 11, 6
+  index: -1
+side/tail
+  rotate: false
+  xy: 36, 84
+  size: 36, 15
+  orig: 46, 50
+  offset: 9, 1
+  index: -1
+side/tail2
+  rotate: false
+  xy: 37, 66
+  size: 31, 17
+  orig: 46, 50
+  offset: 4, 8
+  index: -1
+side/tail3
+  rotate: false
+  xy: 220, 23
+  size: 23, 37
+  orig: 46, 50
+  offset: 7, 12
+  index: -1

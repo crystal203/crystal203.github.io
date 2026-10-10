@@ -1,0 +1,153 @@
+
+pw_chick__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 44, 23
+  size: 36, 39
+  orig: 55, 56
+  offset: 10, 1
+  index: -1
+back/hair
+  rotate: true
+  xy: 120, 51
+  size: 11, 6
+  orig: 55, 56
+  offset: 23, 39
+  index: -1
+front/hair
+  rotate: true
+  xy: 120, 51
+  size: 11, 6
+  orig: 55, 56
+  offset: 23, 39
+  index: -1
+back/legL
+  rotate: false
+  xy: 102, 2
+  size: 7, 4
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+front/legR
+  rotate: false
+  xy: 102, 2
+  size: 7, 4
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+back/legR
+  rotate: true
+  xy: 120, 29
+  size: 7, 4
+  orig: 55, 56
+  offset: 35, 0
+  index: -1
+front/legL
+  rotate: true
+  xy: 120, 29
+  size: 7, 4
+  orig: 55, 56
+  offset: 35, 0
+  index: -1
+back/wingL
+  rotate: false
+  xy: 92, 8
+  size: 10, 13
+  orig: 55, 56
+  offset: 5, 11
+  index: -1
+front/wingL
+  rotate: false
+  xy: 92, 8
+  size: 10, 13
+  orig: 55, 56
+  offset: 5, 11
+  index: -1
+back/wingR
+  rotate: false
+  xy: 104, 8
+  size: 10, 13
+  orig: 55, 56
+  offset: 41, 11
+  index: -1
+front/wingR
+  rotate: false
+  xy: 104, 8
+  size: 10, 13
+  orig: 55, 56
+  offset: 41, 11
+  index: -1
+front/body
+  rotate: false
+  xy: 82, 23
+  size: 36, 39
+  orig: 55, 56
+  offset: 10, 1
+  index: -1
+front/face/angry
+  rotate: true
+  xy: 23, 3
+  size: 18, 20
+  orig: 55, 56
+  offset: 19, 15
+  index: -1
+front/face/idle
+  rotate: false
+  xy: 45, 5
+  size: 22, 16
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+side/body
+  rotate: false
+  xy: 2, 23
+  size: 40, 39
+  orig: 56, 56
+  offset: 10, 1
+  index: -1
+side/face/angry
+  rotate: false
+  xy: 2, 2
+  size: 19, 19
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+side/face/idle
+  rotate: false
+  xy: 69, 7
+  size: 21, 14
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/hair
+  rotate: true
+  xy: 120, 38
+  size: 11, 6
+  orig: 56, 56
+  offset: 26, 39
+  index: -1
+side/legL
+  rotate: false
+  xy: 92, 2
+  size: 8, 4
+  orig: 56, 56
+  offset: 35, 0
+  index: -1
+side/legR
+  rotate: false
+  xy: 116, 4
+  size: 9, 4
+  orig: 56, 56
+  offset: 21, 0
+  index: -1
+side/wingR
+  rotate: true
+  xy: 116, 10
+  size: 11, 10
+  orig: 56, 56
+  offset: 14, 11
+  index: -1

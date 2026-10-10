@@ -1,0 +1,132 @@
+
+exp_snowmountain_yeti_main_front__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: false
+  xy: 1, 1
+  size: 36, 25
+  orig: 55, 56
+  offset: 10, 0
+  index: -1
+front/bottomhair
+  rotate: true
+  xy: 30, 31
+  size: 32, 24
+  orig: 55, 56
+  offset: 12, 1
+  index: -1
+front/downbody
+  rotate: true
+  xy: 1, 27
+  size: 36, 28
+  orig: 55, 56
+  offset: 10, 0
+  index: -1
+front/downbodyL
+  rotate: false
+  xy: 97, 43
+  size: 18, 20
+  orig: 55, 56
+  offset: 26, 2
+  index: -1
+front/downbodyR
+  rotate: false
+  xy: 86, 17
+  size: 20, 21
+  orig: 55, 56
+  offset: 12, 1
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 30, 29
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/hornR
+  rotate: false
+  xy: 107, 21
+  size: 13, 21
+  orig: 55, 56
+  offset: 8, 24
+  index: -1
+front/tongue
+  rotate: true
+  xy: 55, 33
+  size: 30, 19
+  orig: 55, 56
+  offset: 13, 3
+  index: -1
+front/tophairF
+  rotate: false
+  xy: 38, 6
+  size: 24, 24
+  orig: 55, 56
+  offset: 16, 11
+  index: -1
+front/tophairL
+  rotate: false
+  xy: 63, 8
+  size: 22, 24
+  orig: 55, 56
+  offset: 27, 12
+  index: -1
+front/tophairR
+  rotate: false
+  xy: 75, 39
+  size: 21, 24
+  orig: 55, 56
+  offset: 7, 12
+  index: -1
+front/upbody
+  rotate: false
+  xy: 86, 3
+  size: 30, 13
+  orig: 55, 56
+  offset: 13, 12
+  index: -1

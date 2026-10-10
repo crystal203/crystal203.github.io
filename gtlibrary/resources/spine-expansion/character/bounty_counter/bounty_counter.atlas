@@ -1,0 +1,160 @@
+
+bounty_counter__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+counter
+  rotate: false
+  xy: 2, 5
+  size: 61, 40
+  orig: 61, 40
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 94, 20
+  size: 5, 6
+  orig: 104, 104
+  offset: 58, 32
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 95, 53
+  size: 5, 6
+  orig: 104, 104
+  offset: 50, 32
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 82, 58
+  size: 10, 11
+  orig: 104, 104
+  offset: 52, 29
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 94, 93
+  size: 7, 8
+  orig: 104, 104
+  offset: 59, 27
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 94, 61
+  size: 7, 8
+  orig: 104, 104
+  offset: 47, 27
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 65, 13
+  size: 32, 27
+  orig: 104, 104
+  offset: 39, 37
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 94, 38
+  size: 4, 8
+  orig: 104, 104
+  offset: 57, 24
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 94, 28
+  size: 4, 8
+  orig: 104, 104
+  offset: 52, 24
+  index: -1
+side/board
+  rotate: false
+  xy: 2, 47
+  size: 62, 79
+  orig: 104, 104
+  offset: 20, 24
+  index: -1
+side/bounty1
+  rotate: false
+  xy: 66, 88
+  size: 14, 18
+  orig: 104, 104
+  offset: 33, 77
+  index: -1
+side/bounty2
+  rotate: false
+  xy: 66, 108
+  size: 15, 18
+  orig: 104, 104
+  offset: 55, 77
+  index: -1
+side/bounty3
+  rotate: false
+  xy: 66, 68
+  size: 14, 18
+  orig: 104, 104
+  offset: 34, 58
+  index: -1
+side/bounty4
+  rotate: false
+  xy: 66, 48
+  size: 14, 18
+  orig: 104, 104
+  offset: 59, 58
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 83, 116
+  size: 11, 10
+  orig: 104, 104
+  offset: 53, 39
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 82, 48
+  size: 11, 8
+  orig: 104, 104
+  offset: 53, 40
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 65, 2
+  size: 11, 9
+  orig: 104, 104
+  offset: 53, 39
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 91, 3
+  size: 11, 8
+  orig: 104, 104
+  offset: 53, 40
+  index: -1
+side/face/[base]mad
+  rotate: true
+  xy: 94, 103
+  size: 11, 8
+  orig: 104, 104
+  offset: 53, 40
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 78, 2
+  size: 11, 9
+  orig: 104, 104
+  offset: 53, 39
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 82, 87
+  size: 19, 10
+  orig: 104, 104
+  offset: 48, 40
+  index: -1
+side/x_mark
+  rotate: false
+  xy: 82, 71
+  size: 13, 14
+  orig: 104, 104
+  offset: 56, 80
+  index: -1

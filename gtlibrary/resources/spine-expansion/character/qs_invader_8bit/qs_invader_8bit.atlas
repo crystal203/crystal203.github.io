@@ -1,0 +1,139 @@
+
+qs_invader_8bit__page0.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back_idle_1
+  rotate: false
+  xy: 2, 102
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_run_2
+  rotate: false
+  xy: 2, 102
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_idle_2
+  rotate: false
+  xy: 2, 23
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_run_1
+  rotate: false
+  xy: 2, 4
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_run_3
+  rotate: true
+  xy: 22, 102
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_dead_1
+  rotate: true
+  xy: 22, 22
+  size: 18, 16
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_dead_2
+  rotate: true
+  xy: 22, 2
+  size: 18, 15
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_idle_1
+  rotate: false
+  xy: 2, 82
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_run_2
+  rotate: false
+  xy: 2, 82
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_idle_2
+  rotate: true
+  xy: 22, 82
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_run_1
+  rotate: true
+  xy: 22, 62
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_run_3
+  rotate: true
+  xy: 22, 42
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_victory_1
+  rotate: false
+  xy: 2, 62
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_victory_2
+  rotate: false
+  xy: 2, 42
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+side/side_idle_1
+  rotate: false
+  xy: 41, 102
+  size: 12, 18
+  orig: 24, 24
+  offset: 6, 0
+  index: -1
+side/side_run_2
+  rotate: false
+  xy: 41, 102
+  size: 12, 18
+  orig: 24, 24
+  offset: 6, 0
+  index: -1
+side/side_idle_2
+  rotate: false
+  xy: 41, 83
+  size: 12, 17
+  orig: 24, 24
+  offset: 6, 0
+  index: -1
+side/side_run_1
+  rotate: false
+  xy: 39, 3
+  size: 14, 17
+  orig: 24, 24
+  offset: 6, 0
+  index: -1
+side/side_run_3
+  rotate: false
+  xy: 40, 23
+  size: 14, 17
+  orig: 24, 24
+  offset: 6, 0
+  index: -1

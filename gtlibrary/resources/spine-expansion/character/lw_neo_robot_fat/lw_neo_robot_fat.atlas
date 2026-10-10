@@ -1,0 +1,188 @@
+
+lw_neo_robot_fat__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 167, 33
+  size: 33, 33
+  orig: 38, 42
+  offset: 2, 1
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 203, 69
+  size: 26, 31
+  orig: 32, 42
+  offset: 2, 11
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 2, 8
+  size: 58, 49
+  orig: 67, 58
+  offset: 4, 3
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 202, 39
+  size: 27, 30
+  orig: 36, 48
+  offset: 4, 11
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 231, 86
+  size: 23, 20
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 133, 2
+  size: 34, 27
+  orig: 53, 32
+  offset: 10, 4
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 225, 5
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 225, 5
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 135, 68
+  size: 28, 33
+  orig: 30, 40
+  offset: 1, 4
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 140, 102
+  size: 24, 36
+  orig: 34, 44
+  offset: 5, 7
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 2, 68
+  size: 58, 53
+  orig: 67, 58
+  offset: 5, 1
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 170, 68
+  size: 32, 31
+  orig: 38, 42
+  offset: 1, 9
+  index: -1
+front/[base]handL
+  rotate: false
+  xy: 234, 24
+  size: 20, 19
+  orig: 24, 24
+  offset: 2, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 178, 102
+  size: 34, 24
+  orig: 55, 32
+  offset: 11, 7
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 202, 19
+  size: 21, 18
+  orig: 26, 20
+  offset: 2, 1
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 202, 19
+  size: 21, 18
+  orig: 26, 20
+  offset: 2, 1
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 133, 31
+  size: 32, 35
+  orig: 40, 50
+  offset: 7, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 99, 27
+  size: 32, 39
+  orig: 46, 50
+  offset: 5, 11
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 53, 6
+  size: 60, 44
+  orig: 68, 46
+  offset: 2, 0
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 169, 2
+  size: 31, 29
+  orig: 40, 36
+  offset: 3, 7
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 231, 72
+  size: 21, 12
+  orig: 44, 30
+  offset: 12, 17
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 99, 3
+  size: 32, 22
+  orig: 50, 28
+  offset: 7, 2
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 214, 108
+  size: 27, 18
+  orig: 38, 32
+  offset: 10, 8
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 234, 45
+  size: 25, 18
+  orig: 36, 32
+  offset: 4, 8
+  index: -1
+weapon1
+  rotate: false
+  xy: 57, 68
+  size: 76, 28
+  orig: 84, 40
+  offset: 4, 6
+  index: -1
+weapon2
+  rotate: false
+  xy: 57, 98
+  size: 81, 28
+  orig: 84, 40
+  offset: 1, 6
+  index: -1

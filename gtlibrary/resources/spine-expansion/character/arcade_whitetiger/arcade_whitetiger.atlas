@@ -1,0 +1,41 @@
+
+arcade_whitetiger__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/damaged
+  rotate: false
+  xy: 45, 2
+  size: 39, 29
+  orig: 45, 36
+  offset: 1, 2
+  index: -1
+side/idle_1
+  rotate: true
+  xy: 91, 22
+  size: 41, 29
+  orig: 45, 36
+  offset: 3, 2
+  index: -1
+side/idle_2
+  rotate: false
+  xy: 2, 4
+  size: 41, 28
+  orig: 45, 36
+  offset: 3, 2
+  index: -1
+side/run_1
+  rotate: false
+  xy: 2, 34
+  size: 45, 29
+  orig: 45, 36
+  offset: 0, 7
+  index: -1
+side/run_2
+  rotate: false
+  xy: 49, 33
+  size: 40, 30
+  orig: 45, 36
+  offset: 4, 0
+  index: -1

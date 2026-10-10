@@ -1,0 +1,363 @@
+
+witch_coco_pharaoh_hound__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 57, 3
+  size: 9, 14
+  orig: 65, 66
+  offset: 21, 17
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 73, 3
+  size: 9, 14
+  orig: 65, 66
+  offset: 35, 17
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 89, 48
+  size: 21, 20
+  orig: 65, 66
+  offset: 22, 20
+  index: -1
+back/[base]ear1
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/[base]ear2
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/[base]ear1
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/[base]ear2
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/blush
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/scared
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]ear1
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]ear2
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/bite
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/blush
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/scared
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/victory
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/tie
+  rotate: false
+  xy: 124, 68
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 38
+  size: 19, 31
+  orig: 65, 66
+  offset: 23, 22
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 37, 13
+  size: 9, 18
+  orig: 65, 66
+  offset: 21, 4
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 37, 13
+  size: 9, 18
+  orig: 65, 66
+  offset: 21, 4
+  index: -1
+back/[base]pelvis
+  rotate: false
+  xy: 87, 14
+  size: 15, 13
+  orig: 65, 66
+  offset: 25, 14
+  index: -1
+back/[base]tail
+  rotate: false
+  xy: 111, 47
+  size: 11, 22
+  orig: 65, 66
+  offset: 29, 1
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 89, 4
+  size: 8, 15
+  orig: 55, 58
+  offset: 16, 0
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 67, 44
+  size: 25, 20
+  orig: 55, 58
+  offset: 15, 11
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 23, 38
+  size: 19, 31
+  orig: 55, 58
+  offset: 18, 5
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 2, 12
+  size: 9, 18
+  orig: 55, 58
+  offset: 19, 17
+  index: -1
+front/[base]pelvis
+  rotate: true
+  xy: 89, 29
+  size: 17, 20
+  orig: 55, 58
+  offset: 19, 18
+  index: -1
+front/[base]tail
+  rotate: false
+  xy: 111, 26
+  size: 12, 19
+  orig: 55, 58
+  offset: 24, 33
+  index: -1
+side/[base]armB
+  rotate: true
+  xy: 104, 14
+  size: 10, 17
+  orig: 56, 56
+  offset: 30, 0
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 106, 5
+  size: 7, 15
+  orig: 56, 56
+  offset: 24, 2
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 44, 24
+  size: 20, 17
+  orig: 56, 56
+  offset: 22, 9
+  index: -1
+side/[base]handR
+  rotate: false
+  xy: 34, 5
+  size: 8, 6
+  orig: 56, 56
+  offset: 25, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 44, 43
+  size: 21, 26
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+side/[base]legB
+  rotate: false
+  xy: 24, 18
+  size: 11, 18
+  orig: 56, 56
+  offset: 20, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 66, 14
+  size: 11, 17
+  orig: 56, 56
+  offset: 11, 0
+  index: -1
+side/[base]legR2
+  rotate: false
+  xy: 22, 2
+  size: 10, 14
+  orig: 56, 56
+  offset: 11, 3
+  index: -1
+side/[base]pelvis
+  rotate: false
+  xy: 2, 23
+  size: 20, 13
+  orig: 56, 56
+  offset: 10, 9
+  index: -1
+side/[base]tail
+  rotate: true
+  xy: 67, 27
+  size: 15, 18
+  orig: 56, 56
+  offset: 1, 15
+  index: -1

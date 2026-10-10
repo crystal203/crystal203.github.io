@@ -1,0 +1,48 @@
+
+ww_fish_small_medaka__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fish_small_medaka/body
+  rotate: false
+  xy: 2, 6
+  size: 18, 10
+  orig: 40, 20
+  offset: 9, 5
+  index: -1
+fish_small_medaka/fin3
+  rotate: false
+  xy: 49, 9
+  size: 7, 7
+  orig: 40, 20
+  offset: 21, 10
+  index: -1
+fish_small_medaka/fin4
+  rotate: true
+  xy: 33, 7
+  size: 9, 6
+  orig: 40, 20
+  offset: 18, 3
+  index: -1
+fish_small_medaka/head
+  rotate: false
+  xy: 22, 6
+  size: 9, 10
+  orig: 40, 20
+  offset: 7, 5
+  index: -1
+fish_small_medaka/tail
+  rotate: false
+  xy: 49, 2
+  size: 7, 5
+  orig: 40, 20
+  offset: 22, 8
+  index: -1
+fish_small_medaka/tail2
+  rotate: false
+  xy: 41, 7
+  size: 6, 9
+  orig: 40, 20
+  offset: 28, 6
+  index: -1

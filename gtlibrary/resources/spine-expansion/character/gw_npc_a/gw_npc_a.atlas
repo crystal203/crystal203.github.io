@@ -1,0 +1,2666 @@
+
+gw_npc_a__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+qs_invader_agent/back/[base]armL
+  rotate: true
+  xy: 27, 206
+  size: 6, 8
+  orig: 55, 56
+  offset: 18, 7
+  index: -1
+qs_invader_agent/back/[base]armR
+  rotate: true
+  xy: 27, 206
+  size: 6, 8
+  orig: 55, 56
+  offset: 18, 7
+  index: -1
+qs_invader_agent/back/[base]body
+  rotate: true
+  xy: 110, 163
+  size: 11, 15
+  orig: 55, 56
+  offset: 22, 1
+  index: -1
+qs_invader_agent/back/[base]elbowL
+  rotate: false
+  xy: 73, 204
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_agent/back/[base]elbowR
+  rotate: false
+  xy: 73, 204
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_agent/back/[base]head
+  rotate: false
+  xy: 210, 103
+  size: 33, 25
+  orig: 55, 56
+  offset: 11, 13
+  index: -1
+qs_invader_agent/back/[base]legL
+  rotate: true
+  xy: 118, 218
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_agent/back/[base]legR
+  rotate: true
+  xy: 118, 218
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_agent/front/[base]armL
+  rotate: true
+  xy: 100, 203
+  size: 6, 8
+  orig: 55, 56
+  offset: 18, 7
+  index: -1
+qs_invader_agent/front/[base]armR
+  rotate: true
+  xy: 100, 203
+  size: 6, 8
+  orig: 55, 56
+  offset: 18, 7
+  index: -1
+qs_invader_agent/front/[base]armL2
+  rotate: true
+  xy: 157, 202
+  size: 6, 8
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_agent/front/[base]armR2
+  rotate: true
+  xy: 157, 202
+  size: 6, 8
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_agent/front/[base]body
+  rotate: true
+  xy: 2, 157
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+qs_invader_agent/front/[base]elbowL
+  rotate: false
+  xy: 220, 202
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_agent/front/[base]elbowR
+  rotate: false
+  xy: 220, 202
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_agent/front/[base]elbowL2
+  rotate: true
+  xy: 129, 186
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+qs_invader_agent/front/[base]elbowR2
+  rotate: true
+  xy: 129, 186
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+qs_invader_agent/front/[base]head
+  rotate: false
+  xy: 2, 75
+  size: 33, 30
+  orig: 55, 56
+  offset: 11, 9
+  index: -1
+qs_invader_agent/front/[base]legL
+  rotate: true
+  xy: 157, 218
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_agent/front/[base]legR
+  rotate: true
+  xy: 157, 218
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_agent/front/face/[base]attack
+  rotate: false
+  xy: 177, 217
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/front/face/[base]mad
+  rotate: false
+  xy: 177, 217
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/front/face/[base]damaged
+  rotate: false
+  xy: 211, 217
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/front/face/[base]doyagao
+  rotate: false
+  xy: 2, 214
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/front/face/[base]idle
+  rotate: false
+  xy: 19, 214
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/front/face/[base]smile
+  rotate: false
+  xy: 49, 213
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/front/face/[base]tired
+  rotate: false
+  xy: 102, 211
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_agent/side/[base]armL
+  rotate: false
+  xy: 65, 197
+  size: 6, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+qs_invader_agent/side/[base]armR
+  rotate: true
+  xy: 2, 182
+  size: 7, 8
+  orig: 56, 56
+  offset: 25, 7
+  index: -1
+qs_invader_agent/side/[base]body
+  rotate: true
+  xy: 63, 167
+  size: 10, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+qs_invader_agent/side/[base]elbowL
+  rotate: true
+  xy: 99, 195
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_agent/side/[base]elbowR
+  rotate: true
+  xy: 172, 194
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_agent/side/[base]head
+  rotate: false
+  xy: 105, 93
+  size: 31, 28
+  orig: 56, 56
+  offset: 16, 10
+  index: -1
+qs_invader_agent/side/[base]legL
+  rotate: true
+  xy: 163, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_agent/side/[base]legR
+  rotate: true
+  xy: 208, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+qs_invader_agent/side/face/[base]attack
+  rotate: false
+  xy: 190, 224
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_agent/side/face/[base]mad
+  rotate: false
+  xy: 190, 224
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_agent/side/face/[base]damaged
+  rotate: false
+  xy: 206, 224
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_agent/side/face/[base]doyagao
+  rotate: false
+  xy: 2, 221
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_agent/side/face/[base]idle
+  rotate: false
+  xy: 50, 220
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_agent/side/face/[base]smile
+  rotate: false
+  xy: 66, 220
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_agent/side/face/[base]tired
+  rotate: false
+  xy: 92, 219
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_assassin/back/[base]armL
+  rotate: true
+  xy: 18, 206
+  size: 6, 7
+  orig: 55, 60
+  offset: 18, 9
+  index: -1
+qs_invader_assassin/back/[base]armR
+  rotate: true
+  xy: 18, 206
+  size: 6, 7
+  orig: 55, 60
+  offset: 18, 9
+  index: -1
+qs_invader_assassin/back/[base]body
+  rotate: true
+  xy: 95, 163
+  size: 11, 13
+  orig: 55, 60
+  offset: 22, 5
+  index: -1
+qs_invader_assassin/back/[base]elbowL
+  rotate: false
+  xy: 65, 205
+  size: 6, 6
+  orig: 55, 60
+  offset: 16, 6
+  index: -1
+qs_invader_assassin/back/[base]elbowR
+  rotate: false
+  xy: 65, 205
+  size: 6, 6
+  orig: 55, 60
+  offset: 16, 6
+  index: -1
+qs_invader_assassin/back/[base]head
+  rotate: false
+  xy: 144, 118
+  size: 33, 24
+  orig: 55, 60
+  offset: 11, 15
+  index: -1
+qs_invader_assassin/back/[base]legL
+  rotate: true
+  xy: 108, 218
+  size: 5, 8
+  orig: 55, 60
+  offset: 22, 2
+  index: -1
+qs_invader_assassin/back/[base]legR
+  rotate: true
+  xy: 108, 218
+  size: 5, 8
+  orig: 55, 60
+  offset: 22, 2
+  index: -1
+qs_invader_assassin/back/coatB
+  rotate: false
+  xy: 99, 186
+  size: 17, 7
+  orig: 55, 60
+  offset: 19, 0
+  index: -1
+qs_invader_assassin/front/[base]armL
+  rotate: true
+  xy: 243, 204
+  size: 6, 7
+  orig: 55, 60
+  offset: 18, 9
+  index: -1
+qs_invader_assassin/front/[base]armR
+  rotate: true
+  xy: 243, 204
+  size: 6, 7
+  orig: 55, 60
+  offset: 18, 9
+  index: -1
+qs_invader_assassin/front/[base]armL2
+  rotate: true
+  xy: 138, 203
+  size: 6, 7
+  orig: 55, 60
+  offset: 31, 9
+  index: -1
+qs_invader_assassin/front/[base]armR2
+  rotate: true
+  xy: 138, 203
+  size: 6, 7
+  orig: 55, 60
+  offset: 31, 9
+  index: -1
+qs_invader_assassin/front/[base]body
+  rotate: true
+  xy: 189, 161
+  size: 11, 13
+  orig: 55, 60
+  offset: 22, 5
+  index: -1
+qs_invader_assassin/front/[base]elbowL
+  rotate: false
+  xy: 212, 202
+  size: 6, 6
+  orig: 55, 60
+  offset: 16, 6
+  index: -1
+qs_invader_assassin/front/[base]elbowR
+  rotate: false
+  xy: 212, 202
+  size: 6, 6
+  orig: 55, 60
+  offset: 16, 6
+  index: -1
+qs_invader_assassin/front/[base]elbowL2
+  rotate: true
+  xy: 28, 198
+  size: 6, 8
+  orig: 55, 60
+  offset: 34, 5
+  index: -1
+qs_invader_assassin/front/[base]elbowR2
+  rotate: true
+  xy: 28, 198
+  size: 6, 8
+  orig: 55, 60
+  offset: 34, 5
+  index: -1
+qs_invader_assassin/front/[base]head
+  rotate: false
+  xy: 2, 107
+  size: 33, 24
+  orig: 55, 60
+  offset: 11, 15
+  index: -1
+qs_invader_assassin/front/[base]legL
+  rotate: true
+  xy: 147, 218
+  size: 5, 8
+  orig: 55, 60
+  offset: 22, 2
+  index: -1
+qs_invader_assassin/front/[base]legR
+  rotate: true
+  xy: 147, 218
+  size: 5, 8
+  orig: 55, 60
+  offset: 22, 2
+  index: -1
+qs_invader_assassin/front/coatB
+  rotate: false
+  xy: 36, 214
+  size: 11, 5
+  orig: 55, 60
+  offset: 22, 3
+  index: -1
+qs_invader_assassin/front/coatL
+  rotate: false
+  xy: 176, 185
+  size: 10, 7
+  orig: 55, 60
+  offset: 28, 1
+  index: -1
+qs_invader_assassin/front/coatR
+  rotate: false
+  xy: 188, 185
+  size: 10, 7
+  orig: 55, 60
+  offset: 17, 1
+  index: -1
+qs_invader_assassin/front/face/[base]attack
+  rotate: false
+  xy: 62, 231
+  size: 9, 2
+  orig: 55, 56
+  offset: 23, 19
+  index: -1
+qs_invader_assassin/side/face/[base]attack
+  rotate: false
+  xy: 62, 231
+  size: 9, 2
+  orig: 56, 56
+  offset: 33, 20
+  index: -1
+qs_invader_assassin/front/face/[base]damaged
+  rotate: false
+  xy: 191, 230
+  size: 9, 3
+  orig: 55, 56
+  offset: 23, 18
+  index: -1
+qs_invader_assassin/front/face/[base]doyagao
+  rotate: false
+  xy: 10, 232
+  size: 9, 1
+  orig: 55, 56
+  offset: 23, 20
+  index: -1
+qs_invader_assassin/front/face/[base]idle
+  rotate: false
+  xy: 21, 232
+  size: 9, 1
+  orig: 55, 56
+  offset: 23, 20
+  index: -1
+qs_invader_assassin/front/face/[base]mad
+  rotate: false
+  xy: 202, 230
+  size: 11, 3
+  orig: 55, 56
+  offset: 22, 19
+  index: -1
+qs_invader_assassin/front/face/[base]smile
+  rotate: false
+  xy: 100, 231
+  size: 11, 2
+  orig: 55, 56
+  offset: 22, 20
+  index: -1
+qs_invader_assassin/front/face/[base]tired
+  rotate: false
+  xy: 120, 231
+  size: 11, 2
+  orig: 55, 56
+  offset: 22, 19
+  index: -1
+qs_invader_assassin/side/[base]armL
+  rotate: false
+  xy: 10, 199
+  size: 6, 6
+  orig: 56, 60
+  offset: 34, 10
+  index: -1
+qs_invader_assassin/side/[base]armR
+  rotate: true
+  xy: 211, 184
+  size: 7, 8
+  orig: 56, 60
+  offset: 25, 9
+  index: -1
+qs_invader_assassin/side/[base]body
+  rotate: true
+  xy: 49, 167
+  size: 10, 12
+  orig: 56, 60
+  offset: 28, 6
+  index: -1
+qs_invader_assassin/side/[base]elbowL
+  rotate: true
+  xy: 33, 180
+  size: 7, 8
+  orig: 56, 60
+  offset: 35, 5
+  index: -1
+qs_invader_assassin/side/[base]elbowR
+  rotate: true
+  xy: 154, 194
+  size: 6, 7
+  orig: 56, 60
+  offset: 24, 5
+  index: -1
+qs_invader_assassin/side/[base]head
+  rotate: false
+  xy: 84, 125
+  size: 31, 21
+  orig: 56, 60
+  offset: 16, 16
+  index: -1
+qs_invader_assassin/side/[base]legL
+  rotate: true
+  xy: 145, 211
+  size: 5, 7
+  orig: 56, 60
+  offset: 33, 2
+  index: -1
+qs_invader_assassin/side/[base]legR
+  rotate: true
+  xy: 190, 210
+  size: 5, 7
+  orig: 56, 60
+  offset: 28, 2
+  index: -1
+qs_invader_assassin/side/coatB
+  rotate: false
+  xy: 2, 191
+  size: 14, 6
+  orig: 56, 60
+  offset: 27, 2
+  index: -1
+qs_invader_assassin/side/coatL
+  rotate: true
+  xy: 238, 224
+  size: 4, 8
+  orig: 56, 60
+  offset: 37, 1
+  index: -1
+qs_invader_assassin/side/coatR
+  rotate: false
+  xy: 67, 179
+  size: 11, 7
+  orig: 56, 60
+  offset: 23, 1
+  index: -1
+qs_invader_assassin/side/face/[base]damaged
+  rotate: false
+  xy: 32, 227
+  size: 8, 3
+  orig: 56, 56
+  offset: 33, 19
+  index: -1
+qs_invader_assassin/side/face/[base]doyagao
+  rotate: false
+  xy: 39, 232
+  size: 8, 1
+  orig: 56, 56
+  offset: 33, 20
+  index: -1
+qs_invader_assassin/side/face/[base]idle
+  rotate: false
+  xy: 53, 232
+  size: 7, 1
+  orig: 56, 56
+  offset: 34, 20
+  index: -1
+qs_invader_assassin/side/face/[base]mad
+  rotate: false
+  xy: 56, 226
+  size: 9, 3
+  orig: 56, 56
+  offset: 33, 19
+  index: -1
+qs_invader_assassin/side/face/[base]smile
+  rotate: false
+  xy: 148, 231
+  size: 9, 2
+  orig: 56, 56
+  offset: 33, 20
+  index: -1
+qs_invader_assassin/side/face/[base]tired
+  rotate: false
+  xy: 165, 231
+  size: 8, 2
+  orig: 56, 56
+  offset: 34, 20
+  index: -1
+qs_invader_knight/front/[base]armL
+  rotate: false
+  xy: 225, 192
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+qs_invader_knight/front/[base]armR
+  rotate: false
+  xy: 225, 192
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+qs_invader_knight/front/[base]armL2
+  rotate: true
+  xy: 129, 203
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_knight/front/[base]armR2
+  rotate: true
+  xy: 129, 203
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_knight/front/[base]body
+  rotate: true
+  xy: 174, 161
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+qs_invader_knight/front/[base]elbowL
+  rotate: true
+  xy: 203, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+qs_invader_knight/front/[base]elbowR
+  rotate: true
+  xy: 203, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+qs_invader_knight/front/[base]elbowL2
+  rotate: true
+  xy: 18, 198
+  size: 6, 8
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+qs_invader_knight/front/[base]elbowR2
+  rotate: true
+  xy: 18, 198
+  size: 6, 8
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+qs_invader_knight/front/[base]head
+  rotate: false
+  xy: 37, 100
+  size: 33, 26
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+qs_invader_knight/front/[base]legL
+  rotate: true
+  xy: 137, 218
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_knight/front/[base]legR
+  rotate: true
+  xy: 137, 218
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_knight/front/face/[base]attack
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/front/face/[base]doyagao
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/front/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/front/face/[base]mad
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/front/face/[base]smile
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/front/face/[base]tired
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/side/face/[base]attack
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/side/face/[base]doyagao
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/side/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/side/face/[base]mad
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/side/face/[base]smile
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/side/face/[base]tired
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_medic/front/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer/front/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer/side/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/front/face/[base]attack
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/front/face/[base]doyagao
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/front/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/front/face/[base]mad
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/front/face/[base]smile
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/front/face/[base]tired
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/side/face/[base]attack
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/side/face/[base]doyagao
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/side/face/[base]idle
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/side/face/[base]mad
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/side/face/[base]smile
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_trainer_main/side/face/[base]tired
+  rotate: false
+  xy: 2, 232
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+qs_invader_knight/front/helm
+  rotate: false
+  xy: 29, 133
+  size: 27, 19
+  orig: 55, 56
+  offset: 14, 21
+  index: -1
+qs_invader_knight/front/helmtail
+  rotate: true
+  xy: 17, 169
+  size: 10, 13
+  orig: 55, 56
+  offset: 18, 35
+  index: -1
+qs_invader_knight/side/helmtail
+  rotate: true
+  xy: 17, 169
+  size: 10, 13
+  orig: 56, 56
+  offset: 12, 29
+  index: -1
+qs_invader_knight/front/tail
+  rotate: true
+  xy: 66, 213
+  size: 5, 9
+  orig: 55, 56
+  offset: 24, 2
+  index: -1
+qs_invader_trainer/front/tail
+  rotate: true
+  xy: 66, 213
+  size: 5, 9
+  orig: 55, 56
+  offset: 24, 2
+  index: -1
+qs_invader_trainer_main/front/tail
+  rotate: true
+  xy: 66, 213
+  size: 5, 9
+  orig: 55, 56
+  offset: 24, 2
+  index: -1
+qs_invader_knight/side/[base]armL
+  rotate: false
+  xy: 90, 196
+  size: 7, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+qs_invader_knight/side/[base]armR
+  rotate: false
+  xy: 221, 183
+  size: 7, 7
+  orig: 56, 56
+  offset: 25, 7
+  index: -1
+qs_invader_knight/side/[base]body
+  rotate: true
+  xy: 142, 162
+  size: 11, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+qs_invader_knight/side/[base]elbowL
+  rotate: false
+  xy: 43, 180
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_knight/side/[base]elbowR
+  rotate: true
+  xy: 163, 194
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_knight/side/[base]head
+  rotate: false
+  xy: 179, 116
+  size: 29, 24
+  orig: 56, 56
+  offset: 16, 13
+  index: -1
+qs_invader_knight/side/[base]legL
+  rotate: true
+  xy: 154, 211
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_knight/side/[base]legR
+  rotate: true
+  xy: 199, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+qs_invader_knight/side/helmL
+  rotate: true
+  xy: 117, 123
+  size: 21, 25
+  orig: 56, 56
+  offset: 26, 15
+  index: -1
+qs_invader_knight/side/helmR
+  rotate: false
+  xy: 2, 136
+  size: 25, 18
+  orig: 56, 56
+  offset: 22, 23
+  index: -1
+qs_invader_knight/side/hornL
+  rotate: true
+  xy: 2, 170
+  size: 9, 13
+  orig: 56, 56
+  offset: 38, 20
+  index: -1
+qs_invader_knight/side/tail
+  rotate: false
+  xy: 230, 166
+  size: 12, 10
+  orig: 56, 56
+  offset: 18, 4
+  index: -1
+qs_invader_trainer/side/tail
+  rotate: false
+  xy: 230, 166
+  size: 12, 10
+  orig: 56, 56
+  offset: 18, 4
+  index: -1
+qs_invader_trainer_main/side/tail
+  rotate: false
+  xy: 230, 166
+  size: 12, 10
+  orig: 56, 56
+  offset: 18, 4
+  index: -1
+qs_invader_medic/back/[base]armL
+  rotate: false
+  xy: 216, 193
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+qs_invader_medic/back/[base]armR
+  rotate: false
+  xy: 216, 193
+  size: 7, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+qs_invader_medic/front/[base]armL
+  rotate: false
+  xy: 216, 193
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 7
+  index: -1
+qs_invader_medic/front/[base]armR
+  rotate: false
+  xy: 216, 193
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 7
+  index: -1
+qs_invader_medic/back/[base]body
+  rotate: false
+  xy: 149, 144
+  size: 19, 15
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+qs_invader_medic/back/[base]elbowL
+  rotate: false
+  xy: 37, 206
+  size: 9, 6
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+qs_invader_medic/back/[base]elbowR
+  rotate: false
+  xy: 37, 206
+  size: 9, 6
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+qs_invader_medic/back/[base]head
+  rotate: false
+  xy: 2, 41
+  size: 33, 32
+  orig: 55, 56
+  offset: 11, 13
+  index: -1
+qs_invader_medic/back/[base]legL
+  rotate: true
+  xy: 82, 219
+  size: 5, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+qs_invader_medic/back/[base]legR
+  rotate: true
+  xy: 82, 219
+  size: 5, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+qs_invader_medic/front/[base]legL
+  rotate: true
+  xy: 82, 219
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_medic/front/[base]legR
+  rotate: true
+  xy: 82, 219
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_medic/back/hail
+  rotate: false
+  xy: 167, 174
+  size: 15, 9
+  orig: 55, 56
+  offset: 27, 13
+  index: -1
+qs_invader_medic/back/tail
+  rotate: false
+  xy: 127, 163
+  size: 13, 11
+  orig: 55, 56
+  offset: 25, 2
+  index: -1
+qs_invader_medic/front/[base]armL2
+  rotate: true
+  xy: 147, 203
+  size: 6, 8
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+qs_invader_medic/front/[base]armR2
+  rotate: true
+  xy: 147, 203
+  size: 6, 8
+  orig: 55, 56
+  offset: 29, 7
+  index: -1
+qs_invader_medic/front/[base]body
+  rotate: false
+  xy: 189, 142
+  size: 19, 16
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+qs_invader_medic/front/[base]elbowL
+  rotate: false
+  xy: 61, 188
+  size: 10, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+qs_invader_medic/front/[base]elbowR
+  rotate: false
+  xy: 61, 188
+  size: 10, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+qs_invader_medic/front/[base]elbowL2
+  rotate: false
+  xy: 195, 174
+  size: 10, 9
+  orig: 55, 56
+  offset: 32, 2
+  index: -1
+qs_invader_medic/front/[base]elbowR2
+  rotate: false
+  xy: 195, 174
+  size: 10, 9
+  orig: 55, 56
+  offset: 32, 2
+  index: -1
+qs_invader_medic/front/[base]head
+  rotate: false
+  xy: 216, 36
+  size: 33, 32
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+qs_invader_medic/front/face/[base]attack
+  rotate: false
+  xy: 73, 231
+  size: 3, 2
+  orig: 55, 56
+  offset: 26, 14
+  index: -1
+qs_invader_medic/front/face/[base]damaged
+  rotate: false
+  xy: 5, 232
+  size: 3, 1
+  orig: 55, 56
+  offset: 26, 14
+  index: -1
+qs_invader_medic/front/face/[base]mad
+  rotate: false
+  xy: 5, 232
+  size: 3, 1
+  orig: 55, 56
+  offset: 26, 14
+  index: -1
+qs_invader_medic/front/face/[base]doyagao
+  rotate: false
+  xy: 94, 231
+  size: 4, 2
+  orig: 55, 56
+  offset: 26, 15
+  index: -1
+qs_invader_medic/front/face/[base]smile
+  rotate: false
+  xy: 113, 231
+  size: 5, 2
+  orig: 55, 56
+  offset: 25, 14
+  index: -1
+qs_invader_medic/front/face/[base]tired
+  rotate: false
+  xy: 32, 232
+  size: 5, 1
+  orig: 55, 56
+  offset: 25, 14
+  index: -1
+qs_invader_medic/front/tail
+  rotate: false
+  xy: 32, 155
+  size: 13, 11
+  orig: 55, 56
+  offset: 15, 3
+  index: -1
+qs_invader_medic/side/tail
+  rotate: false
+  xy: 32, 155
+  size: 13, 11
+  orig: 56, 56
+  offset: 17, 3
+  index: -1
+qs_invader_medic/side/[base]armL
+  rotate: true
+  xy: 94, 212
+  size: 5, 6
+  orig: 56, 56
+  offset: 33, 9
+  index: -1
+qs_invader_medic/side/[base]armR
+  rotate: false
+  xy: 119, 211
+  size: 6, 5
+  orig: 56, 56
+  offset: 24, 8
+  index: -1
+qs_invader_medic/side/[base]body
+  rotate: true
+  xy: 132, 146
+  size: 14, 15
+  orig: 56, 56
+  offset: 25, 0
+  index: -1
+qs_invader_medic/side/[base]elbowL
+  rotate: true
+  xy: 22, 181
+  size: 7, 9
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_medic/side/[base]elbowR
+  rotate: false
+  xy: 144, 195
+  size: 8, 6
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+qs_invader_medic/side/[base]head
+  rotate: false
+  xy: 71, 63
+  size: 31, 31
+  orig: 56, 56
+  offset: 15, 15
+  index: -1
+qs_invader_medic/side/[base]legL
+  rotate: true
+  xy: 136, 211
+  size: 5, 7
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+qs_invader_medic/side/[base]legR
+  rotate: true
+  xy: 136, 211
+  size: 5, 7
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+qs_invader_medic/side/face/[base]attack
+  rotate: false
+  xy: 133, 231
+  size: 2, 2
+  orig: 56, 56
+  offset: 33, 16
+  index: -1
+qs_invader_medic/side/face/[base]damaged
+  rotate: false
+  xy: 133, 231
+  size: 2, 2
+  orig: 56, 56
+  offset: 33, 16
+  index: -1
+qs_invader_medic/side/face/[base]mad
+  rotate: false
+  xy: 133, 231
+  size: 2, 2
+  orig: 56, 56
+  offset: 33, 16
+  index: -1
+qs_invader_medic/side/face/[base]doyagao
+  rotate: false
+  xy: 137, 231
+  size: 3, 2
+  orig: 56, 56
+  offset: 32, 16
+  index: -1
+qs_invader_medic/side/face/[base]idle
+  rotate: false
+  xy: 49, 232
+  size: 2, 1
+  orig: 56, 56
+  offset: 33, 17
+  index: -1
+qs_invader_medic/side/face/[base]smile
+  rotate: false
+  xy: 142, 231
+  size: 4, 2
+  orig: 56, 56
+  offset: 32, 16
+  index: -1
+qs_invader_medic/side/face/[base]tired
+  rotate: false
+  xy: 159, 231
+  size: 4, 2
+  orig: 56, 56
+  offset: 32, 16
+  index: -1
+qs_invader_medic/side/hair
+  rotate: false
+  xy: 143, 175
+  size: 11, 8
+  orig: 56, 56
+  offset: 14, 13
+  index: -1
+qs_invader_scientist/back/[base]armL
+  rotate: true
+  xy: 234, 209
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 6
+  index: -1
+qs_invader_scientist/back/[base]armR
+  rotate: true
+  xy: 234, 209
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 6
+  index: -1
+qs_invader_scientist/back/[base]body
+  rotate: true
+  xy: 77, 164
+  size: 11, 16
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_scientist/back/[base]elbowL
+  rotate: false
+  xy: 48, 205
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_scientist/back/[base]elbowR
+  rotate: false
+  xy: 48, 205
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_scientist/back/[base]head
+  rotate: false
+  xy: 138, 88
+  size: 39, 28
+  orig: 55, 56
+  offset: 7, 12
+  index: -1
+qs_invader_scientist/back/[base]legL
+  rotate: false
+  xy: 250, 226
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+qs_invader_scientist/back/[base]legR
+  rotate: false
+  xy: 250, 226
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+qs_invader_scientist/front/[base]legL
+  rotate: false
+  xy: 250, 226
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+qs_invader_scientist/front/[base]legR
+  rotate: false
+  xy: 250, 226
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+qs_invader_scientist/front/[base]armL
+  rotate: true
+  xy: 91, 204
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 6
+  index: -1
+qs_invader_scientist/front/[base]armR
+  rotate: true
+  xy: 91, 204
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 6
+  index: -1
+qs_invader_scientist/front/[base]armL2
+  rotate: true
+  xy: 120, 203
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+qs_invader_scientist/front/[base]armR2
+  rotate: true
+  xy: 120, 203
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+qs_invader_scientist/front/[base]body
+  rotate: true
+  xy: 156, 161
+  size: 11, 16
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_scientist/front/[base]elbowL
+  rotate: false
+  xy: 195, 202
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_scientist/front/[base]elbowR
+  rotate: false
+  xy: 195, 202
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_scientist/front/[base]elbowL2
+  rotate: false
+  xy: 118, 186
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+qs_invader_scientist/front/[base]elbowR2
+  rotate: false
+  xy: 118, 186
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+qs_invader_scientist/front/[base]head
+  rotate: false
+  xy: 138, 55
+  size: 38, 31
+  orig: 55, 56
+  offset: 9, 9
+  index: -1
+qs_invader_scientist/front/face/[base]attack
+  rotate: false
+  xy: 97, 225
+  size: 16, 4
+  orig: 55, 56
+  offset: 20, 22
+  index: -1
+qs_invader_scientist/front/face/[base]idle
+  rotate: false
+  xy: 97, 225
+  size: 16, 4
+  orig: 55, 56
+  offset: 20, 22
+  index: -1
+qs_invader_scientist/front/face/[base]mad
+  rotate: false
+  xy: 97, 225
+  size: 16, 4
+  orig: 55, 56
+  offset: 20, 22
+  index: -1
+qs_invader_scientist/front/face/[base]damaged
+  rotate: false
+  xy: 175, 230
+  size: 14, 3
+  orig: 55, 56
+  offset: 21, 22
+  index: -1
+qs_invader_scientist/front/face/[base]doyagao
+  rotate: false
+  xy: 78, 231
+  size: 14, 2
+  orig: 55, 56
+  offset: 21, 22
+  index: -1
+qs_invader_scientist/front/face/[base]smile
+  rotate: false
+  xy: 215, 230
+  size: 14, 3
+  orig: 55, 56
+  offset: 21, 22
+  index: -1
+qs_invader_scientist/front/face/[base]tired
+  rotate: false
+  xy: 2, 227
+  size: 14, 3
+  orig: 55, 56
+  offset: 21, 22
+  index: -1
+qs_invader_scientist/side/[base]armL
+  rotate: true
+  xy: 248, 219
+  size: 5, 6
+  orig: 56, 56
+  offset: 33, 9
+  index: -1
+qs_invader_scientist/side/[base]armR
+  rotate: false
+  xy: 247, 212
+  size: 6, 5
+  orig: 56, 56
+  offset: 26, 10
+  index: -1
+qs_invader_scientist/side/[base]body
+  rotate: true
+  xy: 66, 150
+  size: 12, 16
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+qs_invader_scientist/side/[base]elbowL
+  rotate: true
+  xy: 12, 181
+  size: 7, 8
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_scientist/side/[base]elbowR
+  rotate: true
+  xy: 135, 195
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_scientist/side/[base]head
+  rotate: false
+  xy: 178, 37
+  size: 36, 31
+  orig: 56, 56
+  offset: 14, 9
+  index: -1
+qs_invader_scientist/side/[base]legL
+  rotate: true
+  xy: 170, 224
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_scientist/side/[base]legR
+  rotate: true
+  xy: 180, 224
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+qs_invader_scientist/side/face/[base]attack
+  rotate: false
+  xy: 217, 210
+  size: 15, 5
+  orig: 56, 56
+  offset: 28, 22
+  index: -1
+qs_invader_scientist/side/face/[base]mad
+  rotate: false
+  xy: 217, 210
+  size: 15, 5
+  orig: 56, 56
+  offset: 28, 22
+  index: -1
+qs_invader_scientist/side/face/[base]damaged
+  rotate: false
+  xy: 18, 227
+  size: 12, 3
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+qs_invader_scientist/side/face/[base]doyagao
+  rotate: false
+  xy: 42, 227
+  size: 12, 3
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+qs_invader_scientist/side/face/[base]smile
+  rotate: false
+  xy: 42, 227
+  size: 12, 3
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+qs_invader_scientist/side/face/[base]idle
+  rotate: false
+  xy: 34, 221
+  size: 14, 4
+  orig: 56, 56
+  offset: 29, 22
+  index: -1
+qs_invader_scientist/side/face/[base]tired
+  rotate: false
+  xy: 83, 226
+  size: 12, 3
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+qs_invader_soldier_normal/back/[base]head
+  rotate: false
+  xy: 210, 70
+  size: 33, 31
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+qs_invader_soldier_normal/front/[base]armL
+  rotate: false
+  xy: 184, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_normal/front/[base]armR
+  rotate: false
+  xy: 184, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_speed/front/[base]armL
+  rotate: false
+  xy: 184, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_speed/front/[base]armR
+  rotate: false
+  xy: 184, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_normal/front/[base]armL2
+  rotate: true
+  xy: 230, 178
+  size: 8, 9
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_soldier_normal/front/[base]armR2
+  rotate: true
+  xy: 230, 178
+  size: 8, 9
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_soldier_speed/front/[base]armL2
+  rotate: true
+  xy: 230, 178
+  size: 8, 9
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_soldier_speed/front/[base]armR2
+  rotate: true
+  xy: 230, 178
+  size: 8, 9
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_soldier_normal/front/[base]body
+  rotate: true
+  xy: 100, 148
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 3
+  index: -1
+qs_invader_soldier_speed/front/[base]body
+  rotate: true
+  xy: 100, 148
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 3
+  index: -1
+qs_invader_soldier_normal/front/[base]elbowL
+  rotate: true
+  xy: 186, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_normal/front/[base]elbowR
+  rotate: true
+  xy: 186, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_speed/front/[base]elbowL
+  rotate: true
+  xy: 186, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_speed/front/[base]elbowR
+  rotate: true
+  xy: 186, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_normal/front/[base]elbowL2
+  rotate: false
+  xy: 90, 187
+  size: 7, 7
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+qs_invader_soldier_normal/front/[base]elbowR2
+  rotate: false
+  xy: 90, 187
+  size: 7, 7
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+qs_invader_soldier_speed/front/[base]elbowL2
+  rotate: false
+  xy: 90, 187
+  size: 7, 7
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+qs_invader_soldier_speed/front/[base]elbowR2
+  rotate: false
+  xy: 90, 187
+  size: 7, 7
+  orig: 55, 56
+  offset: 34, 3
+  index: -1
+qs_invader_soldier_normal/front/[base]head
+  rotate: true
+  xy: 121, 20
+  size: 33, 34
+  orig: 55, 56
+  offset: 11, 11
+  index: -1
+qs_invader_soldier_normal/front/[base]legL
+  rotate: true
+  xy: 38, 198
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_normal/front/[base]legR
+  rotate: true
+  xy: 38, 198
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_speed/front/[base]legL
+  rotate: true
+  xy: 38, 198
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_speed/front/[base]legR
+  rotate: true
+  xy: 38, 198
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_normal/front/face/[base]attack
+  rotate: false
+  xy: 48, 197
+  size: 15, 6
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_soldier_speed/front/face/[base]attack
+  rotate: false
+  xy: 48, 197
+  size: 15, 6
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_soldier_normal/front/face/[base]damaged
+  rotate: false
+  xy: 159, 185
+  size: 15, 7
+  orig: 55, 56
+  offset: 20, 17
+  index: -1
+qs_invader_soldier_speed/front/face/[base]damaged
+  rotate: false
+  xy: 159, 185
+  size: 15, 7
+  orig: 55, 56
+  offset: 20, 17
+  index: -1
+qs_invader_soldier_normal/front/face/[base]doyagao
+  rotate: false
+  xy: 228, 217
+  size: 17, 5
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_speed/front/face/[base]doyagao
+  rotate: false
+  xy: 228, 217
+  size: 17, 5
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_normal/front/face/[base]idle
+  rotate: false
+  xy: 115, 225
+  size: 17, 4
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_speed/front/face/[base]idle
+  rotate: false
+  xy: 115, 225
+  size: 17, 4
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_normal/front/face/[base]mad
+  rotate: false
+  xy: 80, 177
+  size: 17, 8
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+qs_invader_soldier_speed/front/face/[base]mad
+  rotate: false
+  xy: 80, 177
+  size: 17, 8
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+qs_invader_soldier_normal/front/face/[base]smile
+  rotate: false
+  xy: 134, 225
+  size: 17, 4
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_speed/front/face/[base]smile
+  rotate: false
+  xy: 134, 225
+  size: 17, 4
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_normal/front/face/[base]tired
+  rotate: false
+  xy: 231, 230
+  size: 17, 3
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_speed/front/face/[base]tired
+  rotate: false
+  xy: 231, 230
+  size: 17, 3
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+qs_invader_soldier_normal/front/tail
+  rotate: true
+  xy: 58, 128
+  size: 20, 24
+  orig: 55, 56
+  offset: 4, 5
+  index: -1
+qs_invader_soldier_normal/side/tail
+  rotate: true
+  xy: 58, 128
+  size: 20, 24
+  orig: 56, 56
+  offset: 7, 5
+  index: -1
+qs_invader_soldier_speed/front/tail
+  rotate: true
+  xy: 58, 128
+  size: 20, 24
+  orig: 55, 56
+  offset: 4, 5
+  index: -1
+qs_invader_soldier_speed/side/tail
+  rotate: true
+  xy: 58, 128
+  size: 20, 24
+  orig: 56, 56
+  offset: 7, 5
+  index: -1
+qs_invader_soldier_normal/side/[base]armL
+  rotate: true
+  xy: 241, 178
+  size: 8, 9
+  orig: 56, 56
+  offset: 34, 7
+  index: -1
+qs_invader_soldier_speed/side/[base]armL
+  rotate: true
+  xy: 241, 178
+  size: 8, 9
+  orig: 56, 56
+  offset: 34, 7
+  index: -1
+qs_invader_soldier_normal/side/[base]armR
+  rotate: false
+  xy: 207, 173
+  size: 9, 9
+  orig: 56, 56
+  offset: 23, 7
+  index: -1
+qs_invader_soldier_speed/side/[base]armR
+  rotate: false
+  xy: 207, 173
+  size: 9, 9
+  orig: 56, 56
+  offset: 23, 7
+  index: -1
+qs_invader_soldier_normal/side/[base]body
+  rotate: true
+  xy: 116, 148
+  size: 13, 14
+  orig: 56, 56
+  offset: 27, 3
+  index: -1
+qs_invader_soldier_speed/side/[base]body
+  rotate: true
+  xy: 116, 148
+  size: 13, 14
+  orig: 56, 56
+  offset: 27, 3
+  index: -1
+qs_invader_soldier_normal/side/[base]elbowL
+  rotate: true
+  xy: 245, 196
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_soldier_speed/side/[base]elbowL
+  rotate: true
+  xy: 245, 196
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_soldier_normal/side/[base]elbowR
+  rotate: true
+  xy: 126, 195
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_soldier_speed/side/[base]elbowR
+  rotate: true
+  xy: 126, 195
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_soldier_normal/side/[base]head
+  rotate: true
+  xy: 37, 67
+  size: 31, 32
+  orig: 56, 56
+  offset: 16, 12
+  index: -1
+qs_invader_soldier_normal/side/[base]legL
+  rotate: true
+  xy: 127, 211
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_soldier_speed/side/[base]legL
+  rotate: true
+  xy: 127, 211
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_soldier_normal/side/[base]legR
+  rotate: true
+  xy: 181, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+qs_invader_soldier_speed/side/[base]legR
+  rotate: true
+  xy: 181, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+qs_invader_soldier_normal/side/face/[base]attack
+  rotate: false
+  xy: 199, 194
+  size: 15, 6
+  orig: 56, 56
+  offset: 29, 18
+  index: -1
+qs_invader_soldier_speed/side/face/[base]attack
+  rotate: false
+  xy: 199, 194
+  size: 15, 6
+  orig: 56, 56
+  offset: 29, 18
+  index: -1
+qs_invader_soldier_normal/side/face/[base]damaged
+  rotate: false
+  xy: 52, 179
+  size: 13, 7
+  orig: 56, 56
+  offset: 31, 17
+  index: -1
+qs_invader_soldier_speed/side/face/[base]damaged
+  rotate: false
+  xy: 52, 179
+  size: 13, 7
+  orig: 56, 56
+  offset: 31, 17
+  index: -1
+qs_invader_soldier_normal/side/face/[base]doyagao
+  rotate: false
+  xy: 222, 224
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_speed/side/face/[base]doyagao
+  rotate: false
+  xy: 222, 224
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_normal/side/face/[base]idle
+  rotate: false
+  xy: 18, 221
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_speed/side/face/[base]idle
+  rotate: false
+  xy: 18, 221
+  size: 14, 4
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_normal/side/face/[base]mad
+  rotate: false
+  xy: 127, 176
+  size: 14, 8
+  orig: 56, 56
+  offset: 30, 17
+  index: -1
+qs_invader_soldier_speed/side/face/[base]mad
+  rotate: false
+  xy: 127, 176
+  size: 14, 8
+  orig: 56, 56
+  offset: 30, 17
+  index: -1
+qs_invader_soldier_normal/side/face/[base]smile
+  rotate: false
+  xy: 2, 207
+  size: 14, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_speed/side/face/[base]smile
+  rotate: false
+  xy: 2, 207
+  size: 14, 5
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_normal/side/face/[base]tired
+  rotate: false
+  xy: 67, 226
+  size: 14, 3
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_speed/side/face/[base]tired
+  rotate: false
+  xy: 67, 226
+  size: 14, 3
+  orig: 56, 56
+  offset: 30, 19
+  index: -1
+qs_invader_soldier_speed/back/[base]armL
+  rotate: false
+  xy: 156, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_normal/back/[base]armL
+  rotate: false
+  xy: 156, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_normal/back/[base]armR
+  rotate: false
+  xy: 156, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_speed/back/[base]armR
+  rotate: false
+  xy: 156, 174
+  size: 9, 9
+  orig: 55, 56
+  offset: 15, 7
+  index: -1
+qs_invader_soldier_speed/back/[base]body
+  rotate: true
+  xy: 84, 148
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 3
+  index: -1
+qs_invader_soldier_normal/back/[base]body
+  rotate: true
+  xy: 84, 148
+  size: 13, 14
+  orig: 55, 56
+  offset: 21, 3
+  index: -1
+qs_invader_soldier_speed/back/[base]elbowL
+  rotate: true
+  xy: 56, 205
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_normal/back/[base]elbowL
+  rotate: true
+  xy: 56, 205
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_normal/back/[base]elbowR
+  rotate: true
+  xy: 56, 205
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_speed/back/[base]elbowR
+  rotate: true
+  xy: 56, 205
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_soldier_speed/back/[base]head
+  rotate: true
+  xy: 80, 25
+  size: 33, 39
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+qs_invader_soldier_speed/back/[base]legL
+  rotate: true
+  xy: 81, 204
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_normal/back/[base]legL
+  rotate: true
+  xy: 81, 204
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_normal/back/[base]legR
+  rotate: true
+  xy: 81, 204
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_speed/back/[base]legR
+  rotate: true
+  xy: 81, 204
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+qs_invader_soldier_speed/back/tail
+  rotate: true
+  xy: 210, 130
+  size: 20, 24
+  orig: 55, 56
+  offset: 27, 2
+  index: -1
+qs_invader_soldier_normal/back/tail
+  rotate: true
+  xy: 210, 130
+  size: 20, 24
+  orig: 55, 56
+  offset: 27, 2
+  index: -1
+qs_invader_soldier_speed/front/[base]head
+  rotate: true
+  xy: 157, 2
+  size: 33, 40
+  orig: 55, 56
+  offset: 11, 11
+  index: -1
+qs_invader_soldier_speed/side/[base]head
+  rotate: true
+  xy: 37, 30
+  size: 31, 41
+  orig: 56, 56
+  offset: 16, 11
+  index: -1
+qs_invader_trainer/front/[base]armL
+  rotate: true
+  xy: 110, 203
+  size: 6, 8
+  orig: 55, 56
+  offset: 18, 6
+  index: -1
+qs_invader_trainer/front/[base]armL2
+  rotate: false
+  xy: 35, 189
+  size: 7, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_trainer/front/[base]armR2
+  rotate: false
+  xy: 35, 189
+  size: 7, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_trainer/front/[base]armR
+  rotate: true
+  xy: 176, 202
+  size: 6, 8
+  orig: 55, 56
+  offset: 18, 6
+  index: -1
+qs_invader_trainer/front/[base]body
+  rotate: true
+  xy: 233, 152
+  size: 12, 14
+  orig: 55, 56
+  offset: 21, 2
+  index: -1
+qs_invader_trainer/front/[base]elbowL
+  rotate: false
+  xy: 2, 199
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_trainer/front/[base]elbowR
+  rotate: false
+  xy: 2, 199
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_trainer/front/[base]elbowL2
+  rotate: true
+  xy: 149, 185
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+qs_invader_trainer/front/[base]elbowR2
+  rotate: true
+  xy: 149, 185
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+qs_invader_trainer/front/[base]head
+  rotate: true
+  xy: 179, 81
+  size: 33, 29
+  orig: 55, 56
+  offset: 11, 13
+  index: -1
+qs_invader_trainer/front/face/[base]attack
+  rotate: false
+  xy: 194, 217
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_trainer/front/face/[base]doyagao
+  rotate: false
+  xy: 73, 196
+  size: 15, 6
+  orig: 55, 56
+  offset: 20, 17
+  index: -1
+qs_invader_trainer/front/face/[base]mad
+  rotate: false
+  xy: 32, 168
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+qs_invader_trainer/front/face/[base]smile
+  rotate: false
+  xy: 77, 212
+  size: 15, 5
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+qs_invader_trainer/front/face/[base]tired
+  rotate: false
+  xy: 153, 225
+  size: 15, 4
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+qs_invader_trainer/front/helm
+  rotate: false
+  xy: 47, 154
+  size: 17, 11
+  orig: 55, 56
+  offset: 19, 13
+  index: -1
+qs_invader_trainer/side/[base]armL
+  rotate: true
+  xy: 200, 185
+  size: 7, 9
+  orig: 56, 56
+  offset: 34, 6
+  index: -1
+qs_invader_trainer/side/[base]armR
+  rotate: true
+  xy: 218, 172
+  size: 9, 10
+  orig: 56, 56
+  offset: 24, 6
+  index: -1
+qs_invader_trainer/side/[base]body
+  rotate: false
+  xy: 170, 144
+  size: 17, 15
+  orig: 56, 56
+  offset: 24, 1
+  index: -1
+qs_invader_trainer/side/[base]elbowL
+  rotate: true
+  xy: 117, 195
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_trainer/side/[base]elbowR
+  rotate: true
+  xy: 190, 194
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_trainer/side/[base]head
+  rotate: false
+  xy: 72, 96
+  size: 31, 27
+  orig: 56, 56
+  offset: 16, 14
+  index: -1
+qs_invader_trainer/side/face/[base]attack
+  rotate: false
+  xy: 18, 190
+  size: 15, 6
+  orig: 56, 56
+  offset: 29, 19
+  index: -1
+qs_invader_trainer/side/face/[base]doyagao
+  rotate: false
+  xy: 110, 176
+  size: 15, 8
+  orig: 56, 56
+  offset: 29, 17
+  index: -1
+qs_invader_trainer/side/face/[base]mad
+  rotate: false
+  xy: 44, 189
+  size: 15, 6
+  orig: 56, 56
+  offset: 29, 19
+  index: -1
+qs_invader_trainer/side/face/[base]smile
+  rotate: false
+  xy: 73, 188
+  size: 15, 6
+  orig: 56, 56
+  offset: 29, 19
+  index: -1
+qs_invader_trainer/side/face/[base]tired
+  rotate: false
+  xy: 234, 188
+  size: 15, 6
+  orig: 56, 56
+  offset: 29, 19
+  index: -1
+qs_invader_trainer/side/helmR
+  rotate: false
+  xy: 218, 153
+  size: 13, 11
+  orig: 56, 56
+  offset: 30, 14
+  index: -1
+qs_invader_trainer_main/front/[base]armL
+  rotate: true
+  xy: 128, 218
+  size: 5, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+qs_invader_trainer_main/front/[base]armR
+  rotate: true
+  xy: 128, 218
+  size: 5, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+qs_invader_trainer_main/front/[base]armL2
+  rotate: true
+  xy: 167, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_trainer_main/front/[base]armR2
+  rotate: true
+  xy: 167, 202
+  size: 6, 7
+  orig: 55, 56
+  offset: 31, 7
+  index: -1
+qs_invader_trainer_main/front/[base]body
+  rotate: true
+  xy: 17, 156
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+qs_invader_trainer_main/front/[base]elbowL
+  rotate: false
+  xy: 228, 201
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_trainer_main/front/[base]elbowR
+  rotate: false
+  xy: 228, 201
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+qs_invader_trainer_main/front/[base]elbowL2
+  rotate: true
+  xy: 139, 186
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+qs_invader_trainer_main/front/[base]elbowR2
+  rotate: true
+  xy: 139, 186
+  size: 7, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+qs_invader_trainer_main/front/[base]head
+  rotate: false
+  xy: 2, 4
+  size: 33, 35
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+qs_invader_trainer_main/front/[base]legL
+  rotate: true
+  xy: 167, 217
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_trainer/front/[base]legL
+  rotate: true
+  xy: 167, 217
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_trainer/front/[base]legR
+  rotate: true
+  xy: 167, 217
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_trainer_main/front/[base]legR
+  rotate: true
+  xy: 167, 217
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+qs_invader_trainer_main/side/[base]armL
+  rotate: true
+  xy: 236, 196
+  size: 6, 7
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+qs_invader_trainer_main/side/[base]armR
+  rotate: true
+  xy: 99, 176
+  size: 8, 9
+  orig: 56, 56
+  offset: 25, 7
+  index: -1
+qs_invader_trainer_main/side/[base]body
+  rotate: true
+  xy: 204, 160
+  size: 11, 12
+  orig: 56, 56
+  offset: 27, 4
+  index: -1
+qs_invader_trainer_main/side/[base]elbowL
+  rotate: true
+  xy: 108, 195
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+qs_invader_trainer_main/side/[base]elbowR
+  rotate: true
+  xy: 181, 194
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+qs_invader_trainer_main/side/[base]head
+  rotate: true
+  xy: 104, 60
+  size: 31, 32
+  orig: 56, 56
+  offset: 16, 13
+  index: -1
+qs_invader_trainer_main/side/[base]legL
+  rotate: true
+  xy: 172, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_trainer/side/[base]legL
+  rotate: true
+  xy: 172, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+qs_invader_trainer/side/[base]legR
+  rotate: true
+  xy: 172, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+qs_invader_trainer_main/side/[base]legR
+  rotate: true
+  xy: 172, 210
+  size: 5, 7
+  orig: 56, 56
+  offset: 28, 0
+  index: -1

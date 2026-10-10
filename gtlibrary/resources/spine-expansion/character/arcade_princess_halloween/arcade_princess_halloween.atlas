@@ -1,0 +1,125 @@
+
+arcade_princess_halloween__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back_hold_1
+  rotate: true
+  xy: 38, 19
+  size: 16, 15
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+back/back_hold_2
+  rotate: false
+  xy: 2, 19
+  size: 16, 16
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+back/back_hold_run_2
+  rotate: false
+  xy: 2, 19
+  size: 16, 16
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+back/back_hold_run_1
+  rotate: true
+  xy: 55, 19
+  size: 16, 15
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+back/back_hold_run_3
+  rotate: true
+  xy: 72, 19
+  size: 16, 15
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+front/front_hold_1
+  rotate: true
+  xy: 89, 19
+  size: 16, 15
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+front/front_hold_2
+  rotate: false
+  xy: 20, 19
+  size: 16, 16
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+front/front_hold_run_2
+  rotate: false
+  xy: 20, 19
+  size: 16, 16
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+front/front_hold_run_1
+  rotate: true
+  xy: 106, 19
+  size: 16, 15
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+front/front_hold_run_3
+  rotate: false
+  xy: 2, 2
+  size: 16, 15
+  orig: 20, 18
+  offset: 2, 0
+  index: -1
+front/front_tired_1
+  rotate: false
+  xy: 83, 3
+  size: 12, 14
+  orig: 20, 18
+  offset: 4, 0
+  index: -1
+front/front_tired_2
+  rotate: false
+  xy: 97, 4
+  size: 12, 13
+  orig: 20, 18
+  offset: 4, 0
+  index: -1
+side/side_hold_1
+  rotate: true
+  xy: 20, 4
+  size: 13, 16
+  orig: 20, 18
+  offset: 3, 0
+  index: -1
+side/side_hold_run_2
+  rotate: true
+  xy: 20, 4
+  size: 13, 16
+  orig: 20, 18
+  offset: 3, 0
+  index: -1
+side/side_hold_2
+  rotate: false
+  xy: 38, 2
+  size: 13, 15
+  orig: 20, 18
+  offset: 3, 0
+  index: -1
+side/side_hold_run_1
+  rotate: false
+  xy: 53, 2
+  size: 13, 15
+  orig: 20, 18
+  offset: 3, 0
+  index: -1
+side/side_hold_run_3
+  rotate: false
+  xy: 68, 2
+  size: 13, 15
+  orig: 20, 18
+  offset: 3, 0
+  index: -1

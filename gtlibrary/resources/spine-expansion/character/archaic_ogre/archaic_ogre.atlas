@@ -1,0 +1,867 @@
+
+archaic_ogre__page0.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+archaic_ogre/back/[base]armL
+  rotate: true
+  xy: 253, 2
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]armR
+  rotate: false
+  xy: 282, 13
+  size: 23, 30
+  orig: 23, 30
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]body
+  rotate: true
+  xy: 1, 198
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]elbowR
+  rotate: true
+  xy: 185, 75
+  size: 19, 29
+  orig: 19, 29
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]handL
+  rotate: true
+  xy: 305, 232
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]head
+  rotate: false
+  xy: 110, 1
+  size: 37, 24
+  orig: 37, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]legL
+  rotate: false
+  xy: 333, 84
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/[base]legR
+  rotate: true
+  xy: 335, 125
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/bodyF
+  rotate: false
+  xy: 123, 73
+  size: 24, 9
+  orig: 24, 9
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/bodyF
+  rotate: false
+  xy: 123, 73
+  size: 24, 9
+  orig: 24, 9
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/bodydecoR
+  rotate: true
+  xy: 215, 163
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/bodydecoR2
+  rotate: true
+  xy: 54, 25
+  size: 6, 12
+  orig: 6, 12
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/hair
+  rotate: false
+  xy: 371, 195
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/helmdeco
+  rotate: true
+  xy: 272, 186
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/mask
+  rotate: false
+  xy: 142, 162
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/shoulderR
+  rotate: true
+  xy: 333, 169
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre/back/shoulderRF
+  rotate: false
+  xy: 337, 211
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]armL
+  rotate: false
+  xy: 253, 76
+  size: 26, 30
+  orig: 26, 30
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]armR
+  rotate: false
+  xy: 294, 114
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]body
+  rotate: true
+  xy: 1, 140
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]elbowR
+  rotate: false
+  xy: 293, 204
+  size: 20, 26
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]handL
+  rotate: true
+  xy: 336, 63
+  size: 20, 18
+  orig: 20, 18
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]head
+  rotate: false
+  xy: 228, 50
+  size: 37, 24
+  orig: 37, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]legL
+  rotate: true
+  xy: 315, 124
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/[base]legR
+  rotate: true
+  xy: 315, 124
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/bodyF
+  rotate: false
+  xy: 148, 75
+  size: 24, 8
+  orig: 24, 8
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/bodydecoR
+  rotate: true
+  xy: 80, 26
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/bodydecoR
+  rotate: true
+  xy: 80, 26
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/bodydecoR2
+  rotate: false
+  xy: 222, 209
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/bodydecoR2
+  rotate: false
+  xy: 222, 209
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/face/[base]attack
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/face/[base]damaged
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/face/[base]idle
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/face/[base]attack
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/face/[base]damaged
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/face/[base]idle
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/face/[base]attack
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/face/[base]damaged
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/face/[base]idle
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/face/[base]attack
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/face/[base]damaged
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/face/[base]idle
+  rotate: false
+  xy: 127, 30
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/hair
+  rotate: false
+  xy: 248, 33
+  size: 17, 16
+  orig: 17, 16
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/helmdeco
+  rotate: false
+  xy: 272, 165
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/mask
+  rotate: false
+  xy: 143, 209
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+archaic_ogre/front/shoulderR
+  rotate: true
+  xy: 308, 146
+  size: 18, 26
+  orig: 18, 26
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]armL
+  rotate: true
+  xy: 217, 6
+  size: 26, 35
+  orig: 26, 35
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]armR
+  rotate: false
+  xy: 266, 44
+  size: 25, 31
+  orig: 25, 31
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]body
+  rotate: true
+  xy: 54, 193
+  size: 62, 44
+  orig: 62, 44
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]elbowR
+  rotate: true
+  xy: 281, 231
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]handL
+  rotate: false
+  xy: 184, 209
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]head
+  rotate: false
+  xy: 72, 1
+  size: 37, 23
+  orig: 37, 23
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]legL
+  rotate: false
+  xy: 353, 237
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/[base]legR
+  rotate: false
+  xy: 293, 186
+  size: 24, 17
+  orig: 24, 17
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/bodyF
+  rotate: false
+  xy: 160, 33
+  size: 32, 14
+  orig: 32, 14
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/hair
+  rotate: true
+  xy: 358, 174
+  size: 17, 16
+  orig: 17, 16
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/helmdeco
+  rotate: false
+  xy: 37, 2
+  size: 34, 21
+  orig: 34, 21
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/mask
+  rotate: false
+  xy: 99, 162
+  size: 42, 46
+  orig: 42, 46
+  offset: 0, 0
+  index: -1
+archaic_ogre/side/shoulderR
+  rotate: true
+  xy: 327, 2
+  size: 26, 21
+  orig: 26, 21
+  offset: 0, 0
+  index: -1
+archaic_ogre/weapon1
+  rotate: false
+  xy: 168, 135
+  size: 67, 26
+  orig: 72, 40
+  offset: 3, 7
+  index: -1
+archaic_ogre/weapon2
+  rotate: false
+  xy: 99, 135
+  size: 68, 26
+  orig: 72, 40
+  offset: 3, 7
+  index: -1
+archaic_ogre/weapon3
+  rotate: true
+  xy: 54, 73
+  size: 56, 40
+  orig: 72, 40
+  offset: 9, 0
+  index: -1
+archaic_ogre/weapon4
+  rotate: false
+  xy: 54, 32
+  size: 56, 40
+  orig: 73, 41
+  offset: 10, 0
+  index: -1
+archaic_ogre_elite/back/[base]armL
+  rotate: true
+  xy: 238, 107
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]armR
+  rotate: false
+  xy: 292, 50
+  size: 23, 30
+  orig: 23, 30
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]body
+  rotate: true
+  xy: 1, 82
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]elbowR
+  rotate: false
+  xy: 316, 54
+  size: 19, 29
+  orig: 19, 29
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]handL
+  rotate: true
+  xy: 314, 208
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]head
+  rotate: false
+  xy: 111, 32
+  size: 48, 40
+  orig: 48, 40
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]legL
+  rotate: true
+  xy: 335, 147
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/[base]legR
+  rotate: true
+  xy: 353, 147
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/bodydecoR
+  rotate: true
+  xy: 226, 163
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/bodydecoR2
+  rotate: true
+  xy: 67, 25
+  size: 6, 12
+  orig: 6, 12
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/featherT
+  rotate: true
+  xy: 306, 16
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/helmdeco
+  rotate: true
+  xy: 306, 16
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/featherT2
+  rotate: false
+  xy: 183, 172
+  size: 48, 36
+  orig: 48, 36
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/hair
+  rotate: false
+  xy: 375, 220
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/helmtailR1
+  rotate: true
+  xy: 240, 211
+  size: 8, 7
+  orig: 8, 7
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/helmtailR2
+  rotate: true
+  xy: 226, 36
+  size: 11, 21
+  orig: 11, 21
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/helmtailR3
+  rotate: false
+  xy: 256, 213
+  size: 6, 6
+  orig: 6, 6
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/mask
+  rotate: true
+  xy: 234, 220
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/shoulderR
+  rotate: true
+  xy: 328, 236
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/back/shoulderRF
+  rotate: true
+  xy: 328, 236
+  size: 19, 24
+  orig: 19, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]armL
+  rotate: false
+  xy: 267, 107
+  size: 26, 30
+  orig: 26, 30
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]armR
+  rotate: false
+  xy: 312, 84
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]body
+  rotate: true
+  xy: 1, 24
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]elbowR
+  rotate: true
+  xy: 306, 165
+  size: 20, 26
+  orig: 20, 26
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]handL
+  rotate: true
+  xy: 351, 42
+  size: 20, 18
+  orig: 20, 18
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]head
+  rotate: false
+  xy: 236, 138
+  size: 37, 24
+  orig: 37, 24
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]legL
+  rotate: true
+  xy: 333, 102
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/[base]legR
+  rotate: true
+  xy: 333, 102
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/bodyF
+  rotate: false
+  xy: 95, 73
+  size: 27, 9
+  orig: 27, 9
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/bodydecoR
+  rotate: true
+  xy: 93, 26
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/bodydecoR2
+  rotate: false
+  xy: 231, 209
+  size: 8, 10
+  orig: 8, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/featherT2
+  rotate: false
+  xy: 184, 220
+  size: 49, 35
+  orig: 49, 35
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/hair
+  rotate: true
+  xy: 141, 84
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/helmdeco
+  rotate: false
+  xy: 274, 144
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/helmtailR1
+  rotate: true
+  xy: 248, 211
+  size: 8, 7
+  orig: 8, 7
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/helmtailR2
+  rotate: true
+  xy: 237, 163
+  size: 11, 21
+  orig: 11, 21
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/helmtailR3
+  rotate: false
+  xy: 263, 213
+  size: 6, 6
+  orig: 6, 6
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/mask
+  rotate: false
+  xy: 95, 83
+  size: 45, 46
+  orig: 45, 46
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/front/shoulderR
+  rotate: true
+  xy: 318, 189
+  size: 18, 26
+  orig: 18, 26
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]armL
+  rotate: false
+  xy: 211, 99
+  size: 26, 35
+  orig: 26, 35
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]armR
+  rotate: true
+  xy: 280, 81
+  size: 25, 31
+  orig: 25, 31
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]body
+  rotate: true
+  xy: 54, 130
+  size: 62, 44
+  orig: 62, 44
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]elbowR
+  rotate: true
+  xy: 327, 29
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]handL
+  rotate: false
+  xy: 203, 209
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]head
+  rotate: false
+  xy: 215, 75
+  size: 37, 23
+  orig: 37, 23
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]legL
+  rotate: false
+  xy: 345, 192
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/[base]legR
+  rotate: true
+  xy: 357, 212
+  size: 24, 17
+  orig: 24, 17
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/bodyF
+  rotate: false
+  xy: 193, 33
+  size: 32, 14
+  orig: 32, 14
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/bodydecoR
+  rotate: true
+  xy: 106, 26
+  size: 5, 12
+  orig: 5, 12
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/bodydecoR2
+  rotate: true
+  xy: 204, 162
+  size: 9, 10
+  orig: 9, 10
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/featherT2
+  rotate: false
+  xy: 232, 175
+  size: 39, 33
+  orig: 39, 33
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/hair
+  rotate: true
+  xy: 177, 95
+  size: 39, 33
+  orig: 39, 33
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/helmdeco
+  rotate: false
+  xy: 1, 2
+  size: 35, 21
+  orig: 35, 21
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/helmtailR1
+  rotate: false
+  xy: 173, 75
+  size: 11, 8
+  orig: 11, 8
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/helmtailR2
+  rotate: true
+  xy: 183, 162
+  size: 9, 20
+  orig: 9, 20
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/helmtailR3
+  rotate: true
+  xy: 119, 27
+  size: 4, 7
+  orig: 4, 7
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/mask
+  rotate: false
+  xy: 99, 209
+  size: 43, 46
+  orig: 43, 46
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/side/shoulderR
+  rotate: true
+  xy: 349, 2
+  size: 26, 21
+  orig: 26, 21
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/weapon1
+  rotate: false
+  xy: 148, 5
+  size: 68, 26
+  orig: 68, 26
+  offset: 0, 0
+  index: -1
+archaic_ogre_elite/weapon2
+  rotate: false
+  xy: 160, 48
+  size: 67, 26
+  orig: 67, 26
+  offset: 0, 0
+  index: -1

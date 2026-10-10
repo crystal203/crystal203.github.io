@@ -1,0 +1,20 @@
+
+arcade_cliff_front__page0.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+tilemap
+  rotate: false
+  xy: 2, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+tilemap_bottom
+  rotate: false
+  xy: 2, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,118 @@
+
+xm_snowman_carol_front__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+beauty/front/armL
+  rotate: true
+  xy: 77, 5
+  size: 10, 13
+  orig: 55, 56
+  offset: 29, 6
+  index: -1
+beauty/front/armR
+  rotate: true
+  xy: 2, 4
+  size: 10, 13
+  orig: 55, 56
+  offset: 16, 6
+  index: -1
+beauty/front/body
+  rotate: true
+  xy: 80, 29
+  size: 21, 20
+  orig: 55, 56
+  offset: 17, 0
+  index: -1
+idle/front/armL
+  rotate: false
+  xy: 32, 2
+  size: 10, 7
+  orig: 55, 56
+  offset: 39, 13
+  index: -1
+idle/front/armR
+  rotate: false
+  xy: 17, 3
+  size: 13, 6
+  orig: 55, 56
+  offset: 6, 12
+  index: -1
+idle/front/body
+  rotate: true
+  xy: 57, 23
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+idle/front/head
+  rotate: true
+  xy: 31, 25
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+rabbitears/front/armL
+  rotate: true
+  xy: 47, 10
+  size: 11, 13
+  orig: 55, 56
+  offset: 29, 6
+  index: -1
+rabbitears/front/armR
+  rotate: true
+  xy: 62, 10
+  size: 11, 13
+  orig: 55, 56
+  offset: 15, 6
+  index: -1
+rabbitears/front/body
+  rotate: true
+  xy: 102, 29
+  size: 21, 20
+  orig: 55, 56
+  offset: 17, 0
+  index: -1
+rabbitears/front/earL
+  rotate: false
+  xy: 105, 14
+  size: 16, 13
+  orig: 55, 56
+  offset: 33, 33
+  index: -1
+rabbitears/front/earR
+  rotate: true
+  xy: 80, 17
+  size: 10, 23
+  orig: 55, 56
+  offset: 12, 33
+  index: -1
+rabbitears/front/face/[base]idle
+  rotate: false
+  xy: 107, 5
+  size: 13, 7
+  orig: 55, 56
+  offset: 21, 19
+  index: -1
+rabbitears/front/face/[base]smile
+  rotate: false
+  xy: 92, 4
+  size: 13, 8
+  orig: 55, 56
+  offset: 21, 18
+  index: -1
+rabbitears/front/hat
+  rotate: true
+  xy: 31, 11
+  size: 12, 14
+  orig: 55, 56
+  offset: 11, 23
+  index: -1
+rabbitears/front/head
+  rotate: false
+  xy: 2, 16
+  size: 27, 34
+  orig: 55, 56
+  offset: 14, 11
+  index: -1

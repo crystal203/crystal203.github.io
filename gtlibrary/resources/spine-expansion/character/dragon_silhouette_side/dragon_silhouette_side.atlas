@@ -1,0 +1,146 @@
+
+dragon_silhouette_side__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armB
+  rotate: false
+  xy: 63, 3
+  size: 11, 9
+  orig: 64, 64
+  offset: 39, 6
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 90, 2
+  size: 10, 8
+  orig: 64, 64
+  offset: 26, 9
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 46, 9
+  size: 24, 15
+  orig: 64, 64
+  offset: 22, 7
+  index: -1
+side/[base]handR
+  rotate: false
+  xy: 76, 3
+  size: 12, 7
+  orig: 64, 64
+  offset: 25, 6
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 5
+  size: 42, 28
+  orig: 64, 64
+  offset: 18, 13
+  index: -1
+side/[base]legB
+  rotate: false
+  xy: 97, 23
+  size: 6, 7
+  orig: 64, 64
+  offset: 29, 6
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 97, 12
+  size: 7, 9
+  orig: 64, 64
+  offset: 19, 6
+  index: -1
+side/[base]pelvis
+  rotate: true
+  xy: 81, 12
+  size: 21, 14
+  orig: 64, 64
+  offset: 19, 7
+  index: -1
+side/[base]tail
+  rotate: true
+  xy: 63, 14
+  size: 19, 16
+  orig: 64, 64
+  offset: 7, 11
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/bite
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/blush
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/scared
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/victory
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1

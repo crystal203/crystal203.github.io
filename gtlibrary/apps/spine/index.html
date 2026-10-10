@@ -462,6 +462,8 @@
       .sidebar { width: auto; border-left: 0; border-top: 1px solid var(--line); max-height: 52vh; }
       .stage { min-height: 300px; }
     }
+  #skeletonVariantWrapper, #skeletonVariantButtons { flex-wrap: wrap; }
+    #skeletonVariantButtons { min-width: 0; }
   </style>
 <link rel="stylesheet" href="../../shared/theme.css"></head>
 
@@ -494,9 +496,10 @@
           <label class="field">
             <span>目录</span>
             <select id="folderSelector">
-              <option value="illust">illust</option>
-              <option value="character">character</option>
-              <option value="custom">custom</option>
+              <option value="illust">立绘</option>
+              <option value="character">角色</option>
+              <option value="effect">其他</option>
+              <option value="custom">自定义</option>
             </select>
           </label>
 

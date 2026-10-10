@@ -1,0 +1,321 @@
+
+highschool_science_male_robot__page0.png
+size: 128,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 54, 76
+  size: 11, 16
+  orig: 61, 58
+  offset: 10, 9
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 54, 76
+  size: 11, 16
+  orig: 61, 58
+  offset: 10, 9
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 1, 4
+  size: 30, 21
+  orig: 61, 58
+  offset: 16, 3
+  index: -1
+back/[base]elbowL
+  rotate: true
+  xy: 54, 92
+  size: 14, 13
+  orig: 61, 58
+  offset: 5, 1
+  index: -1
+back/[base]elbowL2
+  rotate: true
+  xy: 54, 92
+  size: 14, 13
+  orig: 61, 58
+  offset: 5, 1
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 54, 92
+  size: 14, 13
+  orig: 61, 58
+  offset: 5, 1
+  index: -1
+back/[base]elbowR2
+  rotate: true
+  xy: 54, 92
+  size: 14, 13
+  orig: 61, 58
+  offset: 5, 1
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 1, 34
+  size: 27, 25
+  orig: 61, 58
+  offset: 17, 21
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 68, 111
+  size: 8, 6
+  orig: 61, 58
+  offset: 20, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 68, 111
+  size: 8, 6
+  orig: 61, 58
+  offset: 20, 0
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 54, 60
+  size: 11, 16
+  orig: 61, 58
+  offset: 9, 9
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 54, 60
+  size: 11, 16
+  orig: 61, 58
+  offset: 9, 9
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 22, 4
+  size: 30, 21
+  orig: 61, 58
+  offset: 15, 3
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 42, 41
+  size: 14, 14
+  orig: 61, 58
+  offset: 4, 0
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 42, 41
+  size: 14, 14
+  orig: 61, 58
+  offset: 4, 0
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 42, 41
+  size: 14, 14
+  orig: 61, 58
+  offset: 4, 0
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 42, 41
+  size: 14, 14
+  orig: 61, 58
+  offset: 4, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 1, 59
+  size: 27, 32
+  orig: 61, 58
+  offset: 16, 16
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 75, 56
+  size: 8, 6
+  orig: 61, 58
+  offset: 20, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 75, 56
+  size: 8, 6
+  orig: 61, 58
+  offset: 20, 0
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 44, 75
+  size: 19, 10
+  orig: 61, 58
+  offset: 20, 23
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 56, 41
+  size: 19, 9
+  orig: 61, 58
+  offset: 20, 24
+  index: -1
+front/face/[base]doyagao
+  rotate: true
+  xy: 44, 56
+  size: 19, 10
+  orig: 61, 58
+  offset: 20, 24
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 56, 22
+  size: 19, 9
+  orig: 61, 58
+  offset: 20, 24
+  index: -1
+front/face/[base]mad
+  rotate: true
+  xy: 47, 106
+  size: 19, 10
+  orig: 61, 58
+  offset: 20, 23
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 43, 1
+  size: 19, 10
+  orig: 61, 58
+  offset: 20, 24
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 62, 3
+  size: 19, 9
+  orig: 61, 58
+  offset: 20, 24
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 57, 110
+  size: 11, 15
+  orig: 62, 58
+  offset: 41, 12
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 65, 77
+  size: 11, 15
+  orig: 62, 58
+  offset: 17, 12
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 27, 94
+  size: 31, 20
+  orig: 62, 58
+  offset: 17, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 28, 40
+  size: 14, 15
+  orig: 62, 58
+  offset: 44, 2
+  index: -1
+side/[base]elbowL2
+  rotate: false
+  xy: 28, 55
+  size: 15, 15
+  orig: 62, 58
+  offset: 44, 2
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 43, 26
+  size: 13, 15
+  orig: 62, 58
+  offset: 12, 2
+  index: -1
+side/[base]elbowR2
+  rotate: false
+  xy: 43, 11
+  size: 13, 15
+  orig: 62, 58
+  offset: 12, 2
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 1, 91
+  size: 26, 34
+  orig: 62, 58
+  offset: 22, 14
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 71, 1
+  size: 9, 7
+  orig: 62, 58
+  offset: 35, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 71, 1
+  size: 9, 7
+  orig: 62, 58
+  offset: 25, 0
+  index: -1
+side/bodyF
+  rotate: true
+  xy: 28, 70
+  size: 24, 16
+  orig: 62, 58
+  offset: 24, 4
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 67, 95
+  size: 15, 9
+  orig: 62, 58
+  offset: 30, 25
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 65, 23
+  size: 15, 9
+  orig: 62, 58
+  offset: 30, 26
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 65, 47
+  size: 15, 10
+  orig: 62, 58
+  offset: 30, 26
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 68, 117
+  size: 15, 8
+  orig: 62, 58
+  offset: 30, 26
+  index: -1
+side/face/[base]mad
+  rotate: true
+  xy: 65, 62
+  size: 15, 11
+  orig: 62, 58
+  offset: 30, 24
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 65, 32
+  size: 15, 10
+  orig: 62, 58
+  offset: 30, 25
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 71, 8
+  size: 15, 9
+  orig: 62, 58
+  offset: 30, 26
+  index: -1

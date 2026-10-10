@@ -1,0 +1,69 @@
+
+steampunk_rich_train__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: true
+  xy: 1, 175
+  size: 64, 158
+  orig: 76, 213
+  offset: 7, 34
+  index: -1
+front/bodyB
+  rotate: false
+  xy: 134, 148
+  size: 60, 13
+  orig: 76, 213
+  offset: 9, 27
+  index: -1
+front/light
+  rotate: false
+  xy: 134, 51
+  size: 76, 70
+  orig: 76, 213
+  offset: 0, 0
+  index: -1
+front/light2
+  rotate: true
+  xy: 211, 57
+  size: 64, 28
+  orig: 76, 213
+  offset: 7, 82
+  index: -1
+side/body
+  rotate: false
+  xy: 1, 60
+  size: 132, 114
+  orig: 194, 130
+  offset: 0, 16
+  index: -1
+side/bodyB
+  rotate: false
+  xy: 134, 122
+  size: 116, 16
+  orig: 194, 130
+  offset: 8, 9
+  index: -1
+side/light
+  rotate: true
+  xy: 160, 162
+  size: 77, 80
+  orig: 194, 130
+  offset: 110, 4
+  index: -1
+side/light2
+  rotate: true
+  xy: 1, 1
+  size: 58, 71
+  orig: 194, 130
+  offset: 105, 59
+  index: -1
+side/wheel
+  rotate: true
+  xy: 241, 139
+  size: 100, 14
+  orig: 194, 130
+  offset: 16, 7
+  index: -1

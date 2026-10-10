@@ -1,0 +1,363 @@
+
+exp_dungeon_explosion__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 2, 87
+  size: 62, 58
+  orig: 78, 84
+  offset: 8, 17
+  index: -1
+back/boom1
+  rotate: false
+  xy: 196, 47
+  size: 26, 26
+  orig: 78, 84
+  offset: 35, 51
+  index: -1
+back/boom1_glow
+  rotate: false
+  xy: 127, 25
+  size: 19, 19
+  orig: 78, 84
+  offset: 36, 59
+  index: -1
+back/boom2
+  rotate: false
+  xy: 198, 111
+  size: 34, 34
+  orig: 78, 84
+  offset: 29, 49
+  index: -1
+back/boom2_glow
+  rotate: true
+  xy: 102, 57
+  size: 31, 23
+  orig: 78, 84
+  offset: 30, 59
+  index: -1
+back/footL
+  rotate: false
+  xy: 234, 91
+  size: 14, 26
+  orig: 78, 84
+  offset: 6, 10
+  index: -1
+back/footR
+  rotate: true
+  xy: 88, 41
+  size: 14, 26
+  orig: 78, 84
+  offset: 58, 10
+  index: -1
+back/handL
+  rotate: true
+  xy: 88, 26
+  size: 13, 24
+  orig: 78, 84
+  offset: 9, 33
+  index: -1
+back/handR
+  rotate: true
+  xy: 148, 20
+  size: 13, 24
+  orig: 78, 84
+  offset: 56, 33
+  index: -1
+back/legL
+  rotate: true
+  xy: 206, 3
+  size: 11, 14
+  orig: 78, 84
+  offset: 14, 14
+  index: -1
+front/elbowR
+  rotate: true
+  xy: 206, 3
+  size: 11, 14
+  orig: 112, 144
+  offset: 35, 44
+  index: -1
+back/legL2
+  rotate: false
+  xy: 116, 33
+  size: 9, 10
+  orig: 78, 84
+  offset: 18, 14
+  index: -1
+front/armR
+  rotate: false
+  xy: 116, 33
+  size: 9, 10
+  orig: 112, 144
+  offset: 39, 44
+  index: -1
+back/legR
+  rotate: true
+  xy: 222, 3
+  size: 11, 14
+  orig: 78, 84
+  offset: 53, 14
+  index: -1
+front/elbowL
+  rotate: true
+  xy: 222, 3
+  size: 11, 14
+  orig: 112, 144
+  offset: 66, 44
+  index: -1
+back/legR2
+  rotate: false
+  xy: 112, 5
+  size: 9, 10
+  orig: 78, 84
+  offset: 51, 14
+  index: -1
+front/armL
+  rotate: false
+  xy: 112, 5
+  size: 9, 10
+  orig: 112, 144
+  offset: 64, 44
+  index: -1
+back/tail1
+  rotate: 270
+  xy: 2, 31
+  size: 23, 40
+  orig: 78, 84
+  offset: 35, 18
+  index: -1
+front/body
+  rotate: false
+  xy: 66, 90
+  size: 62, 55
+  orig: 112, 144
+  offset: 25, 50
+  index: -1
+front/boom1
+  rotate: false
+  xy: 224, 47
+  size: 26, 26
+  orig: 112, 144
+  offset: 43, 112
+  index: -1
+front/boom1_glow
+  rotate: false
+  xy: 41, 24
+  size: 19, 19
+  orig: 112, 144
+  offset: 49, 120
+  index: -1
+front/boom2
+  rotate: false
+  xy: 198, 75
+  size: 34, 34
+  orig: 112, 144
+  offset: 41, 110
+  index: -1
+front/boom2_glow
+  rotate: true
+  xy: 37, 54
+  size: 31, 23
+  orig: 112, 144
+  offset: 43, 120
+  index: -1
+front/footL
+  rotate: true
+  xy: 194, 31
+  size: 14, 26
+  orig: 112, 144
+  offset: 75, 56
+  index: -1
+front/footR
+  rotate: true
+  xy: 222, 31
+  size: 14, 26
+  orig: 112, 144
+  offset: 23, 57
+  index: -1
+front/handL
+  rotate: true
+  xy: 174, 16
+  size: 13, 24
+  orig: 112, 144
+  offset: 73, 39
+  index: -1
+front/handR
+  rotate: true
+  xy: 200, 16
+  size: 13, 24
+  orig: 112, 144
+  offset: 26, 39
+  index: -1
+front/head
+  rotate: false
+  xy: 66, 62
+  size: 34, 26
+  orig: 112, 144
+  offset: 39, 45
+  index: -1
+front/head_damaged
+  rotate: false
+  xy: 41, 13
+  size: 26, 8
+  orig: 112, 144
+  offset: 43, 51
+  index: -1
+front/head_dead
+  rotate: false
+  xy: 147, 10
+  size: 24, 8
+  orig: 112, 144
+  offset: 44, 51
+  index: -1
+front/tail1
+  rotate: 270
+  xy: 114, 14
+  size: 17, 33
+  orig: 112, 144
+  offset: 46, 86
+  index: -1
+side/armR
+  rotate: false
+  xy: 123, 3
+  size: 6, 9
+  orig: 90, 120
+  offset: 44, 35
+  index: -1
+side/body
+  rotate: false
+  xy: 130, 96
+  size: 66, 49
+  orig: 90, 120
+  offset: 10, 40
+  index: -1
+side/boom1
+  rotate: false
+  xy: 166, 35
+  size: 26, 26
+  orig: 90, 120
+  offset: 4, 87
+  index: -1
+side/boom1_glow
+  rotate: false
+  xy: 20, 21
+  size: 19, 19
+  orig: 90, 120
+  offset: 12, 95
+  index: -1
+side/boom2
+  rotate: false
+  xy: 130, 60
+  size: 34, 34
+  orig: 90, 120
+  offset: 2, 85
+  index: -1
+side/boom2_glow
+  rotate: true
+  xy: 166, 63
+  size: 31, 28
+  orig: 90, 120
+  offset: 5, 92
+  index: -1
+side/elbowL
+  rotate: false
+  xy: 24, 6
+  size: 12, 13
+  orig: 90, 120
+  offset: 63, 35
+  index: -1
+side/elbowR
+  rotate: false
+  xy: 191, 2
+  size: 13, 12
+  orig: 90, 120
+  offset: 37, 35
+  index: -1
+side/footL
+  rotate: true
+  xy: 87, 13
+  size: 11, 23
+  orig: 90, 120
+  offset: 46, 33
+  index: -1
+side/footR
+  rotate: false
+  xy: 234, 119
+  size: 15, 26
+  orig: 90, 120
+  offset: 8, 33
+  index: -1
+side/handL
+  rotate: true
+  xy: 62, 23
+  size: 13, 23
+  orig: 90, 120
+  offset: 67, 32
+  index: -1
+side/handR
+  rotate: true
+  xy: 226, 16
+  size: 13, 24
+  orig: 90, 120
+  offset: 30, 31
+  index: -1
+side/head
+  rotate: false
+  xy: 2, 59
+  size: 33, 26
+  orig: 90, 120
+  offset: 42, 37
+  index: -1
+side/head_damaged
+  rotate: false
+  xy: 234, 79
+  size: 20, 10
+  orig: 90, 120
+  offset: 54, 43
+  index: -1
+side/head_dead
+  rotate: false
+  xy: 2, 9
+  size: 20, 10
+  orig: 90, 120
+  offset: 54, 43
+  index: -1
+side/legL2
+  rotate: false
+  xy: 238, 3
+  size: 10, 11
+  orig: 90, 120
+  offset: 41, 35
+  index: -1
+side/legR
+  rotate: false
+  xy: 69, 5
+  size: 11, 16
+  orig: 90, 120
+  offset: 18, 37
+  index: -1
+side/legR2
+  rotate: false
+  xy: 173, 3
+  size: 16, 11
+  orig: 90, 120
+  offset: 22, 37
+  index: -1
+side/neck
+  rotate: false
+  xy: 62, 38
+  size: 24, 22
+  orig: 90, 120
+  offset: 56, 45
+  index: -1
+side/tail1
+  rotate: true
+  xy: 120, 37
+  size: 22, 44
+  orig: 90, 120
+  offset: 0, 53
+  index: -1

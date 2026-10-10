@@ -1,0 +1,97 @@
+
+demon_kid_boy_baby__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: false
+  xy: 13, 9
+  size: 4, 4
+  orig: 56, 56
+  offset: 36, 3
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 13, 3
+  size: 4, 4
+  orig: 56, 56
+  offset: 31, 3
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 6
+  size: 9, 7
+  orig: 56, 56
+  offset: 31, 2
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 36, 2
+  size: 4, 4
+  orig: 56, 56
+  offset: 38, 2
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 42, 2
+  size: 4, 4
+  orig: 56, 56
+  offset: 30, 2
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 15
+  size: 19, 19
+  orig: 56, 56
+  offset: 25, 6
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 56, 29
+  size: 4, 5
+  orig: 56, 56
+  offset: 36, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 56, 29
+  size: 4, 5
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 47, 8
+  size: 10, 5
+  orig: 56, 56
+  offset: 32, 6
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 47, 23
+  size: 11, 7
+  orig: 56, 56
+  offset: 32, 5
+  index: -1
+side/face/cry
+  rotate: false
+  xy: 47, 15
+  size: 11, 6
+  orig: 56, 56
+  offset: 32, 6
+  index: -1
+side/face/cry2
+  rotate: true
+  xy: 23, 6
+  size: 28, 11
+  orig: 56, 56
+  offset: 22, 2
+  index: -1
+side/face/cry3
+  rotate: true
+  xy: 36, 8
+  size: 26, 9
+  orig: 56, 56
+  offset: 24, 5
+  index: -1

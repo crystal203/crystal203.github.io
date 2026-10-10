@@ -1,0 +1,62 @@
+
+sky_dancer__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+armL
+  rotate: true
+  xy: 73, 3
+  size: 23, 6
+  orig: 91, 113
+  offset: 48, 74
+  index: -1
+armR
+  rotate: false
+  xy: 16, 2
+  size: 23, 6
+  orig: 91, 113
+  offset: 20, 74
+  index: -1
+body
+  rotate: false
+  xy: 1, 6
+  size: 19, 46
+  orig: 91, 113
+  offset: 36, 1
+  index: -1
+body2
+  rotate: false
+  xy: 50, 9
+  size: 15, 41
+  orig: 91, 113
+  offset: 38, 38
+  index: -1
+body_leaf
+  rotate: 180
+  xy: 16, 12
+  size: 23, 39
+  orig: 91, 113
+  offset: 35, 0
+  index: -1
+elbowL
+  rotate: true
+  xy: 64, 9
+  size: 24, 9
+  orig: 91, 113
+  offset: 67, 73
+  index: -1
+elbowR
+  rotate: true
+  xy: 73, 26
+  size: 24, 9
+  orig: 91, 113
+  offset: 0, 73
+  index: -1
+head
+  rotate: false
+  xy: 37, 8
+  size: 15, 43
+  orig: 91, 113
+  offset: 38, 70
+  index: -1

@@ -1,0 +1,146 @@
+
+cw_crow_side__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: true
+  xy: 52, 38
+  size: 9, 10
+  orig: 56, 56
+  offset: 35, 15
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 33, 27
+  size: 12, 11
+  orig: 56, 56
+  offset: 15, 14
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 18, 7
+  size: 18, 23
+  orig: 56, 56
+  offset: 22, 7
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 47, 25
+  size: 11, 13
+  orig: 56, 56
+  offset: 39, 19
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 2, 16
+  size: 14, 14
+  orig: 56, 56
+  offset: 8, 18
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 43, 2
+  size: 19, 21
+  orig: 56, 56
+  offset: 25, 12
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 2, 52
+  size: 8, 3
+  orig: 56, 56
+  offset: 30, 3
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 12, 52
+  size: 6, 3
+  orig: 56, 56
+  offset: 25, 3
+  index: -1
+side/elbowL2
+  rotate: true
+  xy: 2, 32
+  size: 10, 14
+  orig: 56, 56
+  offset: 32, 8
+  index: -1
+side/elbowR2
+  rotate: true
+  xy: 18, 29
+  size: 11, 13
+  orig: 56, 56
+  offset: 19, 9
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 52, 49
+  size: 6, 6
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 2, 44
+  size: 6, 6
+  orig: 56, 56
+  offset: 30, 21
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 10, 44
+  size: 6, 6
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 18, 43
+  size: 6, 6
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 26, 42
+  size: 6, 6
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 28, 50
+  size: 6, 5
+  orig: 56, 56
+  offset: 30, 23
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 36, 50
+  size: 6, 5
+  orig: 56, 56
+  offset: 30, 23
+  index: -1
+side/legL2
+  rotate: true
+  xy: 20, 51
+  size: 4, 6
+  orig: 56, 56
+  offset: 30, 4
+  index: -1
+side/legR2
+  rotate: true
+  xy: 44, 50
+  size: 5, 6
+  orig: 56, 56
+  offset: 23, 4
+  index: -1
+side/tail
+  rotate: false
+  xy: 34, 40
+  size: 16, 8
+  orig: 56, 56
+  offset: 10, 5
+  index: -1

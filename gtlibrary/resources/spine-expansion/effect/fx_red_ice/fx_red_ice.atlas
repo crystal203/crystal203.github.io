@@ -1,0 +1,20 @@
+
+fx_red_ice__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fx_glow
+  rotate: false
+  xy: 1, 1
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+rediceF
+  rotate: false
+  xy: 1, 17
+  size: 69, 89
+  orig: 69, 90
+  offset: 0, 0
+  index: -1

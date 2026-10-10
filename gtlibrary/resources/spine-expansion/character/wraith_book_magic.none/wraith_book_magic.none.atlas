@@ -1,0 +1,153 @@
+
+wraith_book_magic.none__page0.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+attack/backM
+  rotate: false
+  xy: 72, 164
+  size: 23, 35
+  orig: 64, 64
+  offset: 21, 12
+  index: -1
+attack/front0
+  rotate: false
+  xy: 43, 151
+  size: 28, 45
+  orig: 64, 64
+  offset: 18, 10
+  index: -1
+attack/frontM
+  rotate: false
+  xy: 69, 30
+  size: 23, 34
+  orig: 64, 64
+  offset: 21, 13
+  index: -1
+attack/side0
+  rotate: true
+  xy: 35, 28
+  size: 36, 33
+  orig: 64, 64
+  offset: 15, 15
+  index: -1
+attack/sideM
+  rotate: false
+  xy: 105, 70
+  size: 22, 34
+  orig: 64, 64
+  offset: 24, 13
+  index: -1
+idle/front/1
+  rotate: false
+  xy: 58, 214
+  size: 41, 41
+  orig: 64, 64
+  offset: 12, 10
+  index: -1
+idle/front/2
+  rotate: false
+  xy: 1, 112
+  size: 41, 40
+  orig: 64, 64
+  offset: 12, 10
+  index: -1
+idle/front/3
+  rotate: false
+  xy: 96, 136
+  size: 31, 41
+  orig: 64, 64
+  offset: 17, 11
+  index: -1
+idle/front/4
+  rotate: false
+  xy: 1, 70
+  size: 35, 41
+  orig: 64, 64
+  offset: 15, 10
+  index: -1
+idle/front/5
+  rotate: false
+  xy: 1, 153
+  size: 41, 43
+  orig: 64, 64
+  offset: 12, 11
+  index: -1
+idle/side/1
+  rotate: true
+  xy: 1, 27
+  size: 42, 33
+  orig: 64, 64
+  offset: 11, 16
+  index: -1
+idle/side/2
+  rotate: true
+  xy: 43, 108
+  size: 42, 30
+  orig: 64, 64
+  offset: 11, 17
+  index: -1
+idle/side/3
+  rotate: false
+  xy: 74, 105
+  size: 38, 30
+  orig: 64, 64
+  offset: 13, 16
+  index: -1
+idle/side/4
+  rotate: true
+  xy: 100, 213
+  size: 42, 27
+  orig: 64, 64
+  offset: 11, 18
+  index: -1
+idle/side/5
+  rotate: true
+  xy: 37, 65
+  size: 42, 33
+  orig: 64, 64
+  offset: 11, 17
+  index: -1
+ready/00
+  rotate: false
+  xy: 93, 47
+  size: 27, 22
+  orig: 64, 64
+  offset: 20, 15
+  index: -1
+ready/01
+  rotate: true
+  xy: 98, 178
+  size: 34, 29
+  orig: 64, 64
+  offset: 17, 12
+  index: -1
+ready/02
+  rotate: false
+  xy: 1, 1
+  size: 27, 25
+  orig: 64, 64
+  offset: 21, 14
+  index: -1
+ready/03
+  rotate: true
+  xy: 58, 200
+  size: 13, 39
+  orig: 64, 64
+  offset: 26, 9
+  index: -1
+ready/04
+  rotate: false
+  xy: 71, 72
+  size: 33, 32
+  orig: 64, 64
+  offset: 16, 14
+  index: -1
+trail
+  rotate: false
+  xy: 1, 197
+  size: 56, 58
+  orig: 56, 58
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,244 @@
+
+sr_wax_pelican__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 114, 26
+  size: 9, 16
+  orig: 55, 56
+  offset: 13, 7
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 114, 26
+  size: 9, 16
+  orig: 55, 56
+  offset: 13, 7
+  index: -1
+back/[base]armR2
+  rotate: true
+  xy: 92, 17
+  size: 9, 16
+  orig: 55, 56
+  offset: 13, 7
+  index: -1
+back/[base]armL2
+  rotate: true
+  xy: 92, 17
+  size: 9, 16
+  orig: 55, 56
+  offset: 13, 7
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 94, 28
+  size: 18, 14
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 44
+  size: 18, 19
+  orig: 55, 56
+  offset: 19, 21
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 27, 2
+  size: 8, 11
+  orig: 55, 56
+  offset: 20, 1
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 27, 2
+  size: 8, 11
+  orig: 55, 56
+  offset: 20, 1
+  index: -1
+back/[base]pelvis
+  rotate: false
+  xy: 74, 16
+  size: 16, 10
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+back/[base]tail
+  rotate: false
+  xy: 2, 14
+  size: 12, 11
+  orig: 55, 56
+  offset: 22, 6
+  index: -1
+back/glasses
+  rotate: false
+  xy: 74, 7
+  size: 16, 7
+  orig: 55, 56
+  offset: 20, 30
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 57, 15
+  size: 8, 15
+  orig: 55, 58
+  offset: 13, 10
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 57, 15
+  size: 8, 15
+  orig: 55, 58
+  offset: 13, 10
+  index: -1
+front/[base]armR2
+  rotate: true
+  xy: 92, 7
+  size: 8, 15
+  orig: 55, 58
+  offset: 13, 10
+  index: -1
+front/[base]armL2
+  rotate: true
+  xy: 92, 7
+  size: 8, 15
+  orig: 55, 58
+  offset: 13, 10
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 22, 43
+  size: 20, 16
+  orig: 55, 58
+  offset: 18, 8
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 40, 45
+  size: 18, 17
+  orig: 55, 58
+  offset: 19, 20
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 16, 14
+  size: 9, 14
+  orig: 55, 58
+  offset: 19, 2
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 16, 14
+  size: 9, 14
+  orig: 55, 58
+  offset: 19, 2
+  index: -1
+front/[base]pelvis
+  rotate: true
+  xy: 59, 43
+  size: 20, 15
+  orig: 55, 58
+  offset: 18, 14
+  index: -1
+front/[base]tail
+  rotate: false
+  xy: 2, 3
+  size: 11, 9
+  orig: 55, 58
+  offset: 23, 24
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 76, 28
+  size: 16, 16
+  orig: 55, 56
+  offset: 20, 15
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 58, 25
+  size: 16, 14
+  orig: 55, 56
+  offset: 20, 17
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 39, 12
+  size: 14, 16
+  orig: 56, 56
+  offset: 31, 7
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 76, 46
+  size: 17, 17
+  orig: 56, 56
+  offset: 16, 6
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 22, 25
+  size: 16, 15
+  orig: 56, 56
+  offset: 27, 7
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 39, 28
+  size: 17, 15
+  orig: 56, 56
+  offset: 29, 23
+  index: -1
+side/[base]legB
+  rotate: true
+  xy: 15, 3
+  size: 9, 10
+  orig: 56, 56
+  offset: 29, 2
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 56, 3
+  size: 10, 10
+  orig: 56, 56
+  offset: 24, 2
+  index: -1
+side/[base]pelvis
+  rotate: false
+  xy: 2, 27
+  size: 18, 14
+  orig: 56, 56
+  offset: 16, 7
+  index: -1
+side/[base]tail
+  rotate: false
+  xy: 110, 12
+  size: 11, 12
+  orig: 56, 56
+  offset: 13, 12
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 95, 44
+  size: 19, 15
+  orig: 56, 56
+  offset: 35, 19
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 114, 44
+  size: 19, 12
+  orig: 56, 56
+  offset: 35, 22
+  index: -1
+side/neck
+  rotate: false
+  xy: 40, 2
+  size: 9, 8
+  orig: 56, 56
+  offset: 31, 19
+  index: -1

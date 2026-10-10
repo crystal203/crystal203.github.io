@@ -1,0 +1,62 @@
+
+exp_dungeon_fly.light__page0.png
+size: 128,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fx_glow
+  rotate: true
+  xy: 106, 1
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+side/face/damaged
+  rotate: true
+  xy: 61, 9
+  size: 22, 10
+  orig: 56, 56
+  offset: 25, 5
+  index: -1
+side/face/idle
+  rotate: true
+  xy: 27, 8
+  size: 23, 15
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/face/mad
+  rotate: true
+  xy: 43, 9
+  size: 22, 17
+  orig: 56, 56
+  offset: 25, 3
+  index: -1
+side/head
+  rotate: false
+  xy: 1, 6
+  size: 25, 25
+  orig: 56, 56
+  offset: 22, 2
+  index: -1
+side/wingL
+  rotate: true
+  xy: 106, 16
+  size: 15, 16
+  orig: 56, 56
+  offset: 40, 11
+  index: -1
+side/wingR
+  rotate: true
+  xy: 72, 12
+  size: 19, 17
+  orig: 56, 56
+  offset: 9, 9
+  index: -1
+side/wingR2
+  rotate: true
+  xy: 90, 14
+  size: 17, 15
+  orig: 56, 56
+  offset: 4, 12
+  index: -1

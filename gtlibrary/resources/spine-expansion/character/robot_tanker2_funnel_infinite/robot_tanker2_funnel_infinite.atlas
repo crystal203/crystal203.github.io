@@ -1,0 +1,69 @@
+
+robot_tanker2_funnel_infinite__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: true
+  xy: 151, 31
+  size: 41, 31
+  orig: 55, 56
+  offset: 7, 6
+  index: -1
+boost/boostB
+  rotate: false
+  xy: 184, 2
+  size: 36, 30
+  orig: 37, 31
+  offset: 0, 1
+  index: -1
+boost/boostB_2
+  rotate: false
+  xy: 45, 19
+  size: 32, 53
+  orig: 33, 54
+  offset: 0, 1
+  index: -1
+boost/boostF
+  rotate: true
+  xy: 184, 36
+  size: 36, 35
+  orig: 37, 36
+  offset: 0, 1
+  index: -1
+boost/boostF_2
+  rotate: false
+  xy: 119, 21
+  size: 30, 51
+  orig: 31, 52
+  offset: 0, 1
+  index: -1
+boost/boostS
+  rotate: false
+  xy: 151, 3
+  size: 27, 26
+  orig: 28, 27
+  offset: 0, 1
+  index: -1
+boost/boostS_2
+  rotate: true
+  xy: 221, 34
+  size: 38, 29
+  orig: 39, 30
+  offset: 0, 1
+  index: -1
+front/body
+  rotate: false
+  xy: 2, 29
+  size: 41, 43
+  orig: 55, 56
+  offset: 7, 1
+  index: -1
+side/body
+  rotate: false
+  xy: 79, 29
+  size: 38, 43
+  orig: 56, 56
+  offset: 11, 1
+  index: -1

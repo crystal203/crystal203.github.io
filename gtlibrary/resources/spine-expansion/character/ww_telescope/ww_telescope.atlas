@@ -1,0 +1,27 @@
+
+ww_telescope__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/ww_telescope_body
+  rotate: true
+  xy: 2, 43
+  size: 10, 20
+  orig: 85, 88
+  offset: 38, 33
+  index: -1
+front/ww_telescope_head
+  rotate: true
+  xy: 2, 2
+  size: 28, 45
+  orig: 85, 88
+  offset: 27, 31
+  index: -1
+front/ww_telescope_leg
+  rotate: false
+  xy: 24, 32
+  size: 21, 21
+  orig: 85, 88
+  offset: 31, 15
+  index: -1

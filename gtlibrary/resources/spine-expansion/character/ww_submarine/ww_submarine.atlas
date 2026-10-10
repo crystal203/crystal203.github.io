@@ -1,0 +1,216 @@
+
+ww_submarine__page0.png
+size: 512,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+submarine/body_down
+  rotate: false
+  xy: 145, 20
+  size: 134, 30
+  orig: 180, 130
+  offset: 21, 12
+  index: -1
+submarine/body_mid
+  rotate: false
+  xy: 2, 27
+  size: 134, 20
+  orig: 180, 130
+  offset: 21, 22
+  index: -1
+submarine/body_up
+  rotate: false
+  xy: 310, 214
+  size: 135, 67
+  orig: 180, 130
+  offset: 21, 20
+  index: -1
+submarine/conning_tower_B
+  rotate: true
+  xy: 447, 232
+  size: 49, 17
+  orig: 180, 130
+  offset: 73, 74
+  index: -1
+submarine/conning_tower_f
+  rotate: false
+  xy: 147, 3
+  size: 61, 15
+  orig: 180, 130
+  offset: 62, 71
+  index: -1
+submarine/conning_tower_f2
+  rotate: false
+  xy: 467, 73
+  size: 27, 23
+  orig: 180, 130
+  offset: 75, 73
+  index: -1
+submarine/conning_tower_f2_B
+  rotate: false
+  xy: 467, 51
+  size: 20, 20
+  orig: 180, 130
+  offset: 75, 83
+  index: -1
+submarine/conning_tower_fB
+  rotate: true
+  xy: 274, 106
+  size: 42, 17
+  orig: 180, 130
+  offset: 81, 71
+  index: -1
+submarine/conning_tower_fB2
+  rotate: false
+  xy: 210, 5
+  size: 61, 13
+  orig: 180, 130
+  offset: 62, 76
+  index: -1
+submarine/hatch
+  rotate: false
+  xy: 467, 98
+  size: 38, 38
+  orig: 180, 130
+  offset: 77, 82
+  index: -1
+submarine/propeller_A_1
+  rotate: false
+  xy: 293, 113
+  size: 3, 35
+  orig: 180, 130
+  offset: 18, 16
+  index: -1
+submarine/propeller_A_2
+  rotate: true
+  xy: 467, 46
+  size: 3, 35
+  orig: 180, 130
+  offset: 18, 16
+  index: -1
+submarine/propeller_A_3
+  rotate: true
+  xy: 467, 41
+  size: 3, 35
+  orig: 180, 130
+  offset: 18, 16
+  index: -1
+submarine/propeller_A_4
+  rotate: false
+  xy: 303, 175
+  size: 3, 36
+  orig: 180, 130
+  offset: 18, 17
+  index: -1
+submarine/water_B_2_1
+  rotate: true
+  xy: 446, 7
+  size: 146, 19
+  orig: 180, 130
+  offset: 14, 25
+  index: -1
+submarine/water_B_2_2
+  rotate: false
+  xy: 281, 25
+  size: 146, 20
+  orig: 180, 130
+  offset: 13, 26
+  index: -1
+submarine/water_B_2_3
+  rotate: false
+  xy: 2, 2
+  size: 143, 16
+  orig: 180, 130
+  offset: 13, 25
+  index: -1
+submarine/water_B_2_4
+  rotate: false
+  xy: 281, 5
+  size: 144, 18
+  orig: 180, 130
+  offset: 14, 26
+  index: -1
+submarine/water_b_1_1
+  rotate: false
+  xy: 289, 47
+  size: 135, 43
+  orig: 180, 130
+  offset: 26, 17
+  index: -1
+submarine/water_b_1_2
+  rotate: false
+  xy: 2, 49
+  size: 141, 44
+  orig: 180, 130
+  offset: 21, 15
+  index: -1
+submarine/water_b_1_3
+  rotate: false
+  xy: 145, 52
+  size: 142, 41
+  orig: 180, 130
+  offset: 21, 18
+  index: -1
+submarine/water_b_1_4
+  rotate: true
+  xy: 468, 138
+  size: 143, 38
+  orig: 180, 130
+  offset: 21, 21
+  index: -1
+water_a/water_a_1_1
+  rotate: false
+  xy: 2, 213
+  size: 152, 68
+  orig: 180, 80
+  offset: 15, 3
+  index: -1
+water_a/water_a_1_2
+  rotate: false
+  xy: 310, 155
+  size: 156, 57
+  orig: 180, 80
+  offset: 13, 8
+  index: -1
+water_a/water_a_1_3
+  rotate: false
+  xy: 2, 99
+  size: 134, 53
+  orig: 180, 80
+  offset: 28, 10
+  index: -1
+water_a/water_a_1_4
+  rotate: false
+  xy: 160, 150
+  size: 141, 61
+  orig: 180, 80
+  offset: 22, 6
+  index: -1
+water_a/water_a_2_1
+  rotate: false
+  xy: 156, 213
+  size: 152, 68
+  orig: 180, 80
+  offset: 15, 3
+  index: -1
+water_a/water_a_2_2
+  rotate: false
+  xy: 2, 154
+  size: 156, 57
+  orig: 180, 80
+  offset: 13, 9
+  index: -1
+water_a/water_a_2_3
+  rotate: false
+  xy: 138, 95
+  size: 134, 53
+  orig: 180, 80
+  offset: 28, 11
+  index: -1
+water_a/water_a_2_4
+  rotate: false
+  xy: 303, 92
+  size: 141, 61
+  orig: 180, 80
+  offset: 22, 7
+  index: -1

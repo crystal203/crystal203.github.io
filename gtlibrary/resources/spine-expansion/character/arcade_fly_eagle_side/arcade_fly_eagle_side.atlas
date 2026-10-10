@@ -1,0 +1,34 @@
+
+arcade_fly_eagle_side__page0.png
+size: 32,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side_idle_1
+  rotate: false
+  xy: 2, 17
+  size: 27, 13
+  orig: 32, 22
+  offset: 2, 4
+  index: -1
+side_idle_2
+  rotate: false
+  xy: 2, 32
+  size: 28, 16
+  orig: 32, 22
+  offset: 1, 3
+  index: -1
+side_idle_3
+  rotate: false
+  xy: 2, 50
+  size: 27, 17
+  orig: 32, 22
+  offset: 2, 2
+  index: -1
+side_idle_4
+  rotate: false
+  xy: 2, 2
+  size: 27, 13
+  orig: 32, 22
+  offset: 2, 5
+  index: -1

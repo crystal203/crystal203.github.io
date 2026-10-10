@@ -1,0 +1,76 @@
+
+arcade_tanker_hw_tin__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back_idle_1
+  rotate: false
+  xy: 87, 31
+  size: 25, 27
+  orig: 32, 32
+  offset: 5, 0
+  index: -1
+back/back_throw_1
+  rotate: false
+  xy: 87, 31
+  size: 25, 27
+  orig: 32, 32
+  offset: 5, 0
+  index: -1
+back/back_idle_2
+  rotate: false
+  xy: 31, 32
+  size: 26, 26
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+back/back_throw_2
+  rotate: false
+  xy: 2, 31
+  size: 27, 27
+  orig: 32, 32
+  offset: 3, 0
+  index: -1
+back/back_throw_3
+  rotate: false
+  xy: 31, 4
+  size: 26, 26
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+front/front_idle_1
+  rotate: false
+  xy: 87, 2
+  size: 25, 27
+  orig: 32, 32
+  offset: 2, 0
+  index: -1
+front/front_throw_1
+  rotate: false
+  xy: 87, 2
+  size: 25, 27
+  orig: 32, 32
+  offset: 2, 0
+  index: -1
+front/front_idle_2
+  rotate: false
+  xy: 59, 32
+  size: 26, 26
+  orig: 32, 32
+  offset: 2, 0
+  index: -1
+front/front_throw_2
+  rotate: false
+  xy: 2, 2
+  size: 27, 27
+  orig: 32, 32
+  offset: 2, 0
+  index: -1
+front/front_throw_3
+  rotate: false
+  xy: 59, 4
+  size: 26, 26
+  orig: 32, 32
+  offset: 2, 0
+  index: -1

@@ -1,0 +1,62 @@
+
+qc_shock_protect_suit__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: true
+  xy: 2, 2
+  size: 6, 8
+  orig: 56, 56
+  offset: 38, 10
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 12, 2
+  size: 7, 6
+  orig: 56, 56
+  offset: 22, 10
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 10
+  size: 23, 18
+  orig: 56, 56
+  offset: 20, 3
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 50, 18
+  size: 8, 10
+  orig: 56, 56
+  offset: 37, 3
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 50, 8
+  size: 8, 10
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 27, 9
+  size: 21, 19
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 21, 3
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 21, 3
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1

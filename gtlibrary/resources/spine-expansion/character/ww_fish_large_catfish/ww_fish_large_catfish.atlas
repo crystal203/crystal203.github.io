@@ -1,0 +1,55 @@
+
+ww_fish_large_catfish__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fish_large_catfish/body
+  rotate: false
+  xy: 2, 39
+  size: 48, 23
+  orig: 94, 50
+  offset: 20, 12
+  index: -1
+fish_large_catfish/fin1
+  rotate: false
+  xy: 22, 2
+  size: 12, 10
+  orig: 94, 50
+  offset: 29, 6
+  index: -1
+fish_large_catfish/fin2
+  rotate: true
+  xy: 30, 15
+  size: 22, 12
+  orig: 94, 50
+  offset: 53, 11
+  index: -1
+fish_large_catfish/fin3
+  rotate: true
+  xy: 44, 19
+  size: 18, 14
+  orig: 94, 50
+  offset: 33, 29
+  index: -1
+fish_large_catfish/head
+  rotate: false
+  xy: 2, 14
+  size: 26, 23
+  orig: 94, 50
+  offset: 7, 12
+  index: -1
+fish_large_catfish/tail
+  rotate: false
+  xy: 2, 4
+  size: 18, 8
+  orig: 94, 50
+  offset: 60, 20
+  index: -1
+fish_large_catfish/tail2
+  rotate: false
+  xy: 44, 2
+  size: 15, 15
+  orig: 94, 50
+  offset: 74, 18
+  index: -1

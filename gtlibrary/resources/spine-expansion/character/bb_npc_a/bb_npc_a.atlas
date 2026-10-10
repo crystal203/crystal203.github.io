@@ -1,0 +1,5172 @@
+
+bb_npc_a__page0.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bb_Janitor/back/[base]armL
+  rotate: true
+  xy: 450, 63
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_Janitor/back/[base]armR
+  rotate: true
+  xy: 450, 63
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_Janitor/front/[base]armL
+  rotate: true
+  xy: 450, 63
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_Janitor/front/[base]armR
+  rotate: true
+  xy: 450, 63
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_Janitor/back/[base]body
+  rotate: false
+  xy: 137, 118
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_Janitor/back/[base]elbowL
+  rotate: false
+  xy: 461, 86
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_Janitor/back/[base]elbowR
+  rotate: false
+  xy: 461, 86
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_Janitor/back/[base]head
+  rotate: true
+  xy: 359, 114
+  size: 25, 26
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+bb_Janitor/back/[base]legL
+  rotate: false
+  xy: 506, 168
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_Janitor/back/[base]legR
+  rotate: false
+  xy: 506, 168
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_Janitor/back/body_deco
+  rotate: false
+  xy: 187, 153
+  size: 3, 5
+  orig: 55, 56
+  offset: 30, 3
+  index: -1
+bb_Janitor/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/back/bag
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/front/bag
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/bag
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_female_player/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_demon_male_player/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_highschool_battleball_leader/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mad_scientist/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_mr_park/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_female/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_staff_male/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_a/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_b/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_succubus_player_c/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/back/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/back/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/back/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/back/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/back/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/back/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/front/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/front/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/front/helm
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/front/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/front/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/front/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/body_deco
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/hair
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/helmL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/helmR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/ponytail
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/wingL
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+tanker_swim_suit/side/wingR
+  rotate: false
+  xy: 506, 145
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+bb_Janitor/front/[base]armL2
+  rotate: false
+  xy: 478, 76
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_Janitor/front/[base]armR2
+  rotate: false
+  xy: 478, 76
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_Janitor/front/[base]body
+  rotate: true
+  xy: 97, 26
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_Janitor/front/[base]elbowL
+  rotate: false
+  xy: 235, 50
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_Janitor/front/[base]elbowR
+  rotate: false
+  xy: 235, 50
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_Janitor/front/[base]elbowL2
+  rotate: false
+  xy: 359, 16
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+bb_Janitor/front/[base]elbowR2
+  rotate: false
+  xy: 359, 16
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+bb_Janitor/front/[base]head
+  rotate: true
+  xy: 387, 114
+  size: 25, 26
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+bb_Janitor/front/[base]legL
+  rotate: false
+  xy: 506, 158
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_Janitor/front/[base]legR
+  rotate: false
+  xy: 506, 158
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_Janitor/front/body_deco
+  rotate: false
+  xy: 187, 146
+  size: 3, 5
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+bb_Janitor/side/body_deco
+  rotate: false
+  xy: 187, 146
+  size: 3, 5
+  orig: 56, 56
+  offset: 29, 4
+  index: -1
+bb_Janitor/front/face/[base]attack
+  rotate: false
+  xy: 266, 85
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_Janitor/front/face/[base]damaged
+  rotate: false
+  xy: 427, 83
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_Janitor/front/face/[base]doyagao
+  rotate: false
+  xy: 378, 85
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_Janitor/front/face/[base]idle
+  rotate: false
+  xy: 444, 83
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_Janitor/front/face/[base]mad
+  rotate: false
+  xy: 75, 84
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_Janitor/front/face/[base]smile
+  rotate: false
+  xy: 471, 99
+  size: 15, 14
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_Janitor/front/face/[base]tired
+  rotate: false
+  xy: 155, 82
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_Janitor/side/[base]armL
+  rotate: true
+  xy: 307, 27
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_Janitor/side/[base]armR
+  rotate: true
+  xy: 127, 7
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_Janitor/side/[base]body
+  rotate: false
+  xy: 158, 34
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_Janitor/side/[base]elbowL
+  rotate: false
+  xy: 96, 100
+  size: 7, 8
+  orig: 56, 56
+  offset: 34, 3
+  index: -1
+bb_Janitor/side/[base]elbowR
+  rotate: false
+  xy: 149, 149
+  size: 6, 8
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_Janitor/side/[base]head
+  rotate: false
+  xy: 415, 114
+  size: 25, 25
+  orig: 56, 56
+  offset: 18, 14
+  index: -1
+bb_Janitor/side/[base]legL
+  rotate: false
+  xy: 506, 148
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_Janitor/side/[base]legR
+  rotate: false
+  xy: 102, 74
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_Janitor/side/face/[base]attack
+  rotate: false
+  xy: 283, 82
+  size: 14, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+bb_Janitor/side/face/[base]damaged
+  rotate: false
+  xy: 178, 63
+  size: 14, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_Janitor/side/face/[base]doyagao
+  rotate: false
+  xy: 395, 82
+  size: 14, 11
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_Janitor/side/face/[base]idle
+  rotate: false
+  xy: 324, 63
+  size: 14, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_Janitor/side/face/[base]mad
+  rotate: false
+  xy: 471, 85
+  size: 14, 12
+  orig: 56, 56
+  offset: 28, 14
+  index: -1
+bb_Janitor/side/face/[base]smile
+  rotate: false
+  xy: 411, 82
+  size: 14, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+bb_Janitor/side/face/[base]tired
+  rotate: false
+  xy: 340, 63
+  size: 14, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_demon_female_player/back/[base]armL
+  rotate: true
+  xy: 270, 7
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_female_player/back/[base]armR
+  rotate: true
+  xy: 270, 7
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_female_player/back/[base]body
+  rotate: false
+  xy: 36, 55
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bb_demon_female_player/back/[base]elbowL
+  rotate: false
+  xy: 407, 61
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_demon_female_player/back/[base]elbowR
+  rotate: false
+  xy: 407, 61
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_demon_female_player/back/[base]head
+  rotate: true
+  xy: 158, 133
+  size: 25, 27
+  orig: 55, 56
+  offset: 15, 12
+  index: -1
+bb_demon_female_player/back/[base]legL
+  rotate: false
+  xy: 286, 129
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_female_player/back/[base]legR
+  rotate: false
+  xy: 286, 129
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_female_player/back/ponytail
+  rotate: true
+  xy: 149, 117
+  size: 14, 32
+  orig: 55, 56
+  offset: 21, 7
+  index: -1
+bb_demon_female_player/front/[base]armL
+  rotate: true
+  xy: 368, 7
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_female_player/front/[base]armR
+  rotate: true
+  xy: 368, 7
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_female_player/front/[base]armL2
+  rotate: false
+  xy: 134, 37
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_demon_female_player/front/[base]armR2
+  rotate: false
+  xy: 134, 37
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_demon_female_player/front/[base]body
+  rotate: true
+  xy: 320, 50
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bb_demon_female_player/front/[base]elbowL
+  rotate: false
+  xy: 39, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_demon_female_player/front/[base]elbowR
+  rotate: false
+  xy: 39, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_demon_female_player/front/[base]elbowL2
+  rotate: false
+  xy: 416, 73
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_demon_female_player/front/[base]elbowR2
+  rotate: false
+  xy: 416, 73
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_demon_female_player/front/[base]head
+  rotate: true
+  xy: 120, 132
+  size: 25, 27
+  orig: 55, 56
+  offset: 15, 12
+  index: -1
+bb_demon_female_player/front/[base]legL
+  rotate: false
+  xy: 286, 119
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_female_player/front/[base]legR
+  rotate: false
+  xy: 286, 119
+  size: 5, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_female_player/front/face/[base]attack
+  rotate: false
+  xy: 172, 82
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_demon_female_player/front/face/[base]damaged
+  rotate: false
+  xy: 478, 64
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_female_player/front/face/[base]doyagao
+  rotate: false
+  xy: 239, 82
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_female_player/front/face/[base]idle
+  rotate: false
+  xy: 495, 64
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_female_player/front/face/[base]mad
+  rotate: false
+  xy: 299, 82
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_demon_female_player/front/face/[base]smile
+  rotate: false
+  xy: 316, 82
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_female_player/front/face/[base]tired
+  rotate: false
+  xy: 50, 62
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_female_player/front/ponytail
+  rotate: false
+  xy: 489, 143
+  size: 15, 33
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+bb_demon_female_player/side/[base]armL
+  rotate: true
+  xy: 376, 7
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_demon_female_player/side/[base]armR
+  rotate: true
+  xy: 384, 7
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_demon_female_player/side/[base]body
+  rotate: true
+  xy: 304, 34
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_demon_female_player/side/[base]elbowL
+  rotate: false
+  xy: 125, 26
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_demon_female_player/side/[base]elbowR
+  rotate: false
+  xy: 216, 16
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_demon_female_player/side/[base]head
+  rotate: false
+  xy: 427, 141
+  size: 26, 26
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+bb_demon_female_player/side/[base]legL
+  rotate: false
+  xy: 119, 63
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_demon_female_player/side/[base]legR
+  rotate: true
+  xy: 19, 8
+  size: 5, 8
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+bb_demon_female_player/side/face/[base]attack
+  rotate: false
+  xy: 490, 41
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_demon_female_player/side/face/[base]damaged
+  rotate: false
+  xy: 183, 26
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_demon_female_player/side/face/[base]doyagao
+  rotate: false
+  xy: 173, 40
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_demon_female_player/side/face/[base]idle
+  rotate: false
+  xy: 289, 48
+  size: 14, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_demon_female_player/side/face/[base]mad
+  rotate: false
+  xy: 334, 50
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_demon_female_player/side/face/[base]smile
+  rotate: false
+  xy: 49, 49
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_demon_female_player/side/face/[base]tired
+  rotate: false
+  xy: 197, 26
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_demon_female_player/side/ponytail
+  rotate: false
+  xy: 493, 109
+  size: 15, 32
+  orig: 56, 56
+  offset: 10, 7
+  index: -1
+bb_demon_male_player/back/[base]armL
+  rotate: true
+  xy: 426, 7
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_male_player/back/[base]armR
+  rotate: true
+  xy: 426, 7
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_male_player/back/[base]body
+  rotate: true
+  xy: 101, 49
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bb_demon_male_player/back/[base]elbowL
+  rotate: false
+  xy: 256, 86
+  size: 7, 6
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+bb_demon_male_player/back/[base]elbowR
+  rotate: false
+  xy: 256, 86
+  size: 7, 6
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+bb_demon_male_player/back/[base]head
+  rotate: false
+  xy: 62, 133
+  size: 27, 26
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+bb_demon_male_player/back/[base]legL
+  rotate: false
+  xy: 149, 139
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_male_player/back/[base]legR
+  rotate: false
+  xy: 149, 139
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_male_player/front/[base]armL
+  rotate: false
+  xy: 2, 6
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_male_player/front/[base]armR
+  rotate: false
+  xy: 2, 6
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_demon_male_player/front/[base]armL2
+  rotate: false
+  xy: 2, 14
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_demon_male_player/front/[base]armR2
+  rotate: false
+  xy: 2, 14
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_demon_male_player/front/[base]body
+  rotate: true
+  xy: 115, 49
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bb_demon_male_player/front/[base]elbowL
+  rotate: false
+  xy: 147, 15
+  size: 7, 6
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+bb_demon_male_player/front/[base]elbowL2
+  rotate: false
+  xy: 137, 16
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_demon_male_player/front/[base]elbowR2
+  rotate: false
+  xy: 137, 16
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_demon_male_player/front/[base]elbowR
+  rotate: false
+  xy: 286, 15
+  size: 7, 6
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+bb_demon_male_player/front/[base]head
+  rotate: false
+  xy: 91, 133
+  size: 27, 26
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+bb_demon_male_player/front/[base]legL
+  rotate: false
+  xy: 350, 129
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_male_player/front/[base]legR
+  rotate: false
+  xy: 350, 129
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+bb_demon_male_player/front/face/[base]attack
+  rotate: true
+  xy: 245, 116
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_demon_male_player/front/face/[base]damaged
+  rotate: false
+  xy: 102, 62
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_male_player/front/face/[base]doyagao
+  rotate: false
+  xy: 127, 75
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_male_player/front/face/[base]idle
+  rotate: false
+  xy: 252, 62
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_male_player/front/face/[base]mad
+  rotate: false
+  xy: 333, 75
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_demon_male_player/front/face/[base]smile
+  rotate: false
+  xy: 350, 75
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_demon_male_player/front/face/[base]tired
+  rotate: false
+  xy: 356, 62
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_demon_male_player/side/[base]armL
+  rotate: false
+  xy: 208, 6
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_demon_male_player/side/[base]armR
+  rotate: false
+  xy: 278, 6
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_demon_male_player/side/[base]body
+  rotate: false
+  xy: 501, 16
+  size: 9, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_demon_male_player/side/[base]elbowL
+  rotate: false
+  xy: 279, 38
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_demon_male_player/side/[base]elbowR
+  rotate: false
+  xy: 409, 15
+  size: 7, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+bb_demon_male_player/side/[base]head
+  rotate: false
+  xy: 31, 135
+  size: 29, 25
+  orig: 56, 56
+  offset: 16, 14
+  index: -1
+bb_demon_male_player/side/[base]legL
+  rotate: false
+  xy: 350, 119
+  size: 6, 8
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+bb_demon_male_player/side/[base]legR
+  rotate: false
+  xy: 205, 103
+  size: 6, 8
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+bb_demon_male_player/side/face/[base]attack
+  rotate: false
+  xy: 318, 38
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_demon_male_player/side/face/[base]damaged
+  rotate: false
+  xy: 332, 38
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_demon_male_player/side/face/[base]doyagao
+  rotate: false
+  xy: 42, 37
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_demon_male_player/side/face/[base]idle
+  rotate: false
+  xy: 187, 37
+  size: 13, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_demon_male_player/side/face/[base]mad
+  rotate: false
+  xy: 91, 37
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_demon_male_player/side/face/[base]smile
+  rotate: false
+  xy: 245, 49
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_demon_male_player/side/face/[base]tired
+  rotate: false
+  xy: 232, 26
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_highschool_battleball_leader/back/[base]armL
+  rotate: false
+  xy: 295, 15
+  size: 7, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_highschool_battleball_leader/back/[base]armR
+  rotate: false
+  xy: 295, 15
+  size: 7, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_highschool_battleball_leader/front/[base]armL
+  rotate: false
+  xy: 295, 15
+  size: 7, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_highschool_battleball_leader/front/[base]armR
+  rotate: false
+  xy: 295, 15
+  size: 7, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_highschool_battleball_leader/back/[base]body
+  rotate: true
+  xy: 348, 49
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bb_highschool_battleball_leader/back/[base]elbowL
+  rotate: false
+  xy: 109, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_highschool_battleball_leader/back/[base]elbowR
+  rotate: false
+  xy: 109, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_highschool_battleball_leader/back/[base]head
+  rotate: false
+  xy: 393, 169
+  size: 30, 32
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+bb_highschool_battleball_leader/back/[base]legL
+  rotate: false
+  xy: 84, 38
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_highschool_battleball_leader/back/[base]legR
+  rotate: false
+  xy: 84, 38
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_highschool_battleball_leader/back/bag
+  rotate: false
+  xy: 2, 162
+  size: 40, 39
+  orig: 55, 56
+  offset: 5, 0
+  index: -1
+bb_highschool_battleball_leader/front/[base]armL2
+  rotate: false
+  xy: 91, 51
+  size: 7, 8
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_highschool_battleball_leader/front/[base]armR2
+  rotate: false
+  xy: 91, 51
+  size: 7, 8
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_highschool_battleball_leader/front/[base]body
+  rotate: true
+  xy: 450, 49
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+bb_highschool_battleball_leader/front/[base]elbowL
+  rotate: false
+  xy: 146, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_highschool_battleball_leader/front/[base]elbowR
+  rotate: false
+  xy: 146, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_highschool_battleball_leader/front/[base]elbowL2
+  rotate: false
+  xy: 399, 16
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_highschool_battleball_leader/front/[base]elbowR2
+  rotate: false
+  xy: 399, 16
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_highschool_battleball_leader/front/[base]head
+  rotate: false
+  xy: 329, 139
+  size: 28, 28
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+bb_highschool_battleball_leader/front/[base]legL
+  rotate: false
+  xy: 436, 12
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_highschool_battleball_leader/front/[base]legR
+  rotate: false
+  xy: 436, 12
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_highschool_battleball_leader/front/bag
+  rotate: false
+  xy: 44, 162
+  size: 40, 39
+  orig: 55, 56
+  offset: 8, 0
+  index: -1
+bb_highschool_battleball_leader/side/bag
+  rotate: false
+  xy: 44, 162
+  size: 40, 39
+  orig: 56, 56
+  offset: 9, 0
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]attack
+  rotate: false
+  xy: 444, 70
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]damaged
+  rotate: false
+  xy: 143, 47
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]doyagao
+  rotate: false
+  xy: 401, 69
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]idle
+  rotate: false
+  xy: 202, 37
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]mad
+  rotate: false
+  xy: 2, 84
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]smile
+  rotate: false
+  xy: 126, 62
+  size: 13, 11
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_highschool_battleball_leader/front/face/[base]tired
+  rotate: false
+  xy: 459, 62
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_highschool_battleball_leader/side/[base]armL
+  rotate: false
+  xy: 67, 14
+  size: 7, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_highschool_battleball_leader/side/[base]armR
+  rotate: false
+  xy: 370, 14
+  size: 7, 6
+  orig: 56, 56
+  offset: 24, 8
+  index: -1
+bb_highschool_battleball_leader/side/[base]body
+  rotate: false
+  xy: 305, 46
+  size: 11, 11
+  orig: 56, 56
+  offset: 27, 5
+  index: -1
+bb_highschool_battleball_leader/side/[base]elbowL
+  rotate: true
+  xy: 379, 14
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_highschool_battleball_leader/side/[base]elbowR
+  rotate: true
+  xy: 388, 14
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_highschool_battleball_leader/side/[base]head
+  rotate: false
+  xy: 294, 141
+  size: 33, 26
+  orig: 56, 56
+  offset: 14, 15
+  index: -1
+bb_highschool_battleball_leader/side/[base]legL
+  rotate: true
+  xy: 178, 76
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_highschool_battleball_leader/side/[base]legR
+  rotate: true
+  xy: 302, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]attack
+  rotate: false
+  xy: 63, 48
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]damaged
+  rotate: false
+  xy: 474, 16
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]doyagao
+  rotate: false
+  xy: 158, 47
+  size: 13, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]idle
+  rotate: false
+  xy: 279, 26
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]mad
+  rotate: false
+  xy: 36, 69
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]smile
+  rotate: false
+  xy: 77, 48
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_highschool_battleball_leader/side/face/[base]tired
+  rotate: false
+  xy: 343, 26
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_mad_scientist/back/[base]armL
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 55, 60
+  offset: 20, 10
+  index: -1
+bb_mad_scientist/back/[base]armR
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 55, 60
+  offset: 20, 10
+  index: -1
+bb_succubus_player_a/back/[base]armL
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_a/back/[base]armR
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_b/back/[base]armL
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 59, 60
+  offset: 22, 10
+  index: -1
+bb_succubus_player_b/back/[base]armR
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 59, 60
+  offset: 22, 10
+  index: -1
+bb_succubus_player_c/back/[base]armL
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_c/back/[base]armR
+  rotate: false
+  xy: 434, 4
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_mad_scientist/back/[base]body
+  rotate: true
+  xy: 357, 26
+  size: 9, 12
+  orig: 55, 60
+  offset: 23, 6
+  index: -1
+bb_mad_scientist/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 60
+  offset: 16, 6
+  index: -1
+bb_mad_scientist/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 60
+  offset: 16, 6
+  index: -1
+bb_staff_female/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_female/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_male/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_male/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_a/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_a/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_b/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 59, 60
+  offset: 18, 6
+  index: -1
+bb_succubus_player_b/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 59, 60
+  offset: 18, 6
+  index: -1
+bb_succubus_player_c/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_c/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+tanker_swim_suit/back/[base]elbowL
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+tanker_swim_suit/back/[base]elbowR
+  rotate: false
+  xy: 174, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mad_scientist/back/[base]head
+  rotate: true
+  xy: 86, 161
+  size: 40, 35
+  orig: 55, 60
+  offset: 7, 12
+  index: -1
+bb_mad_scientist/back/[base]legL
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 55, 60
+  offset: 23, 2
+  index: -1
+bb_mad_scientist/back/[base]legR
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 55, 60
+  offset: 23, 2
+  index: -1
+bb_succubus_player_a/back/[base]legL
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_a/back/[base]legR
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_b/back/[base]legL
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 59, 60
+  offset: 25, 2
+  index: -1
+bb_succubus_player_b/back/[base]legR
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 59, 60
+  offset: 25, 2
+  index: -1
+bb_succubus_player_c/back/[base]legL
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_c/back/[base]legR
+  rotate: true
+  xy: 312, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mad_scientist/back/helm
+  rotate: false
+  xy: 193, 139
+  size: 33, 23
+  orig: 55, 60
+  offset: 11, 21
+  index: -1
+bb_mad_scientist/front/[base]armL
+  rotate: true
+  xy: 427, 14
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+bb_mad_scientist/front/[base]armL2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_mad_scientist/front/[base]armR2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_succubus_player_a/front/[base]armL2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_succubus_player_a/front/[base]armR2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_succubus_player_b/front/[base]armL2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_succubus_player_b/front/[base]armR2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_succubus_player_c/front/[base]armL2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_succubus_player_c/front/[base]armR2
+  rotate: true
+  xy: 486, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_mad_scientist/front/[base]body
+  rotate: true
+  xy: 446, 26
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_mad_scientist/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mad_scientist/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_female/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_female/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_male/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_staff_male/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_a/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_a/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_b/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_b/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_c/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_succubus_player_c/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+tanker_swim_suit/front/[base]elbowL
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+tanker_swim_suit/front/[base]elbowR
+  rotate: false
+  xy: 182, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mad_scientist/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_mad_scientist/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_staff_female/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_staff_female/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_staff_male/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_staff_male/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_succubus_player_a/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_succubus_player_a/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_succubus_player_b/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_succubus_player_b/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_succubus_player_c/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_succubus_player_c/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+tanker_swim_suit/front/[base]elbowL2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+tanker_swim_suit/front/[base]elbowR2
+  rotate: false
+  xy: 109, 15
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+bb_mad_scientist/front/[base]head
+  rotate: true
+  xy: 193, 164
+  size: 37, 35
+  orig: 55, 56
+  offset: 9, 10
+  index: -1
+bb_mad_scientist/front/[base]legL
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mad_scientist/front/[base]legR
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_a/front/[base]legL
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_a/front/[base]legR
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_b/front/[base]legL
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_b/front/[base]legR
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_c/front/[base]legL
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_succubus_player_c/front/[base]legR
+  rotate: true
+  xy: 322, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mad_scientist/front/face/[base]attack
+  rotate: false
+  xy: 75, 98
+  size: 19, 10
+  orig: 55, 56
+  offset: 17, 13
+  index: -1
+bb_mad_scientist/front/face/[base]damaged
+  rotate: false
+  xy: 336, 87
+  size: 19, 9
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+bb_mad_scientist/front/face/[base]doyagao
+  rotate: false
+  xy: 2, 97
+  size: 19, 10
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+bb_mad_scientist/front/face/[base]idle
+  rotate: false
+  xy: 357, 87
+  size: 19, 9
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+bb_mad_scientist/front/face/[base]mad
+  rotate: false
+  xy: 488, 97
+  size: 19, 10
+  orig: 55, 56
+  offset: 17, 13
+  index: -1
+bb_mad_scientist/front/face/[base]smile
+  rotate: true
+  xy: 193, 92
+  size: 19, 10
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+bb_mad_scientist/front/face/[base]tired
+  rotate: false
+  xy: 487, 87
+  size: 19, 8
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+bb_mad_scientist/front/helm
+  rotate: false
+  xy: 214, 97
+  size: 25, 17
+  orig: 55, 56
+  offset: 15, 25
+  index: -1
+bb_mad_scientist/side/[base]armL
+  rotate: true
+  xy: 482, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_succubus_player_a/side/[base]armL
+  rotate: true
+  xy: 482, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_succubus_player_b/side/[base]armL
+  rotate: true
+  xy: 482, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_succubus_player_c/side/[base]armL
+  rotate: true
+  xy: 482, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_mad_scientist/side/[base]armR
+  rotate: true
+  xy: 154, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_succubus_player_a/side/[base]armR
+  rotate: true
+  xy: 154, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_succubus_player_b/side/[base]armR
+  rotate: true
+  xy: 154, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_succubus_player_c/side/[base]armR
+  rotate: true
+  xy: 154, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_mad_scientist/side/[base]body
+  rotate: false
+  xy: 434, 33
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_mad_scientist/side/[base]elbowL
+  rotate: true
+  xy: 156, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_succubus_player_a/side/[base]elbowL
+  rotate: true
+  xy: 156, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_succubus_player_b/side/[base]elbowL
+  rotate: true
+  xy: 156, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_succubus_player_c/side/[base]elbowL
+  rotate: true
+  xy: 156, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+tanker_swim_suit/side/[base]elbowL
+  rotate: true
+  xy: 156, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_mad_scientist/side/[base]elbowR
+  rotate: true
+  xy: 165, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_succubus_player_a/side/[base]elbowR
+  rotate: true
+  xy: 165, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_succubus_player_b/side/[base]elbowR
+  rotate: true
+  xy: 165, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_succubus_player_c/side/[base]elbowR
+  rotate: true
+  xy: 165, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_mad_scientist/side/[base]head
+  rotate: false
+  xy: 393, 141
+  size: 32, 26
+  orig: 56, 56
+  offset: 15, 11
+  index: -1
+bb_mad_scientist/side/[base]legL
+  rotate: true
+  xy: 332, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_succubus_player_a/side/[base]legL
+  rotate: true
+  xy: 332, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_succubus_player_b/side/[base]legL
+  rotate: true
+  xy: 332, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_succubus_player_c/side/[base]legL
+  rotate: true
+  xy: 332, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_mad_scientist/side/[base]legR
+  rotate: true
+  xy: 342, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_succubus_player_a/side/[base]legR
+  rotate: true
+  xy: 342, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_succubus_player_b/side/[base]legR
+  rotate: true
+  xy: 342, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_succubus_player_c/side/[base]legR
+  rotate: true
+  xy: 342, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_mad_scientist/side/face/[base]attack
+  rotate: false
+  xy: 487, 75
+  size: 15, 10
+  orig: 56, 56
+  offset: 26, 15
+  index: -1
+bb_mad_scientist/side/face/[base]damaged
+  rotate: false
+  xy: 67, 61
+  size: 15, 9
+  orig: 56, 56
+  offset: 26, 16
+  index: -1
+bb_mad_scientist/side/face/[base]doyagao
+  rotate: false
+  xy: 92, 84
+  size: 15, 12
+  orig: 56, 56
+  offset: 26, 15
+  index: -1
+bb_mad_scientist/side/face/[base]idle
+  rotate: false
+  xy: 84, 61
+  size: 15, 9
+  orig: 56, 56
+  offset: 26, 16
+  index: -1
+bb_mad_scientist/side/face/[base]mad
+  rotate: true
+  xy: 189, 75
+  size: 15, 10
+  orig: 56, 56
+  offset: 26, 15
+  index: -1
+bb_mad_scientist/side/face/[base]smile
+  rotate: false
+  xy: 109, 85
+  size: 16, 11
+  orig: 56, 56
+  offset: 26, 15
+  index: -1
+bb_mad_scientist/side/face/[base]tired
+  rotate: false
+  xy: 194, 61
+  size: 15, 9
+  orig: 56, 56
+  offset: 26, 16
+  index: -1
+bb_mad_scientist/side/helmL
+  rotate: true
+  xy: 396, 95
+  size: 17, 23
+  orig: 56, 56
+  offset: 30, 22
+  index: -1
+bb_mad_scientist/side/helmR
+  rotate: false
+  xy: 258, 114
+  size: 26, 23
+  orig: 56, 56
+  offset: 13, 21
+  index: -1
+bb_mr_park/back/[base]armL
+  rotate: false
+  xy: 190, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_mr_park/back/[base]armR
+  rotate: false
+  xy: 190, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_mr_park/back/[base]body
+  rotate: true
+  xy: 43, 25
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_mr_park/back/[base]elbowL
+  rotate: false
+  xy: 456, 9
+  size: 7, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mr_park/back/[base]elbowR
+  rotate: false
+  xy: 456, 9
+  size: 7, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mr_park/back/[base]head
+  rotate: false
+  xy: 468, 115
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+bb_mr_park/back/[base]legL
+  rotate: true
+  xy: 406, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mr_park/back/[base]legR
+  rotate: true
+  xy: 406, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mr_park/back/helm
+  rotate: false
+  xy: 421, 95
+  size: 23, 17
+  orig: 55, 56
+  offset: 16, 21
+  index: -1
+bb_mr_park/front/[base]armL
+  rotate: false
+  xy: 249, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_mr_park/front/[base]armR
+  rotate: false
+  xy: 249, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+bb_mr_park/front/[base]armL2
+  rotate: false
+  xy: 465, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_mr_park/front/[base]armR2
+  rotate: false
+  xy: 465, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_mr_park/front/[base]body
+  rotate: true
+  xy: 57, 25
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_mr_park/front/[base]elbowL
+  rotate: false
+  xy: 10, 8
+  size: 7, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mr_park/front/[base]elbowR
+  rotate: false
+  xy: 10, 8
+  size: 7, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+bb_mr_park/front/[base]elbowL2
+  rotate: false
+  xy: 261, 16
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+bb_mr_park/front/[base]elbowR2
+  rotate: false
+  xy: 261, 16
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+bb_mr_park/front/[base]head
+  rotate: false
+  xy: 31, 111
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+bb_mr_park/front/[base]legL
+  rotate: true
+  xy: 416, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mr_park/front/[base]legR
+  rotate: true
+  xy: 416, 9
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_mr_park/front/face/[base]attack
+  rotate: false
+  xy: 211, 61
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/face/[base]damaged
+  rotate: false
+  xy: 51, 73
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/face/[base]doyagao
+  rotate: false
+  xy: 109, 73
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/face/[base]idle
+  rotate: false
+  xy: 256, 73
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/face/[base]mad
+  rotate: false
+  xy: 367, 73
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/face/[base]smile
+  rotate: false
+  xy: 461, 73
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/face/[base]tired
+  rotate: false
+  xy: 2, 60
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_mr_park/front/helm
+  rotate: false
+  xy: 286, 95
+  size: 23, 18
+  orig: 55, 56
+  offset: 16, 20
+  index: -1
+bb_mr_park/side/[base]armL
+  rotate: true
+  xy: 162, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_mr_park/side/[base]armR
+  rotate: true
+  xy: 302, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_mr_park/side/[base]body
+  rotate: true
+  xy: 307, 15
+  size: 9, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_mr_park/side/[base]elbowL
+  rotate: true
+  xy: 137, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_mr_park/side/[base]elbowR
+  rotate: true
+  xy: 261, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_mr_park/side/[base]head
+  rotate: false
+  xy: 56, 110
+  size: 23, 21
+  orig: 56, 56
+  offset: 20, 14
+  index: -1
+bb_mr_park/side/[base]legL
+  rotate: true
+  xy: 442, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_mr_park/side/[base]legR
+  rotate: true
+  xy: 47, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_mr_park/side/face/[base]attack
+  rotate: false
+  xy: 134, 25
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_mr_park/side/face/[base]damaged
+  rotate: false
+  xy: 97, 14
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+bb_mr_park/side/face/[base]doyagao
+  rotate: false
+  xy: 105, 37
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_mr_park/side/face/[base]idle
+  rotate: false
+  xy: 36, 83
+  size: 13, 12
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_mr_park/side/face/[base]mad
+  rotate: false
+  xy: 421, 46
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_mr_park/side/face/[base]smile
+  rotate: false
+  xy: 235, 37
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_mr_park/side/face/[base]tired
+  rotate: false
+  xy: 211, 25
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_mr_park/side/helmL
+  rotate: false
+  xy: 464, 54
+  size: 9, 6
+  orig: 56, 56
+  offset: 39, 23
+  index: -1
+bb_mr_park/side/helmR
+  rotate: false
+  xy: 214, 116
+  size: 29, 15
+  orig: 56, 56
+  offset: 19, 23
+  index: -1
+bb_staff_female/back/[base]armL
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_female/back/[base]armR
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_female/front/[base]armL
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_female/front/[base]armR
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_male/back/[base]armL
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_male/back/[base]armR
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_male/front/[base]armL
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_male/front/[base]armR
+  rotate: true
+  xy: 310, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_staff_female/back/[base]body
+  rotate: true
+  xy: 246, 25
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_staff_female/back/[base]head
+  rotate: true
+  xy: 324, 114
+  size: 23, 24
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+bb_staff_female/back/[base]legL
+  rotate: true
+  xy: 57, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_female/back/[base]legR
+  rotate: true
+  xy: 57, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_female/back/helm
+  rotate: false
+  xy: 241, 94
+  size: 23, 18
+  orig: 55, 56
+  offset: 16, 20
+  index: -1
+bb_staff_female/back/ponytail
+  rotate: false
+  xy: 266, 98
+  size: 15, 14
+  orig: 55, 56
+  offset: 20, 10
+  index: -1
+bb_staff_female/front/[base]armL2
+  rotate: true
+  xy: 359, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_staff_female/front/[base]armR2
+  rotate: true
+  xy: 359, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_staff_male/front/[base]armL2
+  rotate: true
+  xy: 359, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_staff_male/front/[base]armR2
+  rotate: true
+  xy: 359, 8
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+bb_staff_female/front/[base]body
+  rotate: true
+  xy: 260, 25
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_staff_female/front/[base]head
+  rotate: true
+  xy: 442, 114
+  size: 23, 24
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+bb_staff_female/front/[base]legL
+  rotate: true
+  xy: 67, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_female/front/[base]legR
+  rotate: true
+  xy: 67, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_female/front/face/[base]attack
+  rotate: false
+  xy: 2, 72
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_staff_female/front/face/[base]damaged
+  rotate: false
+  xy: 289, 37
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_staff_female/front/face/[base]doyagao
+  rotate: false
+  xy: 68, 72
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_staff_female/front/face/[base]idle
+  rotate: false
+  xy: 416, 60
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_staff_female/front/face/[base]mad
+  rotate: false
+  xy: 85, 72
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_staff_female/front/face/[base]smile
+  rotate: false
+  xy: 201, 72
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_staff_female/front/face/[base]tired
+  rotate: false
+  xy: 141, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_staff_female/front/helm
+  rotate: false
+  xy: 446, 95
+  size: 23, 17
+  orig: 55, 56
+  offset: 16, 21
+  index: -1
+bb_staff_female/side/[base]armL
+  rotate: true
+  xy: 318, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_staff_female/side/[base]armR
+  rotate: true
+  xy: 326, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_staff_female/side/[base]body
+  rotate: true
+  xy: 375, 33
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_staff_female/side/[base]elbowL
+  rotate: true
+  xy: 397, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_staff_female/side/[base]elbowR
+  rotate: true
+  xy: 473, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_staff_female/side/[base]head
+  rotate: false
+  xy: 187, 113
+  size: 25, 24
+  orig: 56, 56
+  offset: 19, 14
+  index: -1
+bb_staff_female/side/[base]legL
+  rotate: true
+  xy: 77, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_staff_female/side/[base]legR
+  rotate: true
+  xy: 87, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_staff_female/side/face/[base]attack
+  rotate: false
+  xy: 388, 33
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_staff_female/side/face/[base]damaged
+  rotate: false
+  xy: 55, 14
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_staff_female/side/face/[base]doyagao
+  rotate: false
+  xy: 346, 37
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_staff_female/side/face/[base]idle
+  rotate: false
+  xy: 360, 37
+  size: 13, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_staff_female/side/face/[base]mad
+  rotate: false
+  xy: 434, 46
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_staff_female/side/face/[base]smile
+  rotate: false
+  xy: 16, 45
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_staff_female/side/face/[base]tired
+  rotate: false
+  xy: 320, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_staff_female/side/helmL
+  rotate: false
+  xy: 225, 14
+  size: 10, 10
+  orig: 56, 56
+  offset: 38, 20
+  index: -1
+bb_staff_female/side/helmR
+  rotate: false
+  xy: 106, 115
+  size: 29, 15
+  orig: 56, 56
+  offset: 19, 24
+  index: -1
+bb_staff_female/side/ponytail
+  rotate: true
+  xy: 401, 25
+  size: 9, 12
+  orig: 56, 56
+  offset: 15, 15
+  index: -1
+bb_staff_male/back/[base]body
+  rotate: true
+  xy: 111, 24
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_staff_male/back/[base]head
+  rotate: false
+  xy: 487, 178
+  size: 23, 23
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+bb_staff_male/back/[base]legL
+  rotate: true
+  xy: 97, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_male/back/[base]legR
+  rotate: true
+  xy: 97, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_male/back/helm
+  rotate: false
+  xy: 311, 94
+  size: 23, 18
+  orig: 55, 56
+  offset: 16, 21
+  index: -1
+bb_staff_male/front/[base]body
+  rotate: true
+  xy: 415, 24
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_staff_male/front/[base]head
+  rotate: false
+  xy: 2, 109
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+bb_staff_male/front/[base]legL
+  rotate: true
+  xy: 117, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_male/front/[base]legR
+  rotate: true
+  xy: 198, 8
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+bb_staff_male/front/face/[base]attack
+  rotate: false
+  xy: 220, 47
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+bb_staff_male/front/face/[base]damaged
+  rotate: false
+  xy: 143, 36
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_staff_male/front/face/[base]doyagao
+  rotate: false
+  xy: 259, 47
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_staff_male/front/face/[base]idle
+  rotate: false
+  xy: 217, 36
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_staff_male/front/face/[base]mad
+  rotate: false
+  xy: 218, 72
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_staff_male/front/face/[base]smile
+  rotate: false
+  xy: 274, 47
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_staff_male/front/face/[base]tired
+  rotate: false
+  xy: 158, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_staff_male/front/helm
+  rotate: false
+  xy: 168, 94
+  size: 23, 17
+  orig: 55, 56
+  offset: 16, 22
+  index: -1
+bb_staff_male/side/[base]armL
+  rotate: true
+  xy: 334, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+bb_staff_male/side/[base]armR
+  rotate: true
+  xy: 342, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+bb_staff_male/side/[base]body
+  rotate: true
+  xy: 17, 30
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_staff_male/side/[base]elbowL
+  rotate: true
+  xy: 495, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+bb_staff_male/side/[base]elbowR
+  rotate: false
+  xy: 216, 7
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+bb_staff_male/side/[base]head
+  rotate: false
+  xy: 81, 110
+  size: 23, 21
+  orig: 56, 56
+  offset: 20, 14
+  index: -1
+bb_staff_male/side/[base]legL
+  rotate: true
+  xy: 224, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+bb_staff_male/side/[base]legR
+  rotate: true
+  xy: 234, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+bb_staff_male/side/face/[base]attack
+  rotate: false
+  xy: 274, 14
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+bb_staff_male/side/face/[base]damaged
+  rotate: false
+  xy: 82, 14
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_staff_male/side/face/[base]doyagao
+  rotate: false
+  xy: 490, 29
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_staff_male/side/face/[base]idle
+  rotate: false
+  xy: 2, 23
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_staff_male/side/face/[base]mad
+  rotate: false
+  xy: 378, 45
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_staff_male/side/face/[base]smile
+  rotate: true
+  xy: 170, 28
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+bb_staff_male/side/face/[base]tired
+  rotate: false
+  xy: 333, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+bb_staff_male/side/helmL
+  rotate: false
+  xy: 249, 15
+  size: 10, 8
+  orig: 56, 56
+  offset: 38, 22
+  index: -1
+bb_staff_male/side/helmR
+  rotate: false
+  xy: 137, 100
+  size: 29, 15
+  orig: 56, 56
+  offset: 19, 24
+  index: -1
+bb_succubus_player_a/back/[base]body
+  rotate: true
+  xy: 148, 23
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_succubus_player_a/back/[base]head
+  rotate: false
+  xy: 261, 139
+  size: 31, 28
+  orig: 55, 56
+  offset: 12, 13
+  index: -1
+bb_succubus_player_a/back/ponytail
+  rotate: true
+  xy: 336, 98
+  size: 14, 28
+  orig: 55, 56
+  offset: 23, 12
+  index: -1
+bb_succubus_player_a/back/wingL
+  rotate: false
+  xy: 27, 97
+  size: 23, 12
+  orig: 55, 56
+  offset: 3, 8
+  index: -1
+bb_succubus_player_a/back/wingR
+  rotate: false
+  xy: 27, 97
+  size: 23, 12
+  orig: 55, 56
+  offset: 3, 8
+  index: -1
+bb_succubus_player_b/back/wingL
+  rotate: false
+  xy: 27, 97
+  size: 23, 12
+  orig: 59, 60
+  offset: 5, 10
+  index: -1
+bb_succubus_player_b/back/wingR
+  rotate: false
+  xy: 27, 97
+  size: 23, 12
+  orig: 59, 60
+  offset: 5, 10
+  index: -1
+bb_succubus_player_c/back/wingL
+  rotate: false
+  xy: 27, 97
+  size: 23, 12
+  orig: 55, 56
+  offset: 3, 8
+  index: -1
+bb_succubus_player_c/back/wingR
+  rotate: false
+  xy: 27, 97
+  size: 23, 12
+  orig: 55, 56
+  offset: 3, 8
+  index: -1
+bb_succubus_player_a/front/[base]armL
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_mad_scientist/front/[base]armR
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_a/front/[base]armR
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_b/front/[base]armL
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_b/front/[base]armR
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_c/front/[base]armL
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_c/front/[base]armR
+  rotate: true
+  xy: 350, 2
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+bb_succubus_player_a/front/[base]body
+  rotate: true
+  xy: 293, 23
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_succubus_player_a/front/[base]head
+  rotate: false
+  xy: 456, 170
+  size: 29, 31
+  orig: 55, 56
+  offset: 13, 13
+  index: -1
+bb_succubus_player_a/front/face/[base]attack
+  rotate: false
+  xy: 19, 71
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_succubus_player_a/front/face/[base]damaged
+  rotate: false
+  xy: 249, 36
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_succubus_player_a/front/face/[base]doyagao
+  rotate: false
+  xy: 427, 71
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_a/front/face/[base]idle
+  rotate: false
+  xy: 228, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_a/front/face/[base]mad
+  rotate: false
+  xy: 19, 84
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_succubus_player_a/front/face/[base]smile
+  rotate: false
+  xy: 144, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_a/front/face/[base]tired
+  rotate: false
+  xy: 269, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_a/front/ponytail
+  rotate: true
+  xy: 366, 98
+  size: 14, 28
+  orig: 55, 56
+  offset: 18, 13
+  index: -1
+bb_succubus_player_a/front/wingL
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 55, 56
+  offset: 2, 8
+  index: -1
+bb_succubus_player_a/front/wingR
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 55, 56
+  offset: 2, 8
+  index: -1
+bb_succubus_player_a/side/wingR
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 56, 56
+  offset: 7, 7
+  index: -1
+bb_succubus_player_b/front/wingL
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 55, 56
+  offset: 2, 8
+  index: -1
+bb_succubus_player_b/front/wingR
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 55, 56
+  offset: 2, 8
+  index: -1
+bb_succubus_player_b/side/wingR
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 56, 56
+  offset: 7, 7
+  index: -1
+bb_succubus_player_c/front/wingL
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 55, 56
+  offset: 2, 8
+  index: -1
+bb_succubus_player_c/front/wingR
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 55, 56
+  offset: 2, 8
+  index: -1
+bb_succubus_player_c/side/wingR
+  rotate: false
+  xy: 52, 96
+  size: 21, 12
+  orig: 56, 56
+  offset: 7, 7
+  index: -1
+bb_succubus_player_a/side/[base]body
+  rotate: true
+  xy: 461, 28
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_succubus_player_a/side/[base]head
+  rotate: true
+  xy: 456, 139
+  size: 29, 31
+  orig: 56, 56
+  offset: 15, 13
+  index: -1
+bb_succubus_player_a/side/face/[base]attack
+  rotate: false
+  xy: 474, 28
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_succubus_player_a/side/face/[base]damaged
+  rotate: false
+  xy: 125, 14
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_succubus_player_a/side/face/[base]doyagao
+  rotate: false
+  xy: 447, 37
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_a/side/face/[base]idle
+  rotate: false
+  xy: 264, 36
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_a/side/face/[base]mad
+  rotate: false
+  xy: 391, 45
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_succubus_player_a/side/face/[base]smile
+  rotate: false
+  xy: 192, 48
+  size: 12, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+bb_succubus_player_a/side/face/[base]tired
+  rotate: false
+  xy: 371, 22
+  size: 12, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_a/side/ponytail
+  rotate: true
+  xy: 106, 98
+  size: 15, 28
+  orig: 56, 56
+  offset: 12, 11
+  index: -1
+bb_succubus_player_a/side/wingL
+  rotate: false
+  xy: 136, 87
+  size: 17, 11
+  orig: 56, 56
+  offset: 36, 8
+  index: -1
+bb_succubus_player_b/side/wingL
+  rotate: false
+  xy: 136, 87
+  size: 17, 11
+  orig: 56, 56
+  offset: 36, 8
+  index: -1
+bb_succubus_player_c/side/wingL
+  rotate: false
+  xy: 136, 87
+  size: 17, 11
+  orig: 56, 56
+  offset: 36, 8
+  index: -1
+bb_succubus_player_b/back/[base]body
+  rotate: false
+  xy: 71, 22
+  size: 9, 12
+  orig: 59, 60
+  offset: 25, 6
+  index: -1
+bb_succubus_player_b/back/[base]head
+  rotate: false
+  xy: 359, 141
+  size: 31, 25
+  orig: 59, 60
+  offset: 14, 18
+  index: -1
+bb_succubus_player_b/back/hair
+  rotate: true
+  xy: 230, 159
+  size: 42, 29
+  orig: 59, 60
+  offset: 9, 1
+  index: -1
+bb_succubus_player_b/front/[base]body
+  rotate: true
+  xy: 385, 22
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_succubus_player_b/front/[base]head
+  rotate: false
+  xy: 361, 168
+  size: 30, 33
+  orig: 55, 56
+  offset: 13, 11
+  index: -1
+bb_succubus_player_b/front/face/[base]attack
+  rotate: false
+  xy: 161, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_succubus_player_b/front/face/[base]damaged
+  rotate: false
+  xy: 404, 36
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_succubus_player_b/front/face/[base]doyagao
+  rotate: false
+  xy: 235, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_b/front/face/[base]idle
+  rotate: false
+  xy: 286, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_b/front/face/[base]mad
+  rotate: false
+  xy: 205, 84
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_succubus_player_b/front/face/[base]smile
+  rotate: false
+  xy: 273, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_b/front/face/[base]tired
+  rotate: false
+  xy: 303, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_b/front/hair
+  rotate: true
+  xy: 123, 159
+  size: 42, 33
+  orig: 55, 56
+  offset: 6, 0
+  index: -1
+bb_succubus_player_b/side/[base]body
+  rotate: true
+  xy: 317, 26
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_succubus_player_b/side/[base]head
+  rotate: true
+  xy: 295, 169
+  size: 32, 31
+  orig: 56, 56
+  offset: 15, 13
+  index: -1
+bb_succubus_player_b/side/face/[base]attack
+  rotate: false
+  xy: 330, 26
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_succubus_player_b/side/face/[base]damaged
+  rotate: false
+  xy: 204, 14
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_succubus_player_b/side/face/[base]doyagao
+  rotate: false
+  xy: 56, 36
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_b/side/face/[base]idle
+  rotate: false
+  xy: 362, 48
+  size: 14, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_b/side/face/[base]mad
+  rotate: false
+  xy: 29, 42
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_succubus_player_b/side/face/[base]smile
+  rotate: false
+  xy: 206, 48
+  size: 12, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+bb_succubus_player_b/side/face/[base]tired
+  rotate: false
+  xy: 429, 22
+  size: 12, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_b/side/hair
+  rotate: true
+  xy: 158, 160
+  size: 41, 33
+  orig: 56, 56
+  offset: 8, 0
+  index: -1
+bb_succubus_player_c/back/[base]body
+  rotate: true
+  xy: 487, 18
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_succubus_player_c/back/[base]head
+  rotate: true
+  xy: 425, 169
+  size: 32, 29
+  orig: 55, 56
+  offset: 12, 12
+  index: -1
+bb_succubus_player_c/front/[base]body
+  rotate: true
+  xy: 162, 17
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+bb_succubus_player_c/front/[base]head
+  rotate: false
+  xy: 261, 169
+  size: 32, 32
+  orig: 55, 56
+  offset: 11, 12
+  index: -1
+bb_succubus_player_c/front/face/[base]attack
+  rotate: false
+  xy: 290, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_succubus_player_c/front/face/[base]damaged
+  rotate: false
+  xy: 119, 35
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+bb_succubus_player_c/front/face/[base]doyagao
+  rotate: false
+  xy: 307, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_c/front/face/[base]idle
+  rotate: false
+  xy: 373, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_c/front/face/[base]mad
+  rotate: false
+  xy: 222, 84
+  size: 15, 11
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+bb_succubus_player_c/front/face/[base]smile
+  rotate: false
+  xy: 384, 70
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_c/front/face/[base]tired
+  rotate: false
+  xy: 433, 59
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+bb_succubus_player_c/side/[base]body
+  rotate: true
+  xy: 30, 25
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+bb_succubus_player_c/side/[base]head
+  rotate: false
+  xy: 328, 169
+  size: 31, 32
+  orig: 56, 56
+  offset: 15, 12
+  index: -1
+bb_succubus_player_c/side/face/[base]attack
+  rotate: false
+  xy: 84, 25
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+bb_succubus_player_c/side/face/[base]damaged
+  rotate: false
+  xy: 237, 14
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+bb_succubus_player_c/side/face/[base]doyagao
+  rotate: false
+  xy: 70, 36
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_c/side/face/[base]idle
+  rotate: false
+  xy: 419, 35
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+bb_succubus_player_c/side/face/[base]mad
+  rotate: false
+  xy: 464, 40
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+bb_succubus_player_c/side/face/[base]smile
+  rotate: false
+  xy: 2, 47
+  size: 12, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+bb_succubus_player_c/side/face/[base]tired
+  rotate: false
+  xy: 460, 17
+  size: 12, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+tanker_swim_suit/back/[base]armL
+  rotate: false
+  xy: 286, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+tanker_swim_suit/back/[base]armR
+  rotate: false
+  xy: 286, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+tanker_swim_suit/back/[base]body
+  rotate: true
+  xy: 407, 47
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+tanker_swim_suit/back/[base]head
+  rotate: true
+  xy: 228, 133
+  size: 24, 28
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+tanker_swim_suit/back/[base]legL
+  rotate: false
+  xy: 127, 88
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+tanker_swim_suit/back/[base]legR
+  rotate: false
+  xy: 504, 77
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+tanker_swim_suit/front/[base]armL
+  rotate: false
+  xy: 294, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+tanker_swim_suit/front/[base]armR
+  rotate: false
+  xy: 294, 7
+  size: 6, 6
+  orig: 55, 56
+  offset: 19, 8
+  index: -1
+tanker_swim_suit/front/[base]armL2
+  rotate: false
+  xy: 418, 15
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+tanker_swim_suit/front/[base]armR2
+  rotate: false
+  xy: 418, 15
+  size: 7, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+tanker_swim_suit/front/[base]body
+  rotate: true
+  xy: 129, 46
+  size: 11, 12
+  orig: 55, 56
+  offset: 22, 4
+  index: -1
+tanker_swim_suit/front/[base]head
+  rotate: true
+  xy: 294, 115
+  size: 24, 28
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+tanker_swim_suit/front/[base]legL
+  rotate: false
+  xy: 504, 43
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+tanker_swim_suit/front/[base]legR
+  rotate: false
+  xy: 504, 43
+  size: 6, 8
+  orig: 55, 56
+  offset: 22, 0
+  index: -1
+tanker_swim_suit/front/face/[base]attack
+  rotate: false
+  xy: 19, 58
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+tanker_swim_suit/front/face/[base]damaged
+  rotate: false
+  xy: 390, 58
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+tanker_swim_suit/front/face/[base]doyagao
+  rotate: false
+  xy: 2, 34
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+tanker_swim_suit/front/face/[base]idle
+  rotate: false
+  xy: 51, 85
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 14
+  index: -1
+tanker_swim_suit/front/face/[base]mad
+  rotate: false
+  xy: 476, 53
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+tanker_swim_suit/front/face/[base]smile
+  rotate: false
+  xy: 493, 53
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+tanker_swim_suit/front/face/[base]tired
+  rotate: false
+  xy: 175, 52
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+tanker_swim_suit/side/[base]armL
+  rotate: true
+  xy: 406, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+tanker_swim_suit/side/[base]armR
+  rotate: true
+  xy: 414, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+tanker_swim_suit/side/[base]body
+  rotate: false
+  xy: 477, 40
+  size: 11, 11
+  orig: 56, 56
+  offset: 27, 5
+  index: -1
+tanker_swim_suit/side/[base]elbowR
+  rotate: false
+  xy: 504, 7
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+tanker_swim_suit/side/[base]head
+  rotate: false
+  xy: 2, 133
+  size: 27, 27
+  orig: 56, 56
+  offset: 19, 14
+  index: -1
+tanker_swim_suit/side/[base]legL
+  rotate: true
+  xy: 29, 8
+  size: 5, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+tanker_swim_suit/side/[base]legR
+  rotate: false
+  xy: 503, 31
+  size: 7, 8
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+tanker_swim_suit/side/face/[base]attack
+  rotate: false
+  xy: 346, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+tanker_swim_suit/side/face/[base]damaged
+  rotate: true
+  xy: 16, 16
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+tanker_swim_suit/side/face/[base]doyagao
+  rotate: false
+  xy: 176, 15
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+tanker_swim_suit/side/face/[base]idle
+  rotate: false
+  xy: 27, 15
+  size: 12, 8
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+tanker_swim_suit/side/face/[base]mad
+  rotate: false
+  xy: 443, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+tanker_swim_suit/side/face/[base]smile
+  rotate: false
+  xy: 190, 15
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+tanker_swim_suit/side/face/[base]tired
+  rotate: false
+  xy: 41, 15
+  size: 12, 8
+  orig: 56, 56
+  offset: 29, 16
+  index: -1

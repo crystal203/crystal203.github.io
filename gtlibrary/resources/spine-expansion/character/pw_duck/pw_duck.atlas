@@ -1,0 +1,76 @@
+
+pw_duck__page0.png
+size: 128,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/angry
+  rotate: true
+  xy: 94, 11
+  size: 13, 10
+  orig: 56, 56
+  offset: 30, 17
+  index: -1
+side/body
+  rotate: false
+  xy: 2, 3
+  size: 28, 21
+  orig: 56, 56
+  offset: 15, 2
+  index: -1
+side/hair
+  rotate: false
+  xy: 80, 2
+  size: 7, 6
+  orig: 56, 56
+  offset: 30, 31
+  index: -1
+side/head
+  rotate: false
+  xy: 32, 3
+  size: 20, 21
+  orig: 56, 56
+  offset: 24, 16
+  index: -1
+side/idle
+  rotate: false
+  xy: 94, 2
+  size: 13, 7
+  orig: 56, 56
+  offset: 30, 18
+  index: -1
+side/legL
+  rotate: true
+  xy: 106, 11
+  size: 7, 5
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+side/legR
+  rotate: false
+  xy: 54, 2
+  size: 7, 4
+  orig: 56, 56
+  offset: 26, 0
+  index: -1
+side/surprise
+  rotate: true
+  xy: 80, 10
+  size: 14, 12
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+side/wingL
+  rotate: true
+  xy: 54, 8
+  size: 16, 11
+  orig: 56, 56
+  offset: 29, 6
+  index: -1
+side/wingR
+  rotate: true
+  xy: 67, 8
+  size: 16, 11
+  orig: 56, 56
+  offset: 18, 6
+  index: -1

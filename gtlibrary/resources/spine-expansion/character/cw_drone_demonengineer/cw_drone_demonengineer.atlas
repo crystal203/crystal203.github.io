@@ -1,0 +1,76 @@
+
+cw_drone_demonengineer__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: false
+  xy: 2, 12
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 19
+  index: -1
+front/legBL
+  rotate: false
+  xy: 47, 21
+  size: 6, 10
+  orig: 55, 56
+  offset: 38, 18
+  index: -1
+front/legBR
+  rotate: true
+  xy: 35, 3
+  size: 6, 10
+  orig: 55, 56
+  offset: 11, 18
+  index: -1
+front/legFL
+  rotate: false
+  xy: 37, 21
+  size: 8, 11
+  orig: 55, 56
+  offset: 35, 11
+  index: -1
+front/legFR
+  rotate: true
+  xy: 42, 11
+  size: 8, 11
+  orig: 55, 56
+  offset: 12, 11
+  index: -1
+front/propellerFL
+  rotate: true
+  xy: 27, 21
+  size: 13, 8
+  orig: 55, 56
+  offset: 39, 23
+  index: -1
+front/propellerFR
+  rotate: false
+  xy: 27, 11
+  size: 13, 8
+  orig: 55, 56
+  offset: 3, 23
+  index: -1
+front/siren_1
+  rotate: true
+  xy: 13, 3
+  size: 7, 9
+  orig: 55, 56
+  offset: 23, 32
+  index: -1
+front/siren_2
+  rotate: false
+  xy: 2, 2
+  size: 9, 8
+  orig: 55, 56
+  offset: 23, 33
+  index: -1
+front/siren_3
+  rotate: true
+  xy: 24, 2
+  size: 7, 9
+  orig: 55, 56
+  offset: 25, 32
+  index: -1

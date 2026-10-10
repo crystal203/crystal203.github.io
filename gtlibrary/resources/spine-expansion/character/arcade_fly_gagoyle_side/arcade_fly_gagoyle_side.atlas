@@ -1,0 +1,62 @@
+
+arcade_fly_gagoyle_side__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/front_victory_1
+  rotate: false
+  xy: 2, 26
+  size: 32, 25
+  orig: 72, 64
+  offset: 20, 0
+  index: -1
+front/front_victory_2
+  rotate: false
+  xy: 70, 25
+  size: 22, 26
+  orig: 72, 64
+  offset: 25, 0
+  index: -1
+front/front_victory_3
+  rotate: false
+  xy: 36, 26
+  size: 32, 25
+  orig: 72, 64
+  offset: 20, 0
+  index: -1
+front/front_victory_4
+  rotate: false
+  xy: 94, 25
+  size: 22, 26
+  orig: 72, 64
+  offset: 25, 0
+  index: -1
+side/side_fly_1
+  rotate: false
+  xy: 2, 4
+  size: 25, 20
+  orig: 72, 64
+  offset: 23, 1
+  index: -1
+side/side_fly_2
+  rotate: false
+  xy: 29, 4
+  size: 25, 20
+  orig: 72, 64
+  offset: 23, 0
+  index: -1
+side/side_fly_3
+  rotate: true
+  xy: 83, 2
+  size: 21, 22
+  orig: 72, 64
+  offset: 23, 1
+  index: -1
+side/side_fly_4
+  rotate: false
+  xy: 56, 3
+  size: 25, 20
+  orig: 72, 64
+  offset: 23, 2
+  index: -1

@@ -1,0 +1,34 @@
+
+arcade_priestess__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+out/unit/dance1
+  rotate: false
+  xy: 2, 2
+  size: 14, 17
+  orig: 16, 17
+  offset: 1, 0
+  index: -1
+out/unit/dance2
+  rotate: false
+  xy: 18, 3
+  size: 14, 16
+  orig: 16, 17
+  offset: 0, 0
+  index: -1
+out/unit/idle1
+  rotate: false
+  xy: 34, 2
+  size: 13, 17
+  orig: 16, 17
+  offset: 2, 0
+  index: -1
+out/unit/idle2
+  rotate: false
+  xy: 49, 3
+  size: 13, 16
+  orig: 16, 17
+  offset: 2, 0
+  index: -1

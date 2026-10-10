@@ -1,0 +1,27 @@
+
+exp_snowmountain_turret_laser__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+body
+  rotate: true
+  xy: 1, 1
+  size: 45, 67
+  orig: 45, 67
+  offset: 0, 0
+  index: -1
+body_2
+  rotate: true
+  xy: 69, 1
+  size: 45, 26
+  orig: 45, 26
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 96, 14
+  size: 28, 32
+  orig: 28, 32
+  offset: 0, 0
+  index: -1

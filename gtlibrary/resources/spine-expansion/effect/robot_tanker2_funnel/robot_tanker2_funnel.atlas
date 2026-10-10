@@ -1,0 +1,90 @@
+
+robot_tanker2_funnel__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 173, 2
+  size: 33, 29
+  orig: 55, 56
+  offset: 11, 2
+  index: -1
+boost/boostB
+  rotate: true
+  xy: 173, 33
+  size: 36, 30
+  orig: 37, 31
+  offset: 0, 1
+  index: -1
+boost/boostB_2
+  rotate: false
+  xy: 2, 16
+  size: 32, 53
+  orig: 33, 54
+  offset: 0, 1
+  index: -1
+boost/boostF
+  rotate: true
+  xy: 205, 33
+  size: 36, 30
+  orig: 37, 31
+  offset: 0, 1
+  index: -1
+boost/boostF_2
+  rotate: false
+  xy: 36, 18
+  size: 30, 51
+  orig: 31, 52
+  offset: 0, 1
+  index: -1
+boost/boostS
+  rotate: false
+  xy: 104, 5
+  size: 25, 25
+  orig: 26, 26
+  offset: 0, 1
+  index: -1
+boost/boostS_2
+  rotate: true
+  xy: 142, 31
+  size: 38, 29
+  orig: 39, 30
+  offset: 0, 1
+  index: -1
+front/body
+  rotate: false
+  xy: 107, 33
+  size: 33, 36
+  orig: 55, 56
+  offset: 11, 0
+  index: -1
+proj/fx/fx_circle
+  rotate: false
+  xy: 131, 9
+  size: 20, 20
+  orig: 22, 22
+  offset: 1, 1
+  index: -1
+proj/fx/fx_cross
+  rotate: true
+  xy: 2, 7
+  size: 7, 45
+  orig: 45, 45
+  offset: 19, 0
+  index: -1
+proj/fx/glow
+  rotate: false
+  xy: 68, 32
+  size: 37, 37
+  orig: 37, 37
+  offset: 0, 0
+  index: -1
+side/body
+  rotate: false
+  xy: 68, 3
+  size: 34, 27
+  orig: 56, 56
+  offset: 15, 7
+  index: -1

@@ -7,7 +7,7 @@
 
       // 数据版本：与 E:\GTFiles\{illust,character}_<版本> 对应。
       // 每次重新生成 assets/ 后必须改这里，否则浏览器会吃旧缓存的 assets.js。
-      var DATA_VERSION = "261004-2";
+      var DATA_VERSION = "261010-expansion-1";
       var QUERY = "?v=" + DATA_VERSION;
 
       // 新旧导出的后缀都接受，索引小的优先。
@@ -15,7 +15,7 @@
       var BYTES_EXT = [".bytes", ".skel.bytes"];
       var PNG_EXT = [".png", ".rgba4444.png"];
 
-      var VARIANT_LABEL = { "": "默认", front: "正面", back: "背面", side: "侧面", tentacle: "触手" };
+      var VARIANT_LABEL = { "": "默认", front: "正面", back: "背面", side: "侧面", tentacle: "触手", body: "躯干", foot: "脚部", hand: "手部", bird: "鸟", knight_female: "女骑士", knight_male: "男骑士", princess: "公主", queen: "女王" };
       var VARIANT_ORDER = { "": 0, front: 1, back: 2, side: 3, tentacle: 4 };
       // 没有视角表时，canonical 数据一律是 front/back/side 三视角。
       var DEFAULT_VARIANTS = ["front", "back", "side"];
@@ -176,6 +176,14 @@
           });
       }
 
+      var supplementCatalog;
+      function loadSupplement() {
+        if (!supplementCatalog) supplementCatalog = GTResources.fetch("../../resources/spine-expansion/catalog.json" + QUERY)
+          .then(function(response) { return checkResponse(response, "补充 Spine 目录").json(); })
+          .catch(function(error) { supplementCatalog = null; throw error; });
+        return supplementCatalog;
+      }
+
       function loadManifest(folder) {
         return GTResources.fetch("../../resources/spine/" + folder + "/assets.js" + QUERY)
           .then(function(response) { return checkResponse(response, folder).text(); })
@@ -193,6 +201,17 @@
                   app.jpNames[row.name] = row.label;
                 });
               });
+          }).then(function() {
+            return loadSupplement().then(function(catalog) {
+              app.supplementNames = {};
+              app.supplementAliases = {};
+              var rows = catalog.groups[folder] || [];
+              rows.forEach(function(row) {
+                window.spineAssets.push({ name: row.name, variants: row.variants });
+                app.supplementNames[row.name] = row.label;
+                app.supplementAliases[row.name] = row.aliases.join(" ").toLowerCase();
+              });
+            });
           });
       }
 
@@ -230,9 +249,8 @@
       }
 
       function variantsOf(folder, name) {
-        if (folder !== "character") return [""];
         var list = app.variants[name];
-        if (!list || !list.length) return DEFAULT_VARIANTS.slice();
+        if (!list || !list.length) return folder === "character" ? DEFAULT_VARIANTS.slice() : [""];
         return list.slice().sort(function (a, b) {
           var oa = a in VARIANT_ORDER ? VARIANT_ORDER[a] : 9;
           var ob = b in VARIANT_ORDER ? VARIANT_ORDER[b] : 9;
@@ -265,7 +283,7 @@
           button.textContent = variantLabel(list[i]);
           buttons.appendChild(button);
         }
-        wrapper.style.display = (folder === "character" && list.length > 1) ? "flex" : "none";
+        wrapper.style.display = (list.length > 1) ? "flex" : "none";
       }
 
       // =====================================================================
@@ -310,7 +328,7 @@
             .then(function (res) { return res.ok ? res.json() : {}; })
             .catch(function () { return {}; });
         }).then(function (zh) {
-          app.zh = Object.assign({}, zh || {}, folder === "illust" ? app.jpNames : {});
+          app.zh = Object.assign({}, zh || {}, folder === "illust" ? app.jpNames : {}, app.supplementNames);
           app.current = null;
           $("assetSearchBox").value = "";
           applyFilter();
@@ -386,7 +404,8 @@
         $("assetList").scrollTop = 0;
         app.shown = !keyword ? app.all.slice() : app.all.filter(function (name) {
           return name.toLowerCase().indexOf(keyword) >= 0
-            || displayName(name).toLowerCase().indexOf(keyword) >= 0;
+            || displayName(name).toLowerCase().indexOf(keyword) >= 0
+            || (app.supplementAliases[name] || "").indexOf(keyword) >= 0;
         });
         renderAssetList();
       }
@@ -1622,7 +1641,7 @@
         return attachmentBounds(skeleton) || boneBounds(skeleton);
       }
 
-      // 适配：本地包围盒给粗估缩放 → 原点先落到画布中心 → 用可见像素包围盒迭代收敛到正中。
+      // 适配：本地包围盒给粗估缩放 → 包围盒中心先落到画布中心 → 用可见像素包围盒迭代收敛到正中。
       function fitView() {
         var skeleton = app.skeleton;
         if (!skeleton) return;
@@ -1636,7 +1655,8 @@
           scale = clamp(0.45 * Math.min(W / gw, H / gh), SCALE_MIN, SCALE_MAX);
         }
 
-        var x = W / 2, y = H / 2;
+        var x = W / 2 - (guess ? scale * (guess.minX + guess.maxX) / 2 : 0);
+        var y = H / 2 - (guess ? scale * (guess.minY + guess.maxY) / 2 : 0);
 
         for (var pass = 0; pass < 3; pass++) {
           skeleton.scaleX = skeleton.scaleY = scale;
@@ -1649,8 +1669,8 @@
             if (pass === 0) break;        // 测不到（FBO 不可用等）就保留解析粗估，别越缩越小
             if (scale <= SCALE_MIN) break;
             scale = Math.max(SCALE_MIN, scale * 0.4);
-            x = W / 2;
-            y = H / 2;
+            x = W / 2 - (guess ? scale * (guess.minX + guess.maxX) / 2 : 0);
+            y = H / 2 - (guess ? scale * (guess.minY + guess.maxY) / 2 : 0);
             continue;
           }
           var mw = m.maxX - m.minX + 1;
@@ -2625,7 +2645,7 @@
           }
         });
         var folder = out.folder;
-        if (folder !== "illust" && folder !== "character" && folder !== "custom") {
+        if (folder !== "illust" && folder !== "character" && folder !== "effect" && folder !== "custom") {
           if (!out.name) return null;
           folder = String(out.name).indexOf("illust_") === 0 ? "illust" : "character";
         }

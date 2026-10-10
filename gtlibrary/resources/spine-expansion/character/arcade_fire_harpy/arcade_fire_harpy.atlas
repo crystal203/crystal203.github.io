@@ -1,0 +1,41 @@
+
+arcade_fire_harpy__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+out/unit/dead1
+  rotate: false
+  xy: 26, 35
+  size: 21, 14
+  orig: 22, 19
+  offset: 0, 0
+  index: -1
+out/unit/dead2
+  rotate: false
+  xy: 26, 19
+  size: 21, 14
+  orig: 22, 19
+  offset: 0, 0
+  index: -1
+out/unit/idle1
+  rotate: true
+  xy: 2, 16
+  size: 16, 18
+  orig: 22, 19
+  offset: 3, 0
+  index: -1
+out/unit/idle2
+  rotate: true
+  xy: 22, 2
+  size: 15, 18
+  orig: 22, 19
+  offset: 4, 1
+  index: -1
+out/unit/kick
+  rotate: false
+  xy: 2, 34
+  size: 22, 15
+  orig: 22, 19
+  offset: 0, 2
+  index: -1

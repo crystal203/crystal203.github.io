@@ -1,0 +1,167 @@
+
+arcade_knight_female__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back1
+  rotate: true
+  xy: 86, 18
+  size: 14, 18
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+back/back2
+  rotate: true
+  xy: 2, 18
+  size: 14, 19
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+back/back_idle_1
+  rotate: true
+  xy: 2, 18
+  size: 14, 19
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+back/back3
+  rotate: true
+  xy: 106, 18
+  size: 14, 18
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+back/back_idle_2
+  rotate: true
+  xy: 2, 2
+  size: 14, 18
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front1
+  rotate: true
+  xy: 23, 18
+  size: 14, 19
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front2
+  rotate: true
+  xy: 2, 34
+  size: 14, 20
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front_idle_1
+  rotate: true
+  xy: 2, 34
+  size: 14, 20
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front3
+  rotate: true
+  xy: 44, 18
+  size: 14, 19
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front_dead_1
+  rotate: true
+  xy: 22, 2
+  size: 14, 18
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front_dead_2
+  rotate: true
+  xy: 42, 2
+  size: 14, 17
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front_idle_2
+  rotate: true
+  xy: 65, 18
+  size: 14, 19
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+front/front_victory_1
+  rotate: false
+  xy: 2, 50
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_victory_2
+  rotate: false
+  xy: 22, 50
+  size: 16, 20
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side1
+  rotate: true
+  xy: 61, 34
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side2
+  rotate: true
+  xy: 40, 34
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_idle_1
+  rotate: true
+  xy: 40, 34
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side3
+  rotate: true
+  xy: 81, 34
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_boong_1
+  rotate: false
+  xy: 40, 52
+  size: 17, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_boong_2
+  rotate: false
+  xy: 59, 52
+  size: 17, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_boong_3
+  rotate: false
+  xy: 78, 52
+  size: 17, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_boong_4
+  rotate: false
+  xy: 97, 52
+  size: 17, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_idle_2
+  rotate: true
+  xy: 101, 34
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1

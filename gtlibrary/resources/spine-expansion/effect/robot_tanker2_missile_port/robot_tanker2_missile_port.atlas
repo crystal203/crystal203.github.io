@@ -1,0 +1,69 @@
+
+robot_tanker2_missile_port__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+port/body
+  rotate: true
+  xy: 66, 13
+  size: 13, 36
+  orig: 87, 53
+  offset: 46, 5
+  index: -1
+port/body2
+  rotate: true
+  xy: 104, 26
+  size: 23, 17
+  orig: 87, 53
+  offset: 32, 33
+  index: -1
+port/body3
+  rotate: false
+  xy: 2, 26
+  size: 27, 23
+  orig: 87, 53
+  offset: 30, 21
+  index: -1
+port/bodyB
+  rotate: true
+  xy: 33, 4
+  size: 8, 27
+  orig: 87, 53
+  offset: 48, 8
+  index: -1
+port/bottom
+  rotate: true
+  xy: 31, 14
+  size: 17, 33
+  orig: 87, 53
+  offset: 35, 0
+  index: -1
+port/cover
+  rotate: true
+  xy: 2, 2
+  size: 10, 29
+  orig: 87, 53
+  offset: 49, 8
+  index: -1
+port/coverB
+  rotate: false
+  xy: 104, 10
+  size: 15, 14
+  orig: 87, 53
+  offset: 36, 39
+  index: -1
+port/cover_2
+  rotate: false
+  xy: 31, 33
+  size: 38, 16
+  orig: 87, 53
+  offset: 49, 24
+  index: -1
+port/missile
+  rotate: true
+  xy: 71, 28
+  size: 21, 28
+  orig: 87, 53
+  offset: 47, 7
+  index: -1

@@ -1,0 +1,776 @@
+
+boss_fallen_queen_p1__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+cast_iced_1
+  rotate: true
+  xy: 70, 107
+  size: 20, 32
+  orig: 20, 32
+  offset: 0, 0
+  index: -1
+cast_iced_2
+  rotate: false
+  xy: 141, 104
+  size: 20, 32
+  orig: 20, 32
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 205, 21
+  size: 7, 7
+  orig: 55, 84
+  offset: 18, 21
+  index: -1
+front/[base]armL2
+  rotate: true
+  xy: 185, 15
+  size: 6, 7
+  orig: 55, 84
+  offset: 29, 22
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 248, 44
+  size: 6, 6
+  orig: 55, 84
+  offset: 19, 22
+  index: -1
+front/[base]armR2
+  rotate: true
+  xy: 236, 41
+  size: 9, 10
+  orig: 55, 84
+  offset: 29, 19
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 225, 52
+  size: 9, 12
+  orig: 55, 84
+  offset: 23, 18
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 214, 21
+  size: 7, 7
+  orig: 55, 84
+  offset: 15, 18
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 206, 30
+  size: 10, 10
+  orig: 55, 84
+  offset: 31, 17
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 248, 36
+  size: 6, 6
+  orig: 55, 84
+  offset: 16, 18
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 194, 15
+  size: 8, 7
+  orig: 55, 84
+  offset: 33, 17
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 192, 145
+  size: 23, 22
+  orig: 55, 84
+  offset: 16, 27
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 108, 2
+  size: 4, 8
+  orig: 55, 84
+  offset: 23, 14
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 108, 2
+  size: 4, 8
+  orig: 55, 84
+  offset: 23, 14
+  index: -1
+front/bodydecoL
+  rotate: true
+  xy: 223, 25
+  size: 3, 5
+  orig: 55, 84
+  offset: 29, 18
+  index: -1
+front/bodydecoR
+  rotate: true
+  xy: 176, 167
+  size: 3, 5
+  orig: 55, 84
+  offset: 23, 18
+  index: -1
+front/boob
+  rotate: false
+  xy: 84, 39
+  size: 9, 4
+  orig: 55, 84
+  offset: 23, 23
+  index: -1
+front/elbowL_decoB
+  rotate: true
+  xy: 163, 2
+  size: 11, 15
+  orig: 55, 84
+  offset: 5, 9
+  index: -1
+front/elbowR_decoB
+  rotate: true
+  xy: 163, 2
+  size: 11, 15
+  orig: 55, 84
+  offset: 5, 9
+  index: -1
+front/elbowL_decoF
+  rotate: false
+  xy: 149, 138
+  size: 17, 26
+  orig: 55, 84
+  offset: 0, 3
+  index: -1
+front/elbowR_decoF
+  rotate: true
+  xy: 176, 172
+  size: 17, 26
+  orig: 55, 84
+  offset: 0, 3
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 244, 202
+  size: 15, 10
+  orig: 55, 84
+  offset: 20, 27
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 226, 85
+  size: 15, 9
+  orig: 55, 84
+  offset: 20, 28
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 226, 85
+  size: 15, 9
+  orig: 55, 84
+  offset: 20, 28
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 237, 93
+  size: 15, 9
+  orig: 55, 84
+  offset: 20, 28
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 237, 82
+  size: 15, 9
+  orig: 55, 84
+  offset: 20, 28
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 188, 24
+  size: 15, 10
+  orig: 55, 84
+  offset: 20, 27
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 210, 65
+  size: 15, 9
+  orig: 55, 84
+  offset: 20, 28
+  index: -1
+front/face/helm
+  rotate: true
+  xy: 69, 74
+  size: 31, 28
+  orig: 55, 84
+  offset: 12, 30
+  index: -1
+front/face/helmdeco
+  rotate: true
+  xy: 45, 45
+  size: 27, 25
+  orig: 55, 84
+  offset: 14, 31
+  index: -1
+front/face/helmdeco2
+  rotate: true
+  xy: 2, 2
+  size: 27, 26
+  orig: 55, 84
+  offset: 14, 30
+  index: -1
+front/hairB
+  rotate: true
+  xy: 204, 219
+  size: 35, 41
+  orig: 55, 84
+  offset: 10, 15
+  index: -1
+front/hairBL
+  rotate: false
+  xy: 165, 49
+  size: 20, 24
+  orig: 55, 84
+  offset: 34, 7
+  index: -1
+front/hairBR
+  rotate: false
+  xy: 166, 23
+  size: 20, 24
+  orig: 55, 84
+  offset: 1, 7
+  index: -1
+front/hairB_2
+  rotate: false
+  xy: 70, 129
+  size: 23, 23
+  orig: 55, 84
+  offset: 16, 10
+  index: -1
+front/hairL
+  rotate: false
+  xy: 95, 129
+  size: 7, 11
+  orig: 55, 84
+  offset: 30, 23
+  index: -1
+front/hairR
+  rotate: false
+  xy: 186, 108
+  size: 7, 11
+  orig: 55, 84
+  offset: 18, 23
+  index: -1
+front/legL2
+  rotate: true
+  xy: 217, 102
+  size: 9, 17
+  orig: 55, 84
+  offset: 19, 1
+  index: -1
+front/legR2
+  rotate: true
+  xy: 217, 102
+  size: 9, 17
+  orig: 55, 84
+  offset: 19, 1
+  index: -1
+front/shoulderL
+  rotate: true
+  xy: 239, 52
+  size: 9, 11
+  orig: 55, 84
+  offset: 33, 23
+  index: -1
+front/shoulderR
+  rotate: true
+  xy: 223, 41
+  size: 9, 11
+  orig: 55, 84
+  offset: 13, 23
+  index: -1
+ice_1
+  rotate: false
+  xy: 217, 113
+  size: 18, 20
+  orig: 18, 20
+  offset: 0, 0
+  index: -1
+ice_2
+  rotate: false
+  xy: 176, 191
+  size: 26, 22
+  orig: 26, 22
+  offset: 0, 0
+  index: -1
+ice_3
+  rotate: false
+  xy: 238, 160
+  size: 16, 26
+  orig: 16, 26
+  offset: 0, 0
+  index: -1
+ice_6
+  rotate: true
+  xy: 237, 74
+  size: 6, 14
+  orig: 6, 14
+  offset: 0, 0
+  index: -1
+ice_7
+  rotate: true
+  xy: 166, 15
+  size: 6, 17
+  orig: 6, 17
+  offset: 0, 0
+  index: -1
+ice_8
+  rotate: true
+  xy: 226, 76
+  size: 7, 9
+  orig: 7, 9
+  offset: 0, 0
+  index: -1
+robot/Ro_body
+  rotate: false
+  xy: 47, 209
+  size: 61, 45
+  orig: 213, 201
+  offset: 76, 70
+  index: -1
+robot/Ro_bodyB
+  rotate: true
+  xy: 2, 31
+  size: 61, 23
+  orig: 213, 201
+  offset: 76, 69
+  index: -1
+robot/Ro_bodyR
+  rotate: false
+  xy: 188, 36
+  size: 16, 12
+  orig: 213, 201
+  offset: 85, 104
+  index: -1
+robot/Ro_bodyRB
+  rotate: true
+  xy: 45, 113
+  size: 37, 23
+  orig: 213, 201
+  offset: 63, 75
+  index: -1
+robot/Ro_bodyRB_light
+  rotate: false
+  xy: 157, 193
+  size: 17, 18
+  orig: 213, 201
+  offset: 65, 74
+  index: -1
+robot/Ro_bodyRB_light_2
+  rotate: false
+  xy: 237, 104
+  size: 17, 18
+  orig: 213, 201
+  offset: 65, 74
+  index: -1
+robot/Ro_body_light
+  rotate: false
+  xy: 211, 76
+  size: 13, 8
+  orig: 213, 201
+  offset: 83, 81
+  index: -1
+robot/Ro_body_light2
+  rotate: true
+  xy: 27, 45
+  size: 47, 16
+  orig: 213, 201
+  offset: 83, 89
+  index: -1
+robot/Ro_boostR
+  rotate: true
+  xy: 109, 138
+  size: 26, 38
+  orig: 213, 201
+  offset: 55, 71
+  index: -1
+robot/Ro_boostR2
+  rotate: false
+  xy: 72, 45
+  size: 26, 27
+  orig: 213, 201
+  offset: 60, 104
+  index: -1
+robot/Ro_gunRB2_1
+  rotate: true
+  xy: 217, 152
+  size: 15, 19
+  orig: 213, 201
+  offset: 71, 117
+  index: -1
+robot/Ro_gunRB2_1light
+  rotate: false
+  xy: 247, 238
+  size: 7, 16
+  orig: 213, 201
+  offset: 77, 118
+  index: -1
+robot/Ro_gunRB2_2
+  rotate: true
+  xy: 195, 104
+  size: 15, 20
+  orig: 213, 201
+  offset: 71, 116
+  index: -1
+robot/Ro_gunRB3_2
+  rotate: true
+  xy: 217, 135
+  size: 15, 19
+  orig: 213, 201
+  offset: 58, 118
+  index: -1
+robot/Ro_gunRB_1
+  rotate: true
+  xy: 204, 188
+  size: 29, 38
+  orig: 213, 201
+  offset: 55, 113
+  index: -1
+robot/Ro_gunRB_2
+  rotate: true
+  xy: 47, 154
+  size: 22, 46
+  orig: 213, 201
+  offset: 60, 112
+  index: -1
+robot/Ro_gunRF2_1
+  rotate: false
+  xy: 187, 80
+  size: 22, 22
+  orig: 213, 201
+  offset: 43, 94
+  index: -1
+robot/Ro_gunRF2_2
+  rotate: false
+  xy: 135, 45
+  size: 28, 28
+  orig: 213, 201
+  offset: 57, 164
+  index: -1
+robot/Ro_gunRF3A_1
+  rotate: false
+  xy: 238, 142
+  size: 16, 16
+  orig: 213, 201
+  offset: 48, 100
+  index: -1
+robot/Ro_gunRF3_1
+  rotate: false
+  xy: 238, 124
+  size: 16, 16
+  orig: 213, 201
+  offset: 48, 100
+  index: -1
+robot/Ro_gunRF3_2
+  rotate: true
+  xy: 45, 74
+  size: 37, 22
+  orig: 213, 201
+  offset: 55, 132
+  index: -1
+robot/Ro_gunRF4_1
+  rotate: false
+  xy: 100, 39
+  size: 33, 34
+  orig: 213, 201
+  offset: 40, 90
+  index: -1
+robot/Ro_gunRF_1
+  rotate: true
+  xy: 159, 215
+  size: 39, 43
+  orig: 213, 201
+  offset: 44, 100
+  index: -1
+robot/Ro_gunRF_2
+  rotate: true
+  xy: 110, 213
+  size: 41, 47
+  orig: 213, 201
+  offset: 52, 135
+  index: -1
+robot/Ro_gundecoR_1
+  rotate: false
+  xy: 30, 2
+  size: 21, 41
+  orig: 213, 201
+  offset: 50, 119
+  index: -1
+robot/Ro_gundecoR_1light
+  rotate: true
+  xy: 163, 104
+  size: 2, 4
+  orig: 213, 201
+  offset: 53, 125
+  index: -1
+robot/Ro_gunheadR1_1
+  rotate: false
+  xy: 53, 8
+  size: 29, 35
+  orig: 213, 201
+  offset: 48, 113
+  index: -1
+robot/Ro_gunheadR2_1
+  rotate: true
+  xy: 104, 103
+  size: 33, 35
+  orig: 213, 201
+  offset: 43, 113
+  index: -1
+robot/Ro_head
+  rotate: true
+  xy: 109, 166
+  size: 25, 42
+  orig: 213, 201
+  offset: 94, 81
+  index: -1
+robot/Ro_head2
+  rotate: true
+  xy: 53, 3
+  size: 3, 29
+  orig: 213, 201
+  offset: 105, 106
+  index: -1
+robot/Ro_head_light
+  rotate: true
+  xy: 152, 75
+  size: 27, 17
+  orig: 213, 201
+  offset: 93, 96
+  index: -1
+robot/Ro_mangto
+  rotate: false
+  xy: 2, 152
+  size: 43, 102
+  orig: 213, 201
+  offset: 39, 23
+  index: -1
+robot/Ro_wingBR
+  rotate: false
+  xy: 2, 94
+  size: 41, 56
+  orig: 213, 201
+  offset: 22, 50
+  index: -1
+robot/Ro_wingBR2
+  rotate: true
+  xy: 110, 193
+  size: 18, 45
+  orig: 213, 201
+  offset: 64, 54
+  index: -1
+robot/Ro_wingR_1
+  rotate: false
+  xy: 99, 75
+  size: 32, 26
+  orig: 213, 201
+  offset: 53, 89
+  index: -1
+robot/Ro_wingR_2
+  rotate: false
+  xy: 47, 178
+  size: 60, 29
+  orig: 213, 201
+  offset: 3, 98
+  index: -1
+robot/Ro_wingR_2light
+  rotate: true
+  xy: 95, 142
+  size: 34, 12
+  orig: 213, 201
+  offset: 22, 106
+  index: -1
+robot/armR
+  rotate: false
+  xy: 187, 60
+  size: 21, 18
+  orig: 213, 201
+  offset: 49, 81
+  index: -1
+robot/armR2
+  rotate: false
+  xy: 168, 137
+  size: 22, 27
+  orig: 213, 201
+  offset: 45, 69
+  index: -1
+robot/elbowR
+  rotate: false
+  xy: 84, 2
+  size: 22, 35
+  orig: 213, 201
+  offset: 41, 49
+  index: -1
+robot/elbowR_light
+  rotate: false
+  xy: 163, 108
+  size: 21, 27
+  orig: 213, 201
+  offset: 44, 49
+  index: -1
+robot/elbowR_ring
+  rotate: false
+  xy: 211, 86
+  size: 13, 14
+  orig: 213, 201
+  offset: 51, 61
+  index: -1
+robot/elbowdecoR
+  rotate: false
+  xy: 171, 79
+  size: 14, 27
+  orig: 213, 201
+  offset: 32, 55
+  index: -1
+robot/elbowdecoR2
+  rotate: true
+  xy: 204, 169
+  size: 17, 32
+  orig: 213, 201
+  offset: 32, 65
+  index: -1
+robot/elbowdecoR3
+  rotate: false
+  xy: 153, 166
+  size: 21, 25
+  orig: 213, 201
+  offset: 39, 47
+  index: -1
+robot/finger_1_1
+  rotate: true
+  xy: 218, 30
+  size: 9, 10
+  orig: 213, 201
+  offset: 55, 38
+  index: -1
+robot/finger_1_2
+  rotate: true
+  xy: 244, 188
+  size: 12, 10
+  orig: 213, 201
+  offset: 61, 37
+  index: -1
+robot/finger_2_1
+  rotate: true
+  xy: 180, 2
+  size: 11, 13
+  orig: 213, 201
+  offset: 48, 18
+  index: -1
+robot/finger_2_2
+  rotate: true
+  xy: 247, 222
+  size: 14, 7
+  orig: 213, 201
+  offset: 55, 16
+  index: -1
+robot/finger_3_1
+  rotate: true
+  xy: 195, 2
+  size: 11, 10
+  orig: 213, 201
+  offset: 47, 20
+  index: -1
+robot/finger_4_1
+  rotate: true
+  xy: 195, 2
+  size: 11, 10
+  orig: 213, 201
+  offset: 47, 20
+  index: -1
+robot/finger_3_2
+  rotate: false
+  xy: 237, 63
+  size: 13, 9
+  orig: 213, 201
+  offset: 55, 19
+  index: -1
+robot/finger_4_2
+  rotate: false
+  xy: 210, 54
+  size: 13, 9
+  orig: 213, 201
+  offset: 55, 20
+  index: -1
+robot/finger_5_1
+  rotate: true
+  xy: 227, 63
+  size: 11, 8
+  orig: 213, 201
+  offset: 47, 22
+  index: -1
+robot/finger_5_2
+  rotate: false
+  xy: 209, 42
+  size: 12, 10
+  orig: 213, 201
+  offset: 54, 20
+  index: -1
+robot/handR
+  rotate: false
+  xy: 133, 75
+  size: 17, 26
+  orig: 213, 201
+  offset: 45, 26
+  index: -1
+robot/handR2
+  rotate: true
+  xy: 192, 121
+  size: 22, 23
+  orig: 213, 201
+  offset: 40, 29
+  index: -1
+robot/handR_B
+  rotate: false
+  xy: 230, 29
+  size: 10, 10
+  orig: 213, 201
+  offset: 47, 48
+  index: -1
+robot/handR_F
+  rotate: true
+  xy: 136, 2
+  size: 11, 25
+  orig: 213, 201
+  offset: 43, 27
+  index: -1
+robot/handR_F2
+  rotate: false
+  xy: 108, 8
+  size: 26, 29
+  orig: 213, 201
+  offset: 36, 24
+  index: -1
+robot/handR_F2light
+  rotate: false
+  xy: 187, 50
+  size: 20, 8
+  orig: 213, 201
+  offset: 37, 24
+  index: -1
+robot/handR_Flight
+  rotate: false
+  xy: 95, 39
+  size: 3, 4
+  orig: 213, 201
+  offset: 45, 28
+  index: -1
+robot/shoulderR
+  rotate: false
+  xy: 136, 15
+  size: 28, 28
+  orig: 213, 201
+  offset: 47, 82
+  index: -1

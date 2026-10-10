@@ -1,0 +1,139 @@
+
+nightmare_qs_invader_knight_8bit__page0.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back_idle_1
+  rotate: false
+  xy: 2, 106
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_idle_2
+  rotate: false
+  xy: 22, 107
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_run_1
+  rotate: false
+  xy: 22, 86
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_run_2
+  rotate: false
+  xy: 2, 84
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+back/back_run_3
+  rotate: false
+  xy: 22, 65
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_dead_1
+  rotate: false
+  xy: 42, 108
+  size: 18, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_dead_2
+  rotate: false
+  xy: 42, 89
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_idle_1
+  rotate: false
+  xy: 2, 62
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_run_2
+  rotate: false
+  xy: 2, 62
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_idle_2
+  rotate: false
+  xy: 22, 44
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_run_1
+  rotate: false
+  xy: 22, 23
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_run_3
+  rotate: false
+  xy: 22, 2
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_victory_1
+  rotate: false
+  xy: 2, 40
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_victory_2
+  rotate: false
+  xy: 2, 18
+  size: 18, 20
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+side/side_idle_1
+  rotate: false
+  xy: 42, 44
+  size: 14, 21
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+side/side_run_2
+  rotate: false
+  xy: 42, 44
+  size: 14, 21
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+side/side_idle_2
+  rotate: false
+  xy: 42, 22
+  size: 14, 20
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+side/side_run_1
+  rotate: false
+  xy: 42, 67
+  size: 15, 20
+  orig: 24, 24
+  offset: 5, 0
+  index: -1
+side/side_run_3
+  rotate: true
+  xy: 42, 6
+  size: 14, 20
+  orig: 24, 24
+  offset: 5, 0
+  index: -1

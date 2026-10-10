@@ -1,0 +1,41 @@
+
+fox_statue__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fox_statue_base
+  rotate: true
+  xy: 89, 93
+  size: 41, 40
+  orig: 59, 75
+  offset: 9, 4
+  index: -1
+fox_statue_garam
+  rotate: false
+  xy: 1, 2
+  size: 55, 51
+  orig: 62, 78
+  offset: 4, 23
+  index: -1
+fox_statue_nari
+  rotate: true
+  xy: 56, 1
+  size: 52, 49
+  orig: 59, 75
+  offset: 3, 21
+  index: -1
+fox_statue_tiger_knight
+  rotate: false
+  xy: 1, 93
+  size: 88, 69
+  orig: 99, 99
+  offset: 2, 25
+  index: -1
+fox_statue_tiger_knight_base
+  rotate: false
+  xy: 1, 53
+  size: 92, 40
+  orig: 99, 99
+  offset: 4, 5
+  index: -1

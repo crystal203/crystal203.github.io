@@ -1,0 +1,104 @@
+
+bari_monster_plant__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/head
+  rotate: false
+  xy: 90, 22
+  size: 18, 19
+  orig: 76, 76
+  offset: 38, 36
+  index: -1
+side/leaf1
+  rotate: true
+  xy: 110, 29
+  size: 21, 12
+  orig: 76, 76
+  offset: 12, 4
+  index: -1
+side/leaf2
+  rotate: false
+  xy: 110, 12
+  size: 16, 15
+  orig: 76, 76
+  offset: 2, 39
+  index: -1
+side/leaf3
+  rotate: true
+  xy: 37, 21
+  size: 16, 17
+  orig: 76, 76
+  offset: 30, 50
+  index: -1
+side/leaf4
+  rotate: false
+  xy: 110, 52
+  size: 16, 17
+  orig: 76, 76
+  offset: 25, 33
+  index: -1
+side/leaf5
+  rotate: true
+  xy: 56, 7
+  size: 13, 18
+  orig: 76, 76
+  offset: 42, 48
+  index: -1
+side/leaf6
+  rotate: false
+  xy: 97, 2
+  size: 9, 18
+  orig: 76, 76
+  offset: 39, 30
+  index: -1
+side/leaf7
+  rotate: false
+  xy: 76, 10
+  size: 19, 10
+  orig: 76, 76
+  offset: 42, 4
+  index: -1
+side/petal1
+  rotate: true
+  xy: 87, 43
+  size: 26, 21
+  orig: 76, 76
+  offset: 36, 35
+  index: -1
+side/petal2
+  rotate: false
+  xy: 60, 22
+  size: 28, 19
+  orig: 76, 76
+  offset: 45, 45
+  index: -1
+side/petal3
+  rotate: false
+  xy: 60, 44
+  size: 25, 25
+  orig: 76, 76
+  offset: 34, 20
+  index: -1
+side/petal4
+  rotate: true
+  xy: 37, 39
+  size: 30, 21
+  orig: 76, 76
+  offset: 43, 29
+  index: -1
+side/stem
+  rotate: false
+  xy: 2, 14
+  size: 33, 55
+  orig: 76, 76
+  offset: 14, 0
+  index: -1
+side/stem2
+  rotate: false
+  xy: 2, 6
+  size: 32, 6
+  orig: 76, 76
+  offset: 20, 0
+  index: -1

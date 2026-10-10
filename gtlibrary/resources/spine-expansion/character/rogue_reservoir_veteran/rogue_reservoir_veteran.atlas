@@ -1,0 +1,342 @@
+
+rogue_reservoir_veteran__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/arm_L
+  rotate: true
+  xy: 195, 151
+  size: 39, 37
+  orig: 116, 79
+  offset: 7, 29
+  index: -1
+back/arm_R
+  rotate: true
+  xy: 195, 151
+  size: 39, 37
+  orig: 116, 79
+  offset: 7, 29
+  index: -1
+back/body
+  rotate: true
+  xy: 55, 139
+  size: 51, 49
+  orig: 116, 79
+  offset: 33, 19
+  index: -1
+back/elbow_L
+  rotate: false
+  xy: 157, 111
+  size: 33, 34
+  orig: 116, 79
+  offset: 7, 8
+  index: -1
+back/elbow_R
+  rotate: false
+  xy: 157, 111
+  size: 33, 34
+  orig: 116, 79
+  offset: 7, 8
+  index: -1
+back/foot_L
+  rotate: false
+  xy: 234, 175
+  size: 15, 15
+  orig: 116, 79
+  offset: 38, 5
+  index: -1
+back/foot_R
+  rotate: false
+  xy: 234, 175
+  size: 15, 15
+  orig: 116, 79
+  offset: 38, 5
+  index: -1
+back/hand_L
+  rotate: true
+  xy: 2, 2
+  size: 32, 29
+  orig: 116, 79
+  offset: 18, 4
+  index: -1
+back/hand_R
+  rotate: true
+  xy: 2, 2
+  size: 32, 29
+  orig: 116, 79
+  offset: 18, 4
+  index: -1
+back/head
+  rotate: true
+  xy: 41, 39
+  size: 31, 32
+  orig: 116, 79
+  offset: 43, 31
+  index: -1
+back/helm
+  rotate: false
+  xy: 107, 8
+  size: 33, 19
+  orig: 116, 79
+  offset: 42, 51
+  index: -1
+back/leg_L
+  rotate: false
+  xy: 236, 127
+  size: 15, 13
+  orig: 116, 79
+  offset: 41, 12
+  index: -1
+back/leg_R
+  rotate: false
+  xy: 236, 127
+  size: 15, 13
+  orig: 116, 79
+  offset: 41, 12
+  index: -1
+back/pelvis
+  rotate: true
+  xy: 75, 37
+  size: 31, 32
+  orig: 116, 79
+  offset: 43, 13
+  index: -1
+front/arm_L
+  rotate: false
+  xy: 195, 112
+  size: 39, 37
+  orig: 121, 79
+  offset: 6, 28
+  index: -1
+front/arm_R
+  rotate: false
+  xy: 2, 100
+  size: 39, 37
+  orig: 121, 79
+  offset: 6, 28
+  index: -1
+front/body
+  rotate: false
+  xy: 2, 139
+  size: 51, 51
+  orig: 121, 79
+  offset: 35, 16
+  index: -1
+front/elbow_L
+  rotate: false
+  xy: 85, 103
+  size: 33, 34
+  orig: 121, 79
+  offset: 4, 7
+  index: -1
+front/elbow_R
+  rotate: false
+  xy: 85, 103
+  size: 33, 34
+  orig: 121, 79
+  offset: 4, 7
+  index: -1
+front/face/face_attack
+  rotate: true
+  xy: 192, 81
+  size: 29, 38
+  orig: 33, 41
+  offset: 2, 2
+  index: -1
+front/face/face_damaged
+  rotate: true
+  xy: 2, 69
+  size: 29, 37
+  orig: 33, 41
+  offset: 2, 3
+  index: -1
+front/face/face_idle
+  rotate: false
+  xy: 117, 62
+  size: 29, 37
+  orig: 33, 41
+  offset: 2, 3
+  index: -1
+front/foot_L
+  rotate: false
+  xy: 234, 158
+  size: 15, 15
+  orig: 121, 79
+  offset: 40, 4
+  index: -1
+front/foot_R
+  rotate: false
+  xy: 234, 158
+  size: 15, 15
+  orig: 121, 79
+  offset: 40, 4
+  index: -1
+front/hand_L
+  rotate: false
+  xy: 2, 36
+  size: 32, 31
+  orig: 121, 79
+  offset: 16, 3
+  index: -1
+front/hand_R
+  rotate: false
+  xy: 2, 36
+  size: 32, 31
+  orig: 121, 79
+  offset: 16, 3
+  index: -1
+front/head
+  rotate: true
+  xy: 109, 29
+  size: 31, 32
+  orig: 121, 79
+  offset: 45, 30
+  index: -1
+front/helm
+  rotate: false
+  xy: 142, 13
+  size: 33, 29
+  orig: 121, 79
+  offset: 44, 39
+  index: -1
+front/leg_L
+  rotate: false
+  xy: 236, 112
+  size: 14, 13
+  orig: 121, 79
+  offset: 44, 11
+  index: -1
+front/leg_R
+  rotate: false
+  xy: 236, 112
+  size: 14, 13
+  orig: 121, 79
+  offset: 44, 11
+  index: -1
+front/pelvis
+  rotate: true
+  xy: 189, 48
+  size: 31, 33
+  orig: 121, 79
+  offset: 45, 11
+  index: -1
+side/arm_B
+  rotate: false
+  xy: 43, 105
+  size: 40, 32
+  orig: 108, 89
+  offset: 58, 34
+  index: -1
+side/arm_F
+  rotate: true
+  xy: 157, 147
+  size: 43, 36
+  orig: 108, 89
+  offset: 7, 30
+  index: -1
+side/body
+  rotate: true
+  xy: 106, 139
+  size: 51, 49
+  orig: 108, 89
+  offset: 29, 22
+  index: -1
+side/elbow_B
+  rotate: true
+  xy: 183, 15
+  size: 31, 32
+  orig: 108, 89
+  offset: 74, 10
+  index: -1
+side/elbow_F
+  rotate: false
+  xy: 148, 44
+  size: 33, 31
+  orig: 108, 89
+  offset: 2, 12
+  index: -1
+side/face/face_attack
+  rotate: false
+  xy: 120, 101
+  size: 31, 36
+  orig: 33, 37
+  offset: 1, 0
+  index: -1
+side/face/face_damaged
+  rotate: true
+  xy: 43, 72
+  size: 31, 35
+  orig: 33, 37
+  offset: 1, 1
+  index: -1
+side/face/face_idle
+  rotate: true
+  xy: 80, 70
+  size: 31, 35
+  orig: 33, 37
+  offset: 1, 1
+  index: -1
+side/foot_B
+  rotate: false
+  xy: 232, 97
+  size: 13, 13
+  orig: 108, 89
+  offset: 50, 8
+  index: -1
+side/foot_F
+  rotate: false
+  xy: 236, 142
+  size: 14, 14
+  orig: 108, 89
+  offset: 31, 7
+  index: -1
+side/hand_B
+  rotate: false
+  xy: 224, 50
+  size: 27, 29
+  orig: 108, 89
+  offset: 72, 5
+  index: -1
+side/hand_F
+  rotate: false
+  xy: 74, 5
+  size: 31, 30
+  orig: 108, 89
+  offset: 17, 6
+  index: -1
+side/head
+  rotate: false
+  xy: 153, 77
+  size: 34, 32
+  orig: 108, 89
+  offset: 47, 36
+  index: -1
+side/helm
+  rotate: false
+  xy: 36, 11
+  size: 36, 26
+  orig: 108, 89
+  offset: 47, 46
+  index: -1
+side/leg_B
+  rotate: false
+  xy: 232, 84
+  size: 12, 11
+  orig: 108, 89
+  offset: 50, 15
+  index: -1
+side/leg_F
+  rotate: false
+  xy: 177, 2
+  size: 11, 11
+  orig: 108, 89
+  offset: 32, 14
+  index: -1
+side/pelvis
+  rotate: false
+  xy: 217, 15
+  size: 31, 31
+  orig: 108, 89
+  offset: 33, 16
+  index: -1

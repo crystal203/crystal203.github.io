@@ -132,10 +132,21 @@ node tools/prepare-deploy.mjs
 
 ## 全量资源检索与日服立绘
 
-统一搜索现在使用 `core/resource-catalog.js` 共享加载 `resources/search-index.json`；图集选择器使用同一个 `resources/atlas-catalog.json`。目录包括 20 个图集的 7879 个可见区域、1751 个 Spine 资源、5365 个可用特效，地图目录另收录全部 2054 张地图。具体帧和特效可直接打开；已由人物索引表示的同一资源不重复展示。
+统一搜索现在使用 `core/resource-catalog.js` 共享加载 `resources/search-index.json`；图集选择器使用同一个 `resources/atlas-catalog.json`。目录包括 20 个图集的 7879 个可见区域、3276 个 Spine 资源、5365 个可用特效，地图目录另收录全部 2054 张地图。具体帧和特效可直接打开；已由人物索引表示的同一资源不重复展示。
 
 94 个 `_kong` 日服立绘从原始 Bundle 提取真实骨骼、atlas、纹理及背景，存储在 `resources/illust-jp/`。原立绘分类共 347 项，保留已有立绘默认选择；新条目带“日服立绘”中文标记和搜索别称。`core/resources.js` 负责逻辑路径别名，避免污染指向旧公开提交的 CDN 资产。另有 6 个原始文件修复副本位于 `resources/spine-recovered/`。
 
 离线工具：`tools/import-jp-illust.py`、`tools/recover-spine-binaries.py`、`tools/build-search-index.py`；默认骨骼全量验证使用 `node --jitless tools/verify-spine-sources.cjs`（本机 Node JIT 存在离线批量解析崩溃，解释模式完成验证）。网页无需 Node。浏览器覆盖验证见 `tools/checks/resource-coverage.html` 与 `tools/resource-coverage-validation.json`。
 
 地图缩放已统一为 100% 下每格 32 CSS 像素，适配显示真实比例；合作远征三季 12 种伤害地砖恢复原生暗红色与淡入状态曲线。视频/Blender 导出考察及新资产的 Pages 容量条件见 [静态部署与导出可行性](docs/static-export-feasibility.md)。当前整库资产超过 Pages 1 GB 上限，正式发布需要静态资源镜像和精简 Pages 发布包，不能原样上传整个目录。
+## 剧情与活动 Spine 补录（2026-10-10）
+
+补录 1429 个 character、75 个 illust 和 21 个 Spine 特效／剧情动画条目，包括 `aw_hana_kid`、冥界 NPC、剧情 Boss、视觉小说立绘、技能召唤物与部分剧场动画。character 合计 2833 项，illust 合计 422 项，加上 Spine 特效共 3276 项。资源依据现有 Unity 导出工程的 SkeletonData / Atlas / Material / Texture 引用链匹配；NPC、英雄和怪物表的资源路径、内码、皮肤名及中文字符串作为搜索别名。
+
+新增资产独立存放在 `resources/spine-expansion/`，按选择载入；原有 CDN 固定提交保持有效。Spine 下拉目录新增“其他”；这是骨骼动画入口，原有 5365 项粒子／网格技能特效仍由特效页播放。补录约 478 MiB，采用 930 个相同文件的去重引用，正式发布时需计入现有静态资源镜像方案。
+
+补录的全部 3614 个骨架、所有皮肤及动画时间线已完成解析检查，结果保存在 `tools/spine-expansion-validation.json`。浏览器抽查覆盖幼年哈娜三朝向、17 皮肤 NPC、Boss、剧情立绘、多骨架技能／剧场动画、原角色及统一搜索。
+
+来源、校验值和排除原因见 `tools/spine-expansion-audit.json`。原始 `big_maiden_hand` 骨架引用 atlas 中不存在的 `hand_shadow`，原始 Bundle 与解包文件完全一致，因此排除手部，保留可用躯干和脚部；未改造游戏素材补造附件。详细说明见 [Spine 补录说明](docs/spine-expansion.md)。
+
+纯静态运行：本次补录没有增加 Node 服务或运行时依赖，文件同步后即可由 GitHub Pages 静态托管。更新缓存标识也可使用 `python tools/refresh-cache-version.py`。

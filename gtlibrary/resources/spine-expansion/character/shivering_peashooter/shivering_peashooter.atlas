@@ -1,0 +1,55 @@
+
+shivering_peashooter__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/body
+  rotate: false
+  xy: 55, 7
+  size: 5, 16
+  orig: 56, 56
+  offset: 26, 1
+  index: -1
+side/bodyB
+  rotate: false
+  xy: 22, 2
+  size: 18, 4
+  orig: 56, 56
+  offset: 18, 0
+  index: -1
+side/hair
+  rotate: false
+  xy: 44, 4
+  size: 5, 5
+  orig: 56, 56
+  offset: 16, 22
+  index: -1
+side/head
+  rotate: false
+  xy: 2, 7
+  size: 18, 16
+  orig: 56, 56
+  offset: 20, 12
+  index: -1
+side/head2
+  rotate: false
+  xy: 22, 10
+  size: 10, 13
+  orig: 56, 56
+  offset: 34, 14
+  index: -1
+side/leafL
+  rotate: true
+  xy: 44, 11
+  size: 12, 9
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/leafR
+  rotate: true
+  xy: 34, 8
+  size: 15, 8
+  orig: 56, 56
+  offset: 14, 0
+  index: -1

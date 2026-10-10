@@ -1,0 +1,69 @@
+
+exp_desert_turret__page0.png
+size: 128,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 2, 33
+  size: 29, 64
+  orig: 51, 90
+  offset: 11, 0
+  index: -1
+body2
+  rotate: true
+  xy: 2, 2
+  size: 29, 58
+  orig: 29, 58
+  offset: 0, 0
+  index: -1
+body2_piece1
+  rotate: true
+  xy: 110, 31
+  size: 10, 13
+  orig: 10, 13
+  offset: 0, 0
+  index: -1
+body2_piece2
+  rotate: false
+  xy: 62, 4
+  size: 10, 9
+  orig: 10, 9
+  offset: 0, 0
+  index: -1
+body2_piece3
+  rotate: true
+  xy: 75, 18
+  size: 9, 13
+  orig: 9, 13
+  offset: 0, 0
+  index: -1
+body2_piece4
+  rotate: false
+  xy: 110, 43
+  size: 13, 19
+  orig: 13, 19
+  offset: 0, 0
+  index: -1
+body2_piece5
+  rotate: false
+  xy: 62, 15
+  size: 11, 12
+  orig: 11, 12
+  offset: 0, 0
+  index: -1
+body2_piece6
+  rotate: false
+  xy: 90, 19
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 68, 29
+  size: 33, 40
+  orig: 51, 90
+  offset: 9, 50
+  index: -1

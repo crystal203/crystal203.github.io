@@ -1,0 +1,83 @@
+
+vehicle_dino__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/armL
+  rotate: true
+  xy: 13, 3
+  size: 7, 9
+  orig: 56, 56
+  offset: 34, 6
+  index: -1
+side/armR
+  rotate: false
+  xy: 24, 2
+  size: 6, 8
+  orig: 56, 56
+  offset: 30, 7
+  index: -1
+side/body
+  rotate: false
+  xy: 2, 27
+  size: 28, 21
+  orig: 56, 56
+  offset: 15, 6
+  index: -1
+side/handle
+  rotate: true
+  xy: 52, 24
+  size: 24, 9
+  orig: 56, 56
+  offset: 18, 12
+  index: -1
+side/head
+  rotate: true
+  xy: 32, 26
+  size: 22, 18
+  orig: 56, 56
+  offset: 32, 14
+  index: -1
+side/headdeco1
+  rotate: false
+  xy: 32, 6
+  size: 1, 4
+  orig: 56, 56
+  offset: 47, 10
+  index: -1
+side/headdeco2
+  rotate: false
+  xy: 35, 6
+  size: 1, 4
+  orig: 56, 56
+  offset: 39, 17
+  index: -1
+side/legL
+  rotate: false
+  xy: 2, 2
+  size: 9, 9
+  orig: 56, 56
+  offset: 24, 2
+  index: -1
+side/legR
+  rotate: true
+  xy: 40, 10
+  size: 12, 13
+  orig: 56, 56
+  offset: 15, 1
+  index: -1
+side/seat
+  rotate: false
+  xy: 2, 13
+  size: 17, 12
+  orig: 56, 56
+  offset: 15, 13
+  index: -1
+side/tail
+  rotate: false
+  xy: 21, 12
+  size: 17, 12
+  orig: 56, 56
+  offset: 3, 7
+  index: -1

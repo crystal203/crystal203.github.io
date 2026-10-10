@@ -1,0 +1,314 @@
+
+highschool_fat_ogre__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 226, 11
+  size: 30, 29
+  orig: 38, 42
+  offset: 5, 2
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 35, 81
+  size: 22, 29
+  orig: 26, 34
+  offset: 0, 1
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 190, 97
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 35, 61
+  size: 19, 29
+  orig: 36, 48
+  offset: 9, 11
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 165, 24
+  size: 23, 20
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 232, 59
+  size: 37, 23
+  orig: 49, 28
+  offset: 6, 3
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 114, 30
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 114, 30
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/hair
+  rotate: false
+  xy: 127, 106
+  size: 41, 19
+  orig: 49, 28
+  offset: 4, 5
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 1, 77
+  size: 26, 33
+  orig: 30, 40
+  offset: 2, 1
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 169, 96
+  size: 20, 29
+  orig: 26, 34
+  offset: 4, 2
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 67, 73
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 169, 69
+  size: 20, 26
+  orig: 26, 30
+  offset: 3, 2
+  index: -1
+front/[base]handL
+  rotate: false
+  xy: 90, 25
+  size: 20, 18
+  orig: 24, 24
+  offset: 2, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 190, 56
+  size: 37, 25
+  orig: 49, 28
+  offset: 6, 1
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 1, 6
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 1, 6
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 1, 37
+  size: 27, 13
+  orig: 49, 28
+  offset: 11, 2
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 34, 47
+  size: 29, 13
+  orig: 49, 28
+  offset: 10, 2
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 217, 1
+  size: 27, 8
+  orig: 49, 28
+  offset: 11, 6
+  index: -1
+front/face/blush
+  rotate: false
+  xy: 226, 1
+  size: 27, 9
+  orig: 49, 28
+  offset: 12, 5
+  index: -1
+front/face/love
+  rotate: false
+  xy: 95, 58
+  size: 27, 14
+  orig: 49, 28
+  offset: 11, 2
+  index: -1
+front/face/smile
+  rotate: false
+  xy: 189, 16
+  size: 27, 12
+  orig: 49, 28
+  offset: 11, 2
+  index: -1
+front/face/surprise
+  rotate: false
+  xy: 228, 42
+  size: 27, 16
+  orig: 49, 28
+  offset: 11, 0
+  index: -1
+front/hair
+  rotate: false
+  xy: 127, 87
+  size: 41, 18
+  orig: 49, 28
+  offset: 4, 6
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 190, 29
+  size: 26, 35
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 1, 51
+  size: 25, 32
+  orig: 30, 34
+  offset: 2, 1
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 1, 104
+  size: 65, 45
+  orig: 68, 46
+  offset: 1, 0
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 165, 45
+  size: 24, 23
+  orig: 26, 24
+  offset: 1, 1
+  index: -1
+side/[base]handL
+  rotate: true
+  xy: 53, 28
+  size: 18, 10
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 127, 62
+  size: 37, 24
+  orig: 50, 28
+  offset: 3, 3
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 64, 39
+  size: 25, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 64, 39
+  size: 25, 18
+  orig: 36, 32
+  offset: 5, 8
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 65, 58
+  size: 29, 14
+  orig: 62, 54
+  offset: 19, 16
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 123, 48
+  size: 27, 13
+  orig: 62, 54
+  offset: 21, 17
+  index: -1
+side/face/base]damaged
+  rotate: false
+  xy: 123, 48
+  size: 27, 13
+  orig: 62, 54
+  offset: 21, 17
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 29, 35
+  size: 23, 11
+  orig: 62, 54
+  offset: 25, 18
+  index: -1
+side/face/blush
+  rotate: false
+  xy: 1, 25
+  size: 23, 11
+  orig: 62, 54
+  offset: 25, 18
+  index: -1
+side/face/love
+  rotate: false
+  xy: 90, 44
+  size: 23, 13
+  orig: 62, 54
+  offset: 25, 17
+  index: -1
+side/face/smile
+  rotate: true
+  xy: 151, 37
+  size: 24, 13
+  orig: 62, 54
+  offset: 24, 16
+  index: -1
+side/face/surprise
+  rotate: false
+  xy: 25, 16
+  size: 22, 18
+  orig: 62, 54
+  offset: 26, 13
+  index: -1
+side/hair
+  rotate: false
+  xy: 190, 82
+  size: 41, 14
+  orig: 50, 28
+  offset: 0, 8
+  index: -1
+weapon1
+  rotate: false
+  xy: 67, 126
+  size: 61, 23
+  orig: 72, 40
+  offset: 4, 8
+  index: -1
+weapon2
+  rotate: false
+  xy: 129, 126
+  size: 60, 23
+  orig: 72, 40
+  offset: 6, 8
+  index: -1

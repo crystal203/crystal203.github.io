@@ -1,0 +1,20 @@
+
+qs_switch_8bit__page0.png
+size: 32,16
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/blue
+  rotate: false
+  xy: 1, 1
+  size: 12, 13
+  orig: 24, 24
+  offset: 6, 0
+  index: -1
+front/red
+  rotate: false
+  xy: 13, 1
+  size: 12, 13
+  orig: 24, 24
+  offset: 6, 0
+  index: -1

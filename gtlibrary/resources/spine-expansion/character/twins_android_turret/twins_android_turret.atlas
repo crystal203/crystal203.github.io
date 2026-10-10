@@ -1,0 +1,160 @@
+
+twins_android_turret__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body1
+  rotate: true
+  xy: 112, 2
+  size: 5, 11
+  orig: 55, 56
+  offset: 25, 7
+  index: -1
+back/body2
+  rotate: true
+  xy: 64, 10
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 17
+  index: -1
+back/cover
+  rotate: true
+  xy: 48, 4
+  size: 7, 11
+  orig: 55, 56
+  offset: 24, 21
+  index: -1
+back/foot
+  rotate: true
+  xy: 50, 13
+  size: 29, 12
+  orig: 55, 56
+  offset: 13, 0
+  index: -1
+back/head1
+  rotate: false
+  xy: 22, 3
+  size: 11, 10
+  orig: 55, 56
+  offset: 22, 13
+  index: -1
+back/head2
+  rotate: true
+  xy: 2, 6
+  size: 7, 18
+  orig: 55, 56
+  offset: 24, 22
+  index: -1
+back/headB
+  rotate: false
+  xy: 35, 4
+  size: 11, 9
+  orig: 55, 56
+  offset: 22, 15
+  index: -1
+front/body1
+  rotate: true
+  xy: 61, 3
+  size: 5, 12
+  orig: 55, 56
+  offset: 25, 7
+  index: -1
+front/body2
+  rotate: false
+  xy: 99, 6
+  size: 11, 7
+  orig: 55, 56
+  offset: 22, 13
+  index: -1
+front/cover
+  rotate: false
+  xy: 90, 5
+  size: 7, 12
+  orig: 55, 56
+  offset: 24, 23
+  index: -1
+front/foot
+  rotate: false
+  xy: 2, 29
+  size: 29, 13
+  orig: 55, 56
+  offset: 13, 0
+  index: -1
+front/head1
+  rotate: false
+  xy: 64, 27
+  size: 15, 15
+  orig: 55, 56
+  offset: 20, 17
+  index: -1
+front/head2
+  rotate: false
+  xy: 115, 23
+  size: 7, 19
+  orig: 55, 56
+  offset: 24, 11
+  index: -1
+side/body1
+  rotate: false
+  xy: 115, 9
+  size: 11, 12
+  orig: 56, 56
+  offset: 20, 16
+  index: -1
+side/body2
+  rotate: false
+  xy: 100, 15
+  size: 13, 12
+  orig: 56, 56
+  offset: 20, 8
+  index: -1
+side/body3
+  rotate: false
+  xy: 100, 29
+  size: 13, 13
+  orig: 56, 56
+  offset: 15, 15
+  index: -1
+side/cover
+  rotate: true
+  xy: 90, 19
+  size: 23, 8
+  orig: 56, 56
+  offset: 16, 28
+  index: -1
+side/foot1
+  rotate: false
+  xy: 2, 2
+  size: 4, 2
+  orig: 56, 56
+  offset: 28, 10
+  index: -1
+side/foot2
+  rotate: false
+  xy: 2, 15
+  size: 31, 12
+  orig: 56, 56
+  offset: 11, 0
+  index: -1
+side/head1
+  rotate: true
+  xy: 81, 15
+  size: 27, 7
+  orig: 56, 56
+  offset: 27, 25
+  index: -1
+side/head2
+  rotate: true
+  xy: 35, 15
+  size: 27, 13
+  orig: 56, 56
+  offset: 9, 21
+  index: -1
+side/headB
+  rotate: true
+  xy: 79, 2
+  size: 11, 7
+  orig: 56, 56
+  offset: 28, 23
+  index: -1

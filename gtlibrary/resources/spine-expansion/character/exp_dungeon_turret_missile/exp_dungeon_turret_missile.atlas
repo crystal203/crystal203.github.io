@@ -1,0 +1,27 @@
+
+exp_dungeon_turret_missile__page0.png
+size: 128,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: true
+  xy: 1, 1
+  size: 51, 67
+  orig: 51, 90
+  offset: 0, 0
+  index: -1
+body_2
+  rotate: true
+  xy: 69, 7
+  size: 45, 26
+  orig: 51, 90
+  offset: 3, 40
+  index: -1
+head
+  rotate: false
+  xy: 96, 21
+  size: 31, 31
+  orig: 51, 90
+  offset: 10, 54
+  index: -1

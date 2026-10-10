@@ -1,0 +1,83 @@
+
+futurecastle_mummy__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 45, 22
+  size: 30, 42
+  orig: 50, 56
+  offset: 10, 0
+  index: -1
+front/body
+  rotate: false
+  xy: 1, 9
+  size: 44, 55
+  orig: 50, 56
+  offset: 3, 0
+  index: -1
+front/mummy
+  rotate: true
+  xy: 45, 1
+  size: 21, 35
+  orig: 55, 56
+  offset: 17, 5
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 21, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 26, 3
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 75, 32
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 1, 2
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 7, 2
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 75, 43
+  size: 21, 21
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 13, 1
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 17, 1
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1

@@ -1,0 +1,181 @@
+
+mm_sy_demon_android_turing_fat_head__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]head
+  rotate: false
+  xy: 2, 66
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_2
+  rotate: false
+  xy: 43, 66
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_3
+  rotate: false
+  xy: 84, 66
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_4
+  rotate: false
+  xy: 125, 66
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_5
+  rotate: false
+  xy: 166, 66
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_6
+  rotate: false
+  xy: 207, 66
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_7
+  rotate: false
+  xy: 2, 35
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+back/[base]head_8
+  rotate: false
+  xy: 43, 35
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 84, 35
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_2
+  rotate: false
+  xy: 125, 35
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_3
+  rotate: false
+  xy: 166, 35
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_4
+  rotate: false
+  xy: 207, 35
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_5
+  rotate: false
+  xy: 2, 4
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_6
+  rotate: false
+  xy: 43, 4
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_7
+  rotate: false
+  xy: 84, 4
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/[base]head_8
+  rotate: false
+  xy: 125, 4
+  size: 39, 29
+  orig: 55, 56
+  offset: 8, 3
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 205, 9
+  size: 22, 6
+  orig: 55, 56
+  offset: 17, 22
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 205, 17
+  size: 22, 7
+  orig: 55, 56
+  offset: 16, 20
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 205, 26
+  size: 23, 7
+  orig: 55, 56
+  offset: 16, 19
+  index: -1
+front/face/[base]tired
+  rotate: true
+  xy: 230, 10
+  size: 23, 7
+  orig: 55, 56
+  offset: 16, 19
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 166, 4
+  size: 37, 29
+  orig: 56, 56
+  offset: 10, 3
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 205, 2
+  size: 18, 5
+  orig: 56, 56
+  offset: 24, 23
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 239, 17
+  size: 16, 7
+  orig: 56, 56
+  offset: 26, 21
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 248, 77
+  size: 18, 5
+  orig: 56, 56
+  offset: 24, 22
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 229, 3
+  size: 19, 5
+  orig: 56, 56
+  offset: 24, 22
+  index: -1

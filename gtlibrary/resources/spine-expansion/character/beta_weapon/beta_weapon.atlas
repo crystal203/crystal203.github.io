@@ -1,0 +1,111 @@
+
+beta_weapon__page0.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/[base]armRB
+  rotate: false
+  xy: 2, 40
+  size: 14, 9
+  orig: 61, 58
+  offset: 5, 27
+  index: -1
+front/[base]armRF
+  rotate: false
+  xy: 2, 51
+  size: 15, 11
+  orig: 61, 58
+  offset: 6, 14
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 81
+  size: 29, 36
+  orig: 61, 58
+  offset: 16, 4
+  index: -1
+front/[base]elbowRB
+  rotate: true
+  xy: 13, 6
+  size: 7, 10
+  orig: 61, 58
+  offset: 4, 22
+  index: -1
+front/[base]elbowRF
+  rotate: false
+  xy: 25, 2
+  size: 6, 11
+  orig: 61, 58
+  offset: 6, 11
+  index: -1
+front/[base]footRB
+  rotate: false
+  xy: 20, 65
+  size: 12, 14
+  orig: 61, 58
+  offset: 0, 12
+  index: -1
+front/[base]footRF
+  rotate: false
+  xy: 19, 49
+  size: 10, 14
+  orig: 61, 58
+  offset: 3, 1
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 2, 64
+  size: 15, 16
+  orig: 61, 58
+  offset: 23, 6
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 14, 15
+  size: 9, 9
+  orig: 61, 58
+  offset: 26, 11
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 2, 18
+  size: 9, 10
+  orig: 61, 58
+  offset: 26, 10
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 25, 15
+  size: 9, 9
+  orig: 61, 58
+  offset: 26, 11
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 2, 7
+  size: 9, 9
+  orig: 61, 58
+  offset: 26, 11
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 2, 29
+  size: 11, 9
+  orig: 61, 58
+  offset: 25, 11
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 15, 26
+  size: 11, 9
+  orig: 61, 58
+  offset: 25, 11
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 18, 37
+  size: 11, 10
+  orig: 61, 58
+  offset: 25, 10
+  index: -1

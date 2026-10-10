@@ -1,0 +1,62 @@
+
+pw_fish__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fish_medium_carp/body
+  rotate: false
+  xy: 2, 19
+  size: 25, 20
+  orig: 54, 55
+  offset: 11, 18
+  index: -1
+fish_medium_carp/fin1
+  rotate: true
+  xy: 53, 12
+  size: 7, 5
+  orig: 54, 55
+  offset: 17, 19
+  index: -1
+fish_medium_carp/fin2
+  rotate: true
+  xy: 50, 31
+  size: 8, 7
+  orig: 54, 55
+  offset: 20, 14
+  index: -1
+fish_medium_carp/fin3
+  rotate: false
+  xy: 2, 2
+  size: 16, 15
+  orig: 54, 55
+  offset: 21, 28
+  index: -1
+fish_medium_carp/fin4
+  rotate: false
+  xy: 50, 21
+  size: 7, 8
+  orig: 54, 55
+  offset: 30, 17
+  index: -1
+fish_medium_carp/head
+  rotate: true
+  xy: 29, 19
+  size: 20, 19
+  orig: 54, 55
+  offset: 2, 19
+  index: -1
+fish_medium_carp/tail
+  rotate: false
+  xy: 38, 5
+  size: 13, 12
+  orig: 54, 55
+  offset: 28, 21
+  index: -1
+fish_medium_carp/tail2
+  rotate: true
+  xy: 20, 7
+  size: 10, 16
+  orig: 54, 55
+  offset: 39, 20
+  index: -1

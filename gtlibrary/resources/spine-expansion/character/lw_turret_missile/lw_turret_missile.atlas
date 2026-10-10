@@ -1,0 +1,20 @@
+
+lw_turret_missile__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: false
+  xy: 2, 2
+  size: 64, 118
+  orig: 64, 118
+  offset: 0, 0
+  index: -1
+front/head
+  rotate: false
+  xy: 68, 104
+  size: 17, 18
+  orig: 64, 118
+  offset: 25, 77
+  index: -1

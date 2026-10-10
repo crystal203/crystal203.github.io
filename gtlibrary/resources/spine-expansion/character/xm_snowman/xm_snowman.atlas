@@ -1,0 +1,986 @@
+
+xm_snowman__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+xm_snowman/back/armL
+  rotate: true
+  xy: 248, 53
+  size: 10, 6
+  orig: 55, 56
+  offset: 6, 14
+  index: -1
+xm_snowman_no_hat/back/armL
+  rotate: true
+  xy: 248, 53
+  size: 10, 6
+  orig: 55, 56
+  offset: 6, 14
+  index: -1
+xm_snowman/back/armR
+  rotate: false
+  xy: 35, 5
+  size: 12, 6
+  orig: 55, 56
+  offset: 39, 12
+  index: -1
+xm_snowman_no_hat/back/armR
+  rotate: false
+  xy: 35, 5
+  size: 12, 6
+  orig: 55, 56
+  offset: 39, 12
+  index: -1
+xm_snowman_pinkhat/back/armR
+  rotate: false
+  xy: 35, 5
+  size: 12, 6
+  orig: 55, 56
+  offset: 39, 12
+  index: -1
+xm_snowman_slikhat/back/armR
+  rotate: false
+  xy: 35, 5
+  size: 12, 6
+  orig: 55, 56
+  offset: 39, 12
+  index: -1
+xm_snowman/back/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman/front/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman_no_hat/back/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman_no_hat/front/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman_pinkhat/back/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman_pinkhat/front/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman_slikhat/back/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman_slikhat/front/body
+  rotate: false
+  xy: 219, 42
+  size: 27, 21
+  orig: 55, 56
+  offset: 14, 0
+  index: -1
+xm_snowman/back/hat
+  rotate: false
+  xy: 70, 62
+  size: 29, 28
+  orig: 55, 56
+  offset: 13, 23
+  index: -1
+xm_snowman/back/hattip
+  rotate: false
+  xy: 96, 7
+  size: 9, 9
+  orig: 55, 56
+  offset: 23, 45
+  index: -1
+xm_snowman/front/hattip
+  rotate: false
+  xy: 96, 7
+  size: 9, 9
+  orig: 55, 56
+  offset: 24, 47
+  index: -1
+xm_snowman/back/head
+  rotate: true
+  xy: 197, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman_no_hat/back/head
+  rotate: true
+  xy: 197, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman_pinkhat/back/head
+  rotate: true
+  xy: 197, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman_slikhat/back/head
+  rotate: true
+  xy: 197, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman/back/muffler
+  rotate: false
+  xy: 88, 29
+  size: 24, 9
+  orig: 55, 56
+  offset: 16, 14
+  index: -1
+xm_snowman_no_hat/back/muffler
+  rotate: false
+  xy: 88, 29
+  size: 24, 9
+  orig: 55, 56
+  offset: 16, 14
+  index: -1
+xm_snowman/front/armL
+  rotate: false
+  xy: 63, 3
+  size: 10, 7
+  orig: 55, 56
+  offset: 39, 13
+  index: -1
+xm_snowman/side/armL
+  rotate: false
+  xy: 63, 3
+  size: 10, 7
+  orig: 55, 56
+  offset: 41, 15
+  index: -1
+xm_snowman_no_hat/front/armL
+  rotate: false
+  xy: 63, 3
+  size: 10, 7
+  orig: 55, 56
+  offset: 39, 13
+  index: -1
+xm_snowman_no_hat/side/armL
+  rotate: false
+  xy: 63, 3
+  size: 10, 7
+  orig: 55, 56
+  offset: 41, 15
+  index: -1
+xm_snowman_pinkhat/side/armL
+  rotate: false
+  xy: 63, 3
+  size: 10, 7
+  orig: 55, 56
+  offset: 41, 15
+  index: -1
+xm_snowman_slikhat/side/armL
+  rotate: false
+  xy: 63, 3
+  size: 10, 7
+  orig: 55, 56
+  offset: 41, 15
+  index: -1
+xm_snowman/front/armR
+  rotate: false
+  xy: 49, 4
+  size: 12, 6
+  orig: 55, 56
+  offset: 6, 12
+  index: -1
+xm_snowman_no_hat/front/armR
+  rotate: false
+  xy: 49, 4
+  size: 12, 6
+  orig: 55, 56
+  offset: 6, 12
+  index: -1
+xm_snowman_pinkhat/front/armR
+  rotate: false
+  xy: 49, 4
+  size: 12, 6
+  orig: 55, 56
+  offset: 6, 12
+  index: -1
+xm_snowman_slikhat/front/armR
+  rotate: false
+  xy: 49, 4
+  size: 12, 6
+  orig: 55, 56
+  offset: 6, 12
+  index: -1
+xm_snowman/front/carrot
+  rotate: false
+  xy: 249, 82
+  size: 5, 8
+  orig: 55, 56
+  offset: 25, 18
+  index: -1
+xm_snowman_no_hat/front/carrot
+  rotate: false
+  xy: 249, 82
+  size: 5, 8
+  orig: 55, 56
+  offset: 25, 18
+  index: -1
+xm_snowman_pinkhat/front/carrot
+  rotate: false
+  xy: 249, 82
+  size: 5, 8
+  orig: 55, 56
+  offset: 25, 18
+  index: -1
+xm_snowman_slikhat/front/carrot
+  rotate: false
+  xy: 249, 82
+  size: 5, 8
+  orig: 55, 56
+  offset: 25, 18
+  index: -1
+xm_snowman/front/face/[base]attack
+  rotate: false
+  xy: 61, 12
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman_no_hat/front/face/[base]attack
+  rotate: false
+  xy: 61, 12
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman_slikhat/front/face/[base]attack
+  rotate: false
+  xy: 61, 12
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman/front/face/[base]doyagao
+  rotate: false
+  xy: 194, 15
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+xm_snowman_no_hat/front/face/[base]doyagao
+  rotate: false
+  xy: 194, 15
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+xm_snowman_slikhat/front/face/[base]doyagao
+  rotate: false
+  xy: 194, 15
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+xm_snowman/front/face/[base]idle
+  rotate: false
+  xy: 145, 5
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman_no_hat/front/face/[base]idle
+  rotate: false
+  xy: 145, 5
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman_slikhat/front/face/[base]idle
+  rotate: false
+  xy: 145, 5
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman/front/face/[base]mad
+  rotate: false
+  xy: 195, 26
+  size: 17, 12
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman_no_hat/front/face/[base]mad
+  rotate: false
+  xy: 195, 26
+  size: 17, 12
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman_slikhat/front/face/[base]mad
+  rotate: false
+  xy: 195, 26
+  size: 17, 12
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman/front/face/[base]smile
+  rotate: false
+  xy: 213, 5
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman_no_hat/front/face/[base]smile
+  rotate: false
+  xy: 213, 5
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman_slikhat/front/face/[base]smile
+  rotate: false
+  xy: 213, 5
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 19
+  index: -1
+xm_snowman/front/face/[base]tired
+  rotate: false
+  xy: 42, 13
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+xm_snowman_no_hat/front/face/[base]tired
+  rotate: false
+  xy: 42, 13
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+xm_snowman_slikhat/front/face/[base]tired
+  rotate: false
+  xy: 42, 13
+  size: 17, 9
+  orig: 55, 56
+  offset: 19, 19
+  index: -1
+xm_snowman/front/hat
+  rotate: false
+  xy: 134, 65
+  size: 29, 25
+  orig: 55, 56
+  offset: 13, 26
+  index: -1
+xm_snowman/front/head
+  rotate: true
+  xy: 223, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman_no_hat/front/head
+  rotate: true
+  xy: 223, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman_pinkhat/front/head
+  rotate: true
+  xy: 223, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman_slikhat/front/head
+  rotate: true
+  xy: 223, 65
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 17
+  index: -1
+xm_snowman/front/muffler
+  rotate: false
+  xy: 59, 43
+  size: 27, 17
+  orig: 55, 56
+  offset: 14, 6
+  index: -1
+xm_snowman_no_hat/front/muffler
+  rotate: false
+  xy: 59, 43
+  size: 27, 17
+  orig: 55, 56
+  offset: 14, 6
+  index: -1
+xm_snowman/side/armR
+  rotate: false
+  xy: 21, 5
+  size: 12, 7
+  orig: 55, 56
+  offset: 12, 12
+  index: -1
+xm_snowman_no_hat/side/armR
+  rotate: false
+  xy: 21, 5
+  size: 12, 7
+  orig: 55, 56
+  offset: 12, 12
+  index: -1
+xm_snowman_pinkhat/side/armR
+  rotate: false
+  xy: 21, 5
+  size: 12, 7
+  orig: 55, 56
+  offset: 12, 12
+  index: -1
+xm_snowman_slikhat/side/armR
+  rotate: false
+  xy: 21, 5
+  size: 12, 7
+  orig: 55, 56
+  offset: 12, 12
+  index: -1
+xm_snowman/side/body
+  rotate: false
+  xy: 2, 39
+  size: 27, 21
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+xm_snowman_no_hat/side/body
+  rotate: false
+  xy: 2, 39
+  size: 27, 21
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+xm_snowman_pinkhat/side/body
+  rotate: false
+  xy: 2, 39
+  size: 27, 21
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+xm_snowman_slikhat/side/body
+  rotate: false
+  xy: 2, 39
+  size: 27, 21
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+xm_snowman/side/carrot
+  rotate: false
+  xy: 154, 47
+  size: 8, 4
+  orig: 55, 56
+  offset: 34, 22
+  index: -1
+xm_snowman_no_hat/side/carrot
+  rotate: false
+  xy: 154, 47
+  size: 8, 4
+  orig: 55, 56
+  offset: 34, 22
+  index: -1
+xm_snowman_pinkhat/side/carrot
+  rotate: false
+  xy: 154, 47
+  size: 8, 4
+  orig: 55, 56
+  offset: 34, 22
+  index: -1
+xm_snowman_slikhat/side/carrot
+  rotate: false
+  xy: 154, 47
+  size: 8, 4
+  orig: 55, 56
+  offset: 34, 22
+  index: -1
+xm_snowman/side/face/[base]attack
+  rotate: false
+  xy: 129, 4
+  size: 14, 10
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman_no_hat/side/face/[base]attack
+  rotate: false
+  xy: 129, 4
+  size: 14, 10
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman_slikhat/side/face/[base]attack
+  rotate: false
+  xy: 129, 4
+  size: 14, 10
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman/side/face/[base]doyagao
+  rotate: false
+  xy: 231, 8
+  size: 16, 9
+  orig: 55, 56
+  offset: 27, 19
+  index: -1
+xm_snowman_no_hat/side/face/[base]doyagao
+  rotate: false
+  xy: 231, 8
+  size: 16, 9
+  orig: 55, 56
+  offset: 27, 19
+  index: -1
+xm_snowman_slikhat/side/face/[base]doyagao
+  rotate: false
+  xy: 231, 8
+  size: 16, 9
+  orig: 55, 56
+  offset: 27, 19
+  index: -1
+xm_snowman/side/face/[base]idle
+  rotate: false
+  xy: 162, 4
+  size: 14, 9
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman_no_hat/side/face/[base]idle
+  rotate: false
+  xy: 162, 4
+  size: 14, 9
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman_slikhat/side/face/[base]idle
+  rotate: false
+  xy: 162, 4
+  size: 14, 9
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman/side/face/[base]mad
+  rotate: false
+  xy: 114, 25
+  size: 16, 12
+  orig: 55, 56
+  offset: 27, 17
+  index: -1
+xm_snowman_no_hat/side/face/[base]mad
+  rotate: false
+  xy: 114, 25
+  size: 16, 12
+  orig: 55, 56
+  offset: 27, 17
+  index: -1
+xm_snowman_slikhat/side/face/[base]mad
+  rotate: false
+  xy: 114, 25
+  size: 16, 12
+  orig: 55, 56
+  offset: 27, 17
+  index: -1
+xm_snowman/side/face/[base]smile
+  rotate: false
+  xy: 178, 4
+  size: 14, 9
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman_no_hat/side/face/[base]smile
+  rotate: false
+  xy: 178, 4
+  size: 14, 9
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman_slikhat/side/face/[base]smile
+  rotate: false
+  xy: 178, 4
+  size: 14, 9
+  orig: 55, 56
+  offset: 28, 19
+  index: -1
+xm_snowman/side/face/[base]tired
+  rotate: false
+  xy: 78, 7
+  size: 16, 9
+  orig: 55, 56
+  offset: 27, 19
+  index: -1
+xm_snowman_no_hat/side/face/[base]tired
+  rotate: false
+  xy: 78, 7
+  size: 16, 9
+  orig: 55, 56
+  offset: 27, 19
+  index: -1
+xm_snowman_slikhat/side/face/[base]tired
+  rotate: false
+  xy: 78, 7
+  size: 16, 9
+  orig: 55, 56
+  offset: 27, 19
+  index: -1
+xm_snowman/side/hat
+  rotate: false
+  xy: 2, 62
+  size: 33, 28
+  orig: 55, 56
+  offset: 14, 24
+  index: -1
+xm_snowman/side/hattip
+  rotate: false
+  xy: 107, 3
+  size: 9, 9
+  orig: 55, 56
+  offset: 13, 46
+  index: -1
+xm_snowman/side/head
+  rotate: false
+  xy: 165, 41
+  size: 25, 24
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman_no_hat/side/head
+  rotate: false
+  xy: 165, 41
+  size: 25, 24
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman_pinkhat/side/head
+  rotate: false
+  xy: 165, 41
+  size: 25, 24
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman_slikhat/side/head
+  rotate: false
+  xy: 165, 41
+  size: 25, 24
+  orig: 55, 56
+  offset: 19, 17
+  index: -1
+xm_snowman/side/muffler
+  rotate: false
+  xy: 31, 42
+  size: 26, 18
+  orig: 55, 56
+  offset: 18, 6
+  index: -1
+xm_snowman_no_hat/side/muffler
+  rotate: false
+  xy: 31, 42
+  size: 26, 18
+  orig: 55, 56
+  offset: 18, 6
+  index: -1
+xm_snowman_no_hat/back/hat
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_no_hat/back/hattip
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_no_hat/front/hat
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_no_hat/front/hattip
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_no_hat/side/hat
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_no_hat/side/hattip
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_slikhat/back/hattip
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_slikhat/front/hattip
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_slikhat/side/hattip
+  rotate: false
+  xy: 249, 79
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+xm_snowman_pinkhat/back/armL
+  rotate: true
+  xy: 248, 41
+  size: 10, 6
+  orig: 55, 56
+  offset: 6, 14
+  index: -1
+xm_snowman_slikhat/back/armL
+  rotate: true
+  xy: 248, 41
+  size: 10, 6
+  orig: 55, 56
+  offset: 6, 14
+  index: -1
+xm_snowman_pinkhat/back/hat
+  rotate: false
+  xy: 37, 62
+  size: 31, 28
+  orig: 55, 56
+  offset: 13, 19
+  index: -1
+xm_snowman_pinkhat/back/hattip
+  rotate: false
+  xy: 194, 2
+  size: 11, 11
+  orig: 55, 56
+  offset: 23, 30
+  index: -1
+xm_snowman_pinkhat/front/hattip
+  rotate: false
+  xy: 194, 2
+  size: 11, 11
+  orig: 55, 56
+  offset: 22, 41
+  index: -1
+xm_snowman_pinkhat/side/hattip
+  rotate: false
+  xy: 194, 2
+  size: 11, 11
+  orig: 55, 56
+  offset: 13, 39
+  index: -1
+xm_snowman_pinkhat/back/muffler
+  rotate: false
+  xy: 219, 30
+  size: 26, 10
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+xm_snowman_pinkhat/front/armL
+  rotate: true
+  xy: 154, 53
+  size: 10, 7
+  orig: 55, 56
+  offset: 39, 13
+  index: -1
+xm_snowman_slikhat/front/armL
+  rotate: true
+  xy: 154, 53
+  size: 10, 7
+  orig: 55, 56
+  offset: 39, 13
+  index: -1
+xm_snowman_pinkhat/front/face/[base]attack
+  rotate: false
+  xy: 132, 27
+  size: 19, 10
+  orig: 55, 56
+  offset: 18, 19
+  index: -1
+xm_snowman_pinkhat/front/face/[base]doyagao
+  rotate: false
+  xy: 231, 19
+  size: 19, 9
+  orig: 55, 56
+  offset: 18, 19
+  index: -1
+xm_snowman_pinkhat/front/face/[base]idle
+  rotate: false
+  xy: 88, 18
+  size: 19, 9
+  orig: 55, 56
+  offset: 18, 19
+  index: -1
+xm_snowman_pinkhat/front/face/[base]mad
+  rotate: false
+  xy: 154, 27
+  size: 19, 12
+  orig: 55, 56
+  offset: 18, 17
+  index: -1
+xm_snowman_pinkhat/front/face/[base]smile
+  rotate: false
+  xy: 132, 16
+  size: 19, 9
+  orig: 55, 56
+  offset: 18, 19
+  index: -1
+xm_snowman_pinkhat/front/face/[base]tired
+  rotate: false
+  xy: 153, 16
+  size: 19, 9
+  orig: 55, 56
+  offset: 18, 19
+  index: -1
+xm_snowman_pinkhat/front/hat
+  rotate: false
+  xy: 101, 66
+  size: 31, 24
+  orig: 55, 56
+  offset: 12, 23
+  index: -1
+xm_snowman_pinkhat/front/muffler
+  rotate: false
+  xy: 59, 24
+  size: 27, 17
+  orig: 55, 56
+  offset: 14, 5
+  index: -1
+xm_snowman_pinkhat/side/face/[base]attack
+  rotate: true
+  xy: 88, 42
+  size: 18, 10
+  orig: 55, 56
+  offset: 25, 19
+  index: -1
+xm_snowman_pinkhat/side/face/[base]doyagao
+  rotate: false
+  xy: 174, 15
+  size: 18, 9
+  orig: 55, 56
+  offset: 25, 19
+  index: -1
+xm_snowman_pinkhat/side/face/[base]idle
+  rotate: false
+  xy: 2, 14
+  size: 18, 9
+  orig: 55, 56
+  offset: 25, 19
+  index: -1
+xm_snowman_pinkhat/side/face/[base]mad
+  rotate: false
+  xy: 175, 26
+  size: 18, 12
+  orig: 55, 56
+  offset: 25, 17
+  index: -1
+xm_snowman_pinkhat/side/face/[base]smile
+  rotate: false
+  xy: 22, 14
+  size: 18, 9
+  orig: 55, 56
+  offset: 25, 19
+  index: -1
+xm_snowman_pinkhat/side/face/[base]tired
+  rotate: false
+  xy: 109, 14
+  size: 18, 9
+  orig: 55, 56
+  offset: 25, 19
+  index: -1
+xm_snowman_pinkhat/side/hat
+  rotate: false
+  xy: 165, 67
+  size: 30, 23
+  orig: 55, 56
+  offset: 15, 24
+  index: -1
+xm_snowman_pinkhat/side/muffler
+  rotate: false
+  xy: 31, 25
+  size: 25, 15
+  orig: 55, 56
+  offset: 19, 6
+  index: -1
+xm_snowman_slikhat/back/hat
+  rotate: true
+  xy: 192, 40
+  size: 23, 25
+  orig: 55, 56
+  offset: 24, 27
+  index: -1
+xm_snowman_slikhat/back/muffler
+  rotate: false
+  xy: 2, 7
+  size: 17, 5
+  orig: 55, 56
+  offset: 19, 16
+  index: -1
+xm_snowman_slikhat/front/hat
+  rotate: false
+  xy: 128, 39
+  size: 24, 24
+  orig: 55, 56
+  offset: 8, 28
+  index: -1
+xm_snowman_slikhat/front/muffler
+  rotate: false
+  xy: 214, 16
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 7
+  index: -1
+xm_snowman_slikhat/side/hat
+  rotate: false
+  xy: 101, 40
+  size: 25, 24
+  orig: 55, 56
+  offset: 14, 28
+  index: -1
+xm_snowman_slikhat/side/muffler
+  rotate: false
+  xy: 2, 25
+  size: 17, 12
+  orig: 55, 56
+  offset: 26, 7
+  index: -1

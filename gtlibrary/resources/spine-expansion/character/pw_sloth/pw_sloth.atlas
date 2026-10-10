@@ -1,0 +1,97 @@
+
+pw_sloth__page0.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bubble
+  rotate: false
+  xy: 48, 2
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 47, 69
+  size: 27, 35
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 2, 49
+  size: 25, 32
+  orig: 30, 34
+  offset: 2, 1
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 174
+  size: 64, 44
+  orig: 68, 46
+  offset: 2, 2
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 36, 42
+  size: 25, 26
+  orig: 38, 34
+  offset: 6, 2
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 28, 5
+  size: 18, 15
+  orig: 28, 18
+  offset: 5, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 76
+  size: 43, 28
+  orig: 43, 28
+  offset: 0, 0
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 2, 29
+  size: 25, 18
+  orig: 34, 30
+  offset: 8, 7
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 29, 22
+  size: 25, 18
+  orig: 36, 32
+  offset: 9, 8
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 56, 16
+  size: 24, 13
+  orig: 62, 54
+  offset: 26, 17
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 2, 14
+  size: 24, 13
+  orig: 62, 54
+  offset: 26, 17
+  index: -1
+weapon1
+  rotate: false
+  xy: 2, 140
+  size: 67, 32
+  orig: 72, 40
+  offset: 3, 7
+  index: -1
+weapon2
+  rotate: false
+  xy: 2, 106
+  size: 67, 32
+  orig: 72, 40
+  offset: 3, 7
+  index: -1

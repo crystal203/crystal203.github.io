@@ -1,0 +1,76 @@
+
+cw_fps_hand__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/handL
+  rotate: false
+  xy: 2, 27
+  size: 25, 35
+  orig: 55, 56
+  offset: 6, 0
+  index: -1
+front/handR2
+  rotate: false
+  xy: 34, 3
+  size: 5, 3
+  orig: 55, 56
+  offset: 26, 38
+  index: -1
+front/handR3
+  rotate: false
+  xy: 45, 9
+  size: 17, 17
+  orig: 55, 56
+  offset: 15, 32
+  index: -1
+front/handR4
+  rotate: true
+  xy: 29, 28
+  size: 34, 29
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+front/handR5
+  rotate: false
+  xy: 2, 2
+  size: 11, 23
+  orig: 55, 56
+  offset: 20, 18
+  index: -1
+front/handR6
+  rotate: false
+  xy: 64, 15
+  size: 13, 13
+  orig: 55, 56
+  offset: 15, 35
+  index: -1
+front/magazine
+  rotate: false
+  xy: 34, 8
+  size: 9, 18
+  orig: 55, 56
+  offset: 19, 20
+  index: -1
+front/muzzle_flash1
+  rotate: true
+  xy: 60, 30
+  size: 14, 13
+  orig: 59, 62
+  offset: 9, 45
+  index: -1
+front/muzzle_flash2
+  rotate: false
+  xy: 60, 46
+  size: 16, 16
+  orig: 59, 62
+  offset: 6, 45
+  index: -1
+front/muzzle_flash3
+  rotate: true
+  xy: 15, 6
+  size: 19, 17
+  orig: 59, 62
+  offset: 3, 45
+  index: -1

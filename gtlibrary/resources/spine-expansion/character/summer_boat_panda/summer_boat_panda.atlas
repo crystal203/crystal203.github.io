@@ -1,0 +1,769 @@
+
+summer_boat_panda__page0.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FX_grow
+  rotate: false
+  xy: 380, 92
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+eye/fire_u_eyeL
+  rotate: false
+  xy: 497, 99
+  size: 10, 13
+  orig: 14, 20
+  offset: 2, 6
+  index: -1
+eye/fire_u_eyeR
+  rotate: true
+  xy: 193, 5
+  size: 9, 12
+  orig: 14, 20
+  offset: 3, 6
+  index: -1
+eye/shock_s_eyeB
+  rotate: false
+  xy: 504, 219
+  size: 6, 7
+  orig: 14, 20
+  offset: 4, 7
+  index: -1
+eye/shock_s_eyeF
+  rotate: false
+  xy: 504, 210
+  size: 6, 7
+  orig: 14, 20
+  offset: 4, 7
+  index: -1
+funder/fire_u
+  rotate: false
+  xy: 322, 16
+  size: 17, 15
+  orig: 17, 24
+  offset: 0, 8
+  index: -1
+funder/shock_s
+  rotate: false
+  xy: 267, 4
+  size: 13, 7
+  orig: 13, 13
+  offset: 0, 3
+  index: -1
+funder/sleep_deep_s
+  rotate: false
+  xy: 240, 5
+  size: 12, 9
+  orig: 18, 10
+  offset: 6, 1
+  index: -1
+images/smoke
+  rotate: false
+  xy: 2, 160
+  size: 346, 66
+  orig: 348, 68
+  offset: 1, 1
+  index: -1
+mouth/11_s
+  rotate: false
+  xy: 308, 93
+  size: 3, 4
+  orig: 10, 8
+  offset: 4, 2
+  index: -1
+mouth/12_s
+  rotate: false
+  xy: 507, 51
+  size: 3, 5
+  orig: 10, 8
+  offset: 3, 0
+  index: -1
+mw_hulk_sailor/side/[base]armL
+  rotate: true
+  xy: 221, 15
+  size: 15, 17
+  orig: 62, 58
+  offset: 40, 9
+  index: -1
+mw_hulk_sailor/side/[base]armR
+  rotate: false
+  xy: 201, 16
+  size: 18, 15
+  orig: 62, 58
+  offset: 14, 11
+  index: -1
+mw_hulk_sailor/side/[base]body
+  rotate: true
+  xy: 476, 25
+  size: 25, 29
+  orig: 62, 58
+  offset: 23, 4
+  index: -1
+mw_hulk_sailor/side/[base]elbowL
+  rotate: false
+  xy: 149, 10
+  size: 15, 15
+  orig: 62, 58
+  offset: 44, 4
+  index: -1
+mw_hulk_sailor/side/[base]elbowL2
+  rotate: false
+  xy: 396, 16
+  size: 16, 17
+  orig: 62, 58
+  offset: 44, 2
+  index: -1
+mw_hulk_sailor/side/[base]elbowR
+  rotate: false
+  xy: 304, 15
+  size: 16, 16
+  orig: 62, 58
+  offset: 11, 3
+  index: -1
+mw_hulk_sailor/side/[base]elbowR2
+  rotate: false
+  xy: 377, 16
+  size: 17, 17
+  orig: 62, 58
+  offset: 11, 2
+  index: -1
+mw_hulk_sailor/side/[base]head
+  rotate: false
+  xy: 390, 35
+  size: 28, 27
+  orig: 62, 58
+  offset: 25, 16
+  index: -1
+mw_hulk_sailor/side/[base]legL
+  rotate: true
+  xy: 54, 3
+  size: 7, 8
+  orig: 62, 58
+  offset: 36, 0
+  index: -1
+mw_hulk_sailor/side/[base]legR
+  rotate: true
+  xy: 95, 3
+  size: 7, 8
+  orig: 62, 58
+  offset: 26, 0
+  index: -1
+mw_hulk_sailor/side/bodydeco
+  rotate: false
+  xy: 505, 66
+  size: 4, 7
+  orig: 62, 58
+  offset: 29, 4
+  index: -1
+mw_hulk_sailor/side/face/[base]attack
+  rotate: false
+  xy: 260, 13
+  size: 18, 13
+  orig: 62, 58
+  offset: 34, 17
+  index: -1
+mw_hulk_sailor/side/face/[base]damaged
+  rotate: false
+  xy: 492, 12
+  size: 15, 11
+  orig: 62, 58
+  offset: 36, 18
+  index: -1
+mw_hulk_sailor/side/face/[base]doyagao
+  rotate: false
+  xy: 96, 12
+  size: 18, 12
+  orig: 62, 58
+  offset: 34, 17
+  index: -1
+mw_hulk_sailor/side/face/[base]idle
+  rotate: false
+  xy: 34, 11
+  size: 18, 12
+  orig: 62, 58
+  offset: 34, 17
+  index: -1
+mw_hulk_sailor/side/face/[base]mad
+  rotate: false
+  xy: 240, 16
+  size: 18, 14
+  orig: 62, 58
+  offset: 34, 17
+  index: -1
+mw_hulk_sailor/side/face/[base]smile
+  rotate: false
+  xy: 280, 13
+  size: 18, 13
+  orig: 62, 58
+  offset: 34, 17
+  index: -1
+mw_hulk_sailor/side/face/[base]tired
+  rotate: false
+  xy: 341, 11
+  size: 18, 12
+  orig: 62, 58
+  offset: 33, 18
+  index: -1
+mw_hulk_sailor/side/ribbonR1
+  rotate: false
+  xy: 185, 100
+  size: 12, 8
+  orig: 62, 58
+  offset: 16, 30
+  index: -1
+mw_hulk_sailor/side/ribbonR2
+  rotate: false
+  xy: 420, 51
+  size: 12, 6
+  orig: 62, 58
+  offset: 16, 27
+  index: -1
+side/Body_Back
+  rotate: false
+  xy: 281, 64
+  size: 144, 26
+  orig: 279, 160
+  offset: 69, 62
+  index: -1
+side/Glass_B
+  rotate: false
+  xy: 271, 28
+  size: 31, 9
+  orig: 279, 160
+  offset: 173, 83
+  index: -1
+side/body_F
+  rotate: false
+  xy: 2, 110
+  size: 218, 48
+  orig: 279, 160
+  offset: 46, 38
+  index: -1
+side/cannon_cover
+  rotate: false
+  xy: 149, 27
+  size: 30, 15
+  orig: 279, 160
+  offset: 74, 78
+  index: -1
+side/canon_body
+  rotate: true
+  xy: 2, 23
+  size: 22, 30
+  orig: 279, 160
+  offset: 75, 73
+  index: -1
+side/canon_camera
+  rotate: false
+  xy: 361, 11
+  size: 10, 12
+  orig: 279, 160
+  offset: 75, 81
+  index: -1
+side/canon_cover1
+  rotate: false
+  xy: 181, 23
+  size: 18, 19
+  orig: 279, 160
+  offset: 81, 84
+  index: -1
+side/canon_cover2
+  rotate: true
+  xy: 474, 11
+  size: 12, 16
+  orig: 279, 160
+  offset: 90, 79
+  index: -1
+side/canon_launcherF
+  rotate: true
+  xy: 451, 25
+  size: 23, 21
+  orig: 279, 160
+  offset: 75, 96
+  index: -1
+side/canon_light
+  rotate: false
+  xy: 166, 14
+  size: 11, 11
+  orig: 279, 160
+  offset: 69, 93
+  index: -1
+side/cover_outer1
+  rotate: true
+  xy: 238, 32
+  size: 10, 31
+  orig: 279, 160
+  offset: 71, 90
+  index: -1
+side/cover_outer2
+  rotate: true
+  xy: 451, 14
+  size: 9, 21
+  orig: 279, 160
+  offset: 72, 74
+  index: -1
+side/exhaust_L
+  rotate: false
+  xy: 476, 52
+  size: 27, 41
+  orig: 279, 160
+  offset: 47, 71
+  index: -1
+side/exhaust_R
+  rotate: false
+  xy: 446, 50
+  size: 28, 43
+  orig: 279, 160
+  offset: 38, 54
+  index: -1
+side/glass_F
+  rotate: false
+  xy: 446, 128
+  size: 55, 28
+  orig: 279, 160
+  offset: 161, 61
+  index: -1
+side/hard_top
+  rotate: false
+  xy: 446, 95
+  size: 49, 31
+  orig: 279, 160
+  offset: 63, 62
+  index: -1
+side/hard_top_B
+  rotate: false
+  xy: 201, 33
+  size: 35, 9
+  orig: 279, 160
+  offset: 82, 84
+  index: -1
+side/helm
+  rotate: true
+  xy: 124, 22
+  size: 20, 23
+  orig: 279, 160
+  offset: 193, 62
+  index: -1
+side/lower_unit
+  rotate: false
+  xy: 68, 22
+  size: 26, 23
+  orig: 279, 160
+  offset: 43, 38
+  index: -1
+side/midsection
+  rotate: false
+  xy: 281, 39
+  size: 37, 23
+  orig: 279, 160
+  offset: 44, 59
+  index: -1
+side/powerhead
+  rotate: false
+  xy: 351, 40
+  size: 37, 22
+  orig: 279, 160
+  offset: 44, 69
+  index: -1
+side/powerhead_top
+  rotate: false
+  xy: 351, 25
+  size: 24, 13
+  orig: 279, 160
+  offset: 47, 80
+  index: -1
+side/propeller
+  rotate: true
+  xy: 2, 12
+  size: 9, 20
+  orig: 279, 160
+  offset: 42, 34
+  index: -1
+side/wheel
+  rotate: false
+  xy: 427, 59
+  size: 16, 31
+  orig: 279, 160
+  offset: 190, 61
+  index: -1
+trio_boss_summer/side/[base]armL
+  rotate: false
+  xy: 213, 102
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+trio_boss_summer/side/[base]armR
+  rotate: false
+  xy: 505, 91
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+trio_boss_summer/side/[base]body
+  rotate: true
+  xy: 130, 10
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+trio_boss_summer/side/[base]elbowL
+  rotate: false
+  xy: 504, 201
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+trio_boss_summer/side/[base]elbowR
+  rotate: false
+  xy: 504, 192
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+trio_boss_summer/side/[base]head
+  rotate: false
+  xy: 320, 33
+  size: 29, 29
+  orig: 56, 56
+  offset: 16, 10
+  index: -1
+trio_boss_summer/side/[base]legL
+  rotate: false
+  xy: 504, 164
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+trio_boss_summer/side/[base]legR
+  rotate: false
+  xy: 504, 154
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+trio_boss_summer/side/face/[base]attack
+  rotate: false
+  xy: 179, 11
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+trio_boss_summer/side/face/[base]damaged
+  rotate: false
+  xy: 442, 3
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_boss_summer/side/face/[base]doyagao
+  rotate: false
+  xy: 414, 11
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_boss_summer/side/face/[base]idle
+  rotate: false
+  xy: 428, 11
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_boss_summer/side/face/[base]mad
+  rotate: true
+  xy: 497, 114
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+trio_boss_summer/side/face/[base]smile
+  rotate: false
+  xy: 54, 12
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+trio_boss_summer/side/face/[base]tired
+  rotate: false
+  xy: 322, 5
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_boss_summer/side/hair
+  rotate: true
+  xy: 34, 25
+  size: 20, 32
+  orig: 56, 56
+  offset: 13, 4
+  index: -1
+trio_man_summer/side/[base]armL
+  rotate: false
+  xy: 505, 83
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+trio_man_summer/side/[base]armR
+  rotate: false
+  xy: 505, 75
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+trio_man_summer/side/[base]body
+  rotate: true
+  xy: 373, 5
+  size: 9, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+trio_man_summer/side/[base]elbowL
+  rotate: false
+  xy: 504, 183
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+trio_man_summer/side/[base]elbowR
+  rotate: false
+  xy: 504, 174
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+trio_man_summer/side/[base]head
+  rotate: true
+  xy: 420, 23
+  size: 25, 29
+  orig: 56, 56
+  offset: 18, 14
+  index: -1
+trio_man_summer/side/[base]legL
+  rotate: false
+  xy: 503, 144
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+trio_man_summer/side/[base]legR
+  rotate: false
+  xy: 503, 134
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+trio_man_summer/side/face/[base]attack
+  rotate: false
+  xy: 455, 3
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_man_summer/side/face/[base]damaged
+  rotate: false
+  xy: 387, 5
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_man_summer/side/face/[base]doyagao
+  rotate: false
+  xy: 207, 4
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_man_summer/side/face/[base]idle
+  rotate: true
+  xy: 401, 3
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_man_summer/side/face/[base]mad
+  rotate: false
+  xy: 254, 2
+  size: 11, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+trio_man_summer/side/face/[base]smile
+  rotate: false
+  xy: 221, 4
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_man_summer/side/face/[base]tired
+  rotate: false
+  xy: 199, 100
+  size: 12, 8
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+trio_panda/side/[base]armL
+  rotate: false
+  xy: 281, 93
+  size: 5, 4
+  orig: 56, 56
+  offset: 35, 5
+  index: -1
+trio_panda/side/[base]armR
+  rotate: false
+  xy: 302, 93
+  size: 4, 4
+  orig: 56, 56
+  offset: 31, 5
+  index: -1
+trio_panda/side/[base]body
+  rotate: false
+  xy: 166, 3
+  size: 9, 9
+  orig: 56, 56
+  offset: 31, 2
+  index: -1
+trio_panda/side/[base]elbowL
+  rotate: false
+  xy: 288, 93
+  size: 5, 4
+  orig: 56, 56
+  offset: 37, 3
+  index: -1
+trio_panda/side/[base]elbowR
+  rotate: false
+  xy: 295, 93
+  size: 5, 4
+  orig: 56, 56
+  offset: 28, 3
+  index: -1
+trio_panda/side/[base]head
+  rotate: false
+  xy: 96, 26
+  size: 26, 19
+  orig: 56, 56
+  offset: 21, 9
+  index: -1
+trio_panda/side/[base]legL
+  rotate: false
+  xy: 505, 58
+  size: 4, 6
+  orig: 56, 56
+  offset: 36, 0
+  index: -1
+trio_panda/side/[base]legR
+  rotate: false
+  xy: 24, 15
+  size: 4, 6
+  orig: 56, 56
+  offset: 32, 0
+  index: -1
+trio_panda/side/earL
+  rotate: true
+  xy: 434, 51
+  size: 6, 8
+  orig: 56, 56
+  offset: 40, 22
+  index: -1
+trio_panda/side/earR
+  rotate: true
+  xy: 105, 3
+  size: 7, 8
+  orig: 56, 56
+  offset: 23, 22
+  index: -1
+trio_panda/side/face/[base]attack
+  rotate: false
+  xy: 2, 5
+  size: 11, 5
+  orig: 56, 56
+  offset: 33, 13
+  index: -1
+trio_panda/side/face/[base]damaged
+  rotate: false
+  xy: 170, 100
+  size: 13, 8
+  orig: 56, 56
+  offset: 32, 11
+  index: -1
+trio_panda/side/face/[base]doyagao
+  rotate: false
+  xy: 67, 10
+  size: 12, 10
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+trio_panda/side/face/[base]idle
+  rotate: false
+  xy: 81, 10
+  size: 12, 10
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+trio_panda/side/face/[base]mad
+  rotate: false
+  xy: 282, 4
+  size: 12, 7
+  orig: 56, 56
+  offset: 32, 11
+  index: -1
+trio_panda/side/face/[base]smile
+  rotate: false
+  xy: 116, 10
+  size: 12, 10
+  orig: 56, 56
+  offset: 32, 9
+  index: -1
+trio_panda/side/face/[base]tired
+  rotate: false
+  xy: 15, 5
+  size: 11, 5
+  orig: 56, 56
+  offset: 33, 13
+  index: -1
+trio_panda/side/helm
+  rotate: false
+  xy: 145, 100
+  size: 23, 8
+  orig: 56, 56
+  offset: 23, 22
+  index: -1
+trio_panda/side/tail
+  rotate: false
+  xy: 300, 4
+  size: 12, 9
+  orig: 56, 56
+  offset: 22, 1
+  index: -1
+water_splash/water_splash_1
+  rotate: false
+  xy: 350, 158
+  size: 152, 68
+  orig: 154, 70
+  offset: 1, 1
+  index: -1
+water_splash/water_splash_2
+  rotate: false
+  xy: 222, 99
+  size: 156, 57
+  orig: 158, 59
+  offset: 1, 1
+  index: -1
+water_splash/water_splash_3
+  rotate: false
+  xy: 145, 44
+  size: 134, 53
+  orig: 136, 55
+  offset: 1, 1
+  index: -1
+water_splash/water_splash_4
+  rotate: false
+  xy: 2, 47
+  size: 141, 61
+  orig: 143, 63
+  offset: 1, 1
+  index: -1

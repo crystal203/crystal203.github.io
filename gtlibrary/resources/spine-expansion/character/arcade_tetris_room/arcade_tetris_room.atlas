@@ -1,0 +1,27 @@
+
+arcade_tetris_room__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+room1
+  rotate: false
+  xy: 2, 52
+  size: 48, 63
+  orig: 48, 64
+  offset: 0, 1
+  index: -1
+room2
+  rotate: false
+  xy: 52, 52
+  size: 48, 63
+  orig: 48, 64
+  offset: 0, 1
+  index: -1
+room3
+  rotate: true
+  xy: 2, 2
+  size: 48, 63
+  orig: 48, 64
+  offset: 0, 1
+  index: -1

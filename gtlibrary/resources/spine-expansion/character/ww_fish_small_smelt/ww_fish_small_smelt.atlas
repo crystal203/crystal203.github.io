@@ -1,0 +1,55 @@
+
+ww_fish_small_smelt__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fish_small_smelt/body
+  rotate: false
+  xy: 2, 6
+  size: 17, 10
+  orig: 32, 32
+  offset: 6, 11
+  index: -1
+fish_small_smelt/fin2
+  rotate: false
+  xy: 42, 2
+  size: 4, 4
+  orig: 32, 32
+  offset: 10, 9
+  index: -1
+fish_small_smelt/fin3
+  rotate: true
+  xy: 51, 9
+  size: 7, 6
+  orig: 32, 32
+  offset: 12, 19
+  index: -1
+fish_small_smelt/fin4
+  rotate: true
+  xy: 42, 8
+  size: 8, 7
+  orig: 32, 32
+  offset: 16, 9
+  index: -1
+fish_small_smelt/head
+  rotate: false
+  xy: 21, 6
+  size: 11, 10
+  orig: 32, 32
+  offset: 3, 11
+  index: -1
+fish_small_smelt/tail
+  rotate: false
+  xy: 51, 2
+  size: 5, 5
+  orig: 32, 32
+  offset: 20, 15
+  index: -1
+fish_small_smelt/tail2
+  rotate: false
+  xy: 34, 6
+  size: 6, 10
+  orig: 32, 32
+  offset: 24, 13
+  index: -1

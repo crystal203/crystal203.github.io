@@ -1,0 +1,412 @@
+
+dark_spirit_ballet__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 57, 50
+  size: 23, 35
+  orig: 121, 124
+  offset: 26, 45
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 57, 50
+  size: 23, 35
+  orig: 121, 124
+  offset: 26, 45
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 197, 110
+  size: 41, 41
+  orig: 121, 124
+  offset: 40, 45
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 220, 14
+  size: 18, 16
+  orig: 121, 124
+  offset: 20, 44
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 220, 14
+  size: 18, 16
+  orig: 121, 124
+  offset: 20, 44
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 92, 20
+  size: 19, 18
+  orig: 121, 124
+  offset: 19, 46
+  index: -1
+back/[base]handR
+  rotate: false
+  xy: 92, 20
+  size: 19, 18
+  orig: 121, 124
+  offset: 19, 46
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 94, 40
+  size: 19, 33
+  orig: 121, 124
+  offset: 51, 62
+  index: -1
+back/[base]pelvis
+  rotate: false
+  xy: 38, 12
+  size: 19, 13
+  orig: 121, 124
+  offset: 51, 40
+  index: -1
+back/fx_helmet_1
+  rotate: false
+  xy: 59, 11
+  size: 21, 9
+  orig: 121, 124
+  offset: 55, 90
+  index: -1
+back/fx_helmet_2
+  rotate: false
+  xy: 82, 9
+  size: 21, 9
+  orig: 121, 124
+  offset: 56, 90
+  index: -1
+back/fx_helmet_3
+  rotate: false
+  xy: 113, 14
+  size: 22, 11
+  orig: 121, 124
+  offset: 56, 88
+  index: -1
+back/fx_helmet_4
+  rotate: false
+  xy: 162, 70
+  size: 22, 12
+  orig: 121, 124
+  offset: 56, 88
+  index: -1
+back/fx_helmet_5
+  rotate: true
+  xy: 240, 134
+  size: 17, 12
+  orig: 121, 124
+  offset: 55, 89
+  index: -1
+back/fx_helmet_6
+  rotate: false
+  xy: 161, 10
+  size: 16, 13
+  orig: 121, 124
+  offset: 55, 89
+  index: -1
+back/fx_helmet_7
+  rotate: false
+  xy: 197, 10
+  size: 17, 10
+  orig: 121, 124
+  offset: 55, 90
+  index: -1
+back/skirtB
+  rotate: false
+  xy: 143, 84
+  size: 69, 24
+  orig: 121, 124
+  offset: 26, 28
+  index: -1
+back/skirtF
+  rotate: false
+  xy: 162, 47
+  size: 69, 18
+  orig: 121, 124
+  offset: 26, 38
+  index: -1
+back/wingL
+  rotate: true
+  xy: 2, 77
+  size: 28, 55
+  orig: 121, 124
+  offset: 30, 48
+  index: -1
+front/wingR
+  rotate: true
+  xy: 2, 77
+  size: 28, 55
+  orig: 121, 122
+  offset: 30, 49
+  index: -1
+back/wingR
+  rotate: true
+  xy: 59, 75
+  size: 28, 55
+  orig: 121, 124
+  offset: 63, 48
+  index: -1
+front/wingL
+  rotate: true
+  xy: 59, 75
+  size: 28, 55
+  orig: 121, 122
+  offset: 63, 49
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 115, 27
+  size: 20, 30
+  orig: 121, 122
+  offset: 28, 49
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 115, 27
+  size: 20, 30
+  orig: 121, 122
+  offset: 28, 49
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 214, 67
+  size: 41, 37
+  orig: 121, 122
+  offset: 40, 48
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 2, 12
+  size: 16, 16
+  orig: 121, 122
+  offset: 23, 43
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 2, 12
+  size: 16, 16
+  orig: 121, 122
+  offset: 23, 43
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 147, 25
+  size: 20, 24
+  orig: 121, 122
+  offset: 18, 40
+  index: -1
+front/[base]handR
+  rotate: true
+  xy: 147, 25
+  size: 20, 24
+  orig: 121, 122
+  offset: 18, 40
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 233, 32
+  size: 19, 33
+  orig: 121, 122
+  offset: 51, 61
+  index: -1
+front/[base]pelvis
+  rotate: false
+  xy: 143, 113
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/[base]pelvis
+  rotate: false
+  xy: 143, 113
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/fx_helmet_1
+  rotate: true
+  xy: 240, 9
+  size: 21, 9
+  orig: 121, 122
+  offset: 45, 89
+  index: -1
+side/fx_helmet_1
+  rotate: true
+  xy: 240, 9
+  size: 21, 9
+  orig: 112, 112
+  offset: 50, 84
+  index: -1
+front/fx_helmet_2
+  rotate: false
+  xy: 105, 3
+  size: 21, 9
+  orig: 121, 122
+  offset: 44, 89
+  index: -1
+side/fx_helmet_2
+  rotate: false
+  xy: 105, 3
+  size: 21, 9
+  orig: 112, 112
+  offset: 49, 84
+  index: -1
+front/fx_helmet_3
+  rotate: false
+  xy: 137, 12
+  size: 22, 11
+  orig: 121, 122
+  offset: 43, 87
+  index: -1
+side/fx_helmet_3
+  rotate: false
+  xy: 137, 12
+  size: 22, 11
+  orig: 112, 112
+  offset: 48, 82
+  index: -1
+front/fx_helmet_4
+  rotate: false
+  xy: 186, 70
+  size: 22, 12
+  orig: 121, 122
+  offset: 43, 87
+  index: -1
+side/fx_helmet_4
+  rotate: false
+  xy: 186, 70
+  size: 22, 12
+  orig: 112, 112
+  offset: 48, 82
+  index: -1
+front/fx_helmet_5
+  rotate: true
+  xy: 240, 115
+  size: 17, 12
+  orig: 121, 122
+  offset: 49, 88
+  index: -1
+side/fx_helmet_5
+  rotate: true
+  xy: 240, 115
+  size: 17, 12
+  orig: 112, 112
+  offset: 54, 83
+  index: -1
+front/fx_helmet_6
+  rotate: false
+  xy: 179, 10
+  size: 16, 13
+  orig: 121, 122
+  offset: 50, 88
+  index: -1
+side/fx_helmet_6
+  rotate: false
+  xy: 179, 10
+  size: 16, 13
+  orig: 112, 112
+  offset: 55, 83
+  index: -1
+front/fx_helmet_7
+  rotate: false
+  xy: 216, 2
+  size: 17, 10
+  orig: 121, 122
+  offset: 49, 89
+  index: -1
+side/fx_helmet_7
+  rotate: false
+  xy: 216, 2
+  size: 17, 10
+  orig: 112, 112
+  offset: 54, 84
+  index: -1
+front/skirt
+  rotate: false
+  xy: 2, 107
+  size: 71, 44
+  orig: 121, 122
+  offset: 25, 26
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 67, 22
+  size: 23, 26
+  orig: 112, 112
+  offset: 61, 44
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 36, 27
+  size: 21, 29
+  orig: 112, 112
+  offset: 27, 39
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 116, 49
+  size: 44, 33
+  orig: 112, 112
+  offset: 35, 42
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 116, 87
+  size: 23, 16
+  orig: 112, 112
+  offset: 67, 42
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 20, 9
+  size: 16, 16
+  orig: 112, 112
+  offset: 26, 38
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 199, 22
+  size: 19, 23
+  orig: 112, 112
+  offset: 80, 36
+  index: -1
+side/[base]handR
+  rotate: true
+  xy: 173, 25
+  size: 20, 24
+  orig: 112, 112
+  offset: 23, 36
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 2, 30
+  size: 19, 32
+  orig: 112, 112
+  offset: 58, 57
+  index: -1
+side/skirt
+  rotate: false
+  xy: 75, 105
+  size: 66, 46
+  orig: 112, 112
+  offset: 20, 21
+  index: -1
+side/wingL
+  rotate: true
+  xy: 2, 51
+  size: 24, 53
+  orig: 112, 112
+  offset: 63, 42
+  index: -1
+side/wingR
+  rotate: true
+  xy: 143, 116
+  size: 35, 52
+  orig: 112, 112
+  offset: 21, 46
+  index: -1

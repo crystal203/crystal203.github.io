@@ -1,0 +1,370 @@
+
+boss_mech_spawnmonster__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 182, 27
+  size: 16, 14
+  orig: 81, 76
+  offset: 8, 27
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 182, 27
+  size: 16, 14
+  orig: 81, 76
+  offset: 8, 27
+  index: -1
+back/[base]armL2
+  rotate: false
+  xy: 167, 45
+  size: 15, 18
+  orig: 81, 76
+  offset: 9, 23
+  index: -1
+back/[base]armR2
+  rotate: false
+  xy: 167, 45
+  size: 15, 18
+  orig: 81, 76
+  offset: 9, 23
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 2, 94
+  size: 39, 32
+  orig: 81, 76
+  offset: 21, 16
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 108, 96
+  size: 18, 30
+  orig: 81, 76
+  offset: 5, 33
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 98, 3
+  size: 19, 22
+  orig: 81, 76
+  offset: 4, 33
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 71, 2
+  size: 8, 10
+  orig: 81, 76
+  offset: 18, 18
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 71, 2
+  size: 8, 10
+  orig: 81, 76
+  offset: 18, 18
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 71, 2
+  size: 8, 10
+  orig: 81, 76
+  offset: 18, 19
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 71, 2
+  size: 8, 10
+  orig: 81, 76
+  offset: 18, 19
+  index: -1
+back/bag
+  rotate: true
+  xy: 133, 64
+  size: 18, 24
+  orig: 81, 76
+  offset: 41, 28
+  index: -1
+back/bag2
+  rotate: true
+  xy: 120, 20
+  size: 18, 24
+  orig: 81, 76
+  offset: 22, 28
+  index: -1
+back/bodyF
+  rotate: false
+  xy: 43, 62
+  size: 35, 20
+  orig: 81, 76
+  offset: 23, 12
+  index: -1
+back/bodydecoL
+  rotate: false
+  xy: 159, 84
+  size: 15, 21
+  orig: 81, 76
+  offset: 15, 33
+  index: -1
+front/bodydecoR
+  rotate: false
+  xy: 159, 84
+  size: 15, 21
+  orig: 81, 76
+  offset: 14, 35
+  index: -1
+back/bodydecoR
+  rotate: true
+  xy: 119, 3
+  size: 15, 21
+  orig: 81, 76
+  offset: 51, 33
+  index: -1
+front/bodydecoL
+  rotate: true
+  xy: 119, 3
+  size: 15, 21
+  orig: 81, 76
+  offset: 52, 35
+  index: -1
+back/footL
+  rotate: false
+  xy: 173, 110
+  size: 16, 16
+  orig: 81, 76
+  offset: 14, 8
+  index: -1
+back/footR
+  rotate: false
+  xy: 173, 110
+  size: 16, 16
+  orig: 81, 76
+  offset: 14, 8
+  index: -1
+boostB
+  rotate: true
+  xy: 40, 26
+  size: 34, 30
+  orig: 35, 31
+  offset: 0, 1
+  index: -1
+boostLB
+  rotate: true
+  xy: 120, 40
+  size: 22, 21
+  orig: 23, 22
+  offset: 0, 1
+  index: -1
+boost_circle
+  rotate: false
+  xy: 72, 34
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 164, 4
+  size: 15, 18
+  orig: 81, 76
+  offset: 8, 26
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 164, 4
+  size: 15, 18
+  orig: 81, 76
+  offset: 8, 26
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 62
+  size: 39, 30
+  orig: 81, 76
+  offset: 21, 22
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 113, 64
+  size: 18, 30
+  orig: 81, 76
+  offset: 4, 1
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 28, 4
+  size: 20, 21
+  orig: 81, 76
+  offset: 2, 11
+  index: -1
+front/bag
+  rotate: true
+  xy: 72, 14
+  size: 18, 24
+  orig: 81, 76
+  offset: 22, 37
+  index: -1
+front/bag2
+  rotate: true
+  xy: 2, 8
+  size: 18, 24
+  orig: 81, 76
+  offset: 41, 37
+  index: -1
+front/bodyF
+  rotate: true
+  xy: 66, 91
+  size: 35, 20
+  orig: 81, 76
+  offset: 23, 9
+  index: -1
+front/bodyF2
+  rotate: true
+  xy: 88, 89
+  size: 37, 18
+  orig: 81, 76
+  offset: 22, 17
+  index: -1
+front/bodyF3
+  rotate: true
+  xy: 153, 107
+  size: 19, 18
+  orig: 81, 76
+  offset: 31, 17
+  index: -1
+front/footL
+  rotate: false
+  xy: 176, 92
+  size: 16, 16
+  orig: 81, 76
+  offset: 14, 9
+  index: -1
+front/footR
+  rotate: false
+  xy: 176, 92
+  size: 16, 16
+  orig: 81, 76
+  offset: 14, 9
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 164, 21
+  size: 16, 17
+  orig: 80, 74
+  offset: 42, 20
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 178, 73
+  size: 15, 17
+  orig: 80, 74
+  offset: 12, 20
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 28
+  size: 36, 32
+  orig: 80, 74
+  offset: 16, 13
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 100, 27
+  size: 33, 18
+  orig: 80, 74
+  offset: 45, 11
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 146, 40
+  size: 19, 22
+  orig: 80, 74
+  offset: 5, 8
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 133, 87
+  size: 7, 7
+  orig: 80, 74
+  offset: 48, 16
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 128, 119
+  size: 9, 7
+  orig: 80, 74
+  offset: 22, 16
+  index: -1
+side/bag
+  rotate: false
+  xy: 51, 2
+  size: 18, 22
+  orig: 80, 74
+  offset: 9, 31
+  index: -1
+side/bag2
+  rotate: false
+  xy: 146, 15
+  size: 16, 23
+  orig: 80, 74
+  offset: 27, 31
+  index: -1
+side/bodyF
+  rotate: false
+  xy: 80, 62
+  size: 31, 20
+  orig: 80, 74
+  offset: 31, 10
+  index: -1
+side/bodyF2
+  rotate: true
+  xy: 43, 90
+  size: 36, 21
+  orig: 80, 74
+  offset: 23, 13
+  index: -1
+side/bodyF3
+  rotate: false
+  xy: 159, 65
+  size: 17, 17
+  orig: 80, 74
+  offset: 39, 17
+  index: -1
+side/bodydecoL
+  rotate: false
+  xy: 184, 48
+  size: 9, 23
+  orig: 80, 74
+  offset: 46, 29
+  index: -1
+side/bodydecoR
+  rotate: true
+  xy: 128, 96
+  size: 20, 23
+  orig: 80, 74
+  offset: 10, 29
+  index: -1
+side/footL
+  rotate: true
+  xy: 184, 8
+  size: 17, 12
+  orig: 80, 74
+  offset: 44, 6
+  index: -1
+side/footR
+  rotate: true
+  xy: 194, 109
+  size: 17, 12
+  orig: 80, 74
+  offset: 18, 6
+  index: -1
+steam
+  rotate: false
+  xy: 142, 2
+  size: 12, 11
+  orig: 12, 11
+  offset: 0, 0
+  index: -1

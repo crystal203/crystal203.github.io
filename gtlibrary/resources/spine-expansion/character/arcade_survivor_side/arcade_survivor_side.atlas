@@ -1,0 +1,76 @@
+
+arcade_survivor_side__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/side_dead1_1
+  rotate: false
+  xy: 2, 42
+  size: 17, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_dead1_2
+  rotate: true
+  xy: 2, 22
+  size: 18, 17
+  orig: 24, 24
+  offset: 3, 1
+  index: -1
+side/side_dead1_3
+  rotate: false
+  xy: 2, 2
+  size: 17, 18
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+side/side_dead1_4
+  rotate: true
+  xy: 39, 42
+  size: 18, 12
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+side/side_dead1_5
+  rotate: false
+  xy: 39, 29
+  size: 18, 11
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+side/side_idle_1
+  rotate: false
+  xy: 21, 7
+  size: 15, 17
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_walk_2
+  rotate: false
+  xy: 21, 7
+  size: 15, 17
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_idle_2
+  rotate: false
+  xy: 38, 8
+  size: 15, 16
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_walk_1
+  rotate: false
+  xy: 21, 44
+  size: 16, 16
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_walk_3
+  rotate: false
+  xy: 21, 26
+  size: 16, 16
+  orig: 24, 24
+  offset: 4, 0
+  index: -1

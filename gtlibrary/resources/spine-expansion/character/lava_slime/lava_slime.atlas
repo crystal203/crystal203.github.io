@@ -1,0 +1,111 @@
+
+lava_slime__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+e/front/eye1
+  rotate: false
+  xy: 11, 5
+  size: 4, 4
+  orig: 6, 6
+  offset: 1, 1
+  index: -1
+e/front/mouth1
+  rotate: false
+  xy: 1, 10
+  size: 14, 13
+  orig: 27, 28
+  offset: 6, 8
+  index: -1
+e/front/mouth2
+  rotate: false
+  xy: 16, 12
+  size: 14, 11
+  orig: 27, 28
+  offset: 6, 9
+  index: -1
+e/front/mouth3
+  rotate: false
+  xy: 16, 1
+  size: 14, 10
+  orig: 27, 28
+  offset: 6, 10
+  index: -1
+e/front/mouth4
+  rotate: false
+  xy: 42, 28
+  size: 14, 12
+  orig: 27, 28
+  offset: 6, 8
+  index: -1
+front/[FX]highlight
+  rotate: true
+  xy: 42, 1
+  size: 3, 2
+  orig: 3, 2
+  offset: 0, 0
+  index: -1
+front/[FX]highlight2
+  rotate: false
+  xy: 62, 39
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/ashe
+  rotate: true
+  xy: 42, 41
+  size: 22, 21
+  orig: 40, 40
+  offset: 9, 12
+  index: -1
+front/glow
+  rotate: false
+  xy: 1, 24
+  size: 40, 39
+  orig: 40, 40
+  offset: 0, 1
+  index: -1
+front/in_bottom
+  rotate: false
+  xy: 31, 1
+  size: 10, 9
+  orig: 27, 28
+  offset: 4, 6
+  index: -1
+front/in_center
+  rotate: false
+  xy: 1, 5
+  size: 9, 4
+  orig: 23, 4
+  offset: 3, 0
+  index: -1
+front/in_top
+  rotate: false
+  xy: 42, 5
+  size: 9, 9
+  orig: 27, 28
+  offset: 5, 13
+  index: -1
+front/out_bottom
+  rotate: true
+  xy: 31, 11
+  size: 12, 10
+  orig: 27, 28
+  offset: 2, 5
+  index: -1
+front/out_center
+  rotate: true
+  xy: 57, 28
+  size: 12, 4
+  orig: 23, 4
+  offset: 0, 0
+  index: -1
+front/out_top
+  rotate: false
+  xy: 42, 15
+  size: 12, 12
+  orig: 27, 28
+  offset: 2, 12
+  index: -1

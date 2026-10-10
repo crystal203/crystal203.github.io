@@ -1,0 +1,41 @@
+
+exp_snowmountain_archer_bomb__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/face/damaged
+  rotate: false
+  xy: 17, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/idle
+  rotate: false
+  xy: 17, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/mad
+  rotate: false
+  xy: 17, 14
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/head
+  rotate: false
+  xy: 1, 16
+  size: 39, 40
+  orig: 55, 56
+  offset: 8, 4
+  index: -1
+fx_glow
+  rotate: true
+  xy: 1, 1
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1

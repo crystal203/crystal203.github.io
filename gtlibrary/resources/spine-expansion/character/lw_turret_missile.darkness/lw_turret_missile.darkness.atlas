@@ -1,0 +1,20 @@
+
+lw_turret_missile.darkness__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: false
+  xy: 1, 1
+  size: 64, 118
+  orig: 64, 118
+  offset: 0, 0
+  index: -1
+front/head
+  rotate: false
+  xy: 66, 103
+  size: 15, 16
+  orig: 112, 144
+  offset: 49, 99
+  index: -1

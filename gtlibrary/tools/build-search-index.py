@@ -23,6 +23,12 @@ for folder in ['character','illust']:
   jp=read(ROOT/'resources/illust-jp/catalog.json')['illustrations'];names+= [r['name'] for r in jp];zh.update({r['name']:r['label'] for r in jp})
  for name in names:
   entities.append({'id':f'spine:{folder}:{name}','name':zh.get(name) or name,'aliases':[name,name.removeprefix('illust_'),'立绘' if folder=='illust' else '像素动画', '日服立绘' if name.endswith('_kong') else folder],'spine':{'folder':folder,'name':name},'kind':'spine'})
+# Supplement catalogs share the same searchable routing as the legacy manifests.
+supplement=ROOT/'resources/spine-expansion/catalog.json'
+if supplement.exists():
+ for folder,rows in read(supplement)['groups'].items():
+  for row in rows:
+   entities.append({'id':f"spine:{folder}:{row['name']}",'name':row['label'],'aliases':row['aliases'],'spine':{'folder':folder,'name':row['name']},'kind':'spine'})
 fx=read(ROOT/'gtfx/assets/catalog.json')
 for c in fx['characters']:
  data=read(ROOT/'gtfx/assets'/c['index'])

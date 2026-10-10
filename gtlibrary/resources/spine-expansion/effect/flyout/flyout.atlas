@@ -1,0 +1,769 @@
+
+flyout__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bird/bird1
+  rotate: false
+  xy: 186, 8
+  size: 11, 10
+  orig: 22, 22
+  offset: 6, 7
+  index: -1
+bird/bird2
+  rotate: false
+  xy: 187, 89
+  size: 11, 7
+  orig: 22, 22
+  offset: 6, 7
+  index: -1
+bird/bird3
+  rotate: false
+  xy: 20, 4
+  size: 11, 7
+  orig: 22, 22
+  offset: 6, 7
+  index: -1
+bird/dead
+  rotate: false
+  xy: 151, 5
+  size: 9, 6
+  orig: 9, 6
+  offset: 0, 0
+  index: -1
+bird/feather1
+  rotate: false
+  xy: 217, 28
+  size: 7, 8
+  orig: 7, 8
+  offset: 0, 0
+  index: -1
+bird/feather2
+  rotate: false
+  xy: 31, 59
+  size: 7, 6
+  orig: 7, 6
+  offset: 0, 0
+  index: -1
+bird/feather3
+  rotate: false
+  xy: 251, 82
+  size: 3, 5
+  orig: 3, 5
+  offset: 0, 0
+  index: -1
+captain/[emo]damaged
+  rotate: false
+  xy: 230, 14
+  size: 12, 10
+  orig: 50, 50
+  offset: 25, 16
+  index: -1
+captain/[emo]idle
+  rotate: false
+  xy: 44, 13
+  size: 12, 10
+  orig: 50, 50
+  offset: 25, 16
+  index: -1
+captain/[emo]shock
+  rotate: true
+  xy: 189, 20
+  size: 15, 9
+  orig: 50, 50
+  offset: 20, 15
+  index: -1
+captain/armL
+  rotate: true
+  xy: 242, 5
+  size: 5, 9
+  orig: 50, 50
+  offset: 31, 8
+  index: -1
+captain/armR
+  rotate: false
+  xy: 2, 5
+  size: 16, 6
+  orig: 50, 50
+  offset: 17, 11
+  index: -1
+captain/body
+  rotate: false
+  xy: 2, 14
+  size: 12, 11
+  orig: 50, 50
+  offset: 19, 6
+  index: -1
+captain/elbowR
+  rotate: false
+  xy: 199, 4
+  size: 6, 5
+  orig: 50, 50
+  offset: 15, 11
+  index: -1
+captain/head1
+  rotate: false
+  xy: 203, 118
+  size: 38, 28
+  orig: 50, 50
+  offset: 3, 14
+  index: -1
+captain/head2
+  rotate: false
+  xy: 203, 88
+  size: 37, 28
+  orig: 50, 50
+  offset: 4, 14
+  index: -1
+captain/headB
+  rotate: false
+  xy: 2, 116
+  size: 42, 30
+  orig: 50, 50
+  offset: 4, 13
+  index: -1
+captain/legL
+  rotate: false
+  xy: 162, 4
+  size: 5, 7
+  orig: 50, 50
+  offset: 24, 3
+  index: -1
+captain/legR
+  rotate: false
+  xy: 177, 59
+  size: 7, 6
+  orig: 50, 50
+  offset: 17, 6
+  index: -1
+captain_kong/[emo]damaged
+  rotate: false
+  xy: 99, 13
+  size: 12, 10
+  orig: 50, 50
+  offset: 25, 16
+  index: -1
+captain_kong/[emo]fail
+  rotate: false
+  xy: 16, 13
+  size: 12, 11
+  orig: 50, 50
+  offset: 25, 15
+  index: -1
+captain/[emo]fail
+  rotate: false
+  xy: 16, 13
+  size: 12, 11
+  orig: 50, 50
+  offset: 25, 15
+  index: -1
+captain_kong/[emo]idle
+  rotate: false
+  xy: 113, 13
+  size: 12, 10
+  orig: 50, 50
+  offset: 25, 16
+  index: -1
+captain_kong/[emo]shock
+  rotate: false
+  xy: 140, 19
+  size: 15, 9
+  orig: 50, 50
+  offset: 20, 15
+  index: -1
+captain_kong/armL
+  rotate: true
+  xy: 56, 4
+  size: 5, 9
+  orig: 50, 50
+  offset: 31, 8
+  index: -1
+captain_kong/armL2
+  rotate: false
+  xy: 2, 27
+  size: 17, 14
+  orig: 50, 50
+  offset: 19, 4
+  index: -1
+captain/armL2
+  rotate: false
+  xy: 2, 27
+  size: 17, 14
+  orig: 50, 50
+  offset: 19, 4
+  index: -1
+captain_kong/armR
+  rotate: false
+  xy: 214, 5
+  size: 8, 6
+  orig: 50, 50
+  offset: 17, 11
+  index: -1
+captain_kong/body
+  rotate: false
+  xy: 30, 13
+  size: 12, 11
+  orig: 50, 50
+  offset: 19, 6
+  index: -1
+captain_kong/cloak1
+  rotate: false
+  xy: 140, 30
+  size: 27, 11
+  orig: 50, 50
+  offset: 6, 9
+  index: -1
+captain/cloak1
+  rotate: false
+  xy: 140, 30
+  size: 27, 11
+  orig: 50, 50
+  offset: 6, 9
+  index: -1
+captain_kong/cloak2
+  rotate: false
+  xy: 227, 26
+  size: 27, 11
+  orig: 50, 50
+  offset: 6, 11
+  index: -1
+captain/cloak2
+  rotate: false
+  xy: 227, 26
+  size: 27, 11
+  orig: 50, 50
+  offset: 6, 11
+  index: -1
+captain_kong/cloak3
+  rotate: true
+  xy: 243, 118
+  size: 28, 11
+  orig: 50, 50
+  offset: 5, 11
+  index: -1
+captain/cloak3
+  rotate: true
+  xy: 243, 118
+  size: 28, 11
+  orig: 50, 50
+  offset: 5, 11
+  index: -1
+captain_kong/elbowR
+  rotate: true
+  xy: 131, 3
+  size: 6, 5
+  orig: 50, 50
+  offset: 15, 11
+  index: -1
+captain_kong/elbowR2
+  rotate: false
+  xy: 55, 41
+  size: 13, 14
+  orig: 50, 50
+  offset: 8, 7
+  index: -1
+captain/elbowR2
+  rotate: false
+  xy: 55, 41
+  size: 13, 14
+  orig: 50, 50
+  offset: 8, 7
+  index: -1
+captain_kong/head1
+  rotate: false
+  xy: 46, 87
+  size: 37, 28
+  orig: 50, 50
+  offset: 4, 14
+  index: -1
+captain_kong/head2
+  rotate: false
+  xy: 2, 86
+  size: 37, 28
+  orig: 50, 50
+  offset: 4, 14
+  index: -1
+captain_kong/headB
+  rotate: false
+  xy: 46, 117
+  size: 39, 29
+  orig: 50, 50
+  offset: 5, 13
+  index: -1
+captain_kong/legL
+  rotate: true
+  xy: 76, 4
+  size: 5, 7
+  orig: 50, 50
+  offset: 24, 3
+  index: -1
+captain_kong/legR
+  rotate: false
+  xy: 67, 3
+  size: 7, 6
+  orig: 50, 50
+  offset: 17, 6
+  index: -1
+knightf/[emo]damaged
+  rotate: false
+  xy: 171, 3
+  size: 11, 9
+  orig: 58, 50
+  offset: 17, 21
+  index: -1
+knightf/[emo]shock
+  rotate: false
+  xy: 171, 3
+  size: 11, 9
+  orig: 58, 50
+  offset: 17, 21
+  index: -1
+knightm/[emo]damaged
+  rotate: false
+  xy: 171, 3
+  size: 11, 9
+  orig: 58, 50
+  offset: 17, 21
+  index: -1
+knightm/[emo]shock
+  rotate: false
+  xy: 171, 3
+  size: 11, 9
+  orig: 58, 50
+  offset: 17, 21
+  index: -1
+knightf/[emo]idle
+  rotate: false
+  xy: 244, 12
+  size: 10, 12
+  orig: 58, 50
+  offset: 18, 19
+  index: -1
+knightf/[emo]idle2
+  rotate: true
+  xy: 131, 45
+  size: 10, 13
+  orig: 58, 50
+  offset: 18, 19
+  index: -1
+knightf/[emo]idle_run
+  rotate: false
+  xy: 127, 11
+  size: 10, 12
+  orig: 58, 50
+  offset: 18, 19
+  index: -1
+knightf/[emo]scared
+  rotate: true
+  xy: 100, 25
+  size: 17, 18
+  orig: 58, 50
+  offset: 15, 19
+  index: -1
+knightf/armB
+  rotate: false
+  xy: 242, 89
+  size: 12, 6
+  orig: 58, 50
+  offset: 10, 17
+  index: -1
+knightm/armB
+  rotate: false
+  xy: 242, 89
+  size: 12, 6
+  orig: 58, 50
+  offset: 10, 17
+  index: -1
+knightf/armF
+  rotate: false
+  xy: 139, 7
+  size: 10, 10
+  orig: 58, 50
+  offset: 23, 8
+  index: -1
+knightm/armF
+  rotate: false
+  xy: 139, 7
+  size: 10, 10
+  orig: 58, 50
+  offset: 23, 8
+  index: -1
+knightf/body
+  rotate: false
+  xy: 69, 23
+  size: 14, 13
+  orig: 58, 50
+  offset: 13, 8
+  index: -1
+knightf/hair1
+  rotate: false
+  xy: 148, 67
+  size: 35, 18
+  orig: 58, 50
+  offset: 2, 12
+  index: -1
+knightf/hair2
+  rotate: false
+  xy: 2, 67
+  size: 35, 17
+  orig: 58, 50
+  offset: 2, 13
+  index: -1
+knightf/head1
+  rotate: false
+  xy: 71, 62
+  size: 27, 22
+  orig: 58, 50
+  offset: 14, 16
+  index: -1
+knightf/head2
+  rotate: false
+  xy: 2, 43
+  size: 27, 22
+  orig: 58, 50
+  offset: 14, 16
+  index: -1
+knightf/helmB
+  rotate: false
+  xy: 187, 98
+  size: 13, 16
+  orig: 58, 50
+  offset: 16, 28
+  index: -1
+knightf/helmF
+  rotate: false
+  xy: 202, 38
+  size: 23, 18
+  orig: 58, 50
+  offset: 16, 26
+  index: -1
+knightf/legB
+  rotate: false
+  xy: 121, 4
+  size: 8, 5
+  orig: 58, 50
+  offset: 11, 11
+  index: -1
+knightm/legB
+  rotate: false
+  xy: 121, 4
+  size: 8, 5
+  orig: 58, 50
+  offset: 11, 11
+  index: -1
+knightf/legF
+  rotate: false
+  xy: 85, 2
+  size: 5, 5
+  orig: 58, 50
+  offset: 15, 7
+  index: -1
+knightm/legF
+  rotate: false
+  xy: 85, 2
+  size: 5, 5
+  orig: 58, 50
+  offset: 15, 7
+  index: -1
+knightf/p_hand
+  rotate: false
+  xy: 207, 5
+  size: 4, 4
+  orig: 58, 50
+  offset: 10, 23
+  index: -1
+knightm/p_hand
+  rotate: false
+  xy: 207, 5
+  size: 4, 4
+  orig: 58, 50
+  offset: 10, 23
+  index: -1
+knightf/tail
+  rotate: false
+  xy: 169, 26
+  size: 18, 9
+  orig: 58, 50
+  offset: 37, 28
+  index: -1
+knightm/tail
+  rotate: false
+  xy: 169, 26
+  size: 18, 9
+  orig: 58, 50
+  offset: 37, 28
+  index: -1
+knightf/tail2
+  rotate: false
+  xy: 100, 58
+  size: 15, 8
+  orig: 58, 50
+  offset: 37, 24
+  index: -1
+knightm/tail2
+  rotate: false
+  xy: 100, 58
+  size: 15, 8
+  orig: 58, 50
+  offset: 37, 24
+  index: -1
+knightm/[emo]idle
+  rotate: true
+  xy: 58, 11
+  size: 10, 12
+  orig: 58, 50
+  offset: 18, 19
+  index: -1
+knightm/[emo]idle2
+  rotate: true
+  xy: 171, 14
+  size: 10, 13
+  orig: 58, 50
+  offset: 18, 19
+  index: -1
+knightm/[emo]idle_run
+  rotate: true
+  xy: 72, 11
+  size: 10, 12
+  orig: 58, 50
+  offset: 18, 19
+  index: -1
+knightm/[emo]scared
+  rotate: true
+  xy: 120, 25
+  size: 17, 18
+  orig: 58, 50
+  offset: 15, 19
+  index: -1
+knightm/body
+  rotate: false
+  xy: 202, 23
+  size: 13, 13
+  orig: 58, 50
+  offset: 14, 8
+  index: -1
+knightm/hair1
+  rotate: false
+  xy: 41, 113
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+knightm/hair2
+  rotate: false
+  xy: 41, 113
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+knightm/head1
+  rotate: false
+  xy: 148, 43
+  size: 27, 22
+  orig: 58, 50
+  offset: 14, 16
+  index: -1
+knightm/head2
+  rotate: false
+  xy: 71, 38
+  size: 27, 22
+  orig: 58, 50
+  offset: 14, 16
+  index: -1
+knightm/helmB
+  rotate: false
+  xy: 100, 68
+  size: 13, 16
+  orig: 58, 50
+  offset: 14, 28
+  index: -1
+knightm/helmF
+  rotate: false
+  xy: 177, 37
+  size: 23, 19
+  orig: 58, 50
+  offset: 16, 26
+  index: -1
+princess/[emo]damaged
+  rotate: false
+  xy: 85, 86
+  size: 32, 28
+  orig: 50, 50
+  offset: 9, 17
+  index: -1
+princess/[emo]fail
+  rotate: false
+  xy: 119, 87
+  size: 32, 27
+  orig: 50, 50
+  offset: 9, 18
+  index: -1
+princess/[emo]idle
+  rotate: true
+  xy: 230, 4
+  size: 8, 10
+  orig: 50, 50
+  offset: 15, 19
+  index: -1
+princess/[emo]idle_run
+  rotate: true
+  xy: 109, 5
+  size: 6, 10
+  orig: 50, 50
+  offset: 17, 19
+  index: -1
+princess/[emo]shock
+  rotate: true
+  xy: 33, 5
+  size: 6, 11
+  orig: 50, 50
+  offset: 17, 18
+  index: -1
+princess/body
+  rotate: true
+  xy: 85, 23
+  size: 13, 12
+  orig: 50, 50
+  offset: 17, 10
+  index: -1
+princess/head1
+  rotate: false
+  xy: 187, 58
+  size: 30, 28
+  orig: 50, 50
+  offset: 8, 17
+  index: -1
+princess/head2
+  rotate: false
+  xy: 219, 58
+  size: 30, 28
+  orig: 50, 50
+  offset: 8, 17
+  index: -1
+princess/head3
+  rotate: false
+  xy: 119, 57
+  size: 27, 28
+  orig: 50, 50
+  offset: 8, 17
+  index: -1
+princess/head4
+  rotate: false
+  xy: 41, 57
+  size: 28, 28
+  orig: 50, 50
+  offset: 7, 17
+  index: -1
+princess/headB
+  rotate: false
+  xy: 153, 87
+  size: 32, 27
+  orig: 50, 50
+  offset: 9, 18
+  index: -1
+queen/[emo]damaged
+  rotate: false
+  xy: 200, 11
+  size: 12, 10
+  orig: 50, 50
+  offset: 25, 18
+  index: -1
+queen/[emo]fail
+  rotate: false
+  xy: 157, 13
+  size: 12, 11
+  orig: 50, 50
+  offset: 25, 17
+  index: -1
+queen/[emo]idle
+  rotate: true
+  xy: 86, 9
+  size: 12, 10
+  orig: 50, 50
+  offset: 25, 18
+  index: -1
+queen/[emo]shock
+  rotate: false
+  xy: 217, 13
+  size: 11, 11
+  orig: 50, 50
+  offset: 24, 17
+  index: -1
+queen/armL
+  rotate: false
+  xy: 98, 4
+  size: 9, 7
+  orig: 50, 50
+  offset: 28, 11
+  index: -1
+queen/armR
+  rotate: false
+  xy: 46, 3
+  size: 8, 8
+  orig: 50, 50
+  offset: 15, 8
+  index: -1
+queen/body
+  rotate: true
+  xy: 242, 97
+  size: 19, 12
+  orig: 50, 50
+  offset: 17, 11
+  index: -1
+queen/cloak1
+  rotate: false
+  xy: 46, 25
+  size: 21, 11
+  orig: 50, 50
+  offset: 6, 12
+  index: -1
+queen/cloak2
+  rotate: false
+  xy: 21, 26
+  size: 23, 10
+  orig: 50, 50
+  offset: 6, 13
+  index: -1
+queen/cloak3
+  rotate: false
+  xy: 100, 44
+  size: 29, 11
+  orig: 50, 50
+  offset: 6, 13
+  index: -1
+queen/head1
+  rotate: true
+  xy: 87, 116
+  size: 30, 37
+  orig: 50, 50
+  offset: 12, 7
+  index: -1
+queen/head2
+  rotate: true
+  xy: 126, 116
+  size: 30, 37
+  orig: 50, 50
+  offset: 12, 7
+  index: -1
+queen/headB
+  rotate: true
+  xy: 165, 116
+  size: 30, 36
+  orig: 50, 50
+  offset: 13, 8
+  index: -1
+queen/skirt1
+  rotate: false
+  xy: 227, 39
+  size: 22, 17
+  orig: 50, 50
+  offset: 11, 3
+  index: -1
+queen/skirt2
+  rotate: false
+  xy: 31, 38
+  size: 22, 17
+  orig: 50, 50
+  offset: 11, 3
+  index: -1

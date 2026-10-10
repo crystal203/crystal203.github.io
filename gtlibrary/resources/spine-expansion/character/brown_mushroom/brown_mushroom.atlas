@@ -1,0 +1,48 @@
+
+brown_mushroom__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: false
+  xy: 23, 2
+  size: 17, 11
+  orig: 55, 56
+  offset: 19, 2
+  index: -1
+front/haedB
+  rotate: false
+  xy: 2, 16
+  size: 23, 10
+  orig: 55, 56
+  offset: 16, 7
+  index: -1
+front/head
+  rotate: false
+  xy: 2, 4
+  size: 19, 10
+  orig: 55, 56
+  offset: 18, 12
+  index: -1
+front/head2
+  rotate: false
+  xy: 27, 15
+  size: 19, 11
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+front/legL
+  rotate: true
+  xy: 42, 6
+  size: 7, 5
+  orig: 55, 56
+  offset: 18, 0
+  index: -1
+front/legR
+  rotate: true
+  xy: 42, 6
+  size: 7, 5
+  orig: 55, 56
+  offset: 18, 0
+  index: -1

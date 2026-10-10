@@ -1,0 +1,139 @@
+
+lw_saul_8bit__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back_idle_1
+  rotate: false
+  xy: 22, 41
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+back/back_run_2
+  rotate: false
+  xy: 22, 41
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+back/back_idle_2
+  rotate: false
+  xy: 76, 42
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+back/back_run_1
+  rotate: false
+  xy: 94, 42
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+back/back_run_3
+  rotate: true
+  xy: 76, 24
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_dead_1
+  rotate: false
+  xy: 96, 23
+  size: 16, 17
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_dead_2
+  rotate: false
+  xy: 62, 6
+  size: 16, 16
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_idle_1
+  rotate: false
+  xy: 40, 41
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_run_2
+  rotate: false
+  xy: 40, 41
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_idle_2
+  rotate: true
+  xy: 2, 23
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_run_1
+  rotate: true
+  xy: 22, 23
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_run_3
+  rotate: true
+  xy: 42, 23
+  size: 16, 18
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/front_victory_1
+  rotate: false
+  xy: 2, 41
+  size: 18, 19
+  orig: 24, 24
+  offset: 3, 0
+  index: -1
+front/front_victory_2
+  rotate: false
+  xy: 58, 41
+  size: 16, 19
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+side/side_idle_1
+  rotate: true
+  xy: 80, 9
+  size: 12, 19
+  orig: 24, 24
+  offset: 7, 0
+  index: -1
+side/side_idle_2
+  rotate: false
+  xy: 101, 3
+  size: 12, 18
+  orig: 24, 24
+  offset: 7, 0
+  index: -1
+side/side_run_1
+  rotate: true
+  xy: 2, 8
+  size: 13, 18
+  orig: 24, 24
+  offset: 7, 0
+  index: -1
+side/side_run_2
+  rotate: false
+  xy: 42, 2
+  size: 12, 19
+  orig: 24, 24
+  offset: 7, 0
+  index: -1
+side/side_run_3
+  rotate: true
+  xy: 22, 8
+  size: 13, 18
+  orig: 24, 24
+  offset: 7, 0
+  index: -1

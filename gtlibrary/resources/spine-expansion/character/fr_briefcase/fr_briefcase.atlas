@@ -1,0 +1,83 @@
+
+fr_briefcase__page0.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/briefcase_close
+  rotate: false
+  xy: 2, 99
+  size: 27, 27
+  orig: 56, 56
+  offset: 18, 0
+  index: -1
+side/briefcase_closeF
+  rotate: false
+  xy: 2, 73
+  size: 27, 24
+  orig: 56, 56
+  offset: 18, 3
+  index: -1
+side/briefcase_open
+  rotate: false
+  xy: 2, 47
+  size: 27, 24
+  orig: 56, 56
+  offset: 18, 0
+  index: -1
+side/briefcase_openF
+  rotate: true
+  xy: 2, 23
+  size: 22, 26
+  orig: 56, 56
+  offset: 10, 10
+  index: -1
+side/item_1
+  rotate: false
+  xy: 2, 11
+  size: 10, 10
+  orig: 56, 56
+  offset: 32, 7
+  index: -1
+side/item_2
+  rotate: false
+  xy: 14, 12
+  size: 10, 9
+  orig: 56, 56
+  offset: 27, 5
+  index: -1
+side/item_3
+  rotate: false
+  xy: 26, 13
+  size: 8, 8
+  orig: 56, 56
+  offset: 24, 8
+  index: -1
+side/item_4
+  rotate: true
+  xy: 30, 37
+  size: 8, 5
+  orig: 56, 56
+  offset: 20, 10
+  index: -1
+side/item_5
+  rotate: true
+  xy: 14, 3
+  size: 7, 11
+  orig: 56, 56
+  offset: 34, 13
+  index: -1
+side/item_6
+  rotate: false
+  xy: 27, 2
+  size: 7, 9
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+side/item_7
+  rotate: true
+  xy: 30, 29
+  size: 6, 5
+  orig: 56, 56
+  offset: 24, 15
+  index: -1

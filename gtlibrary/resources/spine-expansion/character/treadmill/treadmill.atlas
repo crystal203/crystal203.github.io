@@ -1,0 +1,90 @@
+
+treadmill__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]body
+  rotate: false
+  xy: 2, 34
+  size: 94, 16
+  orig: 106, 64
+  offset: 7, 5
+  index: -1
+side/bodyrolling_1
+  rotate: false
+  xy: 31, 14
+  size: 82, 4
+  orig: 106, 64
+  offset: 11, 12
+  index: -1
+side/bodyrolling_2
+  rotate: false
+  xy: 31, 8
+  size: 78, 4
+  orig: 106, 64
+  offset: 12, 12
+  index: -1
+side/bodyrolling_3
+  rotate: false
+  xy: 2, 2
+  size: 78, 4
+  orig: 106, 64
+  offset: 11, 12
+  index: -1
+side/headoff
+  rotate: false
+  xy: 53, 22
+  size: 16, 10
+  orig: 106, 64
+  offset: 71, 32
+  index: -1
+side/headon
+  rotate: false
+  xy: 31, 22
+  size: 20, 10
+  orig: 106, 64
+  offset: 71, 32
+  index: -1
+side/headon_2
+  rotate: false
+  xy: 84, 26
+  size: 9, 6
+  orig: 106, 64
+  offset: 74, 34
+  index: -1
+side/headon_3
+  rotate: true
+  xy: 115, 9
+  size: 9, 6
+  orig: 106, 64
+  offset: 74, 34
+  index: -1
+side/headon_eff
+  rotate: false
+  xy: 84, 21
+  size: 4, 3
+  orig: 106, 64
+  offset: 78, 39
+  index: -1
+side/headon_eff1
+  rotate: false
+  xy: 71, 24
+  size: 11, 8
+  orig: 106, 64
+  offset: 73, 33
+  index: -1
+side/safetybarL
+  rotate: false
+  xy: 2, 11
+  size: 27, 21
+  orig: 106, 64
+  offset: 55, 14
+  index: -1
+side/safetybarR
+  rotate: true
+  xy: 98, 20
+  size: 30, 24
+  orig: 106, 64
+  offset: 64, 9
+  index: -1

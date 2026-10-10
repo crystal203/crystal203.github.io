@@ -1,0 +1,55 @@
+
+xm_santa_plane__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/plane
+  rotate: false
+  xy: 2, 8
+  size: 52, 25
+  orig: 56, 56
+  offset: 2, 14
+  index: -1
+side/propellerB_1
+  rotate: true
+  xy: 21, 5
+  size: 1, 13
+  orig: 56, 56
+  offset: 35, 13
+  index: -1
+side/propellerB_2
+  rotate: true
+  xy: 36, 5
+  size: 1, 13
+  orig: 56, 56
+  offset: 35, 13
+  index: -1
+side/propellerB_3
+  rotate: true
+  xy: 2, 2
+  size: 1, 13
+  orig: 56, 56
+  offset: 35, 13
+  index: -1
+side/propellerF_1
+  rotate: false
+  xy: 56, 16
+  size: 1, 17
+  orig: 56, 56
+  offset: 52, 15
+  index: -1
+side/propellerF_2
+  rotate: false
+  xy: 59, 16
+  size: 1, 17
+  orig: 56, 56
+  offset: 52, 15
+  index: -1
+side/propellerF_3
+  rotate: true
+  xy: 2, 5
+  size: 1, 17
+  orig: 56, 56
+  offset: 52, 15
+  index: -1

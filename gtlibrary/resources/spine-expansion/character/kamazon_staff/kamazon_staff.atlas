@@ -1,0 +1,321 @@
+
+kamazon_staff__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fashion_clerk/side/[base]armL
+  rotate: false
+  xy: 91, 7
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+fashion_clerk/side/[base]armR
+  rotate: false
+  xy: 113, 7
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+fashion_clerk/side/[base]body
+  rotate: true
+  xy: 107, 54
+  size: 12, 11
+  orig: 56, 56
+  offset: 27, 5
+  index: -1
+fashion_clerk/side/[base]elbowL
+  rotate: false
+  xy: 25, 8
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+fashion_clerk/side/[base]elbowR
+  rotate: false
+  xy: 14, 8
+  size: 9, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+fashion_clerk/side/[base]head
+  rotate: true
+  xy: 30, 41
+  size: 25, 23
+  orig: 56, 56
+  offset: 19, 15
+  index: -1
+fashion_clerk/side/[base]legL
+  rotate: false
+  xy: 121, 49
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+fashion_clerk/side/[base]legR
+  rotate: false
+  xy: 107, 7
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+fashion_clerk/side/face/[base]attack
+  rotate: true
+  xy: 94, 53
+  size: 13, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+fashion_clerk/side/face/[base]damaged
+  rotate: false
+  xy: 87, 15
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+fashion_clerk/side/face/[base]doyagao
+  rotate: true
+  xy: 94, 38
+  size: 13, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+fashion_clerk/side/face/[base]idle
+  rotate: false
+  xy: 2, 29
+  size: 13, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+fashion_clerk/side/face/[base]mad
+  rotate: false
+  xy: 47, 28
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+fashion_clerk/side/face/[base]smile
+  rotate: false
+  xy: 60, 28
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+fashion_clerk/side/face/[base]tired
+  rotate: false
+  xy: 44, 17
+  size: 13, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+luxury_clerk/side/[base]armL
+  rotate: false
+  xy: 120, 7
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+luxury_clerk/side/[base]armR
+  rotate: true
+  xy: 71, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+luxury_clerk/side/[base]body
+  rotate: true
+  xy: 86, 26
+  size: 10, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+luxury_clerk/side/[base]elbowL
+  rotate: false
+  xy: 120, 59
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+luxury_clerk/side/[base]elbowR
+  rotate: false
+  xy: 119, 32
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+luxury_clerk/side/[base]head
+  rotate: true
+  xy: 55, 41
+  size: 25, 23
+  orig: 56, 56
+  offset: 18, 15
+  index: -1
+luxury_clerk/side/[base]legL
+  rotate: false
+  xy: 59, 6
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+luxury_clerk/side/[base]legR
+  rotate: false
+  xy: 65, 6
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+luxury_clerk/side/face/[base]attack
+  rotate: false
+  xy: 2, 17
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+luxury_clerk/side/face/[base]damaged
+  rotate: false
+  xy: 59, 16
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+luxury_clerk/side/face/[base]doyagao
+  rotate: false
+  xy: 16, 17
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+luxury_clerk/side/face/[base]idle
+  rotate: false
+  xy: 17, 29
+  size: 13, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+luxury_clerk/side/face/[base]mad
+  rotate: false
+  xy: 107, 41
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+luxury_clerk/side/face/[base]smile
+  rotate: false
+  xy: 80, 40
+  size: 12, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+luxury_clerk/side/face/[base]tired
+  rotate: false
+  xy: 73, 15
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+tasting_stand_lady/side/[base]armL
+  rotate: false
+  xy: 99, 9
+  size: 6, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+tasting_stand_lady/side/[base]armR
+  rotate: false
+  xy: 51, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+tasting_stand_lady/side/[base]body
+  rotate: true
+  xy: 80, 53
+  size: 13, 12
+  orig: 56, 56
+  offset: 26, 4
+  index: -1
+tasting_stand_lady/side/[base]elbowL
+  rotate: false
+  xy: 35, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+tasting_stand_lady/side/[base]elbowR
+  rotate: false
+  xy: 43, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+tasting_stand_lady/side/[base]head
+  rotate: false
+  xy: 2, 41
+  size: 26, 25
+  orig: 56, 56
+  offset: 17, 14
+  index: -1
+tasting_stand_lady/side/[base]legL
+  rotate: true
+  xy: 71, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+tasting_stand_lady/side/[base]legR
+  rotate: true
+  xy: 81, 9
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+tasting_stand_lady/side/face/[base]attack
+  rotate: false
+  xy: 30, 17
+  size: 12, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+tasting_stand_lady/side/face/[base]damaged
+  rotate: false
+  xy: 2, 6
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+tasting_stand_lady/side/face/[base]doyagao
+  rotate: false
+  xy: 32, 29
+  size: 13, 10
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+tasting_stand_lady/side/face/[base]idle
+  rotate: false
+  xy: 100, 17
+  size: 13, 9
+  orig: 56, 56
+  offset: 28, 16
+  index: -1
+tasting_stand_lady/side/face/[base]mad
+  rotate: false
+  xy: 106, 28
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+tasting_stand_lady/side/face/[base]smile
+  rotate: false
+  xy: 73, 27
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+tasting_stand_lady/side/face/[base]tired
+  rotate: true
+  xy: 115, 15
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1

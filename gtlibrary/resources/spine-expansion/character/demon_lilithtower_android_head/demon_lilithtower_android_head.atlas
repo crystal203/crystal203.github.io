@@ -1,0 +1,223 @@
+
+demon_lilithtower_android_head__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]head_1
+  rotate: false
+  xy: 1, 106
+  size: 32, 21
+  orig: 55, 56
+  offset: 12, 14
+  index: -1
+back/[base]head_1a
+  rotate: false
+  xy: 1, 85
+  size: 32, 21
+  orig: 55, 56
+  offset: 12, 14
+  index: -1
+back/[base]head_2
+  rotate: true
+  xy: 53, 97
+  size: 30, 20
+  orig: 55, 56
+  offset: 13, 14
+  index: -1
+back/[base]head_2a
+  rotate: true
+  xy: 65, 13
+  size: 28, 19
+  orig: 55, 56
+  offset: 14, 14
+  index: -1
+back/[base]head_3
+  rotate: true
+  xy: 73, 99
+  size: 28, 19
+  orig: 55, 56
+  offset: 14, 14
+  index: -1
+back/[base]head_3a
+  rotate: true
+  xy: 53, 69
+  size: 28, 20
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+back/[base]head_4
+  rotate: true
+  xy: 33, 95
+  size: 32, 20
+  orig: 55, 56
+  offset: 12, 14
+  index: -1
+back/[base]head_4a
+  rotate: false
+  xy: 1, 64
+  size: 32, 21
+  orig: 55, 56
+  offset: 12, 14
+  index: -1
+front/[base]head_1
+  rotate: false
+  xy: 1, 43
+  size: 32, 21
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+front/[base]head_1a
+  rotate: false
+  xy: 1, 22
+  size: 32, 21
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+front/[base]head_2
+  rotate: true
+  xy: 33, 63
+  size: 32, 20
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+front/[base]head_2a
+  rotate: false
+  xy: 33, 12
+  size: 32, 19
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+front/[base]head_3
+  rotate: true
+  xy: 33, 31
+  size: 32, 20
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+front/[base]head_3a
+  rotate: false
+  xy: 1, 1
+  size: 32, 21
+  orig: 55, 56
+  offset: 11, 14
+  index: -1
+front/[base]head_4
+  rotate: true
+  xy: 73, 47
+  size: 26, 19
+  orig: 55, 56
+  offset: 14, 14
+  index: -1
+front/[base]head_4a
+  rotate: true
+  xy: 53, 41
+  size: 28, 20
+  orig: 55, 56
+  offset: 13, 14
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 33, 4
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 33, 5
+  size: 14, 7
+  orig: 55, 56
+  offset: 20, 15
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 73, 73
+  size: 26, 20
+  orig: 56, 56
+  offset: 16, 14
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 47, 5
+  size: 12, 7
+  orig: 56, 56
+  offset: 28, 16
+  index: -1

@@ -1,0 +1,244 @@
+
+fox_bandit_ogre__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 193, 34
+  size: 30, 28
+  orig: 38, 42
+  offset: 5, 3
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 136, 36
+  size: 22, 30
+  orig: 26, 35
+  offset: 0, 1
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 2, 86
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 193, 70
+  size: 20, 29
+  orig: 36, 48
+  offset: 8, 11
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 28, 30
+  size: 23, 20
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 71, 61
+  size: 37, 23
+  orig: 49, 28
+  offset: 6, 3
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 217, 14
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 217, 14
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 71, 33
+  size: 26, 30
+  orig: 30, 40
+  offset: 2, 4
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 225, 33
+  size: 20, 29
+  orig: 26, 34
+  offset: 4, 2
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 63, 86
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 168, 32
+  size: 20, 26
+  orig: 26, 30
+  offset: 3, 2
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 53, 11
+  size: 20, 21
+  orig: 24, 24
+  offset: 2, 0
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 190, 101
+  size: 37, 25
+  orig: 49, 28
+  offset: 6, 1
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 107, 13
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 107, 13
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 2, 12
+  size: 27, 13
+  orig: 49, 28
+  offset: 11, 2
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 76, 17
+  size: 29, 14
+  orig: 49, 28
+  offset: 10, 2
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 215, 4
+  size: 27, 8
+  orig: 49, 28
+  offset: 11, 6
+  index: -1
+front/face/love
+  rotate: false
+  xy: 161, 2
+  size: 27, 10
+  orig: 49, 28
+  offset: 11, 6
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 217, 103
+  size: 26, 35
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 103, 33
+  size: 25, 31
+  orig: 32, 40
+  offset: 4, 1
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 124, 94
+  size: 64, 44
+  orig: 68, 46
+  offset: 3, 1
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 2, 27
+  size: 24, 23
+  orig: 29, 28
+  offset: 4, 1
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 31, 18
+  size: 18, 10
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 217, 64
+  size: 37, 24
+  orig: 50, 28
+  offset: 3, 3
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 136, 16
+  size: 25, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 190, 14
+  size: 25, 18
+  orig: 36, 32
+  offset: 5, 8
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 130, 2
+  size: 29, 12
+  orig: 62, 54
+  offset: 19, 16
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 76, 3
+  size: 27, 12
+  orig: 62, 54
+  offset: 21, 17
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 190, 2
+  size: 23, 10
+  orig: 62, 54
+  offset: 25, 18
+  index: -1
+side/face/love
+  rotate: false
+  xy: 163, 18
+  size: 23, 12
+  orig: 62, 54
+  offset: 25, 18
+  index: -1
+weapon1
+  rotate: false
+  xy: 124, 60
+  size: 67, 32
+  orig: 72, 40
+  offset: 3, 7
+  index: -1
+weapon2
+  rotate: false
+  xy: 2, 52
+  size: 67, 32
+  orig: 72, 40
+  offset: 3, 7
+  index: -1

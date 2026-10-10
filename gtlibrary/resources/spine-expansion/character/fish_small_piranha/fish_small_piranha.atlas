@@ -1,0 +1,55 @@
+
+fish_small_piranha__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 17, 18
+  orig: 32, 32
+  offset: 7, 6
+  index: -1
+fin2
+  rotate: false
+  xy: 55, 4
+  size: 6, 6
+  orig: 32, 32
+  offset: 9, 4
+  index: -1
+fin3
+  rotate: true
+  xy: 44, 12
+  size: 8, 7
+  orig: 32, 32
+  offset: 12, 21
+  index: -1
+fin4
+  rotate: false
+  xy: 53, 12
+  size: 7, 8
+  orig: 32, 32
+  offset: 18, 6
+  index: -1
+head
+  rotate: false
+  xy: 21, 4
+  size: 13, 16
+  orig: 32, 32
+  offset: 2, 8
+  index: -1
+tail
+  rotate: true
+  xy: 44, 5
+  size: 5, 9
+  orig: 32, 32
+  offset: 21, 12
+  index: -1
+tail2
+  rotate: false
+  xy: 36, 9
+  size: 6, 11
+  orig: 32, 32
+  offset: 24, 11
+  index: -1

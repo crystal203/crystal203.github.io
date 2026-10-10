@@ -1,0 +1,34 @@
+
+arcade_gold_coin_front__page0.png
+size: 32,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+arcade_gold_coin_1
+  rotate: false
+  xy: 2, 15
+  size: 11, 11
+  orig: 11, 11
+  offset: 0, 0
+  index: -1
+arcade_gold_coin_2
+  rotate: false
+  xy: 15, 15
+  size: 9, 11
+  orig: 11, 11
+  offset: 1, 0
+  index: -1
+arcade_gold_coin_3
+  rotate: false
+  xy: 15, 2
+  size: 3, 11
+  orig: 11, 11
+  offset: 4, 0
+  index: -1
+arcade_gold_coin_4
+  rotate: true
+  xy: 2, 4
+  size: 9, 11
+  orig: 11, 11
+  offset: 1, 0
+  index: -1

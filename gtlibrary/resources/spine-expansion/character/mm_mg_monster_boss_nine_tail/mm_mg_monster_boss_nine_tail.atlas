@@ -1,0 +1,433 @@
+
+mm_mg_monster_boss_nine_tail__page0.png
+size: 512,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FX_glow
+  rotate: false
+  xy: 67, 41
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+back/arm
+  rotate: true
+  xy: 427, 40
+  size: 35, 39
+  orig: 35, 39
+  offset: 0, 0
+  index: -1
+back/body
+  rotate: true
+  xy: 2, 52
+  size: 48, 63
+  orig: 48, 63
+  offset: 0, 0
+  index: -1
+back/elbow
+  rotate: false
+  xy: 36, 16
+  size: 27, 34
+  orig: 27, 34
+  offset: 0, 0
+  index: -1
+back/foot
+  rotate: false
+  xy: 301, 2
+  size: 23, 17
+  orig: 23, 17
+  offset: 0, 0
+  index: -1
+back/hand
+  rotate: true
+  xy: 65, 13
+  size: 26, 31
+  orig: 26, 31
+  offset: 0, 0
+  index: -1
+back/head
+  rotate: true
+  xy: 199, 52
+  size: 54, 57
+  orig: 54, 57
+  offset: 0, 0
+  index: -1
+back/head3
+  rotate: true
+  xy: 79, 142
+  size: 64, 57
+  orig: 64, 57
+  offset: 0, 0
+  index: -1
+back/leg
+  rotate: true
+  xy: 414, 16
+  size: 22, 36
+  orig: 22, 36
+  offset: 0, 0
+  index: -1
+back/leg2
+  rotate: true
+  xy: 148, 2
+  size: 23, 34
+  orig: 23, 34
+  offset: 0, 0
+  index: -1
+back/neck
+  rotate: true
+  xy: 306, 149
+  size: 65, 69
+  orig: 65, 69
+  offset: 0, 0
+  index: -1
+back/pelvis
+  rotate: false
+  xy: 2, 19
+  size: 32, 31
+  orig: 32, 31
+  offset: 0, 0
+  index: -1
+back/tail
+  rotate: true
+  xy: 316, 258
+  size: 40, 144
+  orig: 40, 144
+  offset: 0, 0
+  index: -1
+front/arm
+  rotate: true
+  xy: 378, 50
+  size: 38, 47
+  orig: 38, 47
+  offset: 0, 0
+  index: -1
+front/body
+  rotate: true
+  xy: 318, 49
+  size: 39, 58
+  orig: 39, 58
+  offset: 0, 0
+  index: -1
+front/claw1
+  rotate: false
+  xy: 497, 205
+  size: 11, 19
+  orig: 42, 46
+  offset: 16, 2
+  index: -1
+front/claw2
+  rotate: false
+  xy: 497, 168
+  size: 12, 16
+  orig: 42, 46
+  offset: 8, 4
+  index: -1
+front/claw3
+  rotate: false
+  xy: 497, 186
+  size: 12, 17
+  orig: 42, 46
+  offset: 23, 3
+  index: -1
+front/claw4
+  rotate: false
+  xy: 497, 155
+  size: 13, 11
+  orig: 28, 30
+  offset: 6, 10
+  index: -1
+front/eff_frenzy
+  rotate: true
+  xy: 109, 24
+  size: 28, 37
+  orig: 85, 92
+  offset: 28, 4
+  index: -1
+front/elbow
+  rotate: true
+  xy: 148, 27
+  size: 25, 41
+  orig: 25, 41
+  offset: 0, 0
+  index: -1
+front/foot
+  rotate: true
+  xy: 318, 21
+  size: 26, 37
+  orig: 26, 37
+  offset: 0, 0
+  index: -1
+front/hand
+  rotate: false
+  xy: 109, 62
+  size: 21, 19
+  orig: 42, 46
+  offset: 12, 13
+  index: -1
+front/head
+  rotate: true
+  xy: 199, 108
+  size: 48, 71
+  orig: 48, 71
+  offset: 0, 0
+  index: -1
+front/head2
+  rotate: true
+  xy: 2, 102
+  size: 48, 71
+  orig: 48, 71
+  offset: 0, 0
+  index: -1
+front/head3
+  rotate: true
+  xy: 2, 152
+  size: 54, 75
+  orig: 85, 92
+  offset: 15, 0
+  index: -1
+front/head4
+  rotate: true
+  xy: 392, 90
+  size: 50, 65
+  orig: 50, 65
+  offset: 0, 0
+  index: -1
+front/head_damaged
+  rotate: false
+  xy: 462, 226
+  size: 48, 72
+  orig: 48, 72
+  offset: 0, 0
+  index: -1
+front/head_howl
+  rotate: false
+  xy: 443, 142
+  size: 52, 72
+  orig: 52, 72
+  offset: 0, 0
+  index: -1
+front/leg
+  rotate: false
+  xy: 357, 12
+  size: 18, 35
+  orig: 18, 35
+  offset: 0, 0
+  index: -1
+front/neck
+  rotate: true
+  xy: 230, 158
+  size: 68, 74
+  orig: 68, 74
+  offset: 0, 0
+  index: -1
+front/neck_B
+  rotate: false
+  xy: 258, 45
+  size: 58, 43
+  orig: 58, 43
+  offset: 0, 0
+  index: -1
+front/tail
+  rotate: true
+  xy: 316, 216
+  size: 40, 144
+  orig: 40, 144
+  offset: 0, 0
+  index: -1
+fx_trail1
+  rotate: false
+  xy: 2, 208
+  size: 140, 90
+  orig: 140, 90
+  offset: 0, 0
+  index: -1
+side/arm_F
+  rotate: false
+  xy: 266, 17
+  size: 33, 26
+  orig: 42, 34
+  offset: 6, 4
+  index: -1
+side/body
+  rotate: false
+  xy: 144, 165
+  size: 84, 61
+  orig: 88, 64
+  offset: 4, 3
+  index: -1
+side/claw_B1
+  rotate: false
+  xy: 442, 79
+  size: 12, 9
+  orig: 46, 30
+  offset: 20, 7
+  index: -1
+side/claw_B2
+  rotate: false
+  xy: 497, 143
+  size: 13, 10
+  orig: 46, 30
+  offset: 25, 7
+  index: -1
+side/claw_B3
+  rotate: false
+  xy: 427, 79
+  size: 13, 9
+  orig: 46, 30
+  offset: 27, 7
+  index: -1
+side/claw_F1
+  rotate: false
+  xy: 258, 93
+  size: 11, 13
+  orig: 46, 30
+  offset: 18, 3
+  index: -1
+side/claw_F2
+  rotate: true
+  xy: 301, 28
+  size: 15, 14
+  orig: 46, 30
+  offset: 22, 4
+  index: -1
+side/claw_F3
+  rotate: false
+  xy: 27, 2
+  size: 15, 12
+  orig: 46, 30
+  offset: 27, 5
+  index: -1
+side/eff_frenzy
+  rotate: true
+  xy: 378, 19
+  size: 29, 34
+  orig: 29, 34
+  offset: 0, 0
+  index: -1
+side/elbow_B
+  rotate: true
+  xy: 468, 48
+  size: 27, 39
+  orig: 36, 52
+  offset: 3, 10
+  index: -1
+side/elbow_F
+  rotate: true
+  xy: 191, 26
+  size: 24, 41
+  orig: 36, 52
+  offset: 7, 8
+  index: -1
+side/foot_B
+  rotate: false
+  xy: 266, 3
+  size: 21, 12
+  orig: 28, 16
+  offset: 3, 2
+  index: -1
+side/foot_F
+  rotate: false
+  xy: 377, 5
+  size: 23, 12
+  orig: 23, 12
+  offset: 0, 0
+  index: -1
+side/hand_B
+  rotate: false
+  xy: 326, 5
+  size: 27, 14
+  orig: 46, 30
+  offset: 4, 6
+  index: -1
+side/hand_F
+  rotate: false
+  xy: 2, 3
+  size: 23, 14
+  orig: 46, 30
+  offset: 11, 7
+  index: -1
+side/head
+  rotate: false
+  xy: 272, 90
+  size: 58, 57
+  orig: 84, 68
+  offset: 13, 5
+  index: -1
+side/head2
+  rotate: false
+  xy: 332, 90
+  size: 58, 57
+  orig: 58, 57
+  offset: 0, 0
+  index: -1
+side/head3
+  rotate: false
+  xy: 377, 149
+  size: 64, 65
+  orig: 84, 100
+  offset: 13, 11
+  index: -1
+side/head_damaged
+  rotate: false
+  xy: 75, 83
+  size: 58, 57
+  orig: 84, 68
+  offset: 13, 5
+  index: -1
+side/head_howl
+  rotate: true
+  xy: 459, 77
+  size: 63, 51
+  orig: 84, 68
+  offset: 8, 6
+  index: -1
+side/leg2_B
+  rotate: true
+  xy: 98, 7
+  size: 15, 31
+  orig: 20, 36
+  offset: 3, 3
+  index: -1
+side/leg2_F
+  rotate: true
+  xy: 184, 8
+  size: 16, 32
+  orig: 16, 32
+  offset: 0, 0
+  index: -1
+side/leg_B
+  rotate: false
+  xy: 234, 14
+  size: 30, 29
+  orig: 38, 36
+  offset: 5, 3
+  index: -1
+side/leg_F
+  rotate: false
+  xy: 468, 16
+  size: 31, 30
+  orig: 31, 30
+  offset: 0, 0
+  index: -1
+side/neck
+  rotate: false
+  xy: 138, 105
+  size: 59, 58
+  orig: 59, 58
+  offset: 0, 0
+  index: -1
+side/neck_B
+  rotate: true
+  xy: 135, 54
+  size: 49, 56
+  orig: 68, 68
+  offset: 17, 1
+  index: -1
+side/tail
+  rotate: false
+  xy: 144, 228
+  size: 170, 70
+  orig: 170, 70
+  offset: 0, 0
+  index: -1

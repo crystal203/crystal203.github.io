@@ -1,0 +1,34 @@
+
+lw_hacking_switch__page0.png
+size: 32,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/switch_blue_off
+  rotate: true
+  xy: 16, 16
+  size: 15, 12
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/switch_blue_on
+  rotate: false
+  xy: 1, 16
+  size: 15, 15
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/switch_red_off
+  rotate: true
+  xy: 16, 1
+  size: 15, 12
+  orig: 24, 24
+  offset: 4, 0
+  index: -1
+front/switch_red_on
+  rotate: false
+  xy: 1, 1
+  size: 15, 15
+  orig: 24, 24
+  offset: 4, 0
+  index: -1

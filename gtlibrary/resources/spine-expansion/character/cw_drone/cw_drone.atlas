@@ -1,0 +1,111 @@
+
+cw_drone__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fx_glow
+  rotate: false
+  xy: 24, 43
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+side/body
+  rotate: false
+  xy: 2, 40
+  size: 20, 18
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+side/body2
+  rotate: true
+  xy: 56, 38
+  size: 5, 2
+  orig: 56, 56
+  offset: 32, 23
+  index: -1
+side/face/damaged
+  rotate: false
+  xy: 56, 45
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/idle
+  rotate: false
+  xy: 56, 45
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/mad
+  rotate: false
+  xy: 56, 45
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/fan1
+  rotate: true
+  xy: 53, 49
+  size: 9, 1
+  orig: 56, 56
+  offset: 3, 30
+  index: -1
+side/fan2
+  rotate: true
+  xy: 53, 38
+  size: 9, 1
+  orig: 56, 56
+  offset: 11, 28
+  index: -1
+side/fan3
+  rotate: true
+  xy: 53, 27
+  size: 9, 1
+  orig: 56, 56
+  offset: 43, 28
+  index: -1
+side/fan4
+  rotate: true
+  xy: 56, 27
+  size: 9, 1
+  orig: 56, 56
+  offset: 36, 30
+  index: -1
+side/fanB
+  rotate: true
+  xy: 56, 27
+  size: 9, 1
+  orig: 56, 56
+  offset: 36, 30
+  index: -1
+side/propeller1
+  rotate: true
+  xy: 40, 40
+  size: 18, 11
+  orig: 56, 56
+  offset: 3, 21
+  index: -1
+side/propeller2
+  rotate: false
+  xy: 2, 27
+  size: 18, 11
+  orig: 56, 56
+  offset: 11, 19
+  index: -1
+side/propeller3
+  rotate: false
+  xy: 22, 27
+  size: 17, 11
+  orig: 56, 56
+  offset: 35, 19
+  index: -1
+side/propeller4
+  rotate: false
+  xy: 41, 27
+  size: 10, 11
+  orig: 56, 56
+  offset: 35, 21
+  index: -1

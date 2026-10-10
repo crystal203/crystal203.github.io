@@ -1,0 +1,230 @@
+
+kamazon_drone__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body
+  rotate: false
+  xy: 1, 44
+  size: 47, 19
+  orig: 55, 56
+  offset: 4, 20
+  index: -1
+front/box
+  rotate: false
+  xy: 1, 8
+  size: 27, 19
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+front/fanLB
+  rotate: false
+  xy: 1, 7
+  size: 9, 1
+  orig: 55, 56
+  offset: 40, 35
+  index: -1
+side/fanRF
+  rotate: false
+  xy: 1, 7
+  size: 9, 1
+  orig: 56, 56
+  offset: 11, 31
+  index: -1
+front/fanLB2
+  rotate: false
+  xy: 1, 6
+  size: 9, 1
+  orig: 55, 56
+  offset: 40, 35
+  index: -1
+front/fanLF
+  rotate: false
+  xy: 1, 5
+  size: 9, 1
+  orig: 55, 56
+  offset: 44, 29
+  index: -1
+front/fanRB
+  rotate: false
+  xy: 1, 5
+  size: 9, 1
+  orig: 55, 56
+  offset: 6, 35
+  index: -1
+side/fanLF
+  rotate: false
+  xy: 1, 5
+  size: 9, 1
+  orig: 56, 56
+  offset: 43, 31
+  index: -1
+front/fanLF2
+  rotate: false
+  xy: 1, 4
+  size: 9, 1
+  orig: 55, 56
+  offset: 44, 29
+  index: -1
+front/fanRB2
+  rotate: false
+  xy: 1, 4
+  size: 9, 1
+  orig: 55, 56
+  offset: 6, 35
+  index: -1
+side/fanLB
+  rotate: false
+  xy: 1, 4
+  size: 9, 1
+  orig: 56, 56
+  offset: 36, 33
+  index: -1
+side/fanRB
+  rotate: false
+  xy: 1, 4
+  size: 9, 1
+  orig: 56, 56
+  offset: 3, 33
+  index: -1
+front/fanRF
+  rotate: false
+  xy: 1, 3
+  size: 9, 1
+  orig: 55, 56
+  offset: 2, 29
+  index: -1
+front/fanRF2
+  rotate: false
+  xy: 1, 2
+  size: 9, 1
+  orig: 55, 56
+  offset: 2, 29
+  index: -1
+side/fanLF2
+  rotate: false
+  xy: 1, 2
+  size: 9, 1
+  orig: 56, 56
+  offset: 43, 31
+  index: -1
+front/legLB
+  rotate: true
+  xy: 42, 23
+  size: 10, 9
+  orig: 55, 56
+  offset: 28, 15
+  index: -1
+front/legLF
+  rotate: true
+  xy: 51, 48
+  size: 6, 3
+  orig: 55, 56
+  offset: 31, 19
+  index: -1
+front/legLF2
+  rotate: false
+  xy: 48, 54
+  size: 3, 9
+  orig: 55, 56
+  offset: 36, 12
+  index: -1
+front/legRB
+  rotate: true
+  xy: 42, 13
+  size: 10, 9
+  orig: 55, 56
+  offset: 17, 15
+  index: -1
+front/legRF
+  rotate: true
+  xy: 51, 30
+  size: 6, 3
+  orig: 55, 56
+  offset: 18, 19
+  index: -1
+front/legRF2
+  rotate: false
+  xy: 48, 45
+  size: 3, 9
+  orig: 55, 56
+  offset: 16, 12
+  index: -1
+side/legRF
+  rotate: false
+  xy: 48, 45
+  size: 3, 9
+  orig: 56, 56
+  offset: 23, 15
+  index: -1
+side/body
+  rotate: false
+  xy: 1, 27
+  size: 40, 17
+  orig: 56, 56
+  offset: 5, 22
+  index: -1
+side/box
+  rotate: true
+  xy: 28, 1
+  size: 26, 14
+  orig: 56, 56
+  offset: 19, 8
+  index: -1
+side/fanLB2
+  rotate: false
+  xy: 1, 1
+  size: 9, 1
+  orig: 56, 56
+  offset: 36, 33
+  index: -1
+side/fanRB2
+  rotate: false
+  xy: 1, 1
+  size: 9, 1
+  orig: 56, 56
+  offset: 3, 33
+  index: -1
+side/fanRF2
+  rotate: false
+  xy: 10, 7
+  size: 9, 1
+  orig: 56, 56
+  offset: 11, 31
+  index: -1
+side/legLB
+  rotate: false
+  xy: 50, 36
+  size: 3, 9
+  orig: 56, 56
+  offset: 33, 16
+  index: -1
+side/legLF
+  rotate: false
+  xy: 50, 4
+  size: 3, 9
+  orig: 56, 56
+  offset: 39, 15
+  index: -1
+side/legRB
+  rotate: false
+  xy: 51, 54
+  size: 3, 9
+  orig: 56, 56
+  offset: 17, 16
+  index: -1
+side/propellerLB
+  rotate: true
+  xy: 42, 2
+  size: 11, 8
+  orig: 56, 56
+  offset: 32, 27
+  index: -1
+side/propellerLF
+  rotate: true
+  xy: 41, 33
+  size: 11, 9
+  orig: 56, 56
+  offset: 39, 24
+  index: -1

@@ -1,0 +1,265 @@
+
+coop_exp_mall_chakram__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 35, 6
+  size: 5, 6
+  orig: 55, 56
+  offset: 18, 8
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 35, 6
+  size: 5, 6
+  orig: 55, 56
+  offset: 18, 8
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 32, 14
+  size: 9, 10
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 62, 5
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 62, 5
+  size: 6, 6
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 57, 27
+  size: 25, 23
+  orig: 55, 56
+  offset: 15, 14
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 103, 9
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 103, 9
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+back/tail
+  rotate: false
+  xy: 17, 7
+  size: 7, 6
+  orig: 55, 56
+  offset: 24, 0
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 103, 2
+  size: 6, 5
+  orig: 55, 56
+  offset: 19, 9
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 103, 2
+  size: 6, 5
+  orig: 55, 56
+  offset: 19, 9
+  index: -1
+front/[base]armL2
+  rotate: true
+  xy: 2, 6
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: true
+  xy: 2, 6
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 17, 15
+  size: 9, 13
+  orig: 55, 56
+  offset: 23, 3
+  index: -1
+front/[base]elbowL
+  rotate: true
+  xy: 26, 6
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 26, 6
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 4
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 43, 8
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 43, 8
+  size: 8, 7
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 30, 26
+  size: 25, 24
+  orig: 55, 56
+  offset: 15, 13
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 113, 9
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 113, 9
+  size: 6, 8
+  orig: 55, 56
+  offset: 21, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 84, 16
+  size: 17, 13
+  orig: 55, 56
+  offset: 19, 12
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 103, 17
+  size: 17, 12
+  orig: 55, 56
+  offset: 19, 13
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 57, 13
+  size: 17, 12
+  orig: 55, 56
+  offset: 19, 13
+  index: -1
+front/tail
+  rotate: false
+  xy: 76, 18
+  size: 5, 7
+  orig: 55, 56
+  offset: 25, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 119, 3
+  size: 4, 6
+  orig: 56, 56
+  offset: 36, 8
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 111, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 2, 14
+  size: 10, 13
+  orig: 56, 56
+  offset: 28, 3
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 96, 7
+  size: 5, 7
+  orig: 56, 56
+  offset: 36, 3
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 53, 5
+  size: 6, 7
+  orig: 56, 56
+  offset: 24, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 26
+  size: 26, 24
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 76, 8
+  size: 6, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 86, 8
+  size: 6, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 84, 31
+  size: 19, 12
+  orig: 56, 56
+  offset: 26, 13
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 98, 31
+  size: 19, 12
+  orig: 56, 56
+  offset: 26, 13
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 112, 31
+  size: 19, 12
+  orig: 56, 56
+  offset: 26, 13
+  index: -1
+side/tail
+  rotate: false
+  xy: 43, 17
+  size: 10, 7
+  orig: 56, 56
+  offset: 20, 0
+  index: -1

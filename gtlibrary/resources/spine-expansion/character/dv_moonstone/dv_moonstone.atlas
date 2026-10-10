@@ -1,0 +1,55 @@
+
+dv_moonstone__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+body
+  rotate: false
+  xy: 2, 6
+  size: 24, 35
+  orig: 49, 48
+  offset: 13, 5
+  index: -1
+stoneF
+  rotate: false
+  xy: 72, 2
+  size: 18, 16
+  orig: 49, 48
+  offset: 14, 6
+  index: -1
+stoneF_light
+  rotate: false
+  xy: 92, 2
+  size: 18, 16
+  orig: 49, 48
+  offset: 14, 6
+  index: -1
+stoneL
+  rotate: true
+  xy: 72, 20
+  size: 21, 19
+  orig: 49, 48
+  offset: 6, 6
+  index: -1
+stoneL_light
+  rotate: true
+  xy: 93, 20
+  size: 21, 19
+  orig: 49, 48
+  offset: 6, 6
+  index: -1
+stoneR
+  rotate: true
+  xy: 28, 19
+  size: 22, 20
+  orig: 49, 48
+  offset: 20, 5
+  index: -1
+stoneR_light
+  rotate: true
+  xy: 50, 19
+  size: 22, 20
+  orig: 49, 48
+  offset: 20, 5
+  index: -1

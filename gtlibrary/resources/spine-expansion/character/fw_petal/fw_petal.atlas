@@ -1,0 +1,27 @@
+
+fw_petal__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/idle
+  rotate: false
+  xy: 16, 8
+  size: 6, 5
+  orig: 55, 56
+  offset: 27, 17
+  index: -1
+front/idle_light
+  rotate: false
+  xy: 2, 2
+  size: 12, 11
+  orig: 55, 56
+  offset: 24, 14
+  index: -1
+front/petal_light
+  rotate: false
+  xy: 2, 15
+  size: 52, 33
+  orig: 55, 56
+  offset: 1, 0
+  index: -1

@@ -1,0 +1,76 @@
+
+exp_desert_charge.light__page0.png
+size: 128,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fx_glow
+  rotate: false
+  xy: 37, 16
+  size: 14, 15
+  orig: 14, 15
+  offset: 0, 0
+  index: -1
+side/eye
+  rotate: false
+  xy: 19, 14
+  size: 17, 17
+  orig: 56, 56
+  offset: 24, 12
+  index: -1
+side/face/damaged
+  rotate: false
+  xy: 19, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/idle
+  rotate: false
+  xy: 19, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/mad
+  rotate: false
+  xy: 19, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/glow
+  rotate: false
+  xy: 19, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/wingL1
+  rotate: true
+  xy: 36, 2
+  size: 11, 9
+  orig: 56, 56
+  offset: 36, 10
+  index: -1
+side/wingL2
+  rotate: true
+  xy: 1, 1
+  size: 11, 17
+  orig: 56, 56
+  offset: 35, 20
+  index: -1
+side/wingR1
+  rotate: false
+  xy: 19, 4
+  size: 16, 9
+  orig: 56, 56
+  offset: 13, 10
+  index: -1
+side/wingR2
+  rotate: true
+  xy: 1, 13
+  size: 18, 17
+  orig: 56, 56
+  offset: 11, 20
+  index: -1

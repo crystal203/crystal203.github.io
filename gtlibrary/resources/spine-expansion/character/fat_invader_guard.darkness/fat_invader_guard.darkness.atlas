@@ -1,0 +1,272 @@
+
+fat_invader_guard.darkness__page0.png
+size: 128,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 57, 142
+  size: 32, 29
+  orig: 38, 42
+  offset: 3, 2
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 93, 201
+  size: 26, 44
+  orig: 40, 48
+  offset: 6, 4
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 59, 293
+  size: 57, 54
+  orig: 67, 58
+  offset: 5, 4
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 37, 232
+  size: 19, 28
+  orig: 26, 30
+  offset: 4, 2
+  index: -1
+back/[base]handL
+  rotate: true
+  xy: 89, 100
+  size: 25, 33
+  orig: 50, 50
+  offset: 11, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 90, 126
+  size: 37, 42
+  orig: 69, 48
+  offset: 16, 6
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 105, 82
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 105, 82
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/belt
+  rotate: true
+  xy: 117, 296
+  size: 25, 8
+  orig: 67, 58
+  offset: 22, 3
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 1, 92
+  size: 28, 32
+  orig: 30, 40
+  offset: 2, 2
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 37, 261
+  size: 20, 29
+  orig: 40, 48
+  offset: 11, 9
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 1, 291
+  size: 57, 56
+  orig: 67, 58
+  offset: 5, 2
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 1, 58
+  size: 25, 33
+  orig: 34, 38
+  offset: 3, 5
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 33, 155
+  size: 22, 23
+  orig: 24, 24
+  offset: 2, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 51, 100
+  size: 37, 41
+  orig: 69, 48
+  offset: 16, 7
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 30, 80
+  size: 22, 18
+  orig: 26, 20
+  offset: 3, 1
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 30, 80
+  size: 22, 18
+  orig: 26, 20
+  offset: 3, 1
+  index: -1
+front/chains
+  rotate: false
+  xy: 49, 56
+  size: 55, 43
+  orig: 67, 58
+  offset: 6, 4
+  index: -1
+front/elbowR2
+  rotate: false
+  xy: 1, 1
+  size: 14, 12
+  orig: 34, 38
+  offset: 6, 26
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 27, 29
+  size: 25, 13
+  orig: 49, 28
+  offset: 12, 2
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 105, 56
+  size: 25, 14
+  orig: 49, 28
+  offset: 12, 0
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 117, 322
+  size: 25, 9
+  orig: 49, 28
+  offset: 12, 6
+  index: -1
+front/shoulderR
+  rotate: false
+  xy: 33, 178
+  size: 20, 26
+  orig: 40, 48
+  offset: 11, 22
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 1, 125
+  size: 30, 39
+  orig: 32, 40
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 1, 26
+  size: 25, 31
+  orig: 60, 64
+  offset: 17, 16
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 59, 246
+  size: 62, 46
+  orig: 70, 48
+  offset: 4, 0
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 93, 169
+  size: 31, 34
+  orig: 48, 46
+  offset: 5, 12
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 1, 14
+  size: 18, 11
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 44, 14
+  size: 41, 45
+  orig: 78, 56
+  offset: 16, 11
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 37, 205
+  size: 26, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 32, 128
+  size: 26, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/chains
+  rotate: true
+  xy: 1, 165
+  size: 50, 31
+  orig: 68, 46
+  offset: 14, 1
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 27, 55
+  size: 24, 16
+  orig: 50, 28
+  offset: 19, 3
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 32, 103
+  size: 24, 18
+  orig: 50, 28
+  offset: 19, 1
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 27, 4
+  size: 24, 13
+  orig: 50, 28
+  offset: 19, 6
+  index: -1
+side/shoulderR
+  rotate: false
+  xy: 90, 28
+  size: 28, 27
+  orig: 60, 64
+  offset: 18, 37
+  index: -1
+weapon1
+  rotate: true
+  xy: 1, 216
+  size: 74, 35
+  orig: 76, 44
+  offset: 2, 1
+  index: -1
+weapon2
+  rotate: true
+  xy: 57, 172
+  size: 73, 35
+  orig: 76, 44
+  offset: 3, 1
+  index: -1

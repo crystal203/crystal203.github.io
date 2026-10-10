@@ -1,0 +1,1462 @@
+
+rogue_orca_npc_a__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+rogue_orca_archer/back/[base]armL
+  rotate: true
+  xy: 12, 138
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_archer/back/[base]armR
+  rotate: true
+  xy: 12, 138
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_wizard/back/[base]armL
+  rotate: true
+  xy: 12, 138
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_wizard/back/[base]armR
+  rotate: true
+  xy: 12, 138
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_archer/back/[base]body
+  rotate: true
+  xy: 179, 159
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+rogue_orca_archer/back/[base]elbowL
+  rotate: false
+  xy: 54, 144
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_archer/back/[base]elbowR
+  rotate: false
+  xy: 54, 144
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_archer/back/[base]head
+  rotate: false
+  xy: 27, 203
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+rogue_orca_archer/back/[base]legL
+  rotate: false
+  xy: 101, 165
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_archer/back/[base]legR
+  rotate: false
+  xy: 101, 165
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_archer/back/helm
+  rotate: true
+  xy: 60, 227
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+rogue_orca_wizard/back/helm
+  rotate: true
+  xy: 60, 227
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+rogue_orca_archer/back/shoulderL
+  rotate: false
+  xy: 249, 156
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+rogue_orca_archer/back/shoulderR
+  rotate: false
+  xy: 249, 156
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+rogue_orca_archer/front/shoulderL
+  rotate: false
+  xy: 249, 156
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+rogue_orca_archer/front/shoulderR
+  rotate: false
+  xy: 249, 156
+  size: 5, 4
+  orig: 55, 56
+  offset: 19, 11
+  index: -1
+rogue_orca_archer/front/[base]armL
+  rotate: true
+  xy: 203, 138
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_archer/front/[base]armL2
+  rotate: false
+  xy: 248, 195
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+rogue_orca_archer/front/[base]armR2
+  rotate: false
+  xy: 248, 195
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+rogue_orca_fighter/front/[base]armL2
+  rotate: false
+  xy: 248, 195
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+rogue_orca_fighter/front/[base]armR2
+  rotate: false
+  xy: 248, 195
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+rogue_orca_wizard/front/[base]armL2
+  rotate: false
+  xy: 248, 195
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+rogue_orca_wizard/front/[base]armR2
+  rotate: false
+  xy: 248, 195
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+rogue_orca_archer/front/[base]armR
+  rotate: true
+  xy: 211, 138
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_archer/front/[base]body
+  rotate: true
+  xy: 193, 159
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+rogue_orca_archer/front/[base]elbowL
+  rotate: false
+  xy: 63, 144
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_archer/front/[base]elbowR
+  rotate: false
+  xy: 63, 144
+  size: 7, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_archer/front/[base]elbowL2
+  rotate: false
+  xy: 85, 153
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+rogue_orca_archer/front/[base]elbowR2
+  rotate: false
+  xy: 85, 153
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+rogue_orca_archer/front/[base]head
+  rotate: false
+  xy: 52, 203
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+rogue_orca_archer/front/[base]legL
+  rotate: true
+  xy: 36, 146
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_archer/front/[base]legR
+  rotate: true
+  xy: 36, 146
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_archer/front/face/[base]attack
+  rotate: false
+  xy: 67, 189
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+rogue_orca_archer/front/face/[base]damaged
+  rotate: false
+  xy: 135, 189
+  size: 13, 12
+  orig: 55, 56
+  offset: 21, 11
+  index: -1
+rogue_orca_archer/front/face/[base]doyagao
+  rotate: true
+  xy: 239, 239
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+rogue_orca_archer/front/face/[base]idle
+  rotate: false
+  xy: 84, 189
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+rogue_orca_archer/front/face/[base]mad
+  rotate: false
+  xy: 101, 189
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+rogue_orca_archer/front/face/[base]smile
+  rotate: false
+  xy: 50, 188
+  size: 15, 13
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+rogue_orca_archer/front/face/[base]tired
+  rotate: false
+  xy: 118, 189
+  size: 15, 12
+  orig: 55, 56
+  offset: 20, 11
+  index: -1
+rogue_orca_archer/front/helm
+  rotate: false
+  xy: 2, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+rogue_orca_wizard/front/helm
+  rotate: false
+  xy: 2, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+rogue_orca_archer/side/[base]armL
+  rotate: true
+  xy: 219, 138
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+rogue_orca_archer/side/[base]armR
+  rotate: true
+  xy: 227, 138
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+rogue_orca_archer/side/[base]body
+  rotate: false
+  xy: 164, 190
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+rogue_orca_archer/side/[base]elbowL
+  rotate: true
+  xy: 17, 192
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+rogue_orca_archer/side/[base]elbowR
+  rotate: false
+  xy: 175, 150
+  size: 8, 7
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+rogue_orca_archer/side/[base]head
+  rotate: false
+  xy: 177, 185
+  size: 21, 20
+  orig: 56, 56
+  offset: 21, 15
+  index: -1
+rogue_orca_archer/side/[base]legL
+  rotate: true
+  xy: 72, 146
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+rogue_orca_archer/side/[base]legR
+  rotate: true
+  xy: 163, 146
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+rogue_orca_archer/side/face/[base]attack
+  rotate: false
+  xy: 240, 176
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+rogue_orca_archer/side/face/[base]damaged
+  rotate: false
+  xy: 2, 174
+  size: 11, 12
+  orig: 56, 56
+  offset: 30, 13
+  index: -1
+rogue_orca_archer/side/face/[base]doyagao
+  rotate: false
+  xy: 150, 188
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+rogue_orca_archer/side/face/[base]idle
+  rotate: false
+  xy: 2, 188
+  size: 13, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+rogue_orca_archer/side/face/[base]mad
+  rotate: false
+  xy: 67, 175
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+rogue_orca_archer/side/face/[base]smile
+  rotate: true
+  xy: 17, 177
+  size: 12, 13
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+rogue_orca_archer/side/face/[base]tired
+  rotate: false
+  xy: 81, 175
+  size: 12, 12
+  orig: 56, 56
+  offset: 29, 13
+  index: -1
+rogue_orca_archer/side/helm
+  rotate: true
+  xy: 87, 227
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+rogue_orca_archer/side/shoulderL
+  rotate: false
+  xy: 235, 138
+  size: 6, 5
+  orig: 56, 56
+  offset: 34, 11
+  index: -1
+rogue_orca_archer/side/shoulderR
+  rotate: false
+  xy: 243, 138
+  size: 6, 5
+  orig: 56, 56
+  offset: 24, 11
+  index: -1
+rogue_orca_fighter/back/[base]armL
+  rotate: true
+  xy: 52, 137
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_fighter/back/[base]armR
+  rotate: true
+  xy: 52, 137
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_fighter/back/[base]body
+  rotate: true
+  xy: 28, 156
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+rogue_orca_wizard/back/[base]body
+  rotate: true
+  xy: 28, 156
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+rogue_orca_fighter/back/[base]elbowL
+  rotate: false
+  xy: 185, 150
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_fighter/back/[base]elbowR
+  rotate: false
+  xy: 185, 150
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_fighter/back/[base]head
+  rotate: false
+  xy: 77, 203
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+rogue_orca_wizard/back/[base]head
+  rotate: false
+  xy: 77, 203
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+rogue_orca_fighter/back/[base]legL
+  rotate: true
+  xy: 173, 144
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_fighter/back/[base]legR
+  rotate: true
+  xy: 173, 144
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_fighter/back/helm
+  rotate: true
+  xy: 114, 227
+  size: 27, 25
+  orig: 55, 56
+  offset: 14, 13
+  index: -1
+rogue_orca_fighter/back/shoulderL
+  rotate: false
+  xy: 60, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+rogue_orca_fighter/back/shoulderR
+  rotate: false
+  xy: 60, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+rogue_orca_fighter/front/[base]armL
+  rotate: true
+  xy: 82, 137
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_fighter/front/[base]armR
+  rotate: true
+  xy: 82, 137
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_fighter/front/[base]body
+  rotate: true
+  xy: 136, 154
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+rogue_orca_fighter/front/[base]elbowL
+  rotate: false
+  xy: 195, 150
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_fighter/front/[base]elbowR
+  rotate: false
+  xy: 195, 150
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_fighter/front/[base]elbowL2
+  rotate: false
+  xy: 96, 153
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+rogue_orca_fighter/front/[base]elbowR2
+  rotate: false
+  xy: 96, 153
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+rogue_orca_fighter/front/[base]head
+  rotate: false
+  xy: 102, 203
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+rogue_orca_fighter/front/[base]legL
+  rotate: true
+  xy: 183, 144
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_fighter/front/[base]legR
+  rotate: true
+  xy: 183, 144
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_fighter/front/face/[base]attack
+  rotate: false
+  xy: 188, 170
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+rogue_orca_wizard/front/face/[base]attack
+  rotate: false
+  xy: 188, 170
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 13
+  index: -1
+rogue_orca_fighter/front/face/[base]damaged
+  rotate: false
+  xy: 136, 165
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_wizard/front/face/[base]damaged
+  rotate: false
+  xy: 136, 165
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_fighter/front/face/[base]doyagao
+  rotate: false
+  xy: 203, 170
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_wizard/front/face/[base]doyagao
+  rotate: false
+  xy: 203, 170
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_fighter/front/face/[base]idle
+  rotate: false
+  xy: 151, 165
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_wizard/front/face/[base]idle
+  rotate: false
+  xy: 151, 165
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_fighter/front/face/[base]mad
+  rotate: false
+  xy: 32, 179
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+rogue_orca_wizard/front/face/[base]mad
+  rotate: false
+  xy: 32, 179
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+rogue_orca_fighter/front/face/[base]smile
+  rotate: false
+  xy: 32, 167
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_wizard/front/face/[base]smile
+  rotate: false
+  xy: 32, 167
+  size: 13, 10
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_fighter/front/face/[base]tired
+  rotate: false
+  xy: 239, 228
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+rogue_orca_wizard/front/face/[base]tired
+  rotate: false
+  xy: 239, 228
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+rogue_orca_fighter/front/helm
+  rotate: false
+  xy: 31, 227
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 11
+  index: -1
+rogue_orca_fighter/front/shoulderL
+  rotate: false
+  xy: 90, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+rogue_orca_fighter/front/shoulderR
+  rotate: false
+  xy: 90, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+rogue_orca_fighter/front/weapon
+  rotate: false
+  xy: 249, 162
+  size: 5, 12
+  orig: 55, 56
+  offset: 20, 4
+  index: -1
+rogue_orca_fighter/side/[base]armL
+  rotate: true
+  xy: 98, 137
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+rogue_orca_wizard/side/[base]armL
+  rotate: true
+  xy: 98, 137
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+rogue_orca_fighter/side/[base]armR
+  rotate: true
+  xy: 106, 137
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+rogue_orca_wizard/side/[base]armR
+  rotate: true
+  xy: 106, 137
+  size: 5, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+rogue_orca_fighter/side/[base]body
+  rotate: true
+  xy: 60, 153
+  size: 9, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+rogue_orca_fighter/side/[base]elbowL
+  rotate: false
+  xy: 26, 147
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+rogue_orca_fighter/side/[base]elbowR
+  rotate: false
+  xy: 135, 145
+  size: 8, 7
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+rogue_orca_fighter/side/[base]head
+  rotate: false
+  xy: 231, 204
+  size: 21, 21
+  orig: 56, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_fighter/side/[base]legL
+  rotate: true
+  xy: 193, 144
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+rogue_orca_fighter/side/[base]legR
+  rotate: false
+  xy: 46, 142
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+rogue_orca_fighter/side/face/[base]attack
+  rotate: false
+  xy: 14, 152
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+rogue_orca_wizard/side/face/[base]attack
+  rotate: false
+  xy: 14, 152
+  size: 10, 10
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+rogue_orca_fighter/side/face/[base]damaged
+  rotate: false
+  xy: 42, 152
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_wizard/side/face/[base]damaged
+  rotate: false
+  xy: 42, 152
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_fighter/side/face/[base]doyagao
+  rotate: false
+  xy: 75, 163
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_wizard/side/face/[base]doyagao
+  rotate: false
+  xy: 75, 163
+  size: 11, 10
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_fighter/side/face/[base]idle
+  rotate: false
+  xy: 150, 154
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_wizard/side/face/[base]idle
+  rotate: false
+  xy: 150, 154
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_fighter/side/face/[base]mad
+  rotate: false
+  xy: 218, 165
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+rogue_orca_wizard/side/face/[base]mad
+  rotate: false
+  xy: 218, 165
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+rogue_orca_fighter/side/face/[base]smile
+  rotate: true
+  xy: 88, 163
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+rogue_orca_wizard/side/face/[base]smile
+  rotate: true
+  xy: 88, 163
+  size: 10, 11
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+rogue_orca_fighter/side/face/[base]tired
+  rotate: false
+  xy: 122, 153
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+rogue_orca_wizard/side/face/[base]tired
+  rotate: false
+  xy: 122, 153
+  size: 11, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+rogue_orca_fighter/side/helm
+  rotate: true
+  xy: 141, 227
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+rogue_orca_fighter/side/shoulderL
+  rotate: false
+  xy: 114, 137
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+rogue_orca_fighter/side/shoulderR
+  rotate: false
+  xy: 12, 145
+  size: 7, 5
+  orig: 56, 56
+  offset: 23, 11
+  index: -1
+rogue_orca_soldier/back/[base]armL
+  rotate: false
+  xy: 155, 145
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+rogue_orca_soldier/back/[base]armR
+  rotate: false
+  xy: 155, 145
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+rogue_orca_soldier/back/[base]body
+  rotate: true
+  xy: 109, 176
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+rogue_orca_soldier/back/[base]elbowL
+  rotate: false
+  xy: 145, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_soldier/back/[base]elbowR
+  rotate: false
+  xy: 145, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_soldier/back/[base]head
+  rotate: false
+  xy: 206, 204
+  size: 23, 21
+  orig: 55, 56
+  offset: 16, 14
+  index: -1
+rogue_orca_soldier/back/[base]legL
+  rotate: true
+  xy: 21, 141
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_soldier/back/[base]legR
+  rotate: true
+  xy: 21, 141
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_soldier/back/helm
+  rotate: true
+  xy: 195, 227
+  size: 27, 20
+  orig: 55, 56
+  offset: 14, 20
+  index: -1
+rogue_orca_soldier/back/shoulderL
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+mask
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+rogue_orca_soldier/back/shoulderR
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+rogue_orca_soldier/front/shoulderL
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+rogue_orca_soldier/front/shoulderR
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+rogue_orca_soldier/side/shoulderL
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+rogue_orca_soldier/side/shoulderR
+  rotate: false
+  xy: 248, 192
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+rogue_orca_soldier/front/[base]armL
+  rotate: false
+  xy: 121, 144
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+rogue_orca_soldier/front/[base]armR
+  rotate: false
+  xy: 121, 144
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+rogue_orca_soldier/front/[base]armL2
+  rotate: false
+  xy: 15, 164
+  size: 11, 11
+  orig: 55, 56
+  offset: 29, 4
+  index: -1
+rogue_orca_soldier/front/[base]armR2
+  rotate: false
+  xy: 15, 164
+  size: 11, 11
+  orig: 55, 56
+  offset: 29, 4
+  index: -1
+rogue_orca_soldier/front/[base]body
+  rotate: true
+  xy: 124, 176
+  size: 11, 13
+  orig: 55, 56
+  offset: 22, 3
+  index: -1
+rogue_orca_soldier/front/[base]elbowL
+  rotate: false
+  xy: 205, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_soldier/front/[base]elbowL2
+  rotate: false
+  xy: 107, 153
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+rogue_orca_soldier/front/[base]elbowR2
+  rotate: false
+  xy: 107, 153
+  size: 9, 8
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+rogue_orca_soldier/front/[base]elbowR
+  rotate: false
+  xy: 215, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 4
+  index: -1
+rogue_orca_soldier/front/[base]head
+  rotate: false
+  xy: 2, 202
+  size: 23, 23
+  orig: 55, 56
+  offset: 16, 14
+  index: -1
+rogue_orca_soldier/front/[base]legL
+  rotate: true
+  xy: 31, 140
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_soldier/front/[base]legR
+  rotate: true
+  xy: 31, 140
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_soldier/front/face/[base]attack
+  rotate: false
+  xy: 49, 176
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+rogue_orca_soldier/front/face/[base]damaged
+  rotate: false
+  xy: 231, 165
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_soldier/front/face/[base]doyagao
+  rotate: false
+  xy: 139, 176
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+rogue_orca_soldier/front/face/[base]idle
+  rotate: false
+  xy: 60, 164
+  size: 13, 9
+  orig: 55, 56
+  offset: 21, 14
+  index: -1
+rogue_orca_soldier/front/face/[base]mad
+  rotate: false
+  xy: 223, 178
+  size: 15, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+rogue_orca_soldier/front/face/[base]smile
+  rotate: false
+  xy: 155, 176
+  size: 14, 10
+  orig: 55, 56
+  offset: 20, 13
+  index: -1
+rogue_orca_soldier/front/face/[base]tired
+  rotate: false
+  xy: 171, 174
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+rogue_orca_soldier/front/helm
+  rotate: true
+  xy: 217, 227
+  size: 27, 20
+  orig: 55, 56
+  offset: 14, 20
+  index: -1
+rogue_orca_soldier/side/[base]armL
+  rotate: false
+  xy: 85, 144
+  size: 7, 7
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+rogue_orca_soldier/side/[base]armR
+  rotate: false
+  xy: 94, 144
+  size: 7, 7
+  orig: 56, 56
+  offset: 24, 8
+  index: -1
+rogue_orca_soldier/side/[base]body
+  rotate: false
+  xy: 95, 175
+  size: 12, 12
+  orig: 56, 56
+  offset: 26, 4
+  index: -1
+rogue_orca_soldier/side/[base]elbowL
+  rotate: false
+  xy: 103, 144
+  size: 7, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+rogue_orca_soldier/side/[base]elbowR
+  rotate: false
+  xy: 112, 144
+  size: 7, 7
+  orig: 56, 56
+  offset: 23, 3
+  index: -1
+rogue_orca_soldier/side/[base]head
+  rotate: false
+  xy: 127, 203
+  size: 23, 22
+  orig: 56, 56
+  offset: 20, 15
+  index: -1
+rogue_orca_soldier/side/[base]legL
+  rotate: true
+  xy: 72, 140
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+rogue_orca_soldier/side/[base]legR
+  rotate: true
+  xy: 2, 139
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+rogue_orca_soldier/side/face/[base]attack
+  rotate: false
+  xy: 166, 162
+  size: 11, 10
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+rogue_orca_soldier/side/face/[base]damaged
+  rotate: false
+  xy: 73, 152
+  size: 10, 9
+  orig: 56, 56
+  offset: 30, 15
+  index: -1
+rogue_orca_soldier/side/face/[base]doyagao
+  rotate: false
+  xy: 122, 164
+  size: 12, 10
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+rogue_orca_soldier/side/face/[base]idle
+  rotate: false
+  xy: 207, 154
+  size: 12, 9
+  orig: 56, 56
+  offset: 30, 16
+  index: -1
+rogue_orca_soldier/side/face/[base]mad
+  rotate: false
+  xy: 47, 163
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 14
+  index: -1
+rogue_orca_soldier/side/face/[base]smile
+  rotate: false
+  xy: 109, 163
+  size: 11, 11
+  orig: 56, 56
+  offset: 29, 15
+  index: -1
+rogue_orca_soldier/side/face/[base]tired
+  rotate: false
+  xy: 221, 154
+  size: 12, 9
+  orig: 56, 56
+  offset: 29, 16
+  index: -1
+rogue_orca_soldier/side/helm
+  rotate: false
+  xy: 177, 207
+  size: 27, 18
+  orig: 56, 56
+  offset: 18, 22
+  index: -1
+rogue_orca_wizard/back/[base]elbowL
+  rotate: false
+  xy: 225, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_wizard/back/[base]elbowR
+  rotate: false
+  xy: 225, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_wizard/back/[base]legL
+  rotate: true
+  xy: 129, 139
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_wizard/back/[base]legR
+  rotate: true
+  xy: 129, 139
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_wizard/back/shoulderL
+  rotate: false
+  xy: 169, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+rogue_orca_wizard/back/shoulderR
+  rotate: false
+  xy: 177, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 31, 10
+  index: -1
+rogue_orca_wizard/front/shoudlerL
+  rotate: false
+  xy: 177, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 31, 10
+  index: -1
+rogue_orca_wizard/front/[base]armL
+  rotate: true
+  xy: 185, 137
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_wizard/front/[base]armR
+  rotate: true
+  xy: 185, 137
+  size: 5, 6
+  orig: 55, 56
+  offset: 20, 8
+  index: -1
+rogue_orca_wizard/front/[base]body
+  rotate: true
+  xy: 235, 154
+  size: 9, 12
+  orig: 55, 56
+  offset: 23, 4
+  index: -1
+rogue_orca_wizard/front/[base]elbowL
+  rotate: false
+  xy: 235, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_wizard/front/[base]elbowR
+  rotate: false
+  xy: 235, 145
+  size: 8, 7
+  orig: 55, 56
+  offset: 14, 4
+  index: -1
+rogue_orca_wizard/front/[base]elbowL2
+  rotate: false
+  xy: 164, 152
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+rogue_orca_wizard/front/[base]elbowR2
+  rotate: false
+  xy: 164, 152
+  size: 9, 8
+  orig: 55, 56
+  offset: 33, 3
+  index: -1
+rogue_orca_wizard/front/[base]head
+  rotate: false
+  xy: 152, 203
+  size: 23, 22
+  orig: 55, 56
+  offset: 16, 13
+  index: -1
+rogue_orca_wizard/front/[base]legL
+  rotate: true
+  xy: 139, 139
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_wizard/front/[base]legR
+  rotate: true
+  xy: 139, 139
+  size: 4, 8
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+rogue_orca_wizard/front/face/mask
+  rotate: false
+  xy: 27, 191
+  size: 21, 10
+  orig: 55, 56
+  offset: 17, 14
+  index: -1
+rogue_orca_wizard/front/shoulderR
+  rotate: false
+  xy: 193, 137
+  size: 6, 5
+  orig: 55, 56
+  offset: 18, 10
+  index: -1
+rogue_orca_wizard/side/[base]body
+  rotate: false
+  xy: 2, 161
+  size: 10, 11
+  orig: 56, 56
+  offset: 28, 5
+  index: -1
+rogue_orca_wizard/side/[base]elbowL
+  rotate: false
+  xy: 245, 145
+  size: 8, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+rogue_orca_wizard/side/[base]elbowR
+  rotate: false
+  xy: 2, 152
+  size: 9, 7
+  orig: 56, 56
+  offset: 21, 3
+  index: -1
+rogue_orca_wizard/side/[base]head
+  rotate: false
+  xy: 200, 182
+  size: 21, 20
+  orig: 56, 56
+  offset: 21, 15
+  index: -1
+rogue_orca_wizard/side/[base]legL
+  rotate: true
+  xy: 149, 139
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+rogue_orca_wizard/side/[base]legR
+  rotate: true
+  xy: 159, 139
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+rogue_orca_wizard/side/face/mask
+  rotate: false
+  xy: 223, 190
+  size: 23, 12
+  orig: 56, 56
+  offset: 24, 15
+  index: -1
+rogue_orca_wizard/side/helm
+  rotate: true
+  xy: 168, 227
+  size: 27, 25
+  orig: 56, 56
+  offset: 19, 13
+  index: -1
+rogue_orca_wizard/side/shoulderL
+  rotate: false
+  xy: 41, 135
+  size: 6, 5
+  orig: 56, 56
+  offset: 35, 11
+  index: -1
+rogue_orca_wizard/side/shoulderR
+  rotate: false
+  xy: 2, 145
+  size: 8, 5
+  orig: 56, 56
+  offset: 22, 11
+  index: -1

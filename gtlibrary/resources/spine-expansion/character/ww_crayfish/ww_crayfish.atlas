@@ -1,0 +1,69 @@
+
+ww_crayfish__page0.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fish_small_crayfish/body
+  rotate: true
+  xy: 20, 8
+  size: 14, 9
+  orig: 32, 32
+  offset: 14, 7
+  index: -1
+fish_small_crayfish/hair1
+  rotate: true
+  xy: 42, 11
+  size: 11, 6
+  orig: 32, 32
+  offset: 5, 18
+  index: -1
+fish_small_crayfish/hair2
+  rotate: false
+  xy: 50, 13
+  size: 6, 9
+  orig: 32, 32
+  offset: 4, 19
+  index: -1
+fish_small_crayfish/head
+  rotate: false
+  xy: 2, 10
+  size: 16, 12
+  orig: 32, 32
+  offset: 3, 8
+  index: -1
+fish_small_crayfish/leg1
+  rotate: true
+  xy: 31, 9
+  size: 13, 9
+  orig: 32, 32
+  offset: 2, 4
+  index: -1
+fish_small_crayfish/leg2
+  rotate: true
+  xy: 2, 2
+  size: 6, 7
+  orig: 32, 32
+  offset: 11, 5
+  index: -1
+fish_small_crayfish/leg3
+  rotate: true
+  xy: 31, 3
+  size: 4, 7
+  orig: 32, 32
+  offset: 16, 4
+  index: -1
+fish_small_crayfish/leg4
+  rotate: false
+  xy: 50, 4
+  size: 7, 7
+  orig: 32, 32
+  offset: 20, 4
+  index: -1
+fish_small_crayfish/tail
+  rotate: false
+  xy: 42, 2
+  size: 5, 7
+  orig: 32, 32
+  offset: 26, 5
+  index: -1

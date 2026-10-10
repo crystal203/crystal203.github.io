@@ -1,0 +1,510 @@
+
+exp_event_brutal_candidate__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 152, 60
+  size: 16, 19
+  orig: 77, 76
+  offset: 7, 22
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 152, 60
+  size: 16, 19
+  orig: 77, 76
+  offset: 7, 22
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 152, 60
+  size: 16, 19
+  orig: 77, 76
+  offset: 7, 22
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 152, 60
+  size: 16, 19
+  orig: 77, 76
+  offset: 7, 22
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 90, 28
+  size: 35, 18
+  orig: 77, 76
+  offset: 21, 24
+  index: -1
+back/[base]bodyB
+  rotate: false
+  xy: 2, 96
+  size: 37, 30
+  orig: 77, 76
+  offset: 20, 19
+  index: -1
+front/[base]bodyB
+  rotate: false
+  xy: 2, 96
+  size: 37, 30
+  orig: 77, 76
+  offset: 20, 19
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 129, 105
+  size: 20, 21
+  orig: 77, 76
+  offset: 2, 8
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 130, 51
+  size: 20, 21
+  orig: 77, 76
+  offset: 2, 8
+  index: -1
+back/[base]footL
+  rotate: false
+  xy: 173, 5
+  size: 13, 13
+  orig: 77, 76
+  offset: 24, 0
+  index: -1
+back/[base]footR
+  rotate: false
+  xy: 173, 5
+  size: 13, 13
+  orig: 77, 76
+  offset: 24, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 67, 65
+  size: 25, 27
+  orig: 77, 76
+  offset: 26, 35
+  index: -1
+back/[base]kneeL
+  rotate: false
+  xy: 185, 54
+  size: 8, 10
+  orig: 77, 76
+  offset: 27, 7
+  index: -1
+back/[base]kneeR
+  rotate: false
+  xy: 185, 54
+  size: 8, 10
+  orig: 77, 76
+  offset: 27, 7
+  index: -1
+front/[base]kneeL
+  rotate: false
+  xy: 185, 54
+  size: 8, 10
+  orig: 77, 76
+  offset: 27, 7
+  index: -1
+front/[base]kneeR
+  rotate: false
+  xy: 185, 54
+  size: 8, 10
+  orig: 77, 76
+  offset: 27, 7
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 184, 32
+  size: 13, 13
+  orig: 77, 76
+  offset: 24, 10
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 184, 32
+  size: 13, 13
+  orig: 77, 76
+  offset: 24, 10
+  index: -1
+back/[base]pelvis
+  rotate: false
+  xy: 2, 74
+  size: 41, 20
+  orig: 77, 76
+  offset: 18, 8
+  index: -1
+back/[base]pelvisB
+  rotate: true
+  xy: 174, 24
+  size: 21, 8
+  orig: 77, 76
+  offset: 28, 20
+  index: -1
+back/helmtail
+  rotate: false
+  xy: 117, 12
+  size: 16, 28
+  orig: 77, 76
+  offset: 30, 41
+  index: -1
+back/shoulderL
+  rotate: false
+  xy: 63, 4
+  size: 25, 21
+  orig: 77, 76
+  offset: 3, 27
+  index: -1
+front/shoulderL
+  rotate: false
+  xy: 63, 4
+  size: 25, 21
+  orig: 77, 76
+  offset: 3, 27
+  index: -1
+back/shoulderR
+  rotate: false
+  xy: 90, 5
+  size: 25, 21
+  orig: 77, 76
+  offset: 3, 27
+  index: -1
+front/shoulderR
+  rotate: false
+  xy: 90, 5
+  size: 25, 21
+  orig: 77, 76
+  offset: 3, 27
+  index: -1
+back/skirt
+  rotate: false
+  xy: 27, 6
+  size: 25, 13
+  orig: 77, 76
+  offset: 26, 10
+  index: -1
+front/[base]body
+  rotate: true
+  xy: 45, 57
+  size: 35, 20
+  orig: 77, 76
+  offset: 21, 22
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 135, 28
+  size: 20, 21
+  orig: 77, 76
+  offset: 2, 8
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 135, 5
+  size: 20, 21
+  orig: 77, 76
+  offset: 2, 8
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 41, 125
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/[base]footL
+  rotate: true
+  xy: 185, 96
+  size: 13, 11
+  orig: 77, 76
+  offset: 24, 0
+  index: -1
+front/[base]footR
+  rotate: true
+  xy: 185, 96
+  size: 13, 11
+  orig: 77, 76
+  offset: 24, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 63, 27
+  size: 25, 28
+  orig: 77, 76
+  offset: 26, 34
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 170, 68
+  size: 13, 15
+  orig: 77, 76
+  offset: 24, 8
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 170, 68
+  size: 13, 15
+  orig: 77, 76
+  offset: 24, 8
+  index: -1
+front/[base]pelvis
+  rotate: false
+  xy: 2, 52
+  size: 41, 20
+  orig: 77, 76
+  offset: 18, 8
+  index: -1
+front/[base]pelvisB
+  rotate: true
+  xy: 160, 85
+  size: 21, 10
+  orig: 77, 76
+  offset: 28, 16
+  index: -1
+front/helmtail
+  rotate: false
+  xy: 110, 42
+  size: 18, 27
+  orig: 77, 76
+  offset: 30, 45
+  index: -1
+front/skirt
+  rotate: false
+  xy: 157, 40
+  size: 15, 18
+  orig: 77, 76
+  offset: 31, 4
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 157, 20
+  size: 15, 18
+  orig: 76, 76
+  offset: 46, 23
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 151, 108
+  size: 18, 18
+  orig: 76, 76
+  offset: 11, 23
+  index: -1
+side/[base]body
+  rotate: true
+  xy: 45, 94
+  size: 32, 22
+  orig: 76, 76
+  offset: 22, 22
+  index: -1
+side/[base]bodyB
+  rotate: false
+  xy: 2, 27
+  size: 32, 23
+  orig: 76, 76
+  offset: 22, 21
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 139, 81
+  size: 19, 22
+  orig: 76, 76
+  offset: 46, 7
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 2, 2
+  size: 23, 23
+  orig: 76, 76
+  offset: 7, 7
+  index: -1
+side/[base]footL
+  rotate: true
+  xy: 185, 81
+  size: 13, 11
+  orig: 76, 76
+  offset: 39, 0
+  index: -1
+side/[base]footR
+  rotate: true
+  xy: 185, 66
+  size: 13, 11
+  orig: 76, 76
+  offset: 25, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 69, 100
+  size: 25, 26
+  orig: 76, 76
+  offset: 26, 36
+  index: -1
+side/[base]kneeL
+  rotate: false
+  xy: 184, 21
+  size: 10, 9
+  orig: 76, 76
+  offset: 40, 6
+  index: -1
+side/[base]kneeR
+  rotate: false
+  xy: 184, 21
+  size: 10, 9
+  orig: 76, 76
+  offset: 26, 6
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 157, 3
+  size: 14, 15
+  orig: 76, 76
+  offset: 38, 8
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 171, 111
+  size: 13, 15
+  orig: 76, 76
+  offset: 25, 8
+  index: -1
+side/[base]pelvis
+  rotate: false
+  xy: 96, 100
+  size: 31, 18
+  orig: 76, 76
+  offset: 24, 9
+  index: -1
+side/[base]pelvisB
+  rotate: true
+  xy: 174, 47
+  size: 19, 9
+  orig: 76, 76
+  offset: 28, 12
+  index: -1
+side/helmtail
+  rotate: false
+  xy: 36, 21
+  size: 25, 29
+  orig: 76, 76
+  offset: 15, 44
+  index: -1
+side/shoulderL
+  rotate: true
+  xy: 117, 74
+  size: 24, 20
+  orig: 76, 76
+  offset: 42, 27
+  index: -1
+side/shoulerR
+  rotate: true
+  xy: 94, 71
+  size: 27, 21
+  orig: 76, 76
+  offset: 6, 26
+  index: -1
+side/skirt
+  rotate: false
+  xy: 172, 92
+  size: 11, 17
+  orig: 76, 76
+  offset: 37, 5
+  index: -1

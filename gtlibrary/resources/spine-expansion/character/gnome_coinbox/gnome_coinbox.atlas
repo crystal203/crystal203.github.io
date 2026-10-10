@@ -1,0 +1,20 @@
+
+gnome_coinbox__page0.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/gnome_coinbox
+  rotate: false
+  xy: 2, 77
+  size: 81, 97
+  orig: 119, 122
+  offset: 19, 23
+  index: -1
+front/gnome_coinbox_broken
+  rotate: true
+  xy: 2, 2
+  size: 73, 74
+  orig: 119, 122
+  offset: 19, 21
+  index: -1

@@ -1,0 +1,27 @@
+
+champion_staff_flying__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]bodyB
+  rotate: false
+  xy: 43, 23
+  size: 4, 4
+  orig: 56, 56
+  offset: 44, 33
+  index: -1
+side/[base]bodyF
+  rotate: false
+  xy: 2, 2
+  size: 39, 37
+  orig: 56, 56
+  offset: 13, 3
+  index: -1
+side/[base]orb
+  rotate: false
+  xy: 43, 29
+  size: 10, 10
+  orig: 56, 56
+  offset: 40, 31
+  index: -1

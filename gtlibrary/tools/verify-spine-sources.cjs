@@ -5,10 +5,14 @@ vm.runInContext(fs.readFileSync(path.join(root,'vendor/spine-webgl.js'),'utf8'),
 vm.runInContext(fs.readFileSync(path.join(root,'core/resources.js'),'utf8'),context);
 const {spine,GTResources}=context,index=JSON.parse(fs.readFileSync(path.join(root,'resources/search-index.json'),'utf8'));
 const file=name=>path.join(root,decodeURIComponent(new URL(GTResources.url(name,'http://localhost/gtlibrary/')).pathname).replace(/^\/gtlibrary\//,''));
+const supplement=JSON.parse(fs.readFileSync(path.join(root,'resources/spine-expansion/catalog.json'),'utf8'));
+const extra=new Map(Object.entries(supplement.groups).flatMap(([folder,rows])=>rows.map(row=>[folder+':'+row.name,row])));
 const results=[],errors=[];let resources=0;
 for(const e of index.entities.filter(e=>e.kind==='spine')){
  const base='resources/spine/'+e.spine.folder+'/'+e.spine.name;
- const paths=(e.spine.folder==='character'?['.bytes','_front.bytes','_back.bytes','_side.bytes']:['.bytes']).map(suffix=>file(base+suffix)).filter(p=>fs.existsSync(p)).slice(0,1);
+ const row=extra.get(e.spine.folder+':'+e.spine.name);
+ const suffixes=row?row.variants.slice(0,1).map(v=>(v?'_'+v:'')+'.bytes'):(e.spine.folder==='character'?['.bytes','_front.bytes','_back.bytes','_side.bytes']:['.bytes']);
+ const paths=suffixes.map(suffix=>file(base+suffix)).filter(p=>fs.existsSync(p)).slice(0,1);
  if(!paths.length){errors.push({id:e.id,error:'Missing skeleton bytes'});continue;}let good=true;
  for(const bytePath of paths)try{
   const atlasText=fs.readFileSync(file(base+'.atlas'),'utf8'),bytes=fs.readFileSync(bytePath);const atlas=new spine.TextureAtlas(atlasText,()=>({setFilters(){},setWraps(){},getImage(){return {width:2048,height:2048};},dispose(){}}));const data=new spine.SkeletonBinary(new spine.AtlasAttachmentLoader(atlas)).readSkeletonData(new Uint8Array(bytes));const instance=new spine.Skeleton(data);instance.setToSetupPose();instance.updateWorldTransform();results.push({id:e.id,file:path.basename(bytePath),bones:data.bones.length,animations:data.animations.length});atlas.dispose();

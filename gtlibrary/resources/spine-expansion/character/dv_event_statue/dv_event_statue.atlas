@@ -1,0 +1,20 @@
+
+dv_event_statue__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/dv_event_statue
+  rotate: true
+  xy: 2, 2
+  size: 42, 65
+  orig: 66, 66
+  offset: 12, 1
+  index: -1
+side/eye_attack
+  rotate: true
+  xy: 69, 36
+  size: 8, 2
+  orig: 66, 66
+  offset: 38, 47
+  index: -1

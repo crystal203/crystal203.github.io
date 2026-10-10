@@ -1,0 +1,48 @@
+
+arcade_princess__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+out/arcade_princess_side/side_idle_1
+  rotate: false
+  xy: 68, 16
+  size: 13, 16
+  orig: 22, 32
+  offset: 4, 0
+  index: -1
+out/arcade_princess_side/side_idle_2
+  rotate: false
+  xy: 83, 17
+  size: 13, 15
+  orig: 22, 32
+  offset: 4, 0
+  index: -1
+out/arcade_princess_side/side_love_1
+  rotate: false
+  xy: 19, 3
+  size: 15, 29
+  orig: 22, 32
+  offset: 3, 0
+  index: -1
+out/arcade_princess_side/side_love_2
+  rotate: false
+  xy: 2, 2
+  size: 15, 30
+  orig: 22, 32
+  offset: 3, 0
+  index: -1
+out/arcade_princess_side/side_love_3
+  rotate: false
+  xy: 36, 3
+  size: 14, 29
+  orig: 22, 32
+  offset: 3, 0
+  index: -1
+out/arcade_princess_side/side_love_4
+  rotate: false
+  xy: 52, 4
+  size: 14, 28
+  orig: 22, 32
+  offset: 3, 0
+  index: -1

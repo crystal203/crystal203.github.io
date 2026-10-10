@@ -1,0 +1,125 @@
+
+dungeon_devil_ramsay__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: true
+  xy: 90, 10
+  size: 15, 16
+  orig: 62, 58
+  offset: 40, 10
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 67, 30
+  size: 19, 16
+  orig: 62, 58
+  offset: 13, 10
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 44, 48
+  size: 29, 29
+  orig: 62, 58
+  offset: 21, 5
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 70, 14
+  size: 18, 14
+  orig: 62, 58
+  offset: 41, 4
+  index: -1
+side/[base]elbowL2
+  rotate: false
+  xy: 2, 22
+  size: 18, 15
+  orig: 62, 58
+  offset: 41, 3
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 75, 48
+  size: 20, 15
+  orig: 62, 58
+  offset: 8, 3
+  index: -1
+side/[base]elbowR2
+  rotate: false
+  xy: 44, 31
+  size: 21, 15
+  orig: 62, 58
+  offset: 8, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 39
+  size: 40, 38
+  orig: 62, 58
+  offset: 21, 15
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 65, 4
+  size: 7, 8
+  orig: 62, 58
+  offset: 36, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 74, 4
+  size: 7, 8
+  orig: 62, 58
+  offset: 26, 0
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 90, 27
+  size: 19, 13
+  orig: 62, 58
+  offset: 35, 13
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 2, 3
+  size: 19, 12
+  orig: 62, 58
+  offset: 35, 14
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 22, 17
+  size: 22, 12
+  orig: 62, 58
+  offset: 32, 14
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 23, 3
+  size: 19, 12
+  orig: 62, 58
+  offset: 35, 14
+  index: -1
+side/face/[base]mad
+  rotate: true
+  xy: 92, 48
+  size: 19, 13
+  orig: 62, 58
+  offset: 35, 13
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 46, 16
+  size: 22, 12
+  orig: 62, 58
+  offset: 32, 14
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 44, 2
+  size: 19, 12
+  orig: 62, 58
+  offset: 35, 14
+  index: -1

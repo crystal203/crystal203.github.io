@@ -1,0 +1,300 @@
+
+qc_android_fat__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 2, 61
+  size: 38, 32
+  orig: 38, 32
+  offset: 0, 0
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 227, 103
+  size: 25, 29
+  orig: 25, 29
+  offset: 0, 0
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 193, 16
+  size: 59, 53
+  orig: 59, 53
+  offset: 0, 0
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 66, 90
+  size: 29, 29
+  orig: 29, 29
+  offset: 0, 0
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 230, 134
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 88, 121
+  size: 35, 21
+  orig: 35, 21
+  offset: 0, 0
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 22, 148
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 22, 148
+  size: 21, 17
+  orig: 21, 17
+  offset: 0, 0
+  index: -1
+back/earL
+  rotate: false
+  xy: 103, 165
+  size: 10, 9
+  orig: 10, 9
+  offset: 0, 0
+  index: -1
+back/earR
+  rotate: false
+  xy: 115, 165
+  size: 10, 9
+  orig: 10, 9
+  offset: 0, 0
+  index: -1
+back/hair
+  rotate: false
+  xy: 45, 123
+  size: 41, 21
+  orig: 41, 21
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 97, 87
+  size: 30, 32
+  orig: 30, 32
+  offset: 0, 0
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 196, 115
+  size: 24, 29
+  orig: 24, 29
+  offset: 0, 0
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 2
+  size: 59, 53
+  orig: 59, 53
+  offset: 0, 0
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 2, 98
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 167, 142
+  size: 20, 21
+  orig: 20, 21
+  offset: 0, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 125, 119
+  size: 35, 23
+  orig: 35, 23
+  offset: 0, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 45, 147
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 45, 147
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+front/bodyF
+  rotate: false
+  xy: 200, 162
+  size: 16, 12
+  orig: 16, 12
+  offset: 0, 0
+  index: -1
+front/earR
+  rotate: false
+  xy: 127, 165
+  size: 51, 9
+  orig: 51, 9
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 218, 162
+  size: 19, 12
+  orig: 19, 12
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 2, 167
+  size: 19, 7
+  orig: 19, 7
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 23, 167
+  size: 19, 7
+  orig: 19, 7
+  offset: 0, 0
+  index: -1
+front/hair
+  rotate: false
+  xy: 2, 126
+  size: 41, 20
+  orig: 41, 20
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 209, 71
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 33, 95
+  size: 26, 31
+  orig: 26, 31
+  offset: 0, 0
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 125, 36
+  size: 66, 47
+  orig: 66, 47
+  offset: 0, 0
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 162, 116
+  size: 32, 23
+  orig: 32, 23
+  offset: 0, 0
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 180, 164
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 190, 141
+  size: 38, 19
+  orig: 38, 19
+  offset: 0, 0
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 68, 146
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 95, 145
+  size: 25, 18
+  orig: 25, 18
+  offset: 0, 0
+  index: -1
+side/bodyF
+  rotate: false
+  xy: 2, 152
+  size: 18, 13
+  orig: 18, 13
+  offset: 0, 0
+  index: -1
+side/earL
+  rotate: false
+  xy: 80, 166
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+side/earR
+  rotate: false
+  xy: 90, 166
+  size: 11, 8
+  orig: 11, 8
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 239, 158
+  size: 16, 12
+  orig: 16, 12
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 44, 167
+  size: 16, 7
+  orig: 16, 7
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 62, 167
+  size: 16, 7
+  orig: 16, 7
+  offset: 0, 0
+  index: -1
+side/hair
+  rotate: false
+  xy: 122, 144
+  size: 43, 19
+  orig: 43, 19
+  offset: 0, 0
+  index: -1
+weapon1
+  rotate: false
+  xy: 131, 85
+  size: 76, 28
+  orig: 76, 40
+  offset: 0, 6
+  index: -1
+weapon2
+  rotate: false
+  xy: 42, 57
+  size: 81, 28
+  orig: 84, 40
+  offset: 1, 6
+  index: -1

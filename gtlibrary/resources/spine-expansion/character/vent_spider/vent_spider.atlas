@@ -1,0 +1,300 @@
+
+vent_spider__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL1
+  rotate: false
+  xy: 2, 7
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 8
+  index: -1
+back/[base]armR1
+  rotate: false
+  xy: 2, 7
+  size: 8, 7
+  orig: 55, 56
+  offset: 15, 8
+  index: -1
+back/[base]armL2_1
+  rotate: true
+  xy: 53, 7
+  size: 7, 8
+  orig: 55, 56
+  offset: 16, 11
+  index: -1
+back/[base]armR2_1
+  rotate: true
+  xy: 53, 7
+  size: 7, 8
+  orig: 55, 56
+  offset: 16, 11
+  index: -1
+back/[base]armL2_2
+  rotate: false
+  xy: 19, 20
+  size: 8, 11
+  orig: 55, 56
+  offset: 10, 9
+  index: -1
+back/[base]armR2_2
+  rotate: false
+  xy: 19, 20
+  size: 8, 11
+  orig: 55, 56
+  offset: 10, 9
+  index: -1
+back/[base]body
+  rotate: true
+  xy: 62, 33
+  size: 21, 25
+  orig: 55, 56
+  offset: 17, 3
+  index: -1
+back/[base]elbowL1
+  rotate: true
+  xy: 31, 6
+  size: 7, 8
+  orig: 55, 56
+  offset: 15, 3
+  index: -1
+back/[base]elbowR1
+  rotate: true
+  xy: 31, 6
+  size: 7, 8
+  orig: 55, 56
+  offset: 15, 3
+  index: -1
+back/[base]elbowL2
+  rotate: true
+  xy: 19, 11
+  size: 7, 10
+  orig: 55, 56
+  offset: 9, 1
+  index: -1
+back/[base]elbowR2
+  rotate: true
+  xy: 19, 11
+  size: 7, 10
+  orig: 55, 56
+  offset: 9, 1
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 89, 34
+  size: 25, 20
+  orig: 55, 56
+  offset: 15, 8
+  index: -1
+front/[base]armL1
+  rotate: false
+  xy: 72, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 17, 8
+  index: -1
+front/[base]armR1
+  rotate: false
+  xy: 72, 3
+  size: 6, 6
+  orig: 55, 56
+  offset: 17, 8
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 41, 6
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 14
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 41, 6
+  size: 7, 7
+  orig: 55, 56
+  offset: 16, 14
+  index: -1
+front/[base]armL2_2
+  rotate: false
+  xy: 85, 20
+  size: 8, 11
+  orig: 55, 56
+  offset: 10, 12
+  index: -1
+front/[base]armR2_2
+  rotate: false
+  xy: 85, 20
+  size: 8, 11
+  orig: 55, 56
+  offset: 10, 12
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 33
+  size: 29, 21
+  orig: 55, 56
+  offset: 13, 6
+  index: -1
+front/[base]elbowL1
+  rotate: true
+  xy: 105, 13
+  size: 7, 11
+  orig: 55, 56
+  offset: 16, 1
+  index: -1
+front/[base]elbowR1
+  rotate: true
+  xy: 105, 13
+  size: 7, 11
+  orig: 55, 56
+  offset: 16, 1
+  index: -1
+front/[base]elbowL2
+  rotate: true
+  xy: 70, 11
+  size: 7, 10
+  orig: 55, 56
+  offset: 9, 4
+  index: -1
+front/[base]elbowR2
+  rotate: true
+  xy: 70, 11
+  size: 7, 10
+  orig: 55, 56
+  offset: 9, 4
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 2, 16
+  size: 15, 15
+  orig: 55, 56
+  offset: 20, 2
+  index: -1
+front/headlight
+  rotate: true
+  xy: 33, 15
+  size: 17, 18
+  orig: 55, 56
+  offset: 20, 0
+  index: -1
+side/headlight
+  rotate: true
+  xy: 33, 15
+  size: 17, 18
+  orig: 56, 56
+  offset: 31, 3
+  index: -1
+side/[base]armL1
+  rotate: true
+  xy: 12, 3
+  size: 6, 7
+  orig: 56, 56
+  offset: 40, 7
+  index: -1
+side/[base]armL1_2
+  rotate: false
+  xy: 62, 4
+  size: 8, 5
+  orig: 56, 56
+  offset: 40, 7
+  index: -1
+side/[base]armL2
+  rotate: false
+  xy: 70, 20
+  size: 13, 11
+  orig: 56, 56
+  offset: 33, 11
+  index: -1
+side/[base]armR1
+  rotate: false
+  xy: 80, 3
+  size: 6, 6
+  orig: 56, 56
+  offset: 28, 7
+  index: -1
+side/[base]armR1_2
+  rotate: false
+  xy: 116, 2
+  size: 5, 5
+  orig: 56, 56
+  offset: 27, 7
+  index: -1
+side/[base]armR2_1
+  rotate: false
+  xy: 115, 22
+  size: 8, 9
+  orig: 56, 56
+  offset: 20, 12
+  index: -1
+side/[base]armR2_2
+  rotate: false
+  xy: 95, 21
+  size: 8, 11
+  orig: 56, 56
+  offset: 15, 10
+  index: -1
+side/[base]armR3
+  rotate: true
+  xy: 88, 2
+  size: 5, 7
+  orig: 56, 56
+  offset: 15, 10
+  index: -1
+side/[base]armR3_2
+  rotate: false
+  xy: 105, 22
+  size: 8, 10
+  orig: 56, 56
+  offset: 10, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 33, 34
+  size: 27, 20
+  orig: 56, 56
+  offset: 14, 6
+  index: -1
+side/[base]elbowL1
+  rotate: true
+  xy: 103, 7
+  size: 4, 11
+  orig: 56, 56
+  offset: 46, 2
+  index: -1
+side/[base]elbowL2
+  rotate: false
+  xy: 95, 9
+  size: 6, 10
+  orig: 56, 56
+  offset: 40, 2
+  index: -1
+side/[base]elbowR1
+  rotate: false
+  xy: 118, 9
+  size: 6, 11
+  orig: 56, 56
+  offset: 25, 2
+  index: -1
+side/[base]elbowR2
+  rotate: true
+  xy: 82, 11
+  size: 7, 10
+  orig: 56, 56
+  offset: 16, 2
+  index: -1
+side/[base]elbowR3
+  rotate: true
+  xy: 21, 3
+  size: 6, 7
+  orig: 56, 56
+  offset: 11, 2
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 53, 16
+  size: 15, 15
+  orig: 56, 56
+  offset: 28, 4
+  index: -1

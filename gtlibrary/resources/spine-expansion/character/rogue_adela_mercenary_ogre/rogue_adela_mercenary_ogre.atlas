@@ -1,0 +1,265 @@
+
+rogue_adela_mercenary_ogre__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 217, 43
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 2, 44
+  size: 23, 29
+  orig: 23, 29
+  offset: 0, 0
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 63, 69
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 33, 45
+  size: 22, 29
+  orig: 22, 29
+  offset: 0, 0
+  index: -1
+back/[base]handL
+  rotate: false
+  xy: 122, 66
+  size: 26, 23
+  orig: 26, 23
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 192, 67
+  size: 37, 23
+  orig: 75, 41
+  offset: 19, 7
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 143, 2
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 143, 2
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+back/shoulderR
+  rotate: false
+  xy: 234, 26
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 122, 91
+  size: 26, 30
+  orig: 26, 30
+  offset: 0, 0
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 64, 46
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 69
+  size: 59, 52
+  orig: 59, 52
+  offset: 0, 0
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 122, 41
+  size: 23, 26
+  orig: 23, 26
+  offset: 0, 0
+  index: -1
+front/[base]handL
+  rotate: false
+  xy: 189, 22
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 120, 3
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 120, 3
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 33, 30
+  size: 27, 13
+  orig: 27, 13
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 64, 30
+  size: 29, 14
+  orig: 29, 14
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 179, 20
+  size: 27, 8
+  orig: 27, 8
+  offset: 0, 0
+  index: -1
+front/helm
+  rotate: false
+  xy: 217, 73
+  size: 37, 28
+  orig: 75, 41
+  offset: 19, 2
+  index: -1
+front/shoulderR
+  rotate: false
+  xy: 214, 14
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 150, 49
+  size: 28, 38
+  orig: 28, 38
+  offset: 0, 0
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 218, 103
+  size: 25, 31
+  orig: 25, 31
+  offset: 0, 0
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 150, 106
+  size: 66, 43
+  orig: 66, 43
+  offset: 0, 0
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 95, 19
+  size: 27, 23
+  orig: 27, 23
+  offset: 0, 0
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 214, 31
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 218, 130
+  size: 35, 19
+  orig: 35, 19
+  offset: 0, 0
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 190, 46
+  size: 25, 19
+  orig: 25, 19
+  offset: 0, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 95, 48
+  size: 25, 19
+  orig: 25, 19
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 2, 29
+  size: 27, 13
+  orig: 27, 13
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 150, 35
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 144, 22
+  size: 22, 11
+  orig: 22, 11
+  offset: 0, 0
+  index: -1
+side/helm
+  rotate: false
+  xy: 150, 79
+  size: 40, 25
+  orig: 64, 37
+  offset: 12, 1
+  index: -1
+side/shoulderR
+  rotate: false
+  xy: 120, 24
+  size: 22, 15
+  orig: 22, 15
+  offset: 0, 0
+  index: -1
+side/shoulderRB
+  rotate: true
+  xy: 166, 8
+  size: 12, 11
+  orig: 12, 11
+  offset: 0, 0
+  index: -1
+weapon1
+  rotate: false
+  xy: 2, 123
+  size: 72, 26
+  orig: 72, 26
+  offset: 0, 0
+  index: -1
+weapon2
+  rotate: false
+  xy: 76, 123
+  size: 72, 26
+  orig: 72, 26
+  offset: 0, 0
+  index: -1

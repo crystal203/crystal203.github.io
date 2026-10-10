@@ -1,0 +1,216 @@
+
+lw_bomb__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 2, 28
+  size: 25, 24
+  orig: 65, 66
+  offset: 20, 6
+  index: -1
+back/fx_body
+  rotate: false
+  xy: 2, 54
+  size: 29, 28
+  orig: 65, 66
+  offset: 18, 4
+  index: -1
+back/fx_boom
+  rotate: false
+  xy: 96, 55
+  size: 29, 27
+  orig: 65, 66
+  offset: 18, 4
+  index: -1
+back/legB
+  rotate: false
+  xy: 71, 2
+  size: 7, 6
+  orig: 65, 66
+  offset: 39, 7
+  index: -1
+back/legF
+  rotate: false
+  xy: 51, 9
+  size: 8, 6
+  orig: 65, 66
+  offset: 37, 5
+  index: -1
+back/wick
+  rotate: false
+  xy: 62, 11
+  size: 6, 13
+  orig: 65, 66
+  offset: 31, 26
+  index: -1
+front/body
+  rotate: false
+  xy: 29, 28
+  size: 25, 24
+  orig: 65, 66
+  offset: 20, 6
+  index: -1
+front/face/damaged
+  rotate: false
+  xy: 2, 4
+  size: 9, 1
+  orig: 65, 66
+  offset: 28, 9
+  index: -1
+front/face/mad
+  rotate: false
+  xy: 78, 19
+  size: 11, 5
+  orig: 65, 66
+  offset: 27, 6
+  index: -1
+front/fx_body
+  rotate: false
+  xy: 33, 54
+  size: 29, 28
+  orig: 65, 66
+  offset: 18, 4
+  index: -1
+front/fx_boom
+  rotate: false
+  xy: 64, 26
+  size: 29, 27
+  orig: 65, 66
+  offset: 18, 4
+  index: -1
+front/head
+  rotate: false
+  xy: 2, 7
+  size: 15, 19
+  orig: 65, 66
+  offset: 25, 6
+  index: -1
+front/legB
+  rotate: false
+  xy: 80, 3
+  size: 8, 5
+  orig: 65, 66
+  offset: 38, 7
+  index: -1
+front/legF
+  rotate: false
+  xy: 46, 2
+  size: 7, 5
+  orig: 65, 66
+  offset: 36, 5
+  index: -1
+front/wick
+  rotate: false
+  xy: 70, 11
+  size: 6, 13
+  orig: 65, 66
+  offset: 29, 26
+  index: -1
+side/wick
+  rotate: false
+  xy: 70, 11
+  size: 6, 13
+  orig: 68, 68
+  offset: 29, 27
+  index: -1
+fx_glow
+  rotate: false
+  xy: 34, 11
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+fx_wick
+  rotate: false
+  xy: 51, 17
+  size: 9, 9
+  orig: 10, 10
+  offset: 0, 1
+  index: -1
+side/body
+  rotate: false
+  xy: 95, 4
+  size: 25, 24
+  orig: 68, 68
+  offset: 21, 7
+  index: -1
+side/face/damaged
+  rotate: false
+  xy: 13, 4
+  size: 7, 1
+  orig: 68, 68
+  offset: 39, 11
+  index: -1
+side/face/mad
+  rotate: false
+  xy: 34, 4
+  size: 10, 5
+  orig: 68, 68
+  offset: 38, 8
+  index: -1
+side/fx_body
+  rotate: false
+  xy: 95, 30
+  size: 28, 23
+  orig: 68, 68
+  offset: 19, 10
+  index: -1
+side/fx_boom
+  rotate: false
+  xy: 64, 55
+  size: 30, 27
+  orig: 68, 68
+  offset: 19, 5
+  index: -1
+side/head
+  rotate: false
+  xy: 19, 7
+  size: 13, 19
+  orig: 68, 68
+  offset: 35, 8
+  index: -1
+side/legL2
+  rotate: true
+  xy: 56, 45
+  size: 7, 5
+  orig: 68, 68
+  offset: 33, 6
+  index: -1
+side/legL1
+  rotate: true
+  xy: 56, 45
+  size: 7, 5
+  orig: 68, 68
+  offset: 40, 6
+  index: -1
+side/legL3
+  rotate: true
+  xy: 56, 45
+  size: 7, 5
+  orig: 68, 68
+  offset: 26, 6
+  index: -1
+side/legR1
+  rotate: true
+  xy: 56, 37
+  size: 6, 5
+  orig: 68, 68
+  offset: 32, 6
+  index: -1
+side/legR2
+  rotate: false
+  xy: 78, 10
+  size: 8, 7
+  orig: 68, 68
+  offset: 26, 6
+  index: -1
+side/legR3
+  rotate: false
+  xy: 61, 3
+  size: 8, 6
+  orig: 68, 68
+  offset: 20, 6
+  index: -1

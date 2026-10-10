@@ -1,0 +1,153 @@
+
+mall_human_plant__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: false
+  xy: 56, 8
+  size: 5, 6
+  orig: 56, 56
+  offset: 34, 8
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 29, 8
+  size: 5, 6
+  orig: 56, 56
+  offset: 26, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 29, 25
+  size: 11, 12
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+side/[base]elbowL
+  rotate: true
+  xy: 39, 9
+  size: 6, 7
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 53, 16
+  size: 8, 10
+  orig: 56, 56
+  offset: 22, 1
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 14
+  size: 25, 23
+  orig: 56, 56
+  offset: 19, 14
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 2, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 12, 8
+  size: 4, 8
+  orig: 56, 56
+  offset: 28, 0
+  index: -1
+side/bodydecoL
+  rotate: false
+  xy: 42, 28
+  size: 9, 9
+  orig: 56, 56
+  offset: 31, 2
+  index: -1
+side/bodydecoR
+  rotate: false
+  xy: 48, 8
+  size: 6, 6
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 22, 11
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/helmdecoL
+  rotate: false
+  xy: 53, 28
+  size: 9, 9
+  orig: 56, 56
+  offset: 35, 19
+  index: -1
+side/helmdecoR1
+  rotate: false
+  xy: 42, 17
+  size: 9, 9
+  orig: 56, 56
+  offset: 22, 27
+  index: -1
+side/helmdecoR2
+  rotate: false
+  xy: 29, 15
+  size: 8, 8
+  orig: 56, 56
+  offset: 26, 17
+  index: -1
+side/helmdecoR3
+  rotate: false
+  xy: 37, 2
+  size: 5, 5
+  orig: 56, 56
+  offset: 20, 19
+  index: -1

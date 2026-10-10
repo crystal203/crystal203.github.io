@@ -1,0 +1,48 @@
+
+arcade_demon_ceo__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+out/arcade_demon_ceo_side/side_idle_1
+  rotate: false
+  xy: 82, 14
+  size: 18, 18
+  orig: 22, 32
+  offset: 2, 0
+  index: -1
+out/arcade_demon_ceo_side/side_idle_2
+  rotate: true
+  xy: 102, 14
+  size: 18, 17
+  orig: 22, 32
+  offset: 2, 0
+  index: -1
+out/arcade_demon_ceo_side/side_love_1
+  rotate: false
+  xy: 22, 3
+  size: 18, 29
+  orig: 22, 32
+  offset: 1, 0
+  index: -1
+out/arcade_demon_ceo_side/side_love_2
+  rotate: false
+  xy: 2, 2
+  size: 18, 30
+  orig: 22, 32
+  offset: 2, 0
+  index: -1
+out/arcade_demon_ceo_side/side_love_3
+  rotate: false
+  xy: 42, 3
+  size: 18, 29
+  orig: 22, 32
+  offset: 3, 0
+  index: -1
+out/arcade_demon_ceo_side/side_love_4
+  rotate: false
+  xy: 62, 4
+  size: 18, 28
+  orig: 22, 32
+  offset: 2, 0
+  index: -1

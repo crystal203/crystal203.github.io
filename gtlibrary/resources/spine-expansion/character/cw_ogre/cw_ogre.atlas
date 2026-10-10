@@ -1,0 +1,293 @@
+
+cw_ogre__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 142, 30
+  size: 30, 28
+  orig: 30, 28
+  offset: 0, 0
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 117, 72
+  size: 23, 29
+  orig: 23, 29
+  offset: 0, 0
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 2, 73
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 232, 47
+  size: 22, 29
+  orig: 22, 29
+  offset: 0, 0
+  index: -1
+back/[base]handL
+  rotate: true
+  xy: 175, 53
+  size: 26, 23
+  orig: 26, 23
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 210, 116
+  size: 43, 32
+  orig: 43, 32
+  offset: 0, 0
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 81, 23
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 81, 23
+  size: 21, 18
+  orig: 21, 18
+  offset: 0, 0
+  index: -1
+back/magazine
+  rotate: false
+  xy: 61, 67
+  size: 54, 38
+  orig: 54, 38
+  offset: 0, 0
+  index: -1
+back/shoulderR
+  rotate: false
+  xy: 125, 120
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 200, 51
+  size: 26, 30
+  orig: 26, 30
+  offset: 0, 0
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 199, 28
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 64, 107
+  size: 59, 52
+  orig: 59, 52
+  offset: 0, 0
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 174, 25
+  size: 23, 26
+  orig: 23, 26
+  offset: 0, 0
+  index: -1
+front/[base]handL
+  rotate: false
+  xy: 230, 23
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 2, 16
+  size: 37, 25
+  orig: 37, 25
+  offset: 0, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 58, 31
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 58, 31
+  size: 21, 19
+  orig: 21, 19
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 199, 13
+  size: 27, 13
+  orig: 27, 13
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 42, 42
+  size: 29, 14
+  orig: 29, 14
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 87, 43
+  size: 27, 8
+  orig: 27, 8
+  offset: 0, 0
+  index: -1
+front/helm
+  rotate: false
+  xy: 210, 150
+  size: 43, 37
+  orig: 43, 37
+  offset: 0, 0
+  index: -1
+front/magazine
+  rotate: false
+  xy: 142, 108
+  size: 57, 34
+  orig: 57, 34
+  offset: 0, 0
+  index: -1
+front/shoulderR
+  rotate: false
+  xy: 125, 103
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 2, 43
+  size: 28, 38
+  orig: 28, 38
+  offset: 0, 0
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 142, 60
+  size: 25, 31
+  orig: 25, 31
+  offset: 0, 0
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 142, 144
+  size: 66, 43
+  orig: 66, 43
+  offset: 0, 0
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 117, 43
+  size: 27, 23
+  orig: 27, 23
+  offset: 0, 0
+  index: -1
+side/[base]handL
+  rotate: true
+  xy: 41, 22
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 142, 87
+  size: 35, 19
+  orig: 35, 19
+  offset: 0, 0
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 179, 81
+  size: 25, 19
+  orig: 25, 19
+  offset: 0, 0
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 228, 2
+  size: 25, 19
+  orig: 25, 19
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 58, 52
+  size: 27, 13
+  orig: 27, 13
+  offset: 0, 0
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 87, 53
+  size: 27, 12
+  orig: 27, 12
+  offset: 0, 0
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 243, 92
+  size: 22, 11
+  orig: 22, 11
+  offset: 0, 0
+  index: -1
+side/helm
+  rotate: false
+  xy: 201, 79
+  size: 40, 35
+  orig: 40, 35
+  offset: 0, 0
+  index: -1
+side/magazine
+  rotate: false
+  xy: 2, 127
+  size: 60, 32
+  orig: 60, 32
+  offset: 0, 0
+  index: -1
+side/shoulderR
+  rotate: true
+  xy: 125, 137
+  size: 22, 15
+  orig: 22, 15
+  offset: 0, 0
+  index: -1
+side/shoulderRB
+  rotate: true
+  xy: 243, 78
+  size: 12, 11
+  orig: 12, 11
+  offset: 0, 0
+  index: -1
+weapon1
+  rotate: false
+  xy: 2, 161
+  size: 68, 26
+  orig: 68, 26
+  offset: 0, 0
+  index: -1
+weapon2
+  rotate: false
+  xy: 72, 161
+  size: 68, 26
+  orig: 68, 26
+  offset: 0, 0
+  index: -1

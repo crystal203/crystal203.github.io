@@ -1,0 +1,111 @@
+
+titantavern_fat_mouse__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+[base]armL
+  rotate: false
+  xy: 126, 9
+  size: 14, 15
+  orig: 87, 74
+  offset: 34, 59
+  index: -1
+[base]armR
+  rotate: true
+  xy: 111, 8
+  size: 16, 14
+  orig: 87, 74
+  offset: 36, 20
+  index: -1
+[base]body
+  rotate: true
+  xy: 1, 40
+  size: 87, 74
+  orig: 87, 74
+  offset: 0, 0
+  index: -1
+[base]elbowL
+  rotate: false
+  xy: 64, 1
+  size: 8, 7
+  orig: 87, 74
+  offset: 35, 66
+  index: -1
+[base]elbowR
+  rotate: false
+  xy: 120, 112
+  size: 13, 15
+  orig: 87, 74
+  offset: 35, 28
+  index: -1
+[base]head
+  rotate: true
+  xy: 1, 5
+  size: 34, 62
+  orig: 87, 74
+  offset: 2, 6
+  index: -1
+[base]legL
+  rotate: true
+  xy: 64, 9
+  size: 30, 21
+  orig: 87, 74
+  offset: 56, 45
+  index: -1
+[base]legR
+  rotate: true
+  xy: 86, 12
+  size: 29, 21
+  orig: 87, 74
+  offset: 58, 11
+  index: -1
+bubble
+  rotate: false
+  xy: 125, 25
+  size: 14, 16
+  orig: 87, 74
+  offset: 15, 53
+  index: -1
+bubble2
+  rotate: false
+  xy: 98, 2
+  size: 12, 9
+  orig: 87, 74
+  offset: 16, 59
+  index: -1
+earL
+  rotate: false
+  xy: 86, 1
+  size: 11, 10
+  orig: 87, 74
+  offset: 0, 45
+  index: -1
+earR
+  rotate: false
+  xy: 108, 25
+  size: 16, 16
+  orig: 87, 74
+  offset: 0, 9
+  index: -1
+face/[base]damaged
+  rotate: true
+  xy: 76, 42
+  size: 21, 56
+  orig: 87, 74
+  offset: 14, 16
+  index: -1
+face/[base]idle
+  rotate: false
+  xy: 100, 71
+  size: 19, 56
+  orig: 87, 74
+  offset: 16, 16
+  index: -1
+tail
+  rotate: true
+  xy: 76, 64
+  size: 63, 23
+  orig: 87, 74
+  offset: 22, 0
+  index: -1

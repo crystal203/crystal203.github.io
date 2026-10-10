@@ -1,0 +1,76 @@
+
+visual_novel_emotion__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+emoticon_bubble_cry
+  rotate: false
+  xy: 1, 10
+  size: 54, 28
+  orig: 54, 28
+  offset: 0, 0
+  index: -1
+emoticon_bubble_sweat_1
+  rotate: true
+  xy: 178, 20
+  size: 23, 21
+  orig: 23, 21
+  offset: 0, 0
+  index: -1
+emoticon_bubble_sweat_2
+  rotate: true
+  xy: 157, 12
+  size: 31, 20
+  orig: 31, 20
+  offset: 0, 0
+  index: -1
+expd_bubble_empty
+  rotate: true
+  xy: 89, 44
+  size: 82, 91
+  orig: 82, 91
+  offset: 0, 0
+  index: -1
+expd_bubble_exclamation
+  rotate: false
+  xy: 1, 39
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+expd_ic_emotion_anger
+  rotate: false
+  xy: 90, 1
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+expd_ic_emotion_exclamation
+  rotate: true
+  xy: 157, 1
+  size: 10, 35
+  orig: 10, 35
+  offset: 0, 0
+  index: -1
+expd_ic_emotion_happy
+  rotate: false
+  xy: 56, 4
+  size: 33, 34
+  orig: 33, 34
+  offset: 0, 0
+  index: -1
+expd_ic_emotion_question
+  rotate: false
+  xy: 133, 8
+  size: 23, 35
+  orig: 23, 35
+  offset: 0, 0
+  index: -1
+expd_ic_emotion_silence
+  rotate: false
+  xy: 193, 7
+  size: 12, 12
+  orig: 12, 12
+  offset: 0, 0
+  index: -1

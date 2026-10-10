@@ -1,0 +1,62 @@
+
+arcade_boss_eagle_side__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side_damaged_1
+  rotate: false
+  xy: 68, 21
+  size: 22, 39
+  orig: 32, 40
+  offset: 5, 1
+  index: -1
+side_damaged_2
+  rotate: false
+  xy: 35, 22
+  size: 31, 38
+  orig: 32, 40
+  offset: 1, 2
+  index: -1
+side_damaged_3
+  rotate: false
+  xy: 92, 21
+  size: 22, 39
+  orig: 32, 40
+  offset: 5, 1
+  index: -1
+side_damaged_4
+  rotate: false
+  xy: 2, 20
+  size: 31, 40
+  orig: 32, 40
+  offset: 0, 0
+  index: -1
+side_idle_1
+  rotate: false
+  xy: 96, 5
+  size: 28, 14
+  orig: 32, 40
+  offset: 2, 8
+  index: -1
+side_idle_2
+  rotate: false
+  xy: 65, 3
+  size: 29, 16
+  orig: 32, 40
+  offset: 1, 7
+  index: -1
+side_idle_3
+  rotate: false
+  xy: 35, 2
+  size: 28, 18
+  orig: 32, 40
+  offset: 2, 6
+  index: -1
+side_idle_4
+  rotate: false
+  xy: 2, 4
+  size: 28, 14
+  orig: 32, 40
+  offset: 2, 9
+  index: -1

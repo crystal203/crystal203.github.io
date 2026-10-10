@@ -1,0 +1,139 @@
+
+witch_pot__page0.png
+size: 64,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/[base]armL
+  rotate: false
+  xy: 17, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 17, 10
+  size: 6, 7
+  orig: 55, 56
+  offset: 19, 7
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 33, 32
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]armR2
+  rotate: false
+  xy: 33, 32
+  size: 6, 7
+  orig: 55, 56
+  offset: 29, 8
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 1, 11
+  size: 15, 16
+  orig: 55, 56
+  offset: 20, 0
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 49, 44
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 49, 44
+  size: 6, 7
+  orig: 55, 56
+  offset: 16, 3
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 49, 52
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]elbowR2
+  rotate: false
+  xy: 49, 52
+  size: 9, 7
+  orig: 55, 56
+  offset: 32, 3
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 1, 28
+  size: 31, 31
+  orig: 55, 56
+  offset: 12, 6
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 59, 52
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 59, 52
+  size: 4, 7
+  orig: 55, 56
+  offset: 23, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 33, 50
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 33, 50
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 1, 1
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 17, 18
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 17, 18
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 17, 18
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 33, 40
+  size: 15, 9
+  orig: 55, 56
+  offset: 20, 14
+  index: -1

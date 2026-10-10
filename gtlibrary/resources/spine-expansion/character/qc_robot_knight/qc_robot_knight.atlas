@@ -1,0 +1,783 @@
+
+qc_robot_knight__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/arm_L
+  rotate: false
+  xy: 234, 83
+  size: 19, 24
+  orig: 39, 36
+  offset: 4, 11
+  index: -1
+back/arm_R
+  rotate: false
+  xy: 234, 83
+  size: 19, 24
+  orig: 39, 36
+  offset: 4, 11
+  index: -1
+back/body
+  rotate: false
+  xy: 108, 106
+  size: 53, 21
+  orig: 106, 95
+  offset: 27, 63
+  index: -1
+back/body_F
+  rotate: false
+  xy: 132, 164
+  size: 65, 55
+  orig: 106, 95
+  offset: 21, 27
+  index: -1
+back/elbow_L
+  rotate: false
+  xy: 199, 182
+  size: 35, 37
+  orig: 56, 47
+  offset: 6, 5
+  index: -1
+back/elbow_R
+  rotate: true
+  xy: 199, 145
+  size: 35, 37
+  orig: 56, 47
+  offset: 7, 5
+  index: -1
+back/foot_L
+  rotate: false
+  xy: 183, 24
+  size: 19, 20
+  orig: 23, 24
+  offset: 1, 4
+  index: -1
+back/foot_R
+  rotate: false
+  xy: 183, 24
+  size: 19, 20
+  orig: 23, 24
+  offset: 1, 4
+  index: -1
+back/hand_L
+  rotate: false
+  xy: 198, 77
+  size: 34, 30
+  orig: 56, 51
+  offset: 7, 6
+  index: -1
+back/hand_R
+  rotate: false
+  xy: 198, 77
+  size: 34, 30
+  orig: 56, 51
+  offset: 8, 6
+  index: -1
+back/head
+  rotate: false
+  xy: 205, 33
+  size: 45, 12
+  orig: 108, 97
+  offset: 32, 66
+  index: -1
+back/index
+  rotate: false
+  xy: 238, 153
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/knight_male/knight_hair
+  rotate: false
+  xy: 238, 153
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/knight_female/knight_legL
+  rotate: false
+  xy: 238, 153
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/knight_female/knight_legR
+  rotate: false
+  xy: 238, 153
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/knight_male/knight_hair
+  rotate: false
+  xy: 238, 153
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+back/leg_L
+  rotate: false
+  xy: 145, 19
+  size: 15, 11
+  orig: 27, 21
+  offset: 5, 10
+  index: -1
+back/leg_R
+  rotate: false
+  xy: 145, 19
+  size: 15, 11
+  orig: 27, 21
+  offset: 4, 10
+  index: -1
+back/shoulder_L
+  rotate: true
+  xy: 211, 109
+  size: 34, 31
+  orig: 71, 64
+  offset: 13, 32
+  index: -1
+back/shoulder_R
+  rotate: false
+  xy: 41, 92
+  size: 34, 31
+  orig: 71, 64
+  offset: 13, 32
+  index: -1
+front/arm_L
+  rotate: false
+  xy: 238, 176
+  size: 16, 18
+  orig: 31, 28
+  offset: 1, 4
+  index: -1
+front/arm_R
+  rotate: false
+  xy: 238, 176
+  size: 16, 18
+  orig: 31, 28
+  offset: 1, 4
+  index: -1
+front/body
+  rotate: false
+  xy: 2, 159
+  size: 65, 60
+  orig: 106, 95
+  offset: 20, 24
+  index: -1
+front/bodyB
+  rotate: false
+  xy: 143, 49
+  size: 29, 29
+  orig: 106, 95
+  offset: 38, 28
+  index: -1
+front/bodyF2
+  rotate: false
+  xy: 174, 46
+  size: 29, 29
+  orig: 106, 95
+  offset: 38, 28
+  index: -1
+front/elbow_L
+  rotate: true
+  xy: 132, 129
+  size: 33, 37
+  orig: 56, 47
+  offset: 7, 4
+  index: -1
+front/elbow_R
+  rotate: true
+  xy: 69, 125
+  size: 33, 37
+  orig: 56, 47
+  offset: 7, 4
+  index: -1
+front/foot_L
+  rotate: true
+  xy: 204, 13
+  size: 18, 19
+  orig: 23, 24
+  offset: 0, 0
+  index: -1
+front/foot_R
+  rotate: true
+  xy: 204, 13
+  size: 18, 19
+  orig: 23, 24
+  offset: 0, 0
+  index: -1
+front/hand_L
+  rotate: false
+  xy: 2, 59
+  size: 31, 30
+  orig: 56, 51
+  offset: 13, 10
+  index: -1
+front/hand_R
+  rotate: false
+  xy: 2, 59
+  size: 31, 30
+  orig: 56, 51
+  offset: 13, 10
+  index: -1
+front/head
+  rotate: false
+  xy: 136, 32
+  size: 45, 12
+  orig: 108, 97
+  offset: 31, 66
+  index: -1
+front/knight_female/face/[base]idle
+  rotate: false
+  xy: 97, 14
+  size: 15, 9
+  orig: 139, 144
+  offset: 62, 58
+  index: -1
+front/knight_female/face/[base]mad
+  rotate: false
+  xy: 162, 19
+  size: 15, 11
+  orig: 139, 144
+  offset: 62, 57
+  index: -1
+front/knight_female/face/[base]smile
+  rotate: false
+  xy: 32, 19
+  size: 15, 10
+  orig: 139, 144
+  offset: 62, 58
+  index: -1
+front/knight_female/face/[base]tired
+  rotate: false
+  xy: 179, 13
+  size: 15, 9
+  orig: 139, 144
+  offset: 62, 58
+  index: -1
+front/knight_female/knight_body
+  rotate: false
+  xy: 237, 53
+  size: 13, 13
+  orig: 139, 144
+  offset: 63, 47
+  index: -1
+front/knight_female/knight_hair
+  rotate: true
+  xy: 108, 131
+  size: 27, 20
+  orig: 139, 144
+  offset: 56, 52
+  index: -1
+front/knight_female/knight_head
+  rotate: true
+  xy: 35, 31
+  size: 27, 28
+  orig: 139, 144
+  offset: 56, 56
+  index: -1
+front/knight_male/face/[base]attack
+  rotate: false
+  xy: 2, 18
+  size: 15, 10
+  orig: 139, 144
+  offset: 62, 57
+  index: -1
+front/knight_female/face/[base]attack
+  rotate: false
+  xy: 2, 18
+  size: 15, 10
+  orig: 139, 144
+  offset: 62, 57
+  index: -1
+front/knight_male/face/[base]damaged
+  rotate: false
+  xy: 2, 7
+  size: 13, 9
+  orig: 139, 144
+  offset: 63, 58
+  index: -1
+front/knight_female/face/[base]damaged
+  rotate: false
+  xy: 2, 7
+  size: 13, 9
+  orig: 139, 144
+  offset: 63, 58
+  index: -1
+front/knight_male/face/[base]doyagao
+  rotate: false
+  xy: 49, 18
+  size: 15, 10
+  orig: 139, 144
+  offset: 62, 58
+  index: -1
+front/knight_female/face/[base]doyagao
+  rotate: false
+  xy: 49, 18
+  size: 15, 10
+  orig: 139, 144
+  offset: 62, 58
+  index: -1
+front/knight_male/face/[base]idle
+  rotate: false
+  xy: 45, 7
+  size: 13, 9
+  orig: 139, 144
+  offset: 63, 58
+  index: -1
+front/knight_male/face/[base]mad
+  rotate: false
+  xy: 66, 18
+  size: 15, 10
+  orig: 139, 144
+  offset: 62, 57
+  index: -1
+front/knight_male/face/[base]smile
+  rotate: false
+  xy: 114, 13
+  size: 13, 10
+  orig: 139, 144
+  offset: 63, 58
+  index: -1
+front/knight_male/face/[base]tired
+  rotate: true
+  xy: 244, 125
+  size: 14, 9
+  orig: 139, 144
+  offset: 63, 58
+  index: -1
+front/knight_male/knight_armL
+  rotate: false
+  xy: 19, 21
+  size: 6, 7
+  orig: 139, 144
+  offset: 72, 51
+  index: -1
+front/knight_female/knight_armL
+  rotate: false
+  xy: 19, 21
+  size: 6, 7
+  orig: 139, 144
+  offset: 72, 51
+  index: -1
+front/knight_male/knight_armR
+  rotate: false
+  xy: 246, 14
+  size: 6, 7
+  orig: 139, 144
+  offset: 61, 51
+  index: -1
+front/knight_female/knight_armR
+  rotate: false
+  xy: 246, 14
+  size: 6, 7
+  orig: 139, 144
+  offset: 61, 51
+  index: -1
+front/knight_male/knight_body
+  rotate: false
+  xy: 130, 17
+  size: 13, 13
+  orig: 139, 144
+  offset: 63, 47
+  index: -1
+front/knight_male/knight_elbowL
+  rotate: false
+  xy: 189, 146
+  size: 6, 6
+  orig: 139, 144
+  offset: 58, 48
+  index: -1
+front/knight_female/knight_elbowL
+  rotate: false
+  xy: 189, 146
+  size: 6, 6
+  orig: 139, 144
+  offset: 58, 48
+  index: -1
+front/knight_male/knight_elbowR
+  rotate: false
+  xy: 172, 5
+  size: 6, 6
+  orig: 139, 144
+  offset: 75, 48
+  index: -1
+front/knight_female/knight_elbowR
+  rotate: false
+  xy: 172, 5
+  size: 6, 6
+  orig: 139, 144
+  offset: 75, 48
+  index: -1
+front/knight_male/knight_head
+  rotate: true
+  xy: 2, 30
+  size: 27, 28
+  orig: 139, 144
+  offset: 56, 56
+  index: -1
+front/knight_male/knight_helmtail
+  rotate: false
+  xy: 244, 141
+  size: 10, 13
+  orig: 139, 144
+  offset: 60, 79
+  index: -1
+front/knight_female/knight_helmtail
+  rotate: false
+  xy: 244, 141
+  size: 10, 13
+  orig: 139, 144
+  offset: 60, 79
+  index: -1
+side/knight_female/knight_helmtail
+  rotate: false
+  xy: 244, 141
+  size: 10, 13
+  orig: 116, 116
+  offset: 42, 59
+  index: -1
+side/knight_male/knight_helmtail
+  rotate: false
+  xy: 244, 141
+  size: 10, 13
+  orig: 116, 116
+  offset: 42, 59
+  index: -1
+front/leg_L
+  rotate: false
+  xy: 171, 147
+  size: 16, 15
+  orig: 23, 18
+  offset: 1, 3
+  index: -1
+front/leg_R
+  rotate: false
+  xy: 171, 147
+  size: 16, 15
+  orig: 23, 18
+  offset: 1, 3
+  index: -1
+front/shoulder_L
+  rotate: false
+  xy: 163, 80
+  size: 33, 31
+  orig: 58, 52
+  offset: 8, 21
+  index: -1
+side/arm_B
+  rotate: false
+  xy: 236, 196
+  size: 18, 23
+  orig: 58, 53
+  offset: 29, 14
+  index: -1
+side/arm_F
+  rotate: false
+  xy: 238, 156
+  size: 16, 18
+  orig: 66, 61
+  offset: 6, 19
+  index: -1
+side/body
+  rotate: false
+  xy: 69, 160
+  size: 61, 59
+  orig: 108, 100
+  offset: 20, 31
+  index: -1
+side/bodyB
+  rotate: false
+  xy: 77, 73
+  size: 31, 31
+  orig: 108, 100
+  offset: 46, 41
+  index: -1
+side/bodyF2
+  rotate: false
+  xy: 110, 73
+  size: 31, 31
+  orig: 108, 100
+  offset: 46, 41
+  index: -1
+side/elbow_B
+  rotate: true
+  xy: 171, 113
+  size: 30, 38
+  orig: 48, 44
+  offset: 9, 4
+  index: -1
+side/elbow_F
+  rotate: true
+  xy: 2, 124
+  size: 33, 37
+  orig: 52, 52
+  offset: 3, 4
+  index: -1
+side/foot_B
+  rotate: false
+  xy: 107, 25
+  size: 21, 17
+  orig: 29, 20
+  offset: 6, 3
+  index: -1
+side/foot_F
+  rotate: true
+  xy: 143, 83
+  size: 21, 17
+  orig: 29, 20
+  offset: 0, 3
+  index: -1
+side/hand_B
+  rotate: false
+  xy: 41, 131
+  size: 25, 26
+  orig: 48, 44
+  offset: 4, 5
+  index: -1
+side/hand_F
+  rotate: false
+  xy: 38, 60
+  size: 32, 30
+  orig: 64, 59
+  offset: 22, 14
+  index: -1
+side/head
+  rotate: false
+  xy: 65, 30
+  size: 40, 12
+  orig: 108, 100
+  offset: 21, 74
+  index: -1
+side/knight_female/face/[base]damaged
+  rotate: false
+  xy: 99, 3
+  size: 10, 9
+  orig: 116, 116
+  offset: 60, 46
+  index: -1
+side/knight_female/face/[base]idle
+  rotate: false
+  xy: 129, 6
+  size: 12, 9
+  orig: 116, 116
+  offset: 59, 46
+  index: -1
+side/knight_female/face/[base]mad
+  rotate: false
+  xy: 19, 6
+  size: 11, 11
+  orig: 116, 116
+  offset: 59, 44
+  index: -1
+side/knight_female/face/[base]smile
+  rotate: false
+  xy: 32, 6
+  size: 11, 11
+  orig: 116, 116
+  offset: 59, 45
+  index: -1
+side/knight_female/face/[base]tired
+  rotate: true
+  xy: 244, 112
+  size: 11, 9
+  orig: 116, 116
+  offset: 59, 46
+  index: -1
+side/knight_female/knight_armL
+  rotate: false
+  xy: 196, 16
+  size: 5, 6
+  orig: 116, 116
+  offset: 63, 39
+  index: -1
+side/knight_female/knight_body
+  rotate: false
+  xy: 83, 16
+  size: 12, 12
+  orig: 116, 116
+  offset: 57, 34
+  index: -1
+side/knight_female/knight_elbowL
+  rotate: false
+  xy: 189, 154
+  size: 6, 8
+  orig: 116, 116
+  offset: 65, 33
+  index: -1
+side/knight_female/knight_hair
+  rotate: true
+  xy: 225, 13
+  size: 18, 19
+  orig: 116, 116
+  offset: 48, 37
+  index: -1
+side/knight_female/knight_head
+  rotate: false
+  xy: 205, 47
+  size: 30, 28
+  orig: 116, 116
+  offset: 47, 44
+  index: -1
+side/knight_male/face/[base]attack
+  rotate: false
+  xy: 60, 6
+  size: 11, 10
+  orig: 116, 116
+  offset: 59, 45
+  index: -1
+side/knight_female/face/[base]attack
+  rotate: false
+  xy: 60, 6
+  size: 11, 10
+  orig: 116, 116
+  offset: 59, 45
+  index: -1
+side/knight_male/face/[base]mad
+  rotate: false
+  xy: 60, 6
+  size: 11, 10
+  orig: 116, 116
+  offset: 59, 45
+  index: -1
+side/knight_male/face/[base]damaged
+  rotate: false
+  xy: 111, 2
+  size: 10, 9
+  orig: 116, 116
+  offset: 60, 46
+  index: -1
+side/knight_male/face/[base]doyagao
+  rotate: false
+  xy: 158, 7
+  size: 12, 10
+  orig: 116, 116
+  offset: 59, 46
+  index: -1
+side/knight_female/face/[base]doyagao
+  rotate: false
+  xy: 158, 7
+  size: 12, 10
+  orig: 116, 116
+  offset: 59, 46
+  index: -1
+side/knight_male/face/[base]idle
+  rotate: false
+  xy: 73, 5
+  size: 11, 9
+  orig: 116, 116
+  offset: 60, 46
+  index: -1
+side/knight_male/face/[base]smile
+  rotate: false
+  xy: 145, 6
+  size: 11, 11
+  orig: 116, 116
+  offset: 59, 45
+  index: -1
+side/knight_male/face/[base]tired
+  rotate: false
+  xy: 86, 3
+  size: 11, 9
+  orig: 116, 116
+  offset: 59, 46
+  index: -1
+side/knight_male/knight_armL
+  rotate: false
+  xy: 196, 8
+  size: 5, 6
+  orig: 116, 116
+  offset: 63, 39
+  index: -1
+side/knight_male/knight_armR
+  rotate: false
+  xy: 163, 120
+  size: 5, 7
+  orig: 116, 116
+  offset: 56, 38
+  index: -1
+side/knight_female/knight_armR
+  rotate: false
+  xy: 163, 120
+  size: 5, 7
+  orig: 116, 116
+  offset: 56, 38
+  index: -1
+side/knight_male/knight_body
+  rotate: false
+  xy: 95, 111
+  size: 10, 12
+  orig: 116, 116
+  offset: 58, 34
+  index: -1
+side/knight_male/knight_elbowL
+  rotate: false
+  xy: 246, 23
+  size: 6, 8
+  orig: 116, 116
+  offset: 65, 33
+  index: -1
+side/knight_male/knight_elbowR
+  rotate: false
+  xy: 246, 5
+  size: 6, 7
+  orig: 116, 116
+  offset: 54, 33
+  index: -1
+side/knight_female/knight_elbowR
+  rotate: false
+  xy: 246, 5
+  size: 6, 7
+  orig: 116, 116
+  offset: 54, 33
+  index: -1
+side/knight_male/knight_head
+  rotate: false
+  xy: 105, 44
+  size: 29, 27
+  orig: 116, 116
+  offset: 48, 44
+  index: -1
+side/knight_male/knight_legL
+  rotate: false
+  xy: 136, 63
+  size: 4, 8
+  orig: 116, 116
+  offset: 63, 30
+  index: -1
+side/knight_male/knight_legR
+  rotate: false
+  xy: 136, 53
+  size: 4, 8
+  orig: 116, 116
+  offset: 58, 30
+  index: -1
+side/leg_B
+  rotate: false
+  xy: 77, 109
+  size: 16, 14
+  orig: 34, 34
+  offset: 14, 17
+  index: -1
+side/leg_F
+  rotate: false
+  xy: 237, 68
+  size: 17, 13
+  orig: 34, 34
+  offset: 8, 18
+  index: -1
+side/shoulder_B
+  rotate: true
+  xy: 72, 45
+  size: 26, 31
+  orig: 68, 62
+  offset: 29, 30
+  index: -1
+side/shoulder_F
+  rotate: false
+  xy: 2, 91
+  size: 34, 31
+  orig: 66, 61
+  offset: 5, 30
+  index: -1

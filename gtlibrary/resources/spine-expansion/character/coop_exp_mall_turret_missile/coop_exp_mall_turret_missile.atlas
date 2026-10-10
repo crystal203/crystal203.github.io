@@ -1,0 +1,34 @@
+
+coop_exp_mall_turret_missile__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+body
+  rotate: false
+  xy: 2, 2
+  size: 49, 72
+  orig: 49, 72
+  offset: 0, 0
+  index: -1
+body_2
+  rotate: true
+  xy: 53, 25
+  size: 49, 31
+  orig: 49, 31
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 86, 47
+  size: 27, 27
+  orig: 51, 90
+  offset: 12, 56
+  index: -1
+head_2
+  rotate: false
+  xy: 86, 18
+  size: 27, 27
+  orig: 47, 83
+  offset: 10, 55
+  index: -1

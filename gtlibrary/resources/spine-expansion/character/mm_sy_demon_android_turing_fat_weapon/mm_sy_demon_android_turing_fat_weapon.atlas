@@ -1,0 +1,230 @@
+
+mm_sy_demon_android_turing_fat_weapon__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 43, 8
+  size: 33, 33
+  orig: 38, 42
+  offset: 2, 1
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 67, 99
+  size: 26, 31
+  orig: 32, 42
+  offset: 2, 11
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 2, 189
+  size: 59, 52
+  orig: 59, 52
+  offset: 0, 0
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 75, 69
+  size: 28, 28
+  orig: 36, 48
+  offset: 7, 11
+  index: -1
+back/[base]handL
+  rotate: true
+  xy: 95, 115
+  size: 23, 20
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 92, 178
+  size: 35, 18
+  orig: 49, 28
+  offset: 7, 6
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 111, 140
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 111, 140
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 63, 170
+  size: 27, 34
+  orig: 30, 40
+  offset: 2, 3
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 67, 132
+  size: 23, 36
+  orig: 31, 41
+  offset: 4, 5
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 135
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 92, 215
+  size: 26, 25
+  orig: 33, 38
+  offset: 0, 6
+  index: -1
+front/[base]handL
+  rotate: true
+  xy: 106, 39
+  size: 20, 19
+  orig: 24, 24
+  offset: 2, 3
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 78, 2
+  size: 35, 19
+  orig: 49, 28
+  offset: 7, 5
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 106, 61
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 106, 61
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 112, 191
+  size: 22, 11
+  orig: 49, 28
+  offset: 14, 9
+  index: -1
+front/face/[base]damaged
+  rotate: true
+  xy: 119, 219
+  size: 22, 7
+  orig: 49, 28
+  offset: 13, 12
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 99, 3
+  size: 23, 7
+  orig: 49, 28
+  offset: 13, 11
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 63, 206
+  size: 27, 35
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 2, 10
+  size: 31, 39
+  orig: 40, 45
+  offset: 4, 6
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 89
+  size: 63, 44
+  orig: 68, 46
+  offset: 3, 1
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 78, 39
+  size: 28, 26
+  orig: 32, 30
+  offset: 1, 4
+  index: -1
+side/[base]handL
+  rotate: true
+  xy: 117, 115
+  size: 21, 11
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: true
+  xy: 92, 140
+  size: 36, 17
+  orig: 50, 28
+  offset: 4, 5
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 99, 12
+  size: 25, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 105, 88
+  size: 25, 18
+  orig: 36, 32
+  offset: 5, 8
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 112, 163
+  size: 18, 10
+  orig: 62, 54
+  offset: 22, 21
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 119, 21
+  size: 16, 10
+  orig: 62, 54
+  offset: 24, 21
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 2, 3
+  size: 18, 5
+  orig: 62, 54
+  offset: 22, 25
+  index: -1
+weapon1
+  rotate: false
+  xy: 2, 66
+  size: 71, 21
+  orig: 71, 21
+  offset: 0, 0
+  index: -1
+weapon2
+  rotate: false
+  xy: 2, 43
+  size: 69, 21
+  orig: 69, 21
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,62 @@
+
+arcade_fly_gagoyle.light__page0.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/front_victory_1
+  rotate: true
+  xy: 1, 156
+  size: 64, 50
+  orig: 72, 64
+  offset: 4, 0
+  index: -1
+front/front_victory_2
+  rotate: true
+  xy: 1, 46
+  size: 44, 52
+  orig: 72, 64
+  offset: 14, 0
+  index: -1
+front/front_victory_3
+  rotate: true
+  xy: 1, 91
+  size: 64, 50
+  orig: 72, 64
+  offset: 4, 0
+  index: -1
+front/front_victory_4
+  rotate: true
+  xy: 1, 1
+  size: 44, 52
+  orig: 72, 64
+  offset: 14, 0
+  index: -1
+side/side_fly_1
+  rotate: true
+  xy: 52, 125
+  size: 50, 40
+  orig: 72, 64
+  offset: 10, 2
+  index: -1
+side/side_fly_2
+  rotate: true
+  xy: 54, 74
+  size: 50, 40
+  orig: 72, 64
+  offset: 10, 0
+  index: -1
+side/side_fly_3
+  rotate: false
+  xy: 52, 176
+  size: 42, 44
+  orig: 72, 64
+  offset: 10, 2
+  index: -1
+side/side_fly_4
+  rotate: true
+  xy: 54, 23
+  size: 50, 40
+  orig: 72, 64
+  offset: 10, 4
+  index: -1

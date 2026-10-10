@@ -1,0 +1,335 @@
+
+pw_wood_ogre__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 70, 136
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+back/[base]armR
+  rotate: true
+  xy: 140, 163
+  size: 24, 30
+  orig: 24, 30
+  offset: 0, 0
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 167, 2
+  size: 57, 53
+  orig: 57, 53
+  offset: 0, 0
+  index: -1
+back/[base]elbowR
+  rotate: true
+  xy: 175, 183
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: -1
+back/[base]handL
+  rotate: true
+  xy: 2, 168
+  size: 23, 22
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 2, 70
+  size: 40, 32
+  orig: 40, 32
+  offset: 0, 0
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 138, 208
+  size: 21, 13
+  orig: 21, 13
+  offset: 0, 0
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 138, 208
+  size: 21, 13
+  orig: 21, 13
+  offset: 0, 0
+  index: -1
+back/belt
+  rotate: false
+  xy: 53, 166
+  size: 56, 22
+  orig: 56, 22
+  offset: 0, 0
+  index: -1
+front/belt
+  rotate: false
+  xy: 53, 166
+  size: 56, 22
+  orig: 56, 22
+  offset: 0, 0
+  index: -1
+back/horn
+  rotate: false
+  xy: 26, 191
+  size: 25, 17
+  orig: 25, 17
+  offset: 0, 0
+  index: -1
+back/neckleaf
+  rotate: false
+  xy: 195, 127
+  size: 57, 29
+  orig: 57, 29
+  offset: 0, 0
+  index: -1
+back/shoulderL
+  rotate: true
+  xy: 80, 102
+  size: 31, 36
+  orig: 31, 36
+  offset: 0, 0
+  index: -1
+back/shoulderR
+  rotate: false
+  xy: 118, 96
+  size: 36, 31
+  orig: 36, 31
+  offset: 0, 0
+  index: -1
+front/[base]armL
+  rotate: true
+  xy: 2, 140
+  size: 25, 30
+  orig: 25, 30
+  offset: 0, 0
+  index: -1
+front/[base]armR
+  rotate: true
+  xy: 206, 182
+  size: 21, 29
+  orig: 21, 29
+  offset: 0, 0
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 108, 8
+  size: 57, 52
+  orig: 57, 52
+  offset: 0, 0
+  index: -1
+front/[base]elbowR
+  rotate: true
+  xy: 111, 165
+  size: 22, 27
+  orig: 22, 27
+  offset: 0, 0
+  index: -1
+front/[base]handL
+  rotate: false
+  xy: 53, 190
+  size: 20, 18
+  orig: 20, 18
+  offset: 0, 0
+  index: -1
+front/[base]head
+  rotate: false
+  xy: 2, 32
+  size: 40, 36
+  orig: 40, 36
+  offset: 0, 0
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 161, 208
+  size: 21, 13
+  orig: 21, 13
+  offset: 0, 0
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 161, 208
+  size: 21, 13
+  orig: 21, 13
+  offset: 0, 0
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 184, 206
+  size: 27, 15
+  orig: 27, 15
+  offset: 0, 0
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 213, 205
+  size: 29, 16
+  orig: 29, 16
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 49, 210
+  size: 27, 11
+  orig: 27, 11
+  offset: 0, 0
+  index: -1
+front/horn
+  rotate: false
+  xy: 75, 190
+  size: 25, 17
+  orig: 25, 17
+  offset: 0, 0
+  index: -1
+front/neckleaf
+  rotate: false
+  xy: 136, 129
+  size: 57, 27
+  orig: 57, 27
+  offset: 0, 0
+  index: -1
+front/shoulderLB
+  rotate: true
+  xy: 156, 96
+  size: 31, 35
+  orig: 31, 35
+  offset: 0, 0
+  index: -1
+front/shoulderR
+  rotate: false
+  xy: 193, 94
+  size: 36, 31
+  orig: 36, 31
+  offset: 0, 0
+  index: -1
+side/[base]armL
+  rotate: true
+  xy: 34, 138
+  size: 26, 34
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: true
+  xy: 103, 135
+  size: 28, 31
+  orig: 30, 34
+  offset: 2, 2
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 44, 23
+  size: 62, 43
+  orig: 68, 46
+  offset: 3, 1
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 26, 167
+  size: 25, 22
+  orig: 26, 24
+  offset: 0, 1
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 2, 211
+  size: 20, 10
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 182, 57
+  size: 42, 35
+  orig: 91, 61
+  offset: 20, 22
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 102, 190
+  size: 25, 17
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 102, 190
+  size: 25, 17
+  orig: 36, 32
+  offset: 5, 8
+  index: -1
+side/belt
+  rotate: false
+  xy: 172, 158
+  size: 67, 22
+  orig: 67, 22
+  offset: 0, 0
+  index: -1
+side/face/[base]attack
+  rotate: false
+  xy: 78, 209
+  size: 29, 12
+  orig: 62, 54
+  offset: 18, 21
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 109, 209
+  size: 27, 12
+  orig: 64, 56
+  offset: 21, 23
+  index: -1
+side/face/[base]idle
+  rotate: false
+  xy: 24, 211
+  size: 23, 10
+  orig: 62, 54
+  offset: 21, 22
+  index: -1
+side/horn
+  rotate: false
+  xy: 2, 193
+  size: 22, 16
+  orig: 22, 16
+  offset: 0, 0
+  index: -1
+side/neckleaf
+  rotate: false
+  xy: 129, 189
+  size: 44, 17
+  orig: 44, 17
+  offset: 0, 0
+  index: -1
+side/shoulderL
+  rotate: false
+  xy: 2, 107
+  size: 37, 29
+  orig: 37, 29
+  offset: 0, 0
+  index: -1
+side/shoulderR
+  rotate: false
+  xy: 41, 104
+  size: 37, 30
+  orig: 37, 30
+  offset: 0, 0
+  index: -1
+weapon1
+  rotate: false
+  xy: 44, 68
+  size: 67, 32
+  orig: 72, 40
+  offset: 3, 7
+  index: -1
+weapon2
+  rotate: false
+  xy: 113, 62
+  size: 67, 32
+  orig: 72, 40
+  offset: 3, 7
+  index: -1

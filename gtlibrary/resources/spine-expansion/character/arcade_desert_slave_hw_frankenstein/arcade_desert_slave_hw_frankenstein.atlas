@@ -1,0 +1,76 @@
+
+arcade_desert_slave_hw_frankenstein__page0.png
+size: 128,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/back_idle_1
+  rotate: false
+  xy: 80, 29
+  size: 22, 25
+  orig: 32, 32
+  offset: 5, 0
+  index: -1
+back/back_throw_1
+  rotate: false
+  xy: 80, 29
+  size: 22, 25
+  orig: 32, 32
+  offset: 5, 0
+  index: -1
+back/back_idle_2
+  rotate: false
+  xy: 28, 30
+  size: 24, 24
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+back/back_throw_2
+  rotate: false
+  xy: 2, 29
+  size: 24, 25
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+back/back_throw_3
+  rotate: false
+  xy: 28, 4
+  size: 24, 24
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+front/front_idle_1
+  rotate: false
+  xy: 80, 2
+  size: 22, 25
+  orig: 32, 32
+  offset: 5, 0
+  index: -1
+front/front_throw_1
+  rotate: false
+  xy: 80, 2
+  size: 22, 25
+  orig: 32, 32
+  offset: 5, 0
+  index: -1
+front/front_idle_2
+  rotate: false
+  xy: 54, 30
+  size: 24, 24
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+front/front_throw_2
+  rotate: false
+  xy: 2, 2
+  size: 24, 25
+  orig: 32, 32
+  offset: 4, 0
+  index: -1
+front/front_throw_3
+  rotate: false
+  xy: 54, 4
+  size: 24, 24
+  orig: 32, 32
+  offset: 4, 0
+  index: -1

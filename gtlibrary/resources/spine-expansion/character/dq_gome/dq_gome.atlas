@@ -1,0 +1,265 @@
+
+dq_gome__page0.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/body
+  rotate: false
+  xy: 2, 98
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 2
+  index: -1
+back/wingL
+  rotate: false
+  xy: 31, 47
+  size: 18, 25
+  orig: 55, 56
+  offset: 0, 7
+  index: -1
+back/wingR
+  rotate: false
+  xy: 31, 20
+  size: 18, 25
+  orig: 55, 56
+  offset: 37, 7
+  index: -1
+front/face/attack
+  rotate: true
+  xy: 71, 57
+  size: 19, 17
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+front/face/awesome
+  rotate: true
+  xy: 52, 78
+  size: 21, 18
+  orig: 55, 56
+  offset: 17, 1
+  index: -1
+front/face/cry
+  rotate: true
+  xy: 51, 47
+  size: 25, 18
+  orig: 55, 56
+  offset: 15, 0
+  index: -1
+front/face/damaged
+  rotate: true
+  xy: 72, 86
+  size: 19, 17
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+front/face/doyagao
+  rotate: true
+  xy: 108, 4
+  size: 19, 15
+  orig: 55, 56
+  offset: 18, 3
+  index: -1
+front/face/idle
+  rotate: true
+  xy: 109, 66
+  size: 19, 15
+  orig: 55, 56
+  offset: 18, 3
+  index: -1
+front/face/mad
+  rotate: true
+  xy: 72, 36
+  size: 19, 17
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+front/face/sleep
+  rotate: true
+  xy: 110, 106
+  size: 19, 15
+  orig: 55, 56
+  offset: 18, 3
+  index: -1
+front/face/smile
+  rotate: true
+  xy: 72, 15
+  size: 19, 17
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+front/face/surprise
+  rotate: true
+  xy: 90, 65
+  size: 19, 17
+  orig: 55, 56
+  offset: 18, 1
+  index: -1
+front/face/tired
+  rotate: true
+  xy: 91, 3
+  size: 20, 15
+  orig: 55, 56
+  offset: 18, 3
+  index: -1
+front/head
+  rotate: false
+  xy: 2, 69
+  size: 27, 27
+  orig: 55, 56
+  offset: 14, 2
+  index: -1
+front/wingL
+  rotate: true
+  xy: 2, 19
+  size: 19, 25
+  orig: 55, 56
+  offset: 36, 7
+  index: -1
+front/wingL2
+  rotate: true
+  xy: 110, 93
+  size: 11, 23
+  orig: 55, 56
+  offset: 36, 2
+  index: -1
+front/wingL2B
+  rotate: false
+  xy: 127, 111
+  size: 7, 14
+  orig: 55, 56
+  offset: 35, 11
+  index: -1
+front/wingR
+  rotate: false
+  xy: 31, 100
+  size: 19, 25
+  orig: 55, 56
+  offset: 0, 7
+  index: -1
+front/wingR2
+  rotate: true
+  xy: 23, 6
+  size: 11, 23
+  orig: 55, 56
+  offset: 8, 2
+  index: -1
+front/wingR2B
+  rotate: true
+  xy: 72, 6
+  size: 7, 14
+  orig: 55, 56
+  offset: 13, 11
+  index: -1
+side/face/attack
+  rotate: false
+  xy: 91, 107
+  size: 17, 18
+  orig: 56, 56
+  offset: 26, 1
+  index: -1
+side/face/awesome
+  rotate: false
+  xy: 51, 2
+  size: 19, 18
+  orig: 56, 56
+  offset: 25, 1
+  index: -1
+side/face/cry
+  rotate: true
+  xy: 51, 22
+  size: 23, 19
+  orig: 56, 56
+  offset: 23, 0
+  index: -1
+side/face/damaged
+  rotate: false
+  xy: 91, 87
+  size: 17, 18
+  orig: 56, 56
+  offset: 26, 1
+  index: -1
+side/face/doyagao
+  rotate: true
+  xy: 124, 47
+  size: 17, 15
+  orig: 56, 56
+  offset: 26, 4
+  index: -1
+side/face/idle
+  rotate: true
+  xy: 125, 9
+  size: 17, 15
+  orig: 56, 56
+  offset: 26, 4
+  index: -1
+side/face/mad
+  rotate: false
+  xy: 91, 45
+  size: 17, 18
+  orig: 56, 56
+  offset: 26, 1
+  index: -1
+side/face/sleep
+  rotate: true
+  xy: 126, 74
+  size: 17, 15
+  orig: 56, 56
+  offset: 26, 4
+  index: -1
+side/face/smile
+  rotate: false
+  xy: 91, 25
+  size: 17, 18
+  orig: 56, 56
+  offset: 26, 1
+  index: -1
+side/face/surprise
+  rotate: false
+  xy: 71, 107
+  size: 18, 18
+  orig: 56, 56
+  offset: 25, 1
+  index: -1
+side/face/tired
+  rotate: false
+  xy: 2, 2
+  size: 19, 15
+  orig: 56, 56
+  offset: 26, 4
+  index: -1
+side/head
+  rotate: false
+  xy: 2, 40
+  size: 27, 27
+  orig: 56, 56
+  offset: 18, 2
+  index: -1
+side/wingL
+  rotate: false
+  xy: 52, 101
+  size: 17, 24
+  orig: 56, 56
+  offset: 39, 7
+  index: -1
+side/wingL2
+  rotate: true
+  xy: 110, 28
+  size: 11, 23
+  orig: 56, 56
+  offset: 39, 2
+  index: -1
+side/wingR
+  rotate: false
+  xy: 31, 74
+  size: 19, 24
+  orig: 56, 56
+  offset: 5, 7
+  index: -1
+side/wingR2
+  rotate: false
+  xy: 110, 41
+  size: 12, 23
+  orig: 56, 56
+  offset: 12, 2
+  index: -1

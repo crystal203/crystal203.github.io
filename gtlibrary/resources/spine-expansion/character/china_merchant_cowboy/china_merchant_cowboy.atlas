@@ -1,0 +1,125 @@
+
+china_merchant_cowboy__page0.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: true
+  xy: 38, 2
+  size: 5, 6
+  orig: 56, 56
+  offset: 33, 9
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 53, 8
+  size: 6, 7
+  orig: 56, 56
+  offset: 25, 8
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 36, 61
+  size: 12, 13
+  orig: 56, 56
+  offset: 28, 4
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 53, 17
+  size: 7, 8
+  orig: 56, 56
+  offset: 35, 3
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 50, 61
+  size: 8, 9
+  orig: 56, 56
+  offset: 22, 3
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 8
+  size: 24, 17
+  orig: 56, 56
+  offset: 19, 15
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 28, 3
+  size: 5, 8
+  orig: 56, 56
+  offset: 33, 0
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 28, 3
+  size: 5, 8
+  orig: 56, 56
+  offset: 27, 0
+  index: -1
+side/back
+  rotate: false
+  xy: 2, 47
+  size: 32, 29
+  orig: 56, 56
+  offset: 10, 3
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 41, 9
+  size: 16, 10
+  orig: 56, 56
+  offset: 27, 15
+  index: -1
+side/face/[base]mad
+  rotate: true
+  xy: 41, 9
+  size: 16, 10
+  orig: 56, 56
+  offset: 27, 15
+  index: -1
+side/face/[base]damaged
+  rotate: true
+  xy: 28, 10
+  size: 15, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]doyagao
+  rotate: true
+  xy: 35, 27
+  size: 15, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 49, 27
+  size: 15, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]smile
+  rotate: true
+  xy: 50, 44
+  size: 15, 10
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/face/[base]tired
+  rotate: true
+  xy: 36, 44
+  size: 15, 11
+  orig: 56, 56
+  offset: 28, 15
+  index: -1
+side/helmR
+  rotate: false
+  xy: 2, 27
+  size: 31, 18
+  orig: 56, 56
+  offset: 15, 23
+  index: -1

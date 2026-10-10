@@ -1,0 +1,412 @@
+
+rogue_reservoir_flame_thrower__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: false
+  xy: 79, 80
+  size: 12, 13
+  orig: 65, 64
+  offset: 11, 16
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 2, 77
+  size: 29, 23
+  orig: 65, 64
+  offset: 20, 10
+  index: -1
+back/[base]elbowL
+  rotate: false
+  xy: 89, 49
+  size: 11, 14
+  orig: 65, 64
+  offset: 11, 6
+  index: -1
+back/[base]head
+  rotate: true
+  xy: 2, 52
+  size: 23, 26
+  orig: 65, 64
+  offset: 21, 24
+  index: -1
+back/[base]legL
+  rotate: false
+  xy: 102, 51
+  size: 8, 10
+  orig: 65, 64
+  offset: 23, 3
+  index: -1
+back/[base]legR
+  rotate: false
+  xy: 102, 51
+  size: 8, 10
+  orig: 65, 64
+  offset: 23, 3
+  index: -1
+back/[base]pelvis
+  rotate: true
+  xy: 64, 35
+  size: 19, 10
+  orig: 65, 64
+  offset: 23, 8
+  index: -1
+back/electric_wire
+  rotate: false
+  xy: 104, 99
+  size: 6, 13
+  orig: 65, 64
+  offset: 49, 14
+  index: -1
+back/helm
+  rotate: true
+  xy: 48, 97
+  size: 29, 12
+  orig: 65, 64
+  offset: 18, 37
+  index: -1
+back/machine_armR
+  rotate: false
+  xy: 34, 107
+  size: 11, 19
+  orig: 65, 64
+  offset: 47, 16
+  index: -1
+back/machine_elbowR
+  rotate: false
+  xy: 72, 3
+  size: 12, 14
+  orig: 65, 64
+  offset: 44, 6
+  index: -1
+back/shoulderL
+  rotate: false
+  xy: 92, 114
+  size: 11, 12
+  orig: 65, 64
+  offset: 13, 22
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 79, 26
+  size: 12, 13
+  orig: 65, 64
+  offset: 11, 16
+  index: -1
+front/[base]armL2
+  rotate: false
+  xy: 49, 37
+  size: 13, 17
+  orig: 65, 64
+  offset: 41, 15
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 30
+  size: 29, 20
+  orig: 65, 64
+  offset: 16, 13
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 91, 96
+  size: 11, 14
+  orig: 65, 64
+  offset: 10, 6
+  index: -1
+front/[base]elbowL2
+  rotate: false
+  xy: 93, 33
+  size: 11, 14
+  orig: 65, 64
+  offset: 43, 6
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 2, 5
+  size: 23, 24
+  orig: 65, 64
+  offset: 21, 24
+  index: -1
+front/[base]legL
+  rotate: false
+  xy: 103, 4
+  size: 8, 10
+  orig: 65, 64
+  offset: 23, 3
+  index: -1
+front/[base]legR
+  rotate: false
+  xy: 103, 4
+  size: 8, 10
+  orig: 65, 64
+  offset: 23, 3
+  index: -1
+front/[base]pelvis
+  rotate: true
+  xy: 65, 90
+  size: 19, 10
+  orig: 65, 64
+  offset: 23, 8
+  index: -1
+front/electric_wire
+  rotate: false
+  xy: 100, 16
+  size: 8, 15
+  orig: 65, 64
+  offset: 6, 13
+  index: -1
+front/electric_wire2
+  rotate: false
+  xy: 106, 84
+  size: 6, 13
+  orig: 65, 64
+  offset: 7, 15
+  index: -1
+front/face/[base]attack
+  rotate: true
+  xy: 65, 73
+  size: 15, 12
+  orig: 65, 64
+  offset: 25, 24
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 65, 59
+  size: 15, 12
+  orig: 65, 64
+  offset: 25, 24
+  index: -1
+front/face/[base]doyagao
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]mad
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]smile
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]tired
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]doyagao
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]mad
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]smile
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+side/face/[base]tired
+  rotate: false
+  xy: 34, 104
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+front/face/[base]idle
+  rotate: false
+  xy: 86, 2
+  size: 15, 7
+  orig: 65, 64
+  offset: 25, 24
+  index: -1
+front/face/candy
+  rotate: false
+  xy: 110, 17
+  size: 7, 5
+  orig: 65, 64
+  offset: 37, 28
+  index: -1
+front/face/helm
+  rotate: true
+  xy: 33, 71
+  size: 29, 13
+  orig: 65, 64
+  offset: 18, 33
+  index: -1
+front/machine_armR
+  rotate: false
+  xy: 51, 16
+  size: 11, 19
+  orig: 65, 64
+  offset: 7, 16
+  index: -1
+front/machine_armR2
+  rotate: true
+  xy: 51, 3
+  size: 11, 19
+  orig: 65, 64
+  offset: 7, 16
+  index: -1
+front/machine_elbowR
+  rotate: false
+  xy: 64, 19
+  size: 13, 14
+  orig: 65, 64
+  offset: 8, 6
+  index: -1
+front/machine_elbowR2
+  rotate: false
+  xy: 77, 95
+  size: 12, 14
+  orig: 65, 64
+  offset: 9, 6
+  index: -1
+front/shoulderL
+  rotate: false
+  xy: 93, 82
+  size: 11, 12
+  orig: 65, 64
+  offset: 13, 21
+  index: -1
+front/shoulderLB
+  rotate: true
+  xy: 82, 65
+  size: 13, 12
+  orig: 65, 64
+  offset: 13, 20
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 49, 56
+  size: 14, 17
+  orig: 64, 64
+  offset: 42, 15
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 102
+  size: 30, 24
+  orig: 64, 64
+  offset: 19, 10
+  index: -1
+side/[base]elbowL
+  rotate: false
+  xy: 78, 112
+  size: 12, 14
+  orig: 64, 64
+  offset: 44, 6
+  index: -1
+side/[base]elbowR
+  rotate: false
+  xy: 86, 11
+  size: 12, 13
+  orig: 64, 64
+  offset: 15, 6
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 28, 4
+  size: 21, 24
+  orig: 64, 64
+  offset: 26, 25
+  index: -1
+side/[base]legL
+  rotate: false
+  xy: 105, 116
+  size: 8, 10
+  orig: 64, 64
+  offset: 37, 3
+  index: -1
+side/[base]legR
+  rotate: false
+  xy: 106, 39
+  size: 8, 10
+  orig: 64, 64
+  offset: 28, 3
+  index: -1
+side/[base]pelvis
+  rotate: true
+  xy: 102, 63
+  size: 17, 6
+  orig: 64, 64
+  offset: 28, 8
+  index: -1
+side/electric_wire
+  rotate: false
+  xy: 76, 41
+  size: 11, 16
+  orig: 64, 64
+  offset: 9, 14
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 110, 69
+  size: 13, 6
+  orig: 64, 64
+  offset: 33, 26
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 33, 31
+  size: 13, 9
+  orig: 64, 64
+  offset: 33, 26
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 110, 24
+  size: 13, 6
+  orig: 64, 64
+  offset: 33, 26
+  index: -1
+side/face/candy
+  rotate: true
+  xy: 112, 107
+  size: 7, 5
+  orig: 64, 64
+  offset: 44, 29
+  index: -1
+side/face/helm
+  rotate: true
+  xy: 33, 42
+  size: 27, 14
+  orig: 64, 64
+  offset: 23, 34
+  index: -1
+side/machine_armR
+  rotate: false
+  xy: 48, 75
+  size: 15, 20
+  orig: 64, 64
+  offset: 11, 16
+  index: -1
+side/machine_elbowR
+  rotate: false
+  xy: 62, 111
+  size: 14, 15
+  orig: 64, 64
+  offset: 13, 6
+  index: -1

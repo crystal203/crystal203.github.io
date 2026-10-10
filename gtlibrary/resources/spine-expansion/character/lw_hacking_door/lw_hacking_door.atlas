@@ -1,0 +1,62 @@
+
+lw_hacking_door__page0.png
+size: 128,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/door_blue_idle
+  rotate: false
+  xy: 2, 190
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_blue_open1
+  rotate: false
+  xy: 2, 143
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_blue_open2
+  rotate: false
+  xy: 2, 96
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_blue_open3
+  rotate: false
+  xy: 2, 49
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_red_idle
+  rotate: false
+  xy: 2, 2
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_red_open1
+  rotate: true
+  xy: 52, 187
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_red_open2
+  rotate: true
+  xy: 52, 137
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+front/door_red_open3
+  rotate: true
+  xy: 52, 87
+  size: 48, 45
+  orig: 48, 48
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,111 @@
+
+darkmagician_black__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/[base]armL
+  rotate: false
+  xy: 70, 2
+  size: 6, 6
+  orig: 139, 119
+  offset: 60, 48
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 70, 2
+  size: 6, 6
+  orig: 139, 119
+  offset: 60, 48
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 48, 7
+  size: 9, 9
+  orig: 139, 119
+  offset: 65, 49
+  index: -1
+front/[base]elbowL
+  rotate: false
+  xy: 97, 6
+  size: 10, 8
+  orig: 139, 119
+  offset: 56, 42
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 97, 6
+  size: 10, 8
+  orig: 139, 119
+  offset: 56, 42
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 60, 10
+  size: 33, 35
+  orig: 139, 119
+  offset: 53, 53
+  index: -1
+front/armR2
+  rotate: true
+  xy: 30, 18
+  size: 14, 23
+  orig: 139, 119
+  offset: 52, 50
+  index: -1
+front/bodydecoBL
+  rotate: true
+  xy: 97, 16
+  size: 27, 9
+  orig: 139, 119
+  offset: 73, 55
+  index: -1
+front/bodydecoBR
+  rotate: false
+  xy: 2, 18
+  size: 26, 14
+  orig: 139, 119
+  offset: 38, 52
+  index: -1
+front/bodydecoFL
+  rotate: false
+  xy: 26, 3
+  size: 20, 13
+  orig: 139, 119
+  offset: 75, 40
+  index: -1
+front/bodydecoFR
+  rotate: false
+  xy: 2, 4
+  size: 22, 12
+  orig: 139, 119
+  offset: 42, 42
+  index: -1
+front/cloak
+  rotate: false
+  xy: 2, 72
+  size: 103, 43
+  orig: 139, 119
+  offset: 17, 25
+  index: -1
+front/leg
+  rotate: false
+  xy: 59, 2
+  size: 9, 6
+  orig: 139, 119
+  offset: 65, 46
+  index: -1
+front/weapon
+  rotate: false
+  xy: 60, 45
+  size: 51, 25
+  orig: 139, 119
+  offset: 88, 27
+  index: -1
+front/weapon_head
+  rotate: false
+  xy: 2, 34
+  size: 56, 36
+  orig: 139, 119
+  offset: 42, 2
+  index: -1

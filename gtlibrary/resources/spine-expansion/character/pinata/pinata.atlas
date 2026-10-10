@@ -1,0 +1,111 @@
+
+pinata__page0.png
+size: 128,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+side/[base]armL
+  rotate: false
+  xy: 86, 13
+  size: 6, 11
+  orig: 74, 75
+  offset: 50, 15
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 94, 15
+  size: 7, 9
+  orig: 74, 75
+  offset: 44, 14
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 25, 10
+  size: 19, 14
+  orig: 74, 75
+  offset: 39, 17
+  index: -1
+side/[base]footL
+  rotate: false
+  xy: 112, 14
+  size: 6, 10
+  orig: 74, 75
+  offset: 37, 10
+  index: -1
+side/[base]footR
+  rotate: true
+  xy: 106, 6
+  size: 6, 9
+  orig: 74, 75
+  offset: 30, 10
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 86, 2
+  size: 5, 9
+  orig: 74, 75
+  offset: 51, 10
+  index: -1
+side/[base]handR
+  rotate: false
+  xy: 103, 15
+  size: 7, 9
+  orig: 74, 75
+  offset: 44, 10
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 2, 10
+  size: 21, 14
+  orig: 74, 75
+  offset: 43, 30
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 117, 6
+  size: 6, 8
+  orig: 74, 75
+  offset: 37, 17
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 2, 2
+  size: 6, 8
+  orig: 74, 75
+  offset: 30, 15
+  index: -1
+side/[base]pelvis
+  rotate: false
+  xy: 46, 10
+  size: 15, 14
+  orig: 74, 75
+  offset: 29, 17
+  index: -1
+side/[base]tail
+  rotate: false
+  xy: 63, 10
+  size: 10, 14
+  orig: 74, 75
+  offset: 23, 16
+  index: -1
+side/earL1
+  rotate: false
+  xy: 120, 14
+  size: 6, 10
+  orig: 74, 75
+  offset: 51, 43
+  index: -1
+side/earR
+  rotate: true
+  xy: 94, 7
+  size: 6, 10
+  orig: 74, 75
+  offset: 46, 43
+  index: -1
+side/neck
+  rotate: true
+  xy: 75, 9
+  size: 15, 9
+  orig: 74, 75
+  offset: 43, 26
+  index: -1

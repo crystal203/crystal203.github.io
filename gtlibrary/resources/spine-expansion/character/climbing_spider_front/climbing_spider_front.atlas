@@ -1,0 +1,97 @@
+
+climbing_spider_front__page0.png
+size: 128,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/armL1
+  rotate: false
+  xy: 91, 11
+  size: 6, 7
+  orig: 55, 56
+  offset: 32, 7
+  index: -1
+front/armL2
+  rotate: true
+  xy: 83, 2
+  size: 7, 9
+  orig: 55, 56
+  offset: 16, 12
+  index: -1
+front/armR2
+  rotate: true
+  xy: 83, 2
+  size: 7, 9
+  orig: 55, 56
+  offset: 16, 12
+  index: -1
+front/armL2_2
+  rotate: false
+  xy: 68, 11
+  size: 9, 12
+  orig: 55, 56
+  offset: 9, 9
+  index: -1
+front/armR2_2
+  rotate: false
+  xy: 68, 11
+  size: 9, 12
+  orig: 55, 56
+  offset: 9, 9
+  index: -1
+front/armR1
+  rotate: false
+  xy: 94, 2
+  size: 6, 7
+  orig: 55, 56
+  offset: 17, 7
+  index: -1
+front/body
+  rotate: false
+  xy: 2, 3
+  size: 29, 20
+  orig: 55, 56
+  offset: 13, 3
+  index: -1
+front/elbowL1
+  rotate: false
+  xy: 83, 11
+  size: 6, 12
+  orig: 55, 56
+  offset: 16, 0
+  index: -1
+front/elbowR1
+  rotate: false
+  xy: 83, 11
+  size: 6, 12
+  orig: 55, 56
+  offset: 16, 0
+  index: -1
+front/elbowL2
+  rotate: true
+  xy: 68, 3
+  size: 6, 13
+  orig: 55, 56
+  offset: 7, 0
+  index: -1
+front/elbowR2
+  rotate: true
+  xy: 68, 3
+  size: 6, 13
+  orig: 55, 56
+  offset: 7, 0
+  index: -1
+front/head
+  rotate: true
+  xy: 52, 8
+  size: 15, 14
+  orig: 55, 56
+  offset: 20, 3
+  index: -1
+front/headlight
+  rotate: false
+  xy: 33, 5
+  size: 17, 18
+  orig: 55, 56
+  offset: 20, 1
+  index: -1

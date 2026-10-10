@@ -1,0 +1,104 @@
+
+lw_bomb_spore_elite__page0.png
+size: 128,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+front/body1
+  rotate: false
+  xy: 2, 15
+  size: 65, 79
+  orig: 79, 101
+  offset: 6, 19
+  index: -1
+front/body2
+  rotate: false
+  xy: 68, 31
+  size: 55, 64
+  orig: 79, 101
+  offset: 12, 23
+  index: -1
+front/body3
+  rotate: false
+  xy: 99, 5
+  size: 19, 10
+  orig: 79, 101
+  offset: 30, 42
+  index: -1
+front/head1
+  rotate: false
+  xy: 2, 84
+  size: 9, 9
+  orig: 79, 101
+  offset: 35, 45
+  index: -1
+front/head2
+  rotate: false
+  xy: 13, 90
+  size: 3, 3
+  orig: 79, 101
+  offset: 41, 54
+  index: -1
+front/head4
+  rotate: false
+  xy: 13, 90
+  size: 3, 3
+  orig: 79, 101
+  offset: 40, 60
+  index: -1
+front/head3
+  rotate: false
+  xy: 56, 88
+  size: 5, 5
+  orig: 79, 101
+  offset: 35, 55
+  index: -1
+front/legF
+  rotate: 270
+  xy: 41, 12
+  size: 16, 25
+  orig: 79, 101
+  offset: 32, 4
+  index: -1
+front/legL1
+  rotate: false
+  xy: 63, 3
+  size: 19, 12
+  orig: 79, 101
+  offset: 51, 23
+  index: -1
+front/legL2
+  rotate: true
+  xy: 2, 11
+  size: 24, 17
+  orig: 79, 101
+  offset: 52, 14
+  index: -1
+front/legL3
+  rotate: false
+  xy: 105, 18
+  size: 21, 23
+  orig: 79, 101
+  offset: 44, 6
+  index: -1
+front/legR1
+  rotate: 180
+  xy: 22, 5
+  size: 20, 13
+  orig: 79, 101
+  offset: 8, 24
+  index: -1
+front/legR2
+  rotate: false
+  xy: 61, 20
+  size: 27, 16
+  orig: 79, 101
+  offset: 2, 14
+  index: -1
+front/legR3
+  rotate: true
+  xy: 83, 11
+  size: 19, 20
+  orig: 79, 101
+  offset: 16, 6
+  index: -1

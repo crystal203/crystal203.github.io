@@ -1,0 +1,230 @@
+
+plague_monster_fat__page0.png
+size: 256,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+back/[base]armL
+  rotate: true
+  xy: 86, 118
+  size: 31, 30
+  orig: 38, 42
+  offset: 4, 3
+  index: -1
+back/[base]armR
+  rotate: false
+  xy: 115, 78
+  size: 23, 30
+  orig: 26, 34
+  offset: 0, 2
+  index: -1
+back/[base]body
+  rotate: false
+  xy: 2, 142
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+back/[base]elbowR
+  rotate: false
+  xy: 117, 11
+  size: 22, 29
+  orig: 36, 48
+  offset: 8, 11
+  index: -1
+back/[base]handL
+  rotate: true
+  xy: 147, 42
+  size: 23, 20
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+back/[base]head
+  rotate: false
+  xy: 78, 15
+  size: 37, 25
+  orig: 49, 28
+  offset: 6, 3
+  index: -1
+back/[base]legL
+  rotate: true
+  xy: 161, 113
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+back/[base]legR
+  rotate: true
+  xy: 161, 113
+  size: 21, 17
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]armL
+  rotate: false
+  xy: 94, 42
+  size: 27, 34
+  orig: 30, 40
+  offset: 2, 3
+  index: -1
+front/[base]armR
+  rotate: false
+  xy: 118, 110
+  size: 22, 30
+  orig: 26, 34
+  offset: 2, 2
+  index: -1
+front/[base]body
+  rotate: false
+  xy: 2, 88
+  size: 59, 52
+  orig: 67, 58
+  offset: 4, 6
+  index: -1
+front/[base]elbowR
+  rotate: false
+  xy: 123, 42
+  size: 22, 28
+  orig: 26, 30
+  offset: 1, 2
+  index: -1
+front/[base]handL
+  rotate: false
+  xy: 160, 67
+  size: 20, 21
+  orig: 24, 24
+  offset: 2, 0
+  index: -1
+front/[base]head
+  rotate: true
+  xy: 65, 42
+  size: 37, 27
+  orig: 49, 28
+  offset: 6, 1
+  index: -1
+front/[base]legL
+  rotate: true
+  xy: 161, 90
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/[base]legR
+  rotate: true
+  xy: 161, 90
+  size: 21, 18
+  orig: 26, 20
+  offset: 4, 1
+  index: -1
+front/face/[base]attack
+  rotate: false
+  xy: 2, 2
+  size: 31, 15
+  orig: 49, 28
+  offset: 9, 4
+  index: -1
+front/face/[base]damaged
+  rotate: false
+  xy: 35, 2
+  size: 31, 15
+  orig: 49, 28
+  offset: 9, 4
+  index: -1
+front/face/[base]idle
+  rotate: true
+  xy: 141, 9
+  size: 31, 17
+  orig: 49, 28
+  offset: 9, 2
+  index: -1
+side/[base]armL
+  rotate: false
+  xy: 86, 81
+  size: 27, 35
+  orig: 28, 36
+  offset: 1, 1
+  index: -1
+side/[base]armR
+  rotate: false
+  xy: 102, 151
+  size: 26, 33
+  orig: 30, 34
+  offset: 1, 1
+  index: -1
+side/[base]body
+  rotate: false
+  xy: 2, 42
+  size: 61, 44
+  orig: 68, 46
+  offset: 5, 1
+  index: -1
+side/[base]elbowR
+  rotate: true
+  xy: 130, 142
+  size: 25, 23
+  orig: 26, 24
+  offset: 0, 1
+  index: -1
+side/[base]handL
+  rotate: false
+  xy: 68, 3
+  size: 18, 10
+  orig: 28, 18
+  offset: 5, 4
+  index: -1
+side/[base]head
+  rotate: false
+  xy: 63, 164
+  size: 37, 27
+  orig: 50, 28
+  offset: 3, 0
+  index: -1
+side/[base]legL
+  rotate: true
+  xy: 155, 139
+  size: 25, 18
+  orig: 28, 24
+  offset: 1, 4
+  index: -1
+side/[base]legR
+  rotate: true
+  xy: 160, 15
+  size: 25, 18
+  orig: 36, 32
+  offset: 5, 8
+  index: -1
+side/face/[base]attack
+  rotate: true
+  xy: 142, 105
+  size: 32, 17
+  orig: 62, 54
+  offset: 18, 17
+  index: -1
+side/face/[base]damaged
+  rotate: false
+  xy: 130, 169
+  size: 31, 16
+  orig: 62, 54
+  offset: 18, 18
+  index: -1
+side/face/[base]idle
+  rotate: true
+  xy: 140, 72
+  size: 31, 18
+  orig: 62, 54
+  offset: 18, 16
+  index: -1
+weapon1
+  rotate: true
+  xy: 63, 88
+  size: 74, 21
+  orig: 78, 40
+  offset: 2, 9
+  index: -1
+weapon2
+  rotate: false
+  xy: 2, 19
+  size: 74, 21
+  orig: 78, 40
+  offset: 2, 9
+  index: -1
