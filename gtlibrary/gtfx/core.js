@@ -213,7 +213,7 @@ export class FxRuntime {
     for(let si=0;si<effect.systems.length;si++){
       const s=effect.systems[si],node=nodes.get(s.node);let active=true;
       for(let n=node;n;n=n.parent)if(!n.visible)active=false;
-      if(!active||s.renderer.mode===5)continue;
+      if((!active&&!effect.includeInactive)||s.renderer.mode===5)continue;
       const rng=rand((seed+si*971+s.seed)>>>0),m=s.modules,initial=m.InitialModule;
       const delay=value(s.delay,0,rng()),em=m.EmissionModule,births=[];
       if(em){
@@ -367,6 +367,7 @@ export class FxRuntime {
         node.quaternion.multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(rotation.x,rotation.y,rotation.z,'ZXY')));
       }
     }
+    this.effect.sampleNodes?.(this,time);
     this.nodeRoot.updateMatrixWorld(true);
   }
   animateMaterial(p,time) {

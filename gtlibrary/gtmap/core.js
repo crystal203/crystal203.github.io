@@ -1,26 +1,34 @@
 import * as THREE from '../vendor/three.module.js';
 import {renderOrder} from './render-order.js';
 import {vertexColors} from './vertex-data.js';
+import {MapDoors} from './doors.js';
+import {MapItems,itemInfo} from './items.js';
+import {MapManipulator} from './manipulator.js';
 import {MapSelection} from './selection.js';
+import {MapStates} from './states.js';
 import {MapEffects} from './effects.js';
 import {sampleAnimator} from '../core/custom-animator.js';
 import {nativeMaterial} from './native-material.js';
 import {OrbitControls} from '../vendor/OrbitControls.js';
 export {decodeMap,parseKong} from './decoder.js';
 export function assetsForMap(pack,doc){
- const templates={},meshes={},materials={},textures={},clouds={},effects={};
+ const templates={},meshes={},materials={},textures={},clouds={},effects={},states={};
  for(const l of doc.layers)for(const t of l.tiles){const set=doc.tilesets[t.ts-1].name,k=(pack.setOrder.indexOf(set)+1)+':'+t.name,original=pack.templates[k];if(!original)throw new Error('地图资源未收录图块：'+t.name);
   const extra=pack.environment?.effects?.[set],effect=extra?.templates[t.name];
   const template=effect?{...original,parts:original.parts.map(p=>({...p,materials:effect.materialOverrides[p.node]||p.materials}))}:original;templates[k]=template;
   for(const p of template.parts){meshes[p.mesh]=pack.meshes[p.mesh];for(const m of p.materials)if(m&&(extra?.materials[m]||pack.materials[m]))materials[m]=extra?.materials[m]||pack.materials[m];}
+  const info=itemInfo(t,doc,pack.itemMetadata),stateAssets=pack.environment?.states?.[set]?.templates[t.name]?pack.environment.states[set]:info.kind==='star'?pack.environment?.pickups:null,stateSpec=stateAssets?.templates[t.name]||(info.kind==='star'?stateAssets?.templates.star_piece:null);if(stateSpec){states[k]={spec:stateSpec,assets:{...stateAssets,sortingLayers:pack.sortingLayers}};Object.assign(textures,stateAssets.textures);for(const part of stateSpec.parts)for(const id of part.materials)if(stateAssets.materials[id])materials[id]=stateAssets.materials[id];for(const s of stateSpec.systems)for(const id of s.materialKeys||[s.materialKey])if(stateAssets.materials[id])materials[id]=stateAssets.materials[id];for(const s of stateSpec.sprites)for(const id of s.materials)if(stateAssets.materials[id])materials[id]=stateAssets.materials[id];}
   if(effect){effects[k]={spec:effect,assets:{...extra,vertexFormats:pack.vertexFormats,sortingLayers:pack.sortingLayers}};for(const id of new Set([...effect.systems.flatMap(s=>s.materialKeys||[s.materialKey]),...effect.sprites.flatMap(s=>s.materials)]))if(extra.materials[id])materials[id]=extra.materials[id];Object.assign(textures,extra.textures);}
   if(pack.environment?.clouds?.[k]&&!effect?.systems.length){clouds[k]=pack.environment.clouds[k];const m=clouds[k].material;materials[m]=pack.materials[m];}
  }
  for(const m of Object.values(materials))for(const env of Object.values(m.texenvs)){if(env.texture&&!textures[env.texture])textures[env.texture]=pack.textures[env.texture];}
  // Retain only textures referenced by this map's selected effect templates.
  const needed=new Set();for(const m of Object.values(materials))for(const e of Object.values(m.texenvs))if(e.texture)needed.add(e.texture);
- for(const {spec,assets} of Object.values(effects)){for(const s of spec.systems)for(const id of s.modules.UVModule?.sprites||[])if(assets.sprites[id])needed.add(assets.sprites[id].texture);for(const s of spec.sprites||[])if(assets.sprites[s.sprite])needed.add(assets.sprites[s.sprite].texture);}
- return {...pack,templates,meshes,materials,textures:Object.fromEntries([...needed].filter(k=>textures[k]).map(k=>[k,textures[k]])),environment:{...pack.environment,clouds,effects}};
+ for(const {spec,assets} of [...Object.values(effects),...Object.values(states)]){for(const s of spec.systems)for(const id of s.modules.UVModule?.sprites||[])if(assets.sprites[id])needed.add(assets.sprites[id].texture);for(const s of spec.sprites||[])if(assets.sprites[s.sprite])needed.add(assets.sprites[s.sprite].texture);}
+ if(pack.itemMetadata?.atlas){
+  for(const layer of doc.layers)for(const tile of layer.tiles){const info=itemInfo(tile,doc,pack.itemMetadata);if(!['coin','item'].includes(info.kind))continue;const atlas=info.kind==='coin'?'items':pack.itemMetadata.items[String(info.rewards[0]?.ItemSpecId)]?.atlas;if(!atlas)continue;const key='pickup-'+atlas;textures[key]={url:atlas==='items'?'textures/pickup-items.png':'../../gtatlas/assets/'+atlas+'.png',filter:0,wrap:1};needed.add(key);}
+ }
+ return {...pack,templates,meshes,materials,textures:Object.fromEntries([...needed].filter(k=>textures[k]).map(k=>[k,textures[k]])),environment:{...pack.environment,clouds,effects,states}};
 }
 
 /** Reusable map runtime. No application UI or catalog is loaded by this module. */
@@ -39,19 +47,22 @@ export class MapRuntime {
    }
    if(script.type.startsWith('FxUvanim')){const name=script.type.includes('Tex2')?'_MainTex2_ST':'_MainTex_ST',u=uniforms[name]?.value;if(u){const base=item.material.userData.uvBase??={};base[name]??=u.clone();u.z=base[name].z+(f.scrollSpeed_X||0)*time;u.w=base[name].w+(f.scrollSpeed_Y||0)*time;}}
   }
- }effects.sample(time);}
+ }effects.sample(time);states.sample(time);doors.sample(time);items.sample();}
  const defaultWhite=new THREE.DataTexture(new Uint8Array([255,255,255,255]),1,1);defaultWhite.needsUpdate=true;
  renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x0f1116);renderer.outputColorSpace=THREE.SRGBColorSpace;host.append(renderer.domElement);
- scene=new THREE.Scene();const selection=new MapSelection(scene,onSelection);camera=new THREE.OrthographicCamera(-100,100,100,-100,.1,10000);camera.position.set(0,500,500);
- const effects=new MapEffects(camera,textures,selection);
+ scene=new THREE.Scene();let manipulator;const selection=new MapSelection(scene,items=>{manipulator?.sync();onSelection(items);});camera=new THREE.OrthographicCamera(-100,100,100,-100,.1,10000);camera.position.set(0,500,500);
+ const effects=new MapEffects(camera,textures,selection),states=new MapStates(camera,textures,selection,pickables,(key,colors)=>createMaterial(key,colors,false,new THREE.Matrix4().elements));
+ const doors=new MapDoors(selection);
+ const items=new MapItems(camera,textures,selection,pickables);
  controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.09;controls.screenSpacePanning=true;controls.minZoom=.001;controls.maxZoom=60;controls.minPolarAngle=controls.maxPolarAngle=Math.PI/4;controls.mouseButtons={LEFT:null,MIDDLE:THREE.MOUSE.PAN,RIGHT:THREE.MOUSE.ROTATE};controls.touches={ONE:THREE.TOUCH.PAN,TWO:THREE.TOUCH.DOLLY_PAN};
+ manipulator=new MapManipulator(scene,camera,renderer.domElement,selection,controls,changed);
  const sentinel=(x,z)=>(x>=998.5&&x<=999.5)||(z>=998.5&&z<=999.5)||(x===99&&z===99);
  function resize(){const {width,height}=host.getBoundingClientRect();if(!width||!height)return;renderer.setSize(width,height);baseSpan=height/32;const aspect=width/height;camera.left=-baseSpan*aspect/2;camera.right=baseSpan*aspect/2;camera.top=baseSpan/2*(unityView&&oblique?Math.SQRT1_2:1);camera.bottom=-camera.top;camera.updateProjectionMatrix();}
  function state(){return {selection:selection.getState(),position:camera.position.toArray(),target:controls.target.toArray(),zoom:camera.zoom,viewportWidth:host.clientWidth,viewportHeight:host.clientHeight,unityVerticalCompensation:unityView&&oblique?Math.SQRT1_2:1,viewWidth:(camera.right-camera.left)/camera.zoom,pixelsPerTileAt100:32,unityView,oblique,layers:[...layerGroups].map(([name,g])=>({name,visible:g.visible,count:g.userData.renderedTiles})),visibleTiles:[...selection.records.values()].filter(r=>r.visible&&layerGroups.get(r.tile.layer)?.visible&&(r.refs.length||environmentVisible&&r.effectRenderable)).length};}
  function changed(){onChange(state());}
  controls.addEventListener('change',changed);const observer=new ResizeObserver(resize);observer.observe(host);
  renderer.setAnimationLoop(time=>{if(disposed||exporting)return;particleTime.value=time*.001;animate(particleTime.value-mapStartTime);controls.update();if(!document.hidden)renderer.render(scene,camera);});
- function clear(){effects.clear();selection.clear();if(mapGroup){scene.remove(mapGroup);mapGroup.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.userData.cloud)o.geometry.dispose();});}if(eventGroup){scene.remove(eventGroup);eventGroup.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});}allMaterials.splice(0).forEach(m=>m.dispose());geometryCache.forEach(g=>g.dispose());geometryCache.clear();layerGroups.clear();pickables.length=cloudBatches.length=nativeAnimations.length=0;mapGroup=eventGroup=null;map=null;}
+ function clear(){doors.clear();items.clear();states.clear();effects.clear();selection.clear();if(mapGroup){scene.remove(mapGroup);mapGroup.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.userData.cloud)o.geometry.dispose();});}if(eventGroup){scene.remove(eventGroup);eventGroup.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});}allMaterials.splice(0).forEach(m=>m.dispose());geometryCache.forEach(g=>g.dispose());geometryCache.clear();layerGroups.clear();pickables.length=cloudBatches.length=nativeAnimations.length=0;mapGroup=eventGroup=null;map=null;}
  this.clear=clear;
  this.loadAssets=async(data,loadImage)=>{exportAbort?.abort();const assetToken=++assetsGeneration;clear();textures.forEach(t=>t.dispose());textures.clear();bundle=data;await Promise.all(Object.entries(data.textures).map(async([key,info])=>{const image=await loadImage(info.url);if(disposed||assetToken!==assetsGeneration)return;const t=new THREE.Texture(image);t.needsUpdate=true;t.colorSpace=THREE.NoColorSpace;t.magFilter=info.filter===0?THREE.NearestFilter:THREE.LinearFilter;t.minFilter=info.filter===0?THREE.NearestMipmapNearestFilter:THREE.LinearMipmapLinearFilter;t.wrapS=t.wrapT=info.wrap===1?THREE.ClampToEdgeWrapping:THREE.RepeatWrapping;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.set(key,t);}));};
 function createMaterial(key, vertexColors, billboard = false, partMatrix = null, animation = null) {
@@ -235,13 +246,15 @@ function buildClouds(key, tiles, group, layerIndex) {
       const key = `${bundle.setOrder.indexOf(doc.tilesets[tile.ts - 1].name)+1}:${tile.name}`;
       if (!bundle.templates[key] || bundle.templates[key].name !== tile.name) throw new Error('资源模板与地图索引不一致：' + key);
       if (!byTemplate.has(key)) byTemplate.set(key, []);
-      const live={...tile,layer:layer.name,id:layerIndex+':'+tileIndex++};byTemplate.get(key).push(live);selection.add(live);
+      const live={...tile,layer:layer.name,id:layerIndex+':'+tileIndex++};live.item=itemInfo(live,doc,bundle.itemMetadata);byTemplate.get(key).push(live);selection.add(live);
       sourceBounds.expandByPoint(new THREE.Vector3(tile.x, 0, -tile.z));
     }
     for (const [key, tiles] of byTemplate) {
+      const state=bundle.environment?.states?.[key];if(state)states.register(state.spec,state.assets,tiles,group,layerIndex);
       const nativeEffect=bundle.environment?.effects?.[key];let didRender = buildClouds(key, tiles, group, layerIndex);if(nativeEffect){const particles=effects.build(nativeEffect.spec,nativeEffect.assets,tiles,group,layerIndex);didRender=!!particles||didRender;}
       tiles.forEach(t=>selection.records.get(t.id).effectRenderable=!!didRender);
       if (didRender) group.userData.cloudTiles += tiles.length;
+      const marked=items.build(tiles,group,doc,bundle.itemMetadata);didRender=!!marked||didRender;
       const parts = bundle.templates[key].parts;
       for (let pi = 0; pi < parts.length; pi++) {
         const part = parts[pi], raw = bundle.meshes[part.mesh];
@@ -271,7 +284,8 @@ function buildClouds(key, tiles, group, layerIndex) {
 
     if(disposed)throw new Error('Preview disposed');
   }
-  pickables.push(...effects.batches.map(b=>b.mesh));effects.sample(0);mapGroup.userData.bounds=sourceBounds;
+  for(const r of selection.records.values())doors.register(r);doors.sample(0);
+  pickables.push(...effects.batches.map(b=>b.mesh));states.initialize();effects.sample(0);mapGroup.userData.bounds=sourceBounds;
   eventGroup=new THREE.Group();eventGroup.visible=false;eventGroup.renderOrder=1000000;scene.add(eventGroup);
   for(const l of doc.layers.filter(l=>l.type===1)){const events=l.events.filter(e=>!sentinel(e.position[0],e.position[2]));const geom=new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(events.flatMap(e=>[e.position[0],e.position[1]+1.5,-e.position[2]]),3));const mat=new THREE.PointsMaterial({color:0x93aee6,size:6,sizeAttenuation:false,depthTest:false,depthWrite:false,transparent:true});const points=new THREE.Points(geom,mat);points.renderOrder=1000000;points.userData.eventLayer=l.name;eventGroup.add(points);}
   for(const m of allMaterials)m.uniforms.brightness.value=brightness;
@@ -280,28 +294,42 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.fit=()=>{if(!mapGroup)return;const bounds=mapGroup.userData.bounds,center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3());const aspect=host.clientWidth/Math.max(host.clientHeight,1);const fitSpan=Math.max(4,size.z*(oblique&&!unityView?.78:1),size.x/aspect)*1.35;controls.target.copy(center);camera.position.copy(center).add(new THREE.Vector3(0,oblique?500:700,oblique?500:.01));camera.zoom=THREE.MathUtils.clamp(host.clientHeight/32/fitSpan,.001,60);resize();controls.update();changed();};
  this.setView=(value)=>{oblique=value==='oblique';unityView=oblique;controls.minPolarAngle=unityView?Math.PI/4:.02;controls.maxPolarAngle=unityView?Math.PI/4:Math.PI*.49;const center=controls.target;camera.position.copy(center).add(new THREE.Vector3(0,oblique?500:700,oblique?500:.01));resize();controls.update();changed();};
  this.setUnity=(enabled)=>{unityView=enabled;if(enabled)oblique=true;controls.minPolarAngle=enabled?Math.PI/4:.02;controls.maxPolarAngle=enabled?Math.PI/4:Math.PI*.49;if(enabled)camera.position.copy(controls.target).add(new THREE.Vector3(0,500,500));resize();controls.update();changed();};
- this.setEnvironment=value=>{environmentVisible=value;cloudBatches.forEach(b=>b.visible=value);effects.setVisible(value);changed();};
+ this.getGimmickControls=()=>{if(selection.values().length!==1)return null;const r=selection.values()[0],c=states.controls(r),door=doors.controls(r);return c||door?{groups:[...(c?.groups||[]),...(door?[door]:[])],nodes:c?.nodes||[]}:null;};
+ this.setGimmickState=(id,value,still=false)=>{if(selection.values().length===1){const r=selection.values()[0];if(id==='door:height')doors.change(r,value,still);else states.change(r,id,value,still);changed();}};
+ this.setEnvironment=value=>{environmentVisible=value;cloudBatches.forEach(b=>b.visible=value);effects.setVisible(value);states.setVisible(value);changed();};
  this.setEvents=value=>{if(eventGroup)eventGroup.visible=value;};
  this.setLayer=(name,value)=>{const g=layerGroups.get(name);if(g)g.visible=value;changed();};
- this.setBrightness=value=>{brightness=value;effects.setBrightness(value);allMaterials.forEach(m=>m.uniforms.brightness.value=value);};
+ this.setBrightness=value=>{brightness=value;effects.setBrightness(value);states.setBrightness(value);allMaterials.forEach(m=>m.uniforms.brightness.value=value);};
  this.zoom=factor=>{camera.zoom=THREE.MathUtils.clamp(camera.zoom*factor,.001,60);camera.updateProjectionMatrix();changed();};
  this.actualSize=()=>{camera.zoom=1;camera.updateProjectionMatrix();changed();};
  this.selectTiles=(ids)=>{selection.ids.clear();for(const id of ids)if(selection.records.has(id))selection.ids.add(id);selection.refresh();};
  this.getTileRecords=()=>[...selection.records.values()].map(r=>({...r.tile,...{visible:r.visible,partCount:r.refs.length}}));
- this.getSelection=()=>selection.getState();this.editSelection=changes=>{selection.apply(changes);changed();};this.resetEdits=(all=false)=>{selection.reset(all);changed();};this.clearSelection=()=>selection.select(null);
+ this.setCollectibles=value=>{items.setVisible(value);states.setPickupsVisible(value);changed();};
+ this.setTransformMode=mode=>manipulator.setMode(mode);this.setTransformSnap=value=>manipulator.setSnap(value);this.setSelectionOutline=value=>{selection.overlay.visible=!!value;};
+ this.getSelection=()=>selection.getState();this.editSelection=changes=>{selection.apply(changes);changed();};this.resetEdits=(all=false)=>{states.reset(all?[...selection.records.values()]:selection.values());selection.reset(all);doors.reset(all?[...selection.records.values()]:selection.values());changed();};this.clearSelection=()=>selection.select(null);
  this.getState=state;
  this.export=async(options={})=>{
   if(!mapGroup||!map)throw new Error('请先加载地图');if(exporting)throw new Error('正在导出地图');
   exporting=true;controls.enabled=false;exportAbort=new AbortController();const abort=()=>exportAbort?.abort();options.signal?.addEventListener('abort',abort,{once:true});if(options.signal?.aborted)abort();
   const sourceMap=map,sourceGroup=mapGroup,previousTime=particleTime.value-mapStartTime,time=options.time??previousTime;
-  try{animate(time);camera.updateMatrixWorld();const {exportMap}=await import('./export.js');return await exportMap({renderer,camera:camera.clone(),group:mapGroup,map,bundle,textures,selectedIds:new Set(selection.ids),effectMeshes:new Set([...effects.batches.filter(b=>!b.staticSprite).map(b=>b.mesh),...cloudBatches]),reflectedMeshes:new Set(effects.batches.map(b=>b.mesh)),state:state(),time},{...options,time,signal:exportAbort.signal});}
+  try{animate(time);camera.updateMatrixWorld();const {exportMap}=await import('./export.js');return await exportMap({renderer,camera:camera.clone(),group:mapGroup,map,bundle,textures,selectedIds:new Set(selection.ids),effectMeshes:new Set([...items.batches.map(b=>b.mesh),...effects.batches.filter(b=>!b.staticSprite).map(b=>b.mesh),...states.batches.filter(b=>!b.staticSprite).map(b=>b.mesh),...cloudBatches]),reflectedMeshes:new Set([...effects.batches,...states.batches].map(b=>b.mesh)),state:state(),time},{...options,time,signal:exportAbort.signal});}
   finally{options.signal?.removeEventListener('abort',abort);exportAbort=null;exporting=false;controls.enabled=true;if(!disposed&&map===sourceMap&&mapGroup===sourceGroup){particleTime.value=performance.now()*.001;mapStartTime=particleTime.value-previousTime;animate(previousTime);}}
  };
  this.render=(animationTime=particleTime.value-mapStartTime)=>{animate(animationTime);controls.update();renderer.render(scene,camera);};
- this.getDiagnostics=()=>({animatedMaterials:nativeAnimations.map(a=>({name:a.material.userData.source,tint:(a.material.uniforms._TintColor?.value||a.material.uniforms.tint?.value)?.toArray()})),drawCalls:renderer.info.render.calls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,failedPrograms:renderer.info.programs.filter(p=>p.diagnostics?.runnable===false).length});
- let start=[0,0];const down=e=>start=[e.clientX,e.clientY];const context=e=>e.preventDefault();
- const up=e=>{if(exporting||!map||e.button!==0||Math.hypot(e.clientX-start[0],e.clientY-start[1])>5)return;const rect=renderer.domElement.getBoundingClientRect(),ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const hit=ray.intersectObjects(pickables.filter(m=>m.visible&&m.parent.visible),false).find(h=>selection.records.get(h.object.userData.tiles[h.instanceId]?.id)?.visible);const tile=hit?hit.object.userData.tiles[hit.instanceId]:null;selection.select(tile?.id,e.ctrlKey||e.metaKey);if(hit){const record=selection.records.get(tile.id);record.tile={...record.tile,mesh:hit.object.userData.sourceMesh,material:hit.object.userData.sourceMaterial,shader:hit.object.userData.sourceShader};}onPick(selection.values().length===1?selection.values()[0].tile:null);};
+ this.getDiagnostics=()=>({scriptedDoors:doors.entries.length,gimmicks:states.diagnostics(),animatedMaterials:nativeAnimations.map(a=>({name:a.material.userData.source,tint:(a.material.uniforms._TintColor?.value||a.material.uniforms.tint?.value)?.toArray()})),drawCalls:renderer.info.render.calls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,failedPrograms:renderer.info.programs.filter(p=>p.diagnostics?.runnable===false).length});
+ let start=[0,0];const down=e=>{start=[e.clientX,e.clientY];if(!manipulator.control.dragging)manipulator.consumed=false;};const context=e=>e.preventDefault();
+ let lastPick=null;
+ const up=e=>{if(exporting||!map||e.button!==0||manipulator.consumed||manipulator.control.axis||Math.hypot(e.clientX-start[0],e.clientY-start[1])>5)return;
+  const rect=renderer.domElement.getBoundingClientRect(),ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);
+  const shown=m=>{for(let o=m;o;o=o.parent)if(!o.visible)return false;return true;},hits=[],seen=new Set();
+  for(const hit of ray.intersectObjects(pickables.filter(shown),false)){const tile=hit.object.userData.tiles?.[hit.instanceId];if(!tile||seen.has(tile.id)||!selection.records.get(tile.id)?.visible)continue;seen.add(tile.id);hits.push(hit);}
+  const key=hits.map(h=>h.object.userData.tiles[h.instanceId].id).join('|'),repeat=lastPick&&lastPick.key===key&&Math.hypot(e.clientX-lastPick.x,e.clientY-lastPick.y)<6;
+  const index=repeat?(lastPick.index+1)%Math.max(1,hits.length):0;lastPick={key,index,x:e.clientX,y:e.clientY};
+  const hit=hits[index],tile=hit?.object.userData.tiles[hit.instanceId];
+  if(hit){const record=selection.records.get(tile.id);record.tile={...record.tile,mesh:hit.object.userData.sourceMesh,material:hit.object.userData.sourceMaterial,shader:hit.object.userData.sourceShader};}
+  selection.select(tile?.id,e.ctrlKey||e.metaKey);onPick(selection.values().length===1?selection.values()[0].tile:null);
+ };
  renderer.domElement.addEventListener('contextmenu',context);renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointerup',up);
- this.dispose=()=>{if(disposed)return;disposed=true;exportAbort?.abort();++assetsGeneration;observer.disconnect();renderer.setAnimationLoop(null);controls.dispose();clear();textures.forEach(t=>t.dispose());textures.clear();renderer.domElement.removeEventListener('contextmenu',context);renderer.domElement.removeEventListener('pointerdown',down);renderer.domElement.removeEventListener('pointerup',up);selection.dispose();defaultWhite.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();};resize();
+ this.dispose=()=>{if(disposed)return;disposed=true;exportAbort?.abort();++assetsGeneration;observer.disconnect();renderer.setAnimationLoop(null);manipulator.dispose();controls.dispose();clear();textures.forEach(t=>t.dispose());textures.clear();renderer.domElement.removeEventListener('contextmenu',context);renderer.domElement.removeEventListener('pointerdown',down);renderer.domElement.removeEventListener('pointerup',up);selection.dispose();defaultWhite.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();};resize();
  }
 }

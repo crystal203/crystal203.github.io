@@ -20,11 +20,11 @@ export class MapSelection {
   const touched=new Set();for(const r of records){r.position.sub(pivot).multiply(factor).applyQuaternion(q).add(pivot).add(delta);r.scale.multiply(factor);r.rotation+=rotate[1];r.quaternion=(r.quaternion||new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),-(r.rotation-rotate[1])*Math.PI/180)).premultiply(q);if(visible!==undefined)r.visible=!!visible;this.update(r,touched);}
   for(const mesh of touched)mesh.computeBoundingSphere();this.refresh();
  }
- update(r,touched=new Set()){this.matrix(r);if(r.quaternion)r.matrix.compose(r.position,r.quaternion,r.visible?r.scale:new THREE.Vector3());for(const ref of r.refs){ref.mesh.setMatrixAt(ref.index,r.matrix.clone().multiply(ref.local));ref.mesh.instanceMatrix.needsUpdate=true;touched.add(ref.mesh);}}
+ update(r,touched=new Set()){this.matrix(r);if(r.quaternion)r.matrix.compose(r.position,r.quaternion,r.visible?r.scale:new THREE.Vector3());for(const ref of r.refs){ref.mesh.setMatrixAt(ref.index,ref.suppressed||ref.enabled===false?new THREE.Matrix4().makeScale(0,0,0):r.matrix.clone().multiply(ref.local));ref.mesh.instanceMatrix.needsUpdate=true;touched.add(ref.mesh);}}
  reset(all=false){const touched=new Set();for(const r of all?this.records.values():this.values()){r.position.set(r.tile.x,r.tile.y*.5,-r.tile.z);r.rotation=r.tile.rotation*90;r.scale.set(1,1,1);r.visible=true;r.quaternion=null;this.update(r,touched);}for(const mesh of touched)mesh.computeBoundingSphere();this.refresh();}
  refresh(){for(const o of [...this.overlay.children]){o.geometry.dispose();this.overlay.remove(o);}for(const r of this.values()){
    const box=new THREE.Box3(),matrix=this.matrixFor(r);
-   for(const ref of r.refs){const g=ref.mesh.geometry;if(!g.boundingBox)g.computeBoundingBox();box.union(g.boundingBox.clone().applyMatrix4(matrix.clone().multiply(ref.local)));}
+   for(const ref of r.refs){if(ref.suppressed||ref.enabled===false)continue;const g=ref.mesh.geometry;if(!g.boundingBox)g.computeBoundingBox();box.union(g.boundingBox.clone().applyMatrix4(matrix.clone().multiply(ref.local)));}
    for(const read of r.boundsReaders)box.union(read());
    if(box.isEmpty())box.setFromCenterAndSize(r.position,new THREE.Vector3(1,1,1));if(box.getSize(new THREE.Vector3()).length()<.01)box.expandByScalar(.5);else box.expandByScalar(.06);
    const outline=new THREE.Box3Helper(box,0x8ad5ff);outline.material.dispose();outline.material=this.material;outline.renderOrder=2000000;outline.frustumCulled=false;this.overlay.add(outline);

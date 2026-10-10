@@ -1,0 +1,41 @@
+{
+  "scope": "targeted browser interaction and source-data checks, not a full map regression",
+  "states": {
+    "sets": 84,
+    "templates": 913,
+    "configurationBytes": 36002388,
+    "controllers": 443,
+    "states": 1320,
+    "statesWithClips": 983,
+    "particleSystems": 2038,
+    "doorTemplates": 170
+  },
+  "itemNames": 5654,
+  "chineseItemNames": 4664,
+  "defaultComponentSpecs": 760,
+  "coinPolicy": {
+    "worlds1to8": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      3
+    ],
+    "worlds9plus": "world number",
+    "other": "purple_coin_event"
+  },
+  "verified": {
+    "allStateAndEffectTexturesPresent": true,
+    "allPickupAtlasRectsInBounds": true,
+    "desertWorld4": "purple_coin_5",
+    "snowWorld8": "purple_coin_3",
+    "shortStory": "purple_coin_event",
+    "pearlEarringId9110092": "珍珠耳环",
+    "browser": "11 representative templates rendered; battle gate start/end choices and glow visible; chest drag changed map X from 10 to 12.583984375; no failed shader programs in this fixture",
+    "rewardIcons": "Rendered current app itemIcon/updateItemInfo functions for experience, gold, random equipment, pearl earring ID 9110092, and costume ID 10003; Chinese names and original atlas images visible."
+  },
+  "unusedGeneratedTexturesRemoved": 41
+}
