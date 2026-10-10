@@ -1,7 +1,8 @@
 import {FxRuntime} from '../../gtfx/core.js';
-import {outputSize} from '../../gtfx/gif-sizing.js';
+import {outputSize,nearestResize} from '../../gtfx/gif-sizing.js';
 const $=id=>document.getElementById(id);
 let manifestUrl,effectGeneration=0,loadedEffect=null,disposed=false;
+let mediaAbort=null;
 let runtime,catalog,index,character,effect,playing=false,time=0,last=performance.now(),queue=null,gap=0,generation=0,exporting=false,cancelled=false,worker=null,downloadUrl=null,measuring=false,nativePlan=null;
 let avatarImage=null,avatarFrames={};
 function message(text=''){$('message').textContent=text;$('message').hidden=!text;}
@@ -123,7 +124,7 @@ async function exportGif(){
     if(downloadUrl)URL.revokeObjectURL(downloadUrl);downloadUrl=URL.createObjectURL(new Blob([result.bytes],{type:'image/gif'}));
     const a=$('download-gif');a.hidden=false;a.href=downloadUrl;a.download=effect.assetName+(native?`_${dimensions.width}x${dimensions.height}`:'')+(transparent?'_transparent':'_matte')+'.gif';a.click();$('export-status').textContent='导出完成 · '+dimensions.width+' × '+dimensions.height+' px';
   }catch(e){if(!cancelled)message(e.message);}
-  finally{worker?.terminate();worker=null;exporting=false;disabled.forEach(el=>el.disabled=false);$('cancel').hidden=true;$('progress').hidden=true;$('export').textContent='导出 GIF';time=oldTime;playing=oldPlaying;runtime.resize();sample();}
+  finally{worker?.terminate();worker=null;exporting=false;disabled.forEach(el=>el.disabled=false);$('cancel').hidden=true;$('progress').hidden=true;$('export').textContent='导出 '+$('media-format').selectedOptions[0].textContent;time=oldTime;playing=oldPlaying;runtime.resize();sample();}
 }
 $('search').oninput=renderCharacters;$('menu').onclick=()=>$('sidebar').classList.toggle('open');
 $('effect').onchange=()=>{queue=null;selectEffect(Number($('effect').value));};
@@ -147,10 +148,28 @@ let drag;
 $('canvas').onpointerdown=e=>{if(exporting||!effect)return;drag={x:e.clientX,y:e.clientY};$('canvas').setPointerCapture(e.pointerId);};
 $('canvas').onpointermove=e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y,scale=runtime.viewSize/runtime.zoom/$('canvas').clientHeight,pitch=runtime.cameraConfig.pitchDeg*Math.PI/180;runtime.viewCenter.x-=dx*scale;runtime.viewCenter.y+=dy*scale*Math.cos(pitch)*Math.sin(pitch);runtime.viewCenter.z-=dy*scale*Math.sin(pitch)**2;drag={x:e.clientX,y:e.clientY};runtime.setView(runtime.topView);sample();};
 $('canvas').onpointerup=()=>{drag=null;};$('canvas').onpointercancel=()=>{drag=null;};
-$('export').onclick=exportGif;$('cancel').onclick=()=>{cancelled=true;};
+async function exportMedia(){
+ if(exporting||measuring||!effect)return;
+ const format=$('media-format').value;if(format==='gif')return exportGif();
+ let config;try{config=exportTimes();}catch(e){message(e.message);return;}
+ const oldTime=time,oldPlaying=playing;exporting=true;playing=false;cancelled=false;mediaAbort=new AbortController();
+ const locked=[...document.querySelectorAll('button,input,select')].filter(el=>!el.disabled&&el.id!=='cancel');locked.forEach(el=>el.disabled=true);
+ $('cancel').hidden=false;$('progress').hidden=false;$('progress').value=0;$('export').textContent='导出中';update();message('');
+ try{
+  const native=$('size').value==='native',transparent=$('background').value==='transparent';let captureSize=Number($('size').value),dimensions={width:captureSize,height:captureSize};
+  if(native){nativePlan=await runtime.measureNative(config.times,{onProgress:p=>$('progress').value=p*.2,isCancelled:()=>cancelled});dimensions=outputSize(nativePlan,Number($('native-scale').value));captureSize=nativePlan;showNativeDimensions();}
+  const {exportAnimation}=await import('../../core/animation-export.js'),{offerDownload}=await import('../../core/export-utils.js');
+  const result=await exportAnimation({format,...dimensions,frames:config.times.length,fps:config.fps,duration:(config.end-config.start)/config.speed,transparent,background:$('color').value,signal:mediaAbort.signal,getFrame:i=>{const rgba=runtime.captureFrame(config.times[i],captureSize);return native?nearestResize(rgba,nativePlan.width,nativePlan.height,dimensions.width,dimensions.height):rgba;},onProgress:p=>$('progress').value=(native?.2:0)+p*(native?.8:1)});
+  if(!cancelled){offerDownload($('download-gif'),result.blob,effect.assetName+'.'+result.extension);$('export-status').textContent=`导出完成 · ${result.width} × ${result.height} px`;}
+ }catch(e){if(!cancelled&&e.name!=='AbortError')message(e.message);}
+ finally{exporting=false;mediaAbort=null;locked.forEach(el=>el.disabled=false);$('cancel').hidden=true;$('progress').hidden=true;$('export').textContent='导出 '+$('media-format').selectedOptions[0].textContent;time=oldTime;playing=oldPlaying;if(!disposed){runtime.resize();sample();}}
+}
+
+$('export').onclick=exportMedia;$('cancel').onclick=()=>{cancelled=true;mediaAbort?.abort();};
+$('media-format').onchange=()=>{const video=['mp4','mov'].includes($('media-format').value);$('background').querySelector('option[value=transparent]').disabled=video;if(video)$('background').value='color';$('color').hidden=$('background').value==='transparent';$('export').textContent='导出 '+$('media-format').selectedOptions[0].textContent;};
 $('info').onclick=()=>{$('info-text').textContent=effect?`${character.name} / ${character.id}\n${effect.assetName}\n${effect.preset}\n${effect.systems.length} 个粒子系统 · ${effect.statics?.length||0} 个静态图层\n${runtime.duration.toFixed(3)} s\n\n${effect.limitations?.length?'近似项：'+effect.limitations.join('、'):'基础粒子渲染'}\n\n全部素材随站点打包。GIF 支持 1 位透明，半透明边缘会量化。\n原始尺寸：按素材 PPU（无记录时 100 px / Unity 单位）与整段动画可见边界计算，倍率采用最近邻缩放。`:'角色特效播放器';$('info-dialog').showModal();};
 $('close-info').onclick=()=>$('info-dialog').close();
 async function init(){try{runtime=new FxRuntime($('canvas'));runtime.grid.visible=false;runtime.setBackground('checker');new ResizeObserver(()=>{if(!exporting&&!measuring){runtime.resize();sample();}}).observe($('stage'));runtime.resize();catalog=await json('../../resources/fx/catalog.json');renderCharacters();const desired=new URL(location.href).searchParams.get('character')||'hana';const selected=catalog.characters.find(c=>c.id===desired);if(selected)await selectCharacter(selected);else message('当前索引没有对应角色：'+desired);if(!disposed)loadAvatars();}catch(e){error(e);}requestAnimationFrame(tick);}
 init();
 
-window.addEventListener("gt-dispose",()=>{disposed=true;++generation;++effectGeneration;cancelled=true;worker?.terminate();if(downloadUrl)URL.revokeObjectURL(downloadUrl);runtime?.dispose();});
+window.addEventListener("gt-dispose",()=>{disposed=true;++generation;++effectGeneration;cancelled=true;mediaAbort?.abort();worker?.terminate();if(downloadUrl)URL.revokeObjectURL(downloadUrl);runtime?.dispose();});

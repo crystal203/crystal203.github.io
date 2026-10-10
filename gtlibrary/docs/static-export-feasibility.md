@@ -1,6 +1,9 @@
 # 静态部署、原生效果与导出可行性
 
-考察日期：2026-10-10。以下视频、模型导出是可行性结论，当前没有新增 MP4、MOV、GLB 或 .blend 导出按钮。网页运行仍是 HTML、CSS、JavaScript；仓库中的 Python/Node 工具仅用于离线整理和验证资产。
+
+> 2026-10-10 实现更新：Spine/特效已提供 MP4、MOV、透明 PNG 序列；地图已提供 GLB、OBJ 套件与 Blender 套件。实际能力与限制以 [浏览器导出说明](browser-exports.md) 为准。下方保留早期可行性分析。
+
+考察日期：2026-10-10。以下为导出功能实现前的调查记录，当前实现已增加 MP4、MOV、PNG 序列、GLB、OBJ 和 Blender 套件；.blend 仍不在浏览器直接生成。网页运行仍是 HTML、CSS、JavaScript；仓库中的 Python/Node 工具仅用于离线整理和验证资产。
 
 ## 本次落实
 
@@ -28,7 +31,7 @@
 
 现有 GIF 导出已具有固定时间步长和 RGBA 读取路径，Spine 在调色板量化前的帧、FX 的 `captureFrame(time, size, background)` 均可复用。将其抽成独立帧源，设置准确微秒时间戳、固定帧率、编码队列背压，关闭已提交的 VideoFrame，最后下载 Blob。视频生成不需要服务器。
 
-WebCodecs 只产生编码数据块，需要另加 JS 封装器；Mediabunny 提供 MP4 与 MOV 输出格式，可作为静态 JS 随站点发布。本机浏览器检测到 H.264、VP9、HEVC 编码配置可用；这只是配置探测，没有在本次生成视频样片，也不能代表所有浏览器/硬件。MediaRecorder 的 QuickTime MIME 不受支持并不妨碍 JS 自己封装 MOV。实时录屏可能掉帧，不宜作为精确逐帧导出的主要路径。
+WebCodecs 只产生编码数据块，需要另加 JS 封装器；Mediabunny 提供 MP4 与 MOV 输出格式，可作为静态 JS 随站点发布。本机浏览器检测到 H.264、VP9、HEVC 编码配置可用；最初这只是配置探测；后续已生成并验证实际视频样片，见最新导出说明。这不代表所有浏览器/硬件。MediaRecorder 的 QuickTime MIME 不受支持并不妨碍 JS 自己封装 MOV。实时录屏可能掉帧，不宜作为精确逐帧导出的主要路径。
 
 透明 MOV 的难点在编码器。Mediabunny 的 ProRes 扩展目前提供的是解码器；不能将其误当作 ProRes 导出能力。软件/WASM 编码可以另行考察，但大图长视频受内存和耗时限制。较可靠的第一版应为不透明 MP4/MOV 与透明 PNG 序列。
 

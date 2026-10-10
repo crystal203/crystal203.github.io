@@ -1,0 +1,66 @@
+{
+  "test.mp4": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 258,
+        "height": 130,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "12/1",
+        "nb_frames": "12"
+      }
+    ],
+    "format": {
+      "duration": "1.000000"
+    }
+  },
+  "test.mov": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 258,
+        "height": 130,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "12/1",
+        "nb_frames": "12"
+      }
+    ],
+    "format": {
+      "duration": "1.000000"
+    }
+  },
+  "spine_export.mp4": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 474,
+        "height": 556,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "12/1",
+        "nb_frames": "6"
+      }
+    ],
+    "format": {
+      "duration": "0.500000"
+    }
+  },
+  "fx_hana_linkatk_chainhold.mov": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 256,
+        "height": 256,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "20/1",
+        "nb_frames": "14"
+      }
+    ],
+    "format": {
+      "duration": "0.700000"
+    }
+  }
+}

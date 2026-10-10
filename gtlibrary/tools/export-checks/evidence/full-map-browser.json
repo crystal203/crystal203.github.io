@@ -1,0 +1,264 @@
+{
+  "map": {
+    "id": "afterworld_1_1",
+    "nativeParticleSystems": 37,
+    "nativeParticleInstances": 1543,
+    "renderedTiles": 12364,
+    "emptyTiles": 1146,
+    "sentinelTiles": 3,
+    "instanceCount": 12550,
+    "cloudEmitters": 197,
+    "cloudParticles": 0,
+    "nativeAnimatedMaterials": 1,
+    "layers": 17,
+    "tiles": 13513
+  },
+  "glb": {
+    "bytes": 82839712,
+    "format": "GTMapExport",
+    "version": 1,
+    "map": "afterworld_1_1",
+    "time": 3,
+    "view": {
+      "selection": [],
+      "position": [
+        -9.5,
+        500.00000000000006,
+        603
+      ],
+      "target": [
+        -9.5,
+        0,
+        103
+      ],
+      "zoom": 0.04873294346978557,
+      "viewportWidth": 850,
+      "viewportHeight": 480,
+      "unityVerticalCompensation": 0.7071067811865476,
+      "viewWidth": 545.0625,
+      "pixelsPerTileAt100": 32,
+      "unityView": true,
+      "oblique": true,
+      "layers": [
+        {
+          "name": "fx",
+          "visible": true,
+          "count": 112
+        },
+        {
+          "name": "obj2",
+          "visible": true,
+          "count": 198
+        },
+        {
+          "name": "obj_shadow",
+          "visible": true,
+          "count": 944
+        },
+        {
+          "name": "obj1",
+          "visible": true,
+          "count": 927
+        },
+        {
+          "name": "obj_floor",
+          "visible": true,
+          "count": 71
+        },
+        {
+          "name": "wall_fx",
+          "visible": true,
+          "count": 11
+        },
+        {
+          "name": "wall",
+          "visible": true,
+          "count": 3248
+        },
+        {
+          "name": "floor",
+          "visible": true,
+          "count": 6496
+        },
+        {
+          "name": "fx_glow",
+          "visible": true,
+          "count": 128
+        },
+        {
+          "name": "breakable",
+          "visible": true,
+          "count": 65
+        },
+        {
+          "name": "gimmick",
+          "visible": true,
+          "count": 164
+        }
+      ],
+      "visibleTiles": 12364
+    },
+    "units": "one tile = one metre; Y up (GLB), Z up (OBJ)",
+    "scope": "visible",
+    "effects": "static snapshot",
+    "instances": 13590,
+    "meshes": 652,
+    "skipped": 0,
+    "warnings": [],
+    "limitations": [
+      "Unity 脚本、物理、事件、骨骼人物与粒子时间线未导出",
+      "材质按当前视角与快照时间烘焙；改变视角后 MatCap 不再随视角变化",
+      "加法混合在 GLB/OBJ 中近似为透明贴图，Blender 套件可恢复加法表面",
+      "灯光与遮挡沿用预览已有效果；不额外生成游戏未提供的动态光照"
+    ],
+    "headerValid": true,
+    "embeddedImages": 652,
+    "nodes": 25967,
+    "alphaMaterials": 110,
+    "cameraCount": 1,
+    "allUnlit": true
+  },
+  "reimport": {
+    "meshes": 1,
+    "failedPrograms": 0
+  },
+  "selectionExport": {
+    "format": "GTMapExport",
+    "version": 1,
+    "map": "afterworld_1_1",
+    "time": 3,
+    "view": {
+      "selection": [
+        {
+          "ts": 1,
+          "ti": 136,
+          "name": "floor_outdoor_3",
+          "x": 30,
+          "y": 0,
+          "z": -39,
+          "rotation": 0,
+          "layer": "obj2",
+          "id": "1:59",
+          "position": [
+            32,
+            0,
+            -39
+          ],
+          "scale": [
+            2,
+            1,
+            1
+          ],
+          "visible": true
+        }
+      ],
+      "position": [
+        -9.5,
+        500.00000000000006,
+        603
+      ],
+      "target": [
+        -9.5,
+        0,
+        103
+      ],
+      "zoom": 0.04873294346978557,
+      "viewportWidth": 850,
+      "viewportHeight": 480,
+      "unityVerticalCompensation": 0.7071067811865476,
+      "viewWidth": 545.0625,
+      "pixelsPerTileAt100": 32,
+      "unityView": true,
+      "oblique": true,
+      "layers": [
+        {
+          "name": "fx",
+          "visible": true,
+          "count": 112
+        },
+        {
+          "name": "obj2",
+          "visible": true,
+          "count": 198
+        },
+        {
+          "name": "obj_shadow",
+          "visible": true,
+          "count": 944
+        },
+        {
+          "name": "obj1",
+          "visible": true,
+          "count": 927
+        },
+        {
+          "name": "obj_floor",
+          "visible": true,
+          "count": 71
+        },
+        {
+          "name": "wall_fx",
+          "visible": true,
+          "count": 11
+        },
+        {
+          "name": "wall",
+          "visible": true,
+          "count": 3248
+        },
+        {
+          "name": "floor",
+          "visible": true,
+          "count": 6496
+        },
+        {
+          "name": "fx_glow",
+          "visible": true,
+          "count": 128
+        },
+        {
+          "name": "breakable",
+          "visible": true,
+          "count": 65
+        },
+        {
+          "name": "gimmick",
+          "visible": true,
+          "count": 164
+        }
+      ],
+      "visibleTiles": 12364
+    },
+    "units": "one tile = one metre; Y up (GLB), Z up (OBJ)",
+    "scope": "selection",
+    "effects": "static snapshot",
+    "instances": 1,
+    "meshes": 1,
+    "skipped": 0,
+    "warnings": [],
+    "limitations": [
+      "Unity 脚本、物理、事件、骨骼人物与粒子时间线未导出",
+      "材质按当前视角与快照时间烘焙；改变视角后 MatCap 不再随视角变化",
+      "加法混合在 GLB/OBJ 中近似为透明贴图，Blender 套件可恢复加法表面",
+      "灯光与遮挡沿用预览已有效果；不额外生成游戏未提供的动态光照"
+    ]
+  },
+  "cancel": true,
+  "previewAfterCancel": {
+    "animatedMaterials": [
+      {
+        "name": "gimmick_hole",
+        "tint": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "drawCalls": 287,
+    "geometries": 261,
+    "textures": 24,
+    "failedPrograms": 0
+  }
+}

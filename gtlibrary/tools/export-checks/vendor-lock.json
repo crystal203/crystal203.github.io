@@ -1,0 +1,33 @@
+{
+  "mediabunny": {
+    "version": "1.61.3",
+    "source": "https://registry.npmjs.org/mediabunny/-/mediabunny-1.61.3.tgz",
+    "file": "vendor/mediabunny.js",
+    "license": "vendor/MEDIABUNNY-LICENSE.txt",
+    "sha256": {
+      "vendor/mediabunny.js": "d7b3a90e82158a7022729cbd4f861daf73cbb4f69d23349d2aefc9c8281cf70c"
+    }
+  },
+  "fflate": {
+    "version": "0.8.2",
+    "source": "https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz",
+    "file": "vendor/fflate.js",
+    "license": "vendor/FFLATE-LICENSE.txt",
+    "sha256": {
+      "vendor/fflate.js": "8cc1f687e0159e977addb6b85e274dbd11e622cf151f4fcb7b85d49622ea43e7"
+    }
+  },
+  "three-qa-loader": {
+    "version": "r180",
+    "source": "https://github.com/mrdoob/three.js/tree/r180/examples/jsm",
+    "files": [
+      "tools/export-checks/GLTFLoader.js",
+      "tools/export-checks/BufferGeometryUtils.js"
+    ],
+    "license": "vendor/THREE-LICENSE.txt",
+    "sha256": {
+      "tools/export-checks/GLTFLoader.js": "e7be39783298e75014e457f4aed3ae1fab4b231125f4d3cd818c25c7d8ee067e",
+      "tools/export-checks/BufferGeometryUtils.js": "6beb3343f2f4906b2e0915577423557ffc2d819f2ecdff94a0b9830e30525591"
+    }
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "map": {
+    "id": "coop_exp_s2_battle_1_hard",
+    "nativeParticleSystems": 4,
+    "nativeParticleInstances": 7,
+    "renderedTiles": 81,
+    "emptyTiles": 0,
+    "sentinelTiles": 0,
+    "instanceCount": 88,
+    "cloudEmitters": 1,
+    "cloudParticles": 0,
+    "nativeAnimatedMaterials": 1,
+    "layers": 22,
+    "tiles": 81
+  },
+  "blender": {
+    "bytes": 5330670,
+    "format": "GTMapExport",
+    "version": 1,
+    "map": "coop_exp_s2_battle_1_hard",
+    "time": 3,
+    "view": {
+      "selection": [],
+      "position": [
+        44.5,
+        500.00000000000006,
+        468.5
+      ],
+      "target": [
+        44.5,
+        0,
+        -31.500000000000004
+      ],
+      "zoom": 1.5873015873015872,
+      "viewportWidth": 850,
+      "viewportHeight": 480,
+      "unityVerticalCompensation": 0.7071067811865476,
+      "viewWidth": 16.734375,
+      "pixelsPerTileAt100": 32,
+      "unityView": true,
+      "oblique": true,
+      "layers": [
+        {
+          "name": "obj_glow",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_fog",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "undercliff_obj",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "undercliff_bridge",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_sky",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_wall2",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_wall",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_floor",
+          "visible": true,
+          "count": 4
+        },
+        {
+          "name": "obj_snow",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj2",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj1",
+          "visible": true,
+          "count": 1
+        },
+        {
+          "name": "wall_undercliff",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "wall2",
+          "visible": true,
+          "count": 18
+        },
+        {
+          "name": "wall",
+          "visible": true,
+          "count": 2
+        },
+        {
+          "name": "floor2",
+          "visible": true,
+          "count": 18
+        },
+        {
+          "name": "floor",
+          "visible": true,
+          "count": 34
+        },
+        {
+          "name": "obj_deco",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "water",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "gimmick",
+          "visible": true,
+          "count": 4
+        },
+        {
+          "name": "dot_hazard_zone_1",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "dot_hazard_zone_2",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "dot_hazard_zone_3",
+          "visible": true,
+          "count": 0
+        }
+      ],
+      "visibleTiles": 81
+    },
+    "units": "one tile = one metre; Y up (GLB), Z up (OBJ)",
+    "scope": "visible",
+    "effects": "static snapshot",
+    "instances": 93,
+    "meshes": 54,
+    "vertexBakedMeshes": 54,
+    "skipped": 0,
+    "warnings": [],
+    "limitations": [
+      "Unity 脚本、物理、事件、骨骼人物与粒子时间线未导出",
+      "材质按当前视角与快照时间烘焙；改变视角后 MatCap 不再随视角变化",
+      "加法混合在 GLB/OBJ 中近似为透明贴图，Blender 套件可恢复加法表面",
+      "灯光与遮挡沿用预览已有效果；不额外生成游戏未提供的动态光照"
+    ]
+  },
+  "obj": {
+    "bytes": 5416093,
+    "format": "GTMapExport",
+    "version": 1,
+    "map": "coop_exp_s2_battle_1_hard",
+    "time": 3,
+    "view": {
+      "selection": [],
+      "position": [
+        44.5,
+        500.00000000000006,
+        468.5
+      ],
+      "target": [
+        44.5,
+        0,
+        -31.500000000000004
+      ],
+      "zoom": 1.5873015873015872,
+      "viewportWidth": 850,
+      "viewportHeight": 480,
+      "unityVerticalCompensation": 0.7071067811865476,
+      "viewWidth": 16.734375,
+      "pixelsPerTileAt100": 32,
+      "unityView": true,
+      "oblique": true,
+      "layers": [
+        {
+          "name": "obj_glow",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_fog",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "undercliff_obj",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "undercliff_bridge",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_sky",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_wall2",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_wall",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj_floor",
+          "visible": true,
+          "count": 4
+        },
+        {
+          "name": "obj_snow",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj2",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "obj1",
+          "visible": true,
+          "count": 1
+        },
+        {
+          "name": "wall_undercliff",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "wall2",
+          "visible": true,
+          "count": 18
+        },
+        {
+          "name": "wall",
+          "visible": true,
+          "count": 2
+        },
+        {
+          "name": "floor2",
+          "visible": true,
+          "count": 18
+        },
+        {
+          "name": "floor",
+          "visible": true,
+          "count": 34
+        },
+        {
+          "name": "obj_deco",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "water",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "gimmick",
+          "visible": true,
+          "count": 4
+        },
+        {
+          "name": "dot_hazard_zone_1",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "dot_hazard_zone_2",
+          "visible": true,
+          "count": 0
+        },
+        {
+          "name": "dot_hazard_zone_3",
+          "visible": true,
+          "count": 0
+        }
+      ],
+      "visibleTiles": 81
+    },
+    "units": "one tile = one metre; Y up (GLB), Z up (OBJ)",
+    "scope": "visible",
+    "effects": "static snapshot",
+    "instances": 93,
+    "meshes": 54,
+    "vertexBakedMeshes": 54,
+    "skipped": 0,
+    "warnings": [],
+    "limitations": [
+      "Unity 脚本、物理、事件、骨骼人物与粒子时间线未导出",
+      "材质按当前视角与快照时间烘焙；改变视角后 MatCap 不再随视角变化",
+      "加法混合在 GLB/OBJ 中近似为透明贴图，Blender 套件可恢复加法表面",
+      "灯光与遮挡沿用预览已有效果；不额外生成游戏未提供的动态光照"
+    ]
+  }
+}

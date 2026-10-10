@@ -2,6 +2,8 @@
 
 唯一主入口是 `gtlibrary/index.html`，站点首页的“坎公资源库”卡片指向此处。项目为纯静态网站，可放在普通静态服务器或 GitHub Pages 上；运行时无需 Node 或后端。由于资源使用 fetch 和 ES modules，请通过 HTTP 打开，不能通过 file:// 直接运行。
 
+动画现可导出 GIF、MP4、MOV 和透明 PNG 序列 ZIP；地图可导出带内嵌贴图的 GLB、OBJ 套件或 Blender 套件。详见 [浏览器导出说明](docs/browser-exports.md)。
+
 ## 目录职责
 
 ```text

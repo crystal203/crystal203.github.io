@@ -2443,6 +2443,7 @@
           window.alert("请先加载一个资源再导出");
           return;
         }
+        if (app.exporting) return;
         var button = $("recordGifBtn");
         var bar = $("exportBar");
         var fill = bar.querySelector("i");
@@ -2570,6 +2571,36 @@
           done(false, "导出失败：" + (err && err.message ? err.message : err));
         });
       });
+
+      var mediaAbort = null;
+      $("cancelMediaBtn").onclick = function () { mediaAbort?.abort(); };
+      $("recordMediaBtn").addEventListener("click", async function () {
+        if (app.exporting || !app.skeleton || !app.animState) return;
+        var format = $("mediaFormat").value, speed = parseFloat($("speedSlider").value) || 1;
+        var duration = $("exportAutoDuration").checked && loopSeconds() > 0 ? loopSeconds() / speed : Math.max(.1, parseFloat($("exportDuration").value) || 3);
+        var fps = Math.max(1, Math.min(120, app.exportFpsTarget || 30)), frames = Math.ceil(duration * fps);
+        var region = clampRegion(app.region), W = canvas.width, H = canvas.height;
+        var states = [app.animState, app.emotion?.state].filter(Boolean), tracks = states.flatMap(function (s) { return s.tracks.filter(Boolean).map(function (t) { return [t, Object.fromEntries(Object.entries(t).filter(function (entry) { return typeof entry[1] === 'number'; }))]; }); });
+        var locked = Array.from(document.querySelectorAll('button,input,select')).filter(function (el) { return !el.disabled && el.id !== 'cancelMediaBtn'; });
+        locked.forEach(function (el) { el.disabled = true; });
+        app.exporting = true; mediaAbort = new AbortController(); $("cancelMediaBtn").hidden = false;
+        var button = $("recordMediaBtn"), bar = $("exportBar"), fill = bar.querySelector('i'); bar.classList.add('on');
+        try {
+          var mod = await import('../../core/animation-export.js'), util = await import('../../core/export-utils.js');
+          var result = await mod.exportAnimation({format:format,width:region.w,height:region.h,frames:frames,fps:fps,duration:duration,transparent:$("exportTransparentBg").checked,background:$("exportBgColor").value,signal:mediaAbort.signal,
+            getFrame:function (i) {
+              if(canvas.width!==W||canvas.height!==H)throw new Error("导出期间画布尺寸发生变化，请保持窗口大小并重新导出");
+              if (i) { app.animState.update(speed / fps); if (app.emotion?.animation) app.emotion.state.update(speed / fps); }
+              app.animState.apply(app.skeleton); app.skeleton.updateWorldTransform();
+              var source = readFrameRGBA(W,H), out = new Uint8Array(region.w * region.h * 4);
+              for (var y=0;y<region.h;y++) { var start=((H-1-region.y-y)*W+region.x)*4; out.set(source.subarray(start,start+region.w*4),y*region.w*4); }
+              return out;
+            },onProgress:function (p) { button.textContent='导出中 '+Math.round(p*100)+'%';fill.style.width=(p*100)+'%'; }});
+          if (!mediaAbort.signal.aborted) util.offerDownload($('mediaDownload'),result.blob,'spine_export.'+result.extension);
+        } catch (err) { if (err.name !== 'AbortError') window.alert('导出失败：'+err.message); }
+        finally { tracks.forEach(function (item) { Object.assign(item[0],item[1]); }); app.animState.apply(app.skeleton); app.skeleton.updateWorldTransform(); app.exporting=false; locked.forEach(function(el){el.disabled=false;});button.textContent='导出所选格式';bar.classList.remove('on');$("cancelMediaBtn").hidden=true;mediaAbort=null; }
+      });
+      window.addEventListener('gt-dispose',function(){mediaAbort?.abort();});
 
       // =====================================================================
       // 对外跳转接口（GET）

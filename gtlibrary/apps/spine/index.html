@@ -600,7 +600,7 @@
         </section>
 
         <section class="card">
-          <h3>导出 GIF</h3>
+          <h3>导出动画</h3>
 
           <div class="grid2">
             <label class="field"><span>帧率</span><input type="number" id="exportFps" min="1" max="100" value="30"></label>
@@ -634,7 +634,7 @@
           <div class="row" style="margin-top:11px">
             <button type="button" class="primary" id="recordGifBtn" style="flex:1 1 auto">导出 GIF</button>
           </div>
-          <div class="bar" id="exportBar"><i></i></div>
+          <div class="row" style="margin-top:8px"><select id="mediaFormat" aria-label="动画导出格式"><option value="mp4">MP4 · H.264</option><option value="mov">MOV · H.264</option><option value="png">PNG 序列 ZIP</option></select><button type="button" id="recordMediaBtn">导出所选格式</button><button type="button" id="cancelMediaBtn" hidden>取消</button><a id="mediaDownload" hidden download>保存文件</a></div><p style="font-size:12px;color:var(--muted,#9ba8ba)">使用上方范围、尺寸、时长与背景。MP4/MOV 无透明通道、无音轨；透明背景请选 PNG 序列。视频宽高不足偶数时补齐边缘。</p><div class="bar" id="exportBar"><i></i></div>
         </section>
       </aside>
     </div>
