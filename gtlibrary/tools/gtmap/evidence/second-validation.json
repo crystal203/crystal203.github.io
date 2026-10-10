@@ -1,0 +1,32 @@
+{
+  "maps": 823,
+  "previousMaps": 206,
+  "addedMaps": 617,
+  "sourceMaps": 2054,
+  "categories": 33,
+  "versions": [
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "decoderHashAndCount": "passed for every deployed original encrypted file",
+  "gpuRendering": "passed every deployed map; nonzero draw calls and no shader compile failures",
+  "coreChecks": 11,
+  "coreGeometryRelease": "passed",
+  "maxSingleMapGeometries": 246,
+  "appChecks": [
+    "default categories: 33 cards, zero map rows",
+    "garage category: 70 maps",
+    "explicit all option: 823 map rows",
+    "back to categories",
+    "search categories by source folder",
+    "garage_fire_50 preview and category persist after reload",
+    "garage_fire_50 and garage category restore after atlas switch",
+    "unified search navigates garage_water_50 with default categories",
+    "390 x 844 responsive iframe: 33 categories, working map menu, garage_dark_10 preview, menu auto closes, document width and scroll width both 390",
+    "actual /gtlibrary/ deployment base path"
+  ],
+  "limitations": "No claim of full game or every dynamic element fidelity"
+}

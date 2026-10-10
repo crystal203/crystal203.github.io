@@ -4879,36 +4879,18 @@ var spine;
 			var index = this.readInt(true);
 			return index == 0 ? null : this.strings[index - 1];
 		};
-		BinaryInput.prototype.readString = function () {
-			var byteCount = this.readInt(true);
-			switch (byteCount) {
-				case 0:
-					return null;
-				case 1:
-					return "";
-			}
-			byteCount--;
-			var chars = "";
-			var charCount = 0;
-			for (var i = 0; i < byteCount;) {
-				var b = this.readByte();
-				switch (b >> 4) {
-					case 12:
-					case 13:
-						chars += String.fromCharCode(((b & 0x1F) << 6 | this.readByte() & 0x3F));
-						i += 2;
-						break;
-					case 14:
-						chars += String.fromCharCode(((b & 0x0F) << 12 | (this.readByte() & 0x3F) << 6 | this.readByte() & 0x3F));
-						i += 3;
-						break;
-					default:
-						chars += String.fromCharCode(b);
-						i++;
-				}
-			}
-			return chars;
-		};
+        // Local correction: source attachment names can contain Korean or Japanese.
+        // The old signed-byte decoder turned UTF-8 bytes into fullwidth garbage.
+        var utf8Decoder = new TextDecoder("utf-8", {fatal: true});
+        BinaryInput.prototype.readString = function () {
+            var count = this.readInt(true);
+            if (count === 0) return null;
+            if (count === 1) return "";
+            var start = this.index, length = count - 1;
+            if (length < 0 || start + length > this.buffer.byteLength) throw new Error("Invalid Spine string length");
+            this.index += length;
+            return utf8Decoder.decode(new Uint8Array(this.buffer.buffer, this.buffer.byteOffset + start, length));
+        };
 		BinaryInput.prototype.readFloat = function () {
 			var value = this.buffer.getFloat32(this.index);
 			this.index += 4;

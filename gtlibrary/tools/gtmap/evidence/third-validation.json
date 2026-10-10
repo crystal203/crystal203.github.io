@@ -1,0 +1,34 @@
+{
+  "maps": 1440,
+  "previousMaps": 823,
+  "addedMaps": 617,
+  "sourceMaps": 2054,
+  "categories": 64,
+  "versions": [
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "decoderHashAndCount": "passed all 1440 original encrypted files",
+  "gpuRendering": "all 1440: nonzero draw calls and zero failed programs",
+  "coreChecks": 11,
+  "maxSingleMapGeometries": 427,
+  "waterEvents": {
+    "checks": 4,
+    "desertWaterTiles": 32,
+    "nativeMaterial": "Water_desert",
+    "eventOverlay": "passed RGB pixel comparison against opaque water"
+  },
+  "appChecks": [
+    "default categories: 64 cards and 1440 maps",
+    "third gzip pack preview: queencastle_1_2",
+    "queencastle category selection and queencastle_1_3 preview",
+    "parent route map/category update and reload restores category",
+    "390 pixel iframe: 64 category cards, queencastle_1_3 loaded, menu closes, clientWidth=scrollWidth=390"
+  ],
+  "limitations": "Static geometry and original material formulas; neutral global directional light; dynamic light grid, characters and some particle effects not reproduced",
+  "nativeShaderClasses": 41,
+  "nativeShaderSamples": "all 41 categories passed actual GLES compilation and GPU drawing"
+}

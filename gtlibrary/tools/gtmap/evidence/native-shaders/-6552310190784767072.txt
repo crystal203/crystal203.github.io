@@ -1,0 +1,375 @@
+#ifdef VERTEX
+#version 300 es
+
+#define HLSLCC_ENABLE_UNIFORM_BUFFERS 1
+#if HLSLCC_ENABLE_UNIFORM_BUFFERS
+#define UNITY_UNIFORM
+#else
+#define UNITY_UNIFORM uniform
+#endif
+#define UNITY_SUPPORTS_UNIFORM_LOCATION 1
+#if UNITY_SUPPORTS_UNIFORM_LOCATION
+#define UNITY_LOCATION(x) layout(location = x)
+#define UNITY_BINDING(x) layout(binding = x, std140)
+#else
+#define UNITY_LOCATION(x)
+#define UNITY_BINDING(x) layout(std140)
+#endif
+uniform 	vec4 _Time;
+uniform 	vec4 _SinTime;
+uniform 	vec4 hlslcc_mtx4x4unity_ObjectToWorld[4];
+uniform 	vec4 hlslcc_mtx4x4unity_MatrixVP[4];
+uniform 	float _WaveSpeedMulti;
+uniform 	float _SineMulti;
+in highp vec4 in_POSITION0;
+in highp vec4 in_TEXCOORD0;
+out highp vec4 vs_TEXCOORD0;
+out highp vec4 vs_TEXCOORD1;
+out highp vec2 vs_TEXCOORD2;
+vec4 u_xlat0;
+vec4 u_xlat1;
+void main()
+{
+    u_xlat0 = in_POSITION0.yyyy * hlslcc_mtx4x4unity_ObjectToWorld[1];
+    u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[0] * in_POSITION0.xxxx + u_xlat0;
+    u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[2] * in_POSITION0.zzzz + u_xlat0;
+    u_xlat1 = u_xlat0 + hlslcc_mtx4x4unity_ObjectToWorld[3];
+    vs_TEXCOORD1 = hlslcc_mtx4x4unity_ObjectToWorld[3] * in_POSITION0.wwww + u_xlat0;
+    u_xlat0 = u_xlat1.yyyy * hlslcc_mtx4x4unity_MatrixVP[1];
+    u_xlat0 = hlslcc_mtx4x4unity_MatrixVP[0] * u_xlat1.xxxx + u_xlat0;
+    u_xlat0 = hlslcc_mtx4x4unity_MatrixVP[2] * u_xlat1.zzzz + u_xlat0;
+    gl_Position = hlslcc_mtx4x4unity_MatrixVP[3] * u_xlat1.wwww + u_xlat0;
+    vs_TEXCOORD0 = in_TEXCOORD0;
+    u_xlat0.x = _Time.y * _WaveSpeedMulti;
+    vs_TEXCOORD2.x = u_xlat0.x * 0.159154937;
+    u_xlat0.x = _SinTime.w * _SineMulti;
+    vs_TEXCOORD2.y = abs(u_xlat0.x);
+    return;
+}
+
+#endif
+#ifdef FRAGMENT
+#version 300 es
+
+precision highp float;
+precision highp int;
+#define HLSLCC_ENABLE_UNIFORM_BUFFERS 1
+#if HLSLCC_ENABLE_UNIFORM_BUFFERS
+#define UNITY_UNIFORM
+#else
+#define UNITY_UNIFORM uniform
+#endif
+#define UNITY_SUPPORTS_UNIFORM_LOCATION 1
+#if UNITY_SUPPORTS_UNIFORM_LOCATION
+#define UNITY_LOCATION(x) layout(location = x)
+#define UNITY_BINDING(x) layout(binding = x, std140)
+#else
+#define UNITY_LOCATION(x)
+#define UNITY_BINDING(x) layout(std140)
+#endif
+uniform 	vec4 _Time;
+uniform 	float _WavesNoiseScale;
+uniform 	float _TideWavelength;
+uniform 	float _WaveFreq;
+uniform 	vec4 _WaveThickness;
+uniform 	float _RecedingWaterFactor;
+uniform 	vec4 _WaveMask;
+uniform 	float _WetSandStrength;
+uniform 	vec4 _WaterStep1;
+uniform 	vec4 _WaterStep2;
+uniform 	mediump vec4 _SeaColourDeep;
+uniform 	mediump vec4 _SeaColourShallow;
+uniform 	mediump vec4 _SandColour;
+uniform 	float _VorCellDen;
+uniform 	float _VorPow;
+uniform 	float _VorTimeMulti;
+uniform 	mediump vec4 _WaveColor;
+in highp vec4 vs_TEXCOORD0;
+in highp vec4 vs_TEXCOORD1;
+in highp vec2 vs_TEXCOORD2;
+layout(location = 0) out mediump vec4 SV_Target0;
+vec4 u_xlat0;
+vec4 u_xlat1;
+bvec4 u_xlatb1;
+vec4 u_xlat2;
+bvec4 u_xlatb2;
+vec4 u_xlat3;
+mediump vec4 u_xlat16_3;
+bvec4 u_xlatb3;
+vec4 u_xlat4;
+bool u_xlatb4;
+vec3 u_xlat5;
+bool u_xlatb5;
+vec2 u_xlat6;
+float u_xlat7;
+vec2 u_xlat8;
+bool u_xlatb8;
+vec2 u_xlat14;
+vec2 u_xlat15;
+bool u_xlatb15;
+vec2 u_xlat16;
+float u_xlat18;
+float u_xlat21;
+bool u_xlatb21;
+float u_xlat22;
+int u_xlati22;
+bool u_xlatb22;
+int u_xlati25;
+void main()
+{
+    u_xlat0.xy = vs_TEXCOORD1.xz * vec2(vec2(_WavesNoiseScale, _WavesNoiseScale));
+    u_xlat14.xy = floor(u_xlat0.xy);
+    u_xlat0.xy = fract(u_xlat0.xy);
+    u_xlat1 = u_xlat14.xyxy * vec4(289.0, 289.0, 289.0, 289.0);
+    u_xlatb1 = greaterThanEqual(u_xlat1, (-u_xlat1.zwzw));
+    u_xlat1.x = (u_xlatb1.x) ? float(289.0) : float(-289.0);
+    u_xlat1.y = (u_xlatb1.y) ? float(289.0) : float(-289.0);
+    u_xlat1.z = (u_xlatb1.z) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat1.w = (u_xlatb1.w) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat15.xy = u_xlat14.xy * u_xlat1.zw;
+    u_xlat15.xy = fract(u_xlat15.xy);
+    u_xlat1.xy = u_xlat15.xy * u_xlat1.xy;
+    u_xlat15.x = u_xlat1.x * 34.0 + 1.0;
+    u_xlat1.x = u_xlat1.x * u_xlat15.x;
+    u_xlat15.x = u_xlat1.x * 289.0;
+    u_xlatb15 = u_xlat15.x>=(-u_xlat15.x);
+    u_xlat15.xy = (bool(u_xlatb15)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat1.x = u_xlat15.y * u_xlat1.x;
+    u_xlat1.x = fract(u_xlat1.x);
+    u_xlat1.x = u_xlat15.x * u_xlat1.x + u_xlat1.y;
+    u_xlat8.x = u_xlat1.x * 34.0 + 1.0;
+    u_xlat1.x = u_xlat1.x * u_xlat8.x;
+    u_xlat8.x = u_xlat1.x * 289.0;
+    u_xlatb8 = u_xlat8.x>=(-u_xlat8.x);
+    u_xlat8.xy = (bool(u_xlatb8)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat1.x = u_xlat8.y * u_xlat1.x;
+    u_xlat1.x = fract(u_xlat1.x);
+    u_xlat1.x = u_xlat1.x * u_xlat8.x;
+    u_xlat1.x = u_xlat1.x * 0.024390243;
+    u_xlat1.x = fract(u_xlat1.x);
+    u_xlat1.xy = u_xlat1.xx * vec2(2.0, 2.0) + vec2(-1.0, -0.5);
+    u_xlat8.x = floor(u_xlat1.y);
+    u_xlat2.x = (-u_xlat8.x) + u_xlat1.x;
+    u_xlat2.y = abs(u_xlat1.x) + -0.5;
+    u_xlat1.x = dot(u_xlat2.xy, u_xlat2.xy);
+    u_xlat1.x = inversesqrt(u_xlat1.x);
+    u_xlat1.xy = u_xlat1.xx * u_xlat2.xy;
+    u_xlat1.x = dot(u_xlat1.xy, u_xlat0.xy);
+    u_xlat2 = u_xlat14.xyxy + vec4(0.0, 1.0, 1.0, 0.0);
+    u_xlat3 = u_xlat2 * vec4(289.0, 289.0, 289.0, 289.0);
+    u_xlatb3 = greaterThanEqual(u_xlat3, (-u_xlat3));
+    u_xlat4.x = (u_xlatb3.x) ? float(289.0) : float(-289.0);
+    u_xlat4.y = (u_xlatb3.y) ? float(289.0) : float(-289.0);
+    u_xlat4.z = (u_xlatb3.x) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat4.w = (u_xlatb3.y) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat8.xy = u_xlat2.xy * u_xlat4.zw;
+    u_xlat8.xy = fract(u_xlat8.xy);
+    u_xlat8.xy = u_xlat8.xy * u_xlat4.xy;
+    u_xlat22 = u_xlat8.x * 34.0 + 1.0;
+    u_xlat8.x = u_xlat8.x * u_xlat22;
+    u_xlat22 = u_xlat8.x * 289.0;
+    u_xlatb22 = u_xlat22>=(-u_xlat22);
+    u_xlat2.xy = (bool(u_xlatb22)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat8.x = u_xlat8.x * u_xlat2.y;
+    u_xlat8.x = fract(u_xlat8.x);
+    u_xlat8.x = u_xlat2.x * u_xlat8.x + u_xlat8.y;
+    u_xlat15.x = u_xlat8.x * 34.0 + 1.0;
+    u_xlat8.x = u_xlat8.x * u_xlat15.x;
+    u_xlat15.x = u_xlat8.x * 289.0;
+    u_xlatb15 = u_xlat15.x>=(-u_xlat15.x);
+    u_xlat15.xy = (bool(u_xlatb15)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat8.x = u_xlat15.y * u_xlat8.x;
+    u_xlat8.x = fract(u_xlat8.x);
+    u_xlat8.x = u_xlat8.x * u_xlat15.x;
+    u_xlat8.x = u_xlat8.x * 0.024390243;
+    u_xlat8.x = fract(u_xlat8.x);
+    u_xlat8.xy = u_xlat8.xx * vec2(2.0, 2.0) + vec2(-1.0, -0.5);
+    u_xlat15.x = floor(u_xlat8.y);
+    u_xlat2.x = (-u_xlat15.x) + u_xlat8.x;
+    u_xlat2.y = abs(u_xlat8.x) + -0.5;
+    u_xlat8.x = dot(u_xlat2.xy, u_xlat2.xy);
+    u_xlat8.x = inversesqrt(u_xlat8.x);
+    u_xlat8.xy = u_xlat8.xx * u_xlat2.xy;
+    u_xlat4 = u_xlat0.xyxy + vec4(-0.0, -1.0, -1.0, -0.0);
+    u_xlat8.x = dot(u_xlat8.xy, u_xlat4.xy);
+    u_xlat3.x = (u_xlatb3.z) ? float(289.0) : float(-289.0);
+    u_xlat3.y = (u_xlatb3.w) ? float(289.0) : float(-289.0);
+    u_xlat3.z = (u_xlatb3.z) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat3.w = (u_xlatb3.w) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat15.xy = u_xlat2.zw * u_xlat3.zw;
+    u_xlat15.xy = fract(u_xlat15.xy);
+    u_xlat15.xy = u_xlat15.xy * u_xlat3.xy;
+    u_xlat2.x = u_xlat15.x * 34.0 + 1.0;
+    u_xlat15.x = u_xlat15.x * u_xlat2.x;
+    u_xlat2.x = u_xlat15.x * 289.0;
+    u_xlatb2.x = u_xlat2.x>=(-u_xlat2.x);
+    u_xlat2.xy = (u_xlatb2.x) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat15.x = u_xlat15.x * u_xlat2.y;
+    u_xlat15.x = fract(u_xlat15.x);
+    u_xlat15.x = u_xlat2.x * u_xlat15.x + u_xlat15.y;
+    u_xlat22 = u_xlat15.x * 34.0 + 1.0;
+    u_xlat15.x = u_xlat15.x * u_xlat22;
+    u_xlat22 = u_xlat15.x * 289.0;
+    u_xlatb22 = u_xlat22>=(-u_xlat22);
+    u_xlat2.xy = (bool(u_xlatb22)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat15.x = u_xlat15.x * u_xlat2.y;
+    u_xlat15.x = fract(u_xlat15.x);
+    u_xlat15.x = u_xlat15.x * u_xlat2.x;
+    u_xlat15.x = u_xlat15.x * 0.024390243;
+    u_xlat15.x = fract(u_xlat15.x);
+    u_xlat15.xy = u_xlat15.xx * vec2(2.0, 2.0) + vec2(-1.0, -0.5);
+    u_xlat22 = floor(u_xlat15.y);
+    u_xlat2.x = (-u_xlat22) + u_xlat15.x;
+    u_xlat2.y = abs(u_xlat15.x) + -0.5;
+    u_xlat15.x = dot(u_xlat2.xy, u_xlat2.xy);
+    u_xlat15.x = inversesqrt(u_xlat15.x);
+    u_xlat15.xy = u_xlat15.xx * u_xlat2.xy;
+    u_xlat15.x = dot(u_xlat15.xy, u_xlat4.zw);
+    u_xlat14.xy = u_xlat14.xy + vec2(1.0, 1.0);
+    u_xlat2 = u_xlat14.xyxy * vec4(289.0, 289.0, 289.0, 289.0);
+    u_xlatb2 = greaterThanEqual(u_xlat2, (-u_xlat2.zwzw));
+    u_xlat2.x = (u_xlatb2.x) ? float(289.0) : float(-289.0);
+    u_xlat2.y = (u_xlatb2.y) ? float(289.0) : float(-289.0);
+    u_xlat2.z = (u_xlatb2.z) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat2.w = (u_xlatb2.w) ? float(0.00346020772) : float(-0.00346020772);
+    u_xlat14.xy = u_xlat14.xy * u_xlat2.zw;
+    u_xlat14.xy = fract(u_xlat14.xy);
+    u_xlat14.xy = u_xlat14.xy * u_xlat2.xy;
+    u_xlat22 = u_xlat14.x * 34.0 + 1.0;
+    u_xlat14.x = u_xlat14.x * u_xlat22;
+    u_xlat22 = u_xlat14.x * 289.0;
+    u_xlatb22 = u_xlat22>=(-u_xlat22);
+    u_xlat2.xy = (bool(u_xlatb22)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat14.x = u_xlat14.x * u_xlat2.y;
+    u_xlat14.x = fract(u_xlat14.x);
+    u_xlat14.x = u_xlat2.x * u_xlat14.x + u_xlat14.y;
+    u_xlat21 = u_xlat14.x * 34.0 + 1.0;
+    u_xlat14.x = u_xlat14.x * u_xlat21;
+    u_xlat21 = u_xlat14.x * 289.0;
+    u_xlatb21 = u_xlat21>=(-u_xlat21);
+    u_xlat2.xy = (bool(u_xlatb21)) ? vec2(289.0, 0.00346020772) : vec2(-289.0, -0.00346020772);
+    u_xlat14.x = u_xlat14.x * u_xlat2.y;
+    u_xlat14.x = fract(u_xlat14.x);
+    u_xlat14.x = u_xlat14.x * u_xlat2.x;
+    u_xlat14.x = u_xlat14.x * 0.024390243;
+    u_xlat14.x = fract(u_xlat14.x);
+    u_xlat14.xy = u_xlat14.xx * vec2(2.0, 2.0) + vec2(-1.0, -0.5);
+    u_xlat21 = floor(u_xlat14.y);
+    u_xlat2.x = (-u_xlat21) + u_xlat14.x;
+    u_xlat2.y = abs(u_xlat14.x) + -0.5;
+    u_xlat14.x = dot(u_xlat2.xy, u_xlat2.xy);
+    u_xlat14.x = inversesqrt(u_xlat14.x);
+    u_xlat14.xy = u_xlat14.xx * u_xlat2.xy;
+    u_xlat2.xy = u_xlat0.xy + vec2(-1.0, -1.0);
+    u_xlat14.x = dot(u_xlat14.xy, u_xlat2.xy);
+    u_xlat2.xy = u_xlat0.xy * u_xlat0.xy;
+    u_xlat2.xy = u_xlat0.xy * u_xlat2.xy;
+    u_xlat16.xy = u_xlat0.xy * vec2(6.0, 6.0) + vec2(-15.0, -15.0);
+    u_xlat0.xy = u_xlat0.xy * u_xlat16.xy + vec2(10.0, 10.0);
+    u_xlat0.xy = u_xlat0.xy * u_xlat2.xy;
+    u_xlat21 = (-u_xlat1.x) + u_xlat8.x;
+    u_xlat21 = u_xlat0.y * u_xlat21 + u_xlat1.x;
+    u_xlat14.x = (-u_xlat15.x) + u_xlat14.x;
+    u_xlat7 = u_xlat0.y * u_xlat14.x + u_xlat15.x;
+    u_xlat7 = (-u_xlat21) + u_xlat7;
+    u_xlat0.x = u_xlat0.x * u_xlat7 + u_xlat21;
+    u_xlat0.x = u_xlat0.x + 0.5;
+    u_xlat0.x = (-u_xlat0.x) * _TideWavelength + vs_TEXCOORD0.y;
+    u_xlat7 = u_xlat0.x * _WaveFreq + (-vs_TEXCOORD2.x);
+    u_xlat7 = fract(u_xlat7);
+    u_xlat14.x = (-_WaveThickness.x) + _WaveThickness.y;
+    u_xlat7 = u_xlat7 + (-_WaveThickness.x);
+    u_xlat14.x = float(1.0) / u_xlat14.x;
+    u_xlat7 = u_xlat14.x * u_xlat7;
+    u_xlat7 = clamp(u_xlat7, 0.0, 1.0);
+    u_xlat14.x = u_xlat7 * -2.0 + 3.0;
+    u_xlat7 = u_xlat7 * u_xlat7;
+    u_xlat7 = u_xlat7 * u_xlat14.x;
+    u_xlat14.x = u_xlat7 * u_xlat7;
+    u_xlat14.x = u_xlat14.x * u_xlat14.x;
+    u_xlat7 = (-u_xlat7) * u_xlat14.x + u_xlat7;
+    u_xlat14.x = u_xlat0.x + (-_RecedingWaterFactor);
+    u_xlat14.x = u_xlat14.x + (-vs_TEXCOORD2.y);
+    u_xlat21 = (-_WaveMask.x) + _WaveMask.y;
+    u_xlat14.x = u_xlat14.x + (-_WaveMask.x);
+    u_xlat21 = float(1.0) / u_xlat21;
+    u_xlat14.x = u_xlat21 * u_xlat14.x;
+    u_xlat14.x = clamp(u_xlat14.x, 0.0, 1.0);
+    u_xlat21 = u_xlat14.x * -2.0 + 3.0;
+    u_xlat14.x = u_xlat14.x * u_xlat14.x;
+    u_xlat14.x = u_xlat14.x * u_xlat21;
+    u_xlat14.x = u_xlat14.x * _WetSandStrength;
+    u_xlat21 = u_xlat0.x * 3.33333325;
+    u_xlat21 = clamp(u_xlat21, 0.0, 1.0);
+    u_xlat1.x = u_xlat21 * -2.0 + 3.0;
+    u_xlat21 = u_xlat21 * u_xlat21;
+    u_xlat8.x = u_xlat21 * u_xlat1.x;
+    u_xlat7 = u_xlat7 * u_xlat8.x;
+    u_xlat7 = u_xlat14.x * u_xlat7;
+    u_xlat7 = u_xlat7 * 3.0;
+    u_xlat7 = clamp(u_xlat7, 0.0, 1.0);
+    u_xlat8.x = (-_WaterStep2.x) + _WaterStep2.y;
+    u_xlat15.x = u_xlat0.x + (-_WaterStep2.x);
+    u_xlat8.x = float(1.0) / u_xlat8.x;
+    u_xlat8.x = u_xlat8.x * u_xlat15.x;
+    u_xlat8.x = clamp(u_xlat8.x, 0.0, 1.0);
+    u_xlat15.x = u_xlat8.x * -2.0 + 3.0;
+    u_xlat8.x = u_xlat8.x * u_xlat8.x;
+    u_xlat8.x = u_xlat8.x * u_xlat15.x;
+    u_xlat15.x = (-_WaterStep1.x) + _WaterStep1.y;
+    u_xlat0.x = u_xlat0.x + (-_WaterStep1.x);
+    u_xlat15.x = float(1.0) / u_xlat15.x;
+    u_xlat0.x = u_xlat0.x * u_xlat15.x;
+    u_xlat0.x = clamp(u_xlat0.x, 0.0, 1.0);
+    u_xlat15.x = u_xlat0.x * -2.0 + 3.0;
+    u_xlat0.x = u_xlat0.x * u_xlat0.x;
+    u_xlat0.x = u_xlat0.x * u_xlat15.x;
+    u_xlat2 = (-_SeaColourDeep) + _SeaColourShallow;
+    u_xlat2 = u_xlat0.xxxx * u_xlat2 + _SeaColourDeep;
+    u_xlat0.x = max(u_xlat14.x, u_xlat8.x);
+    u_xlat2 = u_xlat2 + (-_SandColour);
+    u_xlat2 = u_xlat0.xxxx * u_xlat2 + _SandColour;
+    u_xlat16_3 = (-u_xlat2) + _WaveColor;
+    u_xlat16_3 = u_xlat16_3 * _WaveColor.wwww;
+    u_xlat2 = vec4(u_xlat7) * u_xlat16_3 + u_xlat2;
+    u_xlat0.x = (-u_xlat1.x) * u_xlat21 + 1.0;
+    u_xlat7 = _Time.y * _VorTimeMulti;
+    u_xlat14.xy = vs_TEXCOORD0.xy * vec2(_VorCellDen);
+    u_xlat1.xy = floor(u_xlat14.xy);
+    u_xlat14.xy = fract(u_xlat14.xy);
+    u_xlat15.x = float(8.0);
+    for(int u_xlati_loop_1 = int(int(0xFFFFFFFFu)) ; u_xlati_loop_1<=1 ; u_xlati_loop_1++)
+    {
+        u_xlat4.y = float(u_xlati_loop_1);
+        u_xlat18 = u_xlat15.x;
+        for(int u_xlati_loop_2 = int(0xFFFFFFFFu) ; u_xlati_loop_2<=1 ; u_xlati_loop_2++)
+        {
+            u_xlat4.x = float(u_xlati_loop_2);
+            u_xlat5.xy = u_xlat1.xy + u_xlat4.xy;
+            u_xlat5.z = dot(u_xlat5.xy, vec2(15.2700005, 99.4100037));
+            u_xlat5.x = dot(u_xlat5.xy, vec2(47.6300011, 89.9800034));
+            u_xlat6.xy = sin(u_xlat5.xz);
+            u_xlat5.xy = u_xlat6.xy * vec2(46839.3203, 46839.3203);
+            u_xlat5.xy = fract(u_xlat5.xy);
+            u_xlat5.xy = vec2(u_xlat7) * u_xlat5.xy;
+            u_xlat5.x = sin(u_xlat5.x);
+            u_xlat6.x = u_xlat5.x * 0.5 + u_xlat4.x;
+            u_xlat4.x = cos(u_xlat5.y);
+            u_xlat6.y = u_xlat4.x * 0.5 + u_xlat4.y;
+            u_xlat5.xy = (-u_xlat14.xy) + u_xlat6.xy;
+            u_xlat5.xy = u_xlat5.xy + vec2(0.5, 0.5);
+            u_xlat4.x = dot(u_xlat5.xy, u_xlat5.xy);
+            u_xlat4.x = sqrt(u_xlat4.x);
+            u_xlat18 = min(u_xlat4.x, u_xlat18);
+        }
+        u_xlat15.x = u_xlat18;
+    }
+    u_xlat7 = log2(u_xlat15.x);
+    u_xlat7 = u_xlat7 * _VorPow;
+    u_xlat7 = exp2(u_xlat7);
+    u_xlat0 = u_xlat0.xxxx * vec4(u_xlat7) + u_xlat2;
+    SV_Target0 = u_xlat0;
+    return;
+}
+
+#endif

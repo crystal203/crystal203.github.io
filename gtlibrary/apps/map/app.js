@@ -1,0 +1,54 @@
+import {loadCore} from '../../core/api.js';
+const $=id=>document.getElementById(id),base=new URL('../../resources/map/',location.href);
+let mapCore,catalog,nativeAnimators,runtime,worker,selected=null,generation=0,disposed=false,controller;
+const pending=new Map(),packPromises=new Map();let requestId=0;
+const url=p=>new URL(p,base);
+async function json(p,options){const r=await GTResources.fetch(url(p),options);if(!r.ok)throw new Error('资源读取失败：'+r.status);return p.endsWith('.gz')?new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).json():r.json();}
+function message(text,error=false){$('message').textContent=text;$('message').hidden=!text;$('retry').hidden=!error;}
+let directory,lastListKey=null,listGeneration=0;
+let scrollPositions;try{scrollPositions=new Map(JSON.parse(sessionStorage.getItem('gtmap.directory-scroll.v1')||'[]'));}catch{scrollPositions=new Map();}
+function rememberScroll(){if(lastListKey!==null){scrollPositions.set(lastListKey,$('maps').scrollTop);try{sessionStorage.setItem('gtmap.directory-scroll.v1',JSON.stringify([...scrollPositions]));}catch{}}}
+$('maps').addEventListener('scroll',rememberScroll,{passive:true});
+function notifySelection(){if(selected)GTBridge.selection({map:selected.id,category:$('category').value});}
+function chooseCategory(value){rememberScroll();$('category').value=value;renderList();notifySelection();}
+function renderList(){
+ rememberScroll();
+ const q=$('search').value.trim().toLowerCase(),cat=$('category').value,key=JSON.stringify([cat,q]),token=++listGeneration;
+ const isRoot=cat==='categories';$('back-category').hidden=isRoot;$('back-category').textContent='‹ 返回';
+ $('category-title').textContent=isRoot?'选择分类':cat==='all'?'全部地图':directory.path(cat).map(n=>n.label).join(' › ');
+ $('category-title').title=$('category-title').textContent;$('maps').setAttribute('aria-label',isRoot?'地图分类':'地图目录');
+ const available=catalog.maps.filter(m=>directory.contains(cat,m)&&directory.matches(m,q));
+ const folders=directory.children(cat).map(n=>({node:n,maps:available.filter(m=>directory.contains(n.id,m))})).filter(g=>g.maps.length);
+ const rows=[],fragment=document.createDocumentFragment();let section=null;
+ for(const {node:n,maps} of folders){
+  if(isRoot&&n.section!==section){section=n.section;const h=document.createElement('p');h.className='directory-section';h.textContent=section;fragment.append(h);}
+  const b=document.createElement('button');b.className='category-card';b.dataset.category=n.id;
+  const title=document.createElement('strong'),small=document.createElement('small');title.textContent=n.label;
+  const count=directory.children(n.id).filter(child=>maps.some(m=>directory.contains(child.id,m))).length;small.textContent=(count?count+' 个子目录 · ':'')+maps.length+' 张地图';
+  b.append(title,small);b.onclick=()=>chooseCategory(n.id);fragment.append(b);
+ }
+ const list=cat==='all'?available:available.filter(m=>m.category===cat);
+ const variantOrder={'':0,'通道':1,'支线':2,'噩梦':3,'地狱':4,'活动裂痕':5};list.sort((a,b)=>(variantOrder[a.variant]||0)-(variantOrder[b.variant]||0)||a.stageOrder-b.stageOrder||a.id.localeCompare(b.id,undefined,{numeric:true}));
+ for(const m of list){const b=document.createElement('button');b.dataset.map=m.id;b.setAttribute('aria-current',String(m===selected));
+  const title=document.createElement('strong'),small=document.createElement('small');title.textContent=m.title||m.name;
+  small.textContent=(m.title!==m.id?m.id+' · ':'')+(m.status==='unavailable'?'源文件无法解码':(m.variant?m.variant+' · ':'')+m.tiles.toLocaleString()+' 图块');
+  b.append(title,small);b.onclick=()=>selectMap(m);fragment.append(b);rows.push(m);
+ }
+ if(!fragment.children.length){const empty=document.createElement('p');empty.className='empty-list';empty.textContent='没有匹配的地图或分类';fragment.append(empty);}
+ $('maps').replaceChildren(fragment);lastListKey=key;$('maps').scrollTop=scrollPositions.get(key)||0;
+ requestAnimationFrame(()=>{if(token===listGeneration)$('maps').scrollTop=scrollPositions.get(key)||0;});
+ $('count').textContent=(folders.length?folders.length+' 个目录 · ':'')+available.length+' 张地图';
+}
+function decode(buffer,name){return new Promise((resolve,reject)=>{const id=++requestId;pending.set(id,{resolve,reject});worker.postMessage({id,buffer,name},[buffer]);});}
+async function selectMap(item,file=null){if(disposed)return;const token=++generation;controller?.abort();controller=new AbortController();const signal=controller.signal;selected=item;$('stage').dataset.ready='false';renderList();$('current-map').textContent=(item.title&&item.title!==item.id?item.title+' · ':'')+item.id;document.body.classList.remove('menu-open');$('inspector').hidden=true;message('正在解码 '+item.name+'…');notifySelection();
+ try{if(item.status==='unavailable'){runtime.clear();$('layers').replaceChildren();$('quality').textContent='';throw new Error(item.reason);}const bytes=file?await file.arrayBuffer():await GTResources.fetch(url(item.file),{signal}).then(r=>{if(!r.ok)throw new Error('地图读取失败：'+r.status);return r.arrayBuffer();});const doc=await decode(bytes,item.id);if(token!==generation||disposed)return;if(doc.sha256!==item.sha256)throw new Error('地图内容与目录资源校验值不符');if(!packPromises.has(item.pack)){if(packPromises.size>=2)packPromises.delete(packPromises.keys().next().value);packPromises.set(item.pack,json(item.pack).catch(e=>{packPromises.delete(item.pack);throw e;}));}const pack=await packPromises.get(item.pack);if(token!==generation||disposed)return;message('正在加载图块和贴图…');await runtime.loadAssets(mapCore.assetsForMap({...pack,environment:{...pack.environment,animators:nativeAnimators}},doc),p=>GTResources.image(url(p),{signal}));if(token!==generation||disposed)return;const result=await runtime.build(doc);$('environment').disabled=!result.cloudParticles;$('environment').title=result.cloudParticles?'显示此地图已还原的云雾发射器':'此控件控制已还原的粒子云雾；本地图没有对应发射器';runtime.setEvents($('events').checked);runtime.setEnvironment($('environment').checked);runtime.setBrightness(Number($('brightness').value));$('layers').replaceChildren(...runtime.getState().layers.map(l=>{const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.onchange=()=>runtime.setLayer(l.name,input.checked);label.append(input,l.name+' ('+l.count+')');return label;}));$('quality').textContent=[item.preview?.missingDependencies?.length?'源文件缺少 '+item.preview.missingDependencies.length+' 个资源依赖。':'',item.preview?.missingTemplates?'源资源缺少 '+item.preview.missingTemplates+' 类图块。':'',result.emptyTiles?result.emptyTiles+' 条空挂点、缺失图块或动态元素未显示；人物动画与游戏脚本不在预览范围。':''].filter(Boolean).join(' ');$('stage').dataset.map=item.id;$('stage').dataset.ready='true';$('stage').dataset.summary=JSON.stringify(result);message(result.renderedTiles?'':'地图已解码；此图没有可显示的静态模型。');}
+ catch(e){if(token===generation&&!disposed&&e.name!=='AbortError'){message(e.message,item.status!=='unavailable');$('stage').dataset.ready='false';}}
+}
+function update(state){$('zoom').textContent=(state.zoom<.01?(state.zoom*100).toFixed(2):state.zoom<.1?(state.zoom*100).toFixed(1):Math.round(state.zoom*100))+'%';$('unity').checked=state.unityView;$('view-oblique').setAttribute('aria-pressed',String(state.oblique));$('view-top').setAttribute('aria-pressed',String(!state.oblique));$('stats').textContent=state.visibleTiles.toLocaleString()+' 图块已显示';}
+function inspect(t){$('inspector').hidden=!t;if(!t)return;$('tile-name').textContent=t.name;$('tile-info').replaceChildren();for(const [k,v] of [['图层',t.layer],['坐标',`${t.x}, ${t.y}, ${t.z}`],['旋转',t.rotation*90+'°'],['网格',t.mesh],['材质',t.material],['Shader',t.shader]]){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;$('tile-info').append(dt,dd);}$('tile-props').textContent=t.properties?.length?JSON.stringify(t.properties,(k,v)=>k==='raw'?`保留 ${v.length} 字节`:v,2):'没有附加属性';}
+$('search').oninput=()=>catalog&&renderList();$('category').onchange=()=>{if(catalog){renderList();notifySelection();}};$('back-category').onclick=()=>chooseCategory(directory.nodes.get($('category').value)?.parent||'categories');$('menu').onclick=()=>document.body.classList.toggle('menu-open');$('retry').onclick=()=>selected?selectMap(selected):boot();$('close-inspector').onclick=()=>$('inspector').hidden=true;
+$('zoom').onclick=()=>runtime?.actualSize();$('fit').onclick=()=>runtime?.fit();$('plus').onclick=()=>runtime?.zoom(1.4);$('minus').onclick=()=>runtime?.zoom(1/1.4);$('view-oblique').onclick=()=>runtime?.setView('oblique');$('view-top').onclick=()=>runtime?.setView('top');$('unity').onchange=()=>runtime?.setUnity($('unity').checked);$('environment').onchange=()=>runtime?.setEnvironment($('environment').checked);$('events').onchange=()=>runtime?.setEvents($('events').checked);$('brightness').oninput=()=>runtime?.setBrightness(Number($('brightness').value));$('open-file').onclick=()=>{$('file').value='';$('file').click();};$('file').onchange=()=>{const file=$('file').files[0];if(!file)return;const id=file.name.replace(/\.[^.]+$/,'');const item=catalog?.maps.find(m=>m.id===id);if(item)selectMap(item,file);else message('此文件尚未收录在地图目录中，暂未配备对应资源。',true);};
+addEventListener('keydown',e=>{if(e.target.matches('input,select'))return;if(e.key.toLowerCase()==='f')runtime?.fit();if(e.key==='Escape'){$('inspector').hidden=true;document.body.classList.remove('menu-open');}});
+addEventListener('gt-dispose',()=>{disposed=true;++generation;controller?.abort();worker?.terminate();for(const p of pending.values())p.reject(new Error('Preview disposed'));pending.clear();packPromises.clear();runtime?.dispose();});
+async function boot(){try{const [core,data,animations]=await Promise.all([loadCore('map'),GTMapCatalog.load(),json('native-animations.json')]);nativeAnimators=animations;if(disposed)return;catalog=data;mapCore=core;runtime?.dispose();runtime=new core.MapRuntime($('stage'),{onChange:update,onPick:inspect});worker=new Worker(new URL('../../gtmap/worker.js',import.meta.url),{type:'module'});worker.onmessage=({data})=>{const p=pending.get(data.id);if(!p)return;pending.delete(data.id);data.error?p.reject(new Error(data.error)):p.resolve(data.map);};worker.onerror=()=>{for(const p of pending.values())p.reject(new Error('地图解码 Worker 无法启动'));pending.clear();};directory=GTMapCatalog.navigation(catalog);for(const n of directory.ordered)$('category').add(new Option('　'.repeat(directory.path(n.id).length-1)+n.label,n.id));const params=new URLSearchParams(location.search),id=params.get('map'),item=catalog.maps.find(m=>m.id===id)||catalog.maps.find(m=>m.id==='afterworld_1_1')||catalog.maps[0];$('category').value=directory.resolve(params.get('category')||'categories',item);renderList();await selectMap(item);}catch(e){if(!disposed)message(e.message,true);}}
+boot();

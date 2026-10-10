@@ -13,7 +13,7 @@ function cacheable(request) {
   if (url.origin === root.origin && url.pathname.startsWith(root.pathname)) path = url.pathname.slice(root.pathname.length);
   else if (self.GTDeliveryConfig.cdnBase && url.href.startsWith(self.GTDeliveryConfig.cdnBase)) path = url.href.slice(self.GTDeliveryConfig.cdnBase.length).split('?')[0];
   else return false;
-  return /^(?:vendor\/|gtatlas\/assets\/|gtasset\/assets\/|gtfx\/assets\/|resources\/previews\/)/.test(path) || path === 'resources/registry.js';
+  return /^(?:vendor\/|gtatlas\/assets\/|gtasset\/assets\/|gtfx\/assets\/|gtmap\/assets\/|resources\/(?:previews|illust-jp|spine-recovered)\/)/.test(path) || ['resources/registry.js','resources/search-index.json','resources/atlas-catalog.json'].includes(path);
 }
 async function save(cache, request, response) {
   if (!response.ok || response.type === 'opaque') return;

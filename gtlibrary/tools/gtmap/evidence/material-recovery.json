@@ -1,0 +1,1714 @@
+{
+  "materials": [
+    {
+      "material": "afterworld2",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "feb4c3d1f3479da4993ccf539ced7b5f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "427eaedc711c70042be93b7746d1c5e1",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_shadow",
+      "shader": {
+        "name": "Unlit/Shadow",
+        "pathId": 3443607025098117347,
+        "queueTag": "Transparent-500",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.20000000298023224
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-aaf504e90f211065a5e0fa88",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld2_add",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "feb4c3d1f3479da4993ccf539ced7b5f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "427eaedc711c70042be93b7746d1c5e1",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "d5885210029fe4845ad8a31499a4e31d",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "427eaedc711c70042be93b7746d1c5e1",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_add",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "d5885210029fe4845ad8a31499a4e31d",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "427eaedc711c70042be93b7746d1c5e1",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_spa_add",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-3e22f9d92646da980b71a1df",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_alpha2",
+      "shader": {
+        "name": "MatCap/Detail Alpha",
+        "pathId": 4732858590531640267,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "d5885210029fe4845ad8a31499a4e31d",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "427eaedc711c70042be93b7746d1c5e1",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_floor_shadow",
+      "shader": {
+        "name": "Unlit/Shadow",
+        "pathId": 3443607025098117347,
+        "queueTag": "Transparent-500",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.20000000298023224
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "5fe21032f66872442b74edeea65f90cf",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_outdoor_glow",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "d5885210029fe4845ad8a31499a4e31d",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_alpha_add",
+      "shader": {
+        "name": "Mobile/Particles/Additive",
+        "pathId": 10720,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {},
+        "properties": [
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "cbc3d50563aa50347af320bb283a14ca",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_alpha_light_outdoor",
+      "shader": {
+        "name": "Custom/Particles/Additive HDR",
+        "pathId": -1771733098290130641,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_EmissiveColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_MainTex",
+          "_EmissiveColor"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "cbc3d50563aa50347af320bb283a14ca",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_outdoor_alpha",
+      "shader": {
+        "name": "Mobile/Particles/Alpha Blended Z Test",
+        "pathId": -5081813206462279054,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {},
+        "properties": [
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "cbc3d50563aa50347af320bb283a14ca",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_alpha",
+      "shader": {
+        "name": "MatCap/Detail Alpha",
+        "pathId": 4732858590531640267,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "cbc3d50563aa50347af320bb283a14ca",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "427eaedc711c70042be93b7746d1c5e1",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_alpha_light",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "cbc3d50563aa50347af320bb283a14ca",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_glow_add",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-3e22f9d92646da980b71a1df",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld2_outdoor_glow",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "feb4c3d1f3479da4993ccf539ced7b5f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "ancient",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "5f4e822bdd7099b4bbb9e94127d9716e",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "ff12827f0e2ca4146b667fa585b69cc9",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "ancient_glow",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "ec517ff4bcc0ef245897946ff9cc392f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "shadow_ancient",
+      "shader": {
+        "name": "Unlit/Shadow",
+        "pathId": 3443607025098117347,
+        "queueTag": "Transparent-500",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.20000000298023224
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-80417606be7b0e3c8069e687",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "ancient_red",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "3af6530bafff44b40aacb1c2566df5f2",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "d2336b1e292e23044ad82bd80fd965f2",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "shadow_ancient_red",
+      "shader": {
+        "name": "Unlit/Shadow",
+        "pathId": 3443607025098117347,
+        "queueTag": "Transparent-500",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.20000000298023224
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-b6228d186a7bf8fd805b9a71",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "ancient_red_glow",
+      "shader": {
+        "name": "Effect/Mobile_Additive_Color",
+        "pathId": -5413977090089307281,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "1f9bc8db9dca60549bf8587bc94bd666",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "forest",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "f1f7d1772ea44ce4bbeb96bbca80b6fb",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "7ef7ce38ac580f34e8fee7bb16470a95",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "shadow_forest",
+      "shader": {
+        "name": "Unlit/Shadow",
+        "pathId": 3443607025098117347,
+        "queueTag": "Transparent-500",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.20000000298023224
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-a2a8dc96b4992a2475ade571",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "forest_extraleaf",
+      "shader": {
+        "name": "MatCap/Detail Alpha",
+        "pathId": 4732858590531640267,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "6804ae7c5eecf384d95be7e83b119db4",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "7ef7ce38ac580f34e8fee7bb16470a95",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "df7c1b4c54b30b1448da88ee08fe39d6",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "ed9713cbab2a4a8419971ef4762afb8f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "shadow_gimmick",
+      "shader": {
+        "name": "Unlit/Shadow",
+        "pathId": 3443607025098117347,
+        "queueTag": "Transparent-500",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 0.20000000298023224
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-edb4d77c8e747223e5d43536",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_fx",
+      "shader": {
+        "name": "Legacy/Particles/Additive Shear",
+        "pathId": -1022385559157535694,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 1.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "2a67f217f96fd9747b479357ef0209a5",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_2",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "c1ef6d43e50bd484ab7c81abf011ed04",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "ed9713cbab2a4a8419971ef4762afb8f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_2_light",
+      "shader": {
+        "name": "Custom/Unlit Emissive",
+        "pathId": 3463233355603011902,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "_EmissiveColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_MainTex",
+          "_Color",
+          "_EmissiveTex",
+          "_EmissiveColor",
+          "_ZWrite"
+        ]
+      },
+      "textures": {
+        "_EmissiveTex": {
+          "texture": "c1ef6d43e50bd484ab7c81abf011ed04",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MainTex": {
+          "texture": "c1ef6d43e50bd484ab7c81abf011ed04",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_key",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "df7c1b4c54b30b1448da88ee08fe39d6",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "b0d8053a389a14c44bc813ffda1931ab",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_hole",
+      "shader": {
+        "name": "Legacy Shaders/Particles/Alpha Blended",
+        "pathId": 203,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex",
+          "_InvFade"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "c77232ada14deb6439a410c220182a57",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_add",
+      "shader": {
+        "name": "Custom/Unlit Emissive",
+        "pathId": 3463233355603011902,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 1.0,
+            "g": 1.0,
+            "b": 1.0,
+            "a": 1.0
+          },
+          "_EmissiveColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_MainTex",
+          "_Color",
+          "_EmissiveTex",
+          "_EmissiveColor",
+          "_ZWrite"
+        ]
+      },
+      "textures": {
+        "_EmissiveTex": {
+          "texture": "2a67f217f96fd9747b479357ef0209a5",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MainTex": {
+          "texture": "2a67f217f96fd9747b479357ef0209a5",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "gimmick_treads",
+      "shader": {
+        "name": "MatCap/Detail UV",
+        "pathId": 8749476760063598876,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "3bd981bdaae3dcb49b817089e651cf51",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "ed9713cbab2a4a8419971ef4762afb8f",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "redball",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-edb4d77c8e747223e5d43536",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "ee511e89f1cb9ea469f9f4fdeec0dcc6",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "blueball",
+      "shader": {
+        "name": "MatCap/Detail",
+        "pathId": 3379047747283047276,
+        "queueTag": "Geometry",
+        "srcBlend": 1.0,
+        "dstBlend": 0.0,
+        "depthWrite": true,
+        "depthTest": 4.0,
+        "cull": 2.0,
+        "defaults": {
+          "_Color": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+          }
+        },
+        "properties": [
+          "_Color",
+          "_MainTex",
+          "_MatCap",
+          "_EnableShear",
+          "_ShearOffset"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-edb4d77c8e747223e5d43536",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "_MatCap": {
+          "texture": "57b9e4858cf43f4418e50fe28aff706d",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_cloud",
+      "shader": {
+        "name": "Legacy Shaders/Particles/Alpha Blended",
+        "pathId": 203,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex",
+          "_InvFade"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-b8c0b198608dc9eb14f60361",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    },
+    {
+      "material": "afterworld_cloud2",
+      "shader": {
+        "name": "Legacy Shaders/Particles/Alpha Blended",
+        "pathId": 203,
+        "queueTag": "Transparent",
+        "srcBlend": 5.0,
+        "dstBlend": 10.0,
+        "depthWrite": false,
+        "depthTest": 4.0,
+        "cull": 0.0,
+        "defaults": {
+          "_TintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 0.5
+          }
+        },
+        "properties": [
+          "_TintColor",
+          "_MainTex",
+          "_InvFade"
+        ]
+      },
+      "textures": {
+        "_MainTex": {
+          "texture": "native-b8c0b198608dc9eb14f60361",
+          "scale": {
+            "x": 1.0,
+            "y": 1.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "unresolved": []
+}

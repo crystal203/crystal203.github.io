@@ -1,0 +1,4 @@
+# Preserve original exported file bytes and their source-integrity hashes.
+resources/illust-jp/* -text
+resources/spine-recovered/* -text
+gtmap/assets/maps/*.bytes -text

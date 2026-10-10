@@ -10,12 +10,14 @@ gtlibrary/
   apps/atlas/                             图集界面
   apps/spine/                             像素动画界面
   apps/fx/                                特效界面
+  apps/map/                               地图选择与预览界面
   gtatlas/core.js + assets/                图集解码、透明筛选、旋转裁切与资源
   gtasset/core.js + assets/                Spine 解码、实例化与资源
   gtasset/equipment.js / emotion.js        装备、表情能力
   gtfx/core.js + assets/                   特效运行器与资源
+  gtmap/core.js + decoder.js + assets/     地图渲染、解码与按需资源
   gtfx/gif-sizing.js / gif-worker.js       GIF 尺寸处理和编码适配
-  core/api.js                             三种核心能力的延迟加载接口
+  core/api.js                             四种核心能力的延迟加载接口
   core/resources.js                       逻辑资源路径和去重别名解析
   core/registry.js / bridge.js             人物关联、应用通信与销毁协议
   core/delivery*.js / cache-version.js     CDN 回退、图片读取与缓存版本
@@ -26,7 +28,7 @@ gtlibrary/
   vendor/                                 单份第三方运行库
 ```
 
-三个领域目录没有 `index.html`。`apps/*/index.html` 是主界面调用的内部视图，顶层直接打开会转回主入口。原来的独立网页代码、测试工具及重复资源副本留在开发归档，未作为网页运行资产发布。
+四个领域目录没有 `index.html`。`apps/*/index.html` 是主界面调用的内部视图，顶层直接打开会转回主入口。原来的独立网页代码、测试工具及重复资源副本留在开发归档，未作为网页运行资产发布。
 
 ## 路由和联动
 
@@ -119,3 +121,19 @@ node tools/prepare-deploy.mjs
 原图、帧表或特效角色清单变化后需重新生成预览；任意运行代码、资源或 CDN 配置变化后需重新生成缓存版本。把生成的 `resources/previews/` 与 `core/cache-version.js` 一同发布。生成结果已随本次修改保存，静态运行无需 Python 或 Node。
 
 可选的浏览器回归检查：安装 Playwright 和其 Chromium 后执行 `node tools/verify-loading.cjs`；使用已有 Edge 可设置 `PLAYWRIGHT_CHANNEL=msedge`。该检查启动本机临时服务器，覆盖索引延迟下首屏可用、单次共享索引、缩略图、哈娜 Spine/特效、原尺寸 PNG、GIF、缓存命中/离线读取，以及模拟 CDN 成功、错误、超时、取消和回退。它不访问线上站点，不能据此宣称真实网络加载时间改善。
+
+## 第四子系统：GTMap 地图
+
+已接入 `gtmap/core.js` 和 `apps/map/`，导航、统一搜索、链接分享、按需资源读取与切换销毁沿用资源库机制。已收录全部 2054 个地图源文件（2053 张可解码，1 个测试文件无法解密；末批增加 614 个）；左侧默认分类浏览，主动选择“全部地图”才展示全列表；选择范围、复用接口、操作与已知渲染限制见 [GTMap 说明](gtmap/README.md)。入口：`index.html#view=map&map=afterworld_1_1`。`loadCore('map')` 只载入核心代码；地图文件、模型和贴图按选择加载，资源逻辑前缀为 `resources/map/`。新地图资源暂由本站读取，未接入旧 CDN 提交。发布工具已将 gtmap 纳入缓存版本生成。
+
+地图现已收录全部 2054 个原始文件，其中 2053 张可完整解码，一个测试文件保留密文并明确提示无法解码。中文目录依据游戏章节表、关卡表和 `strings-zhCN.json` 生成，主线与外传优先按游戏顺序展示；短篇、副本、合作远征赛季、PVP 等使用多级目录。各目录独立保留滚动位置。详见 [GTMap 说明](gtmap/README.md)。
+
+## 全量资源检索与日服立绘
+
+统一搜索现在使用 `core/resource-catalog.js` 共享加载 `resources/search-index.json`；图集选择器使用同一个 `resources/atlas-catalog.json`。目录包括 20 个图集的 7879 个可见区域、1751 个 Spine 资源、5365 个可用特效，地图目录另收录全部 2054 张地图。具体帧和特效可直接打开；已由人物索引表示的同一资源不重复展示。
+
+94 个 `_kong` 日服立绘从原始 Bundle 提取真实骨骼、atlas、纹理及背景，存储在 `resources/illust-jp/`。原立绘分类共 347 项，保留已有立绘默认选择；新条目带“日服立绘”中文标记和搜索别称。`core/resources.js` 负责逻辑路径别名，避免污染指向旧公开提交的 CDN 资产。另有 6 个原始文件修复副本位于 `resources/spine-recovered/`。
+
+离线工具：`tools/import-jp-illust.py`、`tools/recover-spine-binaries.py`、`tools/build-search-index.py`；默认骨骼全量验证使用 `node --jitless tools/verify-spine-sources.cjs`（本机 Node JIT 存在离线批量解析崩溃，解释模式完成验证）。网页无需 Node。浏览器覆盖验证见 `tools/checks/resource-coverage.html` 与 `tools/resource-coverage-validation.json`。
+
+地图缩放已统一为 100% 下每格 32 CSS 像素，适配显示真实比例；合作远征三季 12 种伤害地砖恢复原生暗红色与淡入状态曲线。视频/Blender 导出考察及新资产的 Pages 容量条件见 [静态部署与导出可行性](docs/static-export-feasibility.md)。当前整库资产超过 Pages 1 GB 上限，正式发布需要静态资源镜像和精简 Pages 发布包，不能原样上传整个目录。

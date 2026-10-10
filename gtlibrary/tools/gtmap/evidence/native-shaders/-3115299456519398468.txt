@@ -1,0 +1,145 @@
+#ifdef VERTEX
+#version 300 es
+
+#define HLSLCC_ENABLE_UNIFORM_BUFFERS 1
+#if HLSLCC_ENABLE_UNIFORM_BUFFERS
+#define UNITY_UNIFORM
+#else
+#define UNITY_UNIFORM uniform
+#endif
+#define UNITY_SUPPORTS_UNIFORM_LOCATION 1
+#if UNITY_SUPPORTS_UNIFORM_LOCATION
+#define UNITY_LOCATION(x) layout(location = x)
+#define UNITY_BINDING(x) layout(binding = x, std140)
+#else
+#define UNITY_LOCATION(x)
+#define UNITY_BINDING(x) layout(std140)
+#endif
+uniform 	vec4 _Time;
+uniform 	vec3 _WorldSpaceCameraPos;
+uniform 	vec4 hlslcc_mtx4x4unity_CameraToWorld[4];
+uniform 	vec4 hlslcc_mtx4x4unity_ObjectToWorld[4];
+uniform 	vec4 hlslcc_mtx4x4unity_WorldToObject[4];
+uniform 	vec4 hlslcc_mtx4x4unity_MatrixVP[4];
+uniform 	mediump vec4 _LavaTex_ST;
+uniform 	mediump vec4 _Distort_ST;
+uniform 	mediump float _AnimationRateX;
+uniform 	mediump float _AnimationRateY;
+uniform 	mediump float _Shear;
+in mediump vec4 in_POSITION0;
+in mediump vec2 in_TEXCOORD0;
+in highp vec3 in_NORMAL0;
+out mediump vec2 vs_TEXCOORD0;
+out mediump vec2 vs_TEXCOORD1;
+out highp vec3 vs_TEXCOORD2;
+out highp vec3 vs_TEXCOORD3;
+vec4 u_xlat0;
+vec4 u_xlat1;
+vec3 u_xlat2;
+bvec2 u_xlatb5;
+float u_xlat7;
+void main()
+{
+    u_xlat0.x = hlslcc_mtx4x4unity_CameraToWorld[2].y * 10.0 + _WorldSpaceCameraPos.y;
+    u_xlat2.xyz = in_POSITION0.yyy * hlslcc_mtx4x4unity_ObjectToWorld[1].xyz;
+    u_xlat2.xyz = hlslcc_mtx4x4unity_ObjectToWorld[0].xyz * in_POSITION0.xxx + u_xlat2.xyz;
+    u_xlat2.xyz = hlslcc_mtx4x4unity_ObjectToWorld[2].xyz * in_POSITION0.zzz + u_xlat2.xyz;
+    u_xlat2.xyz = hlslcc_mtx4x4unity_ObjectToWorld[3].xyz * in_POSITION0.www + u_xlat2.xyz;
+    u_xlat0.x = (-u_xlat0.x) + u_xlat2.y;
+    u_xlat0.x = u_xlat0.x * _Shear;
+    u_xlat1.x = u_xlat2.x + (-_WorldSpaceCameraPos.x);
+    u_xlat0.x = u_xlat0.x * u_xlat1.x + u_xlat2.x;
+    u_xlat1 = u_xlat2.yyyy * hlslcc_mtx4x4unity_MatrixVP[1];
+    u_xlat1 = hlslcc_mtx4x4unity_MatrixVP[0] * u_xlat0.xxxx + u_xlat1;
+    u_xlat0 = hlslcc_mtx4x4unity_MatrixVP[2] * u_xlat2.zzzz + u_xlat1;
+    u_xlat0 = u_xlat0 + hlslcc_mtx4x4unity_MatrixVP[3];
+    gl_Position = u_xlat0;
+    u_xlat1.xy = _Time.yy * vec2(_AnimationRateX, _AnimationRateY);
+    u_xlatb5.xy = greaterThanEqual(u_xlat1.xyxy, (-u_xlat1.xyxy)).xy;
+    u_xlat1.xy = fract(abs(u_xlat1.xy));
+    {
+        vec4 hlslcc_movcTemp = u_xlat1;
+        hlslcc_movcTemp.x = (u_xlatb5.x) ? u_xlat1.x : (-u_xlat1.x);
+        hlslcc_movcTemp.y = (u_xlatb5.y) ? u_xlat1.y : (-u_xlat1.y);
+        u_xlat1 = hlslcc_movcTemp;
+    }
+    vs_TEXCOORD1.xy = in_TEXCOORD0.xy * _LavaTex_ST.xy + u_xlat1.xy;
+    vs_TEXCOORD0.xy = in_TEXCOORD0.xy * _Distort_ST.xy + _Distort_ST.zw;
+    u_xlat1.x = dot(in_NORMAL0.xyz, hlslcc_mtx4x4unity_WorldToObject[0].xyz);
+    u_xlat1.y = dot(in_NORMAL0.xyz, hlslcc_mtx4x4unity_WorldToObject[1].xyz);
+    u_xlat1.z = dot(in_NORMAL0.xyz, hlslcc_mtx4x4unity_WorldToObject[2].xyz);
+    u_xlat7 = dot(u_xlat1.xyz, u_xlat1.xyz);
+    u_xlat7 = inversesqrt(u_xlat7);
+    vs_TEXCOORD2.xyz = vec3(u_xlat7) * u_xlat1.xyz;
+    u_xlat1.xyz = u_xlat0.yyy * hlslcc_mtx4x4unity_ObjectToWorld[1].xyz;
+    u_xlat1.xyz = hlslcc_mtx4x4unity_ObjectToWorld[0].xyz * u_xlat0.xxx + u_xlat1.xyz;
+    u_xlat0.xyz = hlslcc_mtx4x4unity_ObjectToWorld[2].xyz * u_xlat0.zzz + u_xlat1.xyz;
+    u_xlat0.xyz = hlslcc_mtx4x4unity_ObjectToWorld[3].xyz * u_xlat0.www + u_xlat0.xyz;
+    vs_TEXCOORD3.xyz = (-u_xlat0.xyz) + _WorldSpaceCameraPos.xyz;
+    return;
+}
+
+#endif
+#ifdef FRAGMENT
+#version 300 es
+
+precision highp float;
+precision highp int;
+#define HLSLCC_ENABLE_UNIFORM_BUFFERS 1
+#if HLSLCC_ENABLE_UNIFORM_BUFFERS
+#define UNITY_UNIFORM
+#else
+#define UNITY_UNIFORM uniform
+#endif
+#define UNITY_SUPPORTS_UNIFORM_LOCATION 1
+#if UNITY_SUPPORTS_UNIFORM_LOCATION
+#define UNITY_LOCATION(x) layout(location = x)
+#define UNITY_BINDING(x) layout(binding = x, std140)
+#else
+#define UNITY_LOCATION(x)
+#define UNITY_BINDING(x) layout(std140)
+#endif
+uniform 	mediump float _DistortX;
+uniform 	mediump float _DistortY;
+uniform 	mediump vec4 _EmissiveColor;
+uniform 	mediump float _EmissiveIntensity;
+uniform 	mediump float _EmissivePower;
+UNITY_LOCATION(0) uniform mediump sampler2D _Distort;
+UNITY_LOCATION(1) uniform mediump sampler2D _LavaTex;
+in mediump vec2 vs_TEXCOORD0;
+in mediump vec2 vs_TEXCOORD1;
+in highp vec3 vs_TEXCOORD2;
+in highp vec3 vs_TEXCOORD3;
+layout(location = 0) out mediump vec4 SV_Target0;
+vec4 u_xlat0;
+vec4 u_xlat1;
+mediump vec4 u_xlat16_1;
+vec4 u_xlat2;
+mediump vec2 u_xlat16_2;
+mediump float u_xlat16_3;
+float u_xlat9;
+void main()
+{
+    u_xlat0.x = dot(vs_TEXCOORD2.xyz, vs_TEXCOORD2.xyz);
+    u_xlat0.x = inversesqrt(u_xlat0.x);
+    u_xlat0.xyz = u_xlat0.xxx * vs_TEXCOORD2.xyz;
+    u_xlat9 = dot(vs_TEXCOORD3.xyz, vs_TEXCOORD3.xyz);
+    u_xlat9 = inversesqrt(u_xlat9);
+    u_xlat1.xyz = vec3(u_xlat9) * vs_TEXCOORD3.xyz;
+    u_xlat0.x = dot(u_xlat0.xyz, u_xlat1.xyz);
+    u_xlat0.x = (-u_xlat0.x) + 1.0;
+    u_xlat0.x = log2(u_xlat0.x);
+    u_xlat0.x = u_xlat0.x * _EmissivePower;
+    u_xlat0.x = exp2(u_xlat0.x);
+    u_xlat0.x = u_xlat0.x * _EmissiveIntensity;
+    u_xlat16_3 = texture(_Distort, vs_TEXCOORD0.xy).w;
+    u_xlat16_2.xy = (-vec2(u_xlat16_3)) * vec2(_DistortX, _DistortY) + vs_TEXCOORD1.xy;
+    u_xlat16_1 = texture(_LavaTex, u_xlat16_2.xy);
+    u_xlat2 = (-u_xlat16_1) + _EmissiveColor;
+    u_xlat1 = u_xlat16_1 + u_xlat16_1;
+    u_xlat0 = u_xlat0.xxxx * u_xlat2 + u_xlat1;
+    SV_Target0 = u_xlat0;
+    return;
+}
+
+#endif

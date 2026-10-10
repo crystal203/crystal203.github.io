@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-10",
+  "originalHead": "85902738e834fd4ad4a5114880974eced33981cd",
+  "fullBackup": "D:/GTAsset/gtfxweb/development/library-integration/git-backup-20261010-gtmap/.git",
+  "backupValidation": "D:/GTAsset/gtfxweb/development/library-integration/git-backup-20261010-gtmap/backup-validation.json",
+  "backupFiles": 3549,
+  "backupBytes": 3698246202,
+  "backupSha256Mismatches": 0,
+  "restoredNewLooseObjects": 7,
+  "restoredHistoricalObjects": 8,
+  "originalPack": "d0c94b7b743b5b60188798f92d0d5659060aa264",
+  "repairedPack": "d808f49ceedf99684db5d0c31a6d5d8ea5533c5a",
+  "originalPackObjectCount": 3810,
+  "allOriginalObjectIdsPreserved": true,
+  "refsAndExistingCommitsUnchanged": true,
+  "fullRepositoryFsckBeforeCommit": "passed",
+  "historicalSources": [
+    {
+      "hash": "1366ccfbf39510a6061ce326a94520d84e28d5e2",
+      "file": "gtlibrary/gtfx/assets/textures/ad5b6a19cec2f1d46bc6e187405e7a46.png",
+      "matches": true
+    },
+    {
+      "hash": "95668137f150a73d87387b231248f0e092e7d6b8",
+      "file": "gtlibrary/gtfx/assets/textures/450b7d45e19117c4c9ca1241f62c0a65.png",
+      "matches": true
+    },
+    {
+      "hash": "e62c0b20eb85cf68364e2c6146b160f06056ee44",
+      "file": "gtlibrary/gtatlas/assets/characters.png",
+      "matches": false
+    },
+    {
+      "hash": "2c466032acba67dc207cd94ca47d1421576270fe",
+      "file": "gtlibrary/gtfx/assets/textures/427e7359d754b8041b56e73c9f4b38f0.png",
+      "matches": true
+    },
+    {
+      "hash": "bcab23b9ec9b9b844224366b74e397d22dd783ae",
+      "file": "gtlibrary/gtatlas/assets/portraits.png",
+      "matches": true
+    },
+    {
+      "hash": "4586976fb9afc6c6f789fee2e4e77d6e847f1f4c",
+      "file": "gtlibrary/gtfx/assets/textures/3df281265f220fb4b87bb9da713c97e8.png",
+      "matches": true
+    },
+    {
+      "hash": "5a07595a2b0c644951bc65ef0b5a7deb0e9be77d",
+      "file": "gtlibrary/gtasset/assets/character/squirrel_girl_chrisgirl_side.bytes",
+      "matches": true
+    },
+    {
+      "hash": "b2b3b36587d559832a611b0dfe663486810064e0",
+      "file": "gtlibrary/gtatlas/assets/portraits.png",
+      "matches": false
+    }
+  ],
+  "remoteHistoricalSource": "https://raw.githubusercontent.com/crystal203/crystal203.github.io/6d89ba392a483d499818e90e86f9ab233af76dec/gtatlas/assets/",
+  "note": "Recovery replaces no worktree assets or history. Original corrupted objects and a complete byte-verified Git backup are retained in the local development archive."
+}

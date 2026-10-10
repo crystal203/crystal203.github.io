@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>GTMap 扩容验证</title><style>body{background:#0f1116;color:#e8ebf1;font:13px system-ui;padding:20px}#host{width:800px;height:500px}li{padding:3px}.fail{color:#f99}</style><h1>GTMap 扩容验证</h1><p id="status">校验中</p><ul id="results"></ul><div id="host"></div><script type="module">
+import {MapRuntime,decodeMap} from '../../../gtmap/core.js';
+const root=new URL('../../../gtmap/assets/',location.href),out=document.querySelector('#results'),status=document.querySelector('#status');const json=p=>fetch(new URL(p,root)).then(r=>p.endsWith('.gz')?new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).json():r.json());const tick=()=>new Promise(r=>requestAnimationFrame(r));let runtime;
+function check(name,value){const li=document.createElement('li');li.textContent=(value?'PASS · ':'FAIL · ')+name;li.className=value?'pass':'fail';out.append(li);if(!value)throw new Error(name);}
+try{const c=await json('catalog.json');check('累计 2054 / 2054 个源文件，本批额外导入 614 个',c.maps.length===2054&&c.sourceCount===2054&&c.addedCount===614);const versions=new Set();let decodedCount=0,renderCount=0,maxGeometry=0,currentPack=null;runtime=new MapRuntime(document.querySelector('#host'));
+const unavailable=c.maps.filter(m=>m.status==='unavailable');check('损坏或未知密钥的测试图明确标记',unavailable.length===1&&c.decodedCount===2053);const emptyMaps=[];const ordered=c.maps.filter(m=>m.status!=='unavailable'&&(m.batch===4||['afterworld_1_1','desert_1_5'].includes(m.id))).sort((a,b)=>a.pack.localeCompare(b.pack));
+for(const m of ordered){
+ const doc=await decodeMap(await fetch(new URL(m.file,root)).then(r=>{if(!r.ok)throw new Error('HTTP '+m.file);return r.arrayBuffer();}),m.id);
+ if(doc.sha256!==m.sha256)throw new Error('HASH '+m.id);if(doc.tileCount!==m.tiles)throw new Error('COUNT '+m.id);versions.add(doc.version);decodedCount++;
+ if(currentPack!==m.pack){const pack=await json(m.pack);await runtime.loadAssets(pack,p=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=new URL(p,root);}));currentPack=m.pack;}
+ const result=await runtime.build(doc);runtime.render();const diag=runtime.getDiagnostics();
+ if(diag.failedPrograms)throw new Error('Shader '+m.id);if(!result.renderedTiles||!diag.drawCalls)emptyMaps.push({id:m.id,tiles:m.tiles,emptyTiles:result.emptyTiles});
+ maxGeometry=Math.max(maxGeometry,diag.geometries);renderCount++;status.textContent='解码与 GPU 渲染 '+renderCount+' / '+ordered.length+' · '+m.id;
+ await tick();
+}
+check('新增 613 张可解码地图及两个回归样本：SHA-256 和图块数匹配',decodedCount===615);check('所有样本 GPU 构建，无 Shader 编译失败',renderCount===615);document.body.dataset.report=JSON.stringify({decodedCount,renderCount,emptyMaps,versions:[...versions]});
+ runtime.setView('top');check('俯视自动关闭 Unity 斜投影',!runtime.getState().unityView);runtime.setView('oblique');check('斜视自动开启 Unity 斜投影',runtime.getState().unityView);runtime.setUnity(false);check('Unity 斜投影可手动关闭',!runtime.getState().unityView);
+ const canvas=document.querySelector('canvas');canvas.setPointerCapture=()=>{};canvas.releasePointerCapture=()=>{};const delta=(a,b)=>a.reduce((n,x,i)=>n+Math.abs(x-b[i]),0);async function drag(button){for(const [type,x,y,buttons] of [['pointerdown',300,300,button===1?4:1],['pointermove',340,330,button===1?4:1],['pointerup',340,330,0]]){canvas.dispatchEvent(new PointerEvent(type,{pointerId:17,pointerType:'mouse',bubbles:true,button,buttons,clientX:x,clientY:y}));await tick();}for(let i=0;i<100;i++)await tick();}let before=runtime.getState();await drag(0);check('左键拖动不平移',delta(before.target,runtime.getState().target)<1e-8);before=runtime.getState();await drag(1);check('中键拖动平移',delta(before.target,runtime.getState().target)>.1);
+ runtime.clear();await tick();const diag=runtime.getDiagnostics();check('清空地图释放所有几何体',diag.geometries===0);runtime.dispose();check('销毁后移除 canvas',!document.querySelector('canvas'));status.textContent='全部通过 · 最大单图几何体 '+maxGeometry;document.body.dataset.result='pass';
+}catch(e){runtime?.dispose();status.textContent=e.stack;document.body.dataset.result='fail';}
+</script>

@@ -1,0 +1,932 @@
+{
+  "checks": [
+    {
+      "name": "20 个图集共用目录",
+      "pass": true
+    },
+    {
+      "name": "所有图集非空条目可检索",
+      "pass": true
+    },
+    {
+      "name": "全部地图都生成主搜索入口",
+      "pass": true
+    },
+    {
+      "name": "94 个日服立绘拥有真实骨骼入口",
+      "pass": true
+    },
+    {
+      "name": "94 个日服立绘均通过真实 Spine 二进制解析",
+      "pass": true
+    },
+    {
+      "name": "主搜索包含 desert_1_5",
+      "pass": true
+    },
+    {
+      "name": "战斗 UI 图集条目出现在主搜索",
+      "pass": true
+    },
+    {
+      "name": "主搜索打开正确图集和精确条目",
+      "pass": true
+    },
+    {
+      "name": "主搜索能找到指定日服立绘",
+      "pass": true
+    }
+  ],
+  "jp": [
+    {
+      "id": "admiral_kong",
+      "bones": 63,
+      "slots": 34,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "akayuki_kong",
+      "bones": 124,
+      "slots": 57,
+      "animations": [
+        "entrance",
+        "idle",
+        "visual_novel_idle"
+      ]
+    },
+    {
+      "id": "alpaca_girl_kong",
+      "bones": 376,
+      "slots": 117,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "battleball_girl_kong",
+      "bones": 58,
+      "slots": 30,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "captain_rabbit_kong",
+      "bones": 417,
+      "slots": 132,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "caravan_lisa_kong",
+      "bones": 183,
+      "slots": 103,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "caravan_maria_kong",
+      "bones": 216,
+      "slots": 86,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "china_chef_kong",
+      "bones": 117,
+      "slots": 46,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "china_hero_both_kong",
+      "bones": 481,
+      "slots": 130,
+      "animations": [
+        "idle"
+      ]
+    },
+    {
+      "id": "china_hero_boy_kong",
+      "bones": 247,
+      "slots": 73,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "china_hero_girl_kong",
+      "bones": 233,
+      "slots": 57,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "dai_kong",
+      "bones": 169,
+      "slots": 72,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "dancing_archer_kong",
+      "bones": 182,
+      "slots": 48,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "demon_brother_kong",
+      "bones": 68,
+      "slots": 33,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "demon_ceo_kong",
+      "bones": 337,
+      "slots": 152,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "demon_sister_kong",
+      "bones": 126,
+      "slots": 51,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "desert_slave_kong",
+      "bones": 168,
+      "slots": 48,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "doll_girl_kong",
+      "bones": 70,
+      "slots": 26,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "dragon_boy_kong",
+      "bones": 101,
+      "slots": 46,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "dummy_beast_kong",
+      "bones": 117,
+      "slots": 56,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "dummy_boy_kong",
+      "bones": 59,
+      "slots": 39,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "dummy_girl_kong",
+      "bones": 80,
+      "slots": 24,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "eight_tail_kong",
+      "bones": 392,
+      "slots": 109,
+      "animations": [
+        "entrance",
+        "idle",
+        "tail_off",
+        "visual_idle"
+      ]
+    },
+    {
+      "id": "eleanor_kong",
+      "bones": 389,
+      "slots": 118,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "eugene_kong",
+      "bones": 69,
+      "slots": 27,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "festival_girl_kong",
+      "bones": 206,
+      "slots": 69,
+      "animations": [
+        "[emo]damaged",
+        "[emo]idle",
+        "[emo]normal",
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "fire_bishop_kong",
+      "bones": 211,
+      "slots": 104,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "fire_harpy_kong",
+      "bones": 498,
+      "slots": 157,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "flower_girl_kong",
+      "bones": 263,
+      "slots": 122,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "future_knight_kong",
+      "bones": 426,
+      "slots": 131,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "future_princess_kong",
+      "bones": 297,
+      "slots": 133,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "future_princess_seal_pajamas_kong",
+      "bones": 298,
+      "slots": 154,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "garam_kong",
+      "bones": 538,
+      "slots": 109,
+      "animations": [
+        "enterance",
+        "idle",
+        "tail_off"
+      ]
+    },
+    {
+      "id": "ghost_buster_kong",
+      "bones": 77,
+      "slots": 51,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "golem_rider_kong",
+      "bones": 450,
+      "slots": 198,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "half_vampire_kong",
+      "bones": 683,
+      "slots": 164,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "hana_kong",
+      "bones": 427,
+      "slots": 170,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "hyper_kong",
+      "bones": 204,
+      "slots": 68,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "idol_captain_kong",
+      "bones": 142,
+      "slots": 43,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "innuit_kong",
+      "bones": 290,
+      "slots": 83,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "invader_knight_kong",
+      "bones": 287,
+      "slots": 137,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "kamael_kong",
+      "bones": 424,
+      "slots": 99,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "knight_both_kong",
+      "bones": 122,
+      "slots": 77,
+      "animations": [
+        "idle"
+      ]
+    },
+    {
+      "id": "knight_captain_kong",
+      "bones": 87,
+      "slots": 48,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "knight_female_kong",
+      "bones": 68,
+      "slots": 42,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "knight_male_kong",
+      "bones": 53,
+      "slots": 35,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "kunoichi_kong",
+      "bones": 413,
+      "slots": 133,
+      "animations": [
+        "entrance",
+        "idle",
+        "visual_novel_idle"
+      ]
+    },
+    {
+      "id": "lady_thief_kong",
+      "bones": 461,
+      "slots": 150,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "leaf_fairy_kong",
+      "bones": 151,
+      "slots": 104,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "legendary_hero_kong",
+      "bones": 349,
+      "slots": 105,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "librarian_kong",
+      "bones": 77,
+      "slots": 45,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "lifeguard_yuze_kong",
+      "bones": 256,
+      "slots": 131,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "maam_kong",
+      "bones": 283,
+      "slots": 109,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "mad_scientist_kong",
+      "bones": 199,
+      "slots": 64,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "maid_kong",
+      "bones": 97,
+      "slots": 25,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "maiden_kong",
+      "bones": 70,
+      "slots": 25,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "mecha_android_kong",
+      "bones": 233,
+      "slots": 154,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "mercenary_kong",
+      "bones": 347,
+      "slots": 118,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "ms_chrome_kong",
+      "bones": 299,
+      "slots": 132,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "necromancer_kong",
+      "bones": 590,
+      "slots": 287,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "party_mad_panda_kong",
+      "bones": 722,
+      "slots": 278,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "parvati_kong",
+      "bones": 383,
+      "slots": 174,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "pet_kong",
+      "bones": 194,
+      "slots": 40,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "pirate_kong",
+      "bones": 182,
+      "slots": 79,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "plitvice_kong",
+      "bones": 149,
+      "slots": 38,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "popp_kong",
+      "bones": 169,
+      "slots": 78,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "priestess_kong",
+      "bones": 474,
+      "slots": 136,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "redhood_kong",
+      "bones": 224,
+      "slots": 102,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "robot_tanker_kong",
+      "bones": 225,
+      "slots": 210,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "rudolph_kong",
+      "bones": 307,
+      "slots": 117,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "saintess_kong",
+      "bones": 418,
+      "slots": 171,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "sea_witch_kong",
+      "bones": 547,
+      "slots": 157,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "sheep_girl_kong",
+      "bones": 291,
+      "slots": 127,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "sniper_kong",
+      "bones": 69,
+      "slots": 21,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "steam_knight_kong",
+      "bones": 250,
+      "slots": 88,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "steam_princess_kong",
+      "bones": 197,
+      "slots": 47,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "store_angel_kong",
+      "bones": 1015,
+      "slots": 250,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "succubus_kong",
+      "bones": 98,
+      "slots": 35,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "succubus_noble_kong",
+      "bones": 113,
+      "slots": 39,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "summer_android_kong",
+      "bones": 389,
+      "slots": 134,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "summer_loraine_kong",
+      "bones": 603,
+      "slots": 253,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "surfer_shohee_kong",
+      "bones": 361,
+      "slots": 149,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "survivor_kong",
+      "bones": 92,
+      "slots": 40,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "swindler_kong",
+      "bones": 123,
+      "slots": 50,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "tanker_kong",
+      "bones": 37,
+      "slots": 32,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "teatan_hero_kong",
+      "bones": 96,
+      "slots": 54,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "uptown_lancer_girl_kong",
+      "bones": 287,
+      "slots": 81,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "vampire_lord_kong",
+      "bones": 414,
+      "slots": 94,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "vampire_noble_kong",
+      "bones": 117,
+      "slots": 33,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "viking_kong",
+      "bones": 63,
+      "slots": 18,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "villain_android_kong",
+      "bones": 375,
+      "slots": 185,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "villain_redhood_kong",
+      "bones": 168,
+      "slots": 71,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "white_druid_kong",
+      "bones": 487,
+      "slots": 134,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    },
+    {
+      "id": "witch_coco_kong",
+      "bones": 115,
+      "slots": 31,
+      "animations": [
+        "entrance",
+        "idle"
+      ]
+    }
+  ],
+  "media": {
+    "video/mp4;codecs=avc1.42001E": true,
+    "video/mp4": true,
+    "video/quicktime": false,
+    "video/webm;codecs=vp9": true,
+    "webCodecs": true,
+    "avc1.42001E": true,
+    "vp09.00.10.08": true,
+    "hvc1.1.6.L93.B0": true
+  },
+  "counts": {
+    "atlasSheets": 20,
+    "atlasRegions": {
+      "items": 2854,
+      "characters": 1799,
+      "portraits": 350,
+      "PortraitFrame": 85,
+      "Badge": 14,
+      "bosses": 49,
+      "battle": 352,
+      "ProfilecardStickers": 165,
+      "questItems": 144,
+      "farmItems": 75,
+      "ProfilecardStickers2": 95,
+      "StickerPack": 39,
+      "emblems": 33,
+      "main_ui": 404,
+      "MainUiS3": 1155,
+      "Kamazon": 67,
+      "construction_hh": 31,
+      "rift": 6,
+      "localization": 151,
+      "LocalizationSub": 11
+    },
+    "blankPlaceholders": 42,
+    "spine": 1751,
+    "fx": 5365
+  }
+}

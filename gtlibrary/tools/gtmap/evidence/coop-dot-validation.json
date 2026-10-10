@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "PASS · 原地图包含用户指出的地砖",
+    "PASS · 暗红色取自源动画曲线",
+    "PASS · 核心识别源材质动画",
+    "PASS · GPU 像素从透明淡入暗红色",
+    "PASS · 修复后没有白色方块",
+    "PASS · 进入循环状态后颜色保持原生值",
+    "PASS · GPU Shader 无编译失败"
+  ],
+  "pixels": {
+    "fading": {
+      "red": 167958,
+      "white": 0
+    },
+    "final": {
+      "red": 182762,
+      "white": 0
+    },
+    "loop": {
+      "red": 182762,
+      "white": 0
+    },
+    "start": {
+      "red": 0,
+      "white": 0
+    }
+  },
+  "result": "pass"
+}

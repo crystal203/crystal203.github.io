@@ -1,0 +1,74 @@
+{
+  "maps": 2054,
+  "decodedMaps": 2053,
+  "unavailableMaps": [
+    "short_story_clevatess_test"
+  ],
+  "previousMaps": 1440,
+  "addedMaps": 614,
+  "sourceMaps": 2054,
+  "rootCategories": 38,
+  "directoryNodes": 113,
+  "classification": {
+    "stageReferences": 1688,
+    "filenameFamilies": 184,
+    "miscellaneous": 182
+  },
+  "versions": {
+    "9": 23,
+    "11": 15,
+    "12": 706,
+    "13": 14,
+    "14": 756,
+    "15": 108,
+    "16": 431
+  },
+  "sourceIntegrity": "all 2054 ciphertext copies SHA-256 identical to sources",
+  "decoderHashAndCount": "all 2053 decodable files: SHA-256, tile and event counts match",
+  "gpuRendering": "613 new decodable maps plus afterworld_1_1 and desert_1_5 regression samples passed; zero failed shader programs",
+  "gpuSamples": 615,
+  "maxSingleMapGeometries": 1187,
+  "mapsWithoutStaticGeometry": [
+    "demonworld_1_1",
+    "island_Test",
+    "main_one_act_play",
+    "xm_1_4",
+    "futurecastle_part2_1_1_invisible",
+    "guild_arcade_climbing_game",
+    "guild_arcade_energyball_shooting",
+    "guild_arcade_racing_game",
+    "guild_arcade_tiger_jump_game"
+  ],
+  "coreChecks": [
+    "top disables Unity shear",
+    "oblique enables Unity shear",
+    "Unity toggle",
+    "left drag does not pan",
+    "middle drag pans",
+    "clear releases geometry",
+    "dispose removes canvas"
+  ],
+  "directoryChecks": [
+    "category view by default; worlds ordered before stories",
+    "root scroll position restored",
+    "elemental tower hierarchy",
+    "parent navigation",
+    "dungeon scroll position restored",
+    "coop expedition season hierarchy",
+    "season scroll position restored",
+    "map selection preserves list scroll",
+    "Chinese chapter search",
+    "clear search restores scroll",
+    "all view requires explicit selection",
+    "unavailable test source clearly reported and old map cleared",
+    "decoded maps without static geometry clearly reported"
+  ],
+  "nativeShaderClasses": 63,
+  "limitations": "Static models and native material formulas; unavailable original source assets and dynamic contents are recorded explicitly. Global game lighting and all particle/character effects are not fully reproduced.",
+  "scaleChecks": 7,
+  "nativeDotChecks": 7,
+  "nativeDotTemplates": 12,
+  "resourceCoverageChecks": 9,
+  "selectableSpineDefaultSkeletons": 1751,
+  "japaneseIllustrations": 94
+}

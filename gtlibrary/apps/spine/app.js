@@ -184,6 +184,15 @@
             var match = text.match(/(?:window\.)?spineAssets\s*=\s*([\s\S]*?);?\s*$/);
             if (!match) throw new Error("资源清单格式不可用: " + folder);
             window.spineAssets = JSON.parse(match[1].replace(/;\s*$/, ""));
+            if (folder === "illust") return GTResources.fetch("../../resources/illust-jp/catalog.json")
+              .then(function(res) { return checkResponse(res, "日服立绘目录").json(); })
+              .then(function(catalog) {
+                app.jpNames = {};
+                catalog.illustrations.forEach(function(row) {
+                  if (window.spineAssets.indexOf(row.name) < 0) window.spineAssets.push(row.name);
+                  app.jpNames[row.name] = row.label;
+                });
+              });
           });
       }
 
@@ -301,7 +310,7 @@
             .then(function (res) { return res.ok ? res.json() : {}; })
             .catch(function () { return {}; });
         }).then(function (zh) {
-          app.zh = zh || {};
+          app.zh = Object.assign({}, zh || {}, folder === "illust" ? app.jpNames : {});
           app.current = null;
           $("assetSearchBox").value = "";
           applyFilter();

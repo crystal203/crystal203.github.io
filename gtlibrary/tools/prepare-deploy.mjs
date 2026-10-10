@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 const root = fileURLToPath(new URL('../', import.meta.url));
-const roots = ['apps', 'core', 'gtatlas', 'gtasset', 'gtfx', 'resources', 'shared', 'vendor'];
+const roots = ['apps', 'core', 'gtatlas', 'gtasset', 'gtfx', 'gtmap', 'resources', 'shared', 'vendor'];
 // A pinned GitHub URL must never silently serve an older copy of changed assets.
 const config = await readFile(path.join(root,'core/delivery-config.js'),'utf8');
 const snapshot = config.match(/cdnBase:\s*['"]https:\/\/cdn\.jsdelivr\.net\/gh\/[^'"\s]+@([a-f0-9]{40})\/gtlibrary\//);

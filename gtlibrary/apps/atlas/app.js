@@ -13,30 +13,10 @@ let currentSpritesheet = null;
 
         // `zh` is an optional sidecar of {internalCode: 中文名}; when present the
         // Chinese name is shown first and is searchable alongside the internal code
-        let spritesheets = [
-            { name: '物品', png: '../../resources/atlas/items.png', json: '../../resources/atlas/items.json', zh: '../../resources/atlas/items.zh.json' },
-            { name: '角色', png: '../../resources/atlas/characters.png', json: '../../resources/atlas/characters.json', zh: '../../resources/atlas/characters.zh.json' },
-            { name: '头像', png: '../../resources/atlas/portraits.png', json: '../../resources/atlas/portraits.json', zh: '../../resources/atlas/portraits.zh.json' },
-            { name: '头像框', png: '../../resources/atlas/PortraitFrame.png', json: '../../resources/atlas/PortraitFrame.json', zh: '../../resources/atlas/PortraitFrame.zh.json' },
-            { name: '徽章', png: '../../resources/atlas/Badge.png', json: '../../resources/atlas/Badge.json', zh: '../../resources/atlas/Badge.zh.json' },
-            { name: 'Boss', png: '../../resources/atlas/bosses.png', json: '../../resources/atlas/bosses.json', zh: '../../resources/atlas/bosses.zh.json' },
-            { name: '战斗UI', png: '../../resources/atlas/battle.png', json: '../../resources/atlas/battle.json' },
-            { name: '贴纸', png: '../../resources/atlas/ProfilecardStickers.png', json: '../../resources/atlas/ProfilecardStickers.json', zh: '../../resources/atlas/ProfilecardStickers.zh.json' },
-            { name: '任务物品', png: '../../resources/atlas/questItems.png', json: '../../resources/atlas/questItems.json' },
-            { name: '农场物品', png: '../../resources/atlas/farmItems.png', json: '../../resources/atlas/farmItems.json', zh: '../../resources/atlas/farmItems.zh.json' },
-            { name: '贴纸2', png: '../../resources/atlas/ProfilecardStickers2.png', json: '../../resources/atlas/ProfilecardStickers2.json', zh: '../../resources/atlas/ProfilecardStickers2.zh.json' },
-            { name: '贴纸包', png: '../../resources/atlas/StickerPack.png', json: '../../resources/atlas/StickerPack.json', zh: '../../resources/atlas/StickerPack.zh.json' },
-            { name: '公会徽章', png: '../../resources/atlas/emblems.png', json: '../../resources/atlas/emblems.json' },
-            { name: '主界面UI', png: '../../resources/atlas/main_ui.png', json: '../../resources/atlas/main_ui.json' },
-            { name: '主界面UI S3', png: '../../resources/atlas/MainUiS3.png', json: '../../resources/atlas/MainUiS3.json' },
-            { name: '卡马逊', png: '../../resources/atlas/Kamazon.png', json: '../../resources/atlas/Kamazon.json', zh: '../../resources/atlas/Kamazon.zh.json' },
-            { name: '天空城建造', png: '../../resources/atlas/construction_hh.png', json: '../../resources/atlas/construction_hh.json' },
-            { name: '裂隙', png: '../../resources/atlas/rift.png', json: '../../resources/atlas/rift.json' },
-            { name: '本地化文字', png: '../../resources/atlas/localization.png', json: '../../resources/atlas/localization.json' },
-            { name: '本地化文字 补充', png: '../../resources/atlas/LocalizationSub.png', json: '../../resources/atlas/LocalizationSub.json' },
-        ];
+        let spritesheets = [];
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            try { spritesheets = (await GTResourceCatalog.load()).sheets; } catch(error) { document.getElementById('emptyState').textContent=error.message;document.getElementById('emptyState').style.display='block';return; }
             populateSpritesheetSelector();
             const params=new URLSearchParams(location.search),sheet=params.get('sheet');
             if(sheet){const position=spritesheets.findIndex(s=>s.json.endsWith('/'+sheet+'.json'));if(position>=0){document.getElementById('spritesheetSelect').value=String(position);loadSpritesheet();}}

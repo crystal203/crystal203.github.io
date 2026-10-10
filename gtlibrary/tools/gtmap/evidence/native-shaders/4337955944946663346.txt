@@ -1,0 +1,135 @@
+#ifdef VERTEX
+#version 300 es
+
+#define HLSLCC_ENABLE_UNIFORM_BUFFERS 1
+#if HLSLCC_ENABLE_UNIFORM_BUFFERS
+#define UNITY_UNIFORM
+#else
+#define UNITY_UNIFORM uniform
+#endif
+#define UNITY_SUPPORTS_UNIFORM_LOCATION 1
+#if UNITY_SUPPORTS_UNIFORM_LOCATION
+#define UNITY_LOCATION(x) layout(location = x)
+#define UNITY_BINDING(x) layout(binding = x, std140)
+#else
+#define UNITY_LOCATION(x)
+#define UNITY_BINDING(x) layout(std140)
+#endif
+uniform 	vec4 hlslcc_mtx4x4unity_ObjectToWorld[4];
+uniform 	vec4 hlslcc_mtx4x4unity_MatrixV[4];
+uniform 	vec4 hlslcc_mtx4x4unity_MatrixVP[4];
+uniform 	vec4 _ProjectionTex_ST;
+uniform 	mediump float _YOffset;
+in highp vec4 in_POSITION0;
+in mediump vec2 in_TEXCOORD0;
+in mediump vec4 in_COLOR0;
+out mediump vec2 vs_TEXCOORD0;
+out mediump vec2 vs_TEXCOORD1;
+out mediump vec4 vs_COLOR0;
+vec3 u_xlat0;
+vec4 u_xlat1;
+bool u_xlatb1;
+vec4 u_xlat2;
+vec3 u_xlat3;
+vec3 u_xlat4;
+float u_xlat12;
+bool u_xlatb12;
+void main()
+{
+    u_xlat0.x = hlslcc_mtx4x4unity_MatrixV[0].z;
+    u_xlat0.y = hlslcc_mtx4x4unity_MatrixV[2].z;
+    u_xlat0.x = dot(u_xlat0.xy, u_xlat0.xy);
+    u_xlat0.x = sqrt(u_xlat0.x);
+    u_xlat0.x = max(u_xlat0.x, 0.00999999978);
+    u_xlat0.x = float(1.0) / u_xlat0.x;
+    u_xlat4.x = hlslcc_mtx4x4unity_ObjectToWorld[2].y * hlslcc_mtx4x4unity_MatrixV[1].x;
+    u_xlat4.x = hlslcc_mtx4x4unity_MatrixV[0].x * hlslcc_mtx4x4unity_ObjectToWorld[2].x + u_xlat4.x;
+    u_xlat4.x = hlslcc_mtx4x4unity_MatrixV[2].x * hlslcc_mtx4x4unity_ObjectToWorld[2].z + u_xlat4.x;
+    u_xlat1.x = hlslcc_mtx4x4unity_MatrixV[3].x * hlslcc_mtx4x4unity_ObjectToWorld[2].w + u_xlat4.x;
+    u_xlat4.x = hlslcc_mtx4x4unity_ObjectToWorld[0].y * hlslcc_mtx4x4unity_MatrixV[1].x;
+    u_xlat4.x = hlslcc_mtx4x4unity_MatrixV[0].x * hlslcc_mtx4x4unity_ObjectToWorld[0].x + u_xlat4.x;
+    u_xlat4.x = hlslcc_mtx4x4unity_MatrixV[2].x * hlslcc_mtx4x4unity_ObjectToWorld[0].z + u_xlat4.x;
+    u_xlat1.y = hlslcc_mtx4x4unity_MatrixV[3].x * hlslcc_mtx4x4unity_ObjectToWorld[0].w + u_xlat4.x;
+    u_xlat4.x = dot(u_xlat1.xy, u_xlat1.xy);
+    u_xlat4.x = inversesqrt(u_xlat4.x);
+    u_xlat4.xy = u_xlat4.xx * u_xlat1.xy;
+    u_xlat4.xy = u_xlat4.xy * in_POSITION0.xx;
+    u_xlatb12 = u_xlat1.y<0.0;
+    u_xlatb1 = 0.0<u_xlat1.y;
+    u_xlat12 = u_xlatb12 ? -1.0 : float(0.0);
+    u_xlat12 = (u_xlatb1) ? 1.0 : u_xlat12;
+    u_xlat1.xy = vec2(u_xlat12) * u_xlat4.xy;
+    u_xlat2 = in_POSITION0.yyyy * hlslcc_mtx4x4unity_ObjectToWorld[1];
+    u_xlat2 = hlslcc_mtx4x4unity_ObjectToWorld[0] * u_xlat1.yyyy + u_xlat2;
+    u_xlat2 = hlslcc_mtx4x4unity_ObjectToWorld[2] * u_xlat1.xxxx + u_xlat2;
+    u_xlat2 = hlslcc_mtx4x4unity_ObjectToWorld[3].yzxw * in_POSITION0.wwww + u_xlat2.yzxw;
+    u_xlat4.xy = u_xlat2.xy + (-hlslcc_mtx4x4unity_ObjectToWorld[3].yz);
+    u_xlat0.x = u_xlat4.x * u_xlat0.x + _YOffset;
+    u_xlat0.x = max(u_xlat0.x, 0.0);
+    u_xlat3.y = u_xlat0.x + (-_YOffset);
+    u_xlat0.x = u_xlat4.x + _YOffset;
+    u_xlat0.x = min(u_xlat0.x, 0.0);
+    u_xlat3.z = u_xlat0.x + u_xlat4.y;
+    u_xlat0.x = u_xlat2.z;
+    u_xlat3.x = 0.0;
+    u_xlat0.yz = hlslcc_mtx4x4unity_ObjectToWorld[3].yz;
+    u_xlat4.xyz = u_xlat0.xyz + u_xlat3.xyz;
+    u_xlat1.xw = u_xlat4.yy * hlslcc_mtx4x4unity_MatrixVP[1].yz;
+    u_xlat4.xy = hlslcc_mtx4x4unity_MatrixVP[0].yz * u_xlat4.xx + u_xlat1.xw;
+    u_xlat4.xy = hlslcc_mtx4x4unity_MatrixVP[2].yz * u_xlat4.zz + u_xlat4.xy;
+    gl_Position.yz = hlslcc_mtx4x4unity_MatrixVP[3].yz * u_xlat2.ww + u_xlat4.xy;
+    u_xlat4.xy = u_xlat2.xx * hlslcc_mtx4x4unity_MatrixVP[1].xw;
+    u_xlat0.xy = hlslcc_mtx4x4unity_MatrixVP[0].xw * u_xlat0.xx + u_xlat4.xy;
+    u_xlat0.xy = hlslcc_mtx4x4unity_MatrixVP[2].xw * u_xlat2.yy + u_xlat0.xy;
+    gl_Position.xw = hlslcc_mtx4x4unity_MatrixVP[3].xw * u_xlat2.ww + u_xlat0.xy;
+    u_xlat1.z = in_POSITION0.y;
+    u_xlat0.xy = u_xlat1.yz + vec2(0.5, 0.0);
+    u_xlat0.xy = u_xlat0.xy * _ProjectionTex_ST.xy + _ProjectionTex_ST.zw;
+    vs_TEXCOORD1.xy = u_xlat0.xy;
+    vs_TEXCOORD0.xy = in_TEXCOORD0.xy;
+    vs_COLOR0 = in_COLOR0;
+    return;
+}
+
+#endif
+#ifdef FRAGMENT
+#version 300 es
+
+precision highp float;
+precision highp int;
+#define HLSLCC_ENABLE_UNIFORM_BUFFERS 1
+#if HLSLCC_ENABLE_UNIFORM_BUFFERS
+#define UNITY_UNIFORM
+#else
+#define UNITY_UNIFORM uniform
+#endif
+#define UNITY_SUPPORTS_UNIFORM_LOCATION 1
+#if UNITY_SUPPORTS_UNIFORM_LOCATION
+#define UNITY_LOCATION(x) layout(location = x)
+#define UNITY_BINDING(x) layout(binding = x, std140)
+#else
+#define UNITY_LOCATION(x)
+#define UNITY_BINDING(x) layout(std140)
+#endif
+uniform 	mediump vec4 _TintColor;
+UNITY_LOCATION(0) uniform mediump sampler2D _ProjectionTex;
+UNITY_LOCATION(1) uniform mediump sampler2D _MainTex;
+in mediump vec2 vs_TEXCOORD0;
+in mediump vec2 vs_TEXCOORD1;
+layout(location = 0) out mediump vec4 SV_Target0;
+vec4 u_xlat0;
+mediump vec3 u_xlat16_0;
+mediump vec4 u_xlat16_1;
+void main()
+{
+    u_xlat16_0.xyz = _TintColor.xyz + _TintColor.xyz;
+    u_xlat16_1 = texture(_ProjectionTex, vs_TEXCOORD1.xy);
+    u_xlat0.xyz = u_xlat16_0.xyz * u_xlat16_1.xyz;
+    u_xlat0.w = u_xlat16_1.w * _TintColor.w;
+    u_xlat16_1 = texture(_MainTex, vs_TEXCOORD0.xy);
+    u_xlat0 = u_xlat0 * u_xlat16_1;
+    SV_Target0 = u_xlat0;
+    return;
+}
+
+#endif
