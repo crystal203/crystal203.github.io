@@ -1,0 +1,2718 @@
+{
+  "totals": {
+    "activeSystems": 747,
+    "loopingSystems": 542
+  },
+  "examples": {
+    "cloud": [
+      {
+        "set": "ondemand/afterworld/tilesets:afterworld.tileset",
+        "tile": "FX_cloud_1",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX FX_cloud_1"
+      },
+      {
+        "set": "ondemand/afterworld/tilesets:afterworld.tileset",
+        "tile": "FX_cloud_2",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX FX_cloud_2"
+      },
+      {
+        "set": "snowworld",
+        "tile": "[fx]snow_fog",
+        "node": "FX_fog",
+        "loop": true,
+        "spriteNames": " FX_fog [fx]snow_fog"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "FX_cloud1",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX FX_cloud1"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "FX_cloud2",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX FX_cloud2"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "FX_cloud_1",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX FX_cloud_1"
+      },
+      {
+        "set": "ondemand/archaic/tilesets:archaic.tileset",
+        "tile": "FX_cloud",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX FX_cloud"
+      },
+      {
+        "set": "ondemand/v3_21_waterworld/tilesets:waterworld.tileset",
+        "tile": "fx_boss_cloud_down",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX fx_boss_cloud_down"
+      },
+      {
+        "set": "ondemand/v3_21_waterworld/tilesets:waterworld.tileset",
+        "tile": "fx_boss_cloud_up",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": " FX fx_boss_cloud_up"
+      },
+      {
+        "set": "ondemand/xmas/tilesets:christmas_event.tileset",
+        "tile": "FX_front_cloud",
+        "node": "particle",
+        "loop": false,
+        "spriteNames": " particle FX_front_cloud"
+      }
+    ],
+    "fire": [
+      {
+        "set": "ondemand/afterworld/tilesets:afterworld.tileset",
+        "tile": "wall_outdoor_candle1",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon wall_outdoor_candle1"
+      },
+      {
+        "set": "ondemand/afterworld/tilesets:afterworld.tileset",
+        "tile": "wall_outdoor_candle1",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon wall_outdoor_candle1"
+      },
+      {
+        "set": "gimmick",
+        "tile": "[GIMMICK]witch_cauldron",
+        "node": "fire1",
+        "loop": true,
+        "spriteNames": " fire1 [GIMMICK]witch_cauldron"
+      },
+      {
+        "set": "gimmick",
+        "tile": "[GIMMICK]witch_cauldron",
+        "node": "fire2",
+        "loop": true,
+        "spriteNames": " fire2 [GIMMICK]witch_cauldron"
+      },
+      {
+        "set": "dungeon",
+        "tile": "[fx]obj_wallprop1",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon [fx]obj_wallprop1"
+      },
+      {
+        "set": "dungeon",
+        "tile": "[fx]obj_wallprop1",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon [fx]obj_wallprop1"
+      },
+      {
+        "set": "dungeon",
+        "tile": "wall_torch",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq wall_torch"
+      },
+      {
+        "set": "dungeon",
+        "tile": "wall_torch",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] wall_torch"
+      },
+      {
+        "set": "cave",
+        "tile": "[fx]obj_fire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]obj_fire"
+      },
+      {
+        "set": "cave",
+        "tile": "[fx]obj_fire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] [fx]obj_fire"
+      },
+      {
+        "set": "cave",
+        "tile": "[fx]obj_fire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] [fx]obj_fire"
+      },
+      {
+        "set": "cave",
+        "tile": "[fx]obj_fire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]obj_fire"
+      },
+      {
+        "set": "house",
+        "tile": "obj_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_candle"
+      },
+      {
+        "set": "house",
+        "tile": "obj_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_candle"
+      },
+      {
+        "set": "house",
+        "tile": "obj_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_candle"
+      },
+      {
+        "set": "snowworld",
+        "tile": "[gimmick]campfire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [gimmick]campfire"
+      },
+      {
+        "set": "snowworld",
+        "tile": "[gimmick]campfire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] [gimmick]campfire"
+      },
+      {
+        "set": "snowworld",
+        "tile": "[gimmick]campfire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] [gimmick]campfire"
+      },
+      {
+        "set": "snowworld",
+        "tile": "[gimmick]campfire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [gimmick]campfire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq obj_fire"
+      },
+      {
+        "set": "titantavern",
+        "tile": "obj_porp1_1",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_porp1_1"
+      },
+      {
+        "set": "prison",
+        "tile": "obj_lamp1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq obj_lamp1"
+      },
+      {
+        "set": "prison",
+        "tile": "obj_lamp1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_lamp1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_torch1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch1",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] wall_torch1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_torch1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_torch1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch1",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] wall_torch1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_torch1"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch2",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_torch2"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch2",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] wall_torch2"
+      },
+      {
+        "set": "cave2",
+        "tile": "wall_torch2",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_torch2"
+      },
+      {
+        "set": "cave2",
+        "tile": "fx_env_fireflies_loop_2x1",
+        "node": "particles (1)",
+        "loop": true,
+        "spriteNames": "fx_flashglow_d1_gray fx_flashglow_b1_g particles (1) fx_env_fireflies_loop_2x1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq [fx]room1"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "obj_basement_torchlight",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq obj_basement_torchlight"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "obj_basement_torchlight",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_basement_torchlight"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "obj_in1_tablesetting2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_tablesetting2"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "obj_in1_tablesetting2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_tablesetting2"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "obj_in1_tablesetting2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_tablesetting2"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "obj_in1_tablesetting2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_tablesetting2"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "obj_in2_wall_fire",
+        "node": "ajirang_seq_toon",
+        "loop": true,
+        "spriteNames": "fx_fire_ajirang_seq_s01 fx_fire_ajirang_seq_s02 fx_fire_ajirang_seq_s03 fx_fire_ajirang_seq_s04 fx_fire_ajirang_seq_s05 fx_fire_ajirang_seq_s06 fx_fire_ajirang_seq_s07 fx_fire_ajirang_seq_s08 fx_fire_ajirang_seq_s09 fx_fire_ajirang_seq_s10 fx_fire_ajirang_seq_s11 ajirang_seq_toon obj_in2_wall_fire"
+      },
+      {
+        "set": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+        "tile": "obj_in2_wall_fire2",
+        "node": "ajirang_seq_toon",
+        "loop": true,
+        "spriteNames": "fx_fire_ajirang_seq_s01 fx_fire_ajirang_seq_s02 fx_fire_ajirang_seq_s03 fx_fire_ajirang_seq_s04 fx_fire_ajirang_seq_s05 fx_fire_ajirang_seq_s06 fx_fire_ajirang_seq_s07 fx_fire_ajirang_seq_s08 fx_fire_ajirang_seq_s09 fx_fire_ajirang_seq_s10 fx_fire_ajirang_seq_s11 ajirang_seq_toon obj_in2_wall_fire2"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in5_woodstove",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq wall_in5_woodstove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in5_woodstove",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_in5_woodstove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in5_woodstove",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq wall_in5_woodstove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in6_1_stove",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq wall_in6_1_stove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in6_1_stove",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_in6_1_stove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in6_1_stove",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq wall_in6_1_stove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "obj_in6_1_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_in6_1_candle"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "obj_in6_1_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_in6_1_candle"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "obj_in6_1_candle2",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_in6_1_candle2"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "obj_in6_1_candle2",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_in6_1_candle2"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "[gimmick]lilithtower_soup",
+        "node": "fire1",
+        "loop": true,
+        "spriteNames": " fire1 [gimmick]lilithtower_soup"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "[gimmick]lilithtower_soup",
+        "node": "fire2",
+        "loop": true,
+        "spriteNames": " fire2 [gimmick]lilithtower_soup"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "window_broken1",
+        "node": "[Atlas_add]_Flame_Explosion",
+        "loop": true,
+        "spriteNames": "ajirang4_1 ajirang4_2 ajirang4_3 ajirang4_4 [Atlas_add]_Flame_Explosion window_broken1"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "window_broken2",
+        "node": "[Atlas_add]_Flame_Explosion",
+        "loop": true,
+        "spriteNames": "ajirang4_1 ajirang4_2 ajirang4_3 ajirang4_4 [Atlas_add]_Flame_Explosion window_broken2"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_in2_candle",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in2_candle"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_in2_candle",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in2_candle"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_in2_candle",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in2_candle"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_in2_candle",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in2_candle"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "wall_in1_bedtable",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_bedtable"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "wall_in1_bedtable",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_bedtable"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "wall_dun_barrel",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_dun_barrel"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "wall_dun_barrel",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_dun_barrel"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "wall_dun_barrel",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_dun_barrel"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "wall_dun_barrel",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_dun_barrel"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": " Start_FireSprite_Seq obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "FX_lightprop1",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon FX_lightprop1"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "FX_lightprop2",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon FX_lightprop2"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "FX_lightprop2",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon FX_lightprop2"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "FX_lightprop2",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon FX_lightprop2"
+      },
+      {
+        "set": "ondemand/castletown/tilesets:castletown.tileset",
+        "tile": "wall_ghetto_woodstove",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq wall_ghetto_woodstove"
+      },
+      {
+        "set": "ondemand/castletown/tilesets:castletown.tileset",
+        "tile": "wall_ghetto_woodstove",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_ghetto_woodstove"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "wall_battlefield_oak",
+        "node": "FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 FireSprite_Seq wall_battlefield_oak"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "wall_battlefield_oak",
+        "node": "spark",
+        "loop": true,
+        "spriteNames": "fire2_1 spark wall_battlefield_oak"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "grow_middle [Atlas_add]_glow fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_shear_gray_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear_gray_var"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "fx_smoke07 [Atlas_add]_glow fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_long_gray_top_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_gray_top_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "wall_CW_battlefield_oak",
+        "node": "FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 FireSprite_Seq wall_CW_battlefield_oak"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "wall_CW_battlefield_oak",
+        "node": "spark",
+        "loop": true,
+        "spriteNames": "fire2_1 spark wall_CW_battlefield_oak"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "grow_middle [Atlas_add]_glow fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_shear_gray_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear_gray_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "fx_smoke07 [Atlas_add]_glow fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_long_gray_top_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_gray_top_var"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "[gimmick]kettle_soup",
+        "node": "fire1",
+        "loop": true,
+        "spriteNames": " fire1 [gimmick]kettle_soup"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "[gimmick]kettle_soup",
+        "node": "fire2",
+        "loop": true,
+        "spriteNames": " fire2 [gimmick]kettle_soup"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_fire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_town_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_fire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] wall_town_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_fire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] wall_town_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_fire",
+        "node": "Loop_glow_[Atlas_add] (1)",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] (1) wall_town_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_fire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_town_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_fire",
+        "node": "fire_seq_ad (1)",
+        "loop": true,
+        "spriteNames": "FX_ajirang_cartoon_seq_01 FX_ajirang_cartoon_seq_02 FX_ajirang_cartoon_seq_03 FX_ajirang_cartoon_seq_04 FX_ajirang_cartoon_seq_05 FX_ajirang_cartoon_seq_06 FX_ajirang_cartoon_seq_07 FX_ajirang_cartoon_seq_08 FX_ajirang_cartoon_seq_09 FX_ajirang_cartoon_seq_10 FX_ajirang_cartoon_seq_11 FX_ajirang_cartoon_seq_12 FX_ajirang_cartoon_seq_13 fire_seq_ad (1) wall_town_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_candle1"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_candle1"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_candle2"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_candle2"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle3",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_candle3"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle3",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_candle3"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle3",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_candle3"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "obj_in1_candle3",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_candle3"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_in1_shrine",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_shrine"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_in1_shrine",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_shrine"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_in1_shrine",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_shrine"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_in1_shrine",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_shrine"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Loop_FireSprite_Seq obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_bg_[Atlas_ab] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": "fire1_01 fire1_02 fire1_03 fire1_04 fire1_05 fire1_06 fire1_07 fire1_08 fire1_09 fire1_10 fire1_11 fire1_12 fire1_13 fire1_14 fire1_15 Start_FireSprite_Seq obj_firepillar"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_pumpkin_1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_pumpkin_1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_pumpkin_1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_pumpkin_1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_pumpkin_1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_pumpkin_1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_pumpkin_1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_pumpkin_1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_pumpkin_1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_pumpkin_1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_pumpkin_1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_pumpkin_1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_farm_candel1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_farm_candel1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_farm_candel1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_farm_candel1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_farm_candel2"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_farm_candel2"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_farm_candel2"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "obj_farm_candel2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_farm_candel2"
+      },
+      {
+        "set": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+        "tile": "wall_dv_stonelamp2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fx_wall_dv_stonelamp_fire_01 fx_wall_dv_stonelamp_fire_02 fx_wall_dv_stonelamp_fire_03 fx_wall_dv_stonelamp_fire_04 fx_wall_dv_stonelamp_fire_05 fx_wall_dv_stonelamp_fire_06 fx_wall_dv_stonelamp_fire_07 fx_wall_dv_stonelamp_fire_08 fx_wall_dv_stonelamp_fire_09 [Atlas_add]_FireSprite_toon (1) wall_dv_stonelamp2"
+      },
+      {
+        "set": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+        "tile": "wall_dv_stonelamp2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_dv_stonelamp2"
+      },
+      {
+        "set": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+        "tile": "wall_dv_stonelamp3",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fx_wall_dv_stonelamp_fire_01 fx_wall_dv_stonelamp_fire_02 fx_wall_dv_stonelamp_fire_03 fx_wall_dv_stonelamp_fire_04 fx_wall_dv_stonelamp_fire_05 fx_wall_dv_stonelamp_fire_06 fx_wall_dv_stonelamp_fire_07 fx_wall_dv_stonelamp_fire_08 fx_wall_dv_stonelamp_fire_09 [Atlas_add]_FireSprite_toon (1) wall_dv_stonelamp3"
+      },
+      {
+        "set": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+        "tile": "wall_dv_stonelamp3",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_dv_stonelamp3"
+      },
+      {
+        "set": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+        "tile": "[gimmick]kettle_soup",
+        "node": "fire1",
+        "loop": true,
+        "spriteNames": " fire1 [gimmick]kettle_soup"
+      },
+      {
+        "set": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+        "tile": "[gimmick]kettle_soup",
+        "node": "fire2",
+        "loop": true,
+        "spriteNames": " fire2 [gimmick]kettle_soup"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "[gimmick]forest_kettle_soup",
+        "node": "fire1",
+        "loop": true,
+        "spriteNames": " fire1 [gimmick]forest_kettle_soup"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "[gimmick]forest_kettle_soup",
+        "node": "fire2",
+        "loop": true,
+        "spriteNames": " fire2 [gimmick]forest_kettle_soup"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fireflies_loop_1x1",
+        "node": "particles (1)",
+        "loop": true,
+        "spriteNames": "fx_pixyworld_firefly_light_G particles (1) FX_pw_fireflies_loop_1x1"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fire_smoke_slow_shear_03",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_smoke_a [Atlas_ab]_smoke FX_pw_fire_smoke_slow_shear_03"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fire_smoke_slow_shear_03",
+        "node": "Loop_glow_[Atlas_add] (1)",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] (1) FX_pw_fire_smoke_slow_shear_03"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fire_smoke_slow_shear_03",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] FX_pw_fire_smoke_slow_shear_03"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "obj_in_box1_deco",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in_box1_deco"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "obj_in_box1_deco",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in_box1_deco"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "wall_alta_L_night",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_alta_L_night"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "wall_alta_L_night",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_alta_L_night"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "wall_alta_R_night",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_alta_R_night"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "wall_alta_R_night",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_alta_R_night"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "wall_alta_R_night",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_alta_R_night"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "wall_alta_R_night",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_alta_R_night"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "obj_in_food1",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in_food1"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "obj_in_food1",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in_food1"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "obj_in_food2",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in_food2"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "obj_in_food2",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in_food2"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]battlegate",
+        "node": "[Atlas_add]_Spark",
+        "loop": false,
+        "spriteNames": "fire2_1 [Atlas_add]_Spark [gimmick]battlegate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "wall_in1_brazier",
+        "node": "Atlas_add_top_fire_seq",
+        "loop": true,
+        "spriteNames": "FX_ajirang_cartoon_seq_01 FX_ajirang_cartoon_seq_02 FX_ajirang_cartoon_seq_03 FX_ajirang_cartoon_seq_04 FX_ajirang_cartoon_seq_05 FX_ajirang_cartoon_seq_06 FX_ajirang_cartoon_seq_07 FX_ajirang_cartoon_seq_08 FX_ajirang_cartoon_seq_09 FX_ajirang_cartoon_seq_10 FX_ajirang_cartoon_seq_11 FX_ajirang_cartoon_seq_12 FX_ajirang_cartoon_seq_13 Atlas_add_top_fire_seq wall_in1_brazier"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_lava_fireplace",
+        "node": "Atlas_add_top_fire_seq",
+        "loop": true,
+        "spriteNames": "FX_ajirang_cartoon_seq_01 FX_ajirang_cartoon_seq_02 FX_ajirang_cartoon_seq_03 FX_ajirang_cartoon_seq_04 FX_ajirang_cartoon_seq_05 FX_ajirang_cartoon_seq_06 FX_ajirang_cartoon_seq_07 FX_ajirang_cartoon_seq_08 FX_ajirang_cartoon_seq_09 FX_ajirang_cartoon_seq_10 FX_ajirang_cartoon_seq_11 FX_ajirang_cartoon_seq_12 FX_ajirang_cartoon_seq_13 Atlas_add_top_fire_seq obj_lava_fireplace"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_lava_fireplace",
+        "node": "Atlas_add_top_glow",
+        "loop": true,
+        "spriteNames": "grow_middle Atlas_add_top_glow obj_lava_fireplace"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_lava_fireplace",
+        "node": "Atlas_add_top_bg",
+        "loop": false,
+        "spriteNames": "grow_middle Atlas_add_top_bg obj_lava_fireplace"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_lava_fireplace",
+        "node": "Atlas_add_top_flash",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Atlas_add_top_flash obj_lava_fireplace"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_lava_fireplace",
+        "node": "Atlas_add_top_glow_spark",
+        "loop": true,
+        "spriteNames": "SK_SmallPointLight_Red Atlas_add_top_glow_spark obj_lava_fireplace"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_in2_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_in2_candle"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "wall_lava_archpodium",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_lava_archpodium"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "wall_lava_archpodium",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_lava_archpodium"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "wall_lava_archpodium",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_lava_archpodium"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "wall_lava_archpodium",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] wall_lava_archpodium"
+      },
+      {
+        "set": "ondemand/halloween/tilesets:halloween.tileset",
+        "tile": "obj_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_candle"
+      },
+      {
+        "set": "ondemand/halloween/tilesets:halloween.tileset",
+        "tile": "obj_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_candle"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_]library_chandelier",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_]library_chandelier"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_]library_chandelier",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_]library_chandelier"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_]library_chandelier",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_]library_chandelier"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_]library_chandelier",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_]library_chandelier"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_]library_chandelier",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_]library_chandelier"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_]library_chandelier",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_]library_chandelier"
+      },
+      {
+        "set": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+        "tile": "obj_libraryl_candle",
+        "node": "[Atlas_add]_FireSprite_toon",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon obj_libraryl_candle"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "obj_in1_table_candle",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_table_candle"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "obj_in1_table_candle",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_table_candle"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "obj_in1_table_candle",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) obj_in1_table_candle"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "obj_in1_table_candle",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) obj_in1_table_candle"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (1)",
+        "loop": true,
+        "spriteNames": "fire2_3 fire2_4 fire2_5 fire2_6 fire2_7 fire2_8 fire2_9 [Atlas_add]_FireSprite_toon (1) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+        "tile": "wall_in1_candleholder",
+        "node": "[Atlas_add]_FireSprite_toon (2)",
+        "loop": true,
+        "spriteNames": "FX_simplegrow [Atlas_add]_FireSprite_toon (2) wall_in1_candleholder"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Loop_FireSprite_Seq",
+        "loop": true,
+        "spriteNames": " Loop_FireSprite_Seq wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "FX_smoke_up_turbulence_seq_06 Loop_glow_bg_[Atlas_ab] wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Loop_glow_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "hit_b_2 Loop_Spark_[Atlas_add] wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Start_impact_[Atlas_add]",
+        "loop": false,
+        "spriteNames": "SK_SmallPointLight_Red Start_impact_[Atlas_add] wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Start_FireSprite_Seq",
+        "loop": false,
+        "spriteNames": " Start_FireSprite_Seq wall_bonfire"
+      },
+      {
+        "set": "ondemand/short_story_clevatess/tilesets:clevatess.tileset",
+        "tile": "[GIMMICK]brazier1_clevatess",
+        "node": "fx_ct_Atlas_add_fire_spark",
+        "loop": true,
+        "spriteNames": "fire2_1 fx_flashglow_d1_r fx_ct_Atlas_add_fire_spark [GIMMICK]brazier1_clevatess"
+      },
+      {
+        "set": "ondemand/xmas/tilesets:christmas_event.tileset",
+        "tile": "Monster_1",
+        "node": "[Atlas_add]_fire_laser",
+        "loop": true,
+        "spriteNames": "FX_laser_z [Atlas_add]_fire_laser Monster_1"
+      },
+      {
+        "set": "ondemand/xmas/tilesets:christmas_event.tileset",
+        "tile": "Monster_3",
+        "node": "[Atlas_add]_fire_laser",
+        "loop": true,
+        "spriteNames": "FX_laser_z [Atlas_add]_fire_laser Monster_3"
+      },
+      {
+        "set": "ondemand/xmas/tilesets:christmas_event.tileset",
+        "tile": "Monster_middle_1",
+        "node": "[Atlas_add]_fire_laser",
+        "loop": true,
+        "spriteNames": "FX_laser_z [Atlas_add]_fire_laser Monster_middle_1"
+      },
+      {
+        "set": "ondemand/xmas/tilesets:christmas_event.tileset",
+        "tile": "Monster_middle_1",
+        "node": "[Atlas_add]_fire_laser",
+        "loop": true,
+        "spriteNames": "FX_laser_z [Atlas_add]_fire_laser Monster_middle_1"
+      }
+    ],
+    "leaf": [
+      {
+        "set": "forest",
+        "tile": "[gimmick]battlegate",
+        "node": "FX_leaf",
+        "loop": false,
+        "spriteNames": "FX_simpleRect FX_leaf [gimmick]battlegate"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_leaf_loop",
+        "node": "leaf",
+        "loop": true,
+        "spriteNames": "fx_leaf_white leaf FX_pw_leaf_loop"
+      },
+      {
+        "set": "ondemand/short_story_clevatess/tilesets:clevatess.tileset",
+        "tile": "[gimmick]battlegate",
+        "node": "FX_leaf",
+        "loop": false,
+        "spriteNames": "FX_simpleRect FX_leaf [gimmick]battlegate"
+      }
+    ],
+    "smoke": [
+      {
+        "set": "gimmick",
+        "tile": "[GIMMICK]door_mystery",
+        "node": "FX_smoke_transform",
+        "loop": true,
+        "spriteNames": " FX_smoke_transform [GIMMICK]door_mystery"
+      },
+      {
+        "set": "gimmick",
+        "tile": "[GIMMICK]door_mystery_block",
+        "node": "FX_smoke_transform",
+        "loop": true,
+        "spriteNames": " FX_smoke_transform [GIMMICK]door_mystery_block"
+      },
+      {
+        "set": "gimmick",
+        "tile": "[GIMMICK]waypoint",
+        "node": "FX_smoke_base",
+        "loop": true,
+        "spriteNames": "smoke_chimney_1 smoke_chimney_2 smoke_chimney_3 smoke_chimney_4 FX_smoke_base [GIMMICK]waypoint"
+      },
+      {
+        "set": "market",
+        "tile": "obj_roof_smoke1",
+        "node": "FX_chimney_smoke",
+        "loop": true,
+        "spriteNames": " FX_chimney_smoke obj_roof_smoke1"
+      },
+      {
+        "set": "market",
+        "tile": "obj_roof_smoke2",
+        "node": "FX_chimney_smoke",
+        "loop": true,
+        "spriteNames": " FX_chimney_smoke obj_roof_smoke2"
+      },
+      {
+        "set": "snowworld",
+        "tile": "[gimmick]snow_turret",
+        "node": "FX_snowbreath",
+        "loop": true,
+        "spriteNames": "smoke_big_gray FX_snowbreath [gimmick]snow_turret"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_fire"
+      },
+      {
+        "set": "china_night",
+        "tile": "obj_fire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_fire"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "prologue",
+        "tile": "[fx]room1",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] [fx]room1"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] wall_firebowl"
+      },
+      {
+        "set": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+        "tile": "wall_firebowl",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] wall_firebowl"
+      },
+      {
+        "set": "ondemand/v2_49_queenship/tilesets:queenship.tileset",
+        "tile": "obj_dw_broken_car2",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "smoke_big_red [Atlas_ab]_smoke obj_dw_broken_car2"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in5_woodstove",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] wall_in5_woodstove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in5_woodstove",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] wall_in5_woodstove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in6_1_stove",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] wall_in6_1_stove"
+      },
+      {
+        "set": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+        "tile": "wall_in6_1_stove",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] wall_in6_1_stove"
+      },
+      {
+        "set": "ondemand/coop_expedition/tilesets:coop_expedition.tileset",
+        "tile": "[gimmick]dot_tile_2x2",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_2x2"
+      },
+      {
+        "set": "ondemand/coop_expedition/tilesets:coop_expedition.tileset",
+        "tile": "[gimmick]dot_tile_4x4",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_4x4"
+      },
+      {
+        "set": "ondemand/archaic/tilesets:archaic.tileset",
+        "tile": "[gimmick]miner_set",
+        "node": "[Atlas_ab_top]_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke03 [Atlas_ab_top]_bg [gimmick]miner_set"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "window_broken1",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke03 [Atlas_ab]_smoke window_broken1"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "window_broken1",
+        "node": "[Atlas_add_top]_smoke_glow",
+        "loop": true,
+        "spriteNames": "FX_smoke02 [Atlas_add_top]_smoke_glow window_broken1"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "window_broken2",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke03 [Atlas_ab]_smoke window_broken2"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "tile": "window_broken2",
+        "node": "[Atlas_add_top]_smoke_glow",
+        "loop": true,
+        "spriteNames": "FX_smoke02 [Atlas_add_top]_smoke_glow window_broken2"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+        "tile": "obj_dun_torchlight",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_dun_torchlight"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "tile": "obj_well",
+        "node": "[Atlas_ab_top]_smoke",
+        "loop": true,
+        "spriteNames": "FX_smoke_a [Atlas_ab_top]_smoke obj_well"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "grow_middle [Atlas_add]_glow fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_shear_gray_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear_gray_var"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "fx_smoke07 [Atlas_add]_glow fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "tile": "fx_fire_smoke_slow_long_gray_top_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_gray_top_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "w18_flower_portal_bg_scene",
+        "node": "wind_smoke",
+        "loop": true,
+        "spriteNames": "fx_smoke07 wind_smoke w18_flower_portal_bg_scene"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "[GIMMICK]waypoint",
+        "node": "FX_smoke_base",
+        "loop": true,
+        "spriteNames": "smoke_chimney_1 smoke_chimney_2 smoke_chimney_3 smoke_chimney_4 FX_smoke_base [GIMMICK]waypoint"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "w18_city_with_robot",
+        "node": "[Atlas_ab_top]_ashes_small",
+        "loop": true,
+        "spriteNames": "FX_smoke_a [Atlas_ab_top]_ashes_small w18_city_with_robot"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "w18_city_with_robot",
+        "node": "[Atlas_ab]_smoke_background (1)",
+        "loop": true,
+        "spriteNames": "FX_Smoke03 [Atlas_ab]_smoke_background (1) w18_city_with_robot"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "w18_city_with_robot",
+        "node": "smoke (6)",
+        "loop": true,
+        "spriteNames": "FX_Smoke03 smoke (6) w18_city_with_robot"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "w18_city_with_robot",
+        "node": "smoke (7)",
+        "loop": true,
+        "spriteNames": "FX_Smoke03 smoke (7) w18_city_with_robot"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_shear",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "grow_middle [Atlas_add]_glow fx_fire_smoke_slow_shear"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_shear_gray_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_shear_gray_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_long_var",
+        "node": "[Atlas_add]_glow",
+        "loop": true,
+        "spriteNames": "fx_smoke07 [Atlas_add]_glow fx_fire_smoke_slow_long_var"
+      },
+      {
+        "set": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+        "tile": "fx_fire_smoke_slow_long_gray_top_var",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_Smoke05 FX_smoke01 [Atlas_ab]_smoke fx_fire_smoke_slow_long_gray_top_var"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "tile": "obj_outdoor_fire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_outdoor_fire"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_jadepot",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke wall_town_jadepot"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_jadepot",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke wall_town_jadepot"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_jadepot",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke wall_town_jadepot"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "wall_town_jadepot",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke wall_town_jadepot"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "[gimmick]dot_tile_2x2",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_2x2"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "[gimmick]dot_tile_3x3",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_3x3"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "[gimmick]dot_tile_4x4",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_4x4"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "tile": "[gimmick]dot_tile_5x5",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_5x5"
+      },
+      {
+        "set": "ondemand/coop_expedition/s3/tilesets:coop_expedition_s3.tileset",
+        "tile": "[gimmick]dot_tile_2x2",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_2x2"
+      },
+      {
+        "set": "ondemand/coop_expedition/s3/tilesets:coop_expedition_s3.tileset",
+        "tile": "[gimmick]dot_tile_3x3",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_3x3"
+      },
+      {
+        "set": "ondemand/coop_expedition/s3/tilesets:coop_expedition_s3.tileset",
+        "tile": "[gimmick]dot_tile_4x4",
+        "node": "[Atlas_ab]_aura_bg",
+        "loop": true,
+        "spriteNames": "FX_Smoke_aura_trail_b FX_Smoke_aura_trail_c [Atlas_ab]_aura_bg [gimmick]dot_tile_4x4"
+      },
+      {
+        "set": "ondemand/short_story_shuran/tilesets:shuran.tileset",
+        "tile": "[gimmick]shuran_spa1",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": "smoke_big_gray smoke [gimmick]shuran_spa1"
+      },
+      {
+        "set": "ondemand/short_story_slime/tilesets:slime.tileset",
+        "tile": "wall_building_hotspring",
+        "node": "steam",
+        "loop": true,
+        "spriteNames": "smoke_big_gray steam wall_building_hotspring"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Start_smoke_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke_[Atlas_ab] obj_firepillar"
+      },
+      {
+        "set": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+        "tile": "obj_firepillar",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] obj_firepillar"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "tile": "wall_smithy",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": "smoke_chimney_1 smoke_chimney_2 smoke_chimney_3 smoke_chimney_4 smoke wall_smithy"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "[gimmick]forest_entrance_wall",
+        "node": "[Atlas_add_top]_smoke_inside",
+        "loop": true,
+        "spriteNames": "fx_smoke07 [Atlas_add_top]_smoke_inside [gimmick]forest_entrance_wall"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fire_smoke_slow_shear_03",
+        "node": "[Atlas_ab]_smoke",
+        "loop": true,
+        "spriteNames": "FX_smoke_a [Atlas_ab]_smoke FX_pw_fire_smoke_slow_shear_03"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fire_smoke_slow_shear_03",
+        "node": "Loop_glow_[Atlas_add] (1)",
+        "loop": true,
+        "spriteNames": "grow_middle Loop_glow_[Atlas_add] (1) FX_pw_fire_smoke_slow_shear_03"
+      },
+      {
+        "set": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+        "tile": "FX_pw_fire_smoke_slow_shear_03",
+        "node": "Loop_Spark_[Atlas_add]",
+        "loop": true,
+        "spriteNames": "fire2_1 Loop_Spark_[Atlas_add] FX_pw_fire_smoke_slow_shear_03"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "short_story_milkyway_bg2",
+        "node": "[Atlas_ab]_smoke_background",
+        "loop": true,
+        "spriteNames": "FX_smoke_disapear_seq_03 FX_smoke_disapear_seq_04 FX_smoke_disapear_seq_05 FX_smoke_disapear_seq_06 [Atlas_ab]_smoke_background short_story_milkyway_bg2"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "short_story_milkyway_bg2",
+        "node": "[Atlas_ab]_smoke_background (1)",
+        "loop": true,
+        "spriteNames": "FX_smoke_disapear_seq_03 FX_smoke_disapear_seq_04 FX_smoke_disapear_seq_05 FX_smoke_disapear_seq_06 [Atlas_ab]_smoke_background (1) short_story_milkyway_bg2"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "short_story_milkyway_bg2",
+        "node": "[Atlas_ab]_smoke_background (2)",
+        "loop": true,
+        "spriteNames": "FX_smoke_disapear_seq_03 FX_smoke_disapear_seq_04 FX_smoke_disapear_seq_05 FX_smoke_disapear_seq_06 [Atlas_ab]_smoke_background (2) short_story_milkyway_bg2"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "milkway_alta",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke milkway_alta"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "milkway_alta",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke milkway_alta"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "milkway_alta",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke milkway_alta"
+      },
+      {
+        "set": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+        "tile": "milkway_alta",
+        "node": "smoke",
+        "loop": true,
+        "spriteNames": " smoke milkway_alta"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]battlegate",
+        "node": "[Atlas_ab]_bg_ground",
+        "loop": false,
+        "spriteNames": "FX_smoke_small_a [Atlas_ab]_bg_ground [gimmick]battlegate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]battlegate",
+        "node": "[Atlas_ab]_smoke_A",
+        "loop": false,
+        "spriteNames": "FX_smoke01 [Atlas_ab]_smoke_A [gimmick]battlegate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]battlegate",
+        "node": "[Atlas_ab]_smoke_B",
+        "loop": false,
+        "spriteNames": "FX_smoke02 [Atlas_ab]_smoke_B [gimmick]battlegate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]battlegate",
+        "node": "[Atlas_ab]_smoke_C",
+        "loop": false,
+        "spriteNames": "FX_smoke_a [Atlas_ab]_smoke_C [gimmick]battlegate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]barrier_gate",
+        "node": "Atlas_ab_smoke",
+        "loop": false,
+        "spriteNames": "fx_smoke07 Atlas_ab_smoke [gimmick]barrier_gate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "[gimmick]barrier_gate",
+        "node": "Atlas_ab_smoke",
+        "loop": true,
+        "spriteNames": "fx_smoke07 Atlas_ab_smoke [gimmick]barrier_gate"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_wall_boss",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": "FX_Smoke03 FX obj_wall_boss"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_wall_boss",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": "FX_Smoke03 FX obj_wall_boss"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_wall_boss",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": "FX_Smoke03 FX obj_wall_boss"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_wall_boss",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": "FX_Smoke03 FX obj_wall_boss"
+      },
+      {
+        "set": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+        "tile": "obj_wall_boss",
+        "node": "FX",
+        "loop": false,
+        "spriteNames": "FX_Smoke03 FX obj_wall_boss"
+      },
+      {
+        "set": "ondemand/gimmick_part2/tilesets:gimmick_part2.tileset",
+        "tile": "[gimmick]wind_fan2",
+        "node": "[Atlas_add_top]_smoke_inside",
+        "loop": true,
+        "spriteNames": "fx_smoke06 [Atlas_add_top]_smoke_inside [gimmick]wind_fan2"
+      },
+      {
+        "set": "ondemand/gimmick_part2/tilesets:gimmick_part2.tileset",
+        "tile": "[gimmick]wind_fan",
+        "node": "[Atlas_add_top]_smoke_inside",
+        "loop": true,
+        "spriteNames": "fx_smoke06 [Atlas_add_top]_smoke_inside [gimmick]wind_fan"
+      },
+      {
+        "set": "ondemand/gimmick_part2/tilesets:gimmick_part2.tileset",
+        "tile": "[gimmick]wind_fan_pushable",
+        "node": "[Atlas_add_top]_smoke_inside",
+        "loop": true,
+        "spriteNames": "fx_smoke06 [Atlas_add_top]_smoke_inside [gimmick]wind_fan_pushable"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Loop_glow_bg_[Atlas_ab]",
+        "loop": true,
+        "spriteNames": "FX_smoke_up_turbulence_seq_06 Loop_glow_bg_[Atlas_ab] wall_bonfire"
+      },
+      {
+        "set": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+        "tile": "wall_bonfire",
+        "node": "Start_smoke2_[Atlas_ab]",
+        "loop": false,
+        "spriteNames": "smoke_big_red Start_smoke2_[Atlas_ab] wall_bonfire"
+      },
+      {
+        "set": "ondemand/v3_21_waterworld/tilesets:waterworld.tileset",
+        "tile": "bg_colony_02",
+        "node": "particle (1)",
+        "loop": true,
+        "spriteNames": "fx_smoke_08 particle (1) bg_colony_02"
+      }
+    ]
+  }
+}

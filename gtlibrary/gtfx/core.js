@@ -1,4 +1,5 @@
 import * as THREE from '../vendor/three.module.js';
+import {sampleAnimator} from '../core/custom-animator.js';
 
 const clamp = (v,a=0,b=1) => Math.min(b,Math.max(a,v));
 const mix = (a,b,t) => a+(b-a)*t;
@@ -260,8 +261,8 @@ export class FxRuntime {
     const cameraQ=this.camera.quaternion.clone(); // compensate the reflected Unity coordinate group
     cameraQ.set(-cameraQ.x,-cameraQ.y,cameraQ.z,cameraQ.w);
     for(const p of this.particles){
-      const {s,r,mesh,life}=p,m=s.modules,age=time*s.speed-p.birth,u=age/life;
-      mesh.visible=age>=0&&age<life&&!this.excluded.has(p.si);if(!mesh.visible)continue;alive++;
+      const {s,r,mesh,life}=p,m=s.modules;let age=time*s.speed-p.birth;if(this.mapSimulation&&s.loop&&p.period)age=((age%p.period)+p.period)%p.period;const u=age/life;
+      mesh.visible=age>=0&&age<life&&!this.excluded.has(p.si)&&(!this.mapSimulation||time*s.speed>=p.delay);if(!mesh.visible)continue;alive++;
       if(s.local)p.matrix.copy(p.node.matrixWorld);
       const local=m.ClampVelocityModule?limitedMotion(p,age):p.sh.clone().addScaledVector(p.velocity,age);
       if(m.VelocityModule){const v=m.VelocityModule;const offset=new THREE.Vector3(...['x','y','z'].map((k,i)=>integral(v[k],age,life,r[i+3])));
@@ -346,14 +347,7 @@ export class FxRuntime {
   }
   animationCurves(script,time) {
     if(this.animationCache?.has(script))return this.animationCache.get(script);
-    const f=script.fields,states=f.States||[];let state=states.find(s=>s.StateName===f.StartState)||states[0];if(!state)return [];
-    let t=time*(f.TimeScale??1);
-    for(let i=0;i<64;i++){
-      const duration=Math.max(.001,...(state.Curves||[]).map(c=>c.Duration||0));
-      if(state.Loop){t%=duration;break;}if(t<=duration)break;
-      const next=states.find(s=>s.StateName===state.NextStateName);if(!next){t=duration;break;}t-=duration;state=next;
-    }
-    const sampled=(state.Curves||[]).map(c=>{const u=curve(c.Curve,clamp(t/Math.max(.001,c.Duration||.001)),0);return {...c,v:mix(c.StartValue||0,c.EndValue||0,u),vector:vec(c.StartVector).lerp(vec(c.EndVector),u)};});
+    const sampled=sampleAnimator(script.fields,time).map(c=>({Key:c.key,v:c.value,vector:new THREE.Vector3(...c.vector)}));
     this.animationCache?.set(script,sampled);return sampled;
   }
   animateNodes(time) {
@@ -542,4 +536,18 @@ export class FxRuntime {
       renderer.setRenderTarget(oldTarget);renderer.setClearColor(oldColor,oldAlpha);this.scene.background=oldBackground;this.grid.visible=oldGrid;this.camera.left=left;this.camera.right=right;this.camera.top=top;this.camera.bottom=bottom;this.camera.position.copy(position);this.camera.quaternion.copy(quaternion);this.camera.updateProjectionMatrix();this.camera.updateMatrixWorld();
     }
   }
+}
+
+/** Reuse particle sampling without allocating another canvas or WebGL context. */
+export function createParticleSimulation(effect,{textures,geometries,index,camera}){
+ const sim=Object.create(FxRuntime.prototype);Object.assign(sim,{textures,geometries,index,camera,group:new THREE.Group(),particles:[],statics:[],excluded:new Set(),frameCount:0,mapSimulation:true,
+  renderer:{render(){}},resize(){},setView(){},quad:geometry({position:[-.5,-.5,0,.5,-.5,0,.5,.5,0,-.5,.5,0],uv:[0,0,1,0,1,1,0,1],indices:[0,1,2,0,2,3]})});
+ sim.build(effect);const original=sim.particles.slice(),birthCounts=new Map();for(const p of original)birthCounts.set(p.si,(birthCounts.get(p.si)||0)+1);
+ for(const p of original){
+  const s=p.s; p.delay=value(s.delay,0,.5);if(!s.loop)continue;
+  // Multiple cohorts retain older particles when lifetime exceeds one emission cycle.
+  if(p.life>1e6)continue;const births=birthCounts.get(p.si),capacity=s.modules.InitialModule.maxNumParticles||1000;const cohorts=Math.min(32,Math.max(1,Math.floor(capacity/Math.max(1,births))),Math.max(1,Math.ceil(Math.min(p.life,120)/Math.max(.001,s.duration))));p.period=cohorts*s.duration;
+  for(let i=1;i<cohorts;i++){const mesh=sim.createMesh(s,s.renderer.mesh?geometries[s.renderer.mesh]:sim.quad,{pivot:s.renderer.pivot});mesh.matrixAutoUpdate=false;sim.group.add(mesh);sim.particles.push({...p,mesh,birth:p.birth+i*s.duration});}
+ }
+ return sim;
 }

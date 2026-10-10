@@ -1,0 +1,56 @@
+- iframe [id="mobile-frame"]:
+  - banner:
+    - link "坎公资源库 GUARDIAN TALES · RESOURCE LIBRARY":
+      - /url: "#view=atlas"
+      - text: 坎公资源库
+      - generic: GUARDIAN TALES · RESOURCE LIBRARY
+    - navigation "资源功能":
+      - button "图集"
+      - button "像素动画 · Spine"
+      - button "特效"
+      - button "地图"
+    - button "使用说明": "?"
+  - search:
+    - generic: 查找角色或资源
+    - searchbox "查找角色或资源"
+    - button "查找"
+  - generic: "[挑战]黑暗的萌芽4 · coop_exp_s1_boss_hard"
+  - generic "关联资源":
+    - button "地图"
+  - main "资源工作区":
+    - iframe:
+      - banner:
+        - button "选择地图": ☰
+        - strong: 坎公地图
+        - generic: "[挑战]黑暗的萌芽4 · coop_exp_s1_boss_hard"
+        - button "打开文件"
+      - main:
+        - button "斜视" [pressed]
+        - button "俯视"
+        - checkbox "Unity 斜投影" [checked]
+        - text: Unity 斜投影
+        - button "适配"
+        - button "缩小": −
+        - button "恢复原始比例": 16%
+        - button "放大": ＋
+        - generic "地图画面"
+        - checkbox "地图特效" [checked] [disabled]
+        - text: 地图特效
+        - checkbox "事件标记"
+        - text: 事件标记
+        - text: 亮度
+        - slider "亮度"
+        - generic: 514 图块已显示
+        - generic "图层"
+        - text: 中键平移 · 右键旋转 · 滚轮缩放 · 左键选取 · Ctrl 多选 · F 适配
+        - generic: 15 条空挂点、缺失图块或动态元素未显示；人物动画与游戏脚本不在预览范围。
+- paragraph: 390 × 844 CSS 像素：验证分类菜单、选图、预览以及横向溢出。
+- paragraph: 全部通过
+- list:
+  - listitem: PASS · 390px 页面没有横向溢出
+  - listitem: PASS · 默认显示分类
+  - listitem: PASS · 地图菜单展开
+  - listitem: PASS · 窄屏多级目录
+  - listitem: PASS · 选图后菜单关闭并完成预览
+  - listitem: PASS · 父页同步地图及目录路由
+  - listitem: PASS · 选图后没有横向溢出

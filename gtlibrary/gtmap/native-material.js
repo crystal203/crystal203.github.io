@@ -2,7 +2,7 @@ import * as THREE from '../vendor/three.module.js';
 
 // The source programs are extracted from the game's GLES3 shader blobs.
 // Keep material expressions intact; adapt only Unity's matrix/attribute bindings.
-export function nativeMaterial(source, textures, partMatrix) {
+export function nativeMaterial(source, textures, partMatrix, {particles=false}={}) {
  const profile=source.nativeShader, original=profile.gles;
  const reflection=new THREE.Matrix4().makeScale(1,1,-1);
  const uniforms={gtPart:{value:new THREE.Matrix4().set(...partMatrix)},brightness:{value:1},gtBrightness:{value:1}};
@@ -39,11 +39,12 @@ export function nativeMaterial(source, textures, partMatrix) {
   if(stage==='VERTEX'){
    const attrs={in_POSITION0:'nativePosition',in_NORMAL0:'nativeNormal',in_TEXCOORD0:'nativeUv',in_TEXCOORD1:'nativeUv2',in_COLOR0:'nativeColor'};
    for(const [from,to] of Object.entries(attrs))s=s.replaceAll(from,to);
-   const header='uniform mat4 modelMatrix; in mat4 instanceMatrix; uniform mat4 gtPart;\n';
+   if(particles){s=s.replace(/in\s+(?:(?:highp|mediump|lowp)\s+)?vec4\s+nativeColor\s*;/g,'in vec4 gtVertexColor; vec4 nativeColor;').replace(/in\s+(?:(?:highp|mediump|lowp)\s+)?vec2\s+nativeUv\s*;/g,'in vec2 gtVertexUv; vec2 nativeUv;');}
+   const header='uniform mat4 modelMatrix; in mat4 instanceMatrix; uniform mat4 gtPart;\n'+(particles?'in vec4 gtParticleColor; in vec4 gtParticleUv;\n':'');
    const bindings='mat4 gtReflection=mat4(1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1); mat4 gtModel=gtReflection*modelMatrix*instanceMatrix*gtReflection*gtPart;\n'+
     (s.includes('hlslcc_mtx4x4unity_ObjectToWorld')?'hlslcc_mtx4x4unity_ObjectToWorld=gtModel;\n':'')+
     (s.includes('hlslcc_mtx4x4unity_WorldToObject')?'hlslcc_mtx4x4unity_WorldToObject=inverse(gtModel);\n':'');
-   s=s.replace(/void main\(\)\s*\{/,m=>m+'\n'+bindings);s=header+s;
+   s=s.replace(/void main\(\)\s*\{/,m=>m+'\n'+bindings+(particles?((s.includes('in vec4 gtVertexColor;')?'nativeColor=gtVertexColor*gtParticleColor;':'')+(s.includes('in vec2 gtVertexUv;')?'nativeUv=gtParticleUv.xy+gtVertexUv*gtParticleUv.zw;':'')+'\n'):''));s=header+s;
   } else {
    // Empty light grid has no local light entries, independently of the viewport size.
    s=s.replace(/texelFetch\(_LightIndexTexture,[^\n;]*\)/g,'vec4(0.0)');

@@ -1,0 +1,215 @@
+{
+  "portalPixels": {
+    "purple": 54757,
+    "white": 315
+  },
+  "diagnostics": {
+    "animatedMaterials": [
+      {
+        "name": "fx_new_portal_aura",
+        "tint": [
+          0.800000011920929,
+          0.4000000059604645,
+          1,
+          0.25
+        ]
+      }
+    ],
+    "drawCalls": 5,
+    "geometries": 5,
+    "textures": 7,
+    "failedPrograms": 0
+  },
+  "staticWhite": 0,
+  "batch": {
+    "total": 893,
+    "systems": 1432,
+    "empty": [
+      {
+        "set": "ancient",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ancient",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ancient_red",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ancient_red",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "forest",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "gimmick",
+        "name": "[GIMMICK]exit"
+      },
+      {
+        "set": "gimmick",
+        "name": "[GIMMICK]exit_inner"
+      },
+      {
+        "set": "dungeon",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "dungeon",
+        "name": "[fx]lava_controller"
+      },
+      {
+        "set": "lab",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "guild",
+        "name": "FX_shining_window"
+      },
+      {
+        "set": "guild",
+        "name": "FX_shining_window_1"
+      },
+      {
+        "set": "ondemand/coop_expedition/tilesets:coop_expedition.tileset",
+        "name": "coop_gimmick_revival_area"
+      },
+      {
+        "set": "ondemand/archaic/tilesets:archaic.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/fox/tilesets:fox.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancientmall/tilesets:roguelike_mall.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_nebula/tilesets:ancient_nebula.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/ancient_nebula/tilesets:ancient_nebula.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "name": "obj_v_train"
+      },
+      {
+        "set": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+        "name": "obj_v_bg"
+      },
+      {
+        "set": "ondemand/castletown/tilesets:castletown.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+        "name": "bg_2s_robot"
+      },
+      {
+        "set": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+        "name": "coop_gimmick_revival_area"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "name": "fx_controller_glow 1"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "name": "fx_controller_glow 2"
+      },
+      {
+        "set": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+        "name": "fx_controller_glow 3"
+      },
+      {
+        "set": "ondemand/halloween/tilesets:halloween.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/memorial_magical_girl/tilesets:memorial_magical_girl.tileset",
+        "name": "boos_background"
+      },
+      {
+        "set": "ondemand/ancient_darkness/tilesets:ancient_darkness.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/ancient_darkness/tilesets:ancient_darkness.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_earth/tilesets:ancient_earth.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_earth/tilesets:ancient_earth.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/ancient_fire/tilesets:ancient_fire.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_fire/tilesets:ancient_fire.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/ancient_ice/tilesets:ancient_ice.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_ice/tilesets:ancient_ice.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/ancient_light/tilesets:ancient_light.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_light/tilesets:ancient_light.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/ancient_none/tilesets:ancient_none.tileset",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/ancient_none/tilesets:ancient_none.tileset",
+        "name": "[fx]brick_controller"
+      },
+      {
+        "set": "ondemand/v3_21_waterworld/tilesets:waterworld.tileset",
+        "name": "bg_colony_01"
+      },
+      {
+        "set": "roguelike_mall",
+        "name": "[fx]glow_controller"
+      },
+      {
+        "set": "ondemand/short_story_noel/tilesets:noel.tileset",
+        "name": "noel_stagr"
+      },
+      {
+        "set": "ondemand/worldexplore/tilesets:worldexplore.tileset",
+        "name": "[fx]water_controller"
+      }
+    ],
+    "fail": []
+  }
+}

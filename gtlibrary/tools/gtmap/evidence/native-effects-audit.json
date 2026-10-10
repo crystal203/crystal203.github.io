@@ -1,0 +1,6947 @@
+[
+  {
+    "tileset": "ondemand/afterworld/tilesets:afterworld.tileset",
+    "dependencies": {
+      "ondemand/afterworld/tilesets": "d9fbabf36887d34f6b53564e9df830f918faabe0332c0a6c070eef3db90b43e3",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 4,
+    "systems": 5,
+    "sprites": 8,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_cloud_1",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "FX_cloud_2",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "FX_glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "wall_outdoor_candle1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ancient",
+    "dependencies": {
+      "tilesets/ancient": "56c2749018574d5a53210e1b05c02db9fb1bb968c2b32a10f0d25324de55159b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 22,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_TRI",
+        "emitters": []
+      },
+      {
+        "name": "wall_BSW",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_CS",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ancient_red",
+    "dependencies": {
+      "tilesets/ancient_red": "0da23156aaff0a65bb471d09f5431e533f2f73e1f600682a232cc87685cdc79b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 9,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "forest",
+    "dependencies": {
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 27,
+    "systems": 12,
+    "sprites": 4,
+    "issues": [
+      {
+        "tile": "[gimmick]battlegate",
+        "node": "FX_leaf",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]keydoor_forest",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "[gimmick]battlegate",
+        "emitters": [
+          "FX_leaf"
+        ]
+      },
+      {
+        "name": "FX_flys",
+        "emitters": [
+          "FX_blings"
+        ]
+      },
+      {
+        "name": "upper1_1",
+        "emitters": []
+      },
+      {
+        "name": "upper1_2",
+        "emitters": []
+      },
+      {
+        "name": "upper1_3",
+        "emitters": []
+      },
+      {
+        "name": "upper1_C",
+        "emitters": []
+      },
+      {
+        "name": "upper1_C_2",
+        "emitters": []
+      },
+      {
+        "name": "upper1_CO",
+        "emitters": []
+      },
+      {
+        "name": "upper1_CO_2",
+        "emitters": []
+      },
+      {
+        "name": "upper2_3",
+        "emitters": []
+      },
+      {
+        "name": "upper2_C_2",
+        "emitters": []
+      },
+      {
+        "name": "upper2_CO_2",
+        "emitters": []
+      },
+      {
+        "name": "upper2_1",
+        "emitters": []
+      },
+      {
+        "name": "upper3_1",
+        "emitters": []
+      },
+      {
+        "name": "upper3_2",
+        "emitters": []
+      },
+      {
+        "name": "upper3_3",
+        "emitters": []
+      },
+      {
+        "name": "upper3_C",
+        "emitters": []
+      },
+      {
+        "name": "upper3_C_2",
+        "emitters": []
+      },
+      {
+        "name": "upper3_CO_2",
+        "emitters": []
+      },
+      {
+        "name": "upper4_C_2",
+        "emitters": []
+      },
+      {
+        "name": "upper4_CO_2",
+        "emitters": []
+      },
+      {
+        "name": "upper4_1",
+        "emitters": []
+      },
+      {
+        "name": "upper4_3",
+        "emitters": []
+      },
+      {
+        "name": "upper3_CO",
+        "emitters": []
+      },
+      {
+        "name": "obj_grave2",
+        "emitters": [
+          "sphere_impact",
+          "sphere",
+          "impact",
+          "particle_small"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "gimmick",
+    "dependencies": {
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 43,
+    "systems": 150,
+    "sprites": 39,
+    "issues": [
+      {
+        "tile": "[GIMMICK]witch_cauldron",
+        "node": "pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "[GIMMICK]campfire",
+        "node": "pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "[GIMMICK]flag_base",
+        "node": "[Mesh]_ray_mesh",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "[GIMMICK]clear_flag_base",
+        "node": "[Mesh]_ray_mesh",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "[GIMMICK]exit_flag_base",
+        "node": "[Mesh]_ray_mesh",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "[GIMMICK]campfire_stick",
+        "node": "pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]sealstone1",
+        "emitters": [
+          "light"
+        ]
+      },
+      {
+        "name": "[GIMMICK]witch_cauldron",
+        "emitters": [
+          "fire1",
+          "fire2",
+          "pot_bubble"
+        ]
+      },
+      {
+        "name": "[GIMMICK]bomb1",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]campfire",
+        "emitters": [
+          "meat_smoke_front",
+          "meat_smoke_back",
+          "pot_bubble",
+          "pot_smoke",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "[GIMMICK]bomb_grass1",
+        "emitters": [
+          "fx_spark"
+        ]
+      },
+      {
+        "name": "[GIMMICK]chest_fancy",
+        "emitters": [
+          "[Atlas_add_top]_Glow_Top",
+          "[Atlas_add]_Glow_plane",
+          "[Atlas_add_top]_RayLine",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Start",
+          "[Atlas_add_top]_Start_Glow",
+          "(F)lensflare_bt_[Atlas_add_top]",
+          "(F)lensflare_up_[Atlas_add_top]",
+          "(F)Ring_[Atlas_add_top]",
+          "(F)Ring_2[Atlas_add_top]",
+          "(F)Spark_[Atlas_add_top]",
+          "(F)RayLine_[Atlas_add_top]",
+          "(F)Flare_[add_top]"
+        ]
+      },
+      {
+        "name": "[GIMMICK]chest_red",
+        "emitters": [
+          "[Atlas_add_top]_Glow_Top",
+          "[Atlas_add]_Glow_plane",
+          "(F)lensflare_bt_[Atlas_add_top]",
+          "(F)lensflare_up_[Atlas_add_top]",
+          "(F)Ring_[Atlas_add_top]",
+          "(F)Spark_[Atlas_add_top]",
+          "(F)RayLine_[Atlas_add_top]",
+          "(F)Flare_[add_top]"
+        ]
+      },
+      {
+        "name": "[GIMMICK]chest_wood",
+        "emitters": [
+          "[Atlas_add_top]_Glow_Top",
+          "[Atlas_add]_Glow_plane",
+          "(F)lensflare_bt_[Atlas_add_top]",
+          "(F)lensflare_up_[Atlas_add_top]",
+          "(F)Ring_[Atlas_add_top]",
+          "(F)Flare_[add_top]"
+        ]
+      },
+      {
+        "name": "[GIMMICK]door_mystery",
+        "emitters": [
+          "FX_smoke_transform"
+        ]
+      },
+      {
+        "name": "[GIMMICK]flag_base",
+        "emitters": [
+          "impact_core",
+          "smoke",
+          "smoke_light",
+          "ring",
+          "impact_core",
+          "smoke",
+          "smoke_light",
+          "ring",
+          "[Mesh]_impact_core",
+          "[Atlas_ab_top]_smoke",
+          "[Atlas_ab_top]_FX_dibris_up",
+          "[Atlas_ab_top]_FX_dibris",
+          "[Atlas_ab_top]_smoke_alpha",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle",
+          "[Atlas_add_top]_Ring_last",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Ring_fast",
+          "[Atlas_add]_lensflare",
+          "[Atlas_add_top]_air",
+          "[Atlas_add_top]_Glow_Center",
+          "[Mesh]_ray_mesh",
+          "[Atlas_add_top]_Start",
+          "[Atlas_add_top]_RayLine",
+          "[Atlas_add_top]_Spark"
+        ]
+      },
+      {
+        "name": "[GIMMICK]door_mystery_block",
+        "emitters": [
+          "FX_smoke_transform"
+        ]
+      },
+      {
+        "name": "[GIMMICK]hole1",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]stone_slab",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]ore_copper",
+        "emitters": [
+          "shining"
+        ]
+      },
+      {
+        "name": "[GIMMICK]ore_gold",
+        "emitters": [
+          "shining"
+        ]
+      },
+      {
+        "name": "[GIMMICK]ore_silver",
+        "emitters": [
+          "shining"
+        ]
+      },
+      {
+        "name": "[GIMMICK]exit",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]waypoint",
+        "emitters": [
+          "FX_smoke_base",
+          "FX_fragment_base",
+          "light",
+          "FX_glow3",
+          "FX_glow",
+          "[GIMMICK]waypoint_cap_add",
+          "FX_waypoint",
+          "Particle_light",
+          "light2",
+          "light",
+          "light3"
+        ]
+      },
+      {
+        "name": "[GIMMICK]stair_down",
+        "emitters": [
+          "[Atlas_add]_Glow"
+        ]
+      },
+      {
+        "name": "[GIMMICK]stair_up",
+        "emitters": [
+          "[Atlas_add]_Glow"
+        ]
+      },
+      {
+        "name": "[GIMMICK]mine",
+        "emitters": [
+          "light"
+        ]
+      },
+      {
+        "name": "[GIMMICK]clear_flag_base",
+        "emitters": [
+          "impact_core",
+          "smoke",
+          "smoke_light",
+          "ring",
+          "impact_core",
+          "smoke",
+          "smoke_light",
+          "ring",
+          "[Atlas_add]_lensflare",
+          "[Atlas_add_top]_air",
+          "[Atlas_add_top]_Glow_Center",
+          "[Mesh]_ray_mesh",
+          "[Atlas_add_top]_Start",
+          "[Atlas_add_top]_RayLine",
+          "[Atlas_add_top]_Spark",
+          "[Mesh]_impact_core",
+          "[Atlas_ab_top]_smoke",
+          "[Atlas_ab_top]_FX_dibris_up",
+          "[Atlas_ab_top]_FX_dibris",
+          "[Atlas_ab_top]_smoke_alpha",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle",
+          "[Atlas_add_top]_Ring_last",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Ring_fast"
+        ]
+      },
+      {
+        "name": "[GIMMICK]exit_flag_base",
+        "emitters": [
+          "impact_core",
+          "smoke",
+          "smoke_light",
+          "ring",
+          "impact_core",
+          "smoke",
+          "smoke_light",
+          "ring",
+          "[Atlas_add]_lensflare",
+          "[Atlas_add_top]_air",
+          "[Atlas_add_top]_Glow_Center",
+          "[Mesh]_ray_mesh",
+          "[Atlas_add_top]_Start",
+          "[Atlas_add_top]_RayLine",
+          "[Atlas_add_top]_Spark",
+          "[Mesh]_impact_core",
+          "[Atlas_ab_top]_smoke",
+          "[Atlas_ab_top]_FX_dibris_up",
+          "[Atlas_ab_top]_FX_dibris",
+          "[Atlas_ab_top]_smoke_alpha",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle",
+          "[Atlas_add_top]_Ring_last",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Ring_fast"
+        ]
+      },
+      {
+        "name": "[GIMMICK]holdable_key",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]exit_inner",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]campfire_stick",
+        "emitters": [
+          "meat_smoke_front",
+          "meat_smoke_back",
+          "pot_bubble",
+          "pot_smoke",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "[GIMMICK]console",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]mouse_bomb",
+        "emitters": [
+          "fx_bomb_spark_particle"
+        ]
+      },
+      {
+        "name": "[gimmick]portal_cube_blue",
+        "emitters": [
+          "[Atlas_add_top]_Flare",
+          "[Atlas_ab]_bg",
+          "[Atlas_ab]_bg (4)"
+        ]
+      },
+      {
+        "name": "[gimmick]portal_cube_red",
+        "emitters": [
+          "[Atlas_add_top]_Flare",
+          "[Atlas_ab]_bg",
+          "[Atlas_ab]_bg (4)"
+        ]
+      },
+      {
+        "name": "[GIMMICK]metal_brazier",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]metal_gunpowderpot",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]metal_holdable_key",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]metal_push_block1",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]metal_push_block2",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]metal_thorn_block",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]magnet_holdable_s",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]magnet_holdable_n",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]magnet_block_s",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]magnet_block_n",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]magnet_block2_s",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]magnet_block2_n",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]dummy_metal_bomb",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "desert",
+    "dependencies": {
+      "tilesets/desert": "0d60caaff815cb1f7390ab75f10035b6cccb72228f02582c432b520092d5c9ca",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 2,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]water",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]drift_sand",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "market",
+    "dependencies": {
+      "tilesets/market": "cd3d51545b1d5cd698091d280c8c8d952bc62879076c2bfa01a40cee39b9a632",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 9,
+    "systems": 13,
+    "sprites": 8,
+    "issues": [
+      {
+        "tile": "[gimmick]gate_market",
+        "node": "[Mesh]_wood_fragment",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]keydoor_market",
+        "emitters": [
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "[gimmick]gate_market",
+        "emitters": [
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke_A",
+          "[Atlas_ab]_smoke_B",
+          "[Atlas_ab]_smoke_C",
+          "[Atlas_add]_Spark",
+          "[Atlas_add]_particle",
+          "[Mesh]_wood_fragment",
+          "gate_market_impact",
+          "gate_market_fragment"
+        ]
+      },
+      {
+        "name": "obj_roof_smoke1",
+        "emitters": [
+          "FX_chimney_smoke"
+        ]
+      },
+      {
+        "name": "obj_roof_smoke2",
+        "emitters": [
+          "FX_chimney_smoke"
+        ]
+      },
+      {
+        "name": "obj_windmill_roof01",
+        "emitters": []
+      },
+      {
+        "name": "obj_windmill_roof02",
+        "emitters": []
+      },
+      {
+        "name": "obj_windmill_roof_broken_green",
+        "emitters": []
+      },
+      {
+        "name": "obj_windmill_roof_broken_blue",
+        "emitters": []
+      },
+      {
+        "name": "obj_windmill_roof_broken_red",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "dungeon",
+    "dependencies": {
+      "tilesets/dungeon": "692a46113820af2930fc5a89fcd4e82d42f515069745a2b1eae035843104cb48",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 6,
+    "systems": 22,
+    "sprites": 28,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]lava_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]keydoor2",
+        "emitters": [
+          "FX_hole_light",
+          "FX_base_light",
+          "FX_glow",
+          "FX_glow2"
+        ]
+      },
+      {
+        "name": "[fx]obj_wallprop1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "wall_torch",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]"
+        ]
+      },
+      {
+        "name": "[gimmick]gagoyle",
+        "emitters": [
+          "ring",
+          "impact",
+          "v",
+          "h",
+          "particle_v",
+          "particle_h",
+          "RedEye",
+          "ring",
+          "impact",
+          "v",
+          "h",
+          "particle_v",
+          "particle_h",
+          "RedEye"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "sanjose",
+    "dependencies": {
+      "tilesets/sanjose": "4e25f4b0724a8f9b1b7dbcf358f2c730fc95f0085e3b2d86ad4d6502bce364f7",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "cave",
+    "dependencies": {
+      "tilesets/cave": "5f57921d4e76c7e599d01adae353ff58c0b574ad5a66f396f83479af5fc6b76c",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 3,
+    "systems": 7,
+    "sprites": 18,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]obj_fire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "[gimmick]battlegate",
+        "emitters": [
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "[gimmick]entrance_wall_light",
+        "emitters": [
+          "move"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "house",
+    "dependencies": {
+      "tilesets/house": "e58516cdb20637133bee7f68860668f22d5f4cc5e6e1aaf5b889c02ec0f6e7c0",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 3,
+    "systems": 4,
+    "sprites": 7,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]entrance_wall_light",
+        "emitters": [
+          "fx_blings"
+        ]
+      },
+      {
+        "name": "obj_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "obj_largeclock",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "lab",
+    "dependencies": {
+      "tilesets/lab": "b1a6adf1c43befe3fe3bfe00eef11445d610b766cb9848b59a204779e45fdbaa",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 13,
+    "sprites": 17,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "wall_Glasstube_break",
+        "emitters": [
+          "mesh_dibris",
+          "mesh_dibris (1)",
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add_top]_ring",
+          "[Atlas_ab_top]_bug_flying",
+          "[Atlas_ab]_smoke_end",
+          "[Atlas_ab_top]_Background",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_ab_top]_swirl_particle",
+          "[Atlas_bug]_bug_explosion",
+          "[Atlas_ab_top]_ring_black",
+          "[Atlas_ab_top]_ring_black (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "snowworld",
+    "dependencies": {
+      "tilesets/snowworld": "f41711fbaa270fd50791595da732459f32010db1b1d28f26368c3832c752a495",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_common_ice": "55e5e4453cefdf3d632d246007f4ddfb4ed3427e26db2d1acc1b81ee9b30b3c3",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 4,
+    "systems": 8,
+    "sprites": 18,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]snow_fog",
+        "emitters": [
+          "FX_fog"
+        ]
+      },
+      {
+        "name": "[fx]snow_sprite",
+        "emitters": [
+          "FX_sprite"
+        ]
+      },
+      {
+        "name": "[gimmick]campfire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "[gimmick]snow_turret",
+        "emitters": [
+          "FX_snowbreath",
+          "FX_snowbreath_snow"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "steampunk",
+    "dependencies": {
+      "tilesets/steampunk": "380a14376746141923d3d9fcfde995482887a30899f5f3e33faafb8be8a885aa",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "library",
+    "dependencies": {
+      "tilesets/library": "c68aede13326db44486bb95e2fc8b24b9888c0dfda05fc36c70fee0f94818ba2",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/magic_circle": "432fec575aaff9bdfd2360760bdc2cd0f5581551395c46724b6d192fe8fbfde5",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 2,
+    "systems": 10,
+    "sprites": 6,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]mirror_portal_enter",
+        "emitters": [
+          "glow",
+          "[Atlas_ab]_Glow_bg",
+          "[Atlas_ab]_Glow_bar",
+          "[Atlas_add]_HoleRing",
+          "[Atlas_add]_particle"
+        ]
+      },
+      {
+        "name": "[gimmick]mirror_portal_exit",
+        "emitters": [
+          "glow",
+          "[Atlas_ab]_Glow_bg",
+          "[Atlas_ab]_Glow_bar",
+          "[Atlas_add]_HoleRing",
+          "[Atlas_add]_particle"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "china",
+    "dependencies": {
+      "tilesets/china": "1b9cb263715c5e1641b8272cf35ece4c4e9fdff88f39abfaec51106e8454e70b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 1,
+    "systems": 7,
+    "sprites": 9,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]battlegate",
+        "emitters": [
+          "[Mesh]_impact_core",
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "china_night",
+    "dependencies": {
+      "tilesets/china_night": "e2b769a6e2aa411e1cb804c1aa93a2382a25b589512e75c8e928ba9f0dce9393",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 7,
+    "systems": 16,
+    "sprites": 25,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]battlegate",
+        "emitters": [
+          "[Mesh]_impact_core",
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle"
+        ]
+      },
+      {
+        "name": "[fx]obj_light_R",
+        "emitters": []
+      },
+      {
+        "name": "[fx]obj_light_L",
+        "emitters": []
+      },
+      {
+        "name": "[fx]obj_lamp",
+        "emitters": []
+      },
+      {
+        "name": "obj_fire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "[gimmick]drum",
+        "emitters": [
+          "impact_core"
+        ]
+      },
+      {
+        "name": "[fx]house_light_1",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "inside",
+    "dependencies": {
+      "tilesets/inside": "a7e683010eb65b6c5a30eaa24e443d771e7bef4d3e301afdfbbdc4b802db05e3",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 1,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]cctv",
+        "emitters": [
+          "[mesh]_light"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "titantavern",
+    "dependencies": {
+      "tilesets/titantavern": "bb9a556970690858245f9f4426780913db4b66c5207492a36445c4605d7ee547",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 2,
+    "sprites": 8,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[breakable]coin",
+        "emitters": [
+          "shining"
+        ]
+      },
+      {
+        "name": "obj_porp1_1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "prison",
+    "dependencies": {
+      "tilesets/prison": "d581b3106b28d0a5532283d774cc6a9626a1a7a62326d4b600b68c1c9a3bc6d4",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 3,
+    "systems": 5,
+    "sprites": 2,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]enterance",
+        "emitters": [
+          "fx_blings"
+        ]
+      },
+      {
+        "name": "obj_lamp1",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "[gimmick]enterance_2",
+        "emitters": [
+          "fx_blings"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "guild",
+    "dependencies": {
+      "tilesets/guild": "21dab887fffb1478a0d250bb36e50ac4e02c9a5120b705f41a97433e775adc88",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/desert": "0d60caaff815cb1f7390ab75f10035b6cccb72228f02582c432b520092d5c9ca",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_shining_window",
+        "emitters": []
+      },
+      {
+        "name": "FX_shining_window_1",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "store",
+    "dependencies": {
+      "tilesets/store": "dad80ded6efaf8365cfaa186ca10eebfb64a54900ba16bf08033cbc22b9785e4",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "event_inn",
+    "dependencies": {
+      "tilesets/event_inn": "ad6f6d2a2ccbf43dab0225d67e354b06dd40fabcd69d764a2bc33ddc6b3e058e",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "throneroom",
+    "dependencies": {
+      "tilesets/throneroom": "73ce136708f2a0a1fb13391e95eadb00437720b0bc6222e5b269935a50df988b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 3,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_column2",
+        "emitters": []
+      },
+      {
+        "name": "obj_column_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_big",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "cave2",
+    "dependencies": {
+      "tilesets/cave2": "8fa53fd0fd30ce91343a911569b0a46d369e1d8dab5c94d01cdad1f5a16ac979",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 3,
+    "systems": 10,
+    "sprites": 4,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "wall_torch1",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "wall_torch2",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "fx_env_fireflies_loop_2x1",
+        "emitters": [
+          "particles (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "prologue",
+    "dependencies": {
+      "tilesets/prologue": "53e6ecafc0e60e1452a75b9f58974cdbcc6490ff14717fc54c4b6ad2ab4c0572",
+      "backgrounds/prologue": "e9de49de6ad8f625d27f6ce5742e0e431ede0d26cb2a801d0746b2d31cbec39d",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "theatres/prologue_common": "cd7522cbd1f1f3d255fd30fe48210f069f905edf2827690d3761b71e949bbd57",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 4,
+    "systems": 83,
+    "sprites": 19,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]room1",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "[fx]room6",
+        "emitters": [
+          "FX_spark",
+          "FX_spark",
+          "FX_spark",
+          "grow (1)",
+          "grow (2)",
+          "grow (3)",
+          "grow (4)",
+          "grow (5)",
+          "particle_1"
+        ]
+      },
+      {
+        "name": "floor5_1",
+        "emitters": [
+          "particle_1"
+        ]
+      },
+      {
+        "name": "floor5_3",
+        "emitters": [
+          "particle_1"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "heavencore",
+    "dependencies": {
+      "tilesets/heavencore": "29e63c63a27e9eed94fa3ef2162729d8be0f4ea705485c4baea4a03d4d5067d3",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 1,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [
+      {
+        "tile": "[gimmick]crystal",
+        "node": "[Atlas_add]_Bubble",
+        "unsupportedModule": "SubModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]crystal",
+        "emitters": [
+          "[Atlas_add]_Bubble"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/expedition/tilesets:expedition_chosenone.tileset",
+    "dependencies": {
+      "ondemand/expedition/tilesets": "f95ce698f1e4fb8e3d74735ea8e34e9a11d16bbd7bef8c77e0c822e9f4b33a87",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 5,
+    "systems": 12,
+    "sprites": 19,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_cloud1",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "FX_cloud2",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "wall_firebowl",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "obj_basement_torchlight",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "obj_basement_chandelier",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_65_queencastle/tilesets:queencastle.tileset",
+    "dependencies": {
+      "ondemand/v2_65_queencastle/tilesets": "02935e814cc0b8c9905dfd3bbf672fcdc1d493777bc403ab22fbb644276febfd",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "theatres/iron_teatans_common": "be9f939bf4808e60edba0057c9117b2aef2013b67b715e9dd17f7829405a80d6",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 15,
+    "systems": 27,
+    "sprites": 66,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "wall_in1_S4",
+        "emitters": []
+      },
+      {
+        "name": "wall_in1_candleholder",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "[gimmick]queencastle_keydoor2",
+        "emitters": [
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "wall_waterscreen1",
+        "emitters": []
+      },
+      {
+        "name": "wall_waterscreen2",
+        "emitters": []
+      },
+      {
+        "name": "obj_in1_tablesetting2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_walll_boss2",
+        "emitters": []
+      },
+      {
+        "name": "obj_in2_wall_fire",
+        "emitters": [
+          "ajirang_seq_toon"
+        ]
+      },
+      {
+        "name": "obj_in2_wall_thunder",
+        "emitters": [
+          "magnetic_electric_seq_core",
+          "[Atlas_add_top]_Flare"
+        ]
+      },
+      {
+        "name": "obj_in2_wall_wind",
+        "emitters": []
+      },
+      {
+        "name": "obj_in2_wall_fire2",
+        "emitters": [
+          "ajirang_seq_toon"
+        ]
+      },
+      {
+        "name": "obj_in2_wall_thunder2",
+        "emitters": [
+          "magnetic_electric_seq_core",
+          "[Atlas_add_top]_Flare"
+        ]
+      },
+      {
+        "name": "obj_in2_wall_wind2",
+        "emitters": []
+      },
+      {
+        "name": "wall_qc_transformer",
+        "emitters": [
+          "[Atlas_add_top]_Flare",
+          "elec",
+          "elec (1)",
+          "elec (3)"
+        ]
+      },
+      {
+        "name": "wall_qc_washer",
+        "emitters": [
+          "[Atlas_ab]_bg (2)",
+          "[Atlas_add]_col",
+          "[Atlas_ab]_top",
+          "[Atlas_ab]_bg (1)",
+          "[Atlas_add]_ripple",
+          "watersplash_seq (2)",
+          "[Atlas_add_top]_particles"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_49_queenship/tilesets:queenship.tileset",
+    "dependencies": {
+      "ondemand/v2_49_queenship/tilesets": "ed8a4d412a8bf44af85b49ce45ae2bc0528d397823e516fc88bb5b1588ff533e",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 3,
+    "systems": 3,
+    "sprites": 3,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_ship_glow",
+        "emitters": []
+      },
+      {
+        "name": "obj_dw_broken_car2",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_glow"
+        ]
+      },
+      {
+        "name": "wall_ship_lab_sleeping_capsule",
+        "emitters": [
+          "[Atlas_add]_Bubble"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_39_demonshire/tilesets/demonshire:demonshire.tileset",
+    "dependencies": {
+      "ondemand/v2_39_demonshire/tilesets/demonshire": "c8c95ad97b694c4d49efdb61e68f337117223764a555860d708e89a3b1dc889a",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 8,
+    "systems": 31,
+    "sprites": 54,
+    "issues": [
+      {
+        "tile": "[gimmick]capsule1_in",
+        "node": "[Atlas_add]_Bubble",
+        "unsupportedModule": "SubModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "wall_in5_woodstove",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "obj_in3_2_2",
+        "emitters": [
+          "[Atlas_add]_ring",
+          "[Atlas_add]_bottom_water",
+          "[Atlas_add]_circle"
+        ]
+      },
+      {
+        "name": "wall_in6_1_stove",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "[gimmick]demonshire_keydoor_in4",
+        "emitters": [
+          "FX_glow",
+          "FX_glow2",
+          "FX_hole_light",
+          "FX_base_light",
+          "FX_glow",
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "obj_in6_1_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "obj_in6_1_candle2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "FX_cloud_1",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "[gimmick]capsule1_in",
+        "emitters": [
+          "[Atlas_add]_Bubble"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/coop_expedition/tilesets:coop_expedition.tileset",
+    "dependencies": {
+      "ondemand/coop_expedition/tilesets": "01e732a9924c53b23132cd3f53ae73f2834dbc06e0847dce1d9c2cd4974ea7e4",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/manual/vampirelord": "8579658bd8759de870610c8553ebdb74a196e657106edbbaf0179a0869e92f5c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 3,
+    "systems": 15,
+    "sprites": 5,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]dot_tile_2x2",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]dot_tile_4x4",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "coop_gimmick_revival_area",
+        "emitters": [
+          "[mesh_add]_zone",
+          "[mesh_add]_zone (5)",
+          "bg",
+          "ray_light (1)",
+          "square_light (1)",
+          "heart",
+          "icon",
+          "[mesh_add]_zone (6)",
+          "heart (1)",
+          "[mesh_add]_zone",
+          "bg"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/archaic/tilesets:archaic.tileset",
+    "dependencies": {
+      "ondemand/archaic/tilesets": "eaaa1b43e905f344d87324ad92b7ec123901fb4fdbc574d4ccd782dd859d3dc8",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 4,
+    "systems": 5,
+    "sprites": 4,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "FX_cloud",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "[gimmick]laser_turret",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]miner_set",
+        "emitters": [
+          "[Atlas_ab_top]_bg",
+          "[Atlas_ab_top]_dust",
+          "[Atlas_add_top]_particle",
+          "[Atlas_ab_top]_bg (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/fox/tilesets:fox.tileset",
+    "dependencies": {
+      "ondemand/fox/tilesets": "464cda5e35dc22131303bfe4fdfefcd4fab78b3f92ff30e83e0723b37d3d97f8",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 1,
+    "sprites": 9,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]fox_lotus",
+        "emitters": [
+          "water_ripple_ring_seq"
+        ]
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/highschool/tilesets:school.tileset",
+    "dependencies": {
+      "ondemand/highschool/tilesets": "3a5ee9f8e7b83b24027e82653e99be2171816f3741f488b312c00a59599be08e",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "theatres/iron_teatans_common": "be9f939bf4808e60edba0057c9117b2aef2013b67b715e9dd17f7829405a80d6"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/movie/tilesets:movie.tileset",
+    "dependencies": {
+      "ondemand/movie/tilesets": "0f884f3a4937cc47a4e4e9f3fdcae9c9e435b7fed780e2cead752fe3a3757431",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/v2_22_lilithtower/tilesets/lilithtower:lilithtower.tileset",
+    "dependencies": {
+      "ondemand/v2_22_lilithtower/tilesets/lilithtower": "cbeaee26c7f854405cbed893d877228a2e96b9eaae550932b1111bb9ab378656",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "ondemand/v2_15_demonworld/tilesets/demonworld": "1a43306f39a8dcb1d585875a496061e0f6513e055948b70a2c2f620894a4cc0b",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 22,
+    "systems": 121,
+    "sprites": 55,
+    "issues": [
+      {
+        "tile": "[gimmick]lilithtower_soup",
+        "node": "pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "wall_boss_desk_broken",
+        "node": "[Atlas_ab]_smoke (2)",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]vent",
+        "emitters": [
+          "bottom_glow",
+          "dust_particle",
+          "vent_light_mesh (1)"
+        ]
+      },
+      {
+        "name": "floor_vent_4",
+        "emitters": []
+      },
+      {
+        "name": "wall_vent_S4",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]stair_down",
+        "emitters": [
+          "[Atlas_add]_Glow"
+        ]
+      },
+      {
+        "name": "obj_safe_fan",
+        "emitters": []
+      },
+      {
+        "name": "wall_luxury_fountain",
+        "emitters": [
+          "[Atlas_add]_circle",
+          "[Atlas_add]_col",
+          "[Atlas_ab]_top"
+        ]
+      },
+      {
+        "name": "[gimmick]lilithtower_keydoor_2",
+        "emitters": [
+          "FX_glow",
+          "FX_glow2",
+          "FX_hole_light",
+          "FX_base_light",
+          "FX_glow",
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "[gimmick]bridge_1",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big",
+          "[Atlas_add]_Glow",
+          "[Atlas_add]_particle",
+          "[Atlas_add]_Explosion",
+          "[Atlas_add]_Ring",
+          "[Atlas_add]_Spark",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_explosion_flare (2)",
+          "[Atlas_add]_seq (1)",
+          "[Atlas_add]_Glow",
+          "[Atlas_add]_particle",
+          "[Atlas_add]_Explosion",
+          "[Atlas_add]_Ring",
+          "[Atlas_add]_Spark",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_explosion_flare (2)",
+          "[Atlas_add]_seq (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]bridge_2",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big",
+          "[Atlas_add]_Glow",
+          "[Atlas_add]_particle",
+          "[Atlas_add]_Explosion",
+          "[Atlas_add]_Ring",
+          "[Atlas_add]_Spark",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_explosion_flare (2)",
+          "[Atlas_add]_seq (1)",
+          "[Atlas_add]_Glow",
+          "[Atlas_add]_particle",
+          "[Atlas_add]_Explosion",
+          "[Atlas_add]_Ring",
+          "[Atlas_add]_Spark",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_explosion_flare (2)",
+          "[Atlas_add]_seq (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]bridge_3",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big"
+        ]
+      },
+      {
+        "name": "[gimmick]bridge_end",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big",
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big"
+        ]
+      },
+      {
+        "name": "wall_office_pillar2_break",
+        "emitters": [
+          "[Atlas_add]_Glow",
+          "[Atlas_ab]_stone",
+          "[Atlas_add]_explosion_flare (2)",
+          "[Atlas_ab]_smoke",
+          "[Atlas_ab]_stone (1)",
+          "[Atlas_add]_Glow (1)",
+          "[Atlas_add]_Glow (2)"
+        ]
+      },
+      {
+        "name": "[gimmick]lilithtower_soup",
+        "emitters": [
+          "pot_bubble",
+          "fire1",
+          "fire2"
+        ]
+      },
+      {
+        "name": "[gimmick]chandelier",
+        "emitters": []
+      },
+      {
+        "name": "window_broken1",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_Flame_Explosion",
+          "[Atlas_add_top]_smoke_glow",
+          "[Atlas_add_top]_sparks"
+        ]
+      },
+      {
+        "name": "window_broken2",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_Flame_Explosion",
+          "[Atlas_add_top]_smoke_glow",
+          "[Atlas_add_top]_sparks"
+        ]
+      },
+      {
+        "name": "window_crack",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_Flame_Explosion",
+          "[Atlas_add_top]_smoke_glow",
+          "[Atlas_add_top]_sparks"
+        ]
+      },
+      {
+        "name": "wall_boss_desk_broken",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add]_Glow (2)",
+          "[Atlas_add]_Glow (1)",
+          "glass_mesh_piece_small",
+          "[Atlas_ab]_smoke (2)",
+          "glass_mesh_piece_small (1)",
+          "Mesh_fragment_rock"
+        ]
+      },
+      {
+        "name": "wall_safe_window",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "glass_mesh_piece_small",
+          "glass_mesh_piece_big"
+        ]
+      },
+      {
+        "name": "wall_lobby_window_broken",
+        "emitters": [
+          "ringwave",
+          "particles",
+          "mesh_part_piece"
+        ]
+      },
+      {
+        "name": "wall_lobby_window2_broken",
+        "emitters": [
+          "ringwave",
+          "particles",
+          "mesh_part_piece"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancientmall/tilesets:roguelike_mall.tileset",
+    "dependencies": {
+      "ondemand/ancientmall/tilesets": "5030c88585df97272cc98f1ca14ac3cbd9fadc413018aef98fcb2f9ce5bf2adb",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 1,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/arcade/tilesets:arcade.tileset",
+    "dependencies": {
+      "ondemand/arcade/tilesets": "9bc4bd4f40fb037a24325bbc416f7ece2bed5e1bd9f298aad9d380a261982ed2",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 1,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_fox_water_IN",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_15_demonworld/tilesets/demonworld:demonworld.tileset",
+    "dependencies": {
+      "ondemand/v2_15_demonworld/tilesets/demonworld": "1a43306f39a8dcb1d585875a496061e0f6513e055948b70a2c2f620894a4cc0b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 8,
+    "systems": 19,
+    "sprites": 25,
+    "issues": [
+      {
+        "tile": "wall_box",
+        "node": "[Atlas_add]_generator",
+        "unsupportedModule": "SubModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]demonworld_keydoor",
+        "emitters": [
+          "FX_glow",
+          "FX_glow2",
+          "FX_hole_light",
+          "FX_base_light",
+          "FX_glow",
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "[gimmick]battlegate_2",
+        "emitters": [
+          "smoke",
+          "[Mesh]_impact_core",
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle"
+        ]
+      },
+      {
+        "name": "[gimmick]helicopter",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]drone",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]_car1",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]_car2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]_taxi",
+        "emitters": []
+      },
+      {
+        "name": "wall_box",
+        "emitters": [
+          "[Atlas_add]_generator",
+          "[Atlas_add]_electric",
+          "bg",
+          "[Atlas_add]_Spark"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_frieren/tilesets:frieren.tileset",
+    "dependencies": {
+      "ondemand/short_story_frieren/tilesets": "626bfd7e425ea28d8184ce749c14386599687a7ae5121bfc997d1588bd4a98a8",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 51,
+    "systems": 21,
+    "sprites": 14,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_in2_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_in2_ord_base",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_C",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_CS",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in3",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_S1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_S2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_S3",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree2",
+        "emitters": []
+      },
+      {
+        "name": "obj_out_tree2",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree3",
+        "emitters": []
+      },
+      {
+        "name": "obj_out_tree3",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree_upper1",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree_upper2",
+        "emitters": []
+      },
+      {
+        "name": "shadow_in_in",
+        "emitters": []
+      },
+      {
+        "name": "shadow_in_C",
+        "emitters": []
+      },
+      {
+        "name": "shadow_in_S",
+        "emitters": []
+      },
+      {
+        "name": "shadow_in_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_forest_oldman",
+        "emitters": []
+      },
+      {
+        "name": "wall_out_shop",
+        "emitters": []
+      },
+      {
+        "name": "wall_out_shop_bakery",
+        "emitters": []
+      },
+      {
+        "name": "wall_out_shop_magic",
+        "emitters": []
+      },
+      {
+        "name": "wall_in1_bedtable",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_forest_flower4",
+        "emitters": []
+      },
+      {
+        "name": "obj_forest_flower3",
+        "emitters": []
+      },
+      {
+        "name": "obj_forest_flower2",
+        "emitters": []
+      },
+      {
+        "name": "obj_forest_flower1",
+        "emitters": []
+      },
+      {
+        "name": "wall_out_shop_tavern",
+        "emitters": []
+      },
+      {
+        "name": "wall_dun_barrel",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "floor1_forest_C",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_CS",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_in",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_in2",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_in3",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_in4",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_S1",
+        "emitters": []
+      },
+      {
+        "name": "floor1_forest_S3",
+        "emitters": []
+      },
+      {
+        "name": "road1_forest_in1",
+        "emitters": []
+      },
+      {
+        "name": "road1_forest_in2",
+        "emitters": []
+      },
+      {
+        "name": "road1_forest_in3",
+        "emitters": []
+      },
+      {
+        "name": "road1_forest_in4",
+        "emitters": []
+      },
+      {
+        "name": "road2_forest_C",
+        "emitters": []
+      },
+      {
+        "name": "road2_forest_CS",
+        "emitters": []
+      },
+      {
+        "name": "road2_forest_in1",
+        "emitters": []
+      },
+      {
+        "name": "road2_forest_in2",
+        "emitters": []
+      },
+      {
+        "name": "road2_forest_S1",
+        "emitters": []
+      },
+      {
+        "name": "road2_forest_S2",
+        "emitters": []
+      },
+      {
+        "name": "fx_fr_sunlight_1",
+        "emitters": [
+          "ray",
+          "[Atlas_ab_top]_bg (2)",
+          "_particle (1)"
+        ]
+      },
+      {
+        "name": "obj_dun_torchlight",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v3_07_hell_forest/tilesets:hell.tileset",
+    "dependencies": {
+      "ondemand/v3_07_hell_forest/tilesets": "d6f509930a097bdd630218cb30e52cd6330fe6544cbe8f5efc9e40aa0e650330",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/short_story_battleball/tilesets:battleball.tileset",
+    "dependencies": {
+      "ondemand/short_story_battleball/tilesets": "219667057784754bb643a2bc80ed3bb463d3b576deab948daabdb6690a6d0bd0",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 10,
+    "systems": 4,
+    "sprites": 2,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "out_shadow_C",
+        "emitters": []
+      },
+      {
+        "name": "out_shadow_CS",
+        "emitters": []
+      },
+      {
+        "name": "out_shadow_IN1",
+        "emitters": []
+      },
+      {
+        "name": "out_shadow_S1",
+        "emitters": []
+      },
+      {
+        "name": "out_shadow_S3",
+        "emitters": []
+      },
+      {
+        "name": "obj_out_palm1",
+        "emitters": []
+      },
+      {
+        "name": "obj_out_palm2",
+        "emitters": []
+      },
+      {
+        "name": "obj_out_palm_upper",
+        "emitters": []
+      },
+      {
+        "name": "fx_battleball_sunshine",
+        "emitters": [
+          "flare_center (1)",
+          "lens_flare (1)"
+        ]
+      },
+      {
+        "name": "fx_battleball_sunshine_loop",
+        "emitters": [
+          "cy_line_mesh (3)",
+          "cy_line_mesh (4)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_nebula/tilesets:ancient_nebula.tileset",
+    "dependencies": {
+      "ondemand/ancient_nebula/tilesets": "ff430cc260bc3cdc6c6452e0b088835bc90a02e197867c7a21342428c7c79ca5",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 20,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_BSW",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_TRI",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/bridge_story_seira/tilesets:dark_kenterbury.tileset",
+    "dependencies": {
+      "ondemand/bridge_story_seira/tilesets": "f944c6b2bb2571e257572c993f194ea839271f2e156d4c979397c5551c785cbc",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 23,
+    "systems": 35,
+    "sprites": 60,
+    "issues": [
+      {
+        "tile": "[gimmick]pot_pepper",
+        "node": "cover",
+        "unsupportedModule": "RotationBySpeedModule"
+      },
+      {
+        "tile": "[gimmick]pot_pepper",
+        "node": "fx_pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "obj_well",
+        "node": "fx_pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]stair_down",
+        "emitters": [
+          "[Atlas_add]_Glow"
+        ]
+      },
+      {
+        "name": "[gimmick]vent",
+        "emitters": [
+          "bottom_glow",
+          "dust_particle",
+          "vent_light_mesh (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]pot_pepper",
+        "emitters": [
+          "fx_impact_star",
+          "start",
+          "cover",
+          "fire1",
+          "fx_impact_star (1)",
+          "fx_impact_star (2)",
+          "[Atlas_ab_top]_smoke",
+          "[Atlas_add_top]_seq",
+          "fx_pot_bubble",
+          "dust",
+          "piller",
+          "fx_impact_star (3)"
+        ]
+      },
+      {
+        "name": "obj_outdoor_crater1",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater2",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater3",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater4",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_fire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "obj_tree_1",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree_2",
+        "emitters": []
+      },
+      {
+        "name": "FX_lightprop1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "FX_lightprop2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "FX_lightprop3",
+        "emitters": []
+      },
+      {
+        "name": "FX_lightprop3_up",
+        "emitters": []
+      },
+      {
+        "name": "obj_badcannonball",
+        "emitters": []
+      },
+      {
+        "name": "obj_well",
+        "emitters": [
+          "[Atlas_add_top]_seq",
+          "fx_impact_star (3)",
+          "piller",
+          "dust",
+          "[Atlas_add_top]_seq (1)",
+          "[Atlas_ab_top]_smoke",
+          "fx_pot_bubble"
+        ]
+      },
+      {
+        "name": "obj_v_train",
+        "emitters": []
+      },
+      {
+        "name": "obj_v_bg",
+        "emitters": []
+      },
+      {
+        "name": "shadow_11",
+        "emitters": []
+      },
+      {
+        "name": "obj_alpha_stone1",
+        "emitters": []
+      },
+      {
+        "name": "obj_alpha_stone2",
+        "emitters": []
+      },
+      {
+        "name": "obj_alpha_invaderfloor",
+        "emitters": []
+      },
+      {
+        "name": "FX_big_glow",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/cafe/tilesets:cafe.tileset",
+    "dependencies": {
+      "ondemand/cafe/tilesets": "323b0a8913bca80d2fef02a3795a2140ac00987c5d000072c82bb85b3796b219",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/castletown/tilesets:castletown.tileset",
+    "dependencies": {
+      "ondemand/castletown/tilesets": "e01782b58606d0d8eebee105782862b9cb0e47b1c359d0d98f3c060582f00d39",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 4,
+    "sprites": 17,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "wall_ghetto_woodstove",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/pasture/tilesets:pasture.tileset",
+    "dependencies": {
+      "ondemand/pasture/tilesets": "787470d75fe00b7e7f5bc7fa244406850e24de86d1d9eb6a79569f866dfb39c6",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 10,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]house_ranch",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree1",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow3",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow4",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowC",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowCS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_75_civilwar/tilesets:civilwar.tileset",
+    "dependencies": {
+      "ondemand/v2_75_civilwar/tilesets": "810cc0a2d492cd83ffba731fc3fc85e44ff25cccbb253b9ccc314cd222760741",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11"
+    },
+    "templates": 25,
+    "systems": 82,
+    "sprites": 90,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "wall_battlefield_oak",
+        "emitters": [
+          "FireSprite_Seq",
+          "par_ab",
+          "spark"
+        ]
+      },
+      {
+        "name": "wall_round_table",
+        "emitters": [
+          "[Atlas_add]_Glow",
+          "par"
+        ]
+      },
+      {
+        "name": "[gimmick]civilwar_keydoor_battlesaul",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow"
+        ]
+      },
+      {
+        "name": "bg_2s_robot",
+        "emitters": []
+      },
+      {
+        "name": "wall_saul_missile_turret_ani",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]mana_cannon",
+        "emitters": [
+          "[add_top_shear]_core (2)",
+          "[Atlas_ab_top_shear]_Glowbg (1)",
+          "mesh_electric_seq (5)",
+          "[Atlas_add]_lensflare",
+          "[Atlas_add]_Smoke_seq (1)",
+          "[Atlas_add_top_shear]_Slush (1)",
+          "[Atlas_add]_spark_st",
+          "[Atlas_add]_Line_up_add",
+          "[Atlas_add]_Explosion (1)",
+          "[Atlas_ab]_Background (1)",
+          "[Atlas_add]_Spark (1)",
+          "[Atlas_add_top]_flash (1)",
+          "[Atlas_add]_Ring_outline (1)",
+          "mesh_electric_seq (4)",
+          "pyro_explosion_smoke_seq (5)",
+          "[Atlas_ab]_Glowbg",
+          "[Atlas_ab_top_shear]_start_ring",
+          "[Atlas_add]_lensflare",
+          "[Atlas_add]_wave",
+          "[Atlas_Add]_spark (2)",
+          "[Atlas_ab_top_shear]_bg",
+          "[Atlas_add_top_shear]_glow (1)",
+          "[Atlas_add]_Light_particles",
+          "[add_top_shear]_Ray_Spark",
+          "[ab_shear]_end_bg",
+          "[add_top_shear]_end_core",
+          "[Atlas_add_top_shear]_glow (2)"
+        ]
+      },
+      {
+        "name": "[gimmick]civilwar_keydoor_lap",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "obj_battlefield_decal1",
+        "emitters": []
+      },
+      {
+        "name": "obj_battlefield_decal2",
+        "emitters": []
+      },
+      {
+        "name": "cw_minigame_supply",
+        "emitters": [
+          "[Atlas_ab]_smoke_C",
+          "[Atlas_ab]_smoke_up (1)",
+          "[Atlas_ab_top]_smoke",
+          "barricade_fragment_02 (1)",
+          "[Atlas_add_top]_Start_Flash",
+          "[Atlas_add_top]_glow",
+          "[Atlas_add_particle",
+          "[Atlas_ab_top]_ashes_small"
+        ]
+      },
+      {
+        "name": "[gimmick]seal_demon_engineer",
+        "emitters": [
+          "electric_seq_2x4_mesh_",
+          "[Mesh]_Helixwave_r_Add (1)",
+          "[Mesh]_Helixwave_r_Add (2)",
+          "[Mesh]_Helixwave_r_Add (3)",
+          "[Mesh]_Helixwave_r_Add (4)",
+          "glow"
+        ]
+      },
+      {
+        "name": "obj_saul_manhole",
+        "emitters": []
+      },
+      {
+        "name": "obj_saul_decal1",
+        "emitters": []
+      },
+      {
+        "name": "obj_saul_decal2",
+        "emitters": []
+      },
+      {
+        "name": "wall_saul_hologram_machine",
+        "emitters": [
+          "glitch_noise",
+          "ab_bg (1)",
+          "ab_bg (2)",
+          "light_bottom",
+          "light_beam",
+          "light_beam (1)"
+        ]
+      },
+      {
+        "name": "wall_battlesaul_missile_turret_ani",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]civilwar_keydoor_saul",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "obj_saul_bill_board",
+        "emitters": [
+          "noise",
+          "news"
+        ]
+      },
+      {
+        "name": "obj_saul_bill_board_broken",
+        "emitters": [
+          "spark1",
+          "spark2",
+          "display_turnoff"
+        ]
+      },
+      {
+        "name": "wall_battlesaul_fan_ani",
+        "emitters": []
+      },
+      {
+        "name": "wall_saul_fan_ani",
+        "emitters": []
+      },
+      {
+        "name": "fx_fire_smoke_slow_shear",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_glow"
+        ]
+      },
+      {
+        "name": "fx_fire_smoke_slow_shear_gray_var",
+        "emitters": [
+          "[Atlas_ab]_smoke"
+        ]
+      },
+      {
+        "name": "fx_fire_smoke_slow_long_var",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_glow"
+        ]
+      },
+      {
+        "name": "fx_fire_smoke_slow_long_gray_top_var",
+        "emitters": [
+          "[Atlas_ab]_smoke"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_75_civilwar/tilesets:civilwar_minigame.tileset",
+    "dependencies": {
+      "ondemand/v2_75_civilwar/tilesets": "810cc0a2d492cd83ffba731fc3fc85e44ff25cccbb253b9ccc314cd222760741",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/v2_86_laboseworld/tilesets:laboseworld.tileset",
+    "dependencies": {
+      "ondemand/v2_86_laboseworld/tilesets": "47cf6c452f71b7fa04fe26d1f2fe4f69e22a970e5986f8af1d01fc503f7e3d7f",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 45,
+    "systems": 106,
+    "sprites": 107,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_DW_tree",
+        "emitters": []
+      },
+      {
+        "name": "obj_DW_crater1",
+        "emitters": []
+      },
+      {
+        "name": "obj_DW_crater2",
+        "emitters": []
+      },
+      {
+        "name": "obj_DW_crater3",
+        "emitters": []
+      },
+      {
+        "name": "obj_DW_crater4",
+        "emitters": []
+      },
+      {
+        "name": "wall_DW_vending",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]DW_keydoor",
+        "emitters": [
+          "FX_glow",
+          "FX_glow2",
+          "FX_hole_light",
+          "FX_base_light",
+          "FX_glow",
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "[gimmick]battlegate_boss",
+        "emitters": []
+      },
+      {
+        "name": "battlegate_case_boss",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]CW_keydoor_forest",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "obj_CW_battlefield_decal1",
+        "emitters": []
+      },
+      {
+        "name": "obj_CW_battlefield_decal2",
+        "emitters": []
+      },
+      {
+        "name": "obj_CW_battlefield_decal3",
+        "emitters": []
+      },
+      {
+        "name": "obj_CW_battlefield_decal4",
+        "emitters": []
+      },
+      {
+        "name": "wall_CW_battlefield_oak",
+        "emitters": [
+          "FireSprite_Seq",
+          "par_ab",
+          "spark"
+        ]
+      },
+      {
+        "name": "obj_CW_forest_tree1",
+        "emitters": []
+      },
+      {
+        "name": "obj_CW_forest_tree2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]laboseworld_keydoorbase",
+        "emitters": [
+          "FX_glow",
+          "FX_glow2",
+          "FX_hole_light",
+          "FX_base_light",
+          "FX_glow",
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "[gimmick]gate_OW",
+        "emitters": []
+      },
+      {
+        "name": "obj_CR_saw_1",
+        "emitters": []
+      },
+      {
+        "name": "obj_CR_saw_2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]heavenhold_core",
+        "emitters": []
+      },
+      {
+        "name": "wall_CR_desk_down",
+        "emitters": []
+      },
+      {
+        "name": "w18_flower_portal_bg_scene",
+        "emitters": [
+          "wind_smoke",
+          "ashes",
+          "ashes (1)",
+          "[Atlas_add]_HoleRing",
+          "[Atlas_ab]_Glow_bg",
+          "[Atlas_add]_HoleRing (1)",
+          "[Atlas_add]_HoleRing (2)",
+          "[Atlas_add]_HoleRing (3)"
+        ]
+      },
+      {
+        "name": "wall_CR_cube",
+        "emitters": []
+      },
+      {
+        "name": "obj_CR_keyboard",
+        "emitters": []
+      },
+      {
+        "name": "obj_CR_keyboard_down",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]waypoint",
+        "emitters": [
+          "FX_smoke_base",
+          "FX_fragment_base",
+          "light",
+          "FX_glow3",
+          "FX_glow",
+          "[GIMMICK]waypoint_cap_add",
+          "FX_waypoint",
+          "Particle_light",
+          "light2",
+          "light",
+          "light3"
+        ]
+      },
+      {
+        "name": "w18_city",
+        "emitters": [
+          "robot_idle",
+          "labose_idle",
+          "labose_atk1",
+          "labose_start_walk",
+          "labose_atk2",
+          "labose_end",
+          "labose_walk",
+          "robot_ready",
+          "robot_damaged",
+          "robot_damaged (1)",
+          "robot_down",
+          "robot_idle (1)",
+          "robot_walk",
+          "glow_screen"
+        ]
+      },
+      {
+        "name": "w18_city_with_robot",
+        "emitters": [
+          "[Atlas_ab_top]_ashes_small",
+          "[Atlas_add_top]_sparks",
+          "[Atlas_ab]_smoke_background (1)",
+          "glow_screen",
+          "w18_city_robot",
+          "spark1",
+          "spark1 (1)",
+          "electric",
+          "smoke (6)",
+          "smoke (7)"
+        ]
+      },
+      {
+        "name": "obj_CR_floordeco2_1",
+        "emitters": []
+      },
+      {
+        "name": "obj_CR_floordeco2_2",
+        "emitters": []
+      },
+      {
+        "name": "obj_CR_undersawtooth_large",
+        "emitters": []
+      },
+      {
+        "name": "fx_fire_smoke_slow_shear",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_glow"
+        ]
+      },
+      {
+        "name": "fx_fire_smoke_slow_shear_gray_var",
+        "emitters": [
+          "[Atlas_ab]_smoke"
+        ]
+      },
+      {
+        "name": "fx_fire_smoke_slow_long_var",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_glow"
+        ]
+      },
+      {
+        "name": "fx_fire_smoke_slow_long_gray_top_var",
+        "emitters": [
+          "[Atlas_ab]_smoke"
+        ]
+      },
+      {
+        "name": "obj_boss_OW_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_boss_OW_brick2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]CW_forest_keydoor_middle",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "obj_CW_spore1_2",
+        "emitters": [
+          "bubble",
+          "liquid1"
+        ]
+      },
+      {
+        "name": "obj_CW_spore2_2",
+        "emitters": [
+          "bubble",
+          "liquid1"
+        ]
+      },
+      {
+        "name": "fx_w18e_box_type1",
+        "emitters": [
+          "box"
+        ]
+      },
+      {
+        "name": "fx_w18e_box_type2",
+        "emitters": [
+          "box"
+        ]
+      },
+      {
+        "name": "boss_DW_scene",
+        "emitters": [
+          "[Atlas_add_top]_Ring",
+          "[Atlas_add]_explosion",
+          "[Atlas_add_top]_glow_c",
+          "amber",
+          "[Atlas_add]_Sparkline",
+          "explosion_smoke_wave",
+          "[Atlas_add]_explosion (2)",
+          "line_add (10)",
+          "[Atlas_add]_explosion (4)",
+          "block",
+          "[Atlas_add_top]_Ring",
+          "[Atlas_add]_explosion",
+          "[Atlas_add_top]_glow_c",
+          "amber",
+          "[Atlas_add]_Sparkline",
+          "explosion_smoke_wave",
+          "[Atlas_add]_explosion (2)",
+          "line_add (10)",
+          "[Atlas_add]_explosion (4)",
+          "block"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v2_3_futurecastle/tilesets/futurecastle:futurecastle.tileset",
+    "dependencies": {
+      "ondemand/v2_3_futurecastle/tilesets/futurecastle": "e79e39f7a26c5ddd03e249efae16cd9348b4031fd826a180fb551af85582f67b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f"
+    },
+    "templates": 8,
+    "systems": 12,
+    "sprites": 19,
+    "issues": [
+      {
+        "tile": "[gimmick]kettle_soup",
+        "node": "pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]party_cannon",
+        "emitters": [
+          "seq_loop"
+        ]
+      },
+      {
+        "name": "[gimmick]kettle_soup",
+        "emitters": [
+          "pot_bubble",
+          "fire1",
+          "fire2"
+        ]
+      },
+      {
+        "name": "obj_outdoor_fire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "obj_outdoor_crater1",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater2",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater3",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater4",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_dai/tilesets:dq_farm.tileset",
+    "dependencies": {
+      "ondemand/short_story_dai/tilesets": "56e19dd91e6b464e22ed2e6eee544b670c3db0b9bea16256fca3ec80c78a1795",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 14,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "forest_shadow1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow3",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow4",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow5",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowC",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowCS",
+        "emitters": []
+      },
+      {
+        "name": "obj_upper1",
+        "emitters": []
+      },
+      {
+        "name": "obj_upper2",
+        "emitters": []
+      },
+      {
+        "name": "obj_up_tree1",
+        "emitters": []
+      },
+      {
+        "name": "obj_up_tree2",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree1",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree2",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/coop_expedition/s2/tilesets:coop_expedition_s2.tileset",
+    "dependencies": {
+      "ondemand/coop_expedition/s2/tilesets": "1b3cd657b385a4fdeacb0d454b53a56d4be3c75dff05854909c9ced3a0db8939",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 18,
+    "systems": 53,
+    "sprites": 33,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_in1_jade3",
+        "emitters": []
+      },
+      {
+        "name": "[GIMMICK]new_portal_enter",
+        "emitters": [
+          "crack",
+          "[Atlas_ab]_Glow_bg",
+          "[Atlas_add]_HoleRing",
+          "[Atlas_add]_Glow_edge_light"
+        ]
+      },
+      {
+        "name": "[GIMMICK]new_portal_exit",
+        "emitters": [
+          "crack",
+          "[Atlas_ab]_Glow_bg",
+          "[Atlas_add]_HoleRing",
+          "[Atlas_add]_Glow_edge_light"
+        ]
+      },
+      {
+        "name": "wall_town_jadepot",
+        "emitters": [
+          "smoke",
+          "light",
+          "smoke",
+          "light",
+          "smoke",
+          "light",
+          "smoke",
+          "light"
+        ]
+      },
+      {
+        "name": "[gimmick]season2_cursed_zone",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]season2_cursed_zone_small",
+        "emitters": []
+      },
+      {
+        "name": "wall_town_fire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_glow_[Atlas_add] (1)",
+          "Loop_Spark_[Atlas_add]",
+          "fire_seq_ad (1)"
+        ]
+      },
+      {
+        "name": "obj_in1_candle1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_in1_candle2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_in1_candle3",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "fx_water_exp_forest",
+        "emitters": []
+      },
+      {
+        "name": "wall_in1_shrine",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "[gimmick]laser_turret",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]dot_tile_2x2",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]dot_tile_3x3",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]dot_tile_4x4",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]dot_tile_5x5",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "coop_gimmick_revival_area",
+        "emitters": [
+          "[mesh_add]_zone",
+          "[mesh_add]_zone (5)",
+          "bg",
+          "ray_light (1)",
+          "square_light (1)",
+          "heart",
+          "icon",
+          "[mesh_add]_zone (6)",
+          "heart (1)",
+          "[mesh_add]_zone",
+          "bg"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/coop_expedition/s3/tilesets:coop_expedition_s3.tileset",
+    "dependencies": {
+      "ondemand/coop_expedition/s3/tilesets": "cd1abb25210f9c6fd0f7c7eaa4d64497618684ed875ec09c25eefe36b9d0b627",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/manual/vampirelord": "8579658bd8759de870610c8553ebdb74a196e657106edbbaf0179a0869e92f5c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 11,
+    "systems": 20,
+    "sprites": 8,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_boss",
+        "emitters": [
+          "bg_glow"
+        ]
+      },
+      {
+        "name": "wall_giant_old_tree",
+        "emitters": [
+          "coop_expedition_s3_Atlas_add_bg",
+          "coop_expedition_s3_Atlas_add_bg2"
+        ]
+      },
+      {
+        "name": "[fx]glow1",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]dot_tile_2x2",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]dot_tile_3x3",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]dot_tile_4x4",
+        "emitters": [
+          "[Atlas_add]_aura_ring",
+          "[Atlas_ab]_aura_bg"
+        ]
+      },
+      {
+        "name": "[gimmick]season3_cursed_zone",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]season3_cursed_zone_small",
+        "emitters": []
+      },
+      {
+        "name": "coop_gimmick_revival_area",
+        "emitters": [
+          "[mesh_add]_zone",
+          "[mesh_add]_zone (5)",
+          "bg",
+          "ray_light (1)",
+          "square_light (1)",
+          "heart",
+          "icon",
+          "[mesh_add]_zone (6)",
+          "heart (1)",
+          "[mesh_add]_zone",
+          "bg"
+        ]
+      },
+      {
+        "name": "[gimmick]laser_turret_s3",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_shuran/tilesets:shuran.tileset",
+    "dependencies": {
+      "ondemand/short_story_shuran/tilesets": "19af04fcab19b2ebbd08600f328848031c5021fbfca62e77da6bacb7ad558edb",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 23,
+    "systems": 37,
+    "sprites": 19,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]herb_dendrobium",
+        "emitters": [
+          "[Atlas_add]_Twinkle_particle",
+          "[Atlas_ab]_Background"
+        ]
+      },
+      {
+        "name": "[gimmick]herb_ginseng",
+        "emitters": [
+          "[Atlas_add]_Twinkle_particle",
+          "[Atlas_ab]_Background"
+        ]
+      },
+      {
+        "name": "[gimmick]herb_poria",
+        "emitters": [
+          "[Atlas_add]_Twinkle_particle",
+          "[Atlas_ab]_Background"
+        ]
+      },
+      {
+        "name": "[gimmick]herb_snowdrop",
+        "emitters": [
+          "[Atlas_add]_Twinkle_particle",
+          "[Atlas_ab]_Background"
+        ]
+      },
+      {
+        "name": "wall_tree1",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree2",
+        "emitters": []
+      },
+      {
+        "name": "forest_grass_obj1",
+        "emitters": []
+      },
+      {
+        "name": "forest_grass_obj2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]shuran_spa1",
+        "emitters": [
+          "smoke"
+        ]
+      },
+      {
+        "name": "obj_Bamboo_upper1",
+        "emitters": []
+      },
+      {
+        "name": "obj_Bamboo_upper2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow3",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowC",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowCS",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree3",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree4",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]night_gatedoor",
+        "emitters": [
+          "glow_back",
+          "glow_front",
+          "black_bg",
+          "[Atlas_add_top]_Ring (1)",
+          "[Atlas_add_shear]_particle (3)",
+          "[Atlas_add_top_shear]_Spark",
+          "[Atlas_add]_Glow",
+          "glow_back",
+          "glow_front",
+          "black_bg",
+          "[Atlas_add_top]_Ring (1)",
+          "[Atlas_add_shear]_particle (3)",
+          "[Atlas_add_top_shear]_Spark",
+          "[Atlas_add]_Glow",
+          "glow_back",
+          "glow_front",
+          "black_bg",
+          "[Atlas_add]_Glow_edge_bottom",
+          "[Atlas_ab]_Glow_bg",
+          "[Atlas_add]_HoleRing",
+          "[Atlas_ab]_Glow_bg (1)"
+        ]
+      },
+      {
+        "name": "forest_up_grass_obj1",
+        "emitters": []
+      },
+      {
+        "name": "forest_up_grass_obj2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]night_battlegate",
+        "emitters": [
+          "[Mesh]_impact_core",
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add_top]_SimpleFlash",
+          "[Atlas_add_top]_Spark",
+          "[Atlas_add_top]_Flame_Explosion",
+          "[Atlas_add_top]_particle"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_slime/tilesets:slime.tileset",
+    "dependencies": {
+      "ondemand/short_story_slime/tilesets": "027ee9b1579d1a3d6589b2122406bc72cab2e6e2936ac53c0d0b991163cb2936",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 4,
+    "systems": 6,
+    "sprites": 28,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "wall_building_hotspring",
+        "emitters": [
+          "steam",
+          "[Atlas_add]_ring",
+          "[Atlas_add]_bottom_water"
+        ]
+      },
+      {
+        "name": "obj_wall_tree1",
+        "emitters": []
+      },
+      {
+        "name": "obj_wall_tree2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]hotspringrock",
+        "emitters": [
+          "ab_bg_local",
+          "foam_front (1)",
+          "[Atlas_add]_ripple"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_summer/tilesets:summer.tileset",
+    "dependencies": {
+      "ondemand/short_story_summer/tilesets": "d3a52bbcdd1593eaa7f197aedcb2ad2b56a561211a3431bfa6adea020d436e9f",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 10,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_palm_upper",
+        "emitters": []
+      },
+      {
+        "name": "obj_palm",
+        "emitters": []
+      },
+      {
+        "name": "obj_palm2",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_C",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_CS",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_IN1",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_IN2",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_S1",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_S2",
+        "emitters": []
+      },
+      {
+        "name": "summer_shadow_S3",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "shop",
+    "dependencies": {
+      "tilesets/shop": "948a04226d80607cf2adf9a271b875da770f3176ec795d56252128e55033bfb8",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2:futurecastle_part2.tileset",
+    "dependencies": {
+      "ondemand/v2_10_futurecastle_part2/tilesets/futurecastle_part2": "1e1aaa0919b7c64a67b30d2e571d0915727c274ef6d87e09405a3a94b7a8e636",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 26,
+    "systems": 16,
+    "sprites": 21,
+    "issues": [
+      {
+        "tile": "[gimmick]future_glasstube",
+        "node": "[Atlas_add]_Bubble",
+        "unsupportedModule": "SubModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]indoor_keydoor",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow",
+          "FX_smoke",
+          "FX_fragment"
+        ]
+      },
+      {
+        "name": "wall_indoor_1_S4",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_3",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_1",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_2",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_4",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_5",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_BG",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_010",
+        "emitters": []
+      },
+      {
+        "name": "future_siege_works_011",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater1",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater2",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater3",
+        "emitters": []
+      },
+      {
+        "name": "obj_outdoor_crater4",
+        "emitters": []
+      },
+      {
+        "name": "wall_boss_S1",
+        "emitters": []
+      },
+      {
+        "name": "boss_break",
+        "emitters": []
+      },
+      {
+        "name": "boss_variation",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]keydoor_indoor_large",
+        "emitters": []
+      },
+      {
+        "name": "obj_microwave1",
+        "emitters": []
+      },
+      {
+        "name": "floor_shadow_C",
+        "emitters": []
+      },
+      {
+        "name": "floor_shadow_CS",
+        "emitters": []
+      },
+      {
+        "name": "floor_shadow_IN",
+        "emitters": []
+      },
+      {
+        "name": "floor_shadow_S",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]future_glasstube",
+        "emitters": [
+          "[Atlas_add]_Bubble"
+        ]
+      },
+      {
+        "name": "boss_original",
+        "emitters": []
+      },
+      {
+        "name": "obj_firepillar",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/heavenhold_farm/tilesets/heavenhold_farm:heavenhold_farm.tileset",
+    "dependencies": {
+      "ondemand/heavenhold_farm/tilesets/heavenhold_farm": "6c00eb3ee403ee23255ede692b110c5281437a93e37293ee1085586e8224ae5d",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "ui/backgrounds/common_alpha": "bc06a8f2917a9b42ddf1ac65ac7f00e0605db3d666a26ef926abd118d1f47d2b"
+    },
+    "templates": 31,
+    "systems": 16,
+    "sprites": 14,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "forest_shadow1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow3",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow4",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow5",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowC",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadowCS",
+        "emitters": []
+      },
+      {
+        "name": "wall_smithy",
+        "emitters": [
+          "smoke"
+        ]
+      },
+      {
+        "name": "obj_upper1",
+        "emitters": []
+      },
+      {
+        "name": "gimmick_tree1",
+        "emitters": []
+      },
+      {
+        "name": "gimmick_tree2",
+        "emitters": []
+      },
+      {
+        "name": "obj_ferry2",
+        "emitters": []
+      },
+      {
+        "name": "obj_upper2",
+        "emitters": []
+      },
+      {
+        "name": "obj_pumpkin_1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_farm_candel1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_farm_candel2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_halloween_glow",
+        "emitters": []
+      },
+      {
+        "name": "fx_treelight",
+        "emitters": []
+      },
+      {
+        "name": "fx_controller_glow 1",
+        "emitters": []
+      },
+      {
+        "name": "fx_controller_glow 2",
+        "emitters": []
+      },
+      {
+        "name": "fx_controller_glow 3",
+        "emitters": []
+      },
+      {
+        "name": "obj_halloween_glow2",
+        "emitters": []
+      },
+      {
+        "name": "FX_flys",
+        "emitters": [
+          "FX_blings"
+        ]
+      },
+      {
+        "name": "[gimmick]snow_tree1",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]snow_tree2",
+        "emitters": []
+      },
+      {
+        "name": "obj_snow_glow",
+        "emitters": []
+      },
+      {
+        "name": "obj_snow_ferry2",
+        "emitters": []
+      },
+      {
+        "name": "obj_snow_upper1",
+        "emitters": []
+      },
+      {
+        "name": "hw_gimmick_tree1",
+        "emitters": []
+      },
+      {
+        "name": "hw_gimmick_tree2",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v3_10_dreamvillage/tilesets:dreamvillage.tileset",
+    "dependencies": {
+      "ondemand/v3_10_dreamvillage/tilesets": "7067500abd9261d7a716ac8362e3dd886839d34b7bc79bb077ffae4d8a5fff2d",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "ondemand/v2_86_laboseworld/tilesets": "47cf6c452f71b7fa04fe26d1f2fe4f69e22a970e5986f8af1d01fc503f7e3d7f",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 24,
+    "systems": 7,
+    "sprites": 14,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "forest_dv_shadow_C",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_CS",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_in2",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_in3",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_in4",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_S1",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_S2",
+        "emitters": []
+      },
+      {
+        "name": "forest_dv_shadow_S3",
+        "emitters": []
+      },
+      {
+        "name": "wall_dv_stonelamp2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "wall_dv_stonelamp3",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "floor_dv_in_1_change",
+        "emitters": []
+      },
+      {
+        "name": "floor_dv_in_2_change",
+        "emitters": []
+      },
+      {
+        "name": "floor_dv_in_3_change",
+        "emitters": []
+      },
+      {
+        "name": "wall_dv_forest_house_library",
+        "emitters": []
+      },
+      {
+        "name": "wall_dv_forest_basic2_end",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]soulpower_house",
+        "emitters": []
+      },
+      {
+        "name": "wall_soulpower_house_light",
+        "emitters": []
+      },
+      {
+        "name": "wall_flag3",
+        "emitters": []
+      },
+      {
+        "name": "wall_dv_in_S3",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]kettle_soup",
+        "emitters": [
+          "cauldron_bubble",
+          "fire1",
+          "fire2"
+        ]
+      },
+      {
+        "name": "obj_dv_in_undercliff_L",
+        "emitters": []
+      },
+      {
+        "name": "obj_dv_in_undercliff_R",
+        "emitters": []
+      },
+      {
+        "name": "obj_dv_in_undercliff_S",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v3_00_pixyworld/tilesets:pixyworld.tileset",
+    "dependencies": {
+      "ondemand/v3_00_pixyworld/tilesets": "861fd37fa2e68aa7569744324684815105e037cf37266186aa4f9cbf3876af75",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 48,
+    "systems": 38,
+    "sprites": 45,
+    "issues": [
+      {
+        "tile": "[gimmick]forest_kettle_soup",
+        "node": "pot_bubble",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "FX_pw_butterfly_par",
+        "node": "bfly",
+        "unsupportedModule": "SubModule"
+      },
+      {
+        "tile": "FX_pw_butterfly_par",
+        "node": "par",
+        "unsupportedModule": "InheritVelocityModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "wall_town_laundry",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff1_in1",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff2_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff2_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff2_in1",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]forest_keydoor",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_base_light",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "obj_water",
+        "emitters": [
+          "[Atlas_add]_ring",
+          "[Atlas_add]_ring (1)",
+          "[Atlas_add]_bottom_water",
+          "[Atlas_add]_bottom_water (1)"
+        ]
+      },
+      {
+        "name": "obj_town_bushvine",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_bushvine2",
+        "emitters": []
+      },
+      {
+        "name": "obj_forest_upper2",
+        "emitters": []
+      },
+      {
+        "name": "obj_forest_upper1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_S3",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_S2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_S1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in1",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_CS",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_C",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_bridge1_lamp1",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_bridge1_lamp2",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]forest_entrance_wall",
+        "emitters": [
+          "_particle",
+          "[Atlas_add_top]_smoke_inside"
+        ]
+      },
+      {
+        "name": "obj_water2",
+        "emitters": [
+          "[Atlas_add]_ring",
+          "[Atlas_add]_ring (1)",
+          "[Atlas_add]_bottom_water",
+          "[Atlas_add]_bottom_water (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]forest_kettle_soup",
+        "emitters": [
+          "fire1",
+          "fire2",
+          "pot_bubble"
+        ]
+      },
+      {
+        "name": "[gimmick]forest_turret",
+        "emitters": [
+          "[Atlas_Ab]_Smoke",
+          "[Atlas_ab2]_Gunshot_tex",
+          "[Atlas_add]_Spark",
+          "[Atlas_add]_SimpleFlash"
+        ]
+      },
+      {
+        "name": "mini_cliff_normal",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_under1_1",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_under2_1",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_under1_2",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_under2_2",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_undertree",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_undertree2",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_undertree3",
+        "emitters": []
+      },
+      {
+        "name": "FX_pw_sunlight",
+        "emitters": [
+          "ray",
+          "[Atlas_ab_top]_bg (2)",
+          "_particle (1)"
+        ]
+      },
+      {
+        "name": "FX_pw_sunlight2",
+        "emitters": [
+          "ray",
+          "[Atlas_ab_top]_bg (2)",
+          "_particle (1)"
+        ]
+      },
+      {
+        "name": "FX_pw_butterfly_par",
+        "emitters": [
+          "bfly",
+          "par"
+        ]
+      },
+      {
+        "name": "FX_pw_twinkle_par",
+        "emitters": [
+          "_particle"
+        ]
+      },
+      {
+        "name": "FX_pw_fireflies_loop_1x1",
+        "emitters": [
+          "particles (1)"
+        ]
+      },
+      {
+        "name": "FX_pw_leaf_loop",
+        "emitters": [
+          "leaf"
+        ]
+      },
+      {
+        "name": "obj_town_uppertree",
+        "emitters": []
+      },
+      {
+        "name": "obj_undercliff2_in1_parts2",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_upper1",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_upper2",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff1_C",
+        "emitters": []
+      },
+      {
+        "name": "pw_background_town",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_under_lamp1",
+        "emitters": []
+      },
+      {
+        "name": "obj_town_under_lamp2",
+        "emitters": []
+      },
+      {
+        "name": "forest_shadow_in3",
+        "emitters": []
+      },
+      {
+        "name": "FX_pw_fire_smoke_slow_shear_03",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "Loop_glow_[Atlas_add] (1)",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_milkyway/tilesets:milkyway.tileset",
+    "dependencies": {
+      "ondemand/short_story_milkyway/tilesets": "b614f8e3c0132c46cad2295ff52dad053f7cf68c90276d9af299415ac2d3a51d",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 22,
+    "systems": 31,
+    "sprites": 20,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]seawater",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]seawater0",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]seawater2",
+        "emitters": []
+      },
+      {
+        "name": "obj_in_box1_deco",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "ob_alta_palm",
+        "emitters": []
+      },
+      {
+        "name": "ob_alta_palm_night",
+        "emitters": []
+      },
+      {
+        "name": "obj_alta_palm2",
+        "emitters": []
+      },
+      {
+        "name": "obj_alta_palm2_night",
+        "emitters": []
+      },
+      {
+        "name": "obj_alta_palm_upper",
+        "emitters": []
+      },
+      {
+        "name": "obj_alta_palm_upper_night",
+        "emitters": []
+      },
+      {
+        "name": "short_story_milkyway_bg",
+        "emitters": [
+          "star"
+        ]
+      },
+      {
+        "name": "short_story_milkyway_bg2",
+        "emitters": [
+          "[Atlas_ab]_smoke_background",
+          "[Atlas_ab]_smoke_background (1)",
+          "[Atlas_ab]_smoke_background (2)"
+        ]
+      },
+      {
+        "name": "fx_env_mw_sunlight_1x1",
+        "emitters": [
+          "ray",
+          "[Atlas_ab_top]_bg (2)",
+          "_particle (1)"
+        ]
+      },
+      {
+        "name": "wall_alta_L_night",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "wall_alta_R_night",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "milkway_alta",
+        "emitters": [
+          "smoke",
+          "light",
+          "smoke",
+          "light",
+          "smoke",
+          "light",
+          "smoke",
+          "light",
+          "flare",
+          "[add_top]_rainbow_ring",
+          "[add_top]_rainbow_ring (1)",
+          "[Atlas_add_top]_Spark_big"
+        ]
+      },
+      {
+        "name": "obj_tree_night",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree",
+        "emitters": []
+      },
+      {
+        "name": "obj_in_food1",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_in_food2",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "obj_tree2_night",
+        "emitters": []
+      },
+      {
+        "name": "obj_tree2",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/v3_31_fireworld/tilesets:fireworld.tileset",
+    "dependencies": {
+      "ondemand/v3_31_fireworld/tilesets": "15a8995dff21c2416fec037ed1fa4b8349a63cb08fffa8b2c152481630f59a95",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 23,
+    "systems": 75,
+    "sprites": 44,
+    "issues": [
+      {
+        "tile": "[gimmick]battlegate",
+        "node": "[Mesh]_wood_fragment",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "wall_undercliff_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff_S1",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff_S2",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff_S3",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]battlegate",
+        "emitters": [
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke_A",
+          "[Atlas_ab]_smoke_B",
+          "[Atlas_ab]_smoke_C",
+          "[Atlas_add]_Spark",
+          "[Atlas_add]_particle",
+          "[Mesh]_wood_fragment",
+          "gate_market_impact",
+          "gate_market_fragment"
+        ]
+      },
+      {
+        "name": "[gimmick]door",
+        "emitters": []
+      },
+      {
+        "name": "wall_in1_brazier",
+        "emitters": [
+          "Atlas_add_top_fire_seq",
+          "Atlas_add_top_glow",
+          "Atlas_add_top_bg",
+          "Atlas_add_top_flash",
+          "Atlas_add_top_glow_spark"
+        ]
+      },
+      {
+        "name": "[gimmick]barrier_gate",
+        "emitters": [
+          "Atlas_ab_bg",
+          "Atlas_add_top_glow",
+          "Atlas_add_line",
+          "Atlas_add_wave",
+          "Atlas_ab_smoke",
+          "Atlas_add_top_glow",
+          "Atlas_add_line",
+          "Atlas_add_wave",
+          "Atlas_ab_smoke",
+          "Atlas_ad_top_mesh_glow",
+          "Atlas_add_top_glow",
+          "Atlas_ab_top_bg",
+          "Atlas_add_top_flare",
+          "Atlas_add_top_fast_wave",
+          "Atlas_add_top_particles",
+          "Atlas_add_top_flash",
+          "Atlas_add_top_flash (3)",
+          "Atlas_add_top_mesh_piece",
+          "Atlas_add_top_mesh_piece_chain_1",
+          "Atlas_add_top_mesh_piece_chain_2",
+          "Atlas_add_top_piece"
+        ]
+      },
+      {
+        "name": "obj_lava_fireplace",
+        "emitters": [
+          "Atlas_add_top_fire_seq",
+          "Atlas_add_top_glow",
+          "Atlas_add_top_bg",
+          "Atlas_add_top_flash",
+          "Atlas_add_top_glow_spark"
+        ]
+      },
+      {
+        "name": "obj_in2_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "[gimmick]lava_crater",
+        "emitters": [
+          "cauldron_bubble",
+          "BG"
+        ]
+      },
+      {
+        "name": "[gimmick]lava_crater2",
+        "emitters": [
+          "cauldron_bubble",
+          "BG"
+        ]
+      },
+      {
+        "name": "[gimmick]lava_tw_crater",
+        "emitters": [
+          "cauldron_bubble",
+          "BG"
+        ]
+      },
+      {
+        "name": "[gimmick]lava_tw_crater2",
+        "emitters": [
+          "cauldron_bubble",
+          "BG"
+        ]
+      },
+      {
+        "name": "[gimmick]wall_mural2",
+        "emitters": [
+          "Atlas_ad_top_mesh_glow",
+          "Atlas_ad_top_mesh_glow (1)",
+          "Atlas_add_top_fast_wave",
+          "Atlas_add_top_particles"
+        ]
+      },
+      {
+        "name": "[gimmick]wall_mural4",
+        "emitters": [
+          "Atlas_ad_top_mesh_glow",
+          "Atlas_ad_top_mesh_glow (1)",
+          "Atlas_add_top_fast_wave",
+          "Atlas_add_top_particles"
+        ]
+      },
+      {
+        "name": "[gimmick]wall_mural6",
+        "emitters": [
+          "Atlas_ad_top_mesh_glow",
+          "Atlas_ad_top_mesh_glow (1)",
+          "Atlas_add_top_fast_wave",
+          "Atlas_add_top_particles"
+        ]
+      },
+      {
+        "name": "wall_lava_temple",
+        "emitters": []
+      },
+      {
+        "name": "wall_lava_archpodium",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]"
+        ]
+      },
+      {
+        "name": "obj_wall_boss",
+        "emitters": [
+          "FX",
+          "FX",
+          "FX",
+          "FX",
+          "FX"
+        ]
+      },
+      {
+        "name": "[gimmick]crater_cannon",
+        "emitters": [
+          "cauldron_bubble",
+          "BG"
+        ]
+      },
+      {
+        "name": "fx_lava_bubble_world",
+        "emitters": [
+          "cauldron_bubble"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "futurecastle",
+    "dependencies": {
+      "ondemand/v2_3_futurecastle/tilesets/futurecastle": "e79e39f7a26c5ddd03e249efae16cd9348b4031fd826a180fb551af85582f67b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/guild_war/tilesets:guild_war.tileset",
+    "dependencies": {
+      "ondemand/guild_war/tilesets": "0475ccbbd3a0621f3470bd78417dfd4bafd40c8ecb9d556c3d1c3c1db27c7039",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 6,
+    "systems": 26,
+    "sprites": 11,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "fx_simulation_glitch",
+        "emitters": [
+          "guild_war_Atlas_add_glitch"
+        ]
+      },
+      {
+        "name": "fx_simulation_glitch_object",
+        "emitters": [
+          "guild_war_Atlas_add_glitch"
+        ]
+      },
+      {
+        "name": "obj_gw_bridge_deco",
+        "emitters": []
+      },
+      {
+        "name": "obj_gw_bridge2_deco",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]gw_bridge",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "[Atlas_add_top]_sliced_particles (1)",
+          "glass_mesh_piece_small",
+          "mesh_glass_box_glow (1)",
+          "[Atlas_add_top]_dust_explosion (1)",
+          "[Atlas_add_top]_ground_exp (1)",
+          "[Atlas_add_top]_sliced_particles (2)",
+          "[Atlas_add_top]_sliced_particles (3)",
+          "glass_mesh_piece_small (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]gw_bridge2",
+        "emitters": [
+          "mesh_glass_box_glow",
+          "[Atlas_add_top]_dust_explosion",
+          "[Atlas_add_top]_ground_exp",
+          "[Atlas_add_top]_sliced_particles",
+          "[Atlas_add_top]_sliced_particles (1)",
+          "glass_mesh_piece_small",
+          "mesh_glass_box_glow (1)",
+          "[Atlas_add_top]_dust_explosion (1)",
+          "[Atlas_add_top]_ground_exp (1)",
+          "[Atlas_add_top]_sliced_particles (2)",
+          "[Atlas_add_top]_sliced_particles (3)",
+          "glass_mesh_piece_small (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/halloween/tilesets:halloween.tileset",
+    "dependencies": {
+      "ondemand/halloween/tilesets": "f396f4808f22938cef9cc1b4696980b117d4d6aef59b2bf0f3749203e00f3901",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 2,
+    "systems": 2,
+    "sprites": 7,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "obj_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "island",
+    "dependencies": {},
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [
+      {
+        "missingBundle": "tilesets/island"
+      }
+    ],
+    "tiles": []
+  },
+  {
+    "tileset": "main_one_act",
+    "dependencies": {},
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [
+      {
+        "missingBundle": "tilesets/main_one_act"
+      }
+    ],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/memorial_squirrel_girl/tilesets:memorial_squirrel_girl.tileset",
+    "dependencies": {
+      "ondemand/memorial_squirrel_girl/tilesets": "8c8dedd00b4c44a6513950242a59de7da2571152c2c2d7dee1fc8b3b4a423ec7",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f"
+    },
+    "templates": 13,
+    "systems": 8,
+    "sprites": 8,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_]library_chandelier",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "[Atlas_add]_FireSprite_toon",
+          "fx_dark"
+        ]
+      },
+      {
+        "name": "obj_libraryl_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon"
+        ]
+      },
+      {
+        "name": "FC_boss_original",
+        "emitters": []
+      },
+      {
+        "name": "upper3_forest_1",
+        "emitters": []
+      },
+      {
+        "name": "upper3_forest_2",
+        "emitters": []
+      },
+      {
+        "name": "upper3_forest_3",
+        "emitters": []
+      },
+      {
+        "name": "upper3_forest_C",
+        "emitters": []
+      },
+      {
+        "name": "upper3_forest_C_2",
+        "emitters": []
+      },
+      {
+        "name": "upper3_forest_CO",
+        "emitters": []
+      },
+      {
+        "name": "upper4_forest_1",
+        "emitters": []
+      },
+      {
+        "name": "upper4_forest_3",
+        "emitters": []
+      },
+      {
+        "name": "upper4_forest_C_2",
+        "emitters": []
+      },
+      {
+        "name": "upper4_forest_CO_2",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/memorial_bootcamp/tilesets:bootcamp.tileset",
+    "dependencies": {
+      "ondemand/memorial_bootcamp/tilesets": "29621ddd51eb550f592f0869118c48f66f1ca1e3d15c87ea62b977b59b7a1732",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 3,
+    "systems": 8,
+    "sprites": 8,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_in1_table_candle",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "wall_in1_candleholder",
+        "emitters": [
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)",
+          "[Atlas_add]_FireSprite_toon (1)",
+          "[Atlas_add]_FireSprite_toon (2)"
+        ]
+      },
+      {
+        "name": "wall_in1_S4",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/memorial_carp_girl/tilesets:memorial_carp_girl.tileset",
+    "dependencies": {
+      "ondemand/memorial_carp_girl/tilesets": "eef0e805964023c1146ab4fbaa1b7ad50690f0d22c7c2df379ae9fddf301826a",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 17,
+    "systems": 20,
+    "sprites": 7,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "mini_cliff_wood",
+        "emitters": [
+          "cg_Altas_add_dust (1)",
+          "cg_Altas_add_dust (2)"
+        ]
+      },
+      {
+        "name": "fx_water_shuran",
+        "emitters": []
+      },
+      {
+        "name": "mini_cliff_mushroom",
+        "emitters": [
+          "cg_Altas_add_dust (1)"
+        ]
+      },
+      {
+        "name": "mini_cliff_mushroom2",
+        "emitters": [
+          "cg_Altas_add_dust (1)"
+        ]
+      },
+      {
+        "name": "obj_waterfall",
+        "emitters": [
+          "cg_Altas_add_dust"
+        ]
+      },
+      {
+        "name": "obj_waterfall2",
+        "emitters": [
+          "cg_Altas_add_dust"
+        ]
+      },
+      {
+        "name": "wall_bonfire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      },
+      {
+        "name": "wall_undercliff1",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff2",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff3",
+        "emitters": []
+      },
+      {
+        "name": "wall_undercliff4",
+        "emitters": []
+      },
+      {
+        "name": "obj_waterfall3",
+        "emitters": []
+      },
+      {
+        "name": "mini_cliff1",
+        "emitters": []
+      },
+      {
+        "name": "mini_cliff2",
+        "emitters": []
+      },
+      {
+        "name": "mini_cliff_mushroom3",
+        "emitters": [
+          "cg_Altas_add_dust (1)"
+        ]
+      },
+      {
+        "name": "mini_cliff_mushroom4",
+        "emitters": [
+          "cg_Altas_add_dust (1)"
+        ]
+      },
+      {
+        "name": "mini_cliff_mushroom5",
+        "emitters": [
+          "cg_Altas_add_dust (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/memorial_magical_girl/tilesets:memorial_magical_girl.tileset",
+    "dependencies": {
+      "ondemand/memorial_magical_girl/tilesets": "e456668b6edfd9f5fc5745a3ff3c3281e30bd0b3f0f89ab674564214d57e8eef",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 6,
+    "systems": 5,
+    "sprites": 4,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "obj_tree1",
+        "emitters": []
+      },
+      {
+        "name": "boos_background",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]car",
+        "emitters": []
+      },
+      {
+        "name": "fx_mg_sunflare",
+        "emitters": [
+          "flare_center (1)",
+          "lens_flare (2)",
+          "lens_flare (3)"
+        ]
+      },
+      {
+        "name": "fx_mg_sunflare_2",
+        "emitters": [
+          "lens_flare (2)",
+          "lens_flare (3)"
+        ]
+      },
+      {
+        "name": "obj_floor4_sign",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_darkness/tilesets:ancient_darkness.tileset",
+    "dependencies": {
+      "ondemand/ancient_darkness/tilesets": "388c0dc2102bd5e1c60ee0296a133dd1bfd6730266ddca01784363b3483bd48f",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 19,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_BSW",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_TRI",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_earth/tilesets:ancient_earth.tileset",
+    "dependencies": {
+      "ondemand/ancient_earth/tilesets": "5ed413e5d775bb2cf17622909badd9726c66bd1f4a4113b7ceed9867d3f60b8f",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 18,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_fire/tilesets:ancient_fire.tileset",
+    "dependencies": {
+      "ondemand/ancient_fire/tilesets": "5afeb6c885bb8a8f2ecf519d523780a1ee9b6317961316ffb4b1e14c08464a82",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 19,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_BSW",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_ice/tilesets:ancient_ice.tileset",
+    "dependencies": {
+      "ondemand/ancient_ice/tilesets": "a8d1ce963a8a4676a1478f05dfab92152789ad10a5c14f304a1582db488af561",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 18,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_light/tilesets:ancient_light.tileset",
+    "dependencies": {
+      "ondemand/ancient_light/tilesets": "00dfceacd1861a20a13964623d384afed15e9d2e3fbb6621544fae98c51de0da",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 19,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_BSW",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/ancient_none/tilesets:ancient_none.tileset",
+    "dependencies": {
+      "ondemand/ancient_none/tilesets": "bbcf65e846e65e1c1aba9c8baf5657f0052c7ec21813420c4c72fdc1715fcdba",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 19,
+    "systems": 1,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]door_ancient",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]brick_controller",
+        "emitters": []
+      },
+      {
+        "name": "[fx]glow",
+        "emitters": [
+          "glow"
+        ]
+      },
+      {
+        "name": "[breakable]obj_Barrel",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick1",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick2",
+        "emitters": []
+      },
+      {
+        "name": "obj_brick3",
+        "emitters": []
+      },
+      {
+        "name": "stair_L",
+        "emitters": []
+      },
+      {
+        "name": "stair_R",
+        "emitters": []
+      },
+      {
+        "name": "step1",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_C",
+        "emitters": []
+      },
+      {
+        "name": "step1_wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_1",
+        "emitters": []
+      },
+      {
+        "name": "wall_2",
+        "emitters": []
+      },
+      {
+        "name": "wall_C",
+        "emitters": []
+      },
+      {
+        "name": "wall_CS",
+        "emitters": []
+      },
+      {
+        "name": "wall_TRI",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/gimmick_part3/tilesets:gimmick_part3.tileset",
+    "dependencies": {
+      "ondemand/gimmick_part3/tilesets": "690c7a08eac28fe8409dca969f03d7002da1b03f6dc3c5363fd0e913a2c7d0d9",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 1,
+    "systems": 23,
+    "sprites": 15,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]warp_pad",
+        "emitters": [
+          "Trail_particles_wp",
+          "particles",
+          "Trail_particles_wp",
+          "particles",
+          "Trail_particles_wp",
+          "particles",
+          "Start_Glow_up_[Atlas_add]",
+          "Start_Glow_up_[Atlas_add] (1)",
+          "electric_mesh (3)",
+          "[Atlas_ab]_bg",
+          "cha_glow",
+          "[Atlas_add_top]_Line_long (3)",
+          "[Atlas_add_top]_Line_long (1)",
+          "[Atlas_add_top]_Line_long",
+          "[Atlas_add_top]_particle (2)",
+          "electric_particles_seq",
+          "[Atlas_add]_star",
+          "[Atlas_add]_glow_bg (4)",
+          "[Atlas_add_top]_Flash",
+          "[Atlas_add]_fast_ring (1)",
+          "[Atlas_ab]_bg",
+          "particles (1)",
+          "End_Flash_[Atlas_add] (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "pvp",
+    "dependencies": {
+      "tilesets/pvp": "cd146eee899f070e4d119c6970b3fb105b8d327488205e404accfa13bbc60c5d",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[pvp]track_switch",
+        "emitters": []
+      },
+      {
+        "name": "track_goal",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/short_story_clevatess/tilesets:clevatess.tileset",
+    "dependencies": {
+      "ondemand/short_story_clevatess/tilesets": "ece3b316adb62327a022717f8152bbdabe77665012f315fb2cf41263cb5e261b",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 9,
+    "systems": 40,
+    "sprites": 30,
+    "issues": [
+      {
+        "tile": "[gimmick]battlegate",
+        "node": "FX_leaf",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "[gimmick]keydoor",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2",
+          "FX_glow",
+          "FX_fragment",
+          "FX_smoke"
+        ]
+      },
+      {
+        "name": "[gimmick]battlegate",
+        "emitters": [
+          "FX_leaf"
+        ]
+      },
+      {
+        "name": "obj_ren_tree",
+        "emitters": []
+      },
+      {
+        "name": "underwater_wave",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]smithy",
+        "emitters": [
+          "ct_Atlas_add_smoke_glow",
+          "ct_Atlas_add_top_sparks",
+          "ct_Atlas_add_top_sparks (1)",
+          "ct_Atlas_ab_smoke",
+          "ct_Atlas_add_top_smoke_glow",
+          "ct_Atlas_add_Flame_Explosion",
+          "ct_Atlas_add_top_smoke_glow",
+          "ct_Atlas_add_top_sparks",
+          "ct_Atlas_ab_smoke",
+          "ct_Atlas_add_top_smoke_glow",
+          "ct_Atlas_add_Flame_Explosion",
+          "ct_Atlas_add_Flame_Explosion (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]smithy2",
+        "emitters": [
+          "ct_Atlas_add_smoke_glow",
+          "ct_Atlas_add_top_sparks",
+          "ct_Atlas_add_top_sparks (1)",
+          "ct_Atlas_ab_smoke",
+          "ct_Atlas_add_top_smoke_glow",
+          "ct_Atlas_add_Flame_Explosion",
+          "ct_Atlas_add_top_smoke_glow",
+          "ct_Atlas_add_top_sparks",
+          "ct_Atlas_ab_smoke",
+          "ct_Atlas_add_top_smoke_glow",
+          "ct_Atlas_add_Flame_Explosion",
+          "ct_Atlas_add_Flame_Explosion (1)"
+        ]
+      },
+      {
+        "name": "[GIMMICK]brazier1_clevatess",
+        "emitters": [
+          "fx_ct_Atlas_add_fire_spark"
+        ]
+      },
+      {
+        "name": "[gimmick]light_zone_br",
+        "emitters": [
+          "ct_Atlas_add_ray",
+          "ct_Atlas_add_weaklight",
+          "ct_Atlas_add_hardlight",
+          "ct_Atlas_add_particle"
+        ]
+      },
+      {
+        "name": "[gimmick]light_zone_da",
+        "emitters": [
+          "ct_Atlas_add_ray",
+          "ct_Atlas_add_weaklight",
+          "ct_Atlas_add_hardlight",
+          "ct_Atlas_add_particle"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/restaurant/tilesets:restaurant.tileset",
+    "dependencies": {
+      "ondemand/restaurant/tilesets": "db94e8255a61c459487d18c85f9e5848fdb1c1d14d212e1a52f153c1d97781b5",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/v3_21_waterworld/tilesets:waterworld.tileset",
+    "dependencies": {
+      "ondemand/v3_21_waterworld/tilesets": "9f1ee1393e724b60be2e19d167a85a9223030b1eaa19292e3947329777eece6b",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 12,
+    "systems": 64,
+    "sprites": 38,
+    "issues": [
+      {
+        "tile": "[gimmick]city2_battlegate",
+        "node": "[Mesh]_wood_fragment",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "fx_chapter21_sunligth",
+        "emitters": [
+          "[Atlas_add_top]_RayLine (2)",
+          "_particle (1)"
+        ]
+      },
+      {
+        "name": "fx_chapter21_aura",
+        "emitters": []
+      },
+      {
+        "name": "fx_boss_cloud_down",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "fx_boss_cloud_up",
+        "emitters": [
+          "FX"
+        ]
+      },
+      {
+        "name": "obj_in2_floor_deco1",
+        "emitters": []
+      },
+      {
+        "name": "wall_in2_deco",
+        "emitters": [
+          "v"
+        ]
+      },
+      {
+        "name": "[gimmick]city2_battlegate",
+        "emitters": [
+          "[Atlas_ab]_bg_ground",
+          "[Atlas_ab]_smoke_A",
+          "[Atlas_ab]_smoke_B",
+          "[Atlas_ab]_smoke_C",
+          "[Atlas_add]_Spark",
+          "[Atlas_add]_particle",
+          "[Mesh]_wood_fragment",
+          "gate_market_impact",
+          "gate_market_fragment"
+        ]
+      },
+      {
+        "name": "[gimmcik]lab_workstation",
+        "emitters": [
+          "[Atlas_add]_CastingGlow (2)",
+          "electric_seq_2x4_mesh_",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow",
+          "[Atlas_add]_CastingGlow (1)",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow (1)",
+          "[Atlas_add]_CastingGlow",
+          "line_loop (1)",
+          "[Atlas_add]_CastingGlow (2)",
+          "electric_seq_2x4_mesh_",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow",
+          "[Atlas_add]_CastingGlow (1)",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow",
+          "[Mesh]_Helixwave_r_Add (7)",
+          "[Atlas_add]_CastingGlow (1)",
+          "[Atlas_add]_CastingGlow",
+          "line_loop (1)"
+        ]
+      },
+      {
+        "name": "[gimmick]city3_security",
+        "emitters": [
+          "[Atlas_add_top]_spark_particles",
+          "[Atlas_add_top]_wavering",
+          "[Atlas_add_top]_wavering (1)",
+          "[Atlas_ab_top]_bg",
+          "[Atlas_add_top]_spark_particles (1)",
+          "[Atlas_add_top]_wavering",
+          "[Atlas_add_top]_wavering (1)",
+          "[Atlas_ab_top]_bg",
+          "[Atlas_add_top]_spark_particles",
+          "[Atlas_add_top]_wavering",
+          "[Atlas_add_top]_wavering (1)",
+          "[Atlas_ab_top]_bg",
+          "[Atlas_add_top]_wavering",
+          "[Atlas_add_top]_wavering (2)",
+          "[Atlas_ab_top]_bg (2)",
+          "[Atlas_add_top]_spark_particles (1)",
+          "[Atlas_add_top]_wavering",
+          "[Atlas_add_top]_wavering (1)",
+          "[Atlas_ab_top]_bg (1)"
+        ]
+      },
+      {
+        "name": "bg_colony_01",
+        "emitters": []
+      },
+      {
+        "name": "bg_colony_02",
+        "emitters": [
+          "FX",
+          "FX (1)",
+          "FX (2)",
+          "FX (3)",
+          "particle (1)"
+        ]
+      },
+      {
+        "name": "obj_boss",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/xmas/tilesets:christmas_event.tileset",
+    "dependencies": {
+      "ondemand/xmas/tilesets": "3983e824ce6005f46d15a426b918f9280e4147c8e39252dfdec5d8a9402d46d5",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 12,
+    "systems": 44,
+    "sprites": 14,
+    "issues": [
+      {
+        "tile": "FX_front_cloud",
+        "node": "particle",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "obj_airplane_head",
+        "emitters": []
+      },
+      {
+        "name": "obj_airplane_wing",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_Flame_Explosion",
+          "[Atlas_add_top]_smoke_glow",
+          "[Atlas_ab_top]_ashes_small",
+          "[Atlas_add_top]_sparks",
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_Flame_Explosion",
+          "[Atlas_add_top]_smoke_glow",
+          "[Atlas_ab_top]_ashes_small",
+          "[Atlas_add_top]_sparks"
+        ]
+      },
+      {
+        "name": "obj_airplane_tail",
+        "emitters": [
+          "[Atlas_ab]_smoke",
+          "[Atlas_add]_Flame_Explosion",
+          "[Atlas_add_top]_smoke_glow",
+          "[Atlas_add]_Flame_Explosion (1)",
+          "[Atlas_add]_Flame_Explosion (2)",
+          "[Atlas_add_top]_inside_wider (1)",
+          "[Atlas_add_top]_smoke_inside",
+          "[Atlas_ab]_smoke_tail_r",
+          "[Atlas_ab]_smoke_tail_l",
+          "[Atlas_ab_top]_ashes_small",
+          "[Atlas_add_top]_sparks",
+          "[Atlas_add_top]_flash_up"
+        ]
+      },
+      {
+        "name": "Monster_1",
+        "emitters": [
+          "[Atlas_add]_glow_big",
+          "[Atlas_add]_core",
+          "[Atlas_add]_fire_laser"
+        ]
+      },
+      {
+        "name": "Monster_3",
+        "emitters": [
+          "[Atlas_add]_glow_big",
+          "[Atlas_add]_core",
+          "[Atlas_add]_fire_laser"
+        ]
+      },
+      {
+        "name": "Monster_middle_1",
+        "emitters": [
+          "[Atlas_add]_glow_big",
+          "[Atlas_add]_core",
+          "[Atlas_add]_fire_laser",
+          "[Atlas_add]_glow_big",
+          "[Atlas_add]_core",
+          "[Atlas_add]_fire_laser"
+        ]
+      },
+      {
+        "name": "slide2",
+        "emitters": [
+          "glow",
+          "glow_big",
+          "glow_line",
+          "glow",
+          "glow_big",
+          "glow_line"
+        ]
+      },
+      {
+        "name": "obj_air_background",
+        "emitters": []
+      },
+      {
+        "name": "obj_moon",
+        "emitters": []
+      },
+      {
+        "name": "FX_front_cloud",
+        "emitters": [
+          "particle"
+        ]
+      },
+      {
+        "name": "[gimmick]keydoor_xmas_2",
+        "emitters": [
+          "FX_hole_light",
+          "FX_glow",
+          "FX_glow2"
+        ]
+      },
+      {
+        "name": "[GIMMICK]holdable_key",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/roguechess/tilesets:roguechess.tileset",
+    "dependencies": {
+      "ondemand/roguechess/tilesets": "964101a55a74a7ac6114cfbf82ac372e348fe41d6bf3057f42c6484ffb3635f8",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 2,
+    "systems": 2,
+    "sprites": 5,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "wall_roguechess_robot",
+        "emitters": [
+          "[Atlas_add]_CastingGlow",
+          "[Atlas_add]_grow"
+        ]
+      },
+      {
+        "name": "obj_floor_roguechess3_deco1",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "roguelike_mall",
+    "dependencies": {
+      "ondemand/ancientmall/tilesets": "5030c88585df97272cc98f1ca14ac3cbd9fadc413018aef98fcb2f9ce5bf2adb",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]glow_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]enterance_wall",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "school",
+    "dependencies": {
+      "ondemand/highschool/tilesets": "3a5ee9f8e7b83b24027e82653e99be2171816f3741f488b312c00a59599be08e",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "theatres/iron_teatans_common": "be9f939bf4808e60edba0057c9117b2aef2013b67b715e9dd17f7829405a80d6"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/short_story_noel/tilesets:noel.tileset",
+    "dependencies": {
+      "ondemand/short_story_noel/tilesets": "3fbc31c2ed0a4e13ef89c5c8a57d84bd12e08b9afbc514bc2fc346694de63845",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 2,
+    "systems": 0,
+    "sprites": 1,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "noel_stagr",
+        "emitters": []
+      },
+      {
+        "name": "wall_tree",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "ondemand/worldexplore/tilesets:worldexplore.tileset",
+    "dependencies": {
+      "ondemand/worldexplore/tilesets": "30aafc15ac8d024f6aac8c5b387b092a293486dc0e193c5af8bc2c6481e28df6",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 6,
+    "systems": 9,
+    "sprites": 7,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[fx]water_controller",
+        "emitters": []
+      },
+      {
+        "name": "[gimmick]world_chest ",
+        "emitters": [
+          "[GIMMICK]chest_fx_box_",
+          "[Atlas_add_top]_Glow_Top",
+          "[Atlas_add]_Glow_plane",
+          "(F)lensflare_bt_[Atlas_add_top]",
+          "(F)lensflare_up_[Atlas_add_top]",
+          "(F)Ring_[Atlas_add_top]",
+          "(F)Spark_[Atlas_add_top]",
+          "(F)RayLine_[Atlas_add_top]",
+          "(F)Flare_[Atlas_flare_top]"
+        ]
+      },
+      {
+        "name": "shadow_forest_C",
+        "emitters": []
+      },
+      {
+        "name": "shadow_forest_CS",
+        "emitters": []
+      },
+      {
+        "name": "shadow_forest_S",
+        "emitters": []
+      },
+      {
+        "name": "shadow_forest_in",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "character",
+    "dependencies": {
+      "tilesets/character": "db5dc98f347165c2297ab2763fbbfae023ad9dcd8aba41a266911343536ccbd2",
+      "characters/ghost_flash": "3e6145d943e8d14335c12499f475df1cf3d6a3ec8a173a16da971461fb33156e",
+      "characters/ghost_scream": "168533ae7379fd33e619a344f30d232904150084145830cce2b8653e9c9719b2",
+      "characters/loraine_clone": "549b373383df979d0866787be840b35b343b84e09581c7ac70cd7fadf32fcc5b",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 0,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": []
+  },
+  {
+    "tileset": "ondemand/gimmick_part2/tilesets:gimmick_part2.tileset",
+    "dependencies": {
+      "ondemand/gimmick_part2/tilesets": "995371f63f1351ea650428a507e5b1aeb887129b8b6fa5153fb387d78349065c",
+      "characters/worker_a": "04b3dcf62fa2368b3482355d4b4a3f6d9652efc31d56ca118d81cc04a94b8cb6",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/purple_laser": "49676f08dca0e87587c643d058db16068ce78abe664f131ae73384862924e9db",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 3,
+    "systems": 6,
+    "sprites": 2,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "[gimmick]wind_fan2",
+        "emitters": [
+          "[Atlas_add_top]_inside_wider",
+          "[Atlas_add_top]_smoke_inside"
+        ]
+      },
+      {
+        "name": "[gimmick]wind_fan",
+        "emitters": [
+          "[Atlas_add_top]_inside_wider",
+          "[Atlas_add_top]_smoke_inside"
+        ]
+      },
+      {
+        "name": "[gimmick]wind_fan_pushable",
+        "emitters": [
+          "[Atlas_add_top]_inside_wider",
+          "[Atlas_add_top]_smoke_inside"
+        ]
+      }
+    ]
+  }
+]
