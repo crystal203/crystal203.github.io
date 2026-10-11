@@ -2,3 +2,4 @@
 resources/illust-jp/* -text
 resources/spine-recovered/* -text
 gtmap/assets/maps/*.bytes -text
+resources/spine-expansion/** -text whitespace=cr-at-eol,blank-at-eol,space-before-tab

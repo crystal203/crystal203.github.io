@@ -1,0 +1,157 @@
+{
+  "name": "garage_car",
+  "sources": [
+    "spine/garage_car/garage_car_a_dark.prefab",
+    "spine/garage_car/garage_car_a_earth.prefab",
+    "spine/garage_car/garage_car_a_fire.prefab",
+    "spine/garage_car/garage_car_a_gold.prefab",
+    "spine/garage_car/garage_car_a_light.prefab",
+    "spine/garage_car/garage_car_a_normal.prefab",
+    "spine/garage_car/garage_car_a_water.prefab",
+    "spine/garage_car/garage_car_b_dark.prefab",
+    "spine/garage_car/garage_car_b_earth.prefab",
+    "spine/garage_car/garage_car_b_fire.prefab",
+    "spine/garage_car/garage_car_b_gold.prefab",
+    "spine/garage_car/garage_car_b_light.prefab",
+    "spine/garage_car/garage_car_b_normal.prefab",
+    "spine/garage_car/garage_car_b_water.prefab",
+    "spine/garage_car/garage_car_c_dark.prefab",
+    "spine/garage_car/garage_car_c_earth.prefab",
+    "spine/garage_car/garage_car_c_fire.prefab",
+    "spine/garage_car/garage_car_c_gold.prefab",
+    "spine/garage_car/garage_car_c_light.prefab",
+    "spine/garage_car/garage_car_c_normal.prefab",
+    "spine/garage_car/garage_car_c_water.prefab"
+  ],
+  "variants": [
+    "a_dark",
+    "a_earth",
+    "a_fire",
+    "a_gold",
+    "a_light",
+    "a_normal",
+    "a_water",
+    "b_dark",
+    "b_earth",
+    "b_fire",
+    "b_gold",
+    "b_light",
+    "b_normal",
+    "b_water",
+    "c_dark",
+    "c_earth",
+    "c_fire",
+    "c_gold",
+    "c_light",
+    "c_normal",
+    "c_water"
+  ],
+  "scale": 0.022,
+  "files": [
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_dark.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_dark.skel.bytes",
+      "sha256": "3860a62b9151e1cc044a0dcfdc45119d90b991de5e837514523140c88960d85c"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_earth.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_earth.skel.bytes",
+      "sha256": "51c84c9d17ffdc70b95485409470a415655f9dc61ac7c400d43d83dfeb79dc1d"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_fire.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_fire.skel.bytes",
+      "sha256": "cd84d03b38cc21de90f646fdadaefbd5ba88e9f3440329c876f7d4823dc373fe"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_gold.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_gold.skel.bytes",
+      "sha256": "b17805db84988d56aeebe8edaf89ad1a2b65f6150e01cb907c4a08803a860a43"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_light.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_light.skel.bytes",
+      "sha256": "abc05473c48a91ed78c0fc4b6d7a335dc1cf7b4cd25d2d8ae0ee76403ca00b9d"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_normal.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_normal.skel.bytes",
+      "sha256": "dabc922866d021c71895095fda55081d407f055f84bd951bbed227672f16e852"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_a_water.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_a_water.skel.bytes",
+      "sha256": "341027c9ec5d446e3c668466bb2610d06f20f1f5b9f7978000d328eebcfee518"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_dark.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_dark.skel.bytes",
+      "sha256": "190bdc47935d1c9acb47e01965f8db86ed9e1c47e76f71376eb9df96bb72ab32"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_earth.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_earth.skel.bytes",
+      "sha256": "660d52566561abe55d3346c692636156e229adf75ba638837765095d4e776ec3"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_fire.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_fire.skel.bytes",
+      "sha256": "bc9f9a4f930b5487667eb07e58517a221fa0e9418f534e4dfe6e28b49cf13f2a"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_gold.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_gold.skel.bytes",
+      "sha256": "a52cfc9b1f2eef6950233aaaff08c154100092aa16d8021dad4fb5d7a43a6a6b"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_light.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_light.skel.bytes",
+      "sha256": "840b602c12537dd9e1c01c02719d8e11dca288ac0c793c3da3c85adfc9b4fec5"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_normal.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_normal.skel.bytes",
+      "sha256": "2dd5a3f28449dcac353bc5f777848577b564d94d4b62ed84ad62813199b8e3e2"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_b_water.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_b_water.skel.bytes",
+      "sha256": "ea670783b4dc541632776b190ef44389fa9d73591c3a6be3cd979e25c6981ed2"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_dark.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_dark.skel.bytes",
+      "sha256": "a08983a6fa25551a8c08083a1f0ec33744b1d585d8e3f71da3e2ecc631990e37"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_earth.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_earth.skel.bytes",
+      "sha256": "e880676d2c0bc6c10704880953f55ea7fca663b30f5dff01ad9ad324d008a726"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_fire.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_fire.skel.bytes",
+      "sha256": "3a4d1687076eec1299dbc5a83ad6ceacdcaf35729ad12eb6576015bc782dfa5c"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_gold.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_gold.skel.bytes",
+      "sha256": "f64dabeccc5289989b2a78806fdcdb2e78d0eb23772cd2ada23ff56ea8a7014e"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_light.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_light.skel.bytes",
+      "sha256": "b76a12d6789db13f04aa904f9cee3be7c452d9e19785df449e935bf9538ab939"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_normal.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_normal.skel.bytes",
+      "sha256": "8171c2392e082cbdc139818b07fe7616e6c0f9a24bf7335557f0f661042e106a"
+    },
+    {
+      "path": "resources/spine-expansion/character/garage_car/garage_car_c_water.bytes",
+      "source": "D:\\GTAsset\\FullExtract\\ExportedProject\\Assets\\TextAsset\\garage_car_c_water.skel.bytes",
+      "sha256": "0051c8b327b049ca7ed8e901865889844dd398a054d7df83279196c2744201f7"
+    }
+  ]
+}

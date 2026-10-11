@@ -238,7 +238,7 @@ function buildClouds(key, tiles, group, layerIndex) {
   return true;
 }
 
- this.build=async(doc)=>{const buildGeneration=assetsGeneration;clear();mapStartTime=particleTime.value;map=doc;mapGroup=new THREE.Group();scene.add(mapGroup);
+ this.build=async(doc,{loadCharacters=true}={})=>{const buildGeneration=assetsGeneration;clear();mapStartTime=particleTime.value;map=doc;mapGroup=new THREE.Group();scene.add(mapGroup);
   let renderedTiles = 0, sentinelTiles = 0, emptyTiles = 0, instanceCount = 0;
   const sourceBounds = new THREE.Box3();
   for (const [layerIndex, layer] of map.layers.entries()) {
@@ -288,7 +288,7 @@ function buildClouds(key, tiles, group, layerIndex) {
 
     if(disposed)throw new Error('Preview disposed');
   }
-  const characterResult=await characters.build(doc,layerGroups,bundle.itemMetadata,bundle.sortingLayers);
+  const characterResult=await characters.build(doc,layerGroups,bundle.itemMetadata,bundle.sortingLayers,{load:loadCharacters});
   if(disposed||map!==doc||buildGeneration!==assetsGeneration)throw new DOMException('地图已切换','AbortError');for(const group of layerGroups.values())if(!group.parent)mapGroup.add(group);
   for(const entry of characters.entries){sourceBounds.expandByPoint(entry.record.position);if(entry.loaded)entry.group.userData.renderedTiles++;}
   for(const r of selection.records.values())doors.register(r);doors.sample(0);
@@ -307,6 +307,7 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.getCharacterControls=()=>selection.values().length===1?characters.controls(selection.values()[0]):null;
  this.setCharacterState=settings=>{if(selection.values().length!==1||!selection.values()[0].character)return;selection.transaction(()=>characters.change(selection.values()[0],settings));selection.refresh();changed();};
  this.getCharacters=()=>characters.entries.map(e=>({...e.tile.character,name:e.tile.name,tileId:e.tile.id,layer:e.tile.layer,position:[e.record.position.x,e.record.position.y*2,-e.record.position.z]}));
+ this.loadCharacters=async()=>{if(!mapGroup||!characters.deferred)return characters.diagnostics();const doc=map,token=assetsGeneration;const result=await characters.loadDeferred();if(disposed||doc!==map||token!==assetsGeneration)throw new DOMException('地图已切换','AbortError');for(const group of layerGroups.values())if(!group.parent)mapGroup.add(group);for(const entry of characters.entries){mapGroup.userData.bounds.expandByPoint(entry.record.position);if(entry.loaded)entry.group.userData.renderedTiles++;}changed();return result;};
  this.setCharacters=value=>{characters.setVisible(value);changed();};this.setCharactersPlaying=value=>characters.setPlaying(value);
  this.focusSelection=()=>{const values=selection.values();if(!values.length)return;const center=values.reduce((p,r)=>p.add(r.position),new THREE.Vector3()).multiplyScalar(1/values.length),offset=camera.position.clone().sub(controls.target);controls.target.copy(center);camera.position.copy(center).add(offset);camera.zoom=Math.max(camera.zoom,2);camera.updateProjectionMatrix();controls.update();changed();};
  this.setEnvironment=value=>{environmentVisible=value;cloudBatches.forEach(b=>b.visible=value);effects.setVisible(value);states.setVisible(value);changed();};

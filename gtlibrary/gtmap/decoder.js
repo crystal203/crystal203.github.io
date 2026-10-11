@@ -21,24 +21,30 @@ function decodeComponent(name, bytes) {
   if (name === 'Tilemaps.TileProp' && version === 5) {
     out.keyIndex = r.i32(); out.overrides = spec(); out.statUpdateType = r.u8(); out.deactivateOnStart = r.bool(); out.condition = r.i32();
     if (out.condition === 1) { out.conditionIndex = r.i32(); out.conditionName = r.str(); }
-  } else if (name === 'Tilemaps.CharacterPlaceholder' && [9,10].includes(version)) {
+  } else if (name === 'Tilemaps.CharacterPlaceholder' && version >= 1 && version <= 11) {
     out.characterId = r.str(); const kind = out.kind = r.u8();
-    out.field3c = r.i32(); out.fieldf0 = r.str(); out.fieldf8 = r.i32(); out.fieldfc = r.i32();
-    out.tags = Array.from({ length: r.count() }, () => ({ tag: r.u8(), value: r.str() }));
-    out.field38 = r.i32(); out.field40 = r.bool();
+    out.field3c = r.i32(); out.fieldf0 = r.str();
+    if(version>=8)out.fieldf8=r.i32(); if(version>=9)out.fieldfc=r.i32();
+    out.tags = version>=6?Array.from({ length: r.count() }, () => ({ tag: r.u8(), value: r.str() })):[];
+    out.field38 = r.i32(); out.field40 = version>=4?r.bool():false;
     if (kind === 1 || kind === 2) {
-      for (const k of ['60', '68', '70', '78', '80']) out['field' + k] = r.str();
-      out.fielda8 = r.bool(); out.fielda9 = r.bool(); out.field44 = r.i32(); out.field48 = r.bool(); out.field4c = r.i32(); out.field41 = r.bool();
-      const mode = out.field50 = r.i32(); if (mode === 1) out.field54 = r.i32(); if (mode === 1 || mode === 2) out.field58 = r.str();
-      out.hasAppearanceOverride = r.bool();
+      for (const k of ['60', '68', '70']) out['field' + k] = r.str();
+      for (const k of ['78', '80']) out['field' + k] = r.str();
+      out.fielda8 = r.bool(); out.fielda9 = r.bool();
+      if(version>=4){out.field44 = r.i32(); out.field48 = r.bool(); out.field4c = r.i32(); out.field41 = r.bool();
+      }
+      if(version>=5){const mode = out.field50 = r.i32(); if (mode === 1) out.field54 = r.i32(); if (mode === 1 || mode === 2) out.field58 = r.str();
+      }
+      out.hasAppearanceOverride = version>=7?r.bool():false;
       if (out.hasAppearanceOverride) { out.appearanceName = r.str(); out.color32 = Array.from({ length: 4 }, () => r.u8()); out.appearanceValue = r.f32(); }
     }
+    if(kind===3&&version===2){out.fieldb0=r.str();out.fieldb8=r.str();}
     if (kind !== 1) {
-      out.fieldb0 = r.str(); out.fieldb8 = r.str(); out.fieldc0 = r.i32();
-      // v10 inserts this integer BEFORE c8 and the variable-length d0 list.
-      // Empty lists with zero-valued fields conceal a four-byte offset error.
-      if(version===10)out.v10Extra=r.i32();
+      if(version!==2){out.fieldb0 = r.str(); out.fieldb8 = r.str();} out.fieldc0 = r.i32();
+      // Native Deserialize 0x76386911fa74: v10 adds FLOAT c4, v11 BOOL d8.
+      if(version>=10)out.fieldc4=r.f32();
       out.fieldc8 = r.u8();
+      if(version>=11)out.fieldd8=r.bool();
       out.fieldd0 = Array.from({ length: r.count() }, () => [r.i32(), r.i32(), r.i32(), r.f32()]);
     }
     out.overrides = spec();
@@ -51,7 +57,7 @@ function decodeComponent(name, bytes) {
 function readComponent(name,bytes){
  try{return decodeComponent(name,bytes);}catch(error){
   const out={raw:bytes,decoded:false,error:error.message};
-  try{const r=new Reader(bytes);out.version=r.i32();if(name==='Tilemaps.CharacterPlaceholder'&&[9,10].includes(out.version)){const characterId=r.str(),kind=r.u8();if([1,2,3].includes(kind))Object.assign(out,{characterId,kind,partial:true});}}catch{}
+  try{const r=new Reader(bytes);out.version=r.i32();if(name==='Tilemaps.CharacterPlaceholder'&&out.version>=1&&out.version<=11){const characterId=r.str(),kind=r.u8();if([1,2,3,4].includes(kind))Object.assign(out,{characterId,kind,partial:true});}}catch{}
   return out;
  }
 }

@@ -1,6 +1,6 @@
-"""Component readers for versions present in the afterworld samples.
+"""Native component readers, including CharacterPlaceholder versions 1–11.
 
-Character v9 comes from native Deserialize at RVA 0x81fba74 and IsNpc
+Character v1–v11 come from native Deserialize at RVA 0x81fba74 and IsNpc
 at 0x81fafcc. Unknown names remain field_<native object offset>, not guesses.
 TileProp v5 is corroborated by its native reader and all sampled payloads.
 The other small layouts are data-derived; their semantic names are tentative.
@@ -25,47 +25,10 @@ def read_component(component, data):
             out['field_0x34'] = r.unpack('i')
             out['field_0x38'] = r.string()
         out['evidence'] = 'native reader + complete payload consumption'
-    elif component == 'Tilemaps.CharacterPlaceholder' and version == 9:
-        out['characterId'] = r.string()
-        kind = r.unpack('B')
-        out['kind'] = kind
-        out['field_0x3c'] = r.unpack('i')
-        out['field_0xf0'] = r.string()
-        out['field_0xf8'] = r.unpack('i')
-        out['field_0xfc'] = r.unpack('i')
-        out['field_0x30'] = [{'tag': r.unpack('B'), 'value': r.string()}
-                             for _ in range(r.count())]
-        out['field_0x38'] = r.unpack('i')
-        out['field_0x40'] = r.boolean()
-        if kind in (1, 2):  # Native IsNpc: unsigned(kind - 1) < 2.
-            for key in ('0x60', '0x68', '0x70', '0x78', '0x80'):
-                out['field_' + key] = r.string()
-            out['field_0xa8'] = r.boolean()
-            out['field_0xa9'] = r.boolean()
-            out['field_0x44'] = r.unpack('i')
-            out['field_0x48'] = r.boolean()
-            out['field_0x4c'] = r.unpack('i')
-            out['field_0x41'] = r.boolean()
-            mode = r.unpack('i')
-            out['field_0x50'] = mode
-            if mode == 1:
-                out['field_0x54'] = r.unpack('i')
-            if mode in (1, 2):
-                out['field_0x58'] = r.string()
-            out['hasAppearanceOverride'] = r.boolean()
-            if out['hasAppearanceOverride']:
-                out['field_0x88'] = r.string()
-                out['field_0x90_color32'] = r.unpack('4B')
-                out['field_0xa0'] = r.unpack('f')
-        if kind != 1:
-            out['field_0xb0'] = r.string()
-            out['field_0xb8'] = r.string()
-            out['field_0xc0'] = r.unpack('i')
-            out['field_0xc8'] = r.unpack('B')
-            out['field_0xd0'] = [r.unpack('iiif') for _ in range(r.count())]
-        spec = r.string()
-        out['overriddenComponentSpec'] = json.loads(spec) if spec else None
-        out['evidence'] = 'native reader + complete payload consumption'
+    elif component == 'Tilemaps.CharacterPlaceholder' and 1 <= version <= 11:
+        from character_payload import read_character
+        out.update(read_character(data), bytesConsumed=len(data), evidence='native Deserialize 0x76386911fa74 + complete payload consumption')
+        return out
     elif component == 'Oak.ShearController' and version == 0:
         out['shearCandidate'] = r.unpack('f')
         out['evidence'] = 'data-derived; native semantics pending'
