@@ -37,7 +37,7 @@ export class MapStates {
   for(const ref of e.record.refs){ref.suppressed=true;ref.mesh.setMatrixAt(ref.index,hidden);ref.mesh.instanceMatrix.needsUpdate=true;ref.mesh.boundingSphere=null;}
   e.effects=new MapEffects(this.camera,this.textures,this.selection);e.effects.stateful=true;e.effects.setBrightness(this.brightness);e.effects.setVisible(this.visible);
   // Build dormant emitters too; source node activation curves decide when they run.
-  const spec={...e.spec,includeInactive:true,forceNodes:true,scripts:e.spec.scripts.map(s=>({...s,fields:{...s.fields}})),sampleNodes:sim=>this.nodes(e,sim,this.time)};
+  const spec={...e.spec,includeInactive:true,forceNodes:true,scripts:e.spec.scripts.map(s=>({...s,fields:{...s.fields}})),sampleNodes:sim=>this.nodes(e,sim,e.previewTime??this.time)};
   e.effects.build(spec,e.assets,[e.record.tile],e.group,e.layerIndex);e.sim=e.effects.simulations[0];
   if(!e.sim){e.effects.build({...spec,forceNodes:true},e.assets,[e.record.tile],e.group,e.layerIndex);e.sim=e.effects.simulations[0];}
   e.parts=[];
@@ -82,10 +82,10 @@ export class MapStates {
   for(const [id,v] of e.overrides)sim.nodes.get(id).visible=v;
   sim.nodeRoot.updateMatrixWorld(true);
  }
- sample(time){this.time=time;for(const e of this.entries){if(!e.active)continue;e.effects.sample(Math.max(0,time-e.effectStart));
-  for(const p of e.parts){const node=e.sim.nodes.get(p.part.node),local=reflection.clone().multiply(node.matrixWorld).multiply(reflection);p.ref.local.copy(local);p.mesh.visible=!e.spec.pickup||this.pickupsVisible;p.ref.enabled=(e.rendererEnabled.get(node)??p.part.enabled)&&isActive(node);p.mesh.setMatrixAt(0,p.ref.enabled?e.record.matrix.clone().multiply(local):hidden);p.mesh.instanceMatrix.needsUpdate=true;
+ sample(time){this.time=time;for(const e of this.entries){if(!e.active)continue;for(const b of e.effects.batches)b.mesh.material.userData.animationTime=e.previewTime;e.effects.sample(Math.max(0,(e.previewTime??time)-e.effectStart));
+  for(const p of e.parts){p.mesh.material.userData.animationTime=e.previewTime;const node=e.sim.nodes.get(p.part.node),local=reflection.clone().multiply(node.matrixWorld).multiply(reflection);p.ref.local.copy(local);p.mesh.visible=!e.spec.pickup||this.pickupsVisible;p.ref.enabled=(e.rendererEnabled.get(node)??p.part.enabled)&&isActive(node);p.mesh.setMatrixAt(0,p.ref.enabled?e.record.matrix.clone().multiply(local):hidden);p.mesh.instanceMatrix.needsUpdate=true;
    for(const [name,u] of Object.entries(p.mesh.material.uniforms)){const color=p.source.colors[name]||p.source.nativeShader.defaults[name],slot=p.source.texenvs[name.replace(/_ST$/,'')];if(color&&u.value?.set)u.value.set(...['r','g','b','a'].map(k=>color[k]??0));else if(name.endsWith('_ST')&&slot)u.value.set(slot.scale.x,slot.scale.y,slot.offset.x,slot.offset.y);}
-   for(const script of e.spec.scripts.filter(s=>s.node===p.part.node&&s.type.startsWith('FxUvanim'))){const name=script.type.includes('Tex2')?'_MainTex2_ST':'_MainTex_ST',u=p.mesh.material.uniforms[name]?.value;if(u){u.z+=(script.fields.scrollSpeed_X||0)*time;u.w+=(script.fields.scrollSpeed_Y||0)*time;}}
+   for(const script of e.spec.scripts.filter(s=>s.node===p.part.node&&s.type.startsWith('FxUvanim'))){const name=script.type.includes('Tex2')?'_MainTex2_ST':'_MainTex_ST',u=p.mesh.material.uniforms[name]?.value;if(u){u.z+=(script.fields.scrollSpeed_X||0)*(e.previewTime??time);u.w+=(script.fields.scrollSpeed_Y||0)*(e.previewTime??time);}}
    for(const [attribute,value] of e.materialValues.get(node)||[]){const dot=attribute.lastIndexOf('.');if(dot<0){const scalar=p.mesh.material.uniforms[attribute];if(scalar)scalar.value=value;continue;}const u=p.mesh.material.uniforms[attribute.slice(0,dot)]?.value,k=attribute.slice(dot+1);if(u&&typeof u==='object')u[({r:'x',g:'y',b:'z',a:'w'})[k]||k]=value;}
   }
  }}

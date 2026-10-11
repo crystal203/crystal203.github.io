@@ -60,7 +60,7 @@ export function nativeMaterial(source, textures, partMatrix, {particles=false}={
  const mat=new THREE.RawShaderMaterial({glslVersion:THREE.GLSL3,uniforms,vertexShader:program('VERTEX'),fragmentShader:program('FRAGMENT'),transparent,depthWrite:profile.depthWrite,depthTest:profile.depthTest!==8,side:profile.cull===0?THREE.DoubleSide:profile.cull===1?THREE.BackSide:THREE.FrontSide,blending:transparent?THREE.CustomBlending:THREE.NoBlending,blendSrc:factors[profile.srcBlend],blendDst:factors[profile.dstBlend],toneMapped:false});
  const span=new THREE.Vector2();
  mat.onBeforeRender=(renderer,scene,camera)=>{
-  const t=performance.now()*.001;uniforms.gtBrightness.value=uniforms.brightness.value;
+  const t=Number.isFinite(mat.userData.animationTime)?mat.userData.animationTime:performance.now()*.001;uniforms.gtBrightness.value=uniforms.brightness.value;
   for(const name of globals){const u=uniforms[name];
    if(name==='hlslcc_mtx4x4unity_MatrixV')u.value.copy(camera.matrixWorldInverse).multiply(reflection);
    else if(name==='hlslcc_mtx4x4unity_MatrixVP')u.value.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse).multiply(reflection);

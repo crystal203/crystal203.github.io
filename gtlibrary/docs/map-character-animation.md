@@ -51,8 +51,8 @@
 
 世界 22 的 14 张地图共 633 条占位记录，其中 455 条已放置全部能关联；其余预置不自动执行出场脚本。主界面实际验证 fireworld_1 为 39/39、fireworld_6 为 60/60，均无资源加载失败。新增 35 组资源的 122 份骨骼完成浏览器解析，v1–v11 共 37 个版本/类型样本通过生产 JavaScript 解码器。脚部修正定向场景恢复了被地板遮住的像素，同时保留前景墙体遮挡，无着色器编译错误。没有进行全库渲染回归。24 个 princess 的定向初始化对比中，强制骨骼绘制由修改前 360 次减少为 48 次；跳过模式人物资源读取为 0，之后成功补载 24/24。princess 默认 normal 皮肤有 13 个可见 attachment；这里的开销数字是该固定场景的调用计数，不是全库耗时加速保证。
 
-原生脚底阴影的资源、组件与还原边界见 [map-character-shadows.md](map-character-shadows.md)，本次阴影只做考察，没有添加近似阴影。
+原生脚底阴影的资源、组件与还原边界见 [map-character-shadows.md](map-character-shadows.md)，后续已按原图集和 prefab 参数接入阴影。
 
-事件还原本次只做考察，见 [map-events-feasibility.md](map-events-feasibility.md)。地图占位并不包含所有由剧情脚本动态生成的人物。
+事件考察见 [map-events-feasibility.md](map-events-feasibility.md)，已接入的走位、机关与原生片段见 [map-events-preview.md](map-events-preview.md)。地图占位并不包含所有由剧情脚本动态生成的人物。
 
 早期合成场景原型仍保留在 `tools/gtmap/character-preview.html`，用于独立观察渲染链路；它不代表实际地图还原。

@@ -1,0 +1,521 @@
+{
+  "version": 1,
+  "scenes": [
+    {
+      "id": "fireworld-landing",
+      "version": 1,
+      "map": "fireworld_1",
+      "title": "火世界 · 飞船着陆片段",
+      "duration": 21.3,
+      "actors": [
+        {
+          "handle": "preview_leader",
+          "resource": "knight_male_2",
+          "name": "预览队长（男骑士）",
+          "position": [
+            8.5,
+            1,
+            4.5
+          ]
+        },
+        {
+          "handle": "princess"
+        },
+        {
+          "handle": "dragon_boy"
+        },
+        {
+          "handle": "balloon"
+        },
+        {
+          "handle": "preview_pilot",
+          "resource": "dragon_boy_2",
+          "name": "飞船驾驶员",
+          "position": [
+            2.4,
+            1,
+            0.2
+          ],
+          "direction": "left"
+        }
+      ],
+      "commands": [
+        {
+          "at": 0,
+          "op": "camera",
+          "position": [
+            -1.5,
+            0,
+            0
+          ],
+          "span": 9
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "preview_leader",
+          "position": [
+            8.5,
+            1,
+            4.5
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "preview_leader",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "preview_leader",
+          "points": [
+            [
+              -5,
+              0,
+              -5
+            ]
+          ],
+          "relative": true,
+          "duration": 3,
+          "direction": "left",
+          "animation": "idle",
+          "endAnimation": "idle"
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "princess",
+          "position": [
+            8.5,
+            1,
+            5.5
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "princess",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "princess",
+          "points": [
+            [
+              -5,
+              0,
+              -5
+            ]
+          ],
+          "relative": true,
+          "duration": 3,
+          "direction": "left",
+          "animation": "idle",
+          "endAnimation": "idle"
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "dragon_boy",
+          "position": [
+            9.5,
+            1,
+            4
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "dragon_boy",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "dragon_boy",
+          "points": [
+            [
+              -5,
+              0,
+              -5
+            ]
+          ],
+          "relative": true,
+          "duration": 3,
+          "direction": "left",
+          "animation": "idle",
+          "endAnimation": "idle"
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "balloon",
+          "position": [
+            11.5,
+            1,
+            11
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "balloon",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "balloon",
+          "points": [
+            [
+              -5,
+              0,
+              -5
+            ]
+          ],
+          "relative": true,
+          "duration": 3,
+          "direction": "left",
+          "animation": "idle",
+          "endAnimation": "idle"
+        },
+        {
+          "at": 4.3,
+          "op": "move",
+          "target": "preview_leader",
+          "points": [
+            [
+              -2,
+              0,
+              0
+            ]
+          ],
+          "duration": 1,
+          "animation": "get",
+          "direction": "left",
+          "lastDirection": "right"
+        },
+        {
+          "at": 4.3,
+          "op": "jump",
+          "target": "preview_leader",
+          "height": 2.5,
+          "duration": 1
+        },
+        {
+          "at": 4.3,
+          "op": "move",
+          "target": "princess",
+          "points": [
+            [
+              -1,
+              0,
+              0.5
+            ]
+          ],
+          "duration": 1,
+          "animation": "get",
+          "direction": "left",
+          "lastDirection": "right"
+        },
+        {
+          "at": 4.3,
+          "op": "jump",
+          "target": "princess",
+          "height": 2.5,
+          "duration": 1
+        },
+        {
+          "at": 4.3,
+          "op": "move",
+          "target": "dragon_boy",
+          "points": [
+            [
+              -1,
+              0,
+              -0.5
+            ]
+          ],
+          "duration": 1,
+          "animation": "get",
+          "direction": "left",
+          "lastDirection": "right"
+        },
+        {
+          "at": 4.3,
+          "op": "jump",
+          "target": "dragon_boy",
+          "height": 2.5,
+          "duration": 1
+        },
+        {
+          "at": 5.3,
+          "op": "visible",
+          "target": "preview_pilot",
+          "value": true
+        },
+        {
+          "at": 5.3,
+          "op": "dialogue",
+          "duration": 4,
+          "text": "驾驶员：本次航班已安全降落在沃贝尔火山地带。"
+        },
+        {
+          "at": 9.3,
+          "op": "dialogue",
+          "duration": 4,
+          "text": "驾驶员：衷心地感谢选择我们航空公司的各位乘客，我们将始终竭诚为您服务。"
+        },
+        {
+          "at": 13.3,
+          "op": "dialogue",
+          "duration": 4,
+          "text": "驾驶员：祝各位乘客的冒险，一路平安。"
+        },
+        {
+          "at": 17.3,
+          "op": "dialogue",
+          "duration": 4,
+          "text": "公主：谢啦！"
+        },
+        {
+          "at": 17.3,
+          "op": "pose",
+          "target": "princess",
+          "expression": "smile",
+          "direction": "right"
+        }
+      ],
+      "source": "Quest/Main/FireWorld/Main/Section1.lua · CharacterPlacer/Main/Section1.lua",
+      "notes": "走位坐标、3 秒平移、1.3 秒等待和 1 秒着陆来自原脚本；跳跃曲线采用高度 2.5 的抛物线近似。队长以可替换的男骑士预览；对白取中文静态表，每句暂用 4 秒。音效、屏幕淡入和震屏未接入。",
+      "evidence": [
+        {
+          "path": "decrypted/Quest/Main/FireWorld/Main/Section1.lua",
+          "sha256": "67c6c0eb1bc67193b9d42d934612ed9529a2e51dd0dcc46a8d080151ce9f3b71"
+        },
+        {
+          "path": "decrypted/Quest/Main/FireWorld/CharacterPlacer/Main/Section1.lua",
+          "sha256": "91904b0b593ceddedb3c528e735228759ca3bf0f06e7db1a6f5b1dc8d0827ace"
+        },
+        {
+          "path": "Tilemaps_decoded/fireworld_1.tilemap",
+          "sha256": "3d2088d6c0a99d0c48c75576c968d088deb2da6185211b5b410d77cdc49e4676"
+        },
+        {
+          "path": "static_data_dec/strings-zhCN.json",
+          "sha256": "26f6fa11a01a075732a7b69033f9ce3b73db488bc7ca7d46d338386268705411"
+        }
+      ]
+    },
+    {
+      "id": "fireworld-barrier",
+      "version": 1,
+      "map": "fireworld_5",
+      "title": "火世界 · 封印大门开启片段",
+      "duration": 12,
+      "actors": [
+        {
+          "handle": "preview_leader",
+          "resource": "knight_male_2",
+          "name": "预览队长（男骑士）",
+          "position": [
+            7.5,
+            0,
+            177
+          ]
+        },
+        {
+          "handle": "princess"
+        },
+        {
+          "handle": "dragon_boy"
+        },
+        {
+          "handle": "fire_bishop"
+        }
+      ],
+      "commands": [
+        {
+          "at": 0,
+          "op": "camera",
+          "position": [
+            7.5,
+            0,
+            180
+          ],
+          "span": 9
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "preview_leader",
+          "position": [
+            7.5,
+            0,
+            177
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "preview_leader",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "preview_leader",
+          "points": [
+            [
+              7.5,
+              0,
+              180
+            ]
+          ],
+          "duration": 1,
+          "direction": "back"
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "princess",
+          "position": [
+            6.5,
+            0,
+            177
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "princess",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "princess",
+          "points": [
+            [
+              6.5,
+              0,
+              180
+            ]
+          ],
+          "duration": 1,
+          "direction": "back"
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "dragon_boy",
+          "position": [
+            7.5,
+            0,
+            178
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "dragon_boy",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "dragon_boy",
+          "points": [
+            [
+              7.5,
+              0,
+              181
+            ]
+          ],
+          "duration": 1,
+          "direction": "back"
+        },
+        {
+          "at": 0,
+          "op": "teleport",
+          "target": "fire_bishop",
+          "position": [
+            8.5,
+            0,
+            177
+          ]
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "fire_bishop",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "move",
+          "target": "fire_bishop",
+          "points": [
+            [
+              8.5,
+              0,
+              180
+            ]
+          ],
+          "duration": 1,
+          "direction": "back"
+        },
+        {
+          "at": 1,
+          "op": "camera",
+          "position": [
+            7.5,
+            0,
+            182.5
+          ],
+          "duration": 1
+        },
+        {
+          "at": 7.5,
+          "op": "gimmick",
+          "target": "s23_gate_1",
+          "state": "open"
+        },
+        {
+          "at": 10,
+          "op": "camera",
+          "position": [
+            7.5,
+            0,
+            180
+          ],
+          "duration": 1
+        }
+      ],
+      "trigger": {
+        "kind": "interact",
+        "target": "s23_gate_1",
+        "radius": 2
+      },
+      "source": "Quest/Main/FireWorld/Main/Section23.lua · stageeventcontrollers/FireWorld/Stage5.lua:gate_open",
+      "notes": "对齐目标、时长、等待顺序与 open 动画调用来自原脚本。人物入场起点是预览布置；徽章特效、音效、震屏、任务条件与存档未执行。可设置交互触发后手动触发。",
+      "evidence": [
+        {
+          "path": "decrypted/Quest/Main/FireWorld/Main/Section23.lua",
+          "sha256": "6ba7b5fa1ec0ba9bf1449c46edf0b0356b27d98117547f41d93884187b800bfe"
+        },
+        {
+          "path": "decrypted/stageeventcontrollers/FireWorld/Stage5.lua",
+          "sha256": "a395d982528650d8dce1ad3f0033881383c47dad2e6c4e40f7a6309c862566a5"
+        },
+        {
+          "path": "Tilemaps_decoded/fireworld_5.tilemap",
+          "sha256": "f50f9f03ab35af9fc4e69a465b19d9ff6302e84b73f86b00d751dfdcd97616c6"
+        }
+      ]
+    }
+  ]
+}

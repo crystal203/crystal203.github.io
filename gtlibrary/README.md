@@ -4,6 +4,8 @@
 
 动画现可导出 GIF、MP4、MOV 和透明 PNG 序列 ZIP；地图可导出带内嵌贴图的 GLB、OBJ 套件或 Blender 套件。详见 [浏览器导出说明](docs/browser-exports.md)。
 
+地图现支持原图集人物脚底阴影、点选路线 / WASD 走位、人物动作与机关时间轴，以及两个已核对的火世界原生片段。可暂停、拖动、倍速、交互 / 接近触发、停止还原和导出编排；详见 [地图走位与事件预览](docs/map-events-preview.md)。
+
 ## 目录职责
 
 ```text
