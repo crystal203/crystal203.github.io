@@ -25,6 +25,12 @@
       var FIT_MARGIN = 0.92;
 
       var $ = function (id) { return document.getElementById(id); };
+      var wikiCatalog = null;
+      function updateWikiEntry() {
+        var hero = wikiCatalog && app.model && app.model.folder !== 'custom' && GTWikiCatalog.resolve(wikiCatalog,{name:app.model.name,skin:app.skeleton && app.skeleton.skin && app.skeleton.skin.name});
+        $('wikiEntry').hidden = !hero;
+        $('wikiEntry').onclick = hero ? function(){GTBridge.navigate('wiki',{hero:hero.id});} : null;
+      }
 
       var canvas = $("canvas");
       var stage = $("stage");
@@ -299,6 +305,7 @@
       function setFolder(folder) {
         app.folder = folder;
         app.model = null;
+        updateWikiEntry();
         $("equipmentPanel").style.display = folder === "character" ? "block" : "none";
         refreshEquipmentPanel();
         if (folder === "character") {$("equipmentStatus").textContent=app.itemSheet ? "" : "点击物品搜索框载入装备图集";$("equipmentPanel").addEventListener("focusin",ensureItems,{once:true});$("equipmentPanel").addEventListener("pointerdown",ensureItems,{once:true});}
@@ -341,6 +348,7 @@
             var resolved = resolveTargetName(target.name);
             if (resolved.name && app.all.indexOf(resolved.name) >= 0) {
               app.pendingSkinTier = resolved.tier;
+              app.pendingSkinName = target.skin || null;
               app.shown = [resolved.name].concat(app.shown.filter(function (n) {
                 return n !== resolved.name;
               }));
@@ -835,6 +843,7 @@
 
       function selectAsset(name) {
         if (!name) return;
+        $('wikiEntry').hidden = true;
         app.current = name;
         markCurrent(true);
         loadAsset(app.folder, name);
@@ -1076,13 +1085,14 @@
       function activateSkeleton(atlas, data, inheritedTracks) {
         var t0 = performance.now();
         app.atlas = atlas;
-        if(app.model)GTBridge.selection({folder:app.model.folder,name:app.model.name});
         app.skeleton = GTSpineCore.createInstance(spine,data);   // data 共享，姿势各自独立
         app.skeleton.setToSetupPose();
         app.skeleton.updateWorldTransform();
         app.picked = null;
 
         populateSkins(data.skins);
+        if(app.model)GTBridge.selection({folder:app.model.folder,name:app.model.name,skin:app.skeleton.skin?.name||''});
+        updateWikiEntry();
         app.emotion = app.model && app.model.folder === "character" && app.emotionData
           ? new GTEmotion.Overlay(spine, app.skeleton, app.emotionData.data) : null;
         setupTracks(data.animations, inheritedTracks);
@@ -1152,6 +1162,14 @@
             app.skeleton.setSkinByName(picked);
             app.skeleton.setSlotsToSetupPose();
           }
+        }
+        // Wiki references may point to a shared skeleton with an exact game skin.
+        var exactSkin = app.pendingSkinName;
+        app.pendingSkinName = null;
+        if (exactSkin && skins.some(function (s) { return s.name === exactSkin; })) {
+          select.value = exactSkin;
+          app.skeleton.setSkinByName(exactSkin);
+          app.skeleton.setSlotsToSetupPose();
         }
       }
 
@@ -2317,6 +2335,7 @@
         if (!app.skeleton) return;
         app.skeleton.setSkinByName($("skinSelector").value);
         app.skeleton.setSlotsToSetupPose();
+        updateWikiEntry();
       });
 
       // =====================================================================
@@ -2649,7 +2668,7 @@
           if (!out.name) return null;
           folder = String(out.name).indexOf("illust_") === 0 ? "illust" : "character";
         }
-        return { folder: folder, name: out.name || "" };
+        return { folder: folder, name: out.name || "", skin: out.skin || "" };
       }
 
       // =====================================================================
@@ -2672,4 +2691,5 @@
         app.pendingTarget = urlTarget;
       }
       setFolder($("folderSelector").value);
+      GTWikiCatalog.load().then(function(value){wikiCatalog=value;updateWikiEntry();}).catch(function(error){console.debug(error);});
     })();

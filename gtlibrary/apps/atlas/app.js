@@ -4,6 +4,7 @@ let currentSpritesheet = null;
         let filteredRegions = [];
         let currentPage = 1;
         let zhNames = {};
+        let wikiCatalog = null;
         const itemsPerPage = 12;
         let searchOptions = {
             caseSensitive: true,
@@ -168,6 +169,8 @@ let currentSpritesheet = null;
                       for(const view of ['spine','fx'])if(entity[view]){const jump=document.createElement('button');jump.className='download-btn';jump.textContent=view==='spine'?'像素动画':'特效';jump.onclick=()=>GTBridge.navigate(view,selection,view==='spine'&&sheetCode==='characters'&&entity.spine.folder==='character'?{name:region.name,folder:'character'}:{});actions.append(jump);}
                       if(entity.illust){const jump=document.createElement('button');jump.className='download-btn';jump.textContent='立绘';jump.onclick=()=>GTBridge.navigate('spine',selection,entity.illust);actions.append(jump);}
                     }
+                    const hero=wikiCatalog&&GTWikiCatalog.resolve(wikiCatalog,selection);
+                    if(hero){const jump=document.createElement('button');jump.className='download-btn';jump.textContent='角色图鉴';jump.onclick=()=>GTBridge.navigate('wiki',{hero:hero.id});actions.append(jump);}
                 }
 
                 regionList.appendChild(item);
@@ -341,3 +344,4 @@ let currentSpritesheet = null;
 window.addEventListener("gt-dispose",()=>{++loadGeneration;loadAbort?.abort();});
 
 GTRegistry.load().then(()=>{if(currentSpritesheet)renderRegionList();}).catch(error=>console.debug(error));
+GTWikiCatalog.load().then(value=>{wikiCatalog=value;if(currentSpritesheet)renderRegionList();}).catch(error=>console.debug(error));

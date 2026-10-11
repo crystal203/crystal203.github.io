@@ -1,20 +1,25 @@
-const $=id=>document.getElementById(id),views=['atlas','spine','fx','map'],titles={atlas:'图集',spine:'像素动画',fx:'特效',map:'地图'};
-let registry=null,mapEntities=[],resourceEntities=[];
+const $=id=>document.getElementById(id),views=['atlas','spine','fx','map','wiki'],titles={atlas:'图集',spine:'像素动画',fx:'特效',map:'地图',wiki:'角色图鉴'};
+let registry=null,mapEntities=[],resourceEntities=[],wikiCatalog=null,wikiEntities=[];
 function rebuildSearch(){
  const people=registry?Object.values(registry.entities):[],keys=new Set();
  const key=e=>e.kind==='atlasRegion'||e.kind==='atlasSheet'?JSON.stringify(['atlas',e.atlas]):e.kind==='spine'?JSON.stringify(['spine',e.spine]):JSON.stringify(['fx',e.fx]);
  for(const e of people){if(e.atlas)keys.add(JSON.stringify(['atlas',e.atlas]));if(e.spine)keys.add(JSON.stringify(['spine',e.spine]));}
- searchItems=[...people,...mapEntities,...resourceEntities.filter(e=>!keys.has(key(e)))];
+ if(wikiCatalog)GTWikiCatalog.enrich(wikiCatalog,registry);
+ const represented=new Set(people.filter(e=>e.wiki).map(e=>e.wiki.hero));
+ searchItems=[...people,...wikiEntities.filter(e=>!represented.has(e.id)),...mapEntities,...resourceEntities.filter(e=>!keys.has(key(e)))];
 }
 
 function resolveSelection(value){
  if(value?.view==='map'||value?.map)return mapEntities.find(e=>e.id===value.map||e.id===value.resource)||null;
- return resourceEntities.find(e=>e.id===value?.resource)||(registry?GTRegistry.resolve(registry,value):null)||resourceEntities.find(e=>e.atlas?.sheet===value?.sheet&&e.atlas?.query===(value.query||value.name))||null;
+ if(value?.view==='wiki'||value?.hero){const hero=wikiCatalog&&GTWikiCatalog.resolve(wikiCatalog,value);if(hero)return {...(registry&&GTRegistry.resolve(registry,{name:hero.id})),...wikiEntities.find(e=>e.id===hero.id)};}
+ const found=resourceEntities.find(e=>e.id===value?.resource)||(registry?GTRegistry.resolve(registry,value):null)||resourceEntities.find(e=>e.atlas?.sheet===value?.sheet&&e.atlas?.query===(value.query||value.name))||null;
+ const hero=wikiCatalog&&GTWikiCatalog.resolve(wikiCatalog,value);
+ return found?(hero?{...found,wiki:{hero:hero.id}}:found):hero?wikiEntities.find(e=>e.id===hero.id):null;
 }
 let active=null,frame=null,entity=null,route=null;
 const states={};let searchItems=[];
 function readRoute(){const params=new URLSearchParams(location.hash.slice(1));const result=Object.fromEntries(params);result.view=views.includes(result.view)?result.view:'atlas';return result;}
-function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category'])if(state[key])params.set(key,state[key]);return params.toString();}
+function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category','hero','stage','costume','illust','direction','skin','weapon','level','weaponLevel','q','role','element','rarity'])if(state[key])params.set(key,state[key]);return params.toString();}
 function navigate(state){if(state)location.hash=encode(state);}
 function renderContext(){
   $('context').textContent=entity?entity.name+' · '+entity.id:'浏览全部资源';
@@ -39,13 +44,13 @@ for(const b of document.querySelectorAll('nav button'))b.onclick=()=>{
   if(active===b.dataset.view)return;
   const related=GTRegistry.route(entity,b.dataset.view);
   if(entity&&!related){$('status').textContent='当前角色没有对应的'+titles[b.dataset.view]+'，已打开全部资源。';}
-  const saved=states[b.dataset.view];navigate(saved&&(!entity||entity.map||b.dataset.view==='map'||saved.resource===entity.id)?saved:related||{view:b.dataset.view});
+  const saved=states[b.dataset.view];navigate(saved&&(!entity||entity.map||b.dataset.view==='map'||saved.resource===entity.id||(b.dataset.view==='wiki'&&saved.hero===entity.wiki?.hero))?saved:related||{view:b.dataset.view});
 };
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame?.contentWindow||event.data?.channel!=='gt-library')return;
   const data=event.data;
   if(data.type==='map-layout'&&active==='map'){document.body.classList.toggle('map-presentation',data.mode==='presentation');return;}
-  if(data.type==='navigate'){if(!registry)return;const target=GTRegistry.route(GTRegistry.resolve(registry,data.selection),data.view);if(target)navigate({...target,...data.params});return;}
+  if(data.type==='navigate'){if(!registry)return;const selected=resolveSelection(data.selection),target=GTRegistry.route(selected,data.view);if(target)navigate({...target,...data.selection,...data.params});return;}
   if(data.type==='selection'){
     const selected=resolveSelection({view:active,...data.selection});entity=selected;
     route={view:active,...data.selection,...(selected?{resource:selected.id}:{resource:''})};
@@ -77,3 +82,5 @@ if('serviceWorker' in navigator&&location.protocol==='https:'){
 GTMapCatalog.load().then(c=>{const directory=GTMapCatalog.navigation(c);mapEntities=c.maps.map(m=>({id:m.id,name:m.title||m.name,aliases:[m.group,m.id,...directory.path(m.category).flatMap(n=>[n.label,...(n.aliases||[])])],map:{map:m.id,category:m.category}}));rebuildSearch();entity=resolveSelection(route);renderContext();if($("library-search").value)search();}).catch(e=>console.debug(e));
 
 GTResourceCatalog.load().then(c=>{resourceEntities=c.entities;rebuildSearch();entity=resolveSelection(route);renderContext();if($("library-search").value)search();}).catch(e=>{console.debug(e);$('context').textContent='部分资源索引读取失败，请刷新重试。';});
+
+GTWikiCatalog.load().then(c=>{wikiCatalog=c;wikiEntities=c.heroes.map(h=>({id:h.id,name:h.name,aliases:[...h.aliases,h.shortName,h.englishName],wiki:{hero:h.id}}));rebuildSearch();entity=resolveSelection(route);renderContext();if($('library-search').value)search();}).catch(e=>console.debug('角色图鉴索引读取失败',e));

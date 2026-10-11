@@ -2,7 +2,7 @@
 from pathlib import Path
 import hashlib
 ROOT=Path(__file__).resolve().parents[1]
-folders=['apps','core','gtatlas','gtasset','gtfx','gtmap','resources','shared','vendor']
+folders=['apps','core','gtatlas','gtasset','gtfx','gtmap','gtwiki','resources','shared','vendor']
 files=[ROOT/name for name in ['index.html','library.js','library.css','sw.js']]
 for folder in folders:files.extend(p for p in (ROOT/folder).rglob('*') if p.is_file() and p!=ROOT/'core/cache-version.js')
 digest=hashlib.sha256()

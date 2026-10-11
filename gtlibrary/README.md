@@ -15,6 +15,9 @@ gtlibrary/
   apps/spine/                             像素动画界面
   apps/fx/                                特效界面
   apps/map/                               地图选择与预览界面
+  apps/wiki/                              角色图鉴、筛选与客观资料界面
+  gtwiki/data/ + backgrounds/ + ui/        原始表生成的角色资料、立绘背景与原生觉醒界面
+  gtwiki/media.js + core/wiki-catalog.js    图鉴预览、人物关联与按需目录
   gtatlas/core.js + assets/                图集解码、透明筛选、旋转裁切与资源
   gtasset/core.js + assets/                Spine 解码、实例化与资源
   gtasset/equipment.js / emotion.js        装备、表情能力
@@ -32,9 +35,17 @@ gtlibrary/
   vendor/                                 单份第三方运行库
 ```
 
-四个领域目录没有 `index.html`。`apps/*/index.html` 是主界面调用的内部视图，顶层直接打开会转回主入口。原来的独立网页代码、测试工具及重复资源副本留在开发归档，未作为网页运行资产发布。
+五个领域目录没有 `index.html`。`apps/*/index.html` 是主界面调用的内部视图，顶层直接打开会转回主入口。原来的独立网页代码、测试工具及重复资源副本留在开发归档，未作为网页运行资产发布。
 
 ## 路由和联动
+
+第五个模块 GTWiki 的入口为 `#view=wiki&hero=plitvice`。角色目录支持名称、职业、属性和初始星级筛选；详情按需读取，包含进化与开花形态、立绘、时装、人物资料、背景故事、普通攻击、连锁和异常状态、队长技能、专属武器与词条。角色像素预览选择对应朝向的 `idle_*` 动画，立绘按人物主体取景，使用固定 3:4 展示框；背景与立绘共同缩放、拖动和复位，远处特效不参与人物缩放。所有像素角色统一使用每单位 3 CSS 像素，带开花形态的角色默认展示开花立绘、小人和武器。角色图集、头像图集及 Spine 资源页均有对应图鉴入口。链接保留形态、朝向、时装、立绘、专武技能版本和人物／武器等级。
+
+资料来自 `E:\GTFiles\static_data_dec`，背景来自 `D:\GTAsset` 的原始 Unity 导出，新角色缺少的背景由 `E:\GTFiles\illust_261004` 补充；浏览器不访问 BWIKI。人物与武器等级可在 1–105 间调节，默认 Lv.100；人物生命按成长率的 2 × (等级 − 1) 次方成长，攻击倍率、防御、恢复和武器基础数值按 (等级 − 1) 次方成长，武器保留未取整基础值后计算词条范围与每秒伤害。百分比词条不随装备等级放大。技能同时列出基础与专武强化后的等级；队伍能力按原始选项的 Base / Add × Level 与觉醒节点计算，第二专武使用 `OverrideOptions` 替换节点。觉醒树沿用游戏 Circle / Node prefab 的节点位置和原生 UI 贴图，显示所有觉醒点、效果、连接关系与道具图标。按进化星级、5星突破、晋升和开花分阶段筛选，突出新增节点；统计累计与新增的节点、属性和材料消耗，支持仅看新增、效果检索和缩放平移。数据版本缺少的文本或素材保留为空，不以其他角色代替。
+
+本机生成脚本与核验记录放在 `E:\GTFiles\_tools\gtwiki`，临时内容不随站点发布。更新原始资料后运行 `python E:\GTFiles\_tools\gtwiki\build_wiki.py --repo D:\github\gtlibrary`；背景生成脚本为同目录下的 `backgrounds.py`；觉醒资料与原生界面由 `awakening.py` 生成，`awakening_validate.py` 核对全部节点和连接。原始表有 12 个节点未提供数值、1 位新角色缺少 6 项效果文本，页面保留节点并标为未记载，核验报告留在本机工具目录。发布前运行 `node tools/prepare-deploy.mjs` 更新资源缓存版本。
+
+吉蒙里晋升的骨骼与开花素材在原始导出中同名，晋升版本带 `_0` 后缀；已依据晋升 prefab 的 GUID 恢复到 `resources/spine-recovered/wiki/`，通过共同资源别名解析，未替换成开花素材。恢复脚本和来源哈希保存在上述本机工具目录。
 
 例如 `#view=spine&resource=hana&name=hana&folder=character` 打开哈娜像素动画，`#view=fx&resource=hana&character=hana` 打开关联特效。图集卡片和统一导航可在当前人物的三种资源之间切换；未收录对应资源时关联按钮不可用。URL 可分享，浏览器前进和后退可切换视图。
 
