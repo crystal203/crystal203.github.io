@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "maps": {
+    "dreamvillage_3": {
+      "file": "dreamvillage_3.json.gz",
+      "count": 15
+    },
+    "dreamvillage_6": {
+      "file": "dreamvillage_6.json.gz",
+      "count": 28
+    },
+    "dreamvillage_2": {
+      "file": "dreamvillage_2.json.gz",
+      "count": 4
+    },
+    "laboseworld_2": {
+      "file": "laboseworld_2.json.gz",
+      "count": 43
+    },
+    "lw_sub_demonshire": {
+      "file": "lw_sub_demonshire.json.gz",
+      "count": 2
+    },
+    "laboseworld_5": {
+      "file": "laboseworld_5.json.gz",
+      "count": 9
+    },
+    "laboseworld_1": {
+      "file": "laboseworld_1.json.gz",
+      "count": 1
+    },
+    "pixyworld_3": {
+      "file": "pixyworld_3.json.gz",
+      "count": 89
+    },
+    "pixyworld_2": {
+      "file": "pixyworld_2.json.gz",
+      "count": 16
+    },
+    "pixyworld_5": {
+      "file": "pixyworld_5.json.gz",
+      "count": 14
+    },
+    "nightmare_demonshire_1": {
+      "file": "nightmare_demonshire_1.json.gz",
+      "count": 1
+    },
+    "nightmare_demonshire_4": {
+      "file": "nightmare_demonshire_4.json.gz",
+      "count": 14
+    },
+    "nightmare_queencastle_3": {
+      "file": "nightmare_queencastle_3.json.gz",
+      "count": 26
+    },
+    "nightmare_queenship_1": {
+      "file": "nightmare_queenship_1.json.gz",
+      "count": 47
+    }
+  },
+  "sources": {
+    "decrypted/Quest/Main/DreamVillage/Princess/Section1.lua": "dbef57d50726d4557a29a8966eeaedec055dfd878c609fea4a285cfce856a423",
+    "decrypted/Quest/Main/DreamVillage/SealedCave/PreSection.lua": "76fad5ddc862346abffa7586c729e883c0bc714b59c05ece1fa7053ac28669e3",
+    "decrypted/Quest/Main/DreamVillage/Vampireidol/Section1.lua": "874fef1d430c99b0747f4ee69ff9e42aed4bd92a7f54580acb44b5be3afe99ce",
+    "decrypted/Quest/Main/LaboseWorld/FindInfectedPerson/Section1.lua": "ffe90211ae56266a150fb945952bb7351e5ac1f458d01d91ae6a92638eb8ad20",
+    "decrypted/Quest/Main/LaboseWorld/LWDemonShire/Section3.lua": "06a05a14d90bcf9be1095c37f22dba06045145bd1cac3f3093c8a97c0c886e39",
+    "decrypted/Quest/Main/LaboseWorld/Main/Section18.lua": "5dfed8d9cd76bf8701c5dbe9cbee2c7fdb6062b32136614415baabe30f3622e6",
+    "decrypted/Quest/Main/LaboseWorld/Main/Section8.lua": "7fbce2875c4cdede0efa58d1e5c80c3eb7b7070d9935fab8a2414547b0d4e5bf",
+    "decrypted/Quest/Main/LaboseWorld/Onigirl/PreSection.lua": "8fe47685249bd06888205a50074947d1bf88aeaf9a4d53ffe862df5139ccd3ea",
+    "decrypted/Quest/Main/PixyWorld/Alexander/PreSection.lua": "98b6ea8d71958dd7cbb876d7b7b18d9d8ac2032c5d586695adf8de61f26350a8",
+    "decrypted/Quest/Main/PixyWorld/Alexander/Section1.lua": "a37000c264a56ff8e41f7160d51150a9d86726894f691c434f0125787ae71645",
+    "decrypted/Quest/Main/PixyWorld/Alexander/Section2.lua": "ff62d955ecc07f00a1c1eea2efb410a3d37058aa29e054a39932957754bbc2b4",
+    "decrypted/Quest/Main/PixyWorld/Alexander/Section3.lua": "fa53071038a9ab8d908a11dcf5c002ebb939903063d9f3804d56cd410050c064",
+    "decrypted/Quest/Main/PixyWorld/HellDivers/PreSection.lua": "556dd223362a5179da7041664da4da1c8ca13e1486eb95fb4141a7fe0deffb82",
+    "decrypted/Quest/Main/PixyWorld/Main/Section10.lua": "339ed574ec3f3b3d74cfe6740826d5e0c9d44836553faf03e1f57936e40f1160",
+    "decrypted/Quest/Main/PixyWorld/Main/Section11.lua": "7e1b458c7780c7a7998acb557d6d84a4635ffe7e8b413508f6354c8c4b9dce44",
+    "decrypted/Quest/Main/PixyWorld/Main/Section19.lua": "50f9b24a7dc2441e932539484c502ed340f6ba280b5095cacb6318da8c4f6fc8",
+    "decrypted/Quest/Main/PixyWorld/Main/Section9.lua": "97aa22d2d2c390a79561e279e95dcd5786eabea1e2a85710f7a1a0aa25ae3b7f",
+    "decrypted/Quest/Main/PixyWorld/Mutation/PreSection.lua": "197137452dabc90a3fb0e2f938b242c127b6dc6b05371c3512a0c35a1dc00dba",
+    "decrypted/Quest/Main/PixyWorld/TRPG/PreSection.lua": "d2d517a9a7172d9253f3333532f9b799663f0b858af783e3b3e370c77adf34e5",
+    "decrypted/Quest/Nightmare/DemonShire/Main/Section1.lua": "8ad68d8b22f701dc8fe5af76c2044188e9a561475c83ba3dc9ede76b58ed9657",
+    "decrypted/Quest/Nightmare/DemonShire/Main/Section12.lua": "bd2f8a409bf624df95bb6933d9c132f1fea63914afecca48eefd81d677ff0e2b",
+    "decrypted/Quest/Nightmare/QueenCastle/WindMan/Section1.lua": "37cbedc03dab4c060f6267eec3ad276be2d4a5261952874a04cd19c603ce7101",
+    "decrypted/Quest/Nightmare/QueenShip/Main/Section3.lua": "f2de39245e76cd1fa28137be41fc7e1e001207d0970f7857725790b557d45e56"
+  },
+  "stringTableSha256": "26f6fa11a01a075732a7b69033f9ce3b73db488bc7ca7d46d338386268705411",
+  "total": 309
+}

@@ -1,0 +1,156 @@
+{
+  "font": {
+    "name": "Tensentype_JiaLiDaYuan_J",
+    "source": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk",
+    "bundle": "assets/AssetBundles/Android/fonts/zh-hans",
+    "bundleSha256": "60a820f5b961e97dd5b570da49482e36eb37de4ca580e3eb2b014f4fc759b9b1",
+    "fontSha256": "51afcd9776f57096a439d362ac0f539b9c7d3e79428f85c710ffa6360f581723"
+  },
+  "panel": {
+    "prefab": "ui/stage/speech_bubble_new.prefab",
+    "atlas": "gtatlas/assets/battle",
+    "sliceRect": [
+      9,
+      16,
+      9,
+      9
+    ],
+    "webBorderImageSlice": [
+      9,
+      9,
+      16,
+      9
+    ],
+    "sliceCoordinates": "trimmed atlas frame; sourceSize padding is not part of the nine-slice",
+    "color": [
+      0.19215687,
+      0.14509805,
+      0.14509805,
+      1
+    ],
+    "fontSize": 29,
+    "webScale": 0.62
+  },
+  "sprites": {
+    "bubble.png": {
+      "frame": {
+        "x": 250,
+        "y": 1538,
+        "w": 20,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 6,
+        "w": 20,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 20,
+        "h": 32
+      }
+    },
+    "bubble_arrow_c_f.png": {
+      "frame": {
+        "x": 544,
+        "y": 1334,
+        "w": 28,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 17,
+        "y": 11,
+        "w": 28,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 76,
+        "h": 76
+      }
+    },
+    "bubble_arrow_c_b.png": {
+      "frame": {
+        "x": 45,
+        "y": 1569,
+        "w": 38,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 11,
+        "w": 38,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 76,
+        "h": 76
+      }
+    },
+    "bubble_shout.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 325,
+        "h": 132
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 1,
+        "w": 325,
+        "h": 132
+      },
+      "sourceSize": {
+        "w": 330,
+        "h": 141
+      }
+    },
+    "bubble_think.png": {
+      "frame": {
+        "x": 328,
+        "y": 1,
+        "w": 308,
+        "h": 124
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 8,
+        "w": 308,
+        "h": 124
+      },
+      "sourceSize": {
+        "w": 330,
+        "h": 141
+      }
+    },
+    "bubble_think_arrow_bottom_01.png": {
+      "frame": {
+        "x": 864,
+        "y": 153,
+        "w": 32,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 46
+      }
+    }
+  }
+}

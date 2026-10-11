@@ -24,7 +24,7 @@ function renderContext(){
 function open(){
   const next=readRoute();if(route&&encode(next)===encode(route))return;
   if(active&&route)states[active]={...route};
-  route=next;active=next.view;entity=resolveSelection(next);renderContext();
+  document.body.classList.remove('map-presentation');document.body.classList.toggle('map-workspace',next.view==='map');route=next;active=next.view;entity=resolveSelection(next);renderContext();
   document.title=(entity?entity.name+' · ':'')+titles[active]+' | 坎公资源库';
   for(const b of document.querySelectorAll('nav button')){b.setAttribute('aria-current',b.dataset.view===active?'page':'false');}
   if(frame){try{frame.contentWindow.GTBridge?.dispose();}catch{}frame.remove();}
@@ -44,6 +44,7 @@ for(const b of document.querySelectorAll('nav button'))b.onclick=()=>{
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame?.contentWindow||event.data?.channel!=='gt-library')return;
   const data=event.data;
+  if(data.type==='map-layout'&&active==='map'){document.body.classList.toggle('map-presentation',data.mode==='presentation');return;}
   if(data.type==='navigate'){if(!registry)return;const target=GTRegistry.route(GTRegistry.resolve(registry,data.selection),data.view);if(target)navigate({...target,...data.params});return;}
   if(data.type==='selection'){
     const selected=resolveSelection({view:active,...data.selection});entity=selected;

@@ -6,7 +6,7 @@
       "version": 1,
       "map": "fireworld_1",
       "title": "火世界 · 飞船着陆片段",
-      "duration": 21.3,
+      "duration": 32.3,
       "actors": [
         {
           "handle": "preview_leader",
@@ -19,13 +19,16 @@
           ]
         },
         {
-          "handle": "princess"
+          "handle": "princess",
+          "name": "公主"
         },
         {
-          "handle": "dragon_boy"
+          "handle": "dragon_boy",
+          "name": "吉尔加斯"
         },
         {
-          "handle": "balloon"
+          "handle": "balloon",
+          "name": "飞船"
         },
         {
           "handle": "preview_pilot",
@@ -260,26 +263,56 @@
         {
           "at": 5.3,
           "op": "dialogue",
+          "target": "preview_pilot",
           "duration": 4,
-          "text": "驾驶员：本次航班已安全降落在沃贝尔火山地带。"
+          "speaker": "驾驶员",
+          "text": "本次航班已安全降落在沃贝尔火山地带。",
+          "waitForClick": false
         },
         {
           "at": 9.3,
           "op": "dialogue",
+          "target": "preview_pilot",
           "duration": 4,
-          "text": "驾驶员：衷心地感谢选择我们航空公司的各位乘客，我们将始终竭诚为您服务。"
+          "speaker": "驾驶员",
+          "text": "衷心地感谢选择我们航空公司的各位乘客，我们将始终竭诚为您服务。",
+          "waitForClick": false
         },
         {
           "at": 13.3,
           "op": "dialogue",
+          "target": "preview_pilot",
           "duration": 4,
-          "text": "驾驶员：祝各位乘客的冒险，一路平安。"
+          "speaker": "驾驶员",
+          "text": "祝各位乘客的冒险，一路平安。",
+          "waitForClick": false
         },
         {
           "at": 17.3,
           "op": "dialogue",
+          "target": "princess",
           "duration": 4,
-          "text": "公主：谢啦！"
+          "speaker": "公主",
+          "text": "谢啦！",
+          "waitForClick": false
+        },
+        {
+          "at": 21.3,
+          "op": "dialogue",
+          "target": "dragon_boy",
+          "duration": 4,
+          "speaker": "吉尔加斯",
+          "text": "那么，我们出发吧。",
+          "waitForClick": false
+        },
+        {
+          "at": 25.3,
+          "op": "dialogue",
+          "target": "dragon_boy",
+          "duration": 4,
+          "speaker": "吉尔加斯",
+          "text": "提醒一下，小心别碰到岩浆。人类的身体肯定承受不住。",
+          "waitForClick": false
         },
         {
           "at": 17.3,
@@ -287,10 +320,135 @@
           "target": "princess",
           "expression": "smile",
           "direction": "right"
+        },
+        {
+          "at": 21.3,
+          "op": "pose",
+          "target": "princess",
+          "expression": "idle",
+          "direction": "front"
+        },
+        {
+          "at": 21.3,
+          "op": "pose",
+          "target": "dragon_boy",
+          "direction": "left"
+        },
+        {
+          "at": 29.3,
+          "op": "pose",
+          "target": "preview_leader",
+          "direction": "left",
+          "expression": "surprise",
+          "animation": "jump",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "at": 29.3,
+          "op": "pose",
+          "target": "princess",
+          "direction": "left",
+          "expression": "surprise",
+          "animation": "jump",
+          "duration": 0.5,
+          "loop": false
+        },
+        {
+          "at": 29.3,
+          "op": "jump",
+          "target": "preview_leader",
+          "height": 0.4,
+          "duration": 0.5
+        },
+        {
+          "at": 29.3,
+          "op": "jump",
+          "target": "princess",
+          "height": 0.4,
+          "duration": 0.5
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "preview_leader",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "preview_leader",
+          "value": 0
+        },
+        {
+          "at": 4.3,
+          "op": "shadow",
+          "target": "preview_leader",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "princess",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "princess",
+          "value": 0
+        },
+        {
+          "at": 4.3,
+          "op": "shadow",
+          "target": "princess",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "dragon_boy",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "dragon_boy",
+          "value": 0
+        },
+        {
+          "at": 4.3,
+          "op": "shadow",
+          "target": "dragon_boy",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "balloon",
+          "value": 1
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "balloon",
+          "value": 0
+        },
+        {
+          "at": 4.3,
+          "op": "shadow",
+          "target": "balloon",
+          "value": 1
+        },
+        {
+          "at": 5.3,
+          "op": "fade",
+          "target": "preview_pilot",
+          "value": 1
         }
       ],
       "source": "Quest/Main/FireWorld/Main/Section1.lua · CharacterPlacer/Main/Section1.lua",
-      "notes": "走位坐标、3 秒平移、1.3 秒等待和 1 秒着陆来自原脚本；跳跃曲线采用高度 2.5 的抛物线近似。队长以可替换的男骑士预览；对白取中文静态表，每句暂用 4 秒。音效、屏幕淡入和震屏未接入。",
+      "notes": "走位坐标、3 秒平移、1.3 秒等待和 1 秒着陆来自原脚本；跳跃曲线采用高度 2.5 的抛物线近似。队长以可替换的男骑士预览；对白取中文静态表，每句预留 4 秒连续自动播放；可在时间轴调节。音效、屏幕淡入和震屏未接入。",
       "evidence": [
         {
           "path": "decrypted/Quest/Main/FireWorld/Main/Section1.lua",
@@ -328,10 +486,12 @@
           ]
         },
         {
-          "handle": "princess"
+          "handle": "princess",
+          "name": "公主"
         },
         {
-          "handle": "dragon_boy"
+          "handle": "dragon_boy",
+          "name": "吉尔加斯"
         },
         {
           "handle": "fire_bishop"
@@ -514,6 +674,341 @@
         {
           "path": "Tilemaps_decoded/fireworld_5.tilemap",
           "sha256": "f50f9f03ab35af9fc4e69a465b19d9ff6302e84b73f86b00d751dfdcd97616c6"
+        }
+      ]
+    },
+    {
+      "id": "waterworld-intro",
+      "version": 1,
+      "map": "waterworld_1",
+      "title": "水世界 · 三位引导者开场对白",
+      "duration": 81,
+      "actors": [
+        {
+          "handle": "preview_fairy_1",
+          "resource": "fairy_a",
+          "name": "引导者 1",
+          "position": [
+            -1.5,
+            0.0,
+            65.0
+          ],
+          "direction": "front"
+        },
+        {
+          "handle": "preview_fairy_2",
+          "resource": "fairy_a",
+          "name": "引导者 2",
+          "position": [
+            -3.5,
+            0.0,
+            63.0
+          ],
+          "direction": "right"
+        },
+        {
+          "handle": "preview_fairy_3",
+          "resource": "fairy_a",
+          "name": "引导者 3",
+          "position": [
+            0.5,
+            0.0,
+            63.0
+          ],
+          "direction": "left"
+        }
+      ],
+      "commands": [
+        {
+          "at": 0,
+          "op": "camera",
+          "position": [
+            -1.5,
+            0.0,
+            64.0
+          ],
+          "span": 8
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "preview_fairy_1",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "preview_fairy_1",
+          "value": 0
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "preview_fairy_1",
+          "value": 0
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "preview_fairy_2",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "preview_fairy_2",
+          "value": 0
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "preview_fairy_2",
+          "value": 0
+        },
+        {
+          "at": 0,
+          "op": "visible",
+          "target": "preview_fairy_3",
+          "value": true
+        },
+        {
+          "at": 0,
+          "op": "fade",
+          "target": "preview_fairy_3",
+          "value": 0
+        },
+        {
+          "at": 0,
+          "op": "shadow",
+          "target": "preview_fairy_3",
+          "value": 0
+        },
+        {
+          "at": 4,
+          "op": "fade",
+          "target": "preview_fairy_2",
+          "value": 1,
+          "duration": 0.5
+        },
+        {
+          "at": 4,
+          "op": "dialogue",
+          "target": "preview_fairy_2",
+          "duration": 4,
+          "text": "蓝月正缓缓下坠。",
+          "speaker": "引导者 2",
+          "bubbleDirection": "lt",
+          "waitForClick": false
+        },
+        {
+          "at": 8,
+          "op": "dialogue",
+          "target": "preview_fairy_2",
+          "duration": 4,
+          "text": "或许不久后，忒提斯便会迎来末日…",
+          "speaker": "引导者 2",
+          "bubbleDirection": "lt",
+          "waitForClick": false
+        },
+        {
+          "at": 12,
+          "op": "dialogue",
+          "target": "preview_fairy_2",
+          "duration": 4,
+          "text": "这里终将成为生命无法存活的死地。",
+          "speaker": "引导者 2",
+          "bubbleDirection": "lt",
+          "waitForClick": false
+        },
+        {
+          "at": 16,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "虽然知道\"打破命运\"的计划很荒谬...",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 16,
+          "op": "fade",
+          "target": "preview_fairy_3",
+          "value": 1,
+          "duration": 0.5
+        },
+        {
+          "at": 20,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "但没想到竟会荒谬至此。",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 24,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "早知道就该好好管理变量…！",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 28,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "天神…那家伙终究还是越界了。",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 32,
+          "op": "dialogue",
+          "target": "preview_fairy_1",
+          "duration": 4,
+          "text": "不。",
+          "speaker": "引导者 1",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 36.5,
+          "op": "dialogue",
+          "target": "preview_fairy_1",
+          "duration": 4,
+          "text": "他只不过是依赖着转折点的存在罢了",
+          "speaker": "引导者 1",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 36.0,
+          "op": "fade",
+          "target": "preview_fairy_1",
+          "value": 1,
+          "duration": 0.5
+        },
+        {
+          "at": 40.5,
+          "op": "dialogue",
+          "target": "preview_fairy_1",
+          "duration": 4,
+          "text": "除了远远地扮演着旁观者的角色，我没看到他有任何行动。",
+          "speaker": "引导者 1",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 44.5,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "难道这不是他的手笔？那究竟…",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 48.5,
+          "op": "dialogue",
+          "target": "preview_fairy_2",
+          "duration": 4,
+          "text": "接连的失败导致疑虑逐渐加深。",
+          "speaker": "引导者 2",
+          "bubbleDirection": "lt",
+          "waitForClick": false
+        },
+        {
+          "at": 52.5,
+          "op": "dialogue",
+          "target": "preview_fairy_2",
+          "duration": 4,
+          "text": "正是那个身处漩涡中心的人，挑起了侵略者的内乱。",
+          "speaker": "引导者 2",
+          "bubbleDirection": "lt",
+          "waitForClick": false
+        },
+        {
+          "at": 56.5,
+          "op": "dialogue",
+          "target": "preview_fairy_2",
+          "duration": 4,
+          "text": "他一心想要夺回属于自己的栖身之所。",
+          "speaker": "引导者 2",
+          "bubbleDirection": "lt",
+          "waitForClick": false
+        },
+        {
+          "at": 60.5,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "原来如此…但这想法实在太过荒诞。",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 64.5,
+          "op": "dialogue",
+          "target": "preview_fairy_3",
+          "duration": 4,
+          "text": "难道等事情结束，他就打算冬眠到忒提斯自然恢复为止吗？",
+          "speaker": "引导者 3",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 68.5,
+          "op": "dialogue",
+          "target": "preview_fairy_1",
+          "duration": 4,
+          "text": "骑士与卡米拉的妹妹引发了变量，而它的影响范围正在逐渐扩大。",
+          "speaker": "引导者 1",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 72.5,
+          "op": "dialogue",
+          "target": "preview_fairy_1",
+          "duration": 4,
+          "text": "调停者很快便会介入，我们能做的唯有等待。",
+          "speaker": "引导者 1",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        },
+        {
+          "at": 76.5,
+          "op": "dialogue",
+          "target": "preview_fairy_1",
+          "duration": 4,
+          "text": "不久的将来，所有人都将遵循世界意志所既定的命运。",
+          "speaker": "引导者 1",
+          "bubbleDirection": "rt",
+          "waitForClick": false
+        }
+      ],
+      "source": "Quest/Main/WaterWorld/Main/Section1.lua:intro_scene",
+      "notes": "原生 s1_intro_pos 挂点、NPC 配置、渐显时长与 19 句对白顺序；每句预留 4 秒连续自动播放。骨骼挂载 fairy_tail 特效、圆形屏幕转场及音效尚未接入。",
+      "evidence": [
+        {
+          "path": "decrypted/Quest/Main/WaterWorld/Main/Section1.lua",
+          "sha256": "677f2cdc23e6564918dcd624d87474aaccaac481576db4d35a03c164fe97def8"
+        },
+        {
+          "path": "Tilemaps_decoded/waterworld_1.tilemap",
+          "sha256": "109c980e3eef7697f08719222b3f81039b4184846ec5e37ae8b94ad8d45bc206"
+        },
+        {
+          "path": "static_data_dec/strings-zhCN.json",
+          "sha256": "26f6fa11a01a075732a7b69033f9ce3b73db488bc7ca7d46d338386268705411"
         }
       ]
     }
