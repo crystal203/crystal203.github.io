@@ -1,0 +1,29 @@
+{
+  "sword": {
+    "prefab": "ExportedProject/Assets/legacyresources/battle_attacks/sword/sword.prefab",
+    "skeletonData": "ExportedProject/Assets/MonoBehaviour/FX_sword_2_SkeletonData.asset",
+    "animation": "attack_1",
+    "scale": 0.025,
+    "rotationX": 90,
+    "files": [
+      {
+        "file": "gtonline/assets/spine/FX_sword_2.bytes",
+        "sha256": "8f405ae46744117c1ad5e70a84541ea5e3977fbff2b50da4647a073a5b6cd8ae"
+      },
+      {
+        "file": "gtonline/assets/spine/FX_sword_2.atlas",
+        "sha256": "fff2911c7bf3bd1c37c1905910083c1eddb04720aed21686a476c0c0a4581f58"
+      },
+      {
+        "file": "gtonline/assets/spine/FX_sword_2.png",
+        "sha256": "506695eab35adc69699dc2d90026e09b53dc20e853e25c1b653baf985887adad"
+      }
+    ]
+  },
+  "signboard": {
+    "bundle": "effects/fx_break_signboard",
+    "prefab": "FX_Break_signboard",
+    "timeLimit": 0.7,
+    "sidecar": "__online_FX_Break_signboard"
+  }
+}

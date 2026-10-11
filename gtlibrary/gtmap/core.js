@@ -343,6 +343,7 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.setActorState=(r,settings)=>{const changes={};for(const [key,value] of Object.entries(settings))if(r.character.settings[key]!==value)changes[key]=value;if(Object.keys(changes).length)return characters.change(r,changes);};
  this.restartActorAnimation=r=>{if(r.character?.loaded)characters.pose(r.character);};
  this.setWorldPosition=(r,p)=>{r.position.set(p[0],p[1],-p[2]);selection.update(r);};
+ this.setWorldRotation=(r,degrees)=>{r.rotation=degrees;selection.update(r);};
  this.setWorldVisible=(r,value)=>{r.visible=!!value;selection.update(r);};
  this.spawnWorldEffect=(name,p,{duration=Infinity,follow,rotation=0,clock=()=>particleTime.value-mapStartTime,state}={})=>{
   const data=bundle.environment?.gameplayEffects?.[name];if(!data)return null;
@@ -350,11 +351,11 @@ function buildClouds(key, tiles, group, layerIndex) {
   if(state)this.playWorldGimmick(record,state);for(const c of record.gimmick.controllers)c.start=0;
   const fx={record,follow,duration,clock,start:clock(),dispose:()=>{if(!gameplayEffects.delete(fx))return;states.remove(record);selection.records.delete(tile.id);group.removeFromParent();}};gameplayEffects.add(fx);return fx;
  };
- const timelineMedia=new Map();let mediaTime=null;
- events.clearMedia=()=>{for(const m of timelineMedia.values())m.dispose();timelineMedia.clear();mediaTime=null;};
+ const timelineMedia=new Map(),timelineSounds=new Set();let mediaTime=null;
+ events.clearMedia=()=>{for(const m of timelineMedia.values())m.dispose();timelineMedia.clear();timelineSounds.clear();mediaTime=null;};
  events.sampleMedia=(commands,t)=>{
   const active=new Set(),anchor=(target,offset=[0,0,0],at=t)=>{const record=events.resolve(target),p=events.actorCommands.has(record)?events.evaluateActor(record,events.actorCommands.get(record),at).position:[record.position.x,record.position.y,-record.position.z];return p.map((v,i)=>v+offset[i]);};
-  for(const c of commands){if(c.op==='sound'){if(events.playing&&mediaTime!==null&&t>=mediaTime&&c.at>mediaTime&&c.at<=t)events.onSound?.(c.name);continue;}if(!['item','effect'].includes(c.op)||t<c.at||t>=c.at+c.duration)continue;active.add(c);let m=timelineMedia.get(c);
+  for(const c of commands){if(c.op==='sound'){if(events.playing&&!timelineSounds.has(c)&&c.at<=t&&(c.at===0||mediaTime!==null&&t>=mediaTime&&c.at>mediaTime)){timelineSounds.add(c);events.onSound?.(c.name);}continue;}if(!['item','effect'].includes(c.op)||t<c.at||t>=c.at+c.duration)continue;active.add(c);let m=timelineMedia.get(c);
    if(!m){if(c.op==='item')m=items.spawn(c.item,bundle.itemMetadata,mapGroup);else{m=thisRuntime.spawnWorldEffect(c.name,c.target?anchor(c.target,c.offset):c.position,{duration:Infinity,clock:()=>events.time});if(!m)throw Error('缺少原生剧情特效：'+c.name);m.start=c.at;}timelineMedia.set(c,m);}
    if(c.op==='item'){const a=anchor(c.target,c.offset,c.at),b=anchor(c.toTarget,c.toOffset||c.offset,c.at),u=(t-c.at)/c.duration;m.setPosition(a.map((v,i)=>v+(b[i]-v)*u));}else{m.record.gimmick.previewTime=t-c.at;thisRuntime.setWorldPosition(m.record,c.target?anchor(c.target,c.offset):c.position);}
   }for(const [c,m] of timelineMedia)if(!active.has(c)){m.dispose();timelineMedia.delete(c);}mediaTime=t;

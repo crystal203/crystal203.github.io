@@ -1,0 +1,19 @@
+{
+  "source": "Original stage spec / event JSON / native controller literals",
+  "handles": [
+    "01_bounce_iron_02",
+    "01_jump_01",
+    "01_throw_01",
+    "02_break_wood_02",
+    "02_hit_projectile_01",
+    "02_switch_button_01"
+  ],
+  "searched": [
+    "E:/GTFiles/files/AssetBundles/Android/audio/sfx/sfxs1",
+    "sfxs2",
+    "sfxs3",
+    "D:/gtasset/fullextract/ExportedProject/Assets",
+    "Original APK has no audio/sfx bundle"
+  ],
+  "policy": "Unresolved native handles are retained; no unrelated replacement recordings."
+}
