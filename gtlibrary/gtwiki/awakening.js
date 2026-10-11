@@ -18,6 +18,11 @@ export class AwakeningTree{
   }
   effect(n){const key=this.phase?.rank===6?(this.weapon===2?'mythAlternate':'myth'):(this.weapon===2?'alternate':'normal');return n.effects[key]||n.effects.normal;}
   kind(n){const basic=['attack','defense','hp'].includes(this.effect(n).group);return n.special&&!basic?'special':n.super?'super':'normal';}
+  nodeSprite(n){
+    // Native atlas names: blue contains the red swords; yellow contains the blue shield.
+    const color={attack:'blue',defense:'yellow',hp:'green'}[this.effect(n).group]||'yellow',kind=this.kind(n);
+    return kind==='special'?'node_special_on':`node_${kind==='super'?'big':'normal'}_${color}_on`;
+  }
   sprite(name,cls){const c=make('canvas',undefined,cls);c.setAttribute('aria-hidden','true');queueMicrotask(()=>drawSprite(c,{sheet:'awakenings',name}).catch(()=>{}));return c;}
   render(){
     const {nodes,circles}=this.data;
@@ -45,9 +50,8 @@ export class AwakeningTree{
     this.scene.append(svg);
     for(const c of circles){const ring=this.sprite('circle_line_on','awakening-ring');ring.dataset.center=c.center;ring.style.left=c.x+'px';ring.style.top=c.y+'px';this.scene.append(ring);}
     for(const n of nodes){
-      const effect=this.effect(n),available=true,group=effect.group,color={attack:'yellow',defense:'blue',hp:'green'}[group]||'yellow';
-      const kind=this.kind(n),name=kind==='special'?'node_special_'+(available?'on':'off'):`node_${kind==='super'?'big':'normal'}_${color}_${available?'on':'off'}`;
-      const b=make('button',undefined,'awakening-node'+(kind==='normal'?'':' '+kind));b.type='button';b.dataset.index=n.index;b.style.left=n.x+'px';b.style.top=n.y+'px';b.append(this.sprite(name));b.onclick=()=>this.show(n);this.scene.append(b);
+      const kind=this.kind(n),name=this.nodeSprite(n);
+      const b=make('button',undefined,'awakening-node'+(kind==='normal'?'':' '+kind));b.type='button';b.dataset.index=n.index;b.dataset.sprite=name;b.style.left=n.x+'px';b.style.top=n.y+'px';b.append(this.sprite(name));b.onclick=()=>this.show(n);this.scene.append(b);
       if(n.index===0&&this.hero.portrait){const portrait=make('canvas',undefined,'awakening-portrait');b.append(portrait);drawSprite(portrait,this.hero.portrait).catch(()=>portrait.remove());}
     }
     for(const [text,label,action] of [['−','缩小觉醒树',()=>this.scale(.8)],['+','放大觉醒树',()=>this.scale(1.25)],['全览','显示全部觉醒点',()=>this.fit()]]){const b=make('button',text);b.type='button';b.setAttribute('aria-label',label);b.onclick=action;toolbar.append(b);}
@@ -68,7 +72,7 @@ export class AwakeningTree{
     this.visibleNodes=this.totalNodes.filter(n=>!this.onlyNew.checked||this.added.has(n.index));const visible=new Set(this.visibleNodes.map(n=>n.index));
     this.count.textContent=`${this.totalNodes.length} 个觉醒点 · 新增 ${this.added.size}`;
     for(const b of this.host.querySelectorAll('[data-phase]'))b.setAttribute('aria-pressed',String(b.dataset.phase===this.phase.id));
-    for(const b of this.scene.querySelectorAll('.awakening-node')){const index=Number(b.dataset.index),n=nodes.find(n=>n.index===index),e=this.effect(n);b.hidden=!visible.has(index);b.classList.toggle('new',this.added.has(index));b.title=`${clean(e.description)}\n${requirement(n,this.hero.stages[0].stars)}`;b.setAttribute('aria-label',`觉醒点 ${index+1} · ${clean(e.description)||clean(e.name)}`);}
+    for(const b of this.scene.querySelectorAll('.awakening-node')){const index=Number(b.dataset.index),n=nodes.find(n=>n.index===index),e=this.effect(n),name=this.nodeSprite(n),kind=this.kind(n);if(b.dataset.sprite!==name){b.dataset.sprite=name;drawSprite(b.querySelector('canvas'),{sheet:'awakenings',name}).catch(()=>{});}b.classList.toggle('super',kind==='super');b.classList.toggle('special',kind==='special');b.hidden=!visible.has(index);b.classList.toggle('new',this.added.has(index));b.title=`${clean(e.description)}\n${requirement(n,this.hero.stages[0].stars)}`;b.setAttribute('aria-label',`觉醒点 ${index+1} · ${clean(e.description)||clean(e.name)}`);}
     for(const ring of this.scene.querySelectorAll('.awakening-ring'))ring.hidden=!visible.has(Number(ring.dataset.center));
     for(const line of this.scene.querySelectorAll('line'))line.style.display=visible.has(Number(line.dataset.from))&&visible.has(Number(line.dataset.to))?'':'none';
     const framing=this.visibleNodes.length?this.visibleNodes:this.totalNodes,xs=framing.map(n=>n.x),ys=framing.map(n=>n.y);this.bounds={x:Math.min(...xs)-120,y:Math.min(...ys)-120,w:Math.max(...xs)-Math.min(...xs)+240,h:Math.max(...ys)-Math.min(...ys)+240};
