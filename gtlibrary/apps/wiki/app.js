@@ -1,6 +1,6 @@
 import {SpinePreview,drawSprite,portrait} from '../../gtwiki/media.js';
 import {AwakeningTree} from '../../gtwiki/awakening.js';
-import {levelValue,heroStats,weaponStats} from '../../gtwiki/stats.js';
+import {levelValue,heroLevelCap,weaponLevelCap,heroStats,weaponStats} from '../../gtwiki/stats.js';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const colors={火:'#e4a17d',水:'#80b9df',土:'#a7bc81',光:'#dfc777',暗:'#b69edb',虚:'#adb5c4'};
 let catalog,hero,currentSummary,selectedPixel,heroAbort,loadToken=0,disposed=false,element=params.get('element')||'';
@@ -59,10 +59,11 @@ function ailment(name){const span=node('span',undefined,'ailment-state'),icon={'
 function defaultStage(){return hero.stages.find(s=>s.label==='开花')||hero.stages.find(s=>s.label==='晋升')||hero.stages.filter(s=>s.label.endsWith('星')).at(-1)||hero.stages[0];}
 function currentStage(){return hero.stages.find(s=>String(s.id)===$('stats-stage').value)||hero.stages[0];}
 function renderStatValues(){
-  const s=heroStats(currentStage().stats,levelValue($('hero-level').value,catalog.levelCaps.Character));
+  const max=heroLevelCap(currentStage(),catalog.levelRules);$('hero-level').max=max;$('hero-level').value=levelValue($('hero-level').value,max);$('hero-level-range').textContent='1–'+max;
+  const s=heroStats(currentStage().stats,Number($('hero-level').value));
   $('stat-values').replaceChildren();
-  for(const [label,value] of [['生命',s.Hp],['攻击倍率',s.Atk],['防御',s.Def],['恢复能力',s.Recovery]]){
-    const cell=node('div',undefined,'stat-value');cell.append(node('span',label),node('strong',number(label==='攻击倍率'?Number(value.toFixed(4)):Math.floor(value))));$('stat-values').append(cell);
+  for(const [label,value] of [['生命',s.Hp],['攻击',s.Atk],['防御',s.Def],['恢复能力',s.Recovery]]){
+    const cell=node('div',undefined,'stat-value');cell.append(node('span',label),node('strong',number(label==='生命'?Math.floor(value):Math.round(value))));$('stat-values').append(cell);
   }
 }
 function renderStats(){
@@ -120,7 +121,7 @@ function renderAppearance(){
 function renderWeapons(){
   weaponRenderers=[];
   $('weapon-count').textContent=hero.weapons.length+' 件专属武器';$('weapon-list').replaceChildren();
-  if(!hero.weapons.length){empty($('weapon-list'),'暂无专属武器');return;}
+  if(!hero.weapons.length){empty($('weapon-list'),'暂无专属武器');updateWeaponLevelCap();return;}
   const range=(a,b,unit='')=>number(a)+(a===b?'':'–'+number(b))+unit;
   function affixes(card,label,rows){if(!rows?.length)return;const group=node('div',undefined,'weapon-affixes');group.append(node('h5',label));for(const r of rows){const line=node('p');line.append(node('span',r.name),node('strong','+'+range(r.min,r.max,r.unit)));group.append(line);}card.append(group);}
   for(const w of hero.weapons){
@@ -129,7 +130,8 @@ function renderWeapons(){
     const render=()=>{
       const v=w.variants.find(v=>String(v.id)===select.value)||w.variants[0],head=node('div',undefined,'weapon-heading'),name=node('div');body.replaceChildren();
       name.append(node('h4',w.name),node('p',w.type+' · '+'★'.repeat(v.stars)));head.append(spriteBox(v.sprite),name);body.append(head);
-      const stats=node('dl',undefined,'weapon-stats');for(const r of weaponStats(v,levelValue($('weapon-level').value,catalog.levelCaps.Weapon))){const cell=node('div');cell.append(node('dt',r.name),node('dd',range(...r.values,r.unit)));stats.append(cell);}body.append(stats);
+      const max=weaponLevelCap(v,catalog.levelRules),level=levelValue($('weapon-level').value,max);name.append(node('small','Lv.'+level+' / '+max));
+      const stats=node('dl',undefined,'weapon-stats');for(const r of weaponStats(v,level)){const cell=node('div');cell.append(node('dt',r.name),node('dd',range(...r.values,r.unit)));stats.append(cell);}body.append(stats);
       affixes(body,'主词条',v.mainOptions);affixes(body,'副词条 · '+range(...v.subCount)+' 项',v.subOptions);
       if(v.effects.length){const group=node('div',undefined,'weapon-effects');group.append(node('h5','专属效果'));for(const effect of v.effects)group.append(skillCard({...effect,name:''}));body.append(group);}
       if(v.skill){
@@ -139,9 +141,15 @@ function renderWeapons(){
       affixes(body,'满突破',v.limitBreak);affixes(body,'铭刻 · 固定',v.engrave);
       if(v.engraveRandom.length){const group=node('div',undefined,'weapon-affixes');group.append(node('h5','铭刻 · 随机'));for(const r of v.engraveRandom){const line=node('p');line.append(node('span',r.name),node('strong',r.values.map(value=>number(value)).join(' / ')+r.unit));group.append(line);}body.append(group);}
       if(v.sprite){const b=node('button','查看武器原图 ↗');b.onclick=()=>GTBridge.navigate('atlas',{resource:'atlas:items:'+v.sprite.name},{sheet:'items',query:v.sprite.name});body.append(b);}
-    };select.onchange=render;weaponRenderers.push(render);render();
+    };select.onchange=()=>{updateWeaponLevelCap();weaponRenderers.forEach(render=>render());selection();};weaponRenderers.push(render);render();
     $('weapon-list').append(card);
   }
+  updateWeaponLevelCap();weaponRenderers.forEach(render=>render());
+}
+function updateWeaponLevelCap(){
+  const variants=[...$('weapon-list').querySelectorAll('.weapon-variant')].map((select,i)=>hero.weapons[i].variants.find(v=>String(v.id)===select.value));
+  const max=Math.max(catalog.levelRules.WeaponBase,...variants.filter(Boolean).map(v=>weaponLevelCap(v,catalog.levelRules)));
+  $('weapon-level').max=max;$('weapon-level').value=levelValue($('weapon-level').value,max);$('weapon-level-range').textContent='1–'+max;
 }
 async function loadHero(summary){
   const token=++loadToken;heroAbort?.abort();heroAbort=new AbortController();
@@ -174,7 +182,7 @@ $('stats-stage').onchange=()=>{const stage=hero.stages.find(s=>String(s.id)===$(
 for(const [id,key,render] of [['hero-level','Character',()=>renderStatValues()],['weapon-level','Weapon',()=>weaponRenderers.forEach(render=>render())]]){
   $(id).value=params.get(id==='hero-level'?'level':'weaponLevel')||'100';
   $(id).oninput=()=>{if(hero&&$(id).value&&$(id).validity.valid){render();selection();}};
-  $(id).onchange=()=>{$(id).value=levelValue($(id).value,catalog.levelCaps[key]);if(hero){render();selection();}};
+  $(id).onchange=()=>{$(id).value=levelValue($(id).value,Number($(id).max));if(hero){render();selection();}};
 }
 $('illust-select').onchange=renderIllust;
 $('skill-set').onchange=()=>{renderSkills();selection();};
