@@ -57,7 +57,10 @@ def export_clip(clip):
  candidates.sort(key=lambda c:('ondemand/' in c['source'],len(c['source'])))
  result=candidates[0];clip_cache[key]=result;return result
 
-parser=argparse.ArgumentParser();parser.add_argument('--only',action='append',default=[]);parser.add_argument('--pickup',action='store_true');args=parser.parse_args();
+parser=argparse.ArgumentParser();parser.add_argument('--only',action='append',default=[]);parser.add_argument('--pickup',action='store_true');parser.add_argument('--prefab',action='append',default=[],help='bundle:prefab for original standalone gameplay effects');args=parser.parse_args();
+standalone={}
+for value in args.prefab:
+ bundle,name=value.rsplit(':',1);key='__online_'+name;standalone[key]=(bundle,name);used[key]={name};args.only.append(key)
 if args.pickup:args.only=['__pickup_star_piece'];used={'__pickup_star_piece':{'star_piece'}}
 manifest=json.loads((OUT/'native-states.json').read_text(encoding='utf8')) if args.only and (OUT/'native-states.json').exists() else {'version':1,'sets':{}};audit=json.loads((WORK/'evidence/native-states-audit.json').read_text(encoding='utf8')) if args.only and (WORK/'evidence/native-states-audit.json').exists() else [];audit=[a for a in audit if a['tileset'] not in args.only]
 dest=OUT/'states';dest.mkdir(exist_ok=True)
@@ -65,6 +68,7 @@ for tileset,names in used.items():
  if args.only and tileset not in args.only:continue
  bundle='effects/stage/base' if tileset=='__pickup_star_piece' else aliases.get(tileset,tileset.split(':')[0] if ':' in tileset else 'tilesets/'+tileset)
  filename='star_piece' if tileset=='__pickup_star_piece' else tileset.split(':')[-1] if ':' in tileset else tileset+'.tileset'
+ if tileset in standalone:bundle,filename=standalone[tileset]
  env=UnityPy.Environment();seen=set();dependencies={};issues=[]
  def load(n):
   if n in seen:return
@@ -131,13 +135,13 @@ for tileset,names in used.items():
  if not roots:roots=[v.read() for k,v in env.container.items() if k.lower().endswith('.tileset.prefab')]
  for root in roots:
   rt=next(c.component.read() for c in root.m_Component if c.component.type.name=='Transform')
-  for child in ([rt.object_reader] if tileset=='__pickup_star_piece' else rt.m_Children):
+  for child in ([rt.object_reader] if tileset=='__pickup_star_piece' or tileset in standalone else rt.m_Children):
    t=child.read();go=t.m_GameObject.read()
    if go.m_Name not in names:continue
    record={'root':str(t.object_reader.path_id),'nodes':[],'systems':[],'scripts':[],'staticScripts':{},'materialOverrides':{},'sprites':[],'parts':[],'controllers':[]}
    def visit(t,parent='0',isroot=False,path=''):
     g=t.m_GameObject.read();nid=str(t.object_reader.path_id);refs={c.component.type.name:c.component for c in g.m_Component}
-    record['nodes'].append({'id':nid,'parent':parent,'name':g.m_Name,'path':path,'active':bool(g.m_IsActive) or isroot,'position':vec(t.m_LocalPosition) if not isroot else {'x':0,'y':0,'z':0},'rotation':vec(t.m_LocalRotation) if not isroot else {'x':0,'y':0,'z':0,'w':1},'scale':vec(t.m_LocalScale) if not isroot or tileset=='__pickup_star_piece' else {'x':1,'y':1,'z':1}})
+    record['nodes'].append({'id':nid,'parent':parent,'name':g.m_Name,'path':path,'active':bool(g.m_IsActive) or isroot,'position':vec(t.m_LocalPosition) if not isroot else {'x':0,'y':0,'z':0},'rotation':vec(t.m_LocalRotation) if not isroot else {'x':0,'y':0,'z':0,'w':1},'scale':vec(t.m_LocalScale) if not isroot or tileset=='__pickup_star_piece' or tileset in standalone else {'x':1,'y':1,'z':1}})
     for c in g.m_Component:
      if c.component.type.name=='MonoBehaviour':
       try:
@@ -181,7 +185,7 @@ for tileset,names in used.items():
    if tileset=='__pickup_star_piece':record['pickup']=True
    try:visit(t,isroot=True)
    except (FileNotFoundError,KeyError,ValueError) as ex:issues.append({'tile':go.m_Name,'error':str(ex)})
-   if tileset=='__pickup_star_piece' or record['controllers'] or any(s['type']=='CustomAnimator' for s in record['scripts']) or any(not n['active'] or n['name'].lower() in ['red','blue','on','off'] for n in record['nodes']):data['templates'][go.m_Name]=record
+   if tileset=='__pickup_star_piece' or tileset in standalone or record['controllers'] or any(s['type']=='CustomAnimator' for s in record['scripts']) or any(not n['active'] or n['name'].lower() in ['red','blue','on','off'] for n in record['nodes']):data['templates'][go.m_Name]=record
  if data['templates']:
   data=trim(data)
   slug=hashlib.sha256(tileset.encode()).hexdigest()[:16];path='states/'+slug+'.json.gz';(OUT/path).write_bytes(gzip.compress(json.dumps(clean(data),separators=(',',':'),allow_nan=False).encode(),mtime=0));manifest['sets'][tileset]=path

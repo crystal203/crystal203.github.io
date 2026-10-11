@@ -50,6 +50,12 @@ def main():
   def bridge(kind,*values):
    if kind=='stage':return name
    if kind=='scene-entry':
+    if values[0]=='companion_boy_zone_event' and 's3_companion_boy_event_zone' in markers:
+     p=markers['s3_companion_boy_event_zone'];local_notes['estimated trigger-entry party formation (native region center)']+=1
+     entry={'leader':p[:],'princess':[p[0]+1,p[1],p[2]+.5],'dragon_boy':[p[0]+1,p[1],p[2]-.5]}
+     for h,pos in entry.items():
+      if h in specs:specs[h]['position']=pos[:]
+     return to_lua(entry)
     if values[0]=='steam_princess_zone_event' and 's2_steam_princess_event_zone' in markers:
      p=markers['s2_steam_princess_event_zone'];local_notes['estimated trigger-entry party formation (native region center)']+=1
      entry={'leader':p[:],'princess':[p[0]-.5,p[1],p[2]+1],'dragon_boy':[p[0]+.5,p[1],p[2]+1]}
@@ -220,8 +226,8 @@ def main():
      for spec in actors_out:initial.extend([{'at':0,'op':'teleport','target':spec['handle'],'position':spec['position']},{'at':0,'op':'pose','target':spec['handle'],'animation':'idle','direction':spec['direction'],'loop':True},{'at':0,'op':'visible','target':spec['handle'],'value':True},{'at':0,'op':'fade','target':spec['handle'],'value':1}])
      first=next((c for c in valid if c['op']=='camera'),None)
      if first is None or first['at']>0 or first.get('duration',0)>0:
-      p=next((c['position'] for c in valid if c['op']=='teleport'),actors_out[0]['position'] if actors_out else [0,0,0]);initial.append({'at':0,'op':'camera','position':p,'span':9})
-     scene={'id':'fw-native-'+hashlib.sha256((identifier+name+str(selected)).encode()).hexdigest()[:14],'family':identifier+':'+name,'version':1,'map':stage_maps.get(name,name),'title':identifier,'duration':max(.1,duration+.5),'actors':actors_out,'commands':initial+valid,'source':rel.removeprefix('decrypted/')+':'+str(line),'notes':'原脚本离线转换；对白停留按字数估算，跳跃为近似。'+('存在未还原调用，见覆盖报告。' if status=='partial' else ''),'coverage':entry}
+      p=next((c['position'] for c in valid if c['op']=='teleport'),actors_out[0]['position'] if actors_out else [0,0,0]);initial.append({'at':0,'op':'camera','position':p,'span':9,**({'follow':'leader'} if 'leader' in used else {})})
+     scene={'id':'fw-native-'+hashlib.sha256((identifier+name+str(selected)).encode()).hexdigest()[:14],'family':identifier+':'+name,'version':1,'map':stage_maps.get(name,name),'title':identifier,'duration':max(.1,duration+.5),'actors':actors_out,'commands':initial+valid,'source':rel.removeprefix('decrypted/')+':'+str(line),'notes':'原脚本离线转换；对白停留按字数估算，跳跃为近似。'+('部分调用尚未还原。' if status=='partial' else ''),'coverage':entry}
      try:
       json.dumps(scene,ensure_ascii=False,allow_nan=False)
       if len(actors_out)>64 or len(scene['commands'])>5000 or scene['duration']>3600:raise ValueError('timeline limits exceeded')

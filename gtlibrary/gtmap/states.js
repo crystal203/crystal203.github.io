@@ -97,5 +97,6 @@ export class MapStates {
  setBrightness(value){this.brightness=value;for(const e of this.entries)if(e.active){e.effects.setBrightness(value);for(const p of e.parts)p.mesh.material.uniforms.brightness.value=value;}}
  setPickupsVisible(value){this.pickupsVisible=value;for(const e of this.entries)if(e.spec.pickup){e.effects?.setVisible(value&&this.visible);for(const p of e.parts||[])p.mesh.visible=value;}}
  setVisible(value){this.visible=value;for(const e of this.entries)e.effects?.setVisible(value&&(!e.spec.pickup||this.pickupsVisible));}
+ remove(record){const e=record?.gimmick;if(!e)return;if(e.active){e.effects.clear();for(const p of e.parts){p.mesh.removeFromParent();p.mesh.dispose();p.mesh.geometry.dispose();if(p.mesh.material.userData.nativeProgram)p.mesh.material.dispose();const index=this.pickables.indexOf(p.mesh);if(index>=0)this.pickables.splice(index,1);}}this.entries=this.entries.filter(x=>x!==e);delete record.gimmick;}
  clear(){for(const e of this.entries)if(e.active){e.effects.clear();for(const p of e.parts){p.mesh.removeFromParent();p.mesh.dispose();p.mesh.geometry.dispose();if(p.mesh.material.userData.nativeProgram)p.mesh.material.dispose();}}this.entries=[];}
 }

@@ -38,6 +38,12 @@ export class MapItems {
   }this.sample();return stars+[...groups.values()].reduce((n,g)=>n+g.records.length,0);
  }
  sample(){for(const b of this.batches){for(let i=0;i<b.records.length;i++){const r=this.selection.records.get(b.records[i].id),local=b.refs[i].local;if(b.kind==='coin'){local.makeRotationX(-Math.PI/2);local.setPosition(0,.05,0);}else{local.makeRotationFromQuaternion(this.camera.quaternion);local.setPosition(0,.5,0);}b.mesh.setMatrixAt(i,r.visible?r.matrix.clone().multiply(local):new THREE.Matrix4().makeScale(0,0,0));}b.mesh.instanceMatrix.needsUpdate=true;}}
+ spawn(id,data,group){
+  const info=data?.items[String(id)],atlas=info?.atlas||'items',sheet=data?.atlases?.[atlas]||data?.atlas,sprite=info?.sprite?.default,f=sheet?.frames[sprite],texture=this.textures.get('pickup-'+atlas);if(!f||!texture)throw Error('缺少原生物品图集：'+id);
+  const rect=f.frame,size=sheet.meta.size,original=f.sourceSize||rect,trim=f.spriteSourceSize||{x:0,y:0,w:rect.w,h:rect.h},factor=.75/Math.max(original.w,original.h),geometry=new THREE.PlaneGeometry(rect.w*factor,rect.h*factor);geometry.translate((trim.x+trim.w/2-original.w/2)*factor,(original.h/2-trim.y-trim.h/2)*factor,0);
+  const pw=f.rotated?rect.h:rect.w,ph=f.rotated?rect.w:rect.h,u=(rect.x+.1)/size.w,v=1-(rect.y+.1)/size.h,ur=(rect.x+pw-.1)/size.w,vb=1-(rect.y+ph-.1)/size.h;geometry.setAttribute('uv',new THREE.Float32BufferAttribute(f.rotated?[ur,v,ur,vb,u,v,u,vb]:[u,v,ur,v,u,vb,ur,vb],2));
+  const material=new THREE.MeshBasicMaterial({map:texture,transparent:true,alphaTest:.01,depthWrite:false,side:THREE.DoubleSide}),mesh=new THREE.Mesh(geometry,material);mesh.renderOrder=300001;group.add(mesh);return {setPosition:p=>{mesh.position.set(p[0],p[1],-p[2]);mesh.quaternion.copy(this.camera.quaternion);},dispose:()=>{mesh.removeFromParent();geometry.dispose();material.dispose();}};
+ }
  setVisible(value){this.visible=value;for(const b of this.batches)b.mesh.visible=value;}
  clear(){for(const b of this.batches){b.mesh.removeFromParent();b.mesh.dispose();b.mesh.geometry.dispose();b.mesh.material.dispose();}this.batches=[];}
 }

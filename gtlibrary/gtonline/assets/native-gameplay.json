@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "burn": {
+    "spreadDelay": 0.5,
+    "damageDelay": 2.25,
+    "damageTick": 0.5,
+    "radius": 1.0,
+    "damage": 100
+  },
+  "source": {
+    "apk": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk",
+    "constants": "Scripts.dll token 0x06003d04 -> ARM64 0x8864018; q2 loaded at 0x88643b8 from 0x17203d0; values at 0x17203d8 / 0x17203dc",
+    "combustibleConstructor": "Scripts.dll token 0x0600972f -> ARMv7 0x4a73168; damageTick +0x28 set at 0x4a731c4 to 0x3f000000; burnRadius +0x2c set at 0x4a731ac to 0x3f800000",
+    "combustibleUpdate": "ARM64 0x610f928-0x610f9bc: damageTick boundary, elapsed >= BurnDamageDelay, damage=100; spread at elapsed >= BurnDelay",
+    "brazierConstructor": "ARMv7 0x46697fc; burnRadius +0x2c=1 at 0x4669868"
+  },
+  "camera": {
+    "source": "ViewportScaler.OnPreCull 0x5daf580 / CalculateViewportScaleY 0x5daf734; PLT 0x9682af0=cosf",
+    "worldScale": "Sy(cos(clamp pitch to 0..45 degrees))",
+    "projectionScale": "Sy(1/cos(clamp pitch to 0..45 degrees))"
+  }
+}

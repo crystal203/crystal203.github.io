@@ -39,13 +39,13 @@ local function actor(handle,kind)
  local function pose(data)emit('pose',handle,data)end
  obj.SpineController=setmetatable({SetSortingLayer=function(_,layer,order)pose({sortingLayer=layer,sortingOrder=order or 0})end},{__index=function(_,k)return proxy(handle..'.SpineController.'..k)end})
  obj.GetComponent=function(_,component)if obj.__kind=='field' and tostring(component)=='CS.UnityEngine.Animator' then return {Play=function(_,state,layer,normalized)if normalized and normalized~=0 and normalized~=1 then notice('partial animator normalized time:'..state)end;emit('gimmick',handle,{state=state,still=normalized==1})end}end;return proxy(handle..'.GetComponent:'..tostring(component))end
- obj.transform=setmetatable({}, {__index=function(_,k)if k=='position' or k=='localPosition' then return obj._pos end;return proxy(handle..'.transform.'..k)end,__newindex=function(_,k,v)if k=='position' or k=='localPosition' then obj.Position=v else notice(handle..'.transform.'..k)end end})
+ obj.transform=setmetatable({}, {__index=function(_,k)if k=='position' or k=='localPosition' then return moving_position(obj) end;return proxy(handle..'.transform.'..k)end,__newindex=function(_,k,v)if k=='position' or k=='localPosition' then obj.Position=v else notice(handle..'.transform.'..k)end end})
  setmetatable(obj,{__index=function(_,k)
   if k=='Position' or k=='position' then return moving_position(obj) elseif k=='Direction' then return obj._direction elseif k=='Name' or k=='name' then return handle end
   if k=='SetDirection' then return function(_,d)obj.Direction=d end elseif k=='RemoveAnim' then return function()pose({animation='idle',loop=true})end elseif k=='RemoveEmotion' then return function()pose({expression='idle'})end end
   return proxy(handle..'.'..tostring(k))
  end,__newindex=function(_,k,v)
-  if k=='Position' or k=='position' then if not (type(v)=='table' and rawget(v,'__vector')==true) then error('unresolved position '..handle) end;obj._pos=v;emit('teleport',handle,{position=v})
+  if k=='Position' or k=='position' then if not (type(v)=='table' and rawget(v,'__vector')==true) then error('unresolved position '..handle) end;if moves[handle] then bridge('interrupt',handle,clock,moving_position(obj));moves[handle]=nil end;obj._pos=v;emit('teleport',handle,{position=v})
   elseif k=='Direction' then obj._direction=v;pose({direction=v}) else rawset(obj,k,v)end
  end})
  return obj
@@ -194,19 +194,25 @@ local function choose(options,reaction,condition)
  return selected
 end
 E.choose_util.play_choose_event=choose;E.choose_util.play_async=choose
-local camera_pos=vec();local camera_size=4.5
-E.stage_camera=setmetatable({}, {__index=function(_,key)if key=='LookAtPosition' then return camera_pos elseif key=='Size' then notice('estimated native camera size');return camera_size elseif key=='HalfWidth' then notice('estimated native camera width');return camera_size*16/9 end;return proxy('stage_camera.'..key)end})
-E.camera_util.set_position=function(p)camera_pos=p;emit('camera',nil,{position=p,span=camera_size*2})end
-E.camera_util.move=function(p,d)emit('camera',nil,{position=p,duration=d});camera_pos=p end
+-- The native camera follows the party until a scene takes control of it.
+local camera_pos, camera_move;local camera_size=4.5
+local function camera_position()
+ if camera_move then local u=math.max(0,math.min(1,(clock-camera_move.at)/camera_move.duration));return camera_move.from+(camera_move.to-camera_move.from)*u end
+ return camera_pos or actor('leader').Position
+end
+E.stage_camera=setmetatable({}, {__index=function(_,key)if key=='LookAtPosition' then return camera_position() elseif key=='Size' then notice('estimated native camera size');return camera_size elseif key=='HalfWidth' then notice('estimated native camera width');return camera_size*16/9 end;return proxy('stage_camera.'..key)end})
+E.camera_util.set_position=function(p)camera_move=nil;camera_pos=p;emit('camera',nil,{position=p,span=camera_size*2})end
+E.camera_util.move=function(p,d)local from=camera_position();d=tonumber(d) or 0;camera_move=d>0 and {from=from,to=p,at=clock,duration=d} or nil;camera_pos=p;emit('camera',nil,{position=p,duration=d})end
 E.camera_util.move_async=function(p,d)E.camera_util.move(p,d);sleep(d)end
 E.camera_util.follow_target=function(fo,d)E.camera_util.move(fo.Position,d)end
 E.user_party.Count=1;E.user_party[0]=actor('leader')
 E.party_util=utilities('party_util',{set_direction=function(d)direction(actor('leader'),d)end,remove_anim_and_emotion=function()E.character_util.remove_anim_and_emotion(actor('leader'))end,remove_emotion=function()emotion(actor('leader'),'idle')end})
+E.interpolations_constants=utilities('interpolations_constants',{ease_out_quint=function(t,b,c,d)local u=math.max(0,math.min(1,t/d))-1;return b+c*(u^5+1)end})
 E.character_util.set_locked_dir=function(fo,d)direction(fo,d)end
 E.character_util.reset_locked_dir=function()end
 E.unity_class.mathf={Clamp01=function(x)return math.max(0,math.min(1,x))end,Lerp=function(a,b,t)return a+(b-a)*t end,Min=math.min,Max=math.max,Abs=math.abs,Sin=math.sin,Cos=math.cos,PI=math.pi,Deg2Rad=math.pi/180}
-E.screen_util.get_up_down_outside_pos=function(dir,p,offset)local sign=dir=='up' and 1 or -1;notice('estimated native camera size');return vec(p.x,p.y,camera_pos.z+sign*camera_size+(offset or sign))end
-E.screen_util.get_left_right_outside_pos=function(dir,p,offset)local sign=dir=='right' and 1 or -1;notice('estimated native camera width');return vec(camera_pos.x+sign*camera_size*16/9+(offset or sign),p.y,p.z)end
+E.screen_util.get_up_down_outside_pos=function(dir,p,offset)local sign=dir=='up' and 1 or -1;notice('estimated native camera size');return vec(p.x,p.y,camera_position().z+sign*camera_size+(offset or sign))end
+E.screen_util.get_left_right_outside_pos=function(dir,p,offset)local sign=dir=='right' and 1 or -1;notice('estimated native camera width');return vec(camera_position().x+sign*camera_size*16/9+(offset or sign),p.y,p.z)end
 E.camera_util.set_target=function(fo)E.camera_util.set_position(fo.Position)end
 E.camera_util.return_to_leader=function(d)E.camera_util.move_async(actor('leader').Position,d or 1)end
 E.camera_util.resize_to_default=function()end
@@ -238,7 +244,7 @@ local function run(class,method,setup)
   if setup then setup(self)end
   if method~='start' and type(self.npc_presets)=='table' and type(class.set_npc_with_data)=='function' and self.states and self.npc_presets[self.states.npc_setting] then class.set_npc_with_data(self,self.npc_presets[self.states.npc_setting])end
   if method=='start_scene' and bridge('stage')=='fireworld_1' then placer:activate_group('s1_start_scene');E.camera_util.set_position(self.pivot_pos.sky_scene()+vec(-.5,0,0))end
-  local entry=bridge('scene-entry',method);if entry then for h,p in pairs(entry)do local fo=actor(h);fo.Position=vec(p[1],p[2],p[3])end;E.camera_util.set_position(actor('leader').Position)end
+  local entry=bridge('scene-entry',method);if entry then for h,p in pairs(entry)do local fo=actor(h);fo.Position=vec(p[1],p[2],p[3])end end
   class[method](self)
  end)
  local count=0

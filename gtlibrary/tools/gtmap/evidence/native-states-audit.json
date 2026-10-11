@@ -8179,5 +8179,208 @@
         "emitters": []
       }
     ]
+  },
+  {
+    "tileset": "__online_FX_glove",
+    "dependencies": {
+      "effects/stage/base": "3d4407c00c79e8eef50be91fd02b9203797ca10ef9cb3d088d787ff93b12785f",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_common_fire": "5aecf115aaf58972b2b4811343fcb15399a34e174c373a4ded24701e7cbd2dc3",
+      "effects/manual/plaguedoctor": "f7f94981d99bc47774b47829c966d11674caa5cec6b86855117e2b55643f960a",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50"
+    },
+    "templates": 1,
+    "systems": 0,
+    "sprites": 0,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_glove",
+        "emitters": []
+      }
+    ]
+  },
+  {
+    "tileset": "__online_FX_field_fire",
+    "dependencies": {
+      "effects/stage/base": "3d4407c00c79e8eef50be91fd02b9203797ca10ef9cb3d088d787ff93b12785f",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_common_fire": "5aecf115aaf58972b2b4811343fcb15399a34e174c373a4ded24701e7cbd2dc3",
+      "effects/manual/plaguedoctor": "f7f94981d99bc47774b47829c966d11674caa5cec6b86855117e2b55643f960a",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50"
+    },
+    "templates": 1,
+    "systems": 8,
+    "sprites": 19,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_field_fire",
+        "emitters": [
+          "Loop_FireSprite_Seq",
+          "Loop_glow_bg_[Atlas_ab]",
+          "Loop_glow_[Atlas_add]",
+          "Loop_Spark_[Atlas_add]",
+          "Start_impact_[Atlas_add]",
+          "Start_smoke_[Atlas_ab]",
+          "Start_smoke2_[Atlas_ab]",
+          "Start_FireSprite_Seq"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "__online_break_leaf",
+    "dependencies": {
+      "tilesets/forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 1,
+    "systems": 2,
+    "sprites": 2,
+    "issues": [
+      {
+        "tile": "break_leaf",
+        "node": "4",
+        "unsupportedModule": "RotationBySpeedModule"
+      },
+      {
+        "tile": "break_leaf",
+        "node": "4",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "break_leaf",
+        "emitters": [
+          "4",
+          "particle_1 (1)"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "__online_break_house_box",
+    "dependencies": {
+      "tilesets/house": "e58516cdb20637133bee7f68860668f22d5f4cc5e6e1aaf5b889c02ec0f6e7c0",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb"
+    },
+    "templates": 1,
+    "systems": 2,
+    "sprites": 1,
+    "issues": [
+      {
+        "tile": "break_house_box",
+        "node": "4",
+        "unsupportedModule": "RotationBySpeedModule"
+      },
+      {
+        "tile": "break_house_box",
+        "node": "4",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "break_house_box",
+        "emitters": [
+          "4",
+          "particle_1"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "__online_FX_Env_SmallRock_lv1_destroy",
+    "dependencies": {
+      "tilesets/gimmick": "f39bfb99a0c33078d3ae8e4332707e90e7b0dae3d3223f87bd28a5e1fdbd4a6f",
+      "characters/loraine_head": "99a5aa19e52c39fc16763fbf51c9ca251be4391491d4e8cc6f8e1a97393b2776",
+      "characters/materials": "afaada11cb068e30fe81fc3e144cf18e39d987a58dc0e815f2957503840f75b4",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/common/super": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_common_dark": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/items": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4"
+    },
+    "templates": 1,
+    "systems": 7,
+    "sprites": 8,
+    "issues": [
+      {
+        "tile": "FX_Env_SmallRock_lv1_destroy",
+        "node": "mesh_dibris",
+        "unsupportedModule": "RotationBySpeedModule"
+      },
+      {
+        "tile": "FX_Env_SmallRock_lv1_destroy",
+        "node": "mesh_dibris",
+        "unsupportedModule": "RotationBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "FX_Env_SmallRock_lv1_destroy",
+        "emitters": [
+          "FX_dibris",
+          "mesh_dibris",
+          "particle_spark2",
+          "smoke",
+          "impact_core",
+          "explosion",
+          "impact_ring"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "__online_FX_hit",
+    "dependencies": {
+      "effects/battle/base": "fa6603f4c479ac6ca59ac2e35a3fa01f8b4415e6729588c2e83cb1b091f27e91",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_area": "69b8d6dc908e5980919411b553659a29f96cbc0c8dd3db1720939bd6f964c480",
+      "fonts/base": "3e598add123a88cee19eee6f4a6d8d25615e37435551bd7066126bcd3630aceb",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/ui/main": "2a5a4538a50a31bb211d352a9ee8acf0e7c95122ca73c191e02b523c9a185519",
+      "spritesheets/ui/main_s3": "f03ec9133e56d2cec3bc83888d534a449c8cfe7cba7b553eaf032bce212e13f2",
+      "shaders/tmp": "34b45c703c3d67f8ba39e93babcd451f4ca72271dc9a7cebb2077a50f0297afe"
+    },
+    "templates": 1,
+    "systems": 2,
+    "sprites": 2,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_hit",
+        "emitters": [
+          "line",
+          "impact"
+        ]
+      }
+    ]
   }
 ]

@@ -1,0 +1,577 @@
+{
+  "dpad-off": {
+    "atlas": "battle",
+    "frame": "dpad_off.png",
+    "source": {
+      "frame": {
+        "x": 898,
+        "y": 161,
+        "w": 123,
+        "h": 74
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 143,
+        "y": 103,
+        "w": 123,
+        "h": 74
+      },
+      "sourceSize": {
+        "w": 280,
+        "h": 280
+      }
+    },
+    "sha256": "82d8fdcd22a4db0b3634ac89382cd5dbf1b466549c90a16a0f3d5769ca3ba5c2"
+  },
+  "dpad-on": {
+    "atlas": "battle",
+    "frame": "dpad_on.png",
+    "source": {
+      "frame": {
+        "x": 171,
+        "y": 135,
+        "w": 149,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 89,
+        "w": 149,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 280,
+        "h": 280
+      }
+    },
+    "sha256": "852c2d98f4a64a1f48c2cd111be41c4b80d80d39babb1ce8589029a750831331"
+  },
+  "action-circle": {
+    "atlas": "battle",
+    "frame": "actbtn_circle_174px.png",
+    "source": {
+      "frame": {
+        "x": 328,
+        "y": 127,
+        "w": 174,
+        "h": 174
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 174,
+        "h": 174
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 174
+      }
+    },
+    "sha256": "a486d1eda03d7ae5c25b8c914cadb34c173433ae62dca98006ac6266e8d171f2"
+  },
+  "action-line": {
+    "atlas": "battle",
+    "frame": "actbtn_circleline_174px.png",
+    "source": {
+      "frame": {
+        "x": 1,
+        "y": 305,
+        "w": 166,
+        "h": 166
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 166,
+        "h": 166
+      },
+      "sourceSize": {
+        "w": 166,
+        "h": 166
+      }
+    },
+    "sha256": "52c5fa339f765873fccc545d2daba5439dbb91e2fb12e0a24f2e6b845aa7e719"
+  },
+  "attack": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_normal_atk.png",
+    "source": {
+      "frame": {
+        "x": 90,
+        "y": 1251,
+        "w": 60,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 15,
+        "w": 60,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 90
+      }
+    },
+    "sha256": "ccce35f800dd7cfff5ef0b75e964471cf873c98e07915ab1c91bf969f5e2f8c5"
+  },
+  "dash": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_dash.png",
+    "source": {
+      "frame": {
+        "x": 631,
+        "y": 687,
+        "w": 99,
+        "h": 82
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 19,
+        "w": 99,
+        "h": 82
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "7e48e7f49978fb681eccc3a837cb4aa68df5dc8423a195d0dd768bfea484c1a7"
+  },
+  "jump": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_jump.png",
+    "source": {
+      "frame": {
+        "x": 157,
+        "y": 920,
+        "w": 93,
+        "h": 78
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 21,
+        "w": 93,
+        "h": 78
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "a0efbd4baa068cdacc63fca25d28a348c6143172e5985157c17c82b8807f7d53"
+  },
+  "talk": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_talk.png",
+    "source": {
+      "frame": {
+        "x": 860,
+        "y": 1238,
+        "w": 80,
+        "h": 80
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 20,
+        "w": 80,
+        "h": 80
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "02ead0c16510a448d0293c20bab5c500cffb78d2885e447f6b314122bd73f93a"
+  },
+  "throw": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_throw.png",
+    "source": {
+      "frame": {
+        "x": 163,
+        "y": 543,
+        "w": 111,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 24,
+        "w": 111,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "b6afc1483b50d8fc5a48fcfb5116f1531718759e997efe77e1f013014f761bf2"
+  },
+  "push": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_push.png",
+    "source": {
+      "frame": {
+        "x": 945,
+        "y": 1108,
+        "w": 78,
+        "h": 91
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 14,
+        "w": 78,
+        "h": 91
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "9b977b61eb267bc70f07b512ad5f887804aca4c1ac0e4b2b5eac7be12f9db2bc"
+  },
+  "drill": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_drill.png",
+    "source": {
+      "frame": {
+        "x": 159,
+        "y": 837,
+        "w": 98,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 17,
+        "w": 98,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "e69c6536ea9aee0f176d71433c8700dc2ee9e4c575dad0b0a83d501cae17013a"
+  },
+  "hold": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_object.png",
+    "source": {
+      "frame": {
+        "x": 860,
+        "y": 1074,
+        "w": 83,
+        "h": 78
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 25,
+        "w": 83,
+        "h": 78
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 120
+      }
+    },
+    "sha256": "bc95bb73983f68065b2850eb5246bd841c4c8210509d28fcbf4764542639d4c6"
+  },
+  "exit": {
+    "atlas": "battle",
+    "frame": "actbtn_ic_act_exit.png",
+    "source": {
+      "frame": {
+        "x": 427,
+        "y": 808,
+        "w": 59,
+        "h": 61
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 16,
+        "w": 59,
+        "h": 61
+      },
+      "sourceSize": {
+        "w": 90,
+        "h": 90
+      }
+    },
+    "sha256": "1db88b2820a296a06f979afe1d190703f89f63001dcf7c9153ad2c0200884429"
+  },
+  "hp-frame": {
+    "atlas": "battle",
+    "frame": "hp_box.png",
+    "source": {
+      "frame": {
+        "x": 697,
+        "y": 1449,
+        "w": 20,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 20,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 20,
+        "h": 20
+      }
+    },
+    "sha256": "785b3e9b8333f5e992eae1ba6696ef0e61b4ec70404d5787d223c0493d9b5da3"
+  },
+  "hp-fill": {
+    "atlas": "battle",
+    "frame": "hp_bar_hp.png",
+    "source": {
+      "frame": {
+        "x": 184,
+        "y": 1528,
+        "w": 16,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 16
+      }
+    },
+    "sha256": "ef3da5f21e057b77f2a9ac24a5d7a0197271e9f91731d51d20119d749c71c9fd"
+  },
+  "star": {
+    "atlas": "battle",
+    "frame": "[ICON]resource1_starpiece.png",
+    "source": {
+      "frame": {
+        "x": 447,
+        "y": 540,
+        "w": 40,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 9,
+        "w": 40,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 60,
+        "h": 60
+      }
+    },
+    "sha256": "1172b961431d4e2fe4f747c4a0e8c079a10ba51d8f599ef38911f4d187eb3341"
+  },
+  "quest-arrow": {
+    "atlas": "battle",
+    "frame": "arrow_quest_main.png",
+    "source": {
+      "frame": {
+        "x": 111,
+        "y": 664,
+        "w": 48,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 72
+      }
+    },
+    "sha256": "cd8356a7d75a1dc30d9367f60f2f62f325cda8e8b8c406e095e9b4b484e7ffcc"
+  },
+  "pause": {
+    "atlas": "MainUiS3",
+    "frame": "ic_pause_00",
+    "source": {
+      "frame": {
+        "x": 1881,
+        "y": 515,
+        "w": 18,
+        "h": 22
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 18,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 18,
+        "h": 22
+      }
+    },
+    "sha256": "60b6c1cf22daba0efd79dd5fca41d71030b8f8ff0754470a05c82d8b707295af"
+  },
+  "settings": {
+    "atlas": "MainUiS3",
+    "frame": "ic_building_setting_00",
+    "source": {
+      "frame": {
+        "x": 1368,
+        "y": 635,
+        "w": 42,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 42,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 42,
+        "h": 30
+      }
+    },
+    "sha256": "3acc11933bd67ea9f42044da9e7720e1a0d7131ceeb650da602219fdd867dee5"
+  },
+  "chest": {
+    "atlas": "MainUiS3",
+    "frame": "ic_empty_treasurebox_00",
+    "source": {
+      "frame": {
+        "x": 1558,
+        "y": 295,
+        "w": 30,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 32
+      }
+    },
+    "sha256": "f3d0fb3b327868fdc27d903e0dca9c60f24109f2eceda33a758a0d06716b1469"
+  },
+  "coin": {
+    "atlas": "items",
+    "frame": "purple_coin_1",
+    "source": {
+      "frame": {
+        "x": 1015,
+        "y": 389,
+        "w": 27,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 2,
+        "w": 27,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 34,
+        "h": 34
+      }
+    },
+    "sha256": "0f74ad33756a50feaae1ca1b0209f74779d5e7a7049fe4f541de8a081602631f"
+  },
+  "button-pause": {
+    "atlas": "MainUiS3",
+    "frame": "btn_pause_00",
+    "source": {
+      "frame": {
+        "x": 2020,
+        "y": 1784,
+        "w": 26,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 30
+      }
+    },
+    "sha256": "b240c7b401dfbd05e18a0070462699af0168d4ce3b25c5473dc74bcdc8012dd2"
+  },
+  "knight": {
+    "atlas": "characters",
+    "frame": "knight_male_2",
+    "source": {
+      "frame": {
+        "x": 694,
+        "y": 456,
+        "w": 38,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 18,
+        "w": 38,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "sha256": "a665696c7a194f736265fbb6e4b9d9d44d488f0d6ccc130a12d133ccb0288881"
+  }
+}
