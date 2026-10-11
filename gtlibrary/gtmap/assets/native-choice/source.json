@@ -1,0 +1,220 @@
+{
+  "atlas": "gtatlas/assets/main_ui.json",
+  "prefab": "ui/stage/Answer Choice.prefab",
+  "prefabSha256": "f56af88c7e959b3be1fcee3a9dfc3879cce33519a3bb217eb63e72409d2d46f3",
+  "atlasSha256": "9591b3e3f1b9dc8117cce037665355531c8dc0fea6766007bf51e87f0d9d891c",
+  "borders": {
+    "btn_white": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "main_line_r16": [
+      19,
+      19,
+      19,
+      19
+    ]
+  },
+  "frames": {
+    "btn_white": {
+      "frame": {
+        "x": 404,
+        "y": 130,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "main_line_r16": {
+      "frame": {
+        "x": 593,
+        "y": 201,
+        "w": 38,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 38,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 38,
+        "h": 38
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ic_branch_attack": {
+      "frame": {
+        "x": 710,
+        "y": 130,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ic_branch_exit": {
+      "frame": {
+        "x": 1,
+        "y": 130,
+        "w": 30,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 30,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ic_branch_heart": {
+      "frame": {
+        "x": 268,
+        "y": 130,
+        "w": 32,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 32,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ic_branch_skull": {
+      "frame": {
+        "x": 744,
+        "y": 130,
+        "w": 32,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ic_branch_think": {
+      "frame": {
+        "x": 778,
+        "y": 130,
+        "w": 29,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 0,
+        "w": 29,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "palette": {
+    "forced": [
+      1,
+      0.44852942,
+      0.44852942,
+      1
+    ],
+    "normal": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "disabled": [
+      217,
+      217,
+      217,
+      255
+    ],
+    "evidence": {
+      "forced": "Answer Choice.prefab: Answer Item / UISprite mColor; only this prefab tint is verified",
+      "normal": "decrypted/base/choose_util.lua: default white",
+      "disabled": "decrypted/base/choose_util.lua: active_condition == false"
+    },
+    "unverified": [
+      "intellect",
+      "brutal",
+      "mercy"
+    ]
+  }
+}

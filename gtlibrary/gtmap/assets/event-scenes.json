@@ -5,13 +5,15 @@
       "id": "fireworld-landing",
       "version": 1,
       "map": "fireworld_1",
-      "title": "火世界 · 飞船着陆片段",
+      "title": "Main/Section1:start_scene · s1_landing_scene",
       "duration": 32.3,
       "actors": [
         {
           "handle": "preview_leader",
-          "resource": "knight_male_2",
-          "name": "预览队长（男骑士）",
+          "npc": "knight_male_2",
+          "resource": "knight_male_4",
+          "skin": "knight_male_2",
+          "name": "knight_male_2",
           "position": [
             8.5,
             1,
@@ -24,16 +26,17 @@
         },
         {
           "handle": "dragon_boy",
-          "name": "吉尔加斯"
+          "name": "dragon_boy"
         },
         {
           "handle": "balloon",
-          "name": "飞船"
+          "name": "balloon"
         },
         {
           "handle": "preview_pilot",
+          "npc": "fw_dragon_boy_2",
           "resource": "dragon_boy_2",
-          "name": "飞船驾驶员",
+          "name": "吉尔瓦斯",
           "position": [
             2.4,
             1,
@@ -265,7 +268,7 @@
           "op": "dialogue",
           "target": "preview_pilot",
           "duration": 4,
-          "speaker": "驾驶员",
+          "speaker": "fw_dragon_boy_2",
           "text": "本次航班已安全降落在沃贝尔火山地带。",
           "waitForClick": false
         },
@@ -274,7 +277,7 @@
           "op": "dialogue",
           "target": "preview_pilot",
           "duration": 4,
-          "speaker": "驾驶员",
+          "speaker": "fw_dragon_boy_2",
           "text": "衷心地感谢选择我们航空公司的各位乘客，我们将始终竭诚为您服务。",
           "waitForClick": false
         },
@@ -283,7 +286,7 @@
           "op": "dialogue",
           "target": "preview_pilot",
           "duration": 4,
-          "speaker": "驾驶员",
+          "speaker": "fw_dragon_boy_2",
           "text": "祝各位乘客的冒险，一路平安。",
           "waitForClick": false
         },
@@ -301,7 +304,7 @@
           "op": "dialogue",
           "target": "dragon_boy",
           "duration": 4,
-          "speaker": "吉尔加斯",
+          "speaker": "dragon_boy",
           "text": "那么，我们出发吧。",
           "waitForClick": false
         },
@@ -310,7 +313,7 @@
           "op": "dialogue",
           "target": "dragon_boy",
           "duration": 4,
-          "speaker": "吉尔加斯",
+          "speaker": "dragon_boy",
           "text": "提醒一下，小心别碰到岩浆。人类的身体肯定承受不住。",
           "waitForClick": false
         },
@@ -472,13 +475,15 @@
       "id": "fireworld-barrier",
       "version": 1,
       "map": "fireworld_5",
-      "title": "火世界 · 封印大门开启片段",
+      "title": "Main/Section23:gate_open_scene",
       "duration": 12,
       "actors": [
         {
           "handle": "preview_leader",
-          "resource": "knight_male_2",
-          "name": "预览队长（男骑士）",
+          "npc": "knight_male_2",
+          "resource": "knight_male_4",
+          "skin": "knight_male_2",
+          "name": "knight_male_2",
           "position": [
             7.5,
             0,
@@ -491,7 +496,7 @@
         },
         {
           "handle": "dragon_boy",
-          "name": "吉尔加斯"
+          "name": "dragon_boy"
         },
         {
           "handle": "fire_bishop"
@@ -681,13 +686,13 @@
       "id": "waterworld-intro",
       "version": 1,
       "map": "waterworld_1",
-      "title": "水世界 · 三位引导者开场对白",
+      "title": "WaterWorld/Main/Section1:intro_scene",
       "duration": 81,
       "actors": [
         {
           "handle": "preview_fairy_1",
           "resource": "fairy_a",
-          "name": "引导者 1",
+          "name": "fairy_1",
           "position": [
             -1.5,
             0.0,
@@ -698,7 +703,7 @@
         {
           "handle": "preview_fairy_2",
           "resource": "fairy_a",
-          "name": "引导者 2",
+          "name": "fairy_2",
           "position": [
             -3.5,
             0.0,
@@ -709,7 +714,7 @@
         {
           "handle": "preview_fairy_3",
           "resource": "fairy_a",
-          "name": "引导者 3",
+          "name": "fairy_3",
           "position": [
             0.5,
             0.0,
