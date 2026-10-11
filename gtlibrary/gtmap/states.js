@@ -24,14 +24,14 @@ export class MapStates {
   const nodes=e.spec.nodes.filter(n=>n.id!==e.spec.root&&(!n.active||/^(bomb|on|off|red|blue|glow|switch\d?|orb.*)$/i.test(n.name))).map(n=>({id:n.id,name:stateLabel(n.name),checked:e.overrides.get(n.id)??e.sim?.nodes.get(n.id)?.visible??n.active}));
   return groups.length||nodes.length?{groups,nodes}:null;
  }
- change(record,id,value,still=false){const e=record?.gimmick;if(!e)return;
+ change(record,id,value,still=false,refresh=true){const e=record?.gimmick;if(!e)return;
   if(id.startsWith('controller:')){const i=Number(id.split(':')[1]),c=e.spec.controllers[i];if(!c?.states[Number(value)])return;e.controllers[i]={index:Number(value),start:this.time,still};
    // Selecting an animator under an initially disabled branch enables that branch.
    let node=e.spec.nodes.find(n=>n.id===c.node);while(node&&node.id!==e.spec.root){e.overrides.set(node.id,true);node=e.spec.nodes.find(n=>n.id===node.parent);}
   }else if(id.startsWith('custom:')){const i=Number(id.split(':')[1]);e.custom[i]={name:value,start:this.time,still};}
   else if(id.startsWith('branch:')){for(const node of e.spec.nodes.filter(n=>n.parent===id.slice(7)&&['red','blue','on','off'].includes(n.name.toLowerCase()))){if(value)e.overrides.set(node.id,node.id===value);else e.overrides.delete(node.id);}}
   else if(id.startsWith('node:'))e.overrides.set(id.slice(5),!!value);
-  e.effectStart=this.time;this.activate(e);this.sample(this.time);this.selection.refresh();
+  e.effectStart=this.time;this.activate(e);if(refresh){this.sample(this.time);this.selection.refresh();}
  }
  activate(e){if(e.active)return;e.active=true;e.record.gimmickActive=true;
   for(const ref of e.record.refs){ref.suppressed=true;ref.mesh.setMatrixAt(ref.index,hidden);ref.mesh.instanceMatrix.needsUpdate=true;ref.mesh.boundingSphere=null;}
@@ -89,6 +89,8 @@ export class MapStates {
    for(const [attribute,value] of e.materialValues.get(node)||[]){const dot=attribute.lastIndexOf('.');if(dot<0){const scalar=p.mesh.material.uniforms[attribute];if(scalar)scalar.value=value;continue;}const u=p.mesh.material.uniforms[attribute.slice(0,dot)]?.value,k=attribute.slice(dot+1);if(u&&typeof u==='object')u[({r:'x',g:'y',b:'z',a:'w'})[k]||k]=value;}
   }
  }}
+ capture(record){const e=record?.gimmick;return e?{controllers:e.controllers.map(c=>({index:c.index,still:c.still})),custom:Object.fromEntries(Object.entries(e.custom).map(([k,v])=>[k,{name:v.name,still:v.still}])),overrides:[...e.overrides]}:null;}
+ restore(record,value){const e=record?.gimmick;if(!e||!value)return;e.controllers=value.controllers.map(c=>({...c,start:this.time}));e.custom=Object.fromEntries(Object.entries(value.custom).map(([k,v])=>[k,{...v,start:this.time}]));e.overrides=new Map(value.overrides);this.activate(e);}
  diagnostics(){return {available:this.entries.length,active:this.entries.filter(e=>e.active).length,instances:this.entries.filter(e=>e.active).map(e=>({id:e.record.tile.id,name:e.record.tile.name,states:e.spec.controllers.map((c,i)=>c.states[e.controllers[i].index]?.name),parts:e.parts.map(p=>({name:e.assets.meshes[p.part.mesh]?.name,visible:p.ref.enabled,uv:p.mesh.material.uniforms._MainTex_ST?.value.toArray()}))}))};}
  get batches(){return this.entries.flatMap(e=>e.effects?.batches||[]);}
  reset(records){for(const r of records){const e=r.gimmick;if(!e)continue;e.controllers=e.spec.controllers.map(c=>({index:c.default,start:this.time,still:false}));e.custom={};e.overrides.clear();}this.sample(this.time);}

@@ -62,7 +62,7 @@
     // reflection into the slot frame, using its actual bind rotation, rather
     // than adding a constant angle to every weapon / view / animation.
     var bone = slot.bone;
-    if (bone.parent && /weapon/i.test(bone.parent.data.name) && attachment.scaleY < 0) {
+    if (attachment && bone.parent && /weapon/i.test(bone.parent.data.name) && attachment.scaleY < 0) {
       attachment = attachment.copy();
       attachment.rotation -= 2 * bone.data.rotation;
       attachment.updateOffset();

@@ -1,51 +1,45 @@
-# 地图人物动画接入考察
+# 地图人物动画
 
-结论：可行。可以复用 gtasset 的 Spine 3.8 运行时、骨骼解析核心和角色资源，将动态三角形交给 gtmap 使用的 Three.js。全部运行于浏览器，适用于 GitHub Pages，不需要 Node 或服务端。
+人物预览已接入主 library 的地图页面，复用 gtasset 的 Spine 3.8 骨骼解析、动画运行时、装备绑定和通用表情。所有资源加载、动画和编辑均在浏览器完成，适用于 GitHub Pages，不需要 Node 或服务端。
 
-本次交付是独立开发原型 `tools/gtmap/character-preview.html` 和接入考察。**地图主界面尚未新增人物开关或人物动画功能**。原型地面、墙体和人物排列为合成验证场景，并非游戏地图还原。
+## 使用
 
-## 已验证的链路
+- 地图下方的“人物”“人物动画”分别控制显示和播放。
+- “地图人物”面板按中文名、内部编号、挂点或资源名搜索，点击人物即可选中并定位；也可在地图上直接选择。
+- 人物检查器可以更换角色资源、四向朝向、皮肤、动作、表情、子动画、播放速度，以及单独暂停、重播。表情复用原生角色轨道和 human_emotion 的面部骨骼绑定。
+- 装备使用静态表默认武器，也允许按原始物品 ID 为指定装备槽换装；0 表示卸下。贴图、裁剪和旋转信息来自现有物品图集，挂点与遮挡顺序由骨骼控制。
+- 人物参与图块选择、微调、隐藏和撤回。模型导出保留当前人物姿势的静态快照，不包含 Spine 动画轨道。
 
-原型直接使用 `GTResources` 读取现有资源，因此保留逻辑路径别名、新补录资源、本地及 CDN 路径处理。调用 `GTSpineCore.parse/createInstance` 创建角色；Spine 的 `AnimationState` 更新姿势，现有 `SkeletonRenderer` 处理 attachment、裁剪、slot 绘制顺序和双色顶点数据；自定义 batch 接口将其交给 Three.js 网格。
+默认显示地图中已放置的人物，排除 x/z 约为 999 以及 (99,99) 的预置挂点。位置存在不等于游戏开场可见：剧情条件、出场、移动、寻路、战斗和变身脚本不自动执行。未匹配或加载失败的人物会留在列表中显示原因，可以手动更换资源；人物加载失败不会阻止静态地图显示。
 
-| 原资源 | 正面动画数 | 骨骼数 | 验证 |
-|---|---:|---:|---|
-| desert_slave_2 | 168 | 25 | idle_front、walk_front、walk_back |
-| desertelf_prison_officer | 164 | 16 | idle_front、walk_front、walk_back |
-| aw_hana_kid | 167 | 19 | idle_front、walk_front、walk_back |
+## 数据与坐标依据
 
-三个角色同时渲染，正面共 35 个 attachment draw，未发现失败的 WebGL program。透明边缘及测试墙遮挡可见。原型可切换正面、背面、侧面及待机、行走、跑步；本次浏览器只抽查上述动作，没有逐一验证所有选项。该结果证明合成链路可行，未进行整图大量人物性能测试。
+人物来自事件图层 `events[].properties` 的 `Tilemaps.CharacterPlaceholder`，不是静态 tiles。事件 y 已是世界坐标；桥接 MapSelection 时先乘二，以抵消图块选择器内部的 y×0.5 换算，避免重复压缩高度。
 
-人物使用相机朝向的竖直画面平面，三角形在同一场景中参与深度测试。正式接入须结合游戏人物的剪切/排序参数校准，不能把当前演示尺寸 0.04 当作游戏实际比例；纯俯视时也应明确人物如何呈现。
+静态表 `static_data_dec/{heroes,npc,monsters}.json` 提供 Name/Id → SpineAssetName、中文名及默认武器。映射同时支持旧式 `asset:skin` 与新式 `/bundle/path:asset#skin`，地图外观覆盖、同名骨骼及明确别名。例如：
 
-## 地图记录与资源映射
+| 地图记录 | 实际骨骼 |
+|---|---|
+| desert_slave_for_quest | desert_slave_2 |
+| desertelf_mad_male_bomb | desertelf_mad_male |
+| aw_main_character_kid | aw_hana_kid |
 
-当前部署文件经现有 `decodeMap` 解密后的抽样统计：
+方向经现有 IL2CPP 原生 `VectorExtensions.ToDirection` 核对：1=后（+Z）、2=右（+X）、4=前（−Z）、8=左（−X）。左右共用 side 骨骼，左向镜像。人物尺寸和默认混合时间读取已导出 `MonoBehaviour/*SkeletonData.asset`，多数角色 scale 为 0.022；不沿用早期原型的演示比例 0.04。
 
-| 地图 | CharacterPlaceholder 数 | 排除 x/z=999 的放置记录 | 组件版本 |
-|---|---:|---:|---|
-| desert_1_1 | 132 | 72 | v10 |
-| afterworld_1_1 | 316 | 261 | v9 |
+生产解码器支持 v9，以及抽样确认的 v10 布局：NPC 与 v9 相同，非 NPC 在 c0 之后、c8 与可变长 d0 列表之前新增一个整数字段，保留为 `v10Extra`，没有猜测其游戏语义。`desert_1_2` 的非空列表揭示了初版把新增字段放在列表之后造成的错位，现已修正。仅以全零字段、空列表抽查无法验证这类字段顺序。
 
-人物挂在事件图层的 `events[].properties` 上，不在静态 `tiles` 列表中。位置直接来自事件的三维浮点坐标。999 占位点通常用于剧情预置，应排除默认显示，同时允许用户单独查看。排除占位点不等于确认人物在游戏初始时可见，剧情条件仍需另行处理。
+组件载荷有独立且明确的字节长度。未知或尚未支持的组件布局保留原始字节与解码错误；能确认人物共同头部时保留 ID 并提示部分解码，避免局部组件差异使整张地图打不开。KONG 容器的数量、索引、字节边界与末尾检查仍严格执行，不扫描字节来猜恢复位置。
 
-静态资料位于 `static_data_dec/{heroes,npc,monsters}.json`，应同时建立 Name/Id → SpineAssetName 的索引。例如：
+## 渲染与性能
 
-* `desert_slave_for_quest` → heroes ID 96 → `desert_slave_2`。
-* `desertelf_mad_male_bomb` → `desertelf_mad_male`，两个名字不可简单视为两个骨骼文件。
-* `aw_main_character_kid` → npc ID 303592 → `/ondemand/afterworld/characters/aw_hana_kid`。
-* `desertelf_prisoner` 等老地图名称在新版静态表里没有同名行，但仍有同名 Spine 资源，需精确资源名回退。
+`gtasset/three-renderer.js` 将原 Spine SkeletonRenderer 的裁剪、attachment 网格、绘制顺序、双色顶点及混合方式交给地图共享的 Three.js 渲染器。相邻且纹理、混合方式相同的绘制批次合并；顶点缓冲复用，同一骨骼和图集共享解析结果及纹理，各人物保留独立姿势。每张地图最多四个并行人物加载任务；视野内动画按最高 30 Hz 更新，视野外与暂停人物停止姿势更新，切换地图释放资源。
 
-`afterworld_1_1` 的 261 个放置记录都能在这三张表中按 Name 找到；`desert_1_1` 只有 27/72 个按 Name 命中，需要使用仍存在的同名资源及显式别名。静态表命中只证明映射存在，不代表所有对应的骨骼、皮肤、装备均已验证。
+人物使用朝向相机的竖直平面，在地图场景参与深度测试。未完整重建原游戏 Spine Shear 着色器、额外投影及所有剧情排序规则；极端俯视、特殊混合与复杂遮挡仍可能和游戏不同。
 
-外观解析要区分旧式 `asset:skin` 与新式 `/bundle/path:asset#skin`，保留星阶、皮肤和地图覆盖项，不能只取冒号或路径后的最后一段。人物中文名可复用静态文本与资源注册表。
+## 生成与定向验证
 
-## 正式接入前需要补齐的部分
+运行 `tools/gtmap/build-map-characters.py --root D:/github/gtlibrary`，从现有静态表、资源索引和解包的 SkeletonData 生成 `gtmap/assets/character-metadata.json.gz`；可通过 `--static`、`--assets`、`--output` 指定数据目录和输出位置。本次索引包含 2,833 个人物资源、29,862 个 Name/Id 查询键，使用 7,286 条 SkeletonData 比例记录。
 
-1. **人物组件解码。** `gtmap/decoder.js` 当前只完整支持 CharacterPlaceholder v9。沙漠使用 v10，剩余字段尚未解释，不能直接套用 v9。原型只读取 v10 的共同头部 ID 作考察，没有修改生产解码器，也没有将未知字段猜成朝向或显隐状态。
-2. **人物层与选取。** 在事件图层建立人物实例、独立显隐开关，将选择和边界接入 MapSelection。事件坐标不能照搬静态图块的 y×0.5 换算。朝向需核实原始枚举，再映射 front/back/side 与左右镜像；选中人物可切换实际存在的动作、皮肤和朝向。
-3. **资源与性能。** 共享相同骨骼数据、图集及纹理，每个人保留独立姿势和时钟。只加载需要的人物，视野外暂停更新；合并相邻且纹理/混合方式相同的 slot draw，复用顶点缓冲，设置缓存上限。原型采用逐 attachment 网格，不能直接扩展为几百人默认全速播放。
-4. **外观完整性。** 复用 gtasset 的装备和表情能力，保留 attachment、skin、双色 tint、混合方式、遮挡及阴影。每个角色开一个播放器/WebGL 上下文会妨碍共享与地图遮挡，推荐共享地图的渲染器。
-5. **范围与导出。** 先实现摆放位置上的动画预览、播放/暂停和单人物控制；剧情脚本决定的出场、移动、战斗、寻路、变身另行处理。模型导出应明确选择当前姿势静态快照或排除人物，现有导出器不能自动等同于可导出的完整 Spine 动画。
+浏览器实际载入 `desert_1_1` 的 72 个放置人物，72/72 成功；检查了人物显示、方向和动作切换、显隐以及 Ctrl+Z。`desert_1_2` 在主界面成功打开，47 个放置人物中 46 个载入；`princess` 的原始资源尚未收录，独立报告缺失，不猜测替换成其他公主外观。解码复核中 desert_1_1、desert_1_2、afterworld_1_1 分别有 132、75、316 条人物组件，全部完整解码；desert_1_2 含 5 条非空 d0 列表。另以有意截断的组件验证原始载荷保留，并确认截断地图容器仍被拒绝。afterworld_1_1 尚未逐个验证人物渲染。仅做针对性检查，没有整库回归。
 
-建议第一阶段支持已确认的 v9 人物和手动指定资源预览，同时补齐 v10 原生布局，再扩展到旧世界地图。原型与文档均为静态文件，未引入新运行时依赖、没有重新解包，也未进行整库回归测试。
+早期合成场景原型仍保留在 `tools/gtmap/character-preview.html`，用于独立观察渲染链路；它不代表实际地图还原。

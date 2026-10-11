@@ -9,19 +9,19 @@ class Reader {
   u8() { return this.num('getUint8', 1); }
   i8() { return this.num('getInt8', 1); }
   f32() { const v = this.num('getFloat32', 4); if (!Number.isFinite(v)) throw new Error('非法浮点坐标'); return v; }
-  count(max = 1000000) { const n = this.i32(); if (n < 0 || n > max) throw new Error(`非法记录数量 ${n}`); return n; }
+  count(max = 1000000) { const n = this.i32(); if (n < 0 || n > max) throw new Error(`非法记录数量 ${n}（偏移 0x${(this.pos-4).toString(16)}）`); return n; }
   bool() { const n = this.u8(); if (n > 1) throw new Error('非法布尔字段'); return !!n; }
   str() { let n = 0; for (let s = 0; s < 35; s += 7) { const b = this.u8(); n += (b & 127) * 2 ** s; if (!(b & 128)) return utf8.decode(this.take(n)); } throw new Error('非法字符串长度'); }
   floats(n) { return Array.from({ length: n }, () => this.f32()); }
 }
-function readComponent(name, bytes) {
+function decodeComponent(name, bytes) {
   const r = new Reader(bytes), version = r.i32();
   const out = { version };
   const spec = () => { const s = r.str(); return s ? JSON.parse(s) : null; };
   if (name === 'Tilemaps.TileProp' && version === 5) {
     out.keyIndex = r.i32(); out.overrides = spec(); out.statUpdateType = r.u8(); out.deactivateOnStart = r.bool(); out.condition = r.i32();
     if (out.condition === 1) { out.conditionIndex = r.i32(); out.conditionName = r.str(); }
-  } else if (name === 'Tilemaps.CharacterPlaceholder' && version === 9) {
+  } else if (name === 'Tilemaps.CharacterPlaceholder' && [9,10].includes(version)) {
     out.characterId = r.str(); const kind = out.kind = r.u8();
     out.field3c = r.i32(); out.fieldf0 = r.str(); out.fieldf8 = r.i32(); out.fieldfc = r.i32();
     out.tags = Array.from({ length: r.count() }, () => ({ tag: r.u8(), value: r.str() }));
@@ -34,13 +34,26 @@ function readComponent(name, bytes) {
       if (out.hasAppearanceOverride) { out.appearanceName = r.str(); out.color32 = Array.from({ length: 4 }, () => r.u8()); out.appearanceValue = r.f32(); }
     }
     if (kind !== 1) {
-      out.fieldb0 = r.str(); out.fieldb8 = r.str(); out.fieldc0 = r.i32(); out.fieldc8 = r.u8();
+      out.fieldb0 = r.str(); out.fieldb8 = r.str(); out.fieldc0 = r.i32();
+      // v10 inserts this integer BEFORE c8 and the variable-length d0 list.
+      // Empty lists with zero-valued fields conceal a four-byte offset error.
+      if(version===10)out.v10Extra=r.i32();
+      out.fieldc8 = r.u8();
       out.fieldd0 = Array.from({ length: r.count() }, () => [r.i32(), r.i32(), r.i32(), r.f32()]);
     }
     out.overrides = spec();
   } else return { version, raw: bytes, decoded: false };
   if (r.pos !== bytes.length) throw new Error(`${name} 的载荷存在未解释字节`);
   return { ...out, decoded: true };
+}
+// Payloads have explicit byte lengths. Unknown component layouts must not
+// invalidate an otherwise intact map envelope; preserve their bytes and error.
+function readComponent(name,bytes){
+ try{return decodeComponent(name,bytes);}catch(error){
+  const out={raw:bytes,decoded:false,error:error.message};
+  try{const r=new Reader(bytes);out.version=r.i32();if(name==='Tilemaps.CharacterPlaceholder'&&[9,10].includes(out.version)){const characterId=r.str(),kind=r.u8();if([1,2,3].includes(kind))Object.assign(out,{characterId,kind,partial:true});}}catch{}
+  return out;
+ }
 }
 function properties(r, targets) {
   return Array.from({ length: r.count() }, () => {

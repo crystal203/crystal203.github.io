@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-11",
+  "scope": "Focused browser checks; no full-library rendering regression; no Node",
+  "mainLibrary": {
+    "map": "desert_1_1",
+    "placedCharacters": 72,
+    "loadedCharacters": 72,
+    "checked": [
+      "native direction change",
+      "walk_front",
+      "shared cry expression",
+      "hide then Ctrl+Z",
+      "hidden panel selective restore"
+    ]
+  },
+  "editorFixture": {
+    "passed": 11,
+    "checked": [
+      "group transform creates one history entry",
+      "undo transform",
+      "redo transform",
+      "hide two objects",
+      "restore one object",
+      "undo restore",
+      "batch select identical battlegate",
+      "batch switch state",
+      "undo batch state",
+      "Shift marquee across two layers",
+      "no failed WebGL programs"
+    ]
+  },
+  "characterFixture": {
+    "passed": 6,
+    "checked": [
+      "load skeleton and atlas",
+      "paused character appears on first entering viewport",
+      "shared face overlay",
+      "default equipment binding",
+      "ID 0 removes default equipment",
+      "restore clears override and restores default equipment"
+    ]
+  },
+  "componentDecode": [
+    {
+      "map": "desert_1_1",
+      "tiles": 7695,
+      "characters": 132,
+      "fullyDecoded": 132,
+      "nonemptyLists": 0,
+      "errors": 0
+    },
+    {
+      "map": "desert_1_2",
+      "tiles": 10062,
+      "characters": 75,
+      "fullyDecoded": 75,
+      "nonemptyLists": 5,
+      "errors": 0
+    },
+    {
+      "map": "afterworld_1_1",
+      "tiles": 13513,
+      "characters": 316,
+      "fullyDecoded": 316,
+      "nonemptyLists": 0,
+      "errors": 0
+    }
+  ],
+  "unknownComponentPayloadRetained": true,
+  "truncatedContainerRejected": true,
+  "limitations": [
+    "no automatic story or battle scripts",
+    "no complete Spine Shear shader or additional shadow reconstruction",
+    "export is a static current pose, animation-track export was not added",
+    "not all resource animations or map versions visually checked"
+  ],
+  "mainLibraryDesert12": {
+    "map": "desert_1_2",
+    "opened": true,
+    "placedCharacters": 47,
+    "loadedCharacters": 46,
+    "missingResources": [
+      "princess"
+    ],
+    "note": "missing character resource is reported independently and does not block map rendering"
+  }
+}
