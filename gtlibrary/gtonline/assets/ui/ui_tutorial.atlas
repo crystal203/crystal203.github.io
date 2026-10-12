@@ -1,0 +1,111 @@
+
+ui_tutorial.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FX_circle
+  rotate: false
+  xy: 278, 109
+  size: 98, 98
+  orig: 100, 100
+  offset: 1, 1
+  index: -1
+FX_circle2
+  rotate: false
+  xy: 2, 4
+  size: 131, 56
+  orig: 136, 136
+  offset: 3, 1
+  index: -1
+FX_glow
+  rotate: false
+  xy: 456, 134
+  size: 34, 34
+  orig: 43, 43
+  offset: 5, 4
+  index: -1
+FX_glow_tap
+  rotate: false
+  xy: 456, 170
+  size: 37, 37
+  orig: 43, 43
+  offset: 3, 3
+  index: -1
+FX_gradient
+  rotate: false
+  xy: 135, 2
+  size: 145, 22
+  orig: 145, 22
+  offset: 0, 0
+  index: -1
+arrow
+  rotate: false
+  xy: 495, 195
+  size: 10, 12
+  orig: 12, 14
+  offset: 1, 1
+  index: -1
+background
+  rotate: true
+  xy: 378, 103
+  size: 104, 76
+  orig: 104, 76
+  offset: 0, 0
+  index: -1
+foreground
+  rotate: false
+  xy: 278, 26
+  size: 104, 76
+  orig: 104, 76
+  offset: 0, 0
+  index: -1
+marker
+  rotate: false
+  xy: 385, 21
+  size: 80, 80
+  orig: 82, 82
+  offset: 1, 1
+  index: -1
+text_doubletap
+  rotate: false
+  xy: 507, 206
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+thumb_hold
+  rotate: false
+  xy: 507, 206
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+thumb_normal
+  rotate: false
+  xy: 507, 206
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+thumb_press
+  rotate: false
+  xy: 507, 206
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+thumb_root2
+  rotate: false
+  xy: 507, 206
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+thumb
+  rotate: true
+  xy: 2, 62
+  size: 145, 275
+  orig: 145, 275
+  offset: 0, 0
+  index: -1

@@ -80,6 +80,7 @@ export class MapStates {
   for(const [i,custom] of Object.entries(e.custom))if(sim.effect.scripts[i])sim.effect.scripts[i].fields.StartState=custom.name;
   for(const s of e.spec.scripts)if(s.type==='RotateThis'){const f=s.fields,rotation=f.rotationSpeed||f.RotateSpeed||f.rotation||{};sim.nodes.get(s.node).quaternion.multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(...['x','y','z'].map(k=>(rotation[k]||0)*time*Math.PI/180),'ZXY')));}
   for(const [id,v] of e.overrides)sim.nodes.get(id).visible=v;
+  if(e.spec.pickup){const root=e.spec.nodes.find(n=>n.name==='root');if(root)sim.nodes.get(root.id).position.y+=Math.sin(time*3)*.1;}
   sim.nodeRoot.updateMatrixWorld(true);
  }
  sample(time){this.time=time;for(const e of this.entries){if(!e.active)continue;for(const b of e.effects.batches)b.mesh.material.userData.animationTime=e.previewTime;e.effects.sample(Math.max(0,(e.previewTime??time)-e.effectStart));

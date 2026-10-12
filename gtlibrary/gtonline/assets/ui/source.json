@@ -1,0 +1,442 @@
+{
+  "stage_title": {
+    "prefab": "assets/ui/stage/stage_title.prefab",
+    "scale": 0.009999999776482582,
+    "animation": "play",
+    "atlas": {
+      "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "m_Enabled": 1,
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -2861956063985135401
+      },
+      "m_Name": "spine_ui_battle_Atlas",
+      "atlasFile": {
+        "m_FileID": 0,
+        "m_PathID": 5361723392629219629
+      },
+      "materials": [
+        {
+          "m_FileID": 0,
+          "m_PathID": 7088579364645292804
+        }
+      ]
+    }
+  },
+  "ui_tutorial": {
+    "prefab": "assets/ui/stage/tutorial_spine.prefab",
+    "scale": 0.02199999988079071,
+    "animation": "empty",
+    "atlas": {
+      "m_GameObject": {
+        "m_FileID": 0,
+        "m_PathID": 0
+      },
+      "m_Enabled": 1,
+      "m_Script": {
+        "m_FileID": 0,
+        "m_PathID": -2861956063985135401
+      },
+      "m_Name": "ui_tutorial_Atlas",
+      "atlasFile": {
+        "m_FileID": 0,
+        "m_PathID": -1159930858349072021
+      },
+      "materials": [
+        {
+          "m_FileID": 0,
+          "m_PathID": -3853295981957782914
+        }
+      ]
+    }
+  },
+  "arrow_quest_main.png": {
+    "atlas": "battle",
+    "frame": {
+      "frame": {
+        "x": 111,
+        "y": 664,
+        "w": 48,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 72
+      }
+    }
+  },
+  "arrow_quest_sub.png": {
+    "atlas": "battle",
+    "frame": {
+      "frame": {
+        "x": 274,
+        "y": 1480,
+        "w": 46,
+        "h": 67
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 3,
+        "w": 46,
+        "h": 67
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 72
+      }
+    }
+  },
+  "arrow_quest_dot.png": {
+    "atlas": "battle",
+    "frame": {
+      "frame": {
+        "x": 979,
+        "y": 712,
+        "w": 14,
+        "h": 14
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 14
+      },
+      "sourceSize": {
+        "w": 14,
+        "h": 14
+      }
+    }
+  },
+  "glow_circle_1.png": {
+    "atlas": "main_ui",
+    "frame": {
+      "frame": {
+        "x": 403,
+        "y": 446,
+        "w": 58,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 3,
+        "w": 58,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "circle_line_52px.png": {
+    "atlas": "main_ui",
+    "frame": {
+      "frame": {
+        "x": 67,
+        "y": 389,
+        "w": 52,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 52,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 52,
+        "h": 52
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "box_fill.png": {
+    "atlas": "main_ui",
+    "frame": {
+      "frame": {
+        "x": 102,
+        "y": 1,
+        "w": 8,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 8,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 8,
+        "h": 8
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "IC_battle_npc_talk.png": {
+    "atlas": "battle",
+    "frame": {
+      "frame": {
+        "x": 218,
+        "y": 1328,
+        "w": 58,
+        "h": 53
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 53
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 54
+      }
+    }
+  },
+  "npc_arc.png": {
+    "atlas": "battle",
+    "frame": {
+      "frame": {
+        "x": 864,
+        "y": 524,
+        "w": 136,
+        "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 40,
+        "w": 136,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 136,
+        "h": 106
+      }
+    }
+  },
+  "item-30017.png": {
+    "atlas": "items",
+    "sprite": "mole_glove",
+    "frame": {
+      "frame": {
+        "x": 357,
+        "y": 793,
+        "w": 40,
+        "h": 40
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 40,
+        "h": 40
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 40
+      }
+    },
+    "texture": "gtmap\\assets\\textures\\pickup-items.png",
+    "textureSha256": "5b41de0193709104e7e91329c73eb9f9e317c92bd85f8c55a1b7943396c33f9e"
+  },
+  "item-9010010.png": {
+    "atlas": "items",
+    "sprite": "basic_sword",
+    "frame": {
+      "frame": {
+        "x": 883,
+        "y": 394,
+        "w": 21,
+        "h": 21
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "spriteSourceSize": {
+        "x": 28,
+        "y": 15,
+        "w": 21,
+        "h": 21
+      }
+    },
+    "texture": "gtmap\\assets\\textures\\pickup-items.png",
+    "textureSha256": "5b41de0193709104e7e91329c73eb9f9e317c92bd85f8c55a1b7943396c33f9e"
+  },
+  "item-9080040.png": {
+    "atlas": "items",
+    "sprite": "iron_shield",
+    "frame": {
+      "frame": {
+        "x": 1158,
+        "y": 478,
+        "w": 12,
+        "h": 12
+      },
+      "rotated": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "spriteSourceSize": {
+        "x": 26,
+        "y": 26,
+        "w": 12,
+        "h": 12
+      }
+    },
+    "texture": "gtmap\\assets\\textures\\pickup-items.png",
+    "textureSha256": "5b41de0193709104e7e91329c73eb9f9e317c92bd85f8c55a1b7943396c33f9e"
+  },
+  "item-10048.png": {
+    "atlas": "characters",
+    "sprite": "heavy_knight",
+    "frame": {
+      "frame": {
+        "x": 887,
+        "y": 500,
+        "w": 35,
+        "h": 47
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 14,
+        "w": 35,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "texture": "gtatlas\\assets\\characters.png",
+    "textureSha256": "2e72ee247e21339ee219cec58a986b72b8b92408cfd5c9cca25f04f7e6b0ffc8"
+  },
+  "Overlay Panel.prefab": {
+    "source": "ui/common/Overlay Panel.prefab",
+    "sha256": "2f8ad30ee44b68ccbacb7397692dbd2d0e5b0ea7902527f4bc3209fd9e6a65d0"
+  },
+  "npc_circle.prefab": {
+    "source": "effects/ui/npc_circle.prefab",
+    "sha256": "fd889586777747cd0488b9d66235e6981dff474d95c21575eee0246cc3db481e"
+  },
+  "interaction_marker.prefab": {
+    "source": "ui/battleui/interaction_marker.prefab",
+    "sha256": "29913fecf2f69d3ccf29873f4c00c1d3d60b24660240170f5b5feba69c2d1d00"
+  },
+  "IngameNoticeUI.prefab": {
+    "source": "ui/stage/IngameNoticeUI.prefab",
+    "sha256": "2821cb9714708218c7726cf23fe6e8963cdabc7e76e0ed5ca9d90af7c0332e49"
+  },
+  "box_r0_00.png": {
+    "atlas": "MainUiS3",
+    "frame": {
+      "frame": {
+        "x": 396,
+        "y": 434,
+        "w": 2,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 2,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 2,
+        "h": 2
+      }
+    }
+  },
+  "gradation_pop_01.png": {
+    "atlas": "MainUiS3",
+    "frame": {
+      "frame": {
+        "x": 651,
+        "y": 2043,
+        "w": 431,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 431,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 431,
+        "h": 4
+      }
+    }
+  },
+  "floating_text_box.png": {
+    "atlas": "battle",
+    "frame": {
+      "frame": {
+        "x": 88,
+        "y": 1491,
+        "w": 46,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 46,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 46,
+        "h": 46
+      }
+    }
+  },
+  "floating_text.prefab": {
+    "source": "ui/battleui/floating_text.prefab",
+    "sha256": "2d40169d672043bcf069417caebd556632835fc0d9d7ecc93f3a40aa03b6e131"
+  }
+}

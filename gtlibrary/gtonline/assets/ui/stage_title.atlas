@@ -1,0 +1,307 @@
+
+spine_ui_battle.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+glow
+  rotate: false
+  xy: 265, 288
+  size: 100, 100
+  orig: 106, 106
+  offset: 3, 3
+  index: -1
+glow_ee_1
+  rotate: true
+  xy: 148, 2
+  size: 68, 72
+  orig: 76, 80
+  offset: 4, 4
+  index: -1
+glow_ee_2
+  rotate: false
+  xy: 424, 424
+  size: 86, 86
+  orig: 94, 94
+  offset: 4, 4
+  index: -1
+glowbar_fx
+  rotate: true
+  xy: 472, 235
+  size: 50, 34
+  orig: 50, 34
+  offset: 0, 0
+  index: -1
+ic_exclam_B
+  rotate: false
+  xy: 452, 69
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+ic_exclam_F
+  rotate: true
+  xy: 2, 9
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+ic_quest_B
+  rotate: false
+  xy: 88, 206
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+ic_quest_F
+  rotate: false
+  xy: 88, 120
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+ic_quest_F_gray
+  rotate: false
+  xy: 88, 34
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+ic_substage_B
+  rotate: false
+  xy: 299, 86
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+ic_substage_F
+  rotate: true
+  xy: 148, 72
+  size: 70, 74
+  orig: 70, 74
+  offset: 0, 0
+  index: -1
+puzzled_down
+  rotate: false
+  xy: 265, 392
+  size: 13, 12
+  orig: 41, 41
+  offset: 14, 14
+  index: -1
+sensed_down
+  rotate: false
+  xy: 265, 392
+  size: 13, 12
+  orig: 41, 41
+  offset: 14, 14
+  index: -1
+puzzled_up
+  rotate: false
+  xy: 472, 187
+  size: 35, 46
+  orig: 41, 65
+  offset: 3, 17
+  index: -1
+qcomplete_geframe_1
+  rotate: false
+  xy: 2, 406
+  size: 278, 104
+  orig: 278, 104
+  offset: 0, 0
+  index: -1
+qcomplete_gegauge_1
+  rotate: true
+  xy: 481, 376
+  size: 46, 28
+  orig: 46, 28
+  offset: 0, 0
+  index: -1
+qcomplete_pin_evil
+  rotate: true
+  xy: 433, 5
+  size: 62, 68
+  orig: 62, 68
+  offset: 0, 0
+  index: -1
+qcomplete_pin_good
+  rotate: false
+  xy: 292, 16
+  size: 62, 68
+  orig: 62, 68
+  offset: 0, 0
+  index: -1
+qcomplete_title_evil
+  rotate: true
+  xy: 359, 98
+  size: 52, 54
+  orig: 52, 54
+  offset: 0, 0
+  index: -1
+quest_com/glow_circle_2
+  rotate: false
+  xy: 481, 348
+  size: 26, 26
+  orig: 32, 32
+  offset: 3, 3
+  index: -1
+quest_com/glow_cube_1
+  rotate: false
+  xy: 364, 206
+  size: 54, 54
+  orig: 64, 64
+  offset: 5, 5
+  index: -1
+quest_com/qclear_cmframe
+  rotate: true
+  xy: 364, 152
+  size: 52, 54
+  orig: 52, 54
+  offset: 0, 0
+  index: -1
+qcomplete_title_good
+  rotate: true
+  xy: 364, 152
+  size: 52, 54
+  orig: 52, 54
+  offset: 0, 0
+  index: -1
+quest_com/qclear_complete_01
+  rotate: true
+  xy: 224, 57
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+quest_com/qclear_fx_ring_1
+  rotate: false
+  xy: 236, 211
+  size: 75, 75
+  orig: 79, 79
+  offset: 2, 2
+  index: -1
+quest_com/qclear_fx_ring_2
+  rotate: false
+  xy: 152, 218
+  size: 82, 82
+  orig: 92, 92
+  offset: 5, 5
+  index: -1
+quest_com/qclear_m_frame
+  rotate: true
+  xy: 2, 292
+  size: 112, 148
+  orig: 112, 148
+  offset: 0, 0
+  index: -1
+quest_com/qclear_rank_glow
+  rotate: true
+  xy: 359, 32
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+quest_com/qclear_rankframe_1
+  rotate: true
+  xy: 282, 390
+  size: 120, 140
+  orig: 120, 140
+  offset: 0, 0
+  index: -1
+quest_com/qclear_rankline_1
+  rotate: false
+  xy: 424, 296
+  size: 55, 126
+  orig: 120, 140
+  offset: 59, 7
+  index: -1
+sensed
+  rotate: true
+  xy: 481, 287
+  size: 10, 27
+  orig: 41, 41
+  offset: 18, 5
+  index: -1
+sensed_up
+  rotate: false
+  xy: 481, 315
+  size: 18, 31
+  orig: 41, 41
+  offset: 12, 5
+  index: -1
+smaple_glow
+  rotate: true
+  xy: 2, 224
+  size: 66, 68
+  orig: 72, 72
+  offset: 3, 2
+  index: -1
+title/black
+  rotate: false
+  xy: 472, 155
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+title/boss
+  rotate: false
+  xy: 152, 302
+  size: 111, 102
+  orig: 111, 112
+  offset: 0, 10
+  index: -1
+title/bottom_line
+  rotate: false
+  xy: 481, 299
+  size: 20, 14
+  orig: 20, 14
+  offset: 0, 0
+  index: -1
+title/light_point
+  rotate: false
+  xy: 420, 148
+  size: 30, 30
+  orig: 32, 32
+  offset: 1, 1
+  index: -1
+title/ring
+  rotate: false
+  xy: 2, 160
+  size: 62, 62
+  orig: 64, 64
+  offset: 1, 1
+  index: -1
+title/success
+  rotate: false
+  xy: 148, 144
+  size: 75, 72
+  orig: 78, 78
+  offset: 3, 3
+  index: -1
+title/symbol
+  rotate: false
+  xy: 225, 137
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+wordballon_B
+  rotate: false
+  xy: 367, 262
+  size: 52, 126
+  orig: 52, 126
+  offset: 0, 0
+  index: -1
+wordballon_F
+  rotate: false
+  xy: 421, 180
+  size: 49, 114
+  orig: 52, 126
+  offset: 3, 10
+  index: -1
+wordballon_F_gray
+  rotate: false
+  xy: 313, 172
+  size: 49, 114
+  orig: 52, 126
+  offset: 3, 10
+  index: -1
