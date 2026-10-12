@@ -7,3 +7,6 @@ body.map-workspace .library-header{padding:7px 18px;gap:24px}body.map-workspace 
 body.map-presentation>.library-header,body.map-presentation>.context-bar,body.map-presentation>#results{display:none!important}
 
 body:has(nav [data-view=online][aria-current=page])>.context-bar{display:none}
+
+@media(min-width:761px) and (max-width:1250px){.library-header{gap:12px;flex-wrap:wrap}.library-header nav{order:3;width:100%}.library-header nav button{flex:1;padding:7px 10px}#results{top:175px}}
+@media(max-width:760px){nav{flex-wrap:wrap}nav button{min-width:65px}}

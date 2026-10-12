@@ -1,0 +1,174 @@
+Native.Recovered [630544c,6305700)
+630544c  sub     sp, sp, #0x90
+6305450  stp     d9, d8, [sp, #0x50]
+6305454  stp     x30, x23, [sp, #0x60]
+6305458  stp     x22, x21, [sp, #0x70]
+630545c  stp     x20, x19, [sp, #0x80]
+6305460  adrp    x20, #0xa175000
+6305464  ldrb    w8, [x20, #0x6e3] //  @ a1756e3 bytes
+6305468  mov     v8.16b, v0.16b
+630546c  mov     x19, x0
+6305470  tbnz    w8, #0, #0x6305488
+6305474  adrp    x0, #0x9a6d000
+6305478  ldr     x0, [x0, #0x5f8] //  @ 9a6d5f8 bytes 98e4ca0900000000
+630547c  bl      #0x390a13c // sub_0x390a13c
+6305480  mov     w8, #1
+6305484  strb    w8, [x20, #0x6e3]
+6305488  mov     w0, #0xbbdb
+630548c  mov     x1, xzr
+6305490  bl      #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+6305494  tbz     w0, #0, #0x63054bc
+6305498  mov     w0, #0xbbdb
+630549c  mov     x1, xzr
+63054a0  bl      #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63054a4  cbz     x0, #0x63056fc
+63054a8  mov     x1, x19
+63054ac  mov     v0.16b, v8.16b
+63054b0  mov     x2, xzr
+63054b4  bl      #0x85c4c3c // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_242
+63054b8  b       #0x63056e4 // sub_0x63056e4
+63054bc  ldr     x20, [x19, #0x90]
+63054c0  fmov    s0, #1.00000000
+63054c4  fmin    s0, s8, s0
+63054c8  fcmp    s8, #0.0
+63054cc  fmov    s1, wzr
+63054d0  fcsel   s0, s0, s1, pl
+63054d4  str     s0, [x19, #0x108]
+63054d8  cbz     x20, #0x63056fc
+63054dc  adrp    x23, #0x9a6d000
+63054e0  ldr     x8, [x20]
+63054e4  ldr     x23, [x23, #0x5f8] //  @ 9a6d5f8 bytes 98e4ca0900000000
+63054e8  ldrh    w9, [x8, #0x12e]
+63054ec  ldr     x1, [x23] //  @ 9cae498 bytes 2911012000000000
+63054f0  cbz     x9, #0x6305514
+63054f4  ldr     x10, [x8, #0xb0]
+63054f8  add     x10, x10, #8
+63054fc  ldur    x11, [x10, #-8]
+6305500  cmp     x11, x1
+6305504  b.eq    #0x6305524
+6305508  subs    x9, x9, #1
+630550c  add     x10, x10, #0x10
+6305510  b.ne    #0x63054fc
+6305514  mov     w2, #6
+6305518  mov     x0, x20
+630551c  bl      #0x39a388c // sub_0x39a388c
+6305520  b       #0x6305534 // sub_0x6305534
+6305524  ldr     w9, [x10]
+6305528  add     w9, w9, #6
+630552c  add     x8, x8, w9, sxtw #4
+6305530  add     x0, x8, #0x138
+6305534  ldp     x9, x1, [x0]
+6305538  add     x8, sp, #0x38
+630553c  mov     x0, x20
+6305540  blr     x9
+6305544  ldur    x8, [sp, #0x44]
+6305548  ldr     w9, [sp, #0x4c]
+630554c  adrp    x21, #0xa16c000
+6305550  ldrb    w10, [x21, #0x279] //  @ a16c279 bytes
+6305554  str     x8, [sp, #0x28]
+6305558  str     w9, [sp, #0x30]
+630555c  ldr     d9, [x19, #0xa8]
+6305560  ldr     s8, [x19, #0xb0]
+6305564  cbnz    w10, #0x630557c
+6305568  adrp    x0, #0x9a6a000
+630556c  ldr     x0, [x0, #0x770] //  @ 9a6a770 bytes 188acb0900000000
+6305570  bl      #0x390a13c // sub_0x390a13c
+6305574  mov     w8, #1
+6305578  strb    w8, [x21, #0x279]
+630557c  adrp    x22, #0x9a6a000
+6305580  ldr     x22, [x22, #0x770] //  @ 9a6a770 bytes 188acb0900000000
+6305584  adrp    x9, #0x171a000
+6305588  ldr     s0, [x19, #0x108]
+630558c  ldr     s3, [x9, #0xffc] //  @ 171affc bytes cdcccc3db76ddb3e float 0.10000000149011612
+6305590  ldr     x8, [x22] //  @ 9cb8a18 bytes 2798012000000000
+6305594  ldr     x9, [sp, #0x28]
+6305598  ldr     x20, [x19, #0x90]
+630559c  fmov    s1, #1.00000000
+63055a0  ldr     x8, [x8, #0xb8] //  @ 200198df bytes
+63055a4  fcmp    s0, s1
+63055a8  ldr     s4, [x8, #0x20] //  @ 20019847 bytes
+63055ac  ldr     d2, [x8, #0x18] //  @ 2001983f bytes
+63055b0  ldr     w8, [sp, #0x30]
+63055b4  str     x9, [sp, #0x18]
+63055b8  fmul    s3, s4, s3
+63055bc  fmul    s4, s4, s0
+63055c0  fadd    s4, s8, s4
+63055c4  fadd    s3, s4, s3
+63055c8  fcsel   s8, s3, s4, eq
+63055cc  str     w8, [sp, #0x20]
+63055d0  cbz     x20, #0x63056fc
+63055d4  ldr     x8, [sp, #0x18]
+63055d8  ldr     w9, [sp, #0x20]
+63055dc  fmul    v3.2s, v2.2s, v0.s[0]
+63055e0  fcmeq   v0.2s, v0.2s, v1.2s
+63055e4  str     x8, [sp, #8]
+63055e8  str     w9, [sp, #0x10]
+63055ec  ldr     x8, [x20]
+63055f0  mov     w9, #0xcccd
+63055f4  movk    w9, #0x3dcc, lsl #16
+63055f8  fadd    v1.2s, v9.2s, v3.2s
+63055fc  dup     v3.2s, w9
+6305600  ldrh    w9, [x8, #0x12e]
+6305604  ldr     x1, [x23] //  @ 9cae498 bytes 2911012000000000
+6305608  dup     v0.2s, v0.s[0]
+630560c  fmul    v2.2s, v2.2s, v3.2s
+6305610  fadd    v2.2s, v1.2s, v2.2s
+6305614  mov     v9.8b, v0.8b
+6305618  bsl     v9.8b, v2.8b, v1.8b
+630561c  cbz     x9, #0x6305640
+6305620  ldr     x10, [x8, #0xb0]
+6305624  add     x10, x10, #8
+6305628  ldur    x11, [x10, #-8]
+630562c  cmp     x11, x1
+6305630  b.eq    #0x6305650
+6305634  subs    x9, x9, #1
+6305638  add     x10, x10, #0x10
+630563c  b.ne    #0x6305628
+6305640  mov     w2, #7
+6305644  mov     x0, x20
+6305648  bl      #0x39a388c // sub_0x39a388c
+630564c  b       #0x6305660 // sub_0x6305660
+6305650  ldr     w9, [x10]
+6305654  add     w9, w9, #7
+6305658  add     x8, x8, w9, sxtw #4
+630565c  add     x0, x8, #0x138
+6305660  ldr     x9, [sp, #8]
+6305664  ldr     w10, [sp, #0x10]
+6305668  ldr     x8, [x0]
+630566c  str     d9, [sp, #0x38]
+6305670  str     s8, [sp, #0x40]
+6305674  stur    x9, [sp, #0x44]
+6305678  str     w10, [sp, #0x4c]
+630567c  ldr     x2, [x0, #8]
+6305680  add     x1, sp, #0x38
+6305684  mov     x0, x20
+6305688  blr     x8
+630568c  ldr     x20, [x19, #0x98]
+6305690  ldr     s8, [x19, #0x108]
+6305694  ldrb    w8, [x21, #0x279] //  @ a16c279 bytes
+6305698  ldr     s9, [x19, #0x10]
+630569c  cbnz    w8, #0x63056b4
+63056a0  adrp    x0, #0x9a6a000
+63056a4  ldr     x0, [x0, #0x770] //  @ 9a6a770 bytes 188acb0900000000
+63056a8  bl      #0x390a13c // sub_0x390a13c
+63056ac  mov     w8, #1
+63056b0  strb    w8, [x21, #0x279]
+63056b4  cbz     x20, #0x63056fc
+63056b8  ldr     x8, [x22] //  @ 9cb8a18 bytes 2798012000000000
+63056bc  fmul    s4, s8, s9
+63056c0  mov     x0, x20
+63056c4  mov     x1, xzr
+63056c8  ldr     x8, [x8, #0xb8] //  @ 200198df bytes
+63056cc  ldp     s1, s0, [x8, #0x1c]
+63056d0  ldr     s3, [x8, #0x18] //  @ 2001983f bytes
+63056d4  fmul    s2, s4, s0
+63056d8  fmul    s1, s4, s1
+63056dc  fmul    s0, s4, s3
+63056e0  bl      #0x945dff0 // UnityEngine.Transform.set_localPosition
+63056e4  ldp     x20, x19, [sp, #0x80]
+63056e8  ldp     x22, x21, [sp, #0x70]
+63056ec  ldp     x30, x23, [sp, #0x60]
+63056f0  ldp     d9, d8, [sp, #0x50]
+63056f4  add     sp, sp, #0x90
+63056f8  ret
+63056fc  bl      #0x390a360 // sub_0x390a360

@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "version": "3.51.0 arm64",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "decoder": "lib/arm64-v8a/libtprt.so",
+  "decodeEntry": "0x13e81c",
+  "copyHooks": ["0x1841c0", "0x1840a0"],
+  "seed": "0x0b2ef187",
+  "xor": 46,
+  "permutation": [6, 0, 3, 5, 1, 4, 2, 7],
+  "sections": [
+    {"name":"rodata","va":"0x17178a0","offset":"0x17178a0","bytes":9279003,"crc32":"29ceb078","sha256":"6197d64a5d040273ae689b55174787bf8df94b6f9f7c70f69abdcb8a38ec57b1"},
+    {"name":"text","va":"0x352700c","offset":"0x352300c","bytes":5207828,"crc32":"8d3f304d","sha256":"14ec88f73ea88b7b4ca52ce132be333861261152bef950fb224bfcfee7039b59"},
+    {"name":"il2cpp","va":"0x3a1e720","offset":"0x3a1a720","bytes":96879296,"crc32":"76f326d3","sha256":"e11a1400840026c851c449fe39ed576d03034421e77424f55033c94c86080ebc"}
+  ]
+}

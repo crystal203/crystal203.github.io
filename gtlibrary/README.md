@@ -6,6 +6,8 @@
 
 地图现支持原图集人物脚底阴影、点选路线 / WASD 走位、人物动作与机关时间轴，以及两个已核对的火世界原生片段。可暂停、拖动、倍速、交互 / 接近触发、停止还原和导出编排；详见 [地图走位与事件预览](docs/map-events-preview.md)。
 
+gtAudio 是第六项资源功能：按内码浏览并试听全部已提供的 BGM、音效与语音。入口 `#view=audio`，GTOnline 与试听页共用音频目录和播放器。详见 [音频库与导入](docs/audio-library.md)、[原生资料工作台](docs/native-workbench.md)、[剧情复刻流程](docs/native-story-workflow.md) 和 [GTOnline 架构](docs/gtonline-architecture.md)。
+
 ## 目录职责
 
 ```text
@@ -15,6 +17,10 @@ gtlibrary/
   apps/spine/                             像素动画界面
   apps/fx/                                特效界面
   apps/map/                               地图选择与预览界面
+  apps/audio/                             音频筛选、试听、循环与下载
+  gtaudio/core.js + catalog.js + assets/   共享音频解析、播放器、原始音频与目录
+  tools/audio/ + tools/native/            可复现音频导入与版本化原生资料检索
+  apps/online/ + gtonline/                 关卡界面、游戏规则与原生剧情适配
   apps/wiki/                              角色图鉴、筛选与客观资料界面
   gtwiki/data/ + backgrounds/ + ui/        原始表生成的角色资料、立绘背景与原生觉醒界面
   gtwiki/media.js + core/wiki-catalog.js    图鉴预览、人物关联与按需目录
@@ -24,7 +30,7 @@ gtlibrary/
   gtfx/core.js + assets/                   特效运行器与资源
   gtmap/core.js + decoder.js + assets/     地图渲染、解码与按需资源
   gtfx/gif-sizing.js / gif-worker.js       GIF 尺寸处理和编码适配
-  core/api.js                             四种核心能力的延迟加载接口
+  core/api.js                             五种核心能力的延迟加载接口
   core/resources.js                       逻辑资源路径和去重别名解析
   core/registry.js / bridge.js             人物关联、应用通信与销毁协议
   core/delivery*.js / cache-version.js     CDN 回退、图片读取与缓存版本
@@ -35,7 +41,7 @@ gtlibrary/
   vendor/                                 单份第三方运行库
 ```
 
-五个领域目录没有 `index.html`。`apps/*/index.html` 是主界面调用的内部视图，顶层直接打开会转回主入口。原来的独立网页代码、测试工具及重复资源副本留在开发归档，未作为网页运行资产发布。
+六个资源领域目录没有 `index.html`。`apps/*/index.html` 是主界面调用的内部视图，顶层直接打开会转回主入口。原来的独立网页代码、测试工具及重复资源副本留在开发归档，未作为网页运行资产发布。
 
 ## 路由和联动
 
@@ -77,6 +83,13 @@ runtime.build(effect, 12345);
 runtime.autoFit();
 runtime.sample(0.35);
 // 使用完毕：runtime.dispose();
+
+const {findClip,clipURL,AudioMixer} = await loadCore('audio');
+const clip = await findClip('bgm_forest_bright');
+// clipURL(clip) 供 HTMLAudioElement 按需试听。
+const audio = new AudioMixer();
+await audio.effect('02_gimmick_door_down_01');
+// 使用完毕：audio.dispose();
 ```
 
 核心加载器不载入应用界面或游戏图片。图集/Spine 核心同时兼容普通 script 调用，导出 `GTAtlasCore` / `GTSpineCore`；Spine 运行库和纹理创建由调用方提供。FX 核心使用共享 Three.js 模块，需要浏览器 WebGL 和 canvas。其输入是已导出的特效 manifest，不是原始 Unity 项目文件。

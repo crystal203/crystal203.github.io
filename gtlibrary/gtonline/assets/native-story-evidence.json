@@ -726,12 +726,238 @@
       "clock": "Unity running clock continues through dialogue waits",
       "release": "ground position remains at the final sway position; End clears action/emotion/rotation/spine offset",
       "mathPlt": "9682ab0 resolved from ELF .rela.plt as sinf"
+    },
+    "markerLayerCorrection": {
+      "source": "Tilemaps_decoded/alt_forest_1_1_2_2.tilemap, markers layer (Field.GetMarker), event regions kept independent",
+      "coordinates": {
+        "princess_run": {
+          "old": [
+            0.0,
+            0.0,
+            -23.0
+          ],
+          "native": [
+            0.5199999809265137,
+            0.0,
+            -14.0
+          ]
+        },
+        "brazier_mid": {
+          "old": [
+            1.0,
+            0.0,
+            -43.0
+          ],
+          "native": [
+            0.5,
+            0.0,
+            -42.5
+          ]
+        },
+        "maiden_1": {
+          "old": [
+            -1.0,
+            0.0,
+            -38.0
+          ],
+          "native": [
+            0.5,
+            0.0,
+            -39.0
+          ]
+        },
+        "maiden_2": {
+          "old": [
+            33.0,
+            0.0,
+            -32.5
+          ],
+          "native": [
+            32.5,
+            0.0,
+            -35.0
+          ]
+        }
+      }
+    },
+    "firstChaseStationing": {
+      "enter": "706a874..706acb8",
+      "constructor": "7069fa0..706a02c",
+      "marker": [
+        0.5199999809265137,
+        0.0,
+        -14.0
+      ],
+      "offsets": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          -0.5,
+          0,
+          1.5
+        ],
+        [
+          0.5,
+          0,
+          1.5
+        ]
+      ],
+      "constants": [
+        "171bcd0",
+        "171c260"
+      ]
+    },
+    "secondChaseBothJumps": {
+      "source": "7072ca8..7072e98",
+      "offsets": [
+        2,
+        9
+      ],
+      "height": 1,
+      "duration": 0.6000000238418579,
+      "independentPerActor": true
+    },
+    "nativeHold": {
+      "command": "7078214..7078250",
+      "duration": 0.11999999731779099,
+      "upperAnimation": "5e7f2c8..5e7f31c, hold (non-loop)",
+      "lift": "5e80940..5e81398",
+      "carry": "5e803d0..5e80760",
+      "liftCurve": "sin(t/duration * float32(100 degrees))/float32(sin(100 degrees))",
+      "gap": 0.3499999940395355,
+      "hitbox": {
+        "size": [
+          0.55,
+          0.75,
+          0.45
+        ],
+        "pivot": [
+          0.5,
+          0,
+          0.5
+        ],
+        "source": "static_data_dec/visuals.json: default; Characters.SetupVisual 6ba202c..6ba2128"
+      },
+      "visualsSHA256": "55f8394322b5c4bc6d4badc67b494b239b4853518045467f68b5c5988cc7eec9",
+      "binding": "6ba202c..6ba2128; character loader 5e561b4..5e561e8",
+      "hitboxPivot": "6647c24..6647c90, (0.5-Pivot)*Size",
+      "upperAnimationClock": "Independent of lower-body walk/run clock"
+    },
+    "firstChaseAudioVolume": {
+      "source": "706d890..706d8bc",
+      "volume": 0.20000000298023224,
+      "fadeOut": 1
+    },
+    "chasePreparation": {
+      "nativeStationingGuard": true,
+      "prewarm": "Warm the native facing variants before actors are exposed and player input resumes."
+    },
+    "nativeChaseAndHoldAudio": {
+      "assets": [
+        {
+          "handle": "01_holdup_01",
+          "file": "01_holdup_01.wav",
+          "source": "assets/AssetBundles/Android/audio/prologue/sfx",
+          "bundleSHA256": "87b67e064db0cad4c29be1ba1ead1b2df91f6de715ef6e80f30139ca19f2386d",
+          "sha256": "07a402565cb8332a5dbc680b608dfa123196adedd72411ad84e3cdb725725956"
+        },
+        {
+          "handle": "01_small_jump_01",
+          "file": "01_small_jump_01.wav",
+          "source": "assets/AssetBundles/Android/audio/prologue/sfx",
+          "bundleSHA256": "87b67e064db0cad4c29be1ba1ead1b2df91f6de715ef6e80f30139ca19f2386d",
+          "sha256": "146a89a6adeb33d263a46f7c8d849e8230ae5d7d1757b83fe1fd1da1feceb8cb"
+        },
+        {
+          "handle": "01_dash_01",
+          "file": "01_dash_01.wav",
+          "source": "assets/AssetBundles/Android/audio/prologue/sfx",
+          "bundleSHA256": "87b67e064db0cad4c29be1ba1ead1b2df91f6de715ef6e80f30139ca19f2386d",
+          "sha256": "d7ea7b3cc920516b3f8cf0b2eb9e0deccfc9c1fddd1e9c0d2165667e4a7d0a9e"
+        }
+      ],
+      "format": "Original decoded PCM WAV; no resampling, re-encoding or loudness normalization",
+      "firstRunVolume": "706d894: float32(.2)",
+      "secondRunVolume": "7072ab0: float32(.2)"
+    },
+    "opening": {
+      "enter": "70112d8..7011c8c",
+      "coroutine": "70122e8..701591c",
+      "rockHit": "7015990..7015ed8",
+      "dumpSha256": "e6347cc630bff7514c022f85ab1f9e0e87032c1629e16236259c2ec667fae0f9",
+      "actorFields": {
+        "0x18": "princess",
+        "0x20": "start_goblin1",
+        "0x28": "start_goblin2",
+        "0x30": "start_goblin3"
+      },
+      "escapeRoutes": [
+        [
+          [
+            -0.4000000059604645,
+            0,
+            0.05000000074505806
+          ],
+          [
+            0.5,
+            0,
+            -10.75
+          ]
+        ],
+        [
+          [
+            0.10000000149011612,
+            0,
+            0.800000011920929
+          ],
+          [
+            0.5,
+            0,
+            -10
+          ]
+        ],
+        [
+          [
+            -0.4000000059604645,
+            0,
+            1.5499999523162842
+          ],
+          [
+            0.5,
+            0,
+            -10.75
+          ]
+        ]
+      ],
+      "backAway": {
+        "position": [
+          3.5,
+          0,
+          0.699999988079071
+        ],
+        "source": "7014820..7014878; obsolete Lua sign is wrong"
+      },
+      "mario": {
+        "height": 0.4000000059604645,
+        "duration": 0.30000001192092896,
+        "direction": "left",
+        "source": "7014bf8..7014c14"
+      },
+      "upperTrackBinding": "MapCharacters.change must rebind on upper/upperLoop changes; applies to Danny hold as well as princess push",
+      "speechSpeed": 0.05000000074505806
     }
   },
   "unresolved": [
     "exact Intellect readonly color initializer",
     "native random sequence and pathfinding tie-breaking",
-    "First-chase final Z spacing after the original Lua repeats goblin1 for its third route",
     "Narration TMP font size normalization (prefab value 220) must be compared with native localized font metrics."
   ],
   "constantRecovery": {

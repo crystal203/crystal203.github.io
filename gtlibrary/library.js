@@ -1,15 +1,17 @@
-const $=id=>document.getElementById(id),views=['atlas','spine','fx','map','online','wiki'],titles={atlas:'图集',spine:'像素动画',fx:'特效',map:'地图',online:'GTOnline',wiki:'角色图鉴'};
-let registry=null,mapEntities=[],resourceEntities=[],wikiCatalog=null,wikiEntities=[];
+import {loadCatalog,catalogEntities} from './gtaudio/catalog.js';
+const $=id=>document.getElementById(id),views=['atlas','spine','fx','map','online','wiki','audio'],titles={atlas:'图集',spine:'像素动画',fx:'特效',map:'地图',online:'在线玩',wiki:'角色图鉴',audio:'音频'};
+let registry=null,mapEntities=[],resourceEntities=[],wikiCatalog=null,wikiEntities=[],audioEntities=[];
 function rebuildSearch(){
  const people=registry?Object.values(registry.entities):[],keys=new Set();
  const key=e=>e.kind==='atlasRegion'||e.kind==='atlasSheet'?JSON.stringify(['atlas',e.atlas]):e.kind==='spine'?JSON.stringify(['spine',e.spine]):JSON.stringify(['fx',e.fx]);
  for(const e of people){if(e.atlas)keys.add(JSON.stringify(['atlas',e.atlas]));if(e.spine)keys.add(JSON.stringify(['spine',e.spine]));}
  if(wikiCatalog)GTWikiCatalog.enrich(wikiCatalog,registry);
  const represented=new Set(people.filter(e=>e.wiki).map(e=>e.wiki.hero));
- searchItems=[...people,...wikiEntities.filter(e=>!represented.has(e.id)),...mapEntities,...resourceEntities.filter(e=>!keys.has(key(e)))];
+ searchItems=[...audioEntities,...people,...wikiEntities.filter(e=>!represented.has(e.id)),...mapEntities,...resourceEntities.filter(e=>!keys.has(key(e)))];
 }
 
 function resolveSelection(value){
+ if(value?.view==='audio'||value?.clip)return audioEntities.find(e=>e.audio.clip===value.clip||e.id===value.resource)||null;
  if(value?.view==='map'||value?.map)return mapEntities.find(e=>e.id===value.map||e.id===value.resource)||null;
  if(value?.view==='wiki'||value?.hero){const hero=wikiCatalog&&GTWikiCatalog.resolve(wikiCatalog,value);if(hero)return {...(registry&&GTRegistry.resolve(registry,{name:hero.id})),...wikiEntities.find(e=>e.id===hero.id)};}
  const found=resourceEntities.find(e=>e.id===value?.resource)||(registry?GTRegistry.resolve(registry,value):null)||resourceEntities.find(e=>e.atlas?.sheet===value?.sheet&&e.atlas?.query===(value.query||value.name))||null;
@@ -19,12 +21,12 @@ function resolveSelection(value){
 let active=null,frame=null,entity=null,route=null;
 const states={};let searchItems=[];
 function readRoute(){const params=new URLSearchParams(location.hash.slice(1));const result=Object.fromEntries(params);result.view=views.includes(result.view)?result.view:'atlas';return result;}
-function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category','hero','stage','costume','illust','direction','skin','weapon','level','weaponLevel','q','role','element','rarity'])if(state[key])params.set(key,state[key]);return params.toString();}
+function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category','hero','stage','costume','illust','direction','skin','weapon','level','weaponLevel','clip','kind','group','q','role','element','rarity'])if(state[key])params.set(key,state[key]);return params.toString();}
 function navigate(state){if(state)location.hash=encode(state);}
 function renderContext(){
-  $('context').textContent=active==='online'?'GTOnline · 世界 1 / 1-1 旅馆':entity?entity.name+' · '+entity.id:'浏览全部资源';
+  $('context').textContent=active==='online'?'在线玩 · 世界 1 / 1-1 旅馆':entity?entity.name+' · '+entity.id:'浏览全部资源';
   $('related').replaceChildren();
-  if(entity)for(const view of (entity.map?['map']:views.filter(v=>!['map','online'].includes(v)))){const b=document.createElement('button'),target=GTRegistry.route(entity,view);b.textContent=titles[view]+(target?'':' · 暂无');b.disabled=!target;b.title=target?'打开关联的'+titles[view]:'索引中没有对应资源';b.onclick=()=>navigate(target);$('related').append(b);}
+  if(entity)for(const view of (entity.audio?['audio']:entity.map?['map']:views.filter(v=>!['map','online','audio'].includes(v)))){const b=document.createElement('button'),target=GTRegistry.route(entity,view);b.textContent=titles[view]+(target?'':' · 暂无');b.disabled=!target;b.title=target?'打开关联的'+titles[view]:'索引中没有对应资源';b.onclick=()=>navigate(target);$('related').append(b);}
 }
 function open(){
   const next=readRoute();if(route&&encode(next)===encode(route))return;
@@ -85,3 +87,5 @@ GTMapCatalog.load().then(c=>{const directory=GTMapCatalog.navigation(c);mapEntit
 GTResourceCatalog.load().then(c=>{resourceEntities=c.entities;rebuildSearch();entity=resolveSelection(route);renderContext();if($("library-search").value)search();}).catch(e=>{console.debug(e);$('context').textContent='部分资源索引读取失败，请刷新重试。';});
 
 GTWikiCatalog.load().then(c=>{wikiCatalog=c;wikiEntities=c.heroes.map(h=>({id:h.id,name:h.name,aliases:[...h.aliases,h.shortName,h.englishName],wiki:{hero:h.id}}));rebuildSearch();entity=resolveSelection(route);renderContext();if($('library-search').value)search();}).catch(e=>console.debug('角色图鉴索引读取失败',e));
+
+loadCatalog().then(c=>{audioEntities=catalogEntities(c);rebuildSearch();entity=resolveSelection(route);renderContext();if($('library-search').value)search();}).catch(e=>console.debug('音频目录读取失败',e));
