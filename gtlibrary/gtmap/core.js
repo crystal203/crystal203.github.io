@@ -346,6 +346,8 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.collectWorldItem=(r,follow)=>items.collect(r,follow);
  this.spawnWorldItem=id=>items.spawn(id,bundle.itemMetadata,mapGroup);
  this.setWorldScale=(r,scale)=>{r.scale.set(...scale);selection.update(r);};
+ // Hang.tip is configured in native scene coordinates, not a Spine bone attachment.
+ this.attachEffectToNativeRope=(effect,actor,node='tip')=>{effect.gimmick.visualAnchor={node,point:()=>new THREE.Vector3(actor.position.x,actor.position.y+(actor.character.settings.spineOffset?.[1]||0)-1,actor.position.z-1)};};
  this.attachEffectToFeet=(effect,actor,node='tip')=>{effect.gimmick.visualAnchor={node,point:()=>characters.footPoint(actor)};};
  this.setWorldTilt=(r,degrees)=>{r.quaternion=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,0,1),degrees*Math.PI/180);selection.update(r);};
  this.setWorldPosition=(r,p)=>{r.position.set(p[0],p[1],-p[2]);selection.update(r);};

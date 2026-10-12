@@ -166,15 +166,694 @@
       "range": "7077304..7077360 / 7071b30..7071b94",
       "minDuration": 2,
       "unrecovered": "TalkConvKey first float@171b388"
+    },
+    "nativeRescue": {
+      "nativeStates": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "maidenSwitchWaypoints": [
+        [
+          17.5,
+          0,
+          -10
+        ],
+        [
+          14,
+          0,
+          -10
+        ]
+      ],
+      "maidenApproach": "leader.Position + (leader.X < 79.5 ? +1 : -1, 0, 0), speed 3; wait for controller complete",
+      "leaderDirection": "right when leader.X < 79.5, else left",
+      "marioActors": [
+        {
+          "state": 50,
+          "actor": "leader"
+        },
+        {
+          "state": 62,
+          "actor": "leader"
+        },
+        {
+          "state": 66,
+          "actor": "party"
+        }
+      ],
+      "maidenDirections": {
+        "57": "back",
+        "58": "right"
+      },
+      "ropeEnd": "idle animation + RemoveEmotion + rotation/offset reset",
+      "join": "only after FieldUINarrationBox.SetNarration completes, then .25 wait, party MarioJump, HUD Show(2)"
+    },
+    "narration": {
+      "prefab": "ExportedProject/Assets/ui/stage/FieldUINarrationBox.prefab",
+      "sourceAtlas": "spritesheets/main ui/main_ui.json",
+      "sprite": "wordballoon_narration.png",
+      "rect": [
+        696,
+        240
+      ],
+      "position": [
+        0,
+        66
+      ],
+      "textRect": [
+        616,
+        172
+      ],
+      "fontColor": [
+        0.9372549,
+        0.88235295,
+        0.79607844,
+        1
+      ],
+      "textSpacing": 0.4,
+      "lineSpacing": 4
+    },
+    "nativeStartTrapDispatch": {
+      "0": {
+        "entry": "70777a4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "1": {
+        "entry": "7077928",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "2": {
+        "entry": "7076e44",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "3": {
+        "entry": "7077134",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "4": {
+        "entry": "7076a74",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "5": {
+        "entry": "7078118",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "6": {
+        "entry": "7075598",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "7": {
+        "entry": "7075598",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "8": {
+        "entry": "7078348",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "9": {
+        "entry": "7076c70",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "10": {
+        "entry": "70782d4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "11": {
+        "entry": "7075674",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "12": {
+        "entry": "7075674",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "13": {
+        "entry": "7078214",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "14": {
+        "entry": "707643c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "15": {
+        "entry": "7076ff4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "16": {
+        "entry": "70761e4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "17": {
+        "entry": "70779e0",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "18": {
+        "entry": "7078504",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "19": {
+        "entry": "7078dec",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "20": {
+        "entry": "707810c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "21": {
+        "entry": "7075600",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "22": {
+        "entry": "7075600",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "23": {
+        "entry": "7078d4c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "24": {
+        "entry": "70769b8",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "25": {
+        "entry": "7075668",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "26": {
+        "entry": "7075cc0",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "27": {
+        "entry": "7078b5c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "28": {
+        "entry": "7078c20",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "29": {
+        "entry": "7075668",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "30": {
+        "entry": "7077b40",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "31": {
+        "entry": "7077094",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "32": {
+        "entry": "7077cf0",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "33": {
+        "entry": "7076390",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "34": {
+        "entry": "7075ecc",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "35": {
+        "entry": "7075ab4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "36": {
+        "entry": "7075b54",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "37": {
+        "entry": "70757c0",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "38": {
+        "entry": "7078f44",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "39": {
+        "entry": "7078790",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "40": {
+        "entry": "707678c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "41": {
+        "entry": "707736c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "42": {
+        "entry": "70789a0",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "43": {
+        "entry": "70756e8",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "44": {
+        "entry": "7076160",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "45": {
+        "entry": "7078648",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "46": {
+        "entry": "7079390",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "47": {
+        "entry": "70759d8",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "48": {
+        "entry": "70764dc",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "49": {
+        "entry": "707666c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "50": {
+        "entry": "70756dc",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "51": {
+        "entry": "7079404",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "52": {
+        "entry": "7079248",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "53": {
+        "entry": "70758b0",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "54": {
+        "entry": "7079020",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "55": {
+        "entry": "70790fc",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "56": {
+        "entry": "70759e4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "57": {
+        "entry": "70788cc",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "58": {
+        "entry": "70765ac",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "59": {
+        "entry": "7078aa8",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "60": {
+        "entry": "707682c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "61": {
+        "entry": "70773b8",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "62": {
+        "entry": "7077724",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "63": {
+        "entry": "7076d1c",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "64": {
+        "entry": "70768d4",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "65": {
+        "entry": "7077588",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "66": {
+        "entry": "7075738",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      },
+      "67": {
+        "entry": "70760ec",
+        "source": "CRC-verified .il2cpp; switch byte table18de448"
+      }
+    },
+    "nativePartyAlignment": {
+      "entry": "6a21bec",
+      "leaderOffset": "target.Position+Direction.ToVector3; extra Z=-.011 for horizontal directions",
+      "face": "opposite of alignment direction",
+      "duration": 1,
+      "wait": "initial direction to target == opposite(alignment direction) ? .5 : 1",
+      "layout": "linear; leader index0 adds zero formation spacing",
+      "source": "6a1f434..6a1f8dc CalculatePartyMemberAlignPosition; 6a21c88..6a21e38"
+    },
+    "nativeJoinVoice": {
+      "call": "70775f8",
+      "name": "190023",
+      "arguments": [
+        19,
+        0,
+        23
+      ],
+      "asset": "D:\\gtasset\\fullextract\\ExportedProject\\Assets\\ondemand\\voices_en\\20200101_loraine\\190023.ogg",
+      "sha256": "ff5e95cb03abbaaa606df3225645f282123ef9af66337256000197d3a2186bec",
+      "language": "en"
+    },
+    "nativeDialogueOwners": {
+      "forest_main_new_s4_23": {
+        "target": "trio_man",
+        "call": "70758a4",
+        "ownerLoad": "7075820"
+      },
+      "forest_main_new_s4_25": {
+        "target": "maiden",
+        "call": "70759cc",
+        "ownerLoad": "707593c"
+      },
+      "forest_main_new_s4_28": {
+        "target": "maiden",
+        "call": "7075aa8",
+        "ownerLoad": "7075a18"
+      },
+      "forest_main_new_s4_22": {
+        "target": "trio_panda",
+        "call": "7075b48",
+        "ownerLoad": "7075ac4"
+      },
+      "forest_main_new_s4_14": {
+        "target": "trio_boss",
+        "call": "7075ec0",
+        "ownerLoad": "7075e30"
+      },
+      "forest_main_new_s4_21": {
+        "target": "trio_boss",
+        "call": "70760e0",
+        "ownerLoad": "7076054"
+      },
+      "forest_main_new_s4_6": {
+        "target": "trio_boss",
+        "call": "7076384",
+        "ownerLoad": "70762f4"
+      },
+      "forest_main_new_s4_20": {
+        "target": "trio_boss",
+        "call": "7076430",
+        "ownerLoad": "70763a0"
+      },
+      "forest_main_new_s4_4": {
+        "target": "trio_man",
+        "call": "70764d0",
+        "ownerLoad": "707644c"
+      },
+      "forest_main_new_s4_30_2": {
+        "target": "maiden",
+        "call": "7076660",
+        "ownerLoad": "70765d0"
+      },
+      "forest_main_new_s4_12": {
+        "target": "trio_panda",
+        "call": "7076a68",
+        "ownerLoad": "70769e4"
+      },
+      "forest_main_new_s4_2": {
+        "target": "trio_boss",
+        "call": "7076c64",
+        "ownerLoad": "7076bd4"
+      },
+      "forest_main_new_s4_3": {
+        "target": "trio_boss",
+        "call": "7076d10",
+        "ownerLoad": "7076c80"
+      },
+      "forest_main_new_s4_32": {
+        "target": "maiden",
+        "call": "7076e38",
+        "ownerLoad": "7076da8"
+      },
+      "forest_main_new_s4_5": {
+        "target": "trio_man",
+        "call": "7077088",
+        "ownerLoad": "7077004"
+      },
+      "forest_main_new_s4_19": {
+        "target": "trio_man",
+        "call": "7077128",
+        "ownerLoad": "70770a4"
+      },
+      "forest_main_new_s4_1": {
+        "target": "trio_panda",
+        "call": "7077360",
+        "ownerLoad": "70772dc"
+      },
+      "forest_main_new_s4_31": {
+        "target": "maiden",
+        "call": "707757c",
+        "ownerLoad": "70774f0"
+      },
+      "forest_main_new_s4_7": {
+        "target": "trio_man",
+        "call": "7077b34",
+        "ownerLoad": "7077ab4"
+      },
+      "forest_main_new_s4_18": {
+        "target": "trio_man",
+        "call": "7077ce4",
+        "ownerLoad": "7077c60"
+      },
+      "forest_main_new_s4_8": {
+        "target": "trio_boss",
+        "call": "707863c",
+        "ownerLoad": "70785ac"
+      },
+      "forest_main_new_s4_26": {
+        "target": "maiden",
+        "call": "70790f0",
+        "ownerLoad": "7079060"
+      },
+      "forest_main_new_s4_29_2": {
+        "target": "maiden",
+        "call": "7078994",
+        "ownerLoad": "7078908"
+      },
+      "forest_main_new_s4_15": {
+        "target": "trio_boss",
+        "call": "7078c14",
+        "ownerLoad": "7078b84"
+      },
+      "forest_main_new_s4_16": {
+        "target": "trio_boss",
+        "call": "7078d40",
+        "ownerLoad": "7078cb0"
+      },
+      "forest_main_new_s4_11": {
+        "target": "trio_panda",
+        "call": "7078de0",
+        "ownerLoad": "7078d5c"
+      },
+      "forest_main_new_s4_27": {
+        "target": "maiden",
+        "call": "707923c",
+        "ownerLoad": "70791ac"
+      },
+      "forest_main_new_s4_24": {
+        "target": "maiden",
+        "call": "7079520",
+        "ownerLoad": "7079490"
+      },
+      "forest_main_new_s4_10": {
+        "target": "trio_panda",
+        "call": "70796c8",
+        "ownerLoad": "7079644"
+      }
+    },
+    "nativeChaseSound": {
+      "constructor": "706dc80..706dd34",
+      "run": "01_dash_01, looping per actor",
+      "jump": "01_small_jump_01",
+      "fadeOut": 0.5,
+      "missingAssets": [
+        "01_dash_01",
+        "01_small_jump_01"
+      ],
+      "checkedContainers": [
+        "audio/sfx/sfxs1",
+        "audio/sfx/sfxs2"
+      ],
+      "substituted": false
+    },
+    "nativeRopeMotion": {
+      "input": "5eb4e54..5eb4f54: ignore while pushing; signed .5 impulse by velocity sign",
+      "envelope": [
+        0.30000001192092896,
+        0.699999988079071
+      ],
+      "spring": "velocity -= offset*dt; then impulse*dt, then offset += velocity*dt",
+      "xClamp": [
+        -5,
+        5
+      ],
+      "rotation": "180 + offsetX/5*15",
+      "spineYOffset": "1.5 + sinf(-2.5*elapsed)*.025 + sinf(abs(offsetX)/7.071067810058594*PI/2)*.25",
+      "clock": "Unity running clock continues through dialogue waits",
+      "release": "ground position remains at the final sway position; End clears action/emotion/rotation/spine offset",
+      "mathPlt": "9682ab0 resolved from ELF .rela.plt as sinf"
     }
   },
   "unresolved": [
-    "Trap base X/Y at protected constant 1719868",
-    "protected vector at 1719e90 for maiden intermediate waypoint",
     "exact Intellect readonly color initializer",
     "native random sequence and pathfinding tie-breaking",
     "First-chase final Z spacing after the original Lua repeats goblin1 for its third route",
-    "second-chase jump duration@171af4c and running voice-loop constants",
-    "MaidenTalk AlignParty formation internals"
-  ]
+    "Narration TMP font size normalization (prefab value 220) must be compared with native localized font metrics."
+  ],
+  "constantRecovery": {
+    "decoder": "APK lib/arm64-v8a/libtprt.so:13e81c,13ea1c,156ecc",
+    "range": [
+      "17178a0",
+      "1ff0ebb"
+    ],
+    "size": 9279003,
+    "crc32": "29ceb078",
+    "expectedCrc32": "29ceb078",
+    "sha256": "6197d64a5d040273ae689b55174787bf8df94b6f9f7c70f69abdcb8a38ec57b1",
+    "verified": true,
+    "protectedBlocks": "AES-128-CBC, 8 x 2048 bytes; section XOR and 8-way 16KB page permutation",
+    "constants": {
+      "0x1719868": {
+        "bytes": "00006041",
+        "float": 14.0
+      },
+      "0x171aa94": {
+        "bytes": "9a99193e",
+        "float": 0.15000000596046448
+      },
+      "0x171b428": {
+        "bytes": "9a997940",
+        "float": 3.9000000953674316
+      },
+      "0x171acf4": {
+        "bytes": "8fc2f53d",
+        "float": 0.11999999731779099
+      },
+      "0x171bb94": {
+        "bytes": "9a99993e",
+        "float": 0.30000001192092896
+      },
+      "0x171b7e4": {
+        "bytes": "cdcccc3e",
+        "float": 0.4000000059604645
+      },
+      "0x171af4c": {
+        "bytes": "9a99193f",
+        "float": 0.6000000238418579
+      },
+      "0x171b388": {
+        "bytes": "cdcc4c3d",
+        "float": 0.05000000074505806
+      }
+    }
+  },
+  "codeRecovery": {
+    "text": {
+      "va": "0x352700c",
+      "size": 5207828,
+      "expectedCrc32": "0x8d3f304d",
+      "actualCrc32": "0x8d3f304d",
+      "sha256": "14ec88f73ea88b7b4ca52ce132be333861261152bef950fb224bfcfee7039b59",
+      "verified": true
+    },
+    "il2cpp": {
+      "va": "0x3a1e720",
+      "size": 96879296,
+      "expectedCrc32": "0x76f326d3",
+      "actualCrc32": "0x76f326d3",
+      "sha256": "e11a1400840026c851c449fe39ed576d03034421e77424f55033c94c86080ebc",
+      "verified": true
+    }
+  },
+  "originalBinarySha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "jumpCalculator": {
+    "enqueue": "671b568..671b680 (height,duration,plateau=0,elapsed=0)",
+    "update": "671af3c..671b37c; default curve 671b1cc..671b238",
+    "curve": "height * sinf(clamp01(elapsed/duration) * float32 PI)",
+    "floatPiAddress": "171ab18",
+    "sinfPlt": "9682ab0",
+    "nativeMario": "duration,height arguments -> temporary get animation, horizontal direction, restore prior pose; await duration"
+  },
+  "controllerClock": {
+    "source": "StartTrap awaits character-controller completion; independent SpineController, JumpCalculator and camera updates remain active",
+    "adapter": "move, jump, camera, pose, expression and shake clocks progress during dialogue/choice/motion waits"
+  },
+  "shakeCalculator": {
+    "source": "6c934ec..6c93834",
+    "default": "radius/2 * (cos(theta),sin(theta),0); theta=Random.value*2*PI; no random radial sampling",
+    "directed": "axis*radius*clamp01(1-decay*elapsed/duration)*sinf(2*PI*cycles*elapsed/duration)",
+    "damageRight": {
+      "radius": 0.029999999329447746,
+      "duration": 0.14000000059604645,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "decay": 1,
+      "cycles": 1
+    },
+    "nativeRandomStreamShared": false
+  },
+  "ropePhysics": {
+    "hang": "5eb5000..5eb52ac",
+    "capture": {
+      "velocity": 8.5,
+      "gravity": 10,
+      "initialHeight": 0,
+      "bounceCount": 2,
+      "timeScale": 2,
+      "targetHeight": 1.5,
+      "minimumRotationTime": 0.5,
+      "scaleInDuration": 0.05000000074505806
+    },
+    "fall": "5eb53c0..5eb560c",
+    "release": {
+      "velocity": 0,
+      "gravity": 10,
+      "initialHeight": "live SpineController.offset.y",
+      "bounceCount": 1,
+      "preservedTimeScale": 2,
+      "minimumRotationTime": 0.5,
+      "seatAt": 0.25
+    },
+    "tipPosition": "owner.Position + (0, spineOffset.y - 1, 1)",
+    "tipPositionCall": "5eb5888..5eb58a0 / 5eb55f4..5eb560c",
+    "tipRotation": "5eb58a8..5eb5900 Quaternion.AngleAxis(swayAngle, Vector3.forward)",
+    "calculator": "88b4f00..88b5394"
+  }
 }

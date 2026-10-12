@@ -47,3 +47,9 @@
 .native-ingame-notice:before{left:0;transform:scaleX(-1)}
 .native-ingame-notice:after{right:0}
 .native-ingame-notice span:before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:calc(40*var(--field-ui));height:100%;background:#000;mask:url('../../gtonline/assets/ui/box_r0_00.png') center/100% 100% no-repeat;z-index:-1}
+
+/* FieldUINarrationBox: source Anchor 696x240 at (0,66), mirrored 348x240 atlas halves. */
+.native-narration{position:absolute;left:50%;top:calc(50% - 66*var(--field-ui));transform:translate(-50%,-50%);width:calc(696*var(--field-ui));height:calc(240*var(--field-ui));pointer-events:auto;display:grid;place-items:center}
+.native-narration img{position:absolute;top:0;width:50%;height:100%;image-rendering:pixelated;pointer-events:none}
+.native-narration-left{left:0}.native-narration-right{right:0;transform:scaleX(-1)}
+.native-narration span{position:relative;width:calc(616*var(--field-ui));color:rgb(239,225,203);font-size:calc(22*var(--field-ui));line-height:calc(26*var(--field-ui));letter-spacing:calc(.4*var(--field-ui));text-align:center;white-space:pre-wrap}
