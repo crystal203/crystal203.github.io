@@ -52,7 +52,7 @@ export class MapRuntime {
    }
    if(script.type.startsWith('FxUvanim')){const name=script.type.includes('Tex2')?'_MainTex2_ST':'_MainTex_ST',u=uniforms[name]?.value;if(u){const base=item.material.userData.uvBase??={};base[name]??=u.clone();u.z=base[name].z+(f.scrollSpeed_X||0)*time;u.w=base[name].w+(f.scrollSpeed_Y||0)*time;}}
   }
- }effects.sample(time);states.sample(time);doors.sample(time);items.sample(time);characters.sample(time);}
+ }effects.sample(time);doors.sample(time);items.sample(time);characters.sample(time);states.sample(time);}
  const defaultWhite=new THREE.DataTexture(new Uint8Array([255,255,255,255]),1,1);defaultWhite.needsUpdate=true;
  renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x0f1116);renderer.outputColorSpace=THREE.SRGBColorSpace;host.append(renderer.domElement);
  scene=new THREE.Scene();let manipulator;const selection=new MapSelection(scene,items=>{manipulator?.sync();onSelection(items);});camera=new THREE.OrthographicCamera(-100,100,100,-100,.1,10000);camera.position.set(0,500,500);installNativeProjection(camera,()=>unityView&&oblique);
@@ -346,6 +346,7 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.collectWorldItem=(r,follow)=>items.collect(r,follow);
  this.spawnWorldItem=id=>items.spawn(id,bundle.itemMetadata,mapGroup);
  this.setWorldScale=(r,scale)=>{r.scale.set(...scale);selection.update(r);};
+ this.attachEffectToFeet=(effect,actor,node='tip')=>{effect.gimmick.visualAnchor={node,point:()=>characters.footPoint(actor)};};
  this.setWorldTilt=(r,degrees)=>{r.quaternion=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,0,1),degrees*Math.PI/180);selection.update(r);};
  this.setWorldPosition=(r,p)=>{r.position.set(p[0],p[1],-p[2]);selection.update(r);};
  this.setWorldRotation=(r,degrees)=>{r.rotation=degrees;selection.update(r);};

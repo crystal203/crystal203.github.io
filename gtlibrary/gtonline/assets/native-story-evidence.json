@@ -1,0 +1,180 @@
+{
+  "binarySha256": "36c44abc24e3621f2056cbca5571aeadd258dfea0337afea20bb2691be7c2543",
+  "codePageRelocations": {
+    "7070000..7073fff": "+10000",
+    "5eb3000": "+10000"
+  },
+  "bindings": {
+    "openingShake": {
+      "file": "decrypted/sections/ForestMainNew/ForestMainNewSection1.lua",
+      "radius": 0.05,
+      "durations": [
+        0.3,
+        1
+      ]
+    },
+    "princess": {
+      "nativeRange": "7073268..7073380",
+      "offset": [
+        3.5,
+        0,
+        -2.5
+      ],
+      "direction": "left",
+      "animation": "prostrate"
+    },
+    "proneGoblins": {
+      "nativeRange": "7073638..70739c0",
+      "markers": [
+        "loop_1",
+        "loop_2",
+        "loop_3"
+      ],
+      "directions": [
+        "right",
+        "right",
+        "left"
+      ],
+      "animation": "prostrate"
+    },
+    "maidenEntrance": {
+      "nativeRange": "7079900..70799c0",
+      "startOffset": [
+        3.5,
+        0,
+        -11
+      ],
+      "endOffset": [
+        3.5,
+        0,
+        -5
+      ],
+      "speed": 3
+    },
+    "ropeKnot": {
+      "prefab": "effects/rope_trap.prefab",
+      "node": "tip",
+      "localPosition": [
+        0,
+        0.55,
+        0
+      ],
+      "nativeRootRange": "5eb5878..5eb58a0",
+      "visualAnchorBones": [
+        "[base]legL",
+        "[base]legR"
+      ]
+    },
+    "choices": {
+      "nativeRange": "7078f28 / 7079b7c / 7079d90",
+      "tendencyValues": [
+        0,
+        2,
+        3
+      ],
+      "types": [
+        "normal",
+        "intellect",
+        "brutal"
+      ],
+      "paletteSources": [
+        "native SetChoice default white",
+        "user supplied native capture",
+        "Answer Choice.prefab mColor [1,.44852942,.44852942,1]"
+      ]
+    },
+    "maidenSwitchFinal": {
+      "nativeRange": "707a17c..707a1d0",
+      "offset": [
+        0,
+        0,
+        0
+      ],
+      "callback": "switch_down after arrival at native base; FloorSwitchCrashBehaviour is a traversable trigger, not a solid wall"
+    },
+    "trapBase": {
+      "nativeRange": "7072f68..7072fa4",
+      "zImmediate": "7072f7c: MOV w8,#-0x3ee00000; STR w8,[x0,#0x48]",
+      "z": -10,
+      "xyConstant": "1719868 (protected; retained provisional [14,0])"
+    },
+    "secondChase": {
+      "range": "70729c8..7072f1c",
+      "moveOffset": [
+        25,
+        0,
+        0
+      ],
+      "moveDuration": 5,
+      "jumpWhen": "X > princess_run_2.X + 9",
+      "jumpHeight": 1,
+      "hideWhen": "X > princess_run_2.X + 20",
+      "unrecovered": "duration float at171af4c; running voice loop constants"
+    },
+    "maidenEntrances": [
+      {
+        "marker": "maiden_1",
+        "offset": [
+          0,
+          0,
+          3.5
+        ],
+        "facing": "front",
+        "speed": 2,
+        "entry": "FullEnter",
+        "source": "OnEvent 7070120..7070330; MaidenEvent 7071348..707164c; native Direction 1=back -> opposite 4=front"
+      },
+      {
+        "marker": "maiden_2",
+        "offset": [
+          0,
+          0,
+          -2
+        ],
+        "facing": "back",
+        "speed": 2,
+        "entry": "FullEnter",
+        "source": "OnEvent 7070328..7070330; native Direction 4=front -> opposite 1=back"
+      }
+    ],
+    "trapInitialPrincess": {
+      "range": "7073268..70733c4",
+      "state": "position / prostrate / damaged / ActiveState3 before StartTrap"
+    },
+    "trapCamera": {
+      "resize": "70784c4..70784d4: halfHeight3.5 duration1",
+      "restore": "7078064..70780dc: defaultSize duration1.25; base+[3.5,0,-.5]",
+      "pan": "7078af8..7078b2c: base+[18.5,0,8], duration2.5",
+      "follow": "7076890..70768a4: leader.Position duration2.5"
+    },
+    "trapDoors": {
+      "start": "7073fec..707405c opens both source doors, still=true",
+      "close": "707881c / 7078888 closes both; wait .5 then camera; BGM change then wait1",
+      "switch": "707a284 MoveWaypoints speed3 direction2, callback then switch/rope sounds and Fall"
+    },
+    "upperAnimation": {
+      "range": "7078348..70783cc",
+      "actor": "trio_boss (field40)",
+      "animation": "cast",
+      "locomotionAssets": [
+        "[down]walk_side",
+        "[down]run_side"
+      ],
+      "hold": "trio_man holds through hold_loop upper / [down]walk lower"
+    },
+    "talkDuration": {
+      "range": "7077304..7077360 / 7071b30..7071b94",
+      "minDuration": 2,
+      "unrecovered": "TalkConvKey first float@171b388"
+    }
+  },
+  "unresolved": [
+    "Trap base X/Y at protected constant 1719868",
+    "protected vector at 1719e90 for maiden intermediate waypoint",
+    "exact Intellect readonly color initializer",
+    "native random sequence and pathfinding tie-breaking",
+    "First-chase final Z spacing after the original Lua repeats goblin1 for its third route",
+    "second-chase jump duration@171af4c and running voice-loop constants",
+    "MaidenTalk AlignParty formation internals"
+  ]
+}
