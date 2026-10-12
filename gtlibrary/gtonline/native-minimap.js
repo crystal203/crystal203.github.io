@@ -1,0 +1,14 @@
+// FieldUIMiniMap: tile visibility persists; default scale is 3 UI pixels/tile.
+// Native floor color packed 0xc048d7ad; unrevealed texture pixels stay transparent.
+export class StageMiniMap {
+ constructor(stage,game){this.stage=stage;this.game=game;this.visible=new Set(game.state.explored);this.floors=new Map();for(const f of stage.collision.floors)this.floors.set(f[0]+','+f[1],f);this.markers={};if(typeof Image!=='undefined')for(const [key,file] of Object.entries({player:'minimap-player',exit:'minimap-exit'})){const img=new Image();img.src=new URL('./assets/hud/'+file+'.png',import.meta.url).href;this.markers[key]=img;}}
+ reveal(){const g=this.game,p=g.player?.position?[g.player.position.x,g.player.position.y,-g.player.position.z]:g.state.position,span=this.stage.camera?.span??8,halfX=span*(g.aspect||16/9)/2,halfZ=span/Math.SQRT2,origin=this.stage.collision.cellOrigin??0;let changed=false;for(let x=Math.floor(p[0]-halfX-origin);x<=Math.floor(p[0]+halfX-origin);x++)for(let z=Math.floor(p[2]-halfZ-origin);z<=Math.floor(p[2]+halfZ-origin);z++){const key=x+','+z;if(this.floors.has(key)&&!this.visible.has(key)){this.visible.add(key);changed=true;}}if(changed)g.state.explored=[...this.visible];return p;}
+ draw(canvas,compact=true){const p=this.reveal(),ctx=canvas.getContext('2d'),floors=[...this.floors.values()],xs=floors.map(f=>f[0]),zs=floors.map(f=>f[1]),minX=Math.min(...xs),maxX=Math.max(...xs)+1,minZ=Math.min(...zs),maxZ=Math.max(...zs)+1,scale=compact?3:Math.min(canvas.width/(maxX-minX+4),canvas.height/(maxZ-minZ+4));
+  const center=(value,min,max,half)=>max-min<=half*2?(min+max)/2:Math.max(min+half,Math.min(max-half,value)),cx=compact?center(p[0],minX,maxX,canvas.width/scale/2):(minX+maxX)/2,cz=compact?center(p[2],minZ,maxZ,canvas.height/scale/2):(minZ+maxZ)/2,origin=this.stage.collision.cellOrigin??0,point=(x,z)=>[canvas.width/2+(x-cx)*scale,canvas.height/2-(z-cz)*scale];
+  ctx.clearRect(0,0,canvas.width,canvas.height);ctx.imageSmoothingEnabled=false;ctx.fillStyle='rgba(173,215,72,.752941)';
+  for(const key of this.visible){const f=this.floors.get(key);if(!f)continue;const [x,y]=point(f[0]+origin,f[1]+origin+1);ctx.fillRect(Math.round(x),Math.round(y),Math.ceil(scale),Math.ceil(scale));}
+  const marker=(kind,x,z,size)=>{const im=this.markers[kind];if(!im?.complete||!im.naturalWidth)return;const q=point(x,z);ctx.drawImage(im,q[0]-size/2,q[1]-size/2,size,size);};
+  for(const o of this.game.objects)if(o.kind==='portal'&&!o.hidden&&this.visible.has(Math.floor(o.position[0]-origin)+','+Math.floor(o.position[2]-origin)))marker('exit',o.position[0],o.position[2],compact?14:20);
+  marker('player',p[0],p[2],compact?14:20);
+ }
+}

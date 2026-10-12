@@ -953,6 +953,101 @@
       },
       "upperTrackBinding": "MapCharacters.change must rebind on upper/upperLoop changes; applies to Danny hold as well as princess push",
       "speechSpeed": 0.05000000074505806
+    },
+    "trapAnimationAndMotionRevision10": {
+      "source": [
+        "5eb3edc..5eb3f34 CharacterRopeTrapBehaviour hold SetAnimation(loop=false)",
+        "ForestMainNewSection4.lua concurrent moves / coroutine waits"
+      ],
+      "fixes": [
+        "Capture displacement preserves the non-looping hold animation and its original clock.",
+        "All panda scene and branch moves sample their origin when activated, after earlier moves and dialogue waits."
+      ],
+      "runtimeChecks": [
+        "All three choice branches complete; each visible trio actor moves less than .65 per .05s, with no join teleport."
+      ]
+    },
+    "nativePartyFollowRevision10": {
+      "source": [
+        "CharacterControllerPartyFollowState.Enter 601fc78..60201d8",
+        "FollowLeader 60269fc..6027d48",
+        "CalculateFinalDistance 6024d60..6024e18",
+        "SpeedFromDistance 6027d48..6028094",
+        "Constants initializer 88643d8..88643f4 (symbol name in old dump is incorrect)"
+      ],
+      "spacing": 0.699999988079071,
+      "spacingConstant": "rodata 1720c58 -> static fields +1a4; float32(.7)",
+      "mechanism": "Persistent party member handles; Snake walk/jump operation queue; Free collision navigation back to the trail; no distance-triggered teleport.",
+      "speed": "min(positive distance/dt, max(8, dash horizontal speed)); native Free cap7",
+      "limitations": [
+        "Free navigation uses shared browser collision routing; Unity navigation tie-break order is not certified.",
+        "Companion combat AI and member switching are not implemented."
+      ]
+    },
+    "nativeHudRevision10": {
+      "prefabs": [
+        "assets/ui/battleui/party_state.prefab",
+        "assets/ui/battleui/minimap.prefab"
+      ],
+      "bundleSha256": "6d46e65f4dc2b9fe527c0560151e0c55a601f05fe671b8050a61ec9badf90df7",
+      "portrait": {
+        "SpriteScale": 1.600000023841858,
+        "MaskSize": [
+          56,
+          56
+        ],
+        "frame": [
+          68,
+          68
+        ],
+        "memberPitch": 70,
+        "hpFrame": [
+          64,
+          12
+        ],
+        "hpFill": [
+          58,
+          6
+        ],
+        "hpColor": [
+          75,
+          235,
+          75
+        ]
+      },
+      "icons": {
+        "chest": "main_ui/top_ic_tresurebox.png",
+        "settings": "main_ui/top_ic_option.png"
+      },
+      "minimap": {
+        "source": "FieldUIMiniMap.LateUpdate / UpdateMinimapTexture; MiniMapData.SetVisibleTile",
+        "scale": 3,
+        "floorRGBA": [
+          173,
+          215,
+          72,
+          192
+        ],
+        "hidden": "Unexplored tiles are transparent; saved exploration persists; no coin/star/chest markers."
+      },
+      "limitations": [
+        "Font rasterization and map-layer clipping are not certified against a same-frame native capture."
+      ]
+    },
+    "knightStingerEffectRevision10": {
+      "source": [
+        "Battle/BattleAction/ManualKnightBattleAction.lua:update_stinger",
+        "8b585a8..8b58754 native OnehandStingerBattleAction.OnAttack",
+        "75a8914..75a8adc GetSpineEffectPosition/GetSpinePosition"
+      ],
+      "slot": "[base]weapon1 + directional variant suffix",
+      "timing": 0.05,
+      "endsAt": 0.5,
+      "position": "Sample current-frame slot bone, mirror and transform through Spine container, project onto native effect X/Z plane, then apply preset offset on every frame.",
+      "preset": "Manual_Onehanded_Dash / FX_dash / Direction[-1,0,0] / Offset[-.3,-.38,0]",
+      "runtimeChecks": [
+        "Four directional skeletons and effect attachment positions checked in headless Chrome."
+      ]
     }
   },
   "unresolved": [

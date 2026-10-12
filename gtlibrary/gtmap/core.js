@@ -42,7 +42,7 @@ export class MapRuntime {
  const thisRuntime=this;this.frameListeners=new Set();let gameplayMode=false;const gameplayEffects=new Set();let gameplayEffectId=0;
  const textures=new Map(),geometryCache=new Map(),layerGroups=new Map(),allMaterials=[],pickables=[],cloudBatches=[],nativeAnimations=[];
  const particleTime={value:0};let mapStartTime=0,exporting=false,exportAbort=null;
- function animate(time){for(const r of selection.records.values()){const c=r.gimmick?.consume;if(!c)continue;const elapsed=items.time-c.at,target=c.follow(),u=Math.min(1,elapsed/.25),v=u*u;r.position.set(c.from[0]+(target[0]-c.from[0])*v,c.from[1]+(target[1]+.6-c.from[1])*v,-(c.from[2]+(target[2]-c.from[2])*v));r.quaternion=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),u*Math.PI*2);r.scale.setScalar(1-u);if(u===1){r.visible=false;delete r.gimmick.consume;}selection.update(r);}for(const fx of gameplayEffects){const elapsed=Math.max(0,fx.clock()-fx.start);if(elapsed>=fx.duration){fx.dispose();continue;}fx.record.gimmick.previewTime=elapsed;if(fx.follow)thisRuntime.setWorldPosition(fx.record,fx.follow());}events.sample(time);for(const fn of thisRuntime.frameListeners)fn(time);for(const item of nativeAnimations){const uniforms=item.material.uniforms;const scripts=Array.isArray(item.fields)?item.fields:[{type:'CustomAnimator',fields:item.fields}];
+ function animate(time){for(const r of selection.records.values()){const c=r.gimmick?.consume;if(!c)continue;const elapsed=items.time-c.at,target=c.follow(),u=Math.min(1,elapsed/.25),v=u*u;r.position.set(c.from[0]+(target[0]-c.from[0])*v,c.from[1]+(target[1]+.6-c.from[1])*v,-(c.from[2]+(target[2]-c.from[2])*v));r.quaternion=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),u*Math.PI*2);r.scale.setScalar(1-u);if(u===1){r.visible=false;delete r.gimmick.consume;}selection.update(r);}events.sample(time);for(const fn of thisRuntime.frameListeners)fn(time);for(const item of nativeAnimations){const uniforms=item.material.uniforms;const scripts=Array.isArray(item.fields)?item.fields:[{type:'CustomAnimator',fields:item.fields}];
   for(const script of scripts){const f=script.fields,tint=uniforms[f.CustomShaderColorKey||'_TintColor']?.value||uniforms.tint?.value,st=uniforms._MainTex_ST?.value;
    if(script.type==='CustomAnimator')for(const c of sampleAnimator(f,time)){
     if(tint&&c.key>=6&&c.key<=9)tint[['x','y','z','w'][c.key-6]]=c.value;
@@ -52,7 +52,7 @@ export class MapRuntime {
    }
    if(script.type.startsWith('FxUvanim')){const name=script.type.includes('Tex2')?'_MainTex2_ST':'_MainTex_ST',u=uniforms[name]?.value;if(u){const base=item.material.userData.uvBase??={};base[name]??=u.clone();u.z=base[name].z+(f.scrollSpeed_X||0)*time;u.w=base[name].w+(f.scrollSpeed_Y||0)*time;}}
   }
- }effects.sample(time);doors.sample(time);items.sample(time);characters.sample(time);states.sample(time);}
+ }effects.sample(time);doors.sample(time);items.sample(time);characters.sample(time);for(const fx of gameplayEffects){const elapsed=Math.max(0,fx.clock()-fx.start);if(elapsed>=fx.duration){fx.dispose();continue;}fx.record.gimmick.previewTime=elapsed;if(fx.follow){const p=fx.follow();if(p)thisRuntime.setWorldPosition(fx.record,p);}}states.sample(time);}
  const defaultWhite=new THREE.DataTexture(new Uint8Array([255,255,255,255]),1,1);defaultWhite.needsUpdate=true;
  renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x0f1116);renderer.outputColorSpace=THREE.SRGBColorSpace;host.append(renderer.domElement);
  scene=new THREE.Scene();let manipulator;const selection=new MapSelection(scene,items=>{manipulator?.sync();onSelection(items);});camera=new THREE.OrthographicCamera(-100,100,100,-100,.1,10000);camera.position.set(0,500,500);installNativeProjection(camera,()=>unityView&&oblique);
@@ -343,6 +343,8 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.getWorldRecords=()=>[...selection.records.values()];
  this.setActorState=(r,settings)=>{const changes={};for(const [key,value] of Object.entries(settings))if(r.character.settings[key]!==value)changes[key]=value;if(Object.keys(changes).length)return characters.change(r,changes);};
  this.restartActorAnimation=r=>{if(r.character?.loaded)characters.pose(r.character);};
+ this.actorSlotPosition=(r,name)=>{const p=characters.slotPoint(r,name);return p?[p.x,p.y,-p.z]:null;};
+ this.actorSpineEffectPosition=(r,name)=>{const p=characters.spineEffectPoint(r,name);return p?[p.x,p.y,-p.z]:null;};
  this.collectWorldItem=(r,follow)=>items.collect(r,follow);
  this.spawnWorldItem=id=>items.spawn(id,bundle.itemMetadata,mapGroup);
  this.setWorldScale=(r,scale)=>{r.scale.set(...scale);selection.update(r);};
@@ -353,9 +355,9 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.setWorldPosition=(r,p)=>{r.position.set(p[0],p[1],-p[2]);selection.update(r);};
  this.setWorldRotation=(r,degrees)=>{r.rotation=degrees;selection.update(r);};
  this.setWorldVisible=(r,value)=>{r.visible=!!value;selection.update(r);};
- this.spawnWorldEffect=(name,p,{duration=Infinity,follow,rotation=0,clock=()=>particleTime.value-mapStartTime,state,scale}={})=>{
+ this.spawnWorldEffect=(name,p,{duration=Infinity,follow,rotation=0,clock=()=>particleTime.value-mapStartTime,state,scale,roll=0}={})=>{
   const data=bundle.environment?.gameplayEffects?.[name];if(!data)return null;
-  const tile={id:'gameplay-fx:'+ ++gameplayEffectId,name,layer:'gameplay-effects',x:p[0],y:p[1]*2,z:p[2],rotation:rotation/90},record=selection.add(tile),group=new THREE.Group();mapGroup.add(group);states.register(data.spec,data.assets,[tile],group,0);if(scale){record.scale.set(...scale);selection.update(record);}record.gimmick.previewTime=0;states.activate(record.gimmick);record.gimmick.effectStart=0;for(const c of record.gimmick.controllers)c.start=0;
+  const tile={id:'gameplay-fx:'+ ++gameplayEffectId,name,layer:'gameplay-effects',x:p[0],y:p[1]*2,z:p[2],rotation:rotation/90},record=selection.add(tile),group=new THREE.Group();mapGroup.add(group);states.register(data.spec,data.assets,[tile],group,0);if(roll){record.quaternion=new THREE.Quaternion().setFromEuler(new THREE.Euler(0,-rotation*Math.PI/180,roll*Math.PI/180,'YXZ'));selection.update(record);}if(scale){record.scale.set(...scale);selection.update(record);}record.gimmick.previewTime=0;states.activate(record.gimmick);record.gimmick.effectStart=0;for(const c of record.gimmick.controllers)c.start=0;
   if(state)this.playWorldGimmick(record,state);for(const c of record.gimmick.controllers)c.start=0;
   const fx={record,follow,duration,clock,start:clock(),dispose:()=>{if(!gameplayEffects.delete(fx))return;states.remove(record);selection.records.delete(tile.id);group.removeFromParent();}};gameplayEffects.add(fx);return fx;
  };

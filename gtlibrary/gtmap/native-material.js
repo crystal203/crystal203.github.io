@@ -39,12 +39,12 @@ export function nativeMaterial(source, textures, partMatrix, {particles=false}={
   if(stage==='VERTEX'){
    const attrs={in_POSITION0:'nativePosition',in_NORMAL0:'nativeNormal',in_TEXCOORD0:'nativeUv',in_TEXCOORD1:'nativeUv2',in_COLOR0:'nativeColor'};
    for(const [from,to] of Object.entries(attrs))s=s.replaceAll(from,to);
-   if(particles){s=s.replace(/in\s+(?:(?:highp|mediump|lowp)\s+)?vec4\s+nativeColor\s*;/g,'in vec4 gtVertexColor; vec4 nativeColor;').replace(/in\s+(?:(?:highp|mediump|lowp)\s+)?vec2\s+nativeUv\s*;/g,'in vec2 gtVertexUv; vec2 nativeUv;');}
+   if(particles){s=s.replace(/in\s+(?:(?:highp|mediump|lowp)\s+)?vec4\s+nativeColor\s*;/g,'in vec4 gtVertexColor; vec4 nativeColor;').replace(/in\s+(?:(?:highp|mediump|lowp)\s+)?(vec[234])\s+nativeUv\s*;/g,(_,type)=>'in '+type+' gtVertexUv; '+type+' nativeUv;');}
    const header='uniform mat4 modelMatrix; in mat4 instanceMatrix; uniform mat4 gtPart;\n'+(particles?'in vec4 gtParticleColor; in vec4 gtParticleUv;\n':'');
    const bindings='mat4 gtReflection=mat4(1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1); mat4 gtModel=gtReflection*modelMatrix*instanceMatrix*gtReflection*gtPart;\n'+
     (s.includes('hlslcc_mtx4x4unity_ObjectToWorld')?'hlslcc_mtx4x4unity_ObjectToWorld=gtModel;\n':'')+
     (s.includes('hlslcc_mtx4x4unity_WorldToObject')?'hlslcc_mtx4x4unity_WorldToObject=inverse(gtModel);\n':'');
-   s=s.replace(/void main\(\)\s*\{/,m=>m+'\n'+bindings+(particles?((s.includes('in vec4 gtVertexColor;')?'nativeColor=gtVertexColor*gtParticleColor;':'')+(s.includes('in vec2 gtVertexUv;')?'nativeUv=gtParticleUv.xy+gtVertexUv*gtParticleUv.zw;':'')+'\n'):''));s=header+s;
+   s=s.replace(/void main\(\)\s*\{/,m=>m+'\n'+bindings+(particles?((s.includes('in vec4 gtVertexColor;')?'nativeColor=gtVertexColor*gtParticleColor;':'')+(/in vec[234] gtVertexUv;/.test(s)?'nativeUv=gtVertexUv; nativeUv.xy=gtParticleUv.xy+gtVertexUv.xy*gtParticleUv.zw;':'')+'\n'):''));s=header+s;
   } else {
    // Empty light grid has no local light entries, independently of the viewport size.
    s=s.replace(/texelFetch\(_LightIndexTexture,[^\n;]*\)/g,'vec4(0.0)');

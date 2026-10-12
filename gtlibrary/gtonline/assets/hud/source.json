@@ -450,54 +450,64 @@
     "sha256": "60b6c1cf22daba0efd79dd5fca41d71030b8f8ff0754470a05c82d8b707295af"
   },
   "settings": {
-    "atlas": "MainUiS3",
-    "frame": "ic_building_setting_00",
+    "atlas": "main_ui",
+    "frame": "top_ic_option.png",
     "source": {
       "frame": {
-        "x": 1368,
-        "y": 635,
-        "w": 42,
-        "h": 30
+        "x": 889,
+        "y": 98,
+        "w": 32,
+        "h": 29
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 42,
-        "h": 30
+        "w": 32,
+        "h": 29
       },
       "sourceSize": {
-        "w": 42,
-        "h": 30
+        "w": 32,
+        "h": 29
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
       }
     },
-    "sha256": "3acc11933bd67ea9f42044da9e7720e1a0d7131ceeb650da602219fdd867dee5"
+    "portraitMask": null,
+    "sha256": "8b4668945a07e950dbbcc33157ba19a8ae91cddcf90ec8923044b1a313a40a64"
   },
   "chest": {
-    "atlas": "MainUiS3",
-    "frame": "ic_empty_treasurebox_00",
+    "atlas": "main_ui",
+    "frame": "top_ic_tresurebox.png",
     "source": {
       "frame": {
-        "x": 1558,
-        "y": 295,
-        "w": 30,
-        "h": 32
+        "x": 892,
+        "y": 243,
+        "w": 40,
+        "h": 42
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 30,
-        "h": 32
+        "x": 13,
+        "y": 11,
+        "w": 40,
+        "h": 42
       },
       "sourceSize": {
-        "w": 30,
-        "h": 32
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
       }
     },
-    "sha256": "f3d0fb3b327868fdc27d903e0dca9c60f24109f2eceda33a758a0d06716b1469"
+    "portraitMask": null,
+    "sha256": "8f851a494ef17a9a7d26efa61a610e59e84e076bda88c1fabf7bd5cbc37390ad"
   },
   "coin": {
     "atlas": "items",
@@ -573,5 +583,129 @@
       }
     },
     "sha256": "a665696c7a194f736265fbb6e4b9d9d44d488f0d6ccc130a12d133ccb0288881"
+  },
+  "minimap-player": {
+    "atlas": "battle",
+    "frame": "minimap_player_marker.png",
+    "source": {
+      "frame": {
+        "x": 184,
+        "y": 1466,
+        "w": 16,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 16,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 16,
+        "h": 20
+      }
+    },
+    "portraitMask": null,
+    "sha256": "e1e902726edef6da9d96d417dc6b38b591ee9569674eef605da863563b7a8d09"
+  },
+  "minimap-exit": {
+    "atlas": "battle",
+    "frame": "minimap_exit_circle_marker.png",
+    "source": {
+      "frame": {
+        "x": 640,
+        "y": 1267,
+        "w": 14,
+        "h": 14
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 14
+      },
+      "sourceSize": {
+        "w": 14,
+        "h": 14
+      }
+    },
+    "portraitMask": null,
+    "sha256": "27045447c41edb5bba77d29410f6d730b5d539da899f98d23e9dea1475d3d167"
+  },
+  "portrait-knight_male_2": {
+    "atlas": "characters",
+    "frame": "knight_male_2",
+    "source": {
+      "frame": {
+        "x": 694,
+        "y": 456,
+        "w": 38,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 18,
+        "w": 38,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "portraitMask": {
+      "SpriteScale": 1.600000023841858,
+      "MaskSize": [
+        56,
+        56
+      ],
+      "MaskOffset": [
+        0,
+        0
+      ]
+    },
+    "sha256": "0000764a44c58630d509d658481cd2d7c8c992edb7879fc2e91795890b2d96df"
+  },
+  "portrait-maiden_2": {
+    "atlas": "characters",
+    "frame": "maiden_2",
+    "source": {
+      "frame": {
+        "x": 1506,
+        "y": 1447,
+        "w": 32,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 23,
+        "w": 32,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "portraitMask": {
+      "SpriteScale": 1.600000023841858,
+      "MaskSize": [
+        56,
+        56
+      ],
+      "MaskOffset": [
+        0,
+        0
+      ]
+    },
+    "sha256": "7b88661c3065c6308965a3846f6149246d0bedd20f705ffc788520e33f62a249"
   }
 }

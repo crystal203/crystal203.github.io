@@ -8382,5 +8382,78 @@
         ]
       }
     ]
+  },
+  {
+    "tileset": "__online_FX_wallimpact",
+    "dependencies": {
+      "effects/battle/base": "fa6603f4c479ac6ca59ac2e35a3fa01f8b4415e6729588c2e83cb1b091f27e91",
+      "effects/common/battle": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "effects/fx_area": "69b8d6dc908e5980919411b553659a29f96cbc0c8dd3db1720939bd6f964c480",
+      "fonts/base": "3e598add123a88cee19eee6f4a6d8d25615e37435551bd7066126bcd3630aceb",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/ngui": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+      "spritesheets/battle": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+      "spritesheets/ui/main": "2a5a4538a50a31bb211d352a9ee8acf0e7c95122ca73c191e02b523c9a185519",
+      "spritesheets/ui/main_s3": "f03ec9133e56d2cec3bc83888d534a449c8cfe7cba7b553eaf032bce212e13f2",
+      "shaders/tmp": "34b45c703c3d67f8ba39e93babcd451f4ca72271dc9a7cebb2077a50f0297afe"
+    },
+    "templates": 1,
+    "systems": 3,
+    "sprites": 1,
+    "issues": [
+      {
+        "tile": "FX_wallimpact",
+        "node": "[Atlas_add_top]_fragment",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "FX_wallimpact",
+        "node": "[Atlas_add_top]_fragment2",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "FX_wallimpact",
+        "node": "[Atlas_add_top]_fragment",
+        "unsupportedModule": "SizeBySpeedModule"
+      },
+      {
+        "tile": "FX_wallimpact",
+        "node": "[Atlas_add_top]_fragment2",
+        "unsupportedModule": "SizeBySpeedModule"
+      }
+    ],
+    "tiles": [
+      {
+        "name": "FX_wallimpact",
+        "emitters": [
+          "[Atlas_add_top]_fragment",
+          "[Atlas_add]_Ring",
+          "[Atlas_add_top]_fragment2"
+        ]
+      }
+    ]
+  },
+  {
+    "tileset": "__online_FX_Dash_Smoke",
+    "dependencies": {
+      "effects/dash": "afe59dd51e2e96f99d131709f41e1e09a848dd42cd6fd904f15efe74e74cb589",
+      "effects/commons": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+      "shaders/effect": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+      "shaders/oak": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c"
+    },
+    "templates": 1,
+    "systems": 1,
+    "sprites": 4,
+    "issues": [],
+    "tiles": [
+      {
+        "name": "FX_Dash_Smoke",
+        "emitters": [
+          "FX_Dash_Smoke"
+        ]
+      }
+    ]
   }
 ]
