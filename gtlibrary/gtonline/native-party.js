@@ -10,17 +10,19 @@ export class NativePartyFollow {
  constructor(runtime,collision,record,leader,index){Object.assign(this,{runtime,collision,record,index});this.reset(leader);}
  reset(leader,transfer=false){this.ops=[];this.lastLeader=leader.slice();this.jump=null;this.mode=distance(position(this.record),leader)>2?'free':'snake';this.freeRoute=null;this.routeTime=0;if(transfer){const p=this.collision.nearest([leader[0]-PARTY_SPACING*this.index,leader[1],leader[2]],2)||leader;this.runtime.setWorldPosition(this.record,p);}}
  enqueueJump(from,to,duration=.45,height=.7){this.recordWalk(from);this.ops.push({type:'jump',from:from.slice(),to:to.slice(),duration,height});this.lastLeader=to.slice();}
+ prepareBattle(target,leader){const from=position(this.record);this.ops=[];this.lastLeader=leader.slice();this.freeRoute=null;if(distance(from,target)<5){this.jump={type:'jump',from,to:target.slice(),elapsed:0,duration:.45,height:.7};this.runtime.restartActorAnimation?.(this.record);}else{this.runtime.setWorldPosition(this.record,target);}}
  recordWalk(leader,direction){if(distance(this.lastLeader,leader)>1e-6){this.ops.push({type:'walk',to:leader.slice(),direction:direction||facing(this.lastLeader,leader)});this.lastLeader=leader.slice();}}
  remaining(p){let n=0;for(const op of this.ops){n+=distance(p,op.to);p=op.to;}return n;}
- update(leader,settings,dt,{jumping=false}={}){
-  if(!(dt>0))return;if(!jumping)this.recordWalk(leader,settings.direction);
+ update(leader,settings,dt,{jumping=false,battle=false}={}){
+  if(!(dt>0))return;if(battle){this.mode='free';this.ops=[];this.lastLeader=leader.slice();}else if(!jumping&&this.mode==='snake')this.recordWalk(leader,settings.direction);
   if(this.jump){const h=this.jump;h.elapsed+=dt;const u=Math.min(1,h.elapsed/h.duration),p=h.from.map((v,i)=>v+(h.to[i]-v)*u);p[1]+=u===1?0:Math.sin(u*Math.PI)*h.height;this.runtime.setWorldPosition(this.record,p);this.runtime.setActorState(this.record,{animation:'jump',direction:facing(h.from,h.to),loop:false});if(u===1)this.jump=null;return;}
   let p=position(this.record),moving=false,direction=this.record.character.settings.direction||settings.direction;
   if(this.mode==='free'){
-   // Native Free joins the leader's trail through navigation; never distance-warp.
-   this.routeTime-=dt;if(!this.freeRoute||this.routeTime<=0){const end=this.ops[0]?.type==='jump'?this.ops[0].from:this.ops[0]?.to||leader;this.freeRoute=this.collision.route(p,end)||[];this.routeTime=.5;}
-   const target=this.freeRoute[0];if(target){const d=distance(p,target),step=Math.min(d,7*dt);if(d>1e-6){const q=this.collision.move(p,(target[0]-p[0])/d*step,(target[2]-p[2])/d*step);moving=distance(p,q)>1e-6;direction=facing(p,target);p=q;}if(distance(p,target)<.02)this.freeRoute.shift();}
-   const first=this.ops[0],end=first?.type==='jump'?first.from:first?.to||leader;if(distance(p,end)<.05){this.mode='snake';this.freeRoute=null;}
+   // Native Free targets the current leader, not a backlog of Snake operations.
+   this.ops=[];this.lastLeader=leader.slice();const gap=distance(p,leader);
+   this.routeTime-=dt;if(gap>PARTY_SPACING*this.index+.01&&(!this.freeRoute||this.routeTime<=0||distance(this.freeTarget||leader,leader)>.25)){this.freeRoute=this.collision.route(p,leader)||[];this.freeTarget=leader.slice();this.routeTime=.5;}
+   const target=this.freeRoute?.[0];if(target&&gap>PARTY_SPACING*this.index){const d=distance(p,target),step=Math.min(d,7*dt,gap-PARTY_SPACING*this.index);if(d>1e-6){const q=this.collision.move(p,(target[0]-p[0])/d*step,(target[2]-p[2])/d*step);moving=distance(p,q)>1e-6;direction=facing(p,target);p=q;}if(distance(p,target)<.02)this.freeRoute.shift();}
+   if(!battle&&distance(p,leader)<=PARTY_SPACING*this.index+.05){this.mode='snake';this.freeRoute=null;this.ops.push({type:'walk',to:leader.slice(),direction:settings.direction});}
   }
   if(this.mode==='snake'){
    let budget=followSpeed(this.remaining(p)-PARTY_SPACING*this.index,dt,settings.animation==='run'?5:0)*dt;
