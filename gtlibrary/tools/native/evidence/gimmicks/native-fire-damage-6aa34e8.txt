@@ -1,0 +1,90 @@
+6aa34e8 str      x29, [sp, #-0x30]!
+6aa34ec stp      x30, x21, [sp, #0x10]
+6aa34f0 stp      x20, x19, [sp, #0x20]
+6aa34f4 sub      sp, sp, #0x900
+6aa34f8 adrp     x21, #0xa178000
+6aa34fc ldrb     w8, [x21, #0xbcb] //  VA a178bcb 
+6aa3500 mov      x20, x1
+6aa3504 mov      x19, x0
+6aa3508 tbnz     w8, #0, #0x6aa3520
+6aa350c adrp     x0, #0x9aa2000
+6aa3510 ldr      x0, [x0, #0x570] //  VA 9aa2570 c8e2ca0900000000
+6aa3514 bl       #0x390a13c // sub_390a13c
+6aa3518 mov      w8, #1
+6aa351c strb     w8, [x21, #0xbcb]
+6aa3520 mov      w0, #0xae0
+6aa3524 movk     w0, #1, lsl #16
+6aa3528 mov      x1, xzr
+6aa352c bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+6aa3530 tbz      w0, #0, #0x6aa3584
+6aa3534 mov      w0, #0xae0
+6aa3538 movk     w0, #1, lsl #16
+6aa353c mov      x1, xzr
+6aa3540 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+6aa3544 mov      x21, x0
+6aa3548 add      x0, sp, #0x600
+6aa354c mov      w2, #0x300
+6aa3550 mov      x1, x20
+6aa3554 bl       #0x9682ac0 // sub_9682ac0
+6aa3558 cbz      x21, #0x6aa364c
+6aa355c add      x0, sp, #0x300
+6aa3560 add      x1, sp, #0x600
+6aa3564 mov      w2, #0x300
+6aa3568 bl       #0x9682ac0 // sub_9682ac0
+6aa356c add      x2, sp, #0x300
+6aa3570 mov      x0, x21
+6aa3574 mov      x1, x19
+6aa3578 mov      x3, xzr
+6aa357c bl       #0x861d9fc // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_1658
+6aa3580 b        #0x6aa3634 // sub_6aa3634
+6aa3584 ldrh     w8, [x20, #8]
+6aa3588 mov      w9, #0x50
+6aa358c bics     wzr, w9, w8
+6aa3590 b.ne     #0x6aa3630
+6aa3594 ldr      w8, [x19, #0x18]
+6aa3598 cmp      w8, #1
+6aa359c b.eq     #0x6aa3630
+6aa35a0 mov      x0, sp
+6aa35a4 mov      w2, #0x300
+6aa35a8 mov      x1, x20
+6aa35ac bl       #0x9682ac0 // sub_9682ac0
+6aa35b0 adrp     x10, #0x9aa2000
+6aa35b4 ldr      x8, [x19]
+6aa35b8 ldr      x10, [x10, #0x570] //  VA 9aa2570 c8e2ca0900000000
+6aa35bc ldrh     w9, [x8, #0x12e]
+6aa35c0 ldr      x1, [x10] //  VA 9cae2c8 1f10012000000000
+6aa35c4 cbz      x9, #0x6aa35e8
+6aa35c8 ldr      x10, [x8, #0xb0]
+6aa35cc add      x10, x10, #8
+6aa35d0 ldur     x11, [x10, #-8]
+6aa35d4 cmp      x11, x1
+6aa35d8 b.eq     #0x6aa35fc
+6aa35dc subs     x9, x9, #1
+6aa35e0 add      x10, x10, #0x10
+6aa35e4 b.ne     #0x6aa35d0
+6aa35e8 mov      w2, #2
+6aa35ec mov      x0, x19
+6aa35f0 bl       #0x39a388c // sub_39a388c
+6aa35f4 mov      x20, x0
+6aa35f8 b        #0x6aa360c // sub_6aa360c
+6aa35fc ldr      w9, [x10]
+6aa3600 add      w9, w9, #2
+6aa3604 add      x8, x8, w9, sxtw #4
+6aa3608 add      x20, x8, #0x138
+6aa360c ldr      x21, [x20]
+6aa3610 add      x0, sp, #0x600
+6aa3614 mov      x1, sp
+6aa3618 mov      w2, #0x300
+6aa361c bl       #0x9682ac0 // sub_9682ac0
+6aa3620 ldr      x2, [x20, #8]
+6aa3624 add      x1, sp, #0x600
+6aa3628 mov      x0, x19
+6aa362c blr      x21
+6aa3630 mov      w0, #1
+6aa3634 and      w0, w0, #1
+6aa3638 add      sp, sp, #0x900
+6aa363c ldp      x20, x19, [sp, #0x20]
+6aa3640 ldp      x30, x21, [sp, #0x10]
+6aa3644 ldr      x29, [sp], #0x30
+6aa3648 ret      
+6aa364c bl       #0x390a360 // sub_390a360

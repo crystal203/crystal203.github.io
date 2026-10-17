@@ -2,7 +2,7 @@
   "schema": 1,
   "stage": "1-1",
   "map": "alt_forest_1_1_2_2",
-  "stageSha256": "59195db9ce82a3329405f5b4c04360a0e93282727c50baf2d7225d59c38119ed",
+  "stageSha256": "36d19ab4e907ba26a6471d943afa6044a239fc2fffd486453deddfa10382b2ba",
   "source": {
     "colliderBundleSha256": {
       "forest": "c1dd8124de011f8f6310efebf241cf65afa28b9ee7cd28296f0ce2067414080f",
@@ -711,7 +711,8 @@
       "gameActions": [
         {
           "at": 2.833333333333333,
-          "name": "OpenTrapDoor"
+          "name": "PressTrapSwitch",
+          "source": "7078818/7078884 DoorCloseEvent; the switch does not reopen the northern doors"
         }
       ],
       "motionWaitsWithoutLocalMotion": [],
@@ -1260,7 +1261,7 @@
       "nativeStationing": null,
       "nativeAlignParty": {
         "target": "fallen_goblin1",
-        "direction": "back",
+        "direction": "right",
         "duration": 1,
         "layout": "linear",
         "source": "7074fcc..7075000"
@@ -1293,7 +1294,7 @@
       "nativeStationing": null,
       "nativeAlignParty": {
         "target": "fallen_goblin2",
-        "direction": "back",
+        "direction": "right",
         "duration": 1,
         "layout": "linear",
         "source": "7074fcc..7075000"
@@ -1326,7 +1327,7 @@
       "nativeStationing": null,
       "nativeAlignParty": {
         "target": "fallen_goblin3",
-        "direction": "back",
+        "direction": "right",
         "duration": 1,
         "layout": "linear",
         "source": "7074fcc..7075000"

@@ -1,0 +1,1263 @@
+{
+  "schema": 1,
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "registration": "0x98fb820",
+  "scriptsModule": "0x9a3b730",
+  "methodCount": 195390,
+  "typeCount": 83682,
+  "classes": [
+    {
+      "index": 5102,
+      "name": "FieldObjectSpec",
+      "namespace": "Oak",
+      "fullName": "Oak.FieldObjectSpec",
+      "byvalTypeIndex": 30866,
+      "fieldStart": 30241,
+      "methodStart": 50572,
+      "methodCount": 24,
+      "fieldCount": 10,
+      "token": "0x20013ef",
+      "fields": [
+        {
+          "index": 30241,
+          "name": "<Id>k__BackingField",
+          "typeIndex": 36336,
+          "token": "0x4007622",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de8e40",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 30242,
+          "name": "<Name>k__BackingField",
+          "typeIndex": 48359,
+          "token": "0x4007623",
+          "offset": 24,
+          "type": {
+            "pointer": "0x9deb9a0",
+            "kind": 14,
+            "byref": false,
+            "name": "System.String"
+          }
+        },
+        {
+          "index": 30243,
+          "name": "<Default>k__BackingField",
+          "typeIndex": 30868,
+          "token": "0x4007624",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e11820",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 5102,
+            "name": "Oak.FieldObjectSpec"
+          }
+        },
+        {
+          "index": 30244,
+          "name": "<Hitbox>k__BackingField",
+          "typeIndex": 34455,
+          "token": "0x4007625",
+          "offset": 32,
+          "type": {
+            "pointer": "0x9de8320",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 6233,
+            "name": "Oak.Hitbox"
+          }
+        },
+        {
+          "index": 30245,
+          "name": "<HpBase>k__BackingField",
+          "typeIndex": 41617,
+          "token": "0x4007626",
+          "offset": 56,
+          "type": {
+            "pointer": "0x9e399d0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 33297,
+            "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+          }
+        },
+        {
+          "index": 30246,
+          "name": "<DefenseBase>k__BackingField",
+          "typeIndex": 41617,
+          "token": "0x4007627",
+          "offset": 80,
+          "type": {
+            "pointer": "0x9e399d0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 33297,
+            "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+          }
+        },
+        {
+          "index": 30247,
+          "name": "<DebuffResistance>k__BackingField",
+          "typeIndex": 41617,
+          "token": "0x4007628",
+          "offset": 104,
+          "type": {
+            "pointer": "0x9e399d0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 33297,
+            "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+          }
+        },
+        {
+          "index": 30248,
+          "name": "<StatGrowthRate>k__BackingField",
+          "typeIndex": 41617,
+          "token": "0x4007629",
+          "offset": 128,
+          "type": {
+            "pointer": "0x9e399d0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 33297,
+            "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+          }
+        },
+        {
+          "index": 30249,
+          "name": "<Mass>k__BackingField",
+          "typeIndex": 46829,
+          "token": "0x400762a",
+          "offset": 152,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 30250,
+          "name": "<ImpactDamage>k__BackingField",
+          "typeIndex": 46829,
+          "token": "0x400762b",
+          "offset": 156,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 50572,
+          "name": "get_Id",
+          "token": "0x600c58d",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7950"
+        },
+        {
+          "index": 50573,
+          "name": "<unresolved-name:43470>",
+          "token": "0x600c58e",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 36335,
+              "token": "0x80094a1",
+              "type": {
+                "pointer": "0x9de8e30",
+                "kind": 8,
+                "byref": false,
+                "name": "System.Int32"
+              }
+            }
+          ],
+          "address": "0x63d7958"
+        },
+        {
+          "index": 50574,
+          "name": "get_Name",
+          "token": "0x600c58f",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7960"
+        },
+        {
+          "index": 50575,
+          "name": "set_Name",
+          "token": "0x600c590",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 48358,
+              "token": "0x80094a2",
+              "type": {
+                "pointer": "0x9deb990",
+                "kind": 14,
+                "byref": false,
+                "name": "System.String"
+              }
+            }
+          ],
+          "address": "0x63d7968"
+        },
+        {
+          "index": 50576,
+          "name": "get_Default",
+          "token": "0x600c591",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7970"
+        },
+        {
+          "index": 50577,
+          "name": "get_Hitbox",
+          "token": "0x600c592",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d79c8"
+        },
+        {
+          "index": 50578,
+          "name": "set_Hitbox",
+          "token": "0x600c593",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "<unresolved-name:1717986869>",
+              "typeIndex": 34454,
+              "token": "0x80094a3",
+              "type": {
+                "pointer": "0x9de8310",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 6233,
+                "name": "Oak.Hitbox"
+              }
+            }
+          ],
+          "address": "0x63d79dc"
+        },
+        {
+          "index": 50579,
+          "name": "get_HpBase",
+          "token": "0x600c594",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d79f0"
+        },
+        {
+          "index": 50580,
+          "name": "set_HpBase",
+          "token": "0x600c595",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 41616,
+              "token": "0x80094a4",
+              "type": {
+                "pointer": "0x9e399c0",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 33297,
+                "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+              }
+            }
+          ],
+          "address": "0x63d7a04"
+        },
+        {
+          "index": 50581,
+          "name": "get_DefenseBase",
+          "token": "0x600c596",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7a18"
+        },
+        {
+          "index": 50582,
+          "name": "set_DefenseBase",
+          "token": "0x600c597",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 41616,
+              "token": "0x80094a5",
+              "type": {
+                "pointer": "0x9e399c0",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 33297,
+                "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+              }
+            }
+          ],
+          "address": "0x63d7a2c"
+        },
+        {
+          "index": 50583,
+          "name": "get_DebuffResistance",
+          "token": "0x600c598",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7a40"
+        },
+        {
+          "index": 50584,
+          "name": "set_DebuffResistance",
+          "token": "0x600c599",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 41616,
+              "token": "0x80094a6",
+              "type": {
+                "pointer": "0x9e399c0",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 33297,
+                "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+              }
+            }
+          ],
+          "address": "0x63d7a54"
+        },
+        {
+          "index": 50585,
+          "name": "get_StatGrowthRate",
+          "token": "0x600c59a",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7a68"
+        },
+        {
+          "index": 50586,
+          "name": "set_StatGrowthRate",
+          "token": "0x600c59b",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 41616,
+              "token": "0x80094a7",
+              "type": {
+                "pointer": "0x9e399c0",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 33297,
+                "name": "CodeStage.AntiCheat.ObscuredTypes.ObscuredFloat"
+              }
+            }
+          ],
+          "address": "0x63d7a7c"
+        },
+        {
+          "index": 50587,
+          "name": "Defense",
+          "token": "0x600c59c",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "level",
+              "typeIndex": 36335,
+              "token": "0x80094a8",
+              "type": {
+                "pointer": "0x9de8e30",
+                "kind": 8,
+                "byref": false,
+                "name": "System.Int32"
+              }
+            }
+          ],
+          "address": "0x63d7a90"
+        },
+        {
+          "index": 50588,
+          "name": "MaxHp",
+          "token": "0x600c59d",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "level",
+              "typeIndex": 36335,
+              "token": "0x80094a9",
+              "type": {
+                "pointer": "0x9de8e30",
+                "kind": 8,
+                "byref": false,
+                "name": "System.Int32"
+              }
+            }
+          ],
+          "address": "0x63d7b48"
+        },
+        {
+          "index": 50589,
+          "name": "get_Mass",
+          "token": "0x600c59e",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7c24"
+        },
+        {
+          "index": 50590,
+          "name": "set_Mass",
+          "token": "0x600c59f",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 46828,
+              "token": "0x80094aa",
+              "type": {
+                "pointer": "0x9deb430",
+                "kind": 12,
+                "byref": false,
+                "name": "System.Single"
+              }
+            }
+          ],
+          "address": "0x63d7c2c"
+        },
+        {
+          "index": 50591,
+          "name": "get_ImpactDamage",
+          "token": "0x600c5a0",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7c34"
+        },
+        {
+          "index": 50592,
+          "name": "set_ImpactDamage",
+          "token": "0x600c5a1",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 46828,
+              "token": "0x80094ab",
+              "type": {
+                "pointer": "0x9deb430",
+                "kind": 12,
+                "byref": false,
+                "name": "System.Single"
+              }
+            }
+          ],
+          "address": "0x63d7c3c"
+        },
+        {
+          "index": 50593,
+          "name": "FromJson",
+          "token": "0x600c5a2",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "data",
+              "typeIndex": 6813,
+              "token": "0x80094ac",
+              "type": {
+                "pointer": "0x9914530",
+                "kind": 21,
+                "byref": false,
+                "name": "System.Collections.Generic.Dictionary`2<System.String,System.Object>",
+                "arguments": [
+                  {
+                    "pointer": "0x9deb990",
+                    "kind": 14,
+                    "byref": false,
+                    "name": "System.String"
+                  },
+                  {
+                    "pointer": "0x9dea1b0",
+                    "kind": 28,
+                    "byref": false,
+                    "name": "System.Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "address": "0x63d7c44"
+        },
+        {
+          "index": 50594,
+          "name": ".ctor",
+          "token": "0x600c5a3",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7ecc"
+        },
+        {
+          "index": 50595,
+          "name": ".cctor",
+          "token": "0x600c5a4",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x63d7f30"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e11800",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 5102,
+        "name": "Oak.FieldObjectSpec"
+      }
+    },
+    {
+      "index": 4689,
+      "name": "FloorSwitchStepOnEvent",
+      "namespace": "Oak",
+      "fullName": "Oak.FloorSwitchStepOnEvent",
+      "byvalTypeIndex": 31247,
+      "fieldStart": 28578,
+      "methodStart": 47466,
+      "methodCount": 6,
+      "fieldCount": 2,
+      "token": "0x2001252",
+      "fields": [
+        {
+          "index": 28578,
+          "name": "<Stepper>k__BackingField",
+          "typeIndex": 34965,
+          "token": "0x4006fa3",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de85c0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 6407,
+            "name": "Oak.IFieldObject"
+          }
+        },
+        {
+          "index": 28579,
+          "name": "pool",
+          "typeIndex": 17253,
+          "token": "0x4006fa4",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9946ba0",
+            "kind": 21,
+            "byref": false,
+            "name": "Oak.TinyObjectPool`1<Oak.FloorSwitchStepOnEvent>",
+            "arguments": [
+              {
+                "pointer": "0x9e12f30",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4689,
+                "name": "Oak.FloorSwitchStepOnEvent"
+              }
+            ]
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 47466,
+          "name": "get_Stepper",
+          "token": "0x600b96b",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x6346948"
+        },
+        {
+          "index": 47467,
+          "name": "set_Stepper",
+          "token": "0x600b96c",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34964,
+              "token": "0x8008d61",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x6346950"
+        },
+        {
+          "index": 47468,
+          "name": "Dispose",
+          "token": "0x600b96d",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x6346958"
+        },
+        {
+          "index": 47469,
+          "name": "Create",
+          "token": "0x600b96e",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "obj",
+              "typeIndex": 34964,
+              "token": "0x8008d62",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x6346a10"
+        },
+        {
+          "index": 47470,
+          "name": ".ctor",
+          "token": "0x600b96f",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x6346acc"
+        },
+        {
+          "index": 47471,
+          "name": ".cctor",
+          "token": "0x600b970",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x6346ad4"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e12f30",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 4689,
+        "name": "Oak.FloorSwitchStepOnEvent"
+      }
+    },
+    {
+      "index": 6407,
+      "name": "IFieldObject",
+      "namespace": "Oak",
+      "fullName": "Oak.IFieldObject",
+      "byvalTypeIndex": 34964,
+      "fieldStart": -1,
+      "methodStart": 60874,
+      "methodCount": 37,
+      "fieldCount": 0,
+      "token": "0x2001908",
+      "fields": [],
+      "methods": [
+        {
+          "index": 60874,
+          "name": "get_Name",
+          "token": "0x600edcb",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60875,
+          "name": "set_Name",
+          "token": "0x600edcc",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 48358,
+              "token": "0x800aa12",
+              "type": {
+                "pointer": "0x9deb990",
+                "kind": 14,
+                "byref": false,
+                "name": "System.String"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60876,
+          "name": "get_Position",
+          "token": "0x600edcd",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60877,
+          "name": "set_Position",
+          "token": "0x600edce",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 52243,
+              "token": "0x800aa13",
+              "type": {
+                "pointer": "0x9ded260",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 29474,
+                "name": "UnityEngine.Vector3"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60878,
+          "name": "get_PhysicsPosition",
+          "token": "0x600edcf",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60879,
+          "name": "get_PhysicsBounds",
+          "token": "0x600edd0",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60880,
+          "name": "get_Hitbox",
+          "token": "0x600edd1",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60881,
+          "name": "set_Hitbox",
+          "token": "0x600edd2",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34454,
+              "token": "0x800aa14",
+              "type": {
+                "pointer": "0x9de8310",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 6233,
+                "name": "Oak.Hitbox"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60882,
+          "name": "get_Bounds",
+          "token": "0x600edd3",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60883,
+          "name": "get_Direction",
+          "token": "0x600edd4",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60884,
+          "name": "set_Direction",
+          "token": "0x600edd5",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 28629,
+              "token": "0x800aa15",
+              "type": {
+                "pointer": "0x9de7250",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 4466,
+                "name": "Oak.Direction"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60885,
+          "name": "get_FieldObjectController",
+          "token": "0x600edd6",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60886,
+          "name": "set_FieldObjectController",
+          "token": "0x600edd7",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34976,
+              "token": "0x800aa16",
+              "type": {
+                "pointer": "0x9e21090",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6420,
+                "name": "Oak.IFieldObjectController"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60887,
+          "name": "get_FieldObjectBehaviour",
+          "token": "0x600edd8",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60888,
+          "name": "set_FieldObjectBehaviour",
+          "token": "0x600edd9",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34971,
+              "token": "0x800aa17",
+              "type": {
+                "pointer": "0x9e21040",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6417,
+                "name": "Oak.IFieldObjectBehaviour"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60889,
+          "name": "get_CrashBehaviour",
+          "token": "0x600edda",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60890,
+          "name": "set_CrashBehaviour",
+          "token": "0x600eddb",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34778,
+              "token": "0x800aa18",
+              "type": {
+                "pointer": "0x9e205c0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6369,
+                "name": "Oak.ICrashBehaviour"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60891,
+          "name": "get_DamagedBehaviour",
+          "token": "0x600eddc",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60892,
+          "name": "set_DamagedBehaviour",
+          "token": "0x600eddd",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34831,
+              "token": "0x800aa19",
+              "type": {
+                "pointer": "0x9e20910",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6388,
+                "name": "Oak.IDamagedBehaviour"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60893,
+          "name": "get_FieldObjectStatsBehaviour",
+          "token": "0x600edde",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60894,
+          "name": "set_FieldObjectStatsBehaviour",
+          "token": "0x600eddf",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 30876,
+              "token": "0x800aa1a",
+              "type": {
+                "pointer": "0x9e118a0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 5106,
+                "name": "<unresolved-name:1717918619>.<unresolved-name:1717630867>"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60895,
+          "name": "get_Pushable",
+          "token": "0x600ede0",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60896,
+          "name": "set_Pushable",
+          "token": "0x600ede1",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 35442,
+              "token": "0x800aa1b",
+              "type": {
+                "pointer": "0x9e22c90",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6480,
+                "name": "Oak.IPushable"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60897,
+          "name": "get_Holdable",
+          "token": "0x600ede2",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60898,
+          "name": "set_Holdable",
+          "token": "0x600ede3",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 35093,
+              "token": "0x800aa1c",
+              "type": {
+                "pointer": "0x9e217b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6431,
+                "name": "Oak.IHoldable"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60899,
+          "name": "get_CombustibleBehaviour",
+          "token": "0x600ede4",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60900,
+          "name": "set_CombustibleBehaviour",
+          "token": "0x600ede5",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34728,
+              "token": "0x800aa1d",
+              "type": {
+                "pointer": "0x9e202a0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6361,
+                "name": "Oak.ICombustibleBehaviour"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60901,
+          "name": "get_Electrocutable",
+          "token": "0x600ede6",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60902,
+          "name": "set_Electrocutable",
+          "token": "0x600ede7",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 34902,
+              "token": "0x800aa1e",
+              "type": {
+                "pointer": "0x9e20cf0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6392,
+                "name": "Oak.IElectrocutable"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60903,
+          "name": "get_Interactable",
+          "token": "0x600ede8",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60904,
+          "name": "set_Interactable",
+          "token": "0x600ede9",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 35130,
+              "token": "0x800aa1f",
+              "type": {
+                "pointer": "0x9e21a00",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6432,
+                "name": "Oak.IInteractable"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60905,
+          "name": "get_Magnetizable",
+          "token": "0x600edea",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60906,
+          "name": "set_Magnetizable",
+          "token": "0x600edeb",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 35226,
+              "token": "0x800aa20",
+              "type": {
+                "pointer": "0x9e21f80",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6454,
+                "name": "Oak.IMagnetizable"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60907,
+          "name": "get_ActiveState",
+          "token": "0x600edec",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60908,
+          "name": "set_ActiveState",
+          "token": "0x600eded",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 22152,
+              "token": "0x800aa21",
+              "type": {
+                "pointer": "0x9df14e0",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 6406,
+                "name": "Oak.ActiveState"
+              }
+            }
+          ],
+          "address": "0x0"
+        },
+        {
+          "index": 60909,
+          "name": "get_UnityGameObject",
+          "token": "0x600edee",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        },
+        {
+          "index": 60910,
+          "name": "get_IsVisibleOnCamera",
+          "token": "0x600edef",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x0"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9de85b0",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 6407,
+        "name": "Oak.IFieldObject"
+      }
+    },
+    {
+      "index": 5491,
+      "name": "ConditionCheckType",
+      "namespace": "Oak",
+      "fullName": "Oak.ConditionCheckType",
+      "byvalTypeIndex": 26423,
+      "fieldStart": 33122,
+      "methodStart": -1,
+      "methodCount": 0,
+      "fieldCount": 3,
+      "token": "0x2001574",
+      "fields": [
+        {
+          "index": 33122,
+          "name": "value__",
+          "typeIndex": 36359,
+          "token": "0x4008163",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de8fb0",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 33123,
+          "name": "And",
+          "typeIndex": 26427,
+          "token": "0x4008164",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e00ff0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 5491,
+            "name": "Oak.ConditionCheckType"
+          }
+        },
+        {
+          "index": 33124,
+          "name": "Or",
+          "typeIndex": 26427,
+          "token": "0x4008165",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e00ff0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 5491,
+            "name": "Oak.ConditionCheckType"
+          }
+        }
+      ],
+      "methods": [],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e00fb0",
+        "kind": 17,
+        "byref": false,
+        "definitionIndex": 5491,
+        "name": "Oak.ConditionCheckType"
+      }
+    }
+  ],
+  "methods": [],
+  "usages": [
+    {
+      "word": "0x2000cf1f",
+      "kind": 18,
+      "index": 26511,
+      "pointer": "0x9e01500",
+      "byref": false,
+      "definitionIndex": 1552,
+      "name": "Oak.Constants"
+    }
+  ],
+  "methodRanges": []
+}

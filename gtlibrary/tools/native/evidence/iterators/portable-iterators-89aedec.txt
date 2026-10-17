@@ -1,0 +1,251 @@
+89aedec stp      x30, x21, [sp, #-0x20]!
+89aedf0 stp      x20, x19, [sp, #0x10]
+89aedf4 adrp     x20, #0xa186000
+89aedf8 ldrb     w8, [x20, #0x734] //  VA a186734 
+89aedfc mov      x19, x0
+89aee00 tbnz     w8, #0, #0x89aee78
+89aee04 adrp     x0, #0x9b70000
+89aee08 ldr      x0, [x0, #0x298] //  VA 9b70298 7059cf0900000000
+89aee0c bl       #0x390a13c // sub_390a13c
+89aee10 adrp     x0, #0x9b70000
+89aee14 ldr      x0, [x0, #0x2a0] //  VA 9b702a0 7859cf0900000000
+89aee18 bl       #0x390a13c // sub_390a13c
+89aee1c adrp     x0, #0x9b70000
+89aee20 ldr      x0, [x0, #0x2a8] //  VA 9b702a8 d852cb0900000000
+89aee24 bl       #0x390a13c // sub_390a13c
+89aee28 adrp     x0, #0x9b70000
+89aee2c ldr      x0, [x0, #0x2b0] //  VA 9b702b0 4053cb0900000000
+89aee30 bl       #0x390a13c // sub_390a13c
+89aee34 adrp     x0, #0x9b70000
+89aee38 ldr      x0, [x0, #0x2b8] //  VA 9b702b8 5053cb0900000000
+89aee3c bl       #0x390a13c // sub_390a13c
+89aee40 adrp     x0, #0x9b70000
+89aee44 ldr      x0, [x0, #0x2c0] //  VA 9b702c0 9854cb0900000000
+89aee48 bl       #0x390a13c // sub_390a13c
+89aee4c adrp     x0, #0x9b70000
+89aee50 ldr      x0, [x0, #0x2c8] //  VA 9b702c8 c054cb0900000000
+89aee54 bl       #0x390a13c // sub_390a13c
+89aee58 adrp     x0, #0x9b70000
+89aee5c ldr      x0, [x0, #0x2d0] //  VA 9b702d0 4055cb0900000000
+89aee60 bl       #0x390a13c // sub_390a13c
+89aee64 adrp     x0, #0x9a70000
+89aee68 ldr      x0, [x0, #0x978] //  VA 9a70978 708ccb0900000000
+89aee6c bl       #0x390a13c // sub_390a13c
+89aee70 mov      w8, #1
+89aee74 strb     w8, [x20, #0x734]
+89aee78 ldr      w8, [x19, #0x10]
+89aee7c cmp      w8, #4
+89aee80 b.hi     #0x89af080
+89aee84 ldr      x21, [x19, #0x20]
+89aee88 adrp     x9, #0x18e2000
+89aee8c add      x9, x9, #0x2b8
+89aee90 adr      x10, #0x89aeea0
+89aee94 ldrb     w11, [x9, x8] //  VA 18e22b8 0300000012030000
+89aee98 add      x10, x10, x11, lsl #2
+89aee9c br       x10
+89aeea0 mov      w8, #-1
+89aeea4 str      w8, [x19, #0x10]
+89aeea8 b        #0x89af058 // sub_89af058
+89aeeac mov      w8, #-1
+89aeeb0 str      w8, [x19, #0x10]
+89aeeb4 strb     wzr, [x19, #0x28]
+89aeeb8 cbz      x21, #0x89af1d4
+89aeebc ldr      x0, [x21, #0x88]
+89aeec0 cbz      x0, #0x89af1d4
+89aeec4 adrp     x8, #0x9b70000
+89aeec8 ldr      x8, [x8, #0x2a0] //  VA 9b702a0 7859cf0900000000
+89aeecc ldr      x1, [x8] //  VA 9cf5978 b90506c000000000
+89aeed0 bl       #0x4606960 // sub_4606960
+89aeed4 mov      x20, x0
+89aeed8 mov      w1, wzr
+89aeedc str      x0, [x19, #0x30]
+89aeee0 str      wzr, [x19, #0x38]
+89aeee4 b        #0x89af068 // sub_89af068
+89aeee8 mov      w0, wzr
+89aeeec mov      w8, #-1
+89aeef0 str      w8, [x19, #0x10]
+89aeef4 b        #0x89af1c4 // sub_89af1c4
+89aeef8 b.hs     #0x89af1d0
+89aeefc add      x8, x20, w1, sxtw #3
+89aef00 ldr      x0, [x8, #0x20]
+89aef04 cbz      x0, #0x89af058
+89aef08 adrp     x9, #0x9b70000
+89aef0c ldr      x9, [x9, #0x2b8] //  VA 9b702b8 5053cb0900000000
+89aef10 ldr      x8, [x0]
+89aef14 ldr      x10, [x9] //  VA 9cb5350 0966012000000000
+89aef18 ldrb     w9, [x8, #0x130]
+89aef1c ldrb     w11, [x10, #0x130] //  VA 20016739 
+89aef20 cmp      w9, w11
+89aef24 b.lo     #0x89aef3c
+89aef28 ldr      x12, [x8, #0xc8]
+89aef2c add      x11, x12, x11, lsl #3
+89aef30 ldur     x11, [x11, #-8]
+89aef34 cmp      x11, x10
+89aef38 b.eq     #0x89af038
+89aef3c adrp     x10, #0x9b70000
+89aef40 ldr      x10, [x10, #0x2a8] //  VA 9b702a8 d852cb0900000000
+89aef44 ldr      x10, [x10] //  VA 9cb52d8 d565012000000000
+89aef48 ldrb     w11, [x10, #0x130] //  VA 20016705 
+89aef4c cmp      w9, w11
+89aef50 b.lo     #0x89aef68
+89aef54 ldr      x12, [x8, #0xc8]
+89aef58 add      x11, x12, x11, lsl #3
+89aef5c ldur     x11, [x11, #-8]
+89aef60 cmp      x11, x10
+89aef64 b.eq     #0x89af044
+89aef68 adrp     x10, #0x9b70000
+89aef6c ldr      x10, [x10, #0x2c0] //  VA 9b702c0 9854cb0900000000
+89aef70 ldr      x10, [x10] //  VA 9cb5498 a566012000000000
+89aef74 ldrb     w11, [x10, #0x130] //  VA 200167d5 
+89aef78 cmp      w9, w11
+89aef7c b.lo     #0x89aef94
+89aef80 ldr      x12, [x8, #0xc8]
+89aef84 add      x11, x12, x11, lsl #3
+89aef88 ldur     x11, [x11, #-8]
+89aef8c cmp      x11, x10
+89aef90 b.eq     #0x89af050
+89aef94 adrp     x10, #0x9b70000
+89aef98 ldr      x10, [x10, #0x2d0] //  VA 9b702d0 4055cb0900000000
+89aef9c ldr      x10, [x10] //  VA 9cb5540 ef66012000000000
+89aefa0 ldrb     w11, [x10, #0x130] //  VA 2001681f 
+89aefa4 cmp      w9, w11
+89aefa8 b.lo     #0x89aefc0
+89aefac ldr      x13, [x8, #0xc8]
+89aefb0 sub      x12, x11, #1
+89aefb4 ldr      x13, [x13, x12, lsl #3]
+89aefb8 cmp      x13, x10
+89aefbc b.eq     #0x89af0b8
+89aefc0 adrp     x10, #0x9b70000
+89aefc4 ldr      x10, [x10, #0x2c8] //  VA 9b702c8 c054cb0900000000
+89aefc8 ldr      x10, [x10] //  VA 9cb54c0 b766012000000000
+89aefcc ldrb     w11, [x10, #0x130] //  VA 200167e7 
+89aefd0 cmp      w9, w11
+89aefd4 b.lo     #0x89aefec
+89aefd8 ldr      x13, [x8, #0xc8]
+89aefdc sub      x12, x11, #1
+89aefe0 ldr      x13, [x13, x12, lsl #3]
+89aefe4 cmp      x13, x10
+89aefe8 b.eq     #0x89af0d8
+89aefec adrp     x10, #0x9b70000
+89aeff0 ldr      x10, [x10, #0x2b0] //  VA 9b702b0 4053cb0900000000
+89aeff4 ldr      x10, [x10] //  VA 9cb5340 0166012000000000
+89aeff8 ldrb     w11, [x10, #0x130] //  VA 20016731 
+89aeffc cmp      w9, w11
+89af000 b.lo     #0x89af058
+89af004 ldr      x9, [x8, #0xc8]
+89af008 sub      x8, x11, #1
+89af00c ldr      x9, [x9, x8, lsl #3]
+89af010 cmp      x9, x10
+89af014 b.ne     #0x89af058
+89af018 mov      w9, #1
+89af01c strb     w9, [x19, #0x28]
+89af020 ldr      x9, [x0]
+89af024 ldrb     w12, [x9, #0x130]
+89af028 cmp      w12, w11
+89af02c b.hs     #0x89af17c
+89af030 mov      x20, xzr
+89af034 b        #0x89af18c // sub_89af18c
+89af038 bl       #0x89af1d8 // ScreenplayIf.CheckCondition
+89af03c tbnz     w0, #0, #0x89af058
+89af040 b        #0x89af080 // sub_89af080
+89af044 bl       #0x89af6d0 // ScreenplayAnd.CheckCondition
+89af048 tbnz     w0, #0, #0x89af058
+89af04c b        #0x89af080 // sub_89af080
+89af050 bl       #0x89af76c // ScreenplayOr.CheckCondition
+89af054 tbz      w0, #0, #0x89af080
+89af058 ldr      w8, [x19, #0x38]
+89af05c ldr      x20, [x19, #0x30]
+89af060 add      w1, w8, #1
+89af064 str      w1, [x19, #0x38]
+89af068 cbz      x20, #0x89af1d4
+89af06c ldr      w8, [x20, #0x18]
+89af070 cmp      w1, w8
+89af074 b.lt     #0x89aeef8
+89af078 ldrb     w8, [x19, #0x28]
+89af07c cbz      w8, #0x89af088
+89af080 mov      w0, wzr
+89af084 b        #0x89af1c4 // sub_89af1c4
+89af088 adrp     x8, #0x9a70000
+89af08c ldr      x8, [x8, #0x978] //  VA 9a70978 708ccb0900000000
+89af090 ldr      x0, [x8] //  VA 9cb8c70 8f9a012000000000
+89af094 bl       #0x390a354 // sub_390a354
+89af098 mov      x1, x20
+89af09c mov      x2, xzr
+89af0a0 mov      x21, x0
+89af0a4 bl       #0x3b1916c // sub_3b1916c
+89af0a8 mov      w8, #4
+89af0ac str      x21, [x19, #0x18]
+89af0b0 str      w8, [x19, #0x10]
+89af0b4 b        #0x89af1c0 // sub_89af1c0
+89af0b8 mov      w8, #1
+89af0bc strb     w8, [x19, #0x28]
+89af0c0 ldr      x8, [x0]
+89af0c4 ldrb     w9, [x8, #0x130]
+89af0c8 cmp      w9, w11
+89af0cc b.hs     #0x89af0f8
+89af0d0 mov      x20, xzr
+89af0d4 b        #0x89af108 // sub_89af108
+89af0d8 mov      w8, #1
+89af0dc strb     w8, [x19, #0x28]
+89af0e0 ldr      x8, [x0]
+89af0e4 ldrb     w9, [x8, #0x130]
+89af0e8 cmp      w9, w11
+89af0ec b.hs     #0x89af140
+89af0f0 mov      x20, xzr
+89af0f4 b        #0x89af150 // sub_89af150
+89af0f8 ldr      x8, [x8, #0xc8]
+89af0fc ldr      x8, [x8, x12, lsl #3]
+89af100 cmp      x8, x10
+89af104 csel     x20, x0, xzr, eq
+89af108 cbz      x21, #0x89af1d4
+89af10c ldr      x0, [x21, #0x88]
+89af110 cbz      x0, #0x89af1d4
+89af114 adrp     x8, #0x9b70000
+89af118 ldr      x8, [x8, #0x298] //  VA 9b70298 7059cf0900000000
+89af11c ldr      x2, [x8] //  VA 9cf5970 b70506c000000000
+89af120 bl       #0x46065e4 // sub_46065e4
+89af124 cbz      x20, #0x89af1d4
+89af128 ldr      x8, [x21, #0x88]
+89af12c mov      w0, #1
+89af130 str      x8, [x20, #0x88]
+89af134 str      x20, [x19, #0x18]
+89af138 str      w0, [x19, #0x10]
+89af13c b        #0x89af1c4 // sub_89af1c4
+89af140 ldr      x8, [x8, #0xc8]
+89af144 ldr      x8, [x8, x12, lsl #3]
+89af148 cmp      x8, x10
+89af14c csel     x20, x0, xzr, eq
+89af150 cbz      x21, #0x89af1d4
+89af154 ldr      x0, [x21, #0x88]
+89af158 cbz      x0, #0x89af1d4
+89af15c adrp     x8, #0x9b70000
+89af160 ldr      x8, [x8, #0x298] //  VA 9b70298 7059cf0900000000
+89af164 ldr      x2, [x8] //  VA 9cf5970 b70506c000000000
+89af168 bl       #0x46065e4 // sub_46065e4
+89af16c cbz      x20, #0x89af1d4
+89af170 ldr      x8, [x21, #0x88]
+89af174 mov      w9, #2
+89af178 b        #0x89af1b4 // sub_89af1b4
+89af17c ldr      x9, [x9, #0xc8]
+89af180 ldr      x8, [x9, x8, lsl #3]
+89af184 cmp      x8, x10
+89af188 csel     x20, x0, xzr, eq
+89af18c cbz      x21, #0x89af1d4
+89af190 ldr      x0, [x21, #0x88]
+89af194 cbz      x0, #0x89af1d4
+89af198 adrp     x8, #0x9b70000
+89af19c ldr      x8, [x8, #0x298] //  VA 9b70298 7059cf0900000000
+89af1a0 ldr      x2, [x8] //  VA 9cf5970 b70506c000000000
+89af1a4 bl       #0x46065e4 // sub_46065e4
+89af1a8 cbz      x20, #0x89af1d4
+89af1ac ldr      x8, [x21, #0x88]
+89af1b0 mov      w9, #3
+89af1b4 str      x8, [x20, #0x88]
+89af1b8 str      x20, [x19, #0x18]
+89af1bc str      w9, [x19, #0x10]
+89af1c0 mov      w0, #1
+89af1c4 ldp      x20, x19, [sp, #0x10]
+89af1c8 ldp      x30, x21, [sp], #0x20
+89af1cc ret      
+89af1d0 bl       #0x390a368 // sub_390a368
+89af1d4 bl       #0x390a360 // sub_390a360

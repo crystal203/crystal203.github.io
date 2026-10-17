@@ -1,12 +1,1 @@
-{
-  "version": 1,
-  "stages": [
-    {
-      "id": "1-1",
-      "title": "旅馆",
-      "chapter": "坎特伯雷王国",
-      "map": "alt_forest_1_1_2_2",
-      "file": "stage-1-1.json"
-    }
-  ]
-}
+{"version":1,"stages":[{"id":"1-1","title":"旅馆","chapter":"坎特伯雷王国","map":"alt_forest_1_1_2_2","file":"stage-1-1.json","module":"inn","nativePrefabs":["__online_FX_glove","__online_FX_field_fire","__online_break_leaf","__online_break_house_box","__online_FX_Env_SmallRock_lv1_destroy","__online_FX_hit","__online_FX_Break_signboard","__online_rope_trap","__online_fx_swordslash_simple_new","__online_FX_SlashLine_Hit","__online_FX_dash","__online_FX_get","__online_npc_circle","__online_FX_wallimpact","__online_FX_Dash_Smoke"]},{"id":"1-2","title":"森林入口","chapter":"坎特伯雷王国","map":"alt_forest_1_2_2","file":"stage-1-2.json","module":"forestEntrance","preview":true,"nativePrefabs":["__online_FX_glove","__online_FX_field_fire","__online_break_leaf","__online_break_house_box","__online_FX_Env_SmallRock_lv1_destroy","__online_FX_hit","__online_FX_Break_signboard","__online_fx_swordslash_simple_new","__online_FX_SlashLine_Hit","__online_FX_dash","__online_FX_get","__online_npc_circle","__online_FX_wallimpact","__online_FX_Dash_Smoke","__online_bg_sealedkingdom","__online_[GIMMICK]bomb1","__online_FX_Explosion_Bomb_new","__online_FX_Env_BigRock_lv1_destroy"]}]}

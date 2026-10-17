@@ -1,0 +1,277 @@
+{
+  "schema": 1,
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "sources": [
+    {
+      "path": "gimmicks/jump-bomb-registration.json",
+      "sha256": "660e133c2038f35889286910d3384eed39da5b6d1f4752e0c888ab436238d041"
+    },
+    {
+      "path": "gimmicks/gimmick-registration.json",
+      "sha256": "63d64abd63ba5f93cd01e35cc6e51101b50a6b5054e2e0188686e531db24cd9e"
+    },
+    {
+      "path": "gimmicks/gimmick-defaults.json",
+      "sha256": "87b5bbb2fbcb019e921d468ffa31c4836bb042f7aacc2ed8f584dfc001667e6b"
+    },
+    {
+      "path": "gimmicks/gimmick-conditions.json",
+      "sha256": "8d51b13fca0d2b0b76849ee29f45779dd6bc4bf19ff338fc2d6eca0293bb30de"
+    },
+    {
+      "path": "gimmicks/native-create-tile-layer.json",
+      "sha256": "98099dd2c8fbbc31b0cdf3d2d72622dc30c0e447aae9b33d88fda2429d95546b"
+    },
+    {
+      "path": "gimmicks/native-gimmick-final-defaults.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/native-jump-final.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/jump-bomb-registration-610f600.txt",
+      "sha256": "559765b947808691816ddcb1ddb474aabebce1fdde028a7329706ffeb7770462"
+    },
+    {
+      "path": "gimmicks/gimmick-bodies-5dd3aec.txt",
+      "sha256": "e73d873a2887a1d1f7f8ace5165065b1ca59ac8928d19e03bb3a694efeef5208"
+    },
+    {
+      "path": "gimmicks/jump-bomb-bodies-5dd28f4.txt",
+      "sha256": "d384dd02377894455bfba57fef370162adc43d400dc57694b0f98034eee0abe3"
+    },
+    {
+      "path": "gimmicks/gimmick-source-extra-5dd31bc.txt",
+      "sha256": "4d132b4f038d918210ca8c785187e823f943e0d36a840fb06bc357524453ce71"
+    },
+    {
+      "path": "gimmicks/native-gimmick-math-5dd21a0.txt",
+      "sha256": "6084a7a5916963835b53f0338ce9905217e1b6132ccbdf72eefb1af9efb001e8"
+    },
+    {
+      "path": "gimmicks/native-gimmick-math-5dd0700.txt",
+      "sha256": "1ebdbdbed0058b174f975933116a771e40752ec740736cdbb35ad6160c424d9f"
+    },
+    {
+      "path": "gimmicks/native-jump-final-5dccf38.txt",
+      "sha256": "89118ec5d7e5ad83bececaac13a0cb281ba66e1900e2ec5a933da3ad8f6885ea"
+    },
+    {
+      "path": "gimmicks/native-fire-damage-6aa34e8.txt",
+      "sha256": "b46be2f7c486a80968b8775b2fffe1fa2c86c03633909f9a85eb5539ab5d221b"
+    },
+    {
+      "path": "gimmicks/native-pot-damage-6a36b64.txt",
+      "sha256": "5d45f828076832a603384cac03c17ef5041393548512cee44eb16ed533fbbd92"
+    },
+    {
+      "path": "gimmicks/native-create-tile-layer-82dc580.txt",
+      "sha256": "28b26fd8a04b81a645d7fd4b689f2826c0f57cd02dc7f5a039e7ce8f5836038f"
+    },
+    {
+      "path": "gimmicks/native-jumptile-off-6724a4c.txt",
+      "sha256": "1aac4a499ee356d74cecd2b330befc45a6e4080d4218b278c62fa06751d4012d"
+    },
+    {
+      "path": "gimmicks/jump-bomb-bodies-6723aac.txt",
+      "sha256": "6963627ac5d769759d714eabd9d12fb58a87b765972900ff8e4cb67fad5721a3"
+    },
+    {
+      "path": "gimmicks/native-jump-final-5ea6058.txt",
+      "sha256": "ca1c09ec0e6e24e23828af521cf013821fea6a2e47b1254eb3968f0032f9a575"
+    },
+    {
+      "path": "gimmicks/native-gimmick-final-defaults-63d7f30.txt",
+      "sha256": "d9dba1390b1103840a08cf6c38bda27ce5792a2dc07f25d9f65fe1f2747a52e3"
+    },
+    {
+      "path": "gimmicks/gimmick-final-630544c.txt",
+      "sha256": "7e519671dea39b8d3b2573efc7250e451a494e6872331649cc5371db9fe0f758"
+    },
+    {
+      "path": "gimmicks/gimmick-defaults-6307e04.txt",
+      "sha256": "3c9fbdb7ac6fb3700e1ad82136b5009ee82560c8a642acd2323da439b81dd99d"
+    },
+    {
+      "path": "gimmicks/gimmick-bodies-648ac1c.txt",
+      "sha256": "54d506b129d15eb9a91718e4d02afa1fce8d06dbcaa51593696f5fbfd5185bea"
+    },
+    {
+      "path": "gimmicks/gimmick-final-61558a4.txt",
+      "sha256": "1df91b3f54be10a11a994c2b72fe342868678e2a53a83235fbb2587127bf27b2"
+    },
+    {
+      "path": "gimmicks/fire-jump-state-63c712c.txt",
+      "sha256": "7f7736071df4925deeb38b2fc815f0b6530c6b1a388f313835781138eac1ebb9"
+    },
+    {
+      "path": "gimmicks/fire-jump-state-66a2528.txt",
+      "sha256": "760a41d63ef441916e7ea822e34f201d0023ff04ecbcc8e1c1453662403f4f07"
+    },
+    {
+      "path": "gimmicks/native-bomb-flower-5dd1784.txt",
+      "sha256": "adf156564b7b9132537a4d2d34814cd33ca7f6300398a672894e06b1ab73940e"
+    },
+    {
+      "path": "gimmicks/gimmick-effects-body.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/gimmick-effects-body-5dd25fc.txt",
+      "sha256": "e7ae89910dd2024bc2c9235c5526fd7033c1c3a2e35586c2ca00c8a523f2fb53"
+    },
+    {
+      "path": "gimmicks/gimmick-effects-body-5dd3498.txt",
+      "sha256": "a62c2252e0d1d457756fa76f99d8862ccd96fd98003384a94f51c9a161eecf03"
+    },
+    {
+      "path": "gimmicks/gimmick-effects-body-63d4718.txt",
+      "sha256": "109e7a5124cf8f643cb83fe868e90b91126675a9c7bd779a418933186bc269c1"
+    },
+    {
+      "path": "gimmicks/gimmick-review-registration.json",
+      "sha256": "cabe7a48609e1cc0bf857c0298f54adaed5e6f9bdb58bc0cb5c7d8c86518d4dc"
+    },
+    {
+      "path": "gimmicks/gimmick-review-registration-6c93054.txt",
+      "sha256": "6af7be37c0e0429289af3eff81775e5e0632be7ef1da47058a17abfbc7bf55d9"
+    },
+    {
+      "path": "gimmicks/gimmick-common-presentation.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/gimmick-common-presentation-63d4a78.txt",
+      "sha256": "a563ff79389a3d4028187029244b1b501b984dc0e3ef6748217eca2dbe8572a2"
+    },
+    {
+      "path": "gimmicks/gimmick-common-presentation-759eb58.txt",
+      "sha256": "6fbbd310d625c2cddadf21c0cad35e057471ad1f7df91ab3f83a6127bb5eab84"
+    },
+    {
+      "path": "gimmicks/gimmick-common-presentation-759edbc.txt",
+      "sha256": "d1f22d3a48510d059241f544e63bf78544f81e6e1782e547fb8a8c130432e49d"
+    },
+    {
+      "path": "gimmicks/native-gate-attach.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/native-gate-attach-8c74bac.txt",
+      "sha256": "80cc435afcc7f97edcdb95d8da7339046516c42fe5de11abde2f6335fb2fc723"
+    },
+    {
+      "path": "gimmicks/native-gate-switch-state.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/native-gate-switch-state-648937c.txt",
+      "sha256": "5c38e71d510e6093091faf624b96030efa9b40c8ce92b2e96c99340e5e95cef6"
+    },
+    {
+      "path": "gimmicks/jump-bomb-bodies-5dd1df8.txt",
+      "sha256": "10228a3b6850171b495fbe89161de8f9e1409e46dce192a662e6eca3242c3bd5"
+    },
+    {
+      "path": "gimmicks/jump-bomb-bodies-62b2b7c.txt",
+      "sha256": "859b5aa338878fbb92324d5549373d806c6e8958474a5a7b648272a54b206b32"
+    },
+    {
+      "path": "gimmicks/native-bomb-sound-stop.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/native-bomb-sound-stop-88cc2b4.txt",
+      "sha256": "8336534d8ac97252ee7936c870082f2f19fce7d81ffcdf8bd3a6ead305e0dd92"
+    },
+    {
+      "path": "gimmicks/native-stop-sfx.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/native-stop-sfx-88a283c.txt",
+      "sha256": "348d05de6c8fbead29e2ef987a1345bddcc267ebd57d087af0a3b08864cf0c80"
+    },
+    {
+      "path": "gimmicks/native-jump-direction-attach.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "gimmicks/native-jump-direction-attach-6723880.txt",
+      "sha256": "6305ac39d7caa480c07d2b35f5b7f45663a1deb8dc998c54035b18968e89fbde"
+    }
+  ],
+  "combustion": {
+    "spreadDelay": 0.5,
+    "radius": 1,
+    "damageInterval": 0.5,
+    "damageDelay": 2.25,
+    "damage": 100,
+    "radiusQuery": "sphere against Bounds.ClosestPoint using actual source position",
+    "brazierRefresh": "GetBurntBy resets lifetime, not first-ignition spread delay",
+    "defaultHp": 1
+  },
+  "bomb": {
+    "flowerGeneration": "82dd2c8..82dd4bc separate bomb1 at bomb_grass1 transform",
+    "spawnDelay": 0.5,
+    "spawnDuration": 1,
+    "pickupFuse": 5,
+    "provokeFuse": 1,
+    "readyState": 2,
+    "radius": 1.5,
+    "damageRatio": 0.1,
+    "wickInitialY": "Read from prefab wick localPosition.y in AttachTo; current bomb1 0.3230000138282776",
+    "wickTravelTime": 2,
+    "chainRule": "BombProvokeEvent type is not checked in ready-state branch; remains 1s",
+    "blink": {
+      "threshold": 3,
+      "phase": "u * ((u + 1) * 7), u = elapsed - 2, float32 operations",
+      "color": "[1, abs(sin(phase)), abs(sin(phase)), 1]",
+      "node": "mesh/bomb1",
+      "property": "_Color"
+    },
+    "shake": {
+      "radius": "float32(elapsed * float32(0.025)) / 5",
+      "pulseDuration": 0.20000000298023224,
+      "combination": "maximum linearly decayed pulse radius, not sum",
+      "sampling": "random angle on XY circle, radius / 2; unshaken physical position retained"
+    },
+    "countTick": {
+      "sfx": "02_bomb_count_tick_01",
+      "trigger": "sign of sin(float32(phase * float32(0.6))) changes",
+      "limit": "Current viewport gate approximates native Field.IsInSameCameraGrid."
+    },
+    "fuseStop": "AudioSourceHolder.Stop -> MusicPlayer.StopSfx -> SfxSystem.Stop -> AudioSource.Stop, no invented fade tail"
+  },
+  "jump": {
+    "jumpSpeed": 11,
+    "defaultHorizontalSpeed": "manual dash speed * 1.2000000476837158",
+    "gravity": 9.800000190734863,
+    "verticalTimeScale": 1.75,
+    "offDelay": 1.5,
+    "range": "2 * horizontalSpeed * float32(4/7) * jumpSpeed / gravity",
+    "direction": "JumpTileBehaviour.AttachTo Euler Y 0/90/180/270 assigns Direction 4/8/1/2 => native -Z/-X/+Z/+X; independent of approach/keys; actor faces launch velocity",
+    "targetBasis": "Source tile Bounds.center (IFieldObject slot 8) plus native range; compensate from Target character Position (slot 2), preserving target Y",
+    "repeatAnimation": "restart on each spring; each Off coroutine retains its own 1.5s deadline",
+    "entrySpeed": "JumpTileCrashBehaviour: CurrentAction Moving(2) selects WalkSpeed, otherwise DashSpeed; CharacterForcedDashState multiplier is applied by native crash; positive HorizontalSpeed overrides the fallback speed"
+  },
+  "door": {
+    "fullOpenDuration": 1,
+    "quickOpenDuration": 0.07999999821186066,
+    "closeDuration": 0.07999999821186066,
+    "openHeight": -1.5,
+    "maintainOpenDuration": 2,
+    "conditions": "1 OR, otherwise AND; individual expected boolean respected",
+    "explicitOpen": "DoorBehaviour.Open enters open state 2, which has no maintain-open countdown; explicit force-close clears this latch"
+  },
+  "limitations": [
+    "Jump crash alignment, gliding and aerial obstacles are incomplete.",
+    "Native RNG sequence, timer-stop/wind-pot state, native throw, party damage and saved fuse restoration are incomplete.",
+    "Count tick camera-grid gating is approximated by viewport visibility; exact global SHEAR keyword selection remains unverified.",
+    "Global switch resets and customised NPC hitboxes are incomplete.",
+    "Full burn persistence, native frame scheduling and other family limits are recorded in stage-gimmick-audit.json."
+  ]
+}

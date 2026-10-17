@@ -1,0 +1,197 @@
+63d4a78 str      d8, [sp, #-0x20]!
+63d4a7c str      x30, [sp, #8]
+63d4a80 stp      x20, x19, [sp, #0x10]
+63d4a84 adrp     x20, #0xa175000
+63d4a88 ldrb     w8, [x20, #0xee4] //  VA a175ee4 
+63d4a8c mov      v8.16b, v0.16b
+63d4a90 mov      x19, x0
+63d4a94 tbnz     w8, #0, #0x63d4ab8
+63d4a98 adrp     x0, #0x9ac0000
+63d4a9c ldr      x0, [x0, #0x328] //  VA 9ac0328 1855cd0900000000
+63d4aa0 bl       #0x390a13c // sub_390a13c
+63d4aa4 adrp     x0, #0x9ac0000
+63d4aa8 ldr      x0, [x0, #0x330] //  VA 9ac0330 2055cd0900000000
+63d4aac bl       #0x390a13c // sub_390a13c
+63d4ab0 mov      w8, #1
+63d4ab4 strb     w8, [x20, #0xee4]
+63d4ab8 mov      w0, #0xc4de
+63d4abc mov      x1, xzr
+63d4ac0 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63d4ac4 tbz      w0, #0, #0x63d4af4
+63d4ac8 mov      w0, #0xc4de
+63d4acc mov      x1, xzr
+63d4ad0 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63d4ad4 cbz      x0, #0x63d4c14
+63d4ad8 mov      x1, x19
+63d4adc ldp      x20, x19, [sp, #0x10]
+63d4ae0 ldr      x30, [sp, #8]
+63d4ae4 mov      v0.16b, v8.16b
+63d4ae8 mov      x2, xzr
+63d4aec ldr      d8, [sp], #0x20
+63d4af0 b        #0x85c4c3c // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_242
+63d4af4 ldr      x0, [x19, #0x118]
+63d4af8 cbz      x0, #0x63d4c14
+63d4afc mov      x1, xzr
+63d4b00 bl       #0x6c92e30 // Oak.ShakeCalculator.get_IsActive
+63d4b04 mov      w20, w0
+63d4b08 tbz      w0, #0, #0x63d4b54
+63d4b0c ldr      x0, [x19, #0x118]
+63d4b10 cbz      x0, #0x63d4c14
+63d4b14 mov      v0.16b, v8.16b
+63d4b18 mov      x1, xzr
+63d4b1c bl       #0x6c93434 // Oak.ShakeCalculator.UpdateFrame
+63d4b20 ldr      x8, [x19, #0x118]
+63d4b24 cbz      x8, #0x63d4c14
+63d4b28 ldr      x0, [x19, #0x110]
+63d4b2c cbz      x0, #0x63d4c14
+63d4b30 ldr      s0, [x19, #0x48]
+63d4b34 ldr      s1, [x8, #0x20]
+63d4b38 ldr      d3, [x19, #0x40]
+63d4b3c ldr      d4, [x8, #0x18]
+63d4b40 mov      x1, xzr
+63d4b44 fadd     s2, s0, s1
+63d4b48 fadd     v0.2s, v3.2s, v4.2s
+63d4b4c mov      s1, v0.s[1]
+63d4b50 bl       #0x945dff0 // sub_945dff0
+63d4b54 ldr      x0, [x19, #0x120]
+63d4b58 cbz      x0, #0x63d4c14
+63d4b5c ldrb     w8, [x0, #0x34]
+63d4b60 cbz      w8, #0x63d4bb4
+63d4b64 ldr      x8, [x0]
+63d4b68 mov      v0.16b, v8.16b
+63d4b6c ldp      x9, x1, [x8, #0x178]
+63d4b70 blr      x9
+63d4b74 ldr      x8, [x19, #0x120]
+63d4b78 cbz      x8, #0x63d4c14
+63d4b7c ldr      x0, [x19, #0x110]
+63d4b80 cbz      x0, #0x63d4c14
+63d4b84 ldr      s0, [x19, #0x48]
+63d4b88 ldr      s1, [x8, #0x40]
+63d4b8c ldr      d3, [x19, #0x40]
+63d4b90 ldr      d4, [x8, #0x38]
+63d4b94 ldp      x20, x19, [sp, #0x10]
+63d4b98 ldr      x30, [sp, #8]
+63d4b9c fadd     s2, s0, s1
+63d4ba0 fadd     v0.2s, v3.2s, v4.2s
+63d4ba4 mov      s1, v0.s[1]
+63d4ba8 mov      x1, xzr
+63d4bac ldr      d8, [sp], #0x20
+63d4bb0 b        #0x945dff0 // sub_945dff0
+63d4bb4 tbnz     w20, #0, #0x63d4c04
+63d4bb8 adrp     x20, #0xa16c000
+63d4bbc ldrb     w8, [x20, #0xa6f] //  VA a16ca6f 
+63d4bc0 cbnz     w8, #0x63d4bd8
+63d4bc4 adrp     x0, #0x9a71000
+63d4bc8 ldr      x0, [x0, #0xb88] //  VA 9a71b88 48c6ca0900000000
+63d4bcc bl       #0x390a13c // sub_390a13c
+63d4bd0 mov      w8, #1
+63d4bd4 strb     w8, [x20, #0xa6f]
+63d4bd8 adrp     x8, #0x9a71000
+63d4bdc ldr      x8, [x8, #0xb88] //  VA 9a71b88 48c6ca0900000000
+63d4be0 ldr      x8, [x8] //  VA 9cac648 f1f9002000000000
+63d4be4 ldr      x8, [x8, #0xb8] //  VA 2000faa9 
+63d4be8 ldr      x0, [x8, #8]
+63d4bec cbz      x0, #0x63d4c14
+63d4bf0 ldr      w1, [x19, #0x20]
+63d4bf4 mov      x2, x19
+63d4bf8 mov      x3, xzr
+63d4bfc bl       #0x84c23c4 // Oak.Game.RemoveUpdateFrameCallback
+63d4c00 strb     wzr, [x19, #0x128]
+63d4c04 ldp      x20, x19, [sp, #0x10]
+63d4c08 ldr      x30, [sp, #8]
+63d4c0c ldr      d8, [sp], #0x20
+63d4c10 ret      
+63d4c14 bl       #0x390a360 // sub_390a360
+63d4c18 str      x30, [sp, #-0x20]!
+63d4c1c stp      x20, x19, [sp, #0x10]
+63d4c20 mov      w19, w1
+63d4c24 mov      x20, x0
+63d4c28 mov      w0, #0x2603
+63d4c2c mov      x1, xzr
+63d4c30 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63d4c34 tbz      w0, #0, #0x63d4c60
+63d4c38 mov      w0, #0x2603
+63d4c3c mov      x1, xzr
+63d4c40 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63d4c44 cbz      x0, #0x63d4ccc
+63d4c48 mov      x1, x20
+63d4c4c mov      w2, w19
+63d4c50 ldp      x20, x19, [sp, #0x10]
+63d4c54 mov      x3, xzr
+63d4c58 ldr      x30, [sp], #0x20
+63d4c5c b        #0x85c3668 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_218
+63d4c60 ldr      x11, [x20, #0x138]
+63d4c64 cbz      x11, #0x63d4ccc
+63d4c68 ldr      w8, [x11, #0x18]
+63d4c6c lsl      x9, x8, #0x20
+63d4c70 cmp      x9, #1
+63d4c74 b.lt     #0x63d4cb0
+63d4c78 mov      x9, xzr
+63d4c7c sxtw     x10, w8
+63d4c80 add      x11, x11, #0x20
+63d4c84 cmp      x9, x8
+63d4c88 b.hs     #0x63d4cc8
+63d4c8c ldr      x12, [x11, x9, lsl #3]
+63d4c90 cmp      w12, w19
+63d4c94 b.gt     #0x63d4ca4
+63d4c98 lsr      x12, x12, #0x20
+63d4c9c cmp      w12, w19
+63d4ca0 b.ge     #0x63d4cb8
+63d4ca4 add      x9, x9, #1
+63d4ca8 cmp      x9, x10
+63d4cac b.lt     #0x63d4c84
+63d4cb0 mov      w0, wzr
+63d4cb4 b        #0x63d4cbc // sub_63d4cbc
+63d4cb8 mov      w0, #1
+63d4cbc ldp      x20, x19, [sp, #0x10]
+63d4cc0 ldr      x30, [sp], #0x20
+63d4cc4 ret      
+63d4cc8 bl       #0x390a368 // sub_390a368
+63d4ccc bl       #0x390a360 // sub_390a360
+63d4cd0 stp      x30, x21, [sp, #-0x20]!
+63d4cd4 stp      x20, x19, [sp, #0x10]
+63d4cd8 adrp     x20, #0xa175000
+63d4cdc ldrb     w8, [x20, #0xee6] //  VA a175ee6 
+63d4ce0 mov      x19, x0
+63d4ce4 tbnz     w8, #0, #0x63d4cfc
+63d4ce8 adrp     x0, #0x9a9f000
+63d4cec ldr      x0, [x0, #0x2c8] //  VA 9a9f2c8 0088cb0900000000
+63d4cf0 bl       #0x390a13c // sub_390a13c
+63d4cf4 mov      w8, #1
+63d4cf8 strb     w8, [x20, #0xee6]
+63d4cfc mov      w0, #0x2607
+63d4d00 mov      x1, xzr
+63d4d04 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63d4d08 tbz      w0, #0, #0x63d4d30
+63d4d0c mov      w0, #0x2607
+63d4d10 mov      x1, xzr
+63d4d14 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63d4d18 cbz      x0, #0x63d4e04
+63d4d1c mov      x1, x19
+63d4d20 ldp      x20, x19, [sp, #0x10]
+63d4d24 mov      x2, xzr
+63d4d28 ldp      x30, x21, [sp], #0x20
+63d4d2c b        #0x85b78dc // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_29
+63d4d30 ldr      w8, [x19, #0x12c]
+63d4d34 cmp      w8, #1
+63d4d38 b.ne     #0x63d4dc0
+63d4d3c adrp     x20, #0x9a9f000
+63d4d40 ldr      x20, [x20, #0x2c8] //  VA 9a9f2c8 0088cb0900000000
+63d4d44 ldr      x0, [x20] //  VA 9cb8800 1b96012000000000
+63d4d48 ldr      w8, [x0, #0xe0] //  VA 200196fb 
+63d4d4c cbnz     w8, #0x63d4d54
+63d4d50 bl       #0x390a240 // sub_390a240
+63d4d54 adrp     x21, #0xa172000
+63d4d58 ldrb     w8, [x21, #0xeb0] //  VA a172eb0 
+63d4d5c cbnz     w8, #0x63d4d74
+63d4d60 adrp     x0, #0x9a9f000
+63d4d64 ldr      x0, [x0, #0x2c8] //  VA 9a9f2c8 0088cb0900000000
+63d4d68 bl       #0x390a13c // sub_390a13c
+63d4d6c mov      w8, #1
+63d4d70 strb     w8, [x21, #0xeb0]
+63d4d74 ldr      x0, [x20] //  VA 9cb8800 1b96012000000000
+63d4d78 ldr      w8, [x0, #0xe0] //  VA 200196fb 
+63d4d7c cbnz     w8, #0x63d4d88
+63d4d80 bl       #0x390a240 // sub_390a240
+63d4d84 ldr      x0, [x20] //  VA 9cb8800 1b96012000000000
+63d4d88 ldr      x8, [x0, #0xb8] //  VA 200196d3 

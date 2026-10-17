@@ -1,0 +1,413 @@
+5dd1784 stp      x30, x25, [sp, #-0x40]!
+5dd1788 stp      x24, x23, [sp, #0x10]
+5dd178c stp      x22, x21, [sp, #0x20]
+5dd1790 stp      x20, x19, [sp, #0x30]
+5dd1794 adrp     x21, #0xa173000
+5dd1798 ldrb     w8, [x21, #0x277] //  VA a173277 
+5dd179c mov      x20, x1
+5dd17a0 mov      x19, x0
+5dd17a4 tbnz     w8, #0, #0x5dd1840
+5dd17a8 adrp     x0, #0x9aa2000
+5dd17ac ldr      x0, [x0, #0x668] //  VA 9aa2668 00f8d00900000000
+5dd17b0 bl       #0x390a13c // sub_390a13c
+5dd17b4 adrp     x0, #0x9aa2000
+5dd17b8 ldr      x0, [x0, #0x4b0] //  VA 9aa24b0 587ad10900000000
+5dd17bc bl       #0x390a13c // sub_390a13c
+5dd17c0 adrp     x0, #0x9aa2000
+5dd17c4 ldr      x0, [x0, #0xc8] //  VA 9aa20c8 28bcca0900000000
+5dd17c8 bl       #0x390a13c // sub_390a13c
+5dd17cc adrp     x0, #0x9a9e000
+5dd17d0 ldr      x0, [x0, #0x840] //  VA 9a9e840 d8bbca0900000000
+5dd17d4 bl       #0x390a13c // sub_390a13c
+5dd17d8 adrp     x0, #0x9a6d000
+5dd17dc ldr      x0, [x0, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+5dd17e0 bl       #0x390a13c // sub_390a13c
+5dd17e4 adrp     x0, #0x9a9a000
+5dd17e8 ldr      x0, [x0, #0xef0] //  VA 9a9aef0 7017cb0900000000
+5dd17ec bl       #0x390a13c // sub_390a13c
+5dd17f0 adrp     x0, #0x9aa2000
+5dd17f4 ldr      x0, [x0, #0x670] //  VA 9aa2670 10c5d20900000000
+5dd17f8 bl       #0x390a13c // sub_390a13c
+5dd17fc adrp     x0, #0x9aa2000
+5dd1800 ldr      x0, [x0, #0x108] //  VA 9aa2108 18c5d20900000000
+5dd1804 bl       #0x390a13c // sub_390a13c
+5dd1808 adrp     x0, #0x9a6d000
+5dd180c ldr      x0, [x0, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1810 bl       #0x390a13c // sub_390a13c
+5dd1814 adrp     x0, #0x9a73000
+5dd1818 ldr      x0, [x0, #0xaf8] //  VA 9a73af8 406bcb0900000000
+5dd181c bl       #0x390a13c // sub_390a13c
+5dd1820 adrp     x0, #0x9aa2000
+5dd1824 ldr      x0, [x0, #0x678] //  VA 9aa2678 1001d80900000000
+5dd1828 bl       #0x390a13c // sub_390a13c
+5dd182c adrp     x0, #0x9aa2000
+5dd1830 ldr      x0, [x0, #0x680] //  VA 9aa2680 c08fdb0900000000
+5dd1834 bl       #0x390a13c // sub_390a13c
+5dd1838 mov      w8, #1
+5dd183c strb     w8, [x21, #0x277]
+5dd1840 mov      w0, #0x7f55
+5dd1844 mov      x1, xzr
+5dd1848 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+5dd184c tbz      w0, #0, #0x5dd1880
+5dd1850 mov      w0, #0x7f55
+5dd1854 mov      x1, xzr
+5dd1858 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+5dd185c cbz      x0, #0x5dd1bc4
+5dd1860 mov      x1, x19
+5dd1864 mov      x2, x20
+5dd1868 ldp      x20, x19, [sp, #0x30]
+5dd186c ldp      x22, x21, [sp, #0x20]
+5dd1870 ldp      x24, x23, [sp, #0x10]
+5dd1874 mov      x3, xzr
+5dd1878 ldp      x30, x25, [sp], #0x40
+5dd187c b        #0x85b84b0 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_42
+5dd1880 cbz      x20, #0x5dd1bc4
+5dd1884 adrp     x8, #0x9a9e000
+5dd1888 ldr      x8, [x8, #0x840] //  VA 9a9e840 d8bbca0900000000
+5dd188c ldr      x9, [x20]
+5dd1890 ldr      x8, [x8] //  VA 9cabbd8 99f0002000000000
+5dd1894 ldrb     w11, [x9, #0x130]
+5dd1898 ldrb     w10, [x8, #0x130] //  VA 2000f1c9 
+5dd189c cmp      w11, w10
+5dd18a0 b.lo     #0x5dd1944
+5dd18a4 ldr      x9, [x9, #0xc8]
+5dd18a8 add      x9, x9, x10, lsl #3
+5dd18ac ldur     x9, [x9, #-8]
+5dd18b0 cmp      x9, x8
+5dd18b4 b.ne     #0x5dd1944
+5dd18b8 mov      x0, x20
+5dd18bc mov      x1, xzr
+5dd18c0 str      x20, [x19, #0x10]
+5dd18c4 bl       #0x94513d8 // sub_94513d8
+5dd18c8 str      x0, [x19, #0x28]
+5dd18cc cbz      x0, #0x5dd1bc4
+5dd18d0 mov      x1, xzr
+5dd18d4 bl       #0x94513d8 // sub_94513d8
+5dd18d8 cbz      x0, #0x5dd1bc4
+5dd18dc adrp     x8, #0x9aa2000
+5dd18e0 ldr      x8, [x8, #0x680] //  VA 9aa2680 c08fdb0900000000
+5dd18e4 mov      x2, xzr
+5dd18e8 ldr      x1, [x8] //  VA 9db8fc0 f13a01a000000000 literal='mesh/bomb1/root_wick/wick'
+5dd18ec bl       #0x94617ac // sub_94617ac
+5dd18f0 cbz      x0, #0x5dd1bc4
+5dd18f4 mov      x1, xzr
+5dd18f8 bl       #0x9451414 // sub_9451414
+5dd18fc str      x0, [x19, #0x30]
+5dd1900 cbz      x0, #0x5dd1bc4
+5dd1904 mov      x1, xzr
+5dd1908 bl       #0x9454a68 // sub_9454a68
+5dd190c cbz      x0, #0x5dd1bc4
+5dd1910 adrp     x8, #0x9aa2000
+5dd1914 ldr      x8, [x8, #0x678] //  VA 9aa2678 1001d80900000000
+5dd1918 mov      x2, xzr
+5dd191c ldr      x1, [x8] //  VA 9d80110 315700a000000000 literal='FX_BombSpark_mesh'
+5dd1920 bl       #0x94617ac // sub_94617ac
+5dd1924 cbz      x0, #0x5dd1bc4
+5dd1928 mov      x1, xzr
+5dd192c bl       #0x9451414 // sub_9451414
+5dd1930 str      x0, [x19, #0x38]
+5dd1934 cbz      x0, #0x5dd1bc4
+5dd1938 mov      w1, wzr
+5dd193c mov      x2, xzr
+5dd1940 bl       #0x9454ba4 // sub_9454ba4
+5dd1944 adrp     x10, #0x9a6d000
+5dd1948 ldr      x8, [x20]
+5dd194c ldr      x10, [x10, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+5dd1950 ldrh     w9, [x8, #0x12e]
+5dd1954 ldr      x1, [x10] //  VA 9cae498 2911012000000000
+5dd1958 cbz      x9, #0x5dd197c
+5dd195c ldr      x10, [x8, #0xb0]
+5dd1960 add      x10, x10, #8
+5dd1964 ldur     x11, [x10, #-8]
+5dd1968 cmp      x11, x1
+5dd196c b.eq     #0x5dd198c
+5dd1970 subs     x9, x9, #1
+5dd1974 add      x10, x10, #0x10
+5dd1978 b.ne     #0x5dd1964
+5dd197c mov      w2, #2
+5dd1980 mov      x0, x20
+5dd1984 bl       #0x39a388c // sub_39a388c
+5dd1988 b        #0x5dd199c // sub_5dd199c
+5dd198c ldr      w9, [x10]
+5dd1990 add      w9, w9, #2
+5dd1994 add      x8, x8, w9, sxtw #4
+5dd1998 add      x0, x8, #0x138
+5dd199c ldp      x8, x1, [x0]
+5dd19a0 mov      x0, x20
+5dd19a4 blr      x8
+5dd19a8 ldr      x0, [x19, #0x30]
+5dd19ac stp      s0, s1, [x19, #0x18]
+5dd19b0 str      s2, [x19, #0x20]
+5dd19b4 cbz      x0, #0x5dd1bc4
+5dd19b8 mov      x1, xzr
+5dd19bc bl       #0x9454a68 // sub_9454a68
+5dd19c0 cbz      x0, #0x5dd1bc4
+5dd19c4 mov      x1, xzr
+5dd19c8 bl       #0x945df94 // sub_945df94
+5dd19cc ldr      x0, [x19, #0x28]
+5dd19d0 str      s1, [x19, #0x48]
+5dd19d4 str      xzr, [x19, #0x60]
+5dd19d8 cbz      x0, #0x5dd1bc4
+5dd19dc mov      x1, xzr
+5dd19e0 bl       #0x94513d8 // sub_94513d8
+5dd19e4 cbz      x0, #0x5dd1bc4
+5dd19e8 adrp     x8, #0x9aa2000
+5dd19ec ldr      x8, [x8, #0x4b0] //  VA 9aa24b0 587ad10900000000
+5dd19f0 ldr      x1, [x8] //  VA 9d17a58 b56706c000000000
+5dd19f4 bl       #0x3e9e520 // sub_3e9e520
+5dd19f8 mov      w8, #2
+5dd19fc str      x0, [x19, #0x40]
+5dd1a00 str      w8, [x19, #0x4c]
+5dd1a04 adrp     x8, #0x9a9a000
+5dd1a08 ldr      x8, [x8, #0xef0] //  VA 9a9aef0 7017cb0900000000
+5dd1a0c ldr      x0, [x8] //  VA 9cb1770 2935012000000000
+5dd1a10 bl       #0x390a354 // sub_390a354
+5dd1a14 mov      x1, xzr
+5dd1a18 mov      x20, x0
+5dd1a1c bl       #0x942eb2c // sub_942eb2c
+5dd1a20 strb     wzr, [x19, #0x88]
+5dd1a24 stp      x20, xzr, [x19, #0x90]
+5dd1a28 adrp     x21, #0x9aa2000
+5dd1a2c ldr      x21, [x21, #0xc8] //  VA 9aa20c8 28bcca0900000000
+5dd1a30 ldr      x20, [x19, #0x80]
+5dd1a34 ldr      x0, [x21] //  VA 9cabc28 f5f0002000000000
+5dd1a38 ldr      w8, [x0, #0xe0] //  VA 2000f1d5 
+5dd1a3c cbnz     w8, #0x5dd1a44
+5dd1a40 bl       #0x390a240 // sub_390a240
+5dd1a44 cbz      x20, #0x5dd1bc4
+5dd1a48 ldr      x8, [x21] //  VA 9cabc28 f5f0002000000000
+5dd1a4c mov      x0, x20
+5dd1a50 mov      x2, xzr
+5dd1a54 ldr      x8, [x8, #0xb8] //  VA 2000f1ad 
+5dd1a58 ldr      x1, [x8]
+5dd1a5c bl       #0x685fe5c // Oak.ManualTransitionStateMachine.ChangeState
+5dd1a60 adrp     x22, #0x9a6d000
+5dd1a64 ldr      x22, [x22, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1a68 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1a6c ldr      w8, [x0, #0xe0] //  VA 200138ad 
+5dd1a70 cbnz     w8, #0x5dd1a78
+5dd1a74 bl       #0x390a240 // sub_390a240
+5dd1a78 adrp     x23, #0xa16c000
+5dd1a7c ldrb     w8, [x23, #0x5fb] //  VA a16c5fb 
+5dd1a80 cbnz     w8, #0x5dd1a98
+5dd1a84 adrp     x0, #0x9a6d000
+5dd1a88 ldr      x0, [x0, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1a8c bl       #0x390a13c // sub_390a13c
+5dd1a90 mov      w8, #1
+5dd1a94 strb     w8, [x23, #0x5fb]
+5dd1a98 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1a9c ldr      w8, [x0, #0xe0] //  VA 200138ad 
+5dd1aa0 cbnz     w8, #0x5dd1aac
+5dd1aa4 bl       #0x390a240 // sub_390a240
+5dd1aa8 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1aac adrp     x24, #0x9a73000
+5dd1ab0 ldr      x8, [x0, #0xb8] //  VA 20013885 
+5dd1ab4 ldr      x24, [x24, #0xaf8] //  VA 9a73af8 406bcb0900000000
+5dd1ab8 ldr      x20, [x8]
+5dd1abc ldr      x0, [x24] //  VA 9cb6b40 897b012000000000
+5dd1ac0 bl       #0x390a354 // sub_390a354
+5dd1ac4 adrp     x25, #0x9aa2000
+5dd1ac8 ldr      x25, [x25, #0x668] //  VA 9aa2668 00f8d00900000000
+5dd1acc mov      x1, x19
+5dd1ad0 mov      x3, xzr
+5dd1ad4 mov      x21, x0
+5dd1ad8 ldr      x2, [x25] //  VA 9d0f800 93de006000000000
+5dd1adc bl       #0x685ace0 // Oak.SubscribeCallback..ctor
+5dd1ae0 cbz      x20, #0x5dd1bc4
+5dd1ae4 adrp     x8, #0x9aa2000
+5dd1ae8 ldr      x8, [x8, #0x108] //  VA 9aa2108 18c5d20900000000
+5dd1aec mov      x0, x20
+5dd1af0 mov      x1, x21
+5dd1af4 ldr      x2, [x8] //  VA 9d2c518 0f8606c000000000
+5dd1af8 bl       #0x3f97098 // sub_3f97098
+5dd1afc ldrb     w8, [x23, #0x5fb] //  VA a16c5fb 
+5dd1b00 cbnz     w8, #0x5dd1b18
+5dd1b04 adrp     x0, #0x9a6d000
+5dd1b08 ldr      x0, [x0, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1b0c bl       #0x390a13c // sub_390a13c
+5dd1b10 mov      w8, #1
+5dd1b14 strb     w8, [x23, #0x5fb]
+5dd1b18 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1b1c ldr      w8, [x0, #0xe0] //  VA 200138ad 
+5dd1b20 cbnz     w8, #0x5dd1b2c
+5dd1b24 bl       #0x390a240 // sub_390a240
+5dd1b28 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1b2c ldr      x8, [x0, #0xb8] //  VA 20013885 
+5dd1b30 ldr      x0, [x24] //  VA 9cb6b40 897b012000000000
+5dd1b34 ldr      x20, [x8]
+5dd1b38 bl       #0x390a354 // sub_390a354
+5dd1b3c ldr      x2, [x25] //  VA 9d0f800 93de006000000000
+5dd1b40 mov      x1, x19
+5dd1b44 mov      x3, xzr
+5dd1b48 mov      x21, x0
+5dd1b4c bl       #0x685ace0 // Oak.SubscribeCallback..ctor
+5dd1b50 cbz      x20, #0x5dd1bc4
+5dd1b54 adrp     x8, #0x9aa2000
+5dd1b58 ldr      x8, [x8, #0x670] //  VA 9aa2670 10c5d20900000000
+5dd1b5c mov      x0, x20
+5dd1b60 mov      x1, x21
+5dd1b64 ldr      x2, [x8] //  VA 9d2c510 0d8606c000000000
+5dd1b68 bl       #0x3f97098 // sub_3f97098
+5dd1b6c adrp     x20, #0xa16c000
+5dd1b70 ldrb     w8, [x20, #0xa6f] //  VA a16ca6f 
+5dd1b74 cbnz     w8, #0x5dd1b8c
+5dd1b78 adrp     x0, #0x9a71000
+5dd1b7c ldr      x0, [x0, #0xb88] //  VA 9a71b88 48c6ca0900000000
+5dd1b80 bl       #0x390a13c // sub_390a13c
+5dd1b84 mov      w8, #1
+5dd1b88 strb     w8, [x20, #0xa6f]
+5dd1b8c adrp     x8, #0x9a71000
+5dd1b90 ldr      x8, [x8, #0xb88] //  VA 9a71b88 48c6ca0900000000
+5dd1b94 ldr      x8, [x8] //  VA 9cac648 f1f9002000000000
+5dd1b98 ldr      x8, [x8, #0xb8] //  VA 2000faa9 
+5dd1b9c ldr      x0, [x8, #8]
+5dd1ba0 cbz      x0, #0x5dd1bc4
+5dd1ba4 mov      x2, x19
+5dd1ba8 ldp      x20, x19, [sp, #0x30]
+5dd1bac ldp      x22, x21, [sp, #0x20]
+5dd1bb0 ldp      x24, x23, [sp, #0x10]
+5dd1bb4 mov      w1, wzr
+5dd1bb8 mov      x3, xzr
+5dd1bbc ldp      x30, x25, [sp], #0x40
+5dd1bc0 b        #0x84c2264 // Oak.Game.AddUpdateFrameCallback
+5dd1bc4 bl       #0x390a360 // sub_390a360
+5dd1bc8 stp      x30, x25, [sp, #-0x40]!
+5dd1bcc stp      x24, x23, [sp, #0x10]
+5dd1bd0 stp      x22, x21, [sp, #0x20]
+5dd1bd4 stp      x20, x19, [sp, #0x30]
+5dd1bd8 adrp     x21, #0xa173000
+5dd1bdc ldrb     w8, [x21, #0x278] //  VA a173278 
+5dd1be0 mov      x20, x1
+5dd1be4 mov      x19, x0
+5dd1be8 tbnz     w8, #0, #0x5dd1c30
+5dd1bec adrp     x0, #0x9aa2000
+5dd1bf0 ldr      x0, [x0, #0x668] //  VA 9aa2668 00f8d00900000000
+5dd1bf4 bl       #0x390a13c // sub_390a13c
+5dd1bf8 adrp     x0, #0x9aa2000
+5dd1bfc ldr      x0, [x0, #0x688] //  VA 9aa2688 b0d3d20900000000
+5dd1c00 bl       #0x390a13c // sub_390a13c
+5dd1c04 adrp     x0, #0x9aa2000
+5dd1c08 ldr      x0, [x0, #0x140] //  VA 9aa2140 b8d3d20900000000
+5dd1c0c bl       #0x390a13c // sub_390a13c
+5dd1c10 adrp     x0, #0x9a6d000
+5dd1c14 ldr      x0, [x0, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1c18 bl       #0x390a13c // sub_390a13c
+5dd1c1c adrp     x0, #0x9a73000
+5dd1c20 ldr      x0, [x0, #0xaf8] //  VA 9a73af8 406bcb0900000000
+5dd1c24 bl       #0x390a13c // sub_390a13c
+5dd1c28 mov      w8, #1
+5dd1c2c strb     w8, [x21, #0x278]
+5dd1c30 mov      w0, #0x7f58
+5dd1c34 mov      x1, xzr
+5dd1c38 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+5dd1c3c tbz      w0, #0, #0x5dd1c70
+5dd1c40 mov      w0, #0x7f58
+5dd1c44 mov      x1, xzr
+5dd1c48 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+5dd1c4c cbz      x0, #0x5dd1df4
+5dd1c50 mov      x1, x19
+5dd1c54 mov      x2, x20
+5dd1c58 ldp      x20, x19, [sp, #0x30]
+5dd1c5c ldp      x22, x21, [sp, #0x20]
+5dd1c60 ldp      x24, x23, [sp, #0x10]
+5dd1c64 mov      x3, xzr
+5dd1c68 ldp      x30, x25, [sp], #0x40
+5dd1c6c b        #0x85b84b0 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_42
+5dd1c70 add      x0, x19, #0x74
+5dd1c74 mov      x1, xzr
+5dd1c78 bl       #0x88cc2b4 // Oak.AudioSourceHolder.Stop
+5dd1c7c ldr      x0, [x19, #0x90]
+5dd1c80 cbz      x0, #0x5dd1df4
+5dd1c84 mov      x1, xzr
+5dd1c88 bl       #0x942e9e0 // sub_942e9e0
+5dd1c8c str      xzr, [x19, #0x90]
+5dd1c90 adrp     x22, #0x9a6d000
+5dd1c94 ldr      x22, [x22, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1c98 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1c9c ldr      w8, [x0, #0xe0] //  VA 200138ad 
+5dd1ca0 cbnz     w8, #0x5dd1ca8
+5dd1ca4 bl       #0x390a240 // sub_390a240
+5dd1ca8 adrp     x23, #0xa16c000
+5dd1cac ldrb     w8, [x23, #0x5fb] //  VA a16c5fb 
+5dd1cb0 cbnz     w8, #0x5dd1cc8
+5dd1cb4 adrp     x0, #0x9a6d000
+5dd1cb8 ldr      x0, [x0, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1cbc bl       #0x390a13c // sub_390a13c
+5dd1cc0 mov      w8, #1
+5dd1cc4 strb     w8, [x23, #0x5fb]
+5dd1cc8 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1ccc ldr      w8, [x0, #0xe0] //  VA 200138ad 
+5dd1cd0 cbnz     w8, #0x5dd1cdc
+5dd1cd4 bl       #0x390a240 // sub_390a240
+5dd1cd8 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1cdc adrp     x24, #0x9a73000
+5dd1ce0 ldr      x8, [x0, #0xb8] //  VA 20013885 
+5dd1ce4 ldr      x24, [x24, #0xaf8] //  VA 9a73af8 406bcb0900000000
+5dd1ce8 ldr      x20, [x8]
+5dd1cec ldr      x0, [x24] //  VA 9cb6b40 897b012000000000
+5dd1cf0 bl       #0x390a354 // sub_390a354
+5dd1cf4 adrp     x25, #0x9aa2000
+5dd1cf8 ldr      x25, [x25, #0x668] //  VA 9aa2668 00f8d00900000000
+5dd1cfc mov      x1, x19
+5dd1d00 mov      x3, xzr
+5dd1d04 mov      x21, x0
+5dd1d08 ldr      x2, [x25] //  VA 9d0f800 93de006000000000
+5dd1d0c bl       #0x685ace0 // Oak.SubscribeCallback..ctor
+5dd1d10 cbz      x20, #0x5dd1df4
+5dd1d14 adrp     x8, #0x9aa2000
+5dd1d18 ldr      x8, [x8, #0x140] //  VA 9aa2140 b8d3d20900000000
+5dd1d1c mov      x0, x20
+5dd1d20 mov      x1, x21
+5dd1d24 ldr      x2, [x8] //  VA 9d2d3b8 b78906c000000000
+5dd1d28 bl       #0x3f97218 // sub_3f97218
+5dd1d2c ldrb     w8, [x23, #0x5fb] //  VA a16c5fb 
+5dd1d30 cbnz     w8, #0x5dd1d48
+5dd1d34 adrp     x0, #0x9a6d000
+5dd1d38 ldr      x0, [x0, #0x738] //  VA 9a6d738 d81acb0900000000
+5dd1d3c bl       #0x390a13c // sub_390a13c
+5dd1d40 mov      w8, #1
+5dd1d44 strb     w8, [x23, #0x5fb]
+5dd1d48 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1d4c ldr      w8, [x0, #0xe0] //  VA 200138ad 
+5dd1d50 cbnz     w8, #0x5dd1d5c
+5dd1d54 bl       #0x390a240 // sub_390a240
+5dd1d58 ldr      x0, [x22] //  VA 9cb1ad8 cd37012000000000
+5dd1d5c ldr      x8, [x0, #0xb8] //  VA 20013885 
+5dd1d60 ldr      x0, [x24] //  VA 9cb6b40 897b012000000000
+5dd1d64 ldr      x20, [x8]
+5dd1d68 bl       #0x390a354 // sub_390a354
+5dd1d6c ldr      x2, [x25] //  VA 9d0f800 93de006000000000
+5dd1d70 mov      x1, x19
+5dd1d74 mov      x3, xzr
+5dd1d78 mov      x21, x0
+5dd1d7c bl       #0x685ace0 // Oak.SubscribeCallback..ctor
+5dd1d80 cbz      x20, #0x5dd1df4
+5dd1d84 adrp     x8, #0x9aa2000
+5dd1d88 ldr      x8, [x8, #0x688] //  VA 9aa2688 b0d3d20900000000
+5dd1d8c mov      x0, x20
+5dd1d90 mov      x1, x21
+5dd1d94 ldr      x2, [x8] //  VA 9d2d3b0 b58906c000000000
+5dd1d98 bl       #0x3f97218 // sub_3f97218
+5dd1d9c adrp     x20, #0xa16c000
+5dd1da0 ldrb     w8, [x20, #0xa6f] //  VA a16ca6f 
+5dd1da4 cbnz     w8, #0x5dd1dbc
+5dd1da8 adrp     x0, #0x9a71000
+5dd1dac ldr      x0, [x0, #0xb88] //  VA 9a71b88 48c6ca0900000000
+5dd1db0 bl       #0x390a13c // sub_390a13c
+5dd1db4 mov      w8, #1
+5dd1db8 strb     w8, [x20, #0xa6f]
+5dd1dbc adrp     x8, #0x9a71000
+5dd1dc0 ldr      x8, [x8, #0xb88] //  VA 9a71b88 48c6ca0900000000
+5dd1dc4 ldr      x8, [x8] //  VA 9cac648 f1f9002000000000
+5dd1dc8 ldr      x8, [x8, #0xb8] //  VA 2000faa9 
+5dd1dcc ldr      x0, [x8, #8]
+5dd1dd0 cbz      x0, #0x5dd1df4
+5dd1dd4 mov      x2, x19
+5dd1dd8 ldp      x20, x19, [sp, #0x30]
+5dd1ddc ldp      x22, x21, [sp, #0x20]
+5dd1de0 ldp      x24, x23, [sp, #0x10]
+5dd1de4 mov      w1, wzr
+5dd1de8 mov      x3, xzr
+5dd1dec ldp      x30, x25, [sp], #0x40
+5dd1df0 b        #0x84c23c4 // Oak.Game.RemoveUpdateFrameCallback
+5dd1df4 bl       #0x390a360 // sub_390a360

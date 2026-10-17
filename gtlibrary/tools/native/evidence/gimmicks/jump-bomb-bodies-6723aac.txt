@@ -1,0 +1,998 @@
+6723aac sub      sp, sp, #0xd0
+6723ab0 str      d14, [sp, #0x50]
+6723ab4 stp      d13, d12, [sp, #0x60]
+6723ab8 stp      d11, d10, [sp, #0x70]
+6723abc stp      d9, d8, [sp, #0x80]
+6723ac0 stp      x30, x25, [sp, #0x90]
+6723ac4 stp      x24, x23, [sp, #0xa0]
+6723ac8 stp      x22, x21, [sp, #0xb0]
+6723acc stp      x20, x19, [sp, #0xc0]
+6723ad0 adrp     x21, #0xa177000
+6723ad4 ldrb     w8, [x21, #0x4db] //  VA a1774db 
+6723ad8 mov      x20, x1
+6723adc mov      x19, x0
+6723ae0 tbnz     w8, #0, #0x6723b7c
+6723ae4 adrp     x0, #0x9aac000
+6723ae8 ldr      x0, [x0, #0x80] //  VA 9aac080 8884ca0900000000
+6723aec bl       #0x390a13c // sub_390a13c
+6723af0 adrp     x0, #0x9aa3000
+6723af4 ldr      x0, [x0, #0xd40] //  VA 9aa3d40 c884ca0900000000
+6723af8 bl       #0x390a13c // sub_390a13c
+6723afc adrp     x0, #0x9a6d000
+6723b00 ldr      x0, [x0, #0x6d0] //  VA 9a6d6d0 e88cca0900000000
+6723b04 bl       #0x390a13c // sub_390a13c
+6723b08 adrp     x0, #0x9a6e000
+6723b0c ldr      x0, [x0, #0x990] //  VA 9a6e990 b08eca0900000000
+6723b10 bl       #0x390a13c // sub_390a13c
+6723b14 adrp     x0, #0x9a6a000
+6723b18 ldr      x0, [x0, #0xd40] //  VA 9a6ad40 30e3ca0900000000
+6723b1c bl       #0x390a13c // sub_390a13c
+6723b20 adrp     x0, #0x9a6d000
+6723b24 ldr      x0, [x0, #0x6f0] //  VA 9a6d6f0 e8e3ca0900000000
+6723b28 bl       #0x390a13c // sub_390a13c
+6723b2c adrp     x0, #0x9aa3000
+6723b30 ldr      x0, [x0, #0xd48] //  VA 9aa3d48 b0e4ca0900000000
+6723b34 bl       #0x390a13c // sub_390a13c
+6723b38 adrp     x0, #0x9a6d000
+6723b3c ldr      x0, [x0, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+6723b40 bl       #0x390a13c // sub_390a13c
+6723b44 adrp     x0, #0x9aa6000
+6723b48 ldr      x0, [x0, #0xec0] //  VA 9aa6ec0 b8fcca0900000000
+6723b4c bl       #0x390a13c // sub_390a13c
+6723b50 adrp     x0, #0x9ab8000
+6723b54 ldr      x0, [x0, #0xaa8] //  VA 9ab8aa8 f8fcca0900000000
+6723b58 bl       #0x390a13c // sub_390a13c
+6723b5c adrp     x0, #0x9a6e000
+6723b60 ldr      x0, [x0, #0x338] //  VA 9a6e338 0037cb0900000000
+6723b64 bl       #0x390a13c // sub_390a13c
+6723b68 adrp     x0, #0x9a7a000
+6723b6c ldr      x0, [x0, #0xce0] //  VA 9a7ace0 90c5db0900000000
+6723b70 bl       #0x390a13c // sub_390a13c
+6723b74 mov      w8, #1
+6723b78 strb     w8, [x21, #0x4db]
+6723b7c mov      w0, #0xe968
+6723b80 mov      x1, xzr
+6723b84 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+6723b88 tbz      w0, #0, #0x6723bd0
+6723b8c mov      w0, #0xe968
+6723b90 mov      x1, xzr
+6723b94 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+6723b98 cbz      x0, #0x67243ac
+6723b9c mov      x1, x19
+6723ba0 mov      x2, x20
+6723ba4 ldp      x20, x19, [sp, #0xc0]
+6723ba8 ldp      x22, x21, [sp, #0xb0]
+6723bac ldp      x24, x23, [sp, #0xa0]
+6723bb0 ldp      x30, x25, [sp, #0x90]
+6723bb4 ldp      d9, d8, [sp, #0x80]
+6723bb8 ldp      d11, d10, [sp, #0x70]
+6723bbc ldp      d13, d12, [sp, #0x60]
+6723bc0 ldr      d14, [sp, #0x50]
+6723bc4 mov      x3, xzr
+6723bc8 add      sp, sp, #0xd0
+6723bcc b        #0x85b6ce0 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_15
+6723bd0 cbz      x20, #0x6723c08
+6723bd4 adrp     x8, #0x9ab8000
+6723bd8 ldr      x8, [x8, #0xaa8] //  VA 9ab8aa8 f8fcca0900000000
+6723bdc ldr      x9, [x20]
+6723be0 ldr      x8, [x8] //  VA 9cafcf8 6921012000000000
+6723be4 ldrb     w11, [x9, #0x130]
+6723be8 ldrb     w10, [x8, #0x130] //  VA 20012299 
+6723bec cmp      w11, w10
+6723bf0 b.lo     #0x6723c08
+6723bf4 ldr      x9, [x9, #0xc8]
+6723bf8 add      x9, x9, x10, lsl #3
+6723bfc ldur     x9, [x9, #-8]
+6723c00 cmp      x9, x8
+6723c04 b.eq     #0x6723c34
+6723c08 ldp      x20, x19, [sp, #0xc0]
+6723c0c ldp      x22, x21, [sp, #0xb0]
+6723c10 ldp      x24, x23, [sp, #0xa0]
+6723c14 ldp      x30, x25, [sp, #0x90]
+6723c18 ldp      d9, d8, [sp, #0x80]
+6723c1c ldp      d11, d10, [sp, #0x70]
+6723c20 ldp      d13, d12, [sp, #0x60]
+6723c24 ldr      d14, [sp, #0x50]
+6723c28 mov      w0, wzr
+6723c2c add      sp, sp, #0xd0
+6723c30 ret      
+6723c34 ldr      x21, [x20, #0x10]
+6723c38 cbz      x21, #0x67243ac
+6723c3c adrp     x24, #0x9a6d000
+6723c40 ldr      x8, [x21]
+6723c44 ldr      x24, [x24, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+6723c48 ldrh     w9, [x8, #0x12e]
+6723c4c ldr      x1, [x24] //  VA 9cae498 2911012000000000
+6723c50 cbz      x9, #0x6723c74
+6723c54 ldr      x10, [x8, #0xb0]
+6723c58 add      x10, x10, #8
+6723c5c ldur     x11, [x10, #-8]
+6723c60 cmp      x11, x1
+6723c64 b.eq     #0x6723c84
+6723c68 subs     x9, x9, #1
+6723c6c add      x10, x10, #0x10
+6723c70 b.ne     #0x6723c5c
+6723c74 mov      w2, #0xb
+6723c78 mov      x0, x21
+6723c7c bl       #0x39a388c // sub_39a388c
+6723c80 b        #0x6723c94 // sub_6723c94
+6723c84 ldr      w9, [x10]
+6723c88 add      w9, w9, #0xb
+6723c8c add      x8, x8, w9, sxtw #4
+6723c90 add      x0, x8, #0x138
+6723c94 ldp      x8, x1, [x0]
+6723c98 mov      x0, x21
+6723c9c blr      x8
+6723ca0 cbz      x0, #0x67243ac
+6723ca4 adrp     x25, #0x9aa3000
+6723ca8 ldr      x8, [x0]
+6723cac ldr      x25, [x25, #0xd48] //  VA 9aa3d48 b0e4ca0900000000
+6723cb0 mov      x21, x0
+6723cb4 ldrh     w9, [x8, #0x12e]
+6723cb8 ldr      x1, [x25] //  VA 9cae4b0 4111012000000000
+6723cbc cbz      x9, #0x6723ce0
+6723cc0 ldr      x10, [x8, #0xb0]
+6723cc4 add      x10, x10, #8
+6723cc8 ldur     x11, [x10, #-8]
+6723ccc cmp      x11, x1
+6723cd0 b.eq     #0x6723cf0
+6723cd4 subs     x9, x9, #1
+6723cd8 add      x10, x10, #0x10
+6723cdc b.ne     #0x6723cc8
+6723ce0 mov      w2, #3
+6723ce4 mov      x0, x21
+6723ce8 bl       #0x39a388c // sub_39a388c
+6723cec b        #0x6723d00 // sub_6723d00
+6723cf0 ldr      w9, [x10]
+6723cf4 add      w9, w9, #3
+6723cf8 add      x8, x8, w9, sxtw #4
+6723cfc add      x0, x8, #0x138
+6723d00 ldp      x8, x1, [x0]
+6723d04 mov      x0, x21
+6723d08 blr      x8
+6723d0c cbz      x0, #0x6723d68
+6723d10 adrp     x8, #0x9aac000
+6723d14 ldr      x8, [x8, #0x80] //  VA 9aac080 8884ca0900000000
+6723d18 ldr      x9, [x0]
+6723d1c ldr      x8, [x8] //  VA 9ca8488 a7c5002000000000
+6723d20 ldrb     w11, [x9, #0x130]
+6723d24 ldrb     w10, [x8, #0x130] //  VA 2000c6d7 
+6723d28 cmp      w11, w10
+6723d2c b.lo     #0x6723d68
+6723d30 ldr      x9, [x9, #0xc8]
+6723d34 add      x9, x9, x10, lsl #3
+6723d38 ldur     x9, [x9, #-8]
+6723d3c cmp      x9, x8
+6723d40 b.ne     #0x6723d68
+6723d44 adrp     x8, #0x9aa6000
+6723d48 ldr      x8, [x8, #0xec0] //  VA 9aa6ec0 b8fcca0900000000
+6723d4c ldr      x21, [x20, #0x10]
+6723d50 ldr      x0, [x8] //  VA 9cafcb8 4f21012000000000
+6723d54 ldr      w8, [x0, #0xe0] //  VA 2001222f 
+6723d58 cbnz     w8, #0x6723d60
+6723d5c bl       #0x390a240 // sub_390a240
+6723d60 mov      x0, x21
+6723d64 bl       #0x67203c0 // Oak.JumpGlidingLogic.ProcessJumpGlidingLand
+6723d68 ldr      x8, [x19, #0x20]
+6723d6c ldp      s8, s9, [x19, #0x10]
+6723d70 cbz      x8, #0x6723e40
+6723d74 ldr      x9, [x8, #0x18]
+6723d78 cbz      x9, #0x6723e40
+6723d7c cmp      w9, #1
+6723d80 b.lt     #0x6723e40
+6723d84 mov      x23, xzr
+6723d88 cmp      x23, w9, uxtw
+6723d8c b.hs     #0x67243b0
+6723d90 ldr      x21, [x20, #0x10]
+6723d94 cbz      x21, #0x67243ac
+6723d98 ldr      x9, [x21]
+6723d9c add      x8, x8, x23, lsl #4
+6723da0 ldr      x22, [x8, #0x20]
+6723da4 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+6723da8 ldrh     w8, [x9, #0x12e]
+6723dac cbz      x8, #0x6723dd0
+6723db0 ldr      x10, [x9, #0xb0]
+6723db4 add      x10, x10, #8
+6723db8 ldur     x11, [x10, #-8]
+6723dbc cmp      x11, x1
+6723dc0 b.eq     #0x6723de0
+6723dc4 subs     x8, x8, #1
+6723dc8 add      x10, x10, #0x10
+6723dcc b.ne     #0x6723db8
+6723dd0 mov      x0, x21
+6723dd4 mov      w2, wzr
+6723dd8 bl       #0x39a388c // sub_39a388c
+6723ddc b        #0x6723dec // sub_6723dec
+6723de0 ldrsw    x8, [x10]
+6723de4 add      x8, x9, x8, lsl #4
+6723de8 add      x0, x8, #0x138
+6723dec ldp      x8, x1, [x0]
+6723df0 mov      x0, x21
+6723df4 blr      x8
+6723df8 mov      x1, x0
+6723dfc mov      x0, x22
+6723e00 mov      x2, xzr
+6723e04 bl       #0x58e0744 // sub_58e0744
+6723e08 ldr      x8, [x19, #0x20]
+6723e0c tbnz     w0, #0, #0x6723e28
+6723e10 cbz      x8, #0x67243ac
+6723e14 ldr      w9, [x8, #0x18]
+6723e18 add      x23, x23, #1
+6723e1c cmp      x23, w9, sxtw
+6723e20 b.lt     #0x6723d88
+6723e24 b        #0x6723e40 // sub_6723e40
+6723e28 cbz      x8, #0x67243ac
+6723e2c ldr      w9, [x8, #0x18]
+6723e30 cmp      w23, w9
+6723e34 b.hs     #0x67243b0
+6723e38 add      x8, x8, x23, lsl #4
+6723e3c ldp      s8, s9, [x8, #0x28]
+6723e40 ldp      s0, s1, [x20, #0x20]
+6723e44 ldr      s2, [x20, #0x28]
+6723e48 fcmp     s9, #0.0
+6723e4c b.gt     #0x6723e60
+6723e50 adrp     x8, #0x171b000
+6723e54 ldr      s3, [x20, #0x2c]
+6723e58 ldr      s4, [x8, #0xac] //  VA 171b0ac 9a99993f8c2e3a3f float32=1.2000000476837158
+6723e5c fmul     s9, s3, s4
+6723e60 ldp      x2, x1, [x20, #0x10]
+6723e64 fmul     s0, s0, s9
+6723e68 fmul     s1, s1, s9
+6723e6c fmul     s2, s2, s9
+6723e70 fmov     s3, wzr
+6723e74 fadd     s0, s0, s3
+6723e78 fadd     s1, s8, s1
+6723e7c fadd     s2, s2, s3
+6723e80 mov      x0, x19
+6723e84 bl       #0x6724478 // Oak.JumpTileBehaviour.CalculateTargetPosition
+6723e88 adrp     x21, #0xa16c000
+6723e8c mov      v8.16b, v0.16b
+6723e90 ldrb     w8, [x21, #0x277] //  VA a16c277 
+6723e94 ldr      q0, [x20, #0x10]
+6723e98 mov      v9.16b, v1.16b
+6723e9c mov      v10.16b, v2.16b
+6723ea0 str      q0, [sp]
+6723ea4 cbnz     w8, #0x6723ebc
+6723ea8 adrp     x0, #0x9a6a000
+6723eac ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+6723eb0 bl       #0x390a13c // sub_390a13c
+6723eb4 mov      w8, #1
+6723eb8 strb     w8, [x21, #0x277]
+6723ebc adrp     x21, #0x9a6a000
+6723ec0 ldr      x21, [x21, #0x928] //  VA 9a6a928 9817cb0900000000
+6723ec4 ldr      x0, [x21] //  VA 9cb1798 4735012000000000
+6723ec8 ldr      w8, [x0, #0xe0] //  VA 20013627 
+6723ecc cbnz     w8, #0x6723ed4
+6723ed0 bl       #0x390a240 // sub_390a240
+6723ed4 adrp     x22, #0xa16c000
+6723ed8 ldrb     w8, [x22, #0x276] //  VA a16c276 
+6723edc fmul     s0, s8, s8
+6723ee0 fmul     s1, s9, s9
+6723ee4 fadd     s0, s0, s1
+6723ee8 fmul     s1, s10, s10
+6723eec fadd     s11, s1, s0
+6723ef0 cbnz     w8, #0x6723f08
+6723ef4 adrp     x0, #0x9a6a000
+6723ef8 ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+6723efc bl       #0x390a13c // sub_390a13c
+6723f00 mov      w8, #1
+6723f04 strb     w8, [x22, #0x276]
+6723f08 ldr      x0, [x21] //  VA 9cb1798 4735012000000000
+6723f0c fsqrt    s11, s11
+6723f10 ldr      w8, [x0, #0xe0] //  VA 20013627 
+6723f14 cbnz     w8, #0x6723f1c
+6723f18 bl       #0x390a240 // sub_390a240
+6723f1c adrp     x8, #0x171b000
+6723f20 ldr      s0, [x8, #0x1f4] //  VA 171b1f4 acc52737db0f493f float32=9.999999747378752e-06
+6723f24 fcmp     s11, s0
+6723f28 b.le     #0x6723f3c
+6723f2c fdiv     s12, s8, s11
+6723f30 fdiv     s13, s9, s11
+6723f34 fdiv     s14, s10, s11
+6723f38 b        #0x6723f74 // sub_6723f74
+6723f3c adrp     x21, #0xa16b000
+6723f40 ldrb     w8, [x21, #0xe5a] //  VA a16be5a 
+6723f44 cbnz     w8, #0x6723f5c
+6723f48 adrp     x0, #0x9a6a000
+6723f4c ldr      x0, [x0, #0x770] //  VA 9a6a770 188acb0900000000
+6723f50 bl       #0x390a13c // sub_390a13c
+6723f54 mov      w8, #1
+6723f58 strb     w8, [x21, #0xe5a]
+6723f5c adrp     x8, #0x9a6a000
+6723f60 ldr      x8, [x8, #0x770] //  VA 9a6a770 188acb0900000000
+6723f64 ldr      x8, [x8] //  VA 9cb8a18 2798012000000000
+6723f68 ldr      x8, [x8, #0xb8] //  VA 200198df 
+6723f6c ldp      s12, s13, [x8]
+6723f70 ldr      s14, [x8, #8]
+6723f74 ldr      x21, [x20, #0x10]
+6723f78 cbz      x21, #0x67243ac
+6723f7c ldr      x8, [x21]
+6723f80 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+6723f84 ldrh     w9, [x8, #0x12e]
+6723f88 cbz      x9, #0x6723fac
+6723f8c ldr      x10, [x8, #0xb0]
+6723f90 add      x10, x10, #8
+6723f94 ldur     x11, [x10, #-8]
+6723f98 cmp      x11, x1
+6723f9c b.eq     #0x6723fbc
+6723fa0 subs     x9, x9, #1
+6723fa4 add      x10, x10, #0x10
+6723fa8 b.ne     #0x6723f94
+6723fac mov      w2, #2
+6723fb0 mov      x0, x21
+6723fb4 bl       #0x39a388c // sub_39a388c
+6723fb8 b        #0x6723fcc // sub_6723fcc
+6723fbc ldr      w9, [x10]
+6723fc0 add      w9, w9, #2
+6723fc4 add      x8, x8, w9, sxtw #4
+6723fc8 add      x0, x8, #0x138
+6723fcc ldp      x8, x1, [x0]
+6723fd0 mov      x0, x21
+6723fd4 blr      x8
+6723fd8 adrp     x21, #0x9a6e000
+6723fdc ldr      x21, [x21, #0x990] //  VA 9a6e990 b08eca0900000000
+6723fe0 mov      v8.16b, v0.16b
+6723fe4 mov      v9.16b, v1.16b
+6723fe8 mov      v10.16b, v2.16b
+6723fec ldr      x0, [x21] //  VA 9ca8eb0 1fcf002000000000
+6723ff0 ldr      w8, [x0, #0xe0] //  VA 2000cfff 
+6723ff4 cbnz     w8, #0x6724000
+6723ff8 bl       #0x390a240 // sub_390a240
+6723ffc ldr      x0, [x21] //  VA 9ca8eb0 1fcf002000000000
+6724000 ldr      x8, [x0, #0xb8] //  VA 2000cfd7 
+6724004 ldr      q1, [sp]
+6724008 add      x0, sp, #0x10
+672400c mov      w1, wzr
+6724010 ldr      s0, [x8, #0x190]
+6724014 mov      w8, #2
+6724018 str      w8, [sp, #0x20]
+672401c mov      w8, #0x3fe00000
+6724020 mov      x2, xzr
+6724024 str      q1, [sp, #0x10]
+6724028 stp      s12, s13, [sp, #0x24]
+672402c stp      s14, s11, [sp, #0x2c]
+6724030 stp      s8, s9, [sp, #0x34]
+6724034 str      s10, [sp, #0x3c]
+6724038 str      w8, [sp, #0x40]
+672403c str      s0, [sp, #0x44]
+6724040 str      xzr, [sp, #0x48]
+6724044 bl       #0x61261c8 // Oak.JumpCommand.Create
+6724048 ldr      q0, [sp]
+672404c mov      x21, x0
+6724050 fmov     x22, d0
+6724054 cbz      x22, #0x67243b4
+6724058 adrp     x10, #0x9a6d000
+672405c ldr      x8, [x22]
+6724060 ldr      x10, [x10, #0x6f0] //  VA 9a6d6f0 e8e3ca0900000000
+6724064 ldrh     w9, [x8, #0x12e]
+6724068 ldr      x1, [x10] //  VA 9cae3e8 b710012000000000
+672406c cbz      x9, #0x6724090
+6724070 ldr      x10, [x8, #0xb0]
+6724074 add      x10, x10, #8
+6724078 ldur     x11, [x10, #-8]
+672407c cmp      x11, x1
+6724080 b.eq     #0x67240a0
+6724084 subs     x9, x9, #1
+6724088 add      x10, x10, #0x10
+672408c b.ne     #0x6724078
+6724090 mov      w2, #2
+6724094 mov      x0, x22
+6724098 bl       #0x39a388c // sub_39a388c
+672409c b        #0x67240b0 // sub_67240b0
+67240a0 ldr      w9, [x10]
+67240a4 add      w9, w9, #2
+67240a8 add      x8, x8, w9, sxtw #4
+67240ac add      x0, x8, #0x138
+67240b0 ldp      x8, x1, [x0]
+67240b4 mov      x0, x22
+67240b8 blr      x8
+67240bc adrp     x8, #0x9a6d000
+67240c0 ldr      x8, [x8, #0x6d0] //  VA 9a6d6d0 e88cca0900000000
+67240c4 mov      x22, x0
+67240c8 ldr      x0, [x8] //  VA 9ca8ce8 45cd002000000000
+67240cc ldr      w8, [x0, #0xe0] //  VA 2000ce25 
+67240d0 cbnz     w8, #0x67240d8
+67240d4 bl       #0x390a240 // sub_390a240
+67240d8 mov      x0, x22
+67240dc mov      x1, x21
+67240e0 mov      x2, xzr
+67240e4 bl       #0x610fe48 // Oak.CommandDispatcher.Publish
+67240e8 mov      x22, xzr
+67240ec mov      w23, #0xb
+67240f0 cbz      x21, #0x6724154
+67240f4 adrp     x10, #0x9a6a000
+67240f8 ldr      x8, [x21]
+67240fc ldr      x10, [x10, #0xd40] //  VA 9a6ad40 30e3ca0900000000
+6724100 ldrh     w9, [x8, #0x12e]
+6724104 ldr      x1, [x10] //  VA 9cae330 6510012000000000
+6724108 cbz      x9, #0x672412c
+672410c ldr      x10, [x8, #0xb0]
+6724110 add      x10, x10, #8
+6724114 ldur     x11, [x10, #-8]
+6724118 cmp      x11, x1
+672411c b.eq     #0x672413c
+6724120 subs     x9, x9, #1
+6724124 add      x10, x10, #0x10
+6724128 b.ne     #0x6724114
+672412c mov      x0, x21
+6724130 mov      w2, wzr
+6724134 bl       #0x39a388c // sub_39a388c
+6724138 b        #0x6724148 // sub_6724148
+672413c ldrsw    x9, [x10]
+6724140 add      x8, x8, x9, lsl #4
+6724144 add      x0, x8, #0x138
+6724148 ldp      x8, x1, [x0]
+672414c mov      x0, x21
+6724150 blr      x8
+6724154 cbnz     x22, #0x67243b8
+6724158 cmp      w23, #0xb
+672415c b.eq     #0x6724164
+6724160 cbnz     w23, #0x6723c08
+6724164 ldr      x21, [x20, #0x10]
+6724168 cbz      x21, #0x67243ac
+672416c ldr      x8, [x21]
+6724170 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+6724174 ldrh     w9, [x8, #0x12e]
+6724178 cbz      x9, #0x672419c
+672417c ldr      x10, [x8, #0xb0]
+6724180 add      x10, x10, #8
+6724184 ldur     x11, [x10, #-8]
+6724188 cmp      x11, x1
+672418c b.eq     #0x67241ac
+6724190 subs     x9, x9, #1
+6724194 add      x10, x10, #0x10
+6724198 b.ne     #0x6724184
+672419c mov      w2, #0xb
+67241a0 mov      x0, x21
+67241a4 bl       #0x39a388c // sub_39a388c
+67241a8 b        #0x67241bc // sub_67241bc
+67241ac ldr      w9, [x10]
+67241b0 add      w9, w9, #0xb
+67241b4 add      x8, x8, w9, sxtw #4
+67241b8 add      x0, x8, #0x138
+67241bc ldp      x8, x1, [x0]
+67241c0 mov      x0, x21
+67241c4 blr      x8
+67241c8 cbz      x0, #0x67243ac
+67241cc ldr      x8, [x0]
+67241d0 ldr      x1, [x25] //  VA 9cae4b0 4111012000000000
+67241d4 mov      x21, x0
+67241d8 ldrh     w9, [x8, #0x12e]
+67241dc cbz      x9, #0x6724200
+67241e0 ldr      x10, [x8, #0xb0]
+67241e4 add      x10, x10, #8
+67241e8 ldur     x11, [x10, #-8]
+67241ec cmp      x11, x1
+67241f0 b.eq     #0x6724210
+67241f4 subs     x9, x9, #1
+67241f8 add      x10, x10, #0x10
+67241fc b.ne     #0x67241e8
+6724200 mov      w2, #3
+6724204 mov      x0, x21
+6724208 bl       #0x39a388c // sub_39a388c
+672420c b        #0x6724220 // sub_6724220
+6724210 ldr      w9, [x10]
+6724214 add      w9, w9, #3
+6724218 add      x8, x8, w9, sxtw #4
+672421c add      x0, x8, #0x138
+6724220 ldp      x8, x1, [x0]
+6724224 mov      x0, x21
+6724228 blr      x8
+672422c cbz      x0, #0x6724270
+6724230 adrp     x8, #0x9aa3000
+6724234 ldr      x8, [x8, #0xd40] //  VA 9aa3d40 c884ca0900000000
+6724238 ldr      x9, [x0]
+672423c ldr      x8, [x8] //  VA 9ca84c8 b7c5002000000000
+6724240 ldrb     w11, [x9, #0x130]
+6724244 ldrb     w10, [x8, #0x130] //  VA 2000c6e7 
+6724248 cmp      w11, w10
+672424c b.lo     #0x6724270
+6724250 ldr      x9, [x9, #0xc8]
+6724254 add      x9, x9, x10, lsl #3
+6724258 ldur     x9, [x9, #-8]
+672425c cmp      x9, x8
+6724260 b.ne     #0x6724270
+6724264 ldr      x1, [x19, #0x30]
+6724268 mov      x2, xzr
+672426c bl       #0x601d2b0 // Oak.CharacterControllerManualTouchState.RemoveDisableControl
+6724270 ldr      x20, [x20, #0x10]
+6724274 cbz      x20, #0x67243ac
+6724278 adrp     x10, #0x9a6d000
+672427c ldr      x8, [x20]
+6724280 ldr      x10, [x10, #0x6f0] //  VA 9a6d6f0 e8e3ca0900000000
+6724284 ldrh     w9, [x8, #0x12e]
+6724288 ldr      x1, [x10] //  VA 9cae3e8 b710012000000000
+672428c cbz      x9, #0x67242b0
+6724290 ldr      x10, [x8, #0xb0]
+6724294 add      x10, x10, #8
+6724298 ldur     x11, [x10, #-8]
+672429c cmp      x11, x1
+67242a0 b.eq     #0x67242c0
+67242a4 subs     x9, x9, #1
+67242a8 add      x10, x10, #0x10
+67242ac b.ne     #0x6724298
+67242b0 mov      w2, #2
+67242b4 mov      x0, x20
+67242b8 bl       #0x39a388c // sub_39a388c
+67242bc b        #0x67242d0 // sub_67242d0
+67242c0 ldr      w9, [x10]
+67242c4 add      w9, w9, #2
+67242c8 add      x8, x8, w9, sxtw #4
+67242cc add      x0, x8, #0x138
+67242d0 ldp      x8, x1, [x0]
+67242d4 mov      x0, x20
+67242d8 blr      x8
+67242dc adrp     x8, #0x9a6e000
+67242e0 ldr      x8, [x8, #0x338] //  VA 9a6e338 0037cb0900000000
+67242e4 mov      x20, x0
+67242e8 ldr      x8, [x8] //  VA 9cb3700 794f012000000000
+67242ec ldr      w9, [x8, #0xe0] //  VA 20015059 
+67242f0 cbnz     w9, #0x67242fc
+67242f4 mov      x0, x8
+67242f8 bl       #0x390a240 // sub_390a240
+67242fc mov      x0, xzr
+6724300 bl       #0x6a2fbe8 // Oak.Player.get_Local
+6724304 cmp      x20, x0
+6724308 b.ne     #0x6723c08
+672430c mov      x0, xzr
+6724310 bl       #0x889cab4 // Oak.MusicPlayer.get_Instance
+6724314 cbz      x0, #0x67243ac
+6724318 ldr      x1, [x19, #0x18]
+672431c mov      x2, xzr
+6724320 mov      w3, wzr
+6724324 mov      x4, xzr
+6724328 bl       #0x88a0040 // Oak.MusicPlayer.PlaySfxOneShot
+672432c ldr      x0, [x19, #0x38]
+6724330 cbz      x0, #0x67243ac
+6724334 fmov     s0, #1.50000000
+6724338 mov      x1, xzr
+672433c bl       #0x94104c8 // sub_94104c8
+6724340 ldr      x0, [x19, #0x38]
+6724344 cbz      x0, #0x67243ac
+6724348 adrp     x8, #0x9a7a000
+672434c ldr      x8, [x8, #0xce0] //  VA 9a7ace0 90c5db0900000000
+6724350 mov      x2, xzr
+6724354 ldr      x1, [x8] //  VA 9dbc590 654801a000000000 literal='on'
+6724358 bl       #0x94106f8 // sub_94106f8
+672435c mov      x0, xzr
+6724360 bl       #0x3b1a0ac // sub_3b1a0ac
+6724364 ldr      x8, [x19, #0x30]
+6724368 cbz      x8, #0x67243ac
+672436c mov      x20, x0
+6724370 mov      x0, x8
+6724374 mov      x1, xzr
+6724378 bl       #0x63d3c44 // Oak.FieldObject.get_Transform
+672437c mov      x21, x0
+6724380 mov      x0, x19
+6724384 bl       #0x672492c // Oak.JumpTileBehaviour.Off
+6724388 cbz      x20, #0x67243ac
+672438c mov      x2, x0
+6724390 mov      w3, #1
+6724394 mov      x0, x20
+6724398 mov      x1, x21
+672439c mov      w4, wzr
+67243a0 mov      x5, xzr
+67243a4 bl       #0x3b1b5cc // sub_3b1b5cc
+67243a8 b        #0x6723c08 // sub_6723c08
+67243ac bl       #0x390a360 // sub_390a360
+67243b0 bl       #0x390a368 // sub_390a368
+67243b4 bl       #0x390a360 // sub_390a360
+67243b8 mov      x0, x22
+67243bc bl       #0x390a358 // sub_390a358
+67243c0 b        #0x67243c8 // sub_67243c8
+67243c4 b        #0x67243c8 // sub_67243c8
+67243c8 mov      x23, x0
+67243cc cmp      w1, #1
+67243d0 b.ne     #0x67243f0
+67243d4 mov      x0, x23
+67243d8 bl       #0x9682a20 // sub_9682a20
+67243dc ldr      x22, [x0]
+67243e0 bl       #0x9682a30 // sub_9682a30
+67243e4 mov      w23, wzr
+67243e8 cbnz     x21, #0x67240f4
+67243ec b        #0x6724154 // sub_6724154
+67243f0 mov      x22, xzr
+67243f4 b        #0x67243fc // sub_67243fc
+67243f8 mov      x23, x0
+67243fc cbz      x21, #0x6724460
+6724400 adrp     x10, #0x9a6a000
+6724404 ldr      x8, [x21]
+6724408 ldr      x10, [x10, #0xd40] //  VA 9a6ad40 30e3ca0900000000
+672440c ldrh     w9, [x8, #0x12e]
+6724410 ldr      x1, [x10] //  VA 9cae330 6510012000000000
+6724414 cbz      x9, #0x6724438
+6724418 ldr      x10, [x8, #0xb0]
+672441c add      x10, x10, #8
+6724420 ldur     x11, [x10, #-8]
+6724424 cmp      x11, x1
+6724428 b.eq     #0x6724448
+672442c subs     x9, x9, #1
+6724430 add      x10, x10, #0x10
+6724434 b.ne     #0x6724420
+6724438 mov      x0, x21
+672443c mov      w2, wzr
+6724440 bl       #0x39a388c // sub_39a388c
+6724444 b        #0x6724454 // sub_6724454
+6724448 ldrsw    x9, [x10]
+672444c add      x8, x8, x9, lsl #4
+6724450 add      x0, x8, #0x138
+6724454 ldp      x8, x1, [x0]
+6724458 mov      x0, x21
+672445c blr      x8
+6724460 cbnz     x22, #0x672446c
+6724464 mov      x0, x23
+6724468 bl       #0x3a1a620 // sub_3a1a620
+672446c mov      x0, x22
+6724470 bl       #0x390a358 // sub_390a358
+6724474 bl       #0x3527184 // sub_3527184
+6724478 sub      sp, sp, #0xb0
+672447c stp      d15, d14, [sp, #0x30]
+6724480 stp      d13, d12, [sp, #0x40]
+6724484 stp      d11, d10, [sp, #0x50]
+6724488 stp      d9, d8, [sp, #0x60]
+672448c stp      x30, x25, [sp, #0x70]
+6724490 stp      x24, x23, [sp, #0x80]
+6724494 stp      x22, x21, [sp, #0x90]
+6724498 stp      x20, x19, [sp, #0xa0]
+672449c adrp     x22, #0xa177000
+67244a0 ldrb     w8, [x22, #0x4dc] //  VA a1774dc 
+67244a4 mov      v9.16b, v2.16b
+67244a8 mov      v15.16b, v1.16b
+67244ac mov      v10.16b, v0.16b
+67244b0 mov      x19, x2
+67244b4 mov      x20, x1
+67244b8 mov      x21, x0
+67244bc tbnz     w8, #0, #0x67244e0
+67244c0 adrp     x0, #0x9a6e000
+67244c4 ldr      x0, [x0, #0x990] //  VA 9a6e990 b08eca0900000000
+67244c8 bl       #0x390a13c // sub_390a13c
+67244cc adrp     x0, #0x9a6d000
+67244d0 ldr      x0, [x0, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+67244d4 bl       #0x390a13c // sub_390a13c
+67244d8 mov      w8, #1
+67244dc strb     w8, [x22, #0x4dc]
+67244e0 mov      w0, #0xe969
+67244e4 mov      x1, xzr
+67244e8 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+67244ec tbz      w0, #0, #0x6724524
+67244f0 mov      w0, #0xe969
+67244f4 mov      x1, xzr
+67244f8 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+67244fc cbz      x0, #0x6724928
+6724500 mov      x1, x21
+6724504 mov      x2, x20
+6724508 mov      x3, x19
+672450c mov      v0.16b, v10.16b
+6724510 mov      v1.16b, v15.16b
+6724514 mov      v2.16b, v9.16b
+6724518 mov      x4, xzr
+672451c bl       #0x8726f84 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_5751
+6724520 b        #0x6724900 // sub_6724900
+6724524 adrp     x21, #0xa16c000
+6724528 ldrb     w8, [x21, #0x277] //  VA a16c277 
+672452c cbnz     w8, #0x6724544
+6724530 adrp     x0, #0x9a6a000
+6724534 ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+6724538 bl       #0x390a13c // sub_390a13c
+672453c mov      w8, #1
+6724540 strb     w8, [x21, #0x277]
+6724544 adrp     x22, #0x9a6a000
+6724548 ldr      x22, [x22, #0x928] //  VA 9a6a928 9817cb0900000000
+672454c adrp     x23, #0x9a6e000
+6724550 ldr      x0, [x22] //  VA 9cb1798 4735012000000000
+6724554 ldr      w8, [x0, #0xe0] //  VA 20013627 
+6724558 ldr      x23, [x23, #0x990] //  VA 9a6e990 b08eca0900000000
+672455c cbnz     w8, #0x6724564
+6724560 bl       #0x390a240 // sub_390a240
+6724564 ldr      x0, [x23] //  VA 9ca8eb0 1fcf002000000000
+6724568 ldr      w8, [x0, #0xe0] //  VA 2000cfff 
+672456c cbnz     w8, #0x6724578
+6724570 bl       #0x390a240 // sub_390a240
+6724574 ldr      x0, [x23] //  VA 9ca8eb0 1fcf002000000000
+6724578 cbz      x20, #0x6724928
+672457c adrp     x24, #0x9a6d000
+6724580 ldr      x9, [x0, #0xb8] //  VA 2000cfd7 
+6724584 ldr      x8, [x20]
+6724588 ldr      x24, [x24, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+672458c fmul     s0, s10, s10
+6724590 ldr      s14, [x9, #0x190]
+6724594 ldrh     w9, [x8, #0x12e]
+6724598 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+672459c fmov     s1, wzr
+67245a0 fadd     s11, s0, s1
+67245a4 fmul     s12, s9, s9
+67245a8 cbz      x9, #0x67245cc
+67245ac ldr      x10, [x8, #0xb0]
+67245b0 add      x10, x10, #8
+67245b4 ldur     x11, [x10, #-8]
+67245b8 cmp      x11, x1
+67245bc b.eq     #0x67245dc
+67245c0 subs     x9, x9, #1
+67245c4 add      x10, x10, #0x10
+67245c8 b.ne     #0x67245b4
+67245cc mov      w2, #8
+67245d0 mov      x0, x20
+67245d4 bl       #0x39a388c // sub_39a388c
+67245d8 b        #0x67245ec // sub_67245ec
+67245dc ldr      w9, [x10]
+67245e0 add      w9, w9, #8
+67245e4 add      x8, x8, w9, sxtw #4
+67245e8 add      x0, x8, #0x138
+67245ec ldp      x9, x1, [x0]
+67245f0 add      x8, sp, #0x18
+67245f4 mov      x0, x20
+67245f8 fadd     s8, s12, s11
+67245fc blr      x9
+6724600 adrp     x23, #0xa16c000
+6724604 ldrb     w8, [x23, #0x276] //  VA a16c276 
+6724608 ldr      s11, [sp, #0x18]
+672460c ldr      s12, [sp, #0x20]
+6724610 cbnz     w8, #0x6724628
+6724614 adrp     x0, #0x9a6a000
+6724618 ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+672461c bl       #0x390a13c // sub_390a13c
+6724620 mov      w8, #1
+6724624 strb     w8, [x23, #0x276]
+6724628 ldr      x0, [x22] //  VA 9cb1798 4735012000000000
+672462c fsqrt    s13, s8
+6724630 ldr      w8, [x0, #0xe0] //  VA 20013627 
+6724634 cbnz     w8, #0x672463c
+6724638 bl       #0x390a240 // sub_390a240
+672463c adrp     x8, #0x171b000
+6724640 ldr      s8, [x8, #0x1f4] //  VA 171b1f4 acc52737db0f493f float32=9.999999747378752e-06
+6724644 adrp     x20, #0x9a6a000
+6724648 ldr      x20, [x20, #0x770] //  VA 9a6a770 188acb0900000000
+672464c fcmp     s13, s8
+6724650 b.le     #0x6724660
+6724654 fdiv     s10, s10, s13
+6724658 fdiv     s9, s9, s13
+672465c b        #0x6724690 // sub_6724690
+6724660 adrp     x25, #0xa16b000
+6724664 ldrb     w8, [x25, #0xe5a] //  VA a16be5a 
+6724668 cbnz     w8, #0x6724680
+672466c adrp     x0, #0x9a6a000
+6724670 ldr      x0, [x0, #0x770] //  VA 9a6a770 188acb0900000000
+6724674 bl       #0x390a13c // sub_390a13c
+6724678 mov      w8, #1
+672467c strb     w8, [x25, #0xe5a]
+6724680 ldr      x8, [x20] //  VA 9cb8a18 2798012000000000
+6724684 ldr      x8, [x8, #0xb8] //  VA 200198df 
+6724688 ldr      s10, [x8]
+672468c ldr      s9, [x8, #8]
+6724690 cbz      x19, #0x6724928
+6724694 ldr      x8, [x19]
+6724698 adrp     x9, #0x171b000
+672469c ldr      s0, [x9, #0xa14] //  VA 171ba14 2549123f0ad7a33d float32=0.5714285969734192
+67246a0 fadd     s1, s13, s13
+67246a4 ldrh     w9, [x8, #0x12e]
+67246a8 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+67246ac fmul     s0, s1, s0
+67246b0 fmul     s0, s15, s0
+67246b4 fdiv     s14, s0, s14
+67246b8 str      s12, [sp, #0x14]
+67246bc cbz      x9, #0x67246e0
+67246c0 ldr      x10, [x8, #0xb0]
+67246c4 add      x10, x10, #8
+67246c8 ldur     x11, [x10, #-8]
+67246cc cmp      x11, x1
+67246d0 b.eq     #0x67246f4
+67246d4 subs     x9, x9, #1
+67246d8 add      x10, x10, #0x10
+67246dc b.ne     #0x67246c8
+67246e0 mov      w2, #2
+67246e4 mov      x0, x19
+67246e8 mov      v12.16b, v11.16b
+67246ec bl       #0x39a388c // sub_39a388c
+67246f0 b        #0x6724708 // sub_6724708
+67246f4 ldr      w9, [x10]
+67246f8 mov      v12.16b, v11.16b
+67246fc add      w9, w9, #2
+6724700 add      x8, x8, w9, sxtw #4
+6724704 add      x0, x8, #0x138
+6724708 ldp      x8, x1, [x0]
+672470c mov      x0, x19
+6724710 fmul     s10, s14, s10
+6724714 fmul     s11, s14, s9
+6724718 blr      x8
+672471c ldr      x8, [x19]
+6724720 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+6724724 mov      v9.16b, v1.16b
+6724728 stp      s14, s15, [sp, #0xc]
+672472c ldrh     w9, [x8, #0x12e]
+6724730 cbz      x9, #0x6724754
+6724734 ldr      x10, [x8, #0xb0]
+6724738 add      x10, x10, #8
+672473c ldur     x11, [x10, #-8]
+6724740 cmp      x11, x1
+6724744 b.eq     #0x6724768
+6724748 subs     x9, x9, #1
+672474c add      x10, x10, #0x10
+6724750 b.ne     #0x672473c
+6724754 mov      w2, #2
+6724758 mov      x0, x19
+672475c mov      v14.16b, v8.16b
+6724760 bl       #0x39a388c // sub_39a388c
+6724764 b        #0x672477c // sub_672477c
+6724768 ldr      w9, [x10]
+672476c mov      v14.16b, v8.16b
+6724770 add      w9, w9, #2
+6724774 add      x8, x8, w9, sxtw #4
+6724778 add      x0, x8, #0x138
+672477c ldp      x8, x1, [x0]
+6724780 ldr      s0, [sp, #0x14]
+6724784 mov      x0, x19
+6724788 fadd     s15, s12, s10
+672478c fadd     s8, s0, s11
+6724790 blr      x8
+6724794 ldrb     w8, [x21, #0x277] //  VA a16c277 
+6724798 mov      v10.16b, v0.16b
+672479c mov      v11.16b, v1.16b
+67247a0 mov      v12.16b, v2.16b
+67247a4 cbnz     w8, #0x67247bc
+67247a8 adrp     x0, #0x9a6a000
+67247ac ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+67247b0 bl       #0x390a13c // sub_390a13c
+67247b4 mov      w8, #1
+67247b8 strb     w8, [x21, #0x277]
+67247bc ldr      x0, [x22] //  VA 9cb1798 4735012000000000
+67247c0 fsub     s15, s15, s10
+67247c4 fsub     s11, s9, s11
+67247c8 fsub     s10, s8, s12
+67247cc ldr      w8, [x0, #0xe0] //  VA 20013627 
+67247d0 cbnz     w8, #0x67247d8
+67247d4 bl       #0x390a240 // sub_390a240
+67247d8 ldrb     w8, [x23, #0x276] //  VA a16c276 
+67247dc fmul     s0, s15, s15
+67247e0 fmul     s1, s11, s11
+67247e4 fadd     s0, s0, s1
+67247e8 fmul     s1, s10, s10
+67247ec fadd     s8, s1, s0
+67247f0 cbnz     w8, #0x6724808
+67247f4 adrp     x0, #0x9a6a000
+67247f8 ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+67247fc bl       #0x390a13c // sub_390a13c
+6724800 mov      w8, #1
+6724804 strb     w8, [x23, #0x276]
+6724808 ldr      x0, [x22] //  VA 9cb1798 4735012000000000
+672480c fsqrt    s9, s8
+6724810 ldr      w8, [x0, #0xe0] //  VA 20013627 
+6724814 cbnz     w8, #0x672481c
+6724818 bl       #0x390a240 // sub_390a240
+672481c fcmp     s9, s14
+6724820 b.le     #0x6724838
+6724824 fdiv     s12, s15, s9
+6724828 ldp      s8, s15, [sp, #0xc]
+672482c fdiv     s11, s11, s9
+6724830 fdiv     s10, s10, s9
+6724834 b        #0x6724870 // sub_6724870
+6724838 adrp     x19, #0xa16b000
+672483c ldrb     w8, [x19, #0xe5a] //  VA a16be5a 
+6724840 ldr      s8, [sp, #0xc]
+6724844 cbnz     w8, #0x672485c
+6724848 adrp     x0, #0x9a6a000
+672484c ldr      x0, [x0, #0x770] //  VA 9a6a770 188acb0900000000
+6724850 bl       #0x390a13c // sub_390a13c
+6724854 mov      w8, #1
+6724858 strb     w8, [x19, #0xe5a]
+672485c ldr      x8, [x20] //  VA 9cb8a18 2798012000000000
+6724860 ldr      s15, [sp, #0x10]
+6724864 ldr      x8, [x8, #0xb8] //  VA 200198df 
+6724868 ldp      s12, s11, [x8]
+672486c ldr      s10, [x8, #8]
+6724870 ldrb     w8, [x21, #0x277] //  VA a16c277 
+6724874 cbnz     w8, #0x672488c
+6724878 adrp     x0, #0x9a6a000
+672487c ldr      x0, [x0, #0x928] //  VA 9a6a928 9817cb0900000000
+6724880 bl       #0x390a13c // sub_390a13c
+6724884 mov      w8, #1
+6724888 strb     w8, [x21, #0x277]
+672488c ldr      x0, [x22] //  VA 9cb1798 4735012000000000
+6724890 ldr      w8, [x0, #0xe0] //  VA 20013627 
+6724894 cbnz     w8, #0x672489c
+6724898 bl       #0x390a240 // sub_390a240
+672489c adrp     x19, #0xa16c000
+67248a0 ldrb     w8, [x19, #0x279] //  VA a16c279 
+67248a4 fmul     s0, s13, s12
+67248a8 fmul     s1, s13, s11
+67248ac fmul     s2, s13, s10
+67248b0 fdiv     s3, s9, s8
+67248b4 fmul     s10, s3, s0
+67248b8 fmul     s9, s3, s1
+67248bc fmul     s8, s3, s2
+67248c0 cbnz     w8, #0x67248d8
+67248c4 adrp     x0, #0x9a6a000
+67248c8 ldr      x0, [x0, #0x770] //  VA 9a6a770 188acb0900000000
+67248cc bl       #0x390a13c // sub_390a13c
+67248d0 mov      w8, #1
+67248d4 strb     w8, [x19, #0x279]
+67248d8 ldr      x8, [x20] //  VA 9cb8a18 2798012000000000
+67248dc ldr      x8, [x8, #0xb8] //  VA 200198df 
+67248e0 ldp      s0, s1, [x8, #0x18]
+67248e4 ldr      s2, [x8, #0x20]
+67248e8 fmul     s0, s15, s0
+67248ec fmul     s1, s15, s1
+67248f0 fmul     s2, s15, s2
+67248f4 fadd     s0, s10, s0
+67248f8 fadd     s1, s9, s1
+67248fc fadd     s2, s8, s2
+6724900 ldp      x20, x19, [sp, #0xa0]
+6724904 ldp      x22, x21, [sp, #0x90]
+6724908 ldp      x24, x23, [sp, #0x80]
+672490c ldp      x30, x25, [sp, #0x70]
+6724910 ldp      d9, d8, [sp, #0x60]
+6724914 ldp      d11, d10, [sp, #0x50]
+6724918 ldp      d13, d12, [sp, #0x40]
+672491c ldp      d15, d14, [sp, #0x30]
+6724920 add      sp, sp, #0xb0
+6724924 ret      
+6724928 bl       #0x390a360 // sub_390a360
+672492c str      x30, [sp, #-0x20]!
+6724930 stp      x20, x19, [sp, #0x10]
+6724934 adrp     x20, #0xa177000
+6724938 ldrb     w8, [x20, #0x4dd] //  VA a1774dd 
+672493c mov      x19, x0
+6724940 tbnz     w8, #0, #0x6724958
+6724944 adrp     x0, #0x9ad0000
+6724948 ldr      x0, [x0, #0x790] //  VA 9ad0790 f851cc0900000000
+672494c bl       #0x390a13c // sub_390a13c
+6724950 mov      w8, #1
+6724954 strb     w8, [x20, #0x4dd]
+6724958 mov      w0, #0xe96a
+672495c mov      x1, xzr
+6724960 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+6724964 tbz      w0, #0, #0x672498c
+6724968 mov      w0, #0xe96a
+672496c mov      x1, xzr
+6724970 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+6724974 cbz      x0, #0x67249c0
+6724978 mov      x1, x19
+672497c ldp      x20, x19, [sp, #0x10]
+6724980 mov      x2, xzr
+6724984 ldr      x30, [sp], #0x20
+6724988 b        #0x85c8f48 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_309
+672498c adrp     x8, #0x9ad0000
+6724990 ldr      x8, [x8, #0x790] //  VA 9ad0790 f851cc0900000000
+6724994 ldr      x0, [x8] //  VA 9cc51f8 a5ef012000000000
+6724998 bl       #0x390a354 // sub_390a354
+672499c mov      x1, xzr
+67249a0 mov      x20, x0
+67249a4 bl       #0x5ac211c // sub_5ac211c
+67249a8 str      wzr, [x20, #0x10]
+67249ac str      x19, [x20, #0x20]
+67249b0 mov      x0, x20
+67249b4 ldp      x20, x19, [sp, #0x10]
+67249b8 ldr      x30, [sp], #0x20
+67249bc ret      
+67249c0 bl       #0x390a360 // sub_390a360
+67249c4 str      x30, [sp, #-0x20]!
+67249c8 stp      x20, x19, [sp, #0x10]
+67249cc mov      w19, w1
+67249d0 mov      x1, xzr
+67249d4 mov      x20, x0
+67249d8 bl       #0x5ac211c // sub_5ac211c
+67249dc str      w19, [x20, #0x10]
+67249e0 ldp      x20, x19, [sp, #0x10]
+67249e4 ldr      x30, [sp], #0x20
+67249e8 ret      
+67249ec stp      x30, x21, [sp, #-0x20]!
+67249f0 stp      x20, x19, [sp, #0x10]
+67249f4 adrp     x21, #0xa177000
+67249f8 adrp     x20, #0x9aa4000
+67249fc ldrb     w8, [x21, #0x4de] //  VA a1774de 
+6724a00 ldr      x20, [x20, #0x270] //  VA 9aa4270 3812d70900000000
+6724a04 mov      x19, x0
+6724a08 tbnz     w8, #0, #0x6724a20
+6724a0c adrp     x0, #0x9aa4000
+6724a10 ldr      x0, [x0, #0x270] //  VA 9aa4270 3812d70900000000
+6724a14 bl       #0x390a13c // sub_390a13c
+6724a18 mov      w8, #1
+6724a1c strb     w8, [x21, #0x4de]
+6724a20 adrp     x8, #0x1718000
+6724a24 ldr      d0, [x8, #0x1b0] //  VA 17181b0 00003041000080bf
+6724a28 mov      x0, x19
+6724a2c mov      x1, xzr
+6724a30 str      d0, [x19, #0x10]
+6724a34 ldr      x8, [x20] //  VA 9d71238 791b00a000000000 literal='03_jumptile_01'
+6724a38 str      x8, [x19, #0x18]
+6724a3c ldp      x20, x19, [sp, #0x10]
+6724a40 ldp      x30, x21, [sp], #0x20

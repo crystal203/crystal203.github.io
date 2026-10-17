@@ -11,21 +11,27 @@ sys.path.insert(0,'E:/GTFiles/GTMap/GTMapWeb/tools/python-libs')
 import UnityPy
 from UnityPy.helpers.MeshHelper import MeshHandler
 from UnityPy.helpers import CompressionHelper
-ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'gtmap/assets';WORK=ROOT/'tools/gtmap'
+parser=argparse.ArgumentParser()
+parser.add_argument('--only',action='append',default=[])
+parser.add_argument('--pickup',action='store_true')
+parser.add_argument('--prefab',action='append',default=[],help='bundle:prefab for original standalone objects')
+parser.add_argument('--reference-root',type=Path,default=Path(__file__).resolve().parents[2])
+parser.add_argument('--output-root',type=Path)
+args=parser.parse_args()
+ROOT=args.reference_root;OUTPUT=args.output_root or ROOT
+OUT=OUTPUT/'gtmap/assets';WORK=OUTPUT/'tools/gtmap';REFERENCE=ROOT/'tools/gtmap'
+OUT.mkdir(parents=True,exist_ok=True);(WORK/'evidence').mkdir(parents=True,exist_ok=True)
 SOURCE=Path('E:/GTFiles/files/AssetBundles/Android')
 APK=zipfile.ZipFile('E:/GTFiles/_fromTry/ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk')
-with gzip.open(WORK/'batches/final-master.json.gz','rt',encoding='utf8') as f:master=json.load(f)
-sets=master['setOrder'];used=collections.defaultdict(set)
-for k in master['templates']:i,n=k.split(':',1);used[sets[int(i)-1]].add(n)
-del master;gc.collect()
-# Earlier published maps contain templates absent from the final expansion batch.
-for filename in ['expansion-master.json','third-master.json.gz']:
- path=WORK/'batches'/filename
- with (gzip.open(path,'rt',encoding='utf8') if filename.endswith('.gz') else path.open(encoding='utf8')) as f:previous=json.load(f)
- for k in previous['templates']:
-  i,n=k.split(':',1);used[previous['setOrder'][int(i)-1]].add(n)
- del previous;gc.collect()
-MODULES=['InitialModule','ShapeModule','EmissionModule','SizeModule','RotationModule','ColorModule','UVModule','VelocityModule','ForceModule','ClampVelocityModule','NoiseModule']
+used=collections.defaultdict(set)
+if not args.prefab and not args.pickup:
+ for filename in ['final-master.json.gz','expansion-master.json','third-master.json.gz']:
+  path=REFERENCE/'batches'/filename
+  with (gzip.open(path,'rt',encoding='utf8') if filename.endswith('.gz') else path.open(encoding='utf8')) as f:master=json.load(f)
+  for k in master['templates']:
+   i,n=k.split(':',1);used[master['setOrder'][int(i)-1]].add(n)
+  del master;gc.collect()
+MODULES=['InitialModule','ShapeModule','EmissionModule','SizeModule','RotationModule','RotationBySpeedModule','ColorModule','UVModule','VelocityModule','ForceModule','ClampVelocityModule','NoiseModule']
 def clean(v):
  if isinstance(v,float) and not math.isfinite(v):return 'Infinity' if v>0 else '-Infinity' if v<0 else 'NaN'
  if isinstance(v,list):return [clean(x) for x in v]
@@ -36,11 +42,17 @@ def vec(v):return {k:float(getattr(v,k)) for k in ('xyzw' if hasattr(v,'w') else
 aliases={'futurecastle':'ondemand/v2_3_futurecastle/tilesets/futurecastle','school':'ondemand/highschool/tilesets','roguelike_mall':'ondemand/ancientmall/tilesets'}
 
 # Use AssetRipper's already decompressed clips, never re-extract animation binaries.
-EXPORT=Path('D:/GTAsset/FullExtract/ExportedProject/Assets');clip_files=collections.defaultdict(list);clip_cache={}
-for p in EXPORT.rglob('*.anim'):clip_files[p.stem].append(p)
+EXPORT=Path('D:/GTAsset/FullExtract/ExportedProject/Assets');clip_files=collections.defaultdict(list);clip_cache={};clips_indexed=False
 def export_clip(clip):
+ global clips_indexed
  key=(clip.assets_file.name,str(clip.object_reader.path_id)) if hasattr(clip,'assets_file') else (clip.object_reader.assets_file.name,str(clip.object_reader.path_id))
  if key in clip_cache:return clip_cache[key]
+ # Preserve the complete original lookup for animated prefabs. Pure particle
+ # prefabs never need this potentially large directory traversal.
+ if not clips_indexed:
+  print('Indexing original exported AnimationClips...',flush=True)
+  for p in EXPORT.rglob('*.anim'):clip_files[p.stem].append(p)
+  clips_indexed=True
  native=clip.object_reader.read_typetree();duration=native['m_MuscleClip']['m_StopTime']-native['m_MuscleClip']['m_StartTime'];candidates=[]
  for p in clip_files[clip.m_Name]+clip_files[re.sub(r'[\[\]]','_',clip.m_Name)]:
   try:
@@ -57,13 +69,13 @@ def export_clip(clip):
  candidates.sort(key=lambda c:('ondemand/' in c['source'],len(c['source'])))
  result=candidates[0];clip_cache[key]=result;return result
 
-parser=argparse.ArgumentParser();parser.add_argument('--only',action='append',default=[]);parser.add_argument('--pickup',action='store_true');parser.add_argument('--prefab',action='append',default=[],help='bundle:prefab for original standalone gameplay effects');args=parser.parse_args();
+
 standalone={}
 for value in args.prefab:
  bundle,name=value.rsplit(':',1);key='__online_'+name;standalone[key]=(bundle,name);used[key]={name};args.only.append(key)
 if args.pickup:args.only=['__pickup_star_piece'];used={'__pickup_star_piece':{'star_piece'}}
 manifest=json.loads((OUT/'native-states.json').read_text(encoding='utf8')) if args.only and (OUT/'native-states.json').exists() else {'version':1,'sets':{}};audit=json.loads((WORK/'evidence/native-states-audit.json').read_text(encoding='utf8')) if args.only and (WORK/'evidence/native-states-audit.json').exists() else [];audit=[a for a in audit if a['tileset'] not in args.only]
-dest=OUT/'states';dest.mkdir(exist_ok=True)
+dest=OUT/'states';dest.mkdir(exist_ok=True);(OUT/'textures').mkdir(exist_ok=True)
 for tileset,names in used.items():
  if args.only and tileset not in args.only:continue
  bundle='effects/stage/base' if tileset=='__pickup_star_piece' else aliases.get(tileset,tileset.split(':')[0] if ':' in tileset else 'tilesets/'+tileset)
@@ -135,13 +147,13 @@ for tileset,names in used.items():
  if not roots:roots=[v.read() for k,v in env.container.items() if k.lower().endswith('.tileset.prefab')]
  for root in roots:
   rt=next(c.component.read() for c in root.m_Component if c.component.type.name=='Transform')
-  for child in ([rt.object_reader] if tileset=='__pickup_star_piece' or tileset in standalone else rt.m_Children):
+  for child in ([rt.object_reader] if tileset=='__pickup_star_piece' or tileset in standalone and root.m_Name in names else rt.m_Children):
    t=child.read();go=t.m_GameObject.read()
    if go.m_Name not in names:continue
    record={'root':str(t.object_reader.path_id),'nodes':[],'systems':[],'scripts':[],'staticScripts':{},'materialOverrides':{},'sprites':[],'parts':[],'controllers':[]}
    def visit(t,parent='0',isroot=False,path=''):
     g=t.m_GameObject.read();nid=str(t.object_reader.path_id);refs={c.component.type.name:c.component for c in g.m_Component}
-    record['nodes'].append({'id':nid,'parent':parent,'name':g.m_Name,'path':path,'active':bool(g.m_IsActive) or isroot,'position':vec(t.m_LocalPosition) if not isroot else {'x':0,'y':0,'z':0},'rotation':vec(t.m_LocalRotation) if not isroot else {'x':0,'y':0,'z':0,'w':1},'scale':vec(t.m_LocalScale) if not isroot or tileset=='__pickup_star_piece' or tileset in standalone else {'x':1,'y':1,'z':1}})
+    record['nodes'].append({'id':nid,'parent':parent,'name':g.m_Name,'path':path,'active':bool(g.m_IsActive) or isroot,'position':vec(t.m_LocalPosition) if not isroot else {'x':0,'y':0,'z':0},'rotation':vec(t.m_LocalRotation) if not isroot or tileset in standalone else {'x':0,'y':0,'z':0,'w':1},'scale':vec(t.m_LocalScale) if not isroot or tileset=='__pickup_star_piece' or tileset in standalone else {'x':1,'y':1,'z':1}})
     for c in g.m_Component:
      if c.component.type.name=='MonoBehaviour':
       try:
@@ -150,7 +162,7 @@ for tileset,names in used.items():
         if not f.get('m_Enabled',1):continue
         record['scripts'].append({'node':nid,'type':typ,'fields':f});record['staticScripts'].setdefault(g.m_Name,[]).append({'type':typ,'fields':f})
       except (FileNotFoundError,KeyError):pass
-    if 'Animator' in refs:
+    if 'Animator' in refs and refs['Animator'].read().m_Controller.path_id:
      try:
       animator=refs['Animator'].read();co=animator.m_Controller.read();ct=co.object_reader.read_typetree();tos=dict(ct['m_TOS']);clips=[r.read() for r in co.m_AnimationClips]
       for layer in ct['m_Controller']['m_StateMachineArray']:
@@ -186,6 +198,7 @@ for tileset,names in used.items():
    try:visit(t,isroot=True)
    except (FileNotFoundError,KeyError,ValueError) as ex:issues.append({'tile':go.m_Name,'error':str(ex)})
    if tileset=='__pickup_star_piece' or tileset in standalone or record['controllers'] or any(s['type']=='CustomAnimator' for s in record['scripts']) or any(not n['active'] or n['name'].lower() in ['red','blue','on','off'] for n in record['nodes']):data['templates'][go.m_Name]=record
+ if tileset in standalone and issues:raise ValueError('Standalone prefab has unresolved source data: '+repr(issues))
  if data['templates']:
   data=trim(data)
   slug=hashlib.sha256(tileset.encode()).hexdigest()[:16];path='states/'+slug+'.json.gz';(OUT/path).write_bytes(gzip.compress(json.dumps(clean(data),separators=(',',':'),allow_nan=False).encode(),mtime=0));manifest['sets'][tileset]=path

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "registration": "0x98fb820",
+  "scriptsModule": "0x9a3b730",
+  "methodCount": 195390,
+  "typeCount": 83682,
+  "classes": [],
+  "methods": [],
+  "usages": [
+    {
+      "word": "0x20019a8f",
+      "kind": 18,
+      "index": 52551,
+      "pointer": "0x9e61f30",
+      "byref": false,
+      "definitionIndex": 33083,
+      "name": "Foundations.WaitAll"
+    },
+    {
+      "word": "0xc00605b9",
+      "kind": 6,
+      "index": 197340,
+      "classInstIndex": 5436,
+      "methodInstIndex": -1,
+      "methodIndex": 208728,
+      "name": "System.Collections.Generic.List`1.ToArray"
+    },
+    {
+      "word": "0xc00605bd",
+      "kind": 6,
+      "index": 197342,
+      "classInstIndex": 5436,
+      "methodInstIndex": -1,
+      "methodIndex": 208670,
+      "name": "System.Collections.Generic.List`1.get_Item"
+    }
+  ]
+}

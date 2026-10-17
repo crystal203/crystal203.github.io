@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "nativeInput": {
+    "method": "Oak.SpeechBubbleNew.OnTouchEvent",
+    "range": "0x758b30c..0x758b4cc",
+    "stateOffset": 116,
+    "typingState": 1,
+    "readyState": 2,
+    "proceedState": 4,
+    "typingClick": "ShowImmediately; change state 1 to state 2; do not proceed",
+    "readyClick": "change state 2 to state 4",
+    "showImmediately": "Oak.TextBoxController.ShowImmediately 0x758b4d0..0x758b52c"
+  },
+  "typing": {
+    "method": "TextBoxController.<RunText>d__9.MoveNext",
+    "range": "0x758db7c..0x758ddb4",
+    "rule": "Accumulate frame delta; reveal one character when TypeSpeed is reached; reset elapsed to zero, discarding overshoot.",
+    "clickDelay": "No extra .25-second click delay in OnTouchEvent."
+  },
+  "scope": "Shared SpeechBubbleNew mechanism. Applies to existing 1-1 native dialogues and 1-2; no stage-specific identity belongs in the player.",
+  "implemented": [
+    "Typing click reveals the full line without advancing the scene timeline.",
+    "Next click proceeds.",
+    "Remove the arbitrary .25-second click threshold for native dialogues."
+  ],
+  "remaining": [
+    "Continuous character sampling differs from native per-frame delta reset.",
+    "Native speech-bubble coroutine completion and concurrent timeline clocks need further recovery.",
+    "Native font metrics and balloon layout still need runtime comparison."
+  ]
+}

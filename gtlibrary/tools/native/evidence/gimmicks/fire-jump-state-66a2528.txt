@@ -1,0 +1,322 @@
+66a2528 stp      x30, x25, [sp, #-0x40]!
+66a252c stp      x24, x23, [sp, #0x10]
+66a2530 stp      x22, x21, [sp, #0x20]
+66a2534 stp      x20, x19, [sp, #0x30]
+66a2538 adrp     x22, #0xa177000
+66a253c ldrb     w8, [x22, #0x20c] //  VA a17720c 
+66a2540 mov      x20, x2
+66a2544 mov      x19, x1
+66a2548 mov      x21, x0
+66a254c tbnz     w8, #0, #0x66a2594
+66a2550 adrp     x0, #0x9a6d000
+66a2554 ldr      x0, [x0, #0x6d0] //  VA 9a6d6d0 e88cca0900000000
+66a2558 bl       #0x390a13c // sub_390a13c
+66a255c adrp     x0, #0x9aa2000
+66a2560 ldr      x0, [x0, #0x738] //  VA 9aa2738 48e1ca0900000000
+66a2564 bl       #0x390a13c // sub_390a13c
+66a2568 adrp     x0, #0x9a6a000
+66a256c ldr      x0, [x0, #0xd40] //  VA 9a6ad40 30e3ca0900000000
+66a2570 bl       #0x390a13c // sub_390a13c
+66a2574 adrp     x0, #0x9a6d000
+66a2578 ldr      x0, [x0, #0x6f0] //  VA 9a6d6f0 e8e3ca0900000000
+66a257c bl       #0x390a13c // sub_390a13c
+66a2580 adrp     x0, #0x9a6d000
+66a2584 ldr      x0, [x0, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+66a2588 bl       #0x390a13c // sub_390a13c
+66a258c mov      w8, #1
+66a2590 strb     w8, [x22, #0x20c]
+66a2594 mov      w0, #0x27fc
+66a2598 mov      x1, xzr
+66a259c bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+66a25a0 tbz      w0, #0, #0x66a25d8
+66a25a4 mov      w0, #0x27fc
+66a25a8 mov      x1, xzr
+66a25ac bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+66a25b0 cbz      x0, #0x66a2bb8
+66a25b4 mov      x1, x21
+66a25b8 mov      x2, x19
+66a25bc mov      x3, x20
+66a25c0 ldp      x20, x19, [sp, #0x30]
+66a25c4 ldp      x22, x21, [sp, #0x20]
+66a25c8 ldp      x24, x23, [sp, #0x10]
+66a25cc mov      x4, xzr
+66a25d0 ldp      x30, x25, [sp], #0x40
+66a25d4 b        #0x85b74bc // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_24
+66a25d8 cbz      x20, #0x66a2bb8
+66a25dc adrp     x24, #0x9a6d000
+66a25e0 ldr      x8, [x20]
+66a25e4 ldr      x24, [x24, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+66a25e8 ldrh     w9, [x8, #0x12e]
+66a25ec ldr      x1, [x24] //  VA 9cae498 2911012000000000
+66a25f0 cbz      x9, #0x66a2614
+66a25f4 ldr      x10, [x8, #0xb0]
+66a25f8 add      x10, x10, #8
+66a25fc ldur     x11, [x10, #-8]
+66a2600 cmp      x11, x1
+66a2604 b.eq     #0x66a2624
+66a2608 subs     x9, x9, #1
+66a260c add      x10, x10, #0x10
+66a2610 b.ne     #0x66a25fc
+66a2614 mov      w2, #0x13
+66a2618 mov      x0, x20
+66a261c bl       #0x39a388c // sub_39a388c
+66a2620 b        #0x66a2634 // sub_66a2634
+66a2624 ldr      w9, [x10]
+66a2628 add      w9, w9, #0x13
+66a262c add      x8, x8, w9, sxtw #4
+66a2630 add      x0, x8, #0x138
+66a2634 ldp      x8, x1, [x0]
+66a2638 mov      x0, x20
+66a263c blr      x8
+66a2640 cbz      x0, #0x66a2bb8
+66a2644 ldr      x8, [x0]
+66a2648 ldr      x9, [x8, #0x208]
+66a264c ldr      x1, [x8, #0x210]
+66a2650 blr      x9
+66a2654 tbnz     w0, #0, #0x66a2ba4
+66a2658 ldr      x8, [x20]
+66a265c ldr      x1, [x24] //  VA 9cae498 2911012000000000
+66a2660 ldrh     w9, [x8, #0x12e]
+66a2664 cbz      x9, #0x66a2688
+66a2668 ldr      x10, [x8, #0xb0]
+66a266c add      x10, x10, #8
+66a2670 ldur     x11, [x10, #-8]
+66a2674 cmp      x11, x1
+66a2678 b.eq     #0x66a2698
+66a267c subs     x9, x9, #1
+66a2680 add      x10, x10, #0x10
+66a2684 b.ne     #0x66a2670
+66a2688 mov      w2, #0x19
+66a268c mov      x0, x20
+66a2690 bl       #0x39a388c // sub_39a388c
+66a2694 b        #0x66a26a8 // sub_66a26a8
+66a2698 ldr      w9, [x10]
+66a269c add      w9, w9, #0x19
+66a26a0 add      x8, x8, w9, sxtw #4
+66a26a4 add      x0, x8, #0x138
+66a26a8 ldp      x8, x1, [x0]
+66a26ac mov      x0, x20
+66a26b0 blr      x8
+66a26b4 cbz      x0, #0x66a2bb8
+66a26b8 adrp     x25, #0x9aa2000
+66a26bc ldr      x8, [x0]
+66a26c0 ldr      x25, [x25, #0x738] //  VA 9aa2738 48e1ca0900000000
+66a26c4 mov      x21, x0
+66a26c8 ldrh     w9, [x8, #0x12e]
+66a26cc ldr      x1, [x25] //  VA 9cae148 510f012000000000
+66a26d0 cbz      x9, #0x66a26f4
+66a26d4 ldr      x10, [x8, #0xb0]
+66a26d8 add      x10, x10, #8
+66a26dc ldur     x11, [x10, #-8]
+66a26e0 cmp      x11, x1
+66a26e4 b.eq     #0x66a2704
+66a26e8 subs     x9, x9, #1
+66a26ec add      x10, x10, #0x10
+66a26f0 b.ne     #0x66a26dc
+66a26f4 mov      x0, x21
+66a26f8 mov      w2, wzr
+66a26fc bl       #0x39a388c // sub_39a388c
+66a2700 b        #0x66a2710 // sub_66a2710
+66a2704 ldrsw    x9, [x10]
+66a2708 add      x8, x8, x9, lsl #4
+66a270c add      x0, x8, #0x138
+66a2710 ldp      x8, x1, [x0]
+66a2714 mov      x0, x21
+66a2718 blr      x8
+66a271c tbz      w0, #0, #0x66a2ba4
+66a2720 ldr      x8, [x20]
+66a2724 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+66a2728 ldrh     w9, [x8, #0x12e]
+66a272c cbz      x9, #0x66a2750
+66a2730 ldr      x10, [x8, #0xb0]
+66a2734 add      x10, x10, #8
+66a2738 ldur     x11, [x10, #-8]
+66a273c cmp      x11, x1
+66a2740 b.eq     #0x66a2760
+66a2744 subs     x9, x9, #1
+66a2748 add      x10, x10, #0x10
+66a274c b.ne     #0x66a2738
+66a2750 mov      w2, #0x19
+66a2754 mov      x0, x20
+66a2758 bl       #0x39a388c // sub_39a388c
+66a275c b        #0x66a2770 // sub_66a2770
+66a2760 ldr      w9, [x10]
+66a2764 add      w9, w9, #0x19
+66a2768 add      x8, x8, w9, sxtw #4
+66a276c add      x0, x8, #0x138
+66a2770 ldp      x8, x1, [x0]
+66a2774 mov      x0, x20
+66a2778 blr      x8
+66a277c cbz      x0, #0x66a2bb8
+66a2780 ldr      x8, [x0]
+66a2784 ldr      x1, [x25] //  VA 9cae148 510f012000000000
+66a2788 mov      x21, x0
+66a278c ldrh     w9, [x8, #0x12e]
+66a2790 cbz      x9, #0x66a27b4
+66a2794 ldr      x10, [x8, #0xb0]
+66a2798 add      x10, x10, #8
+66a279c ldur     x11, [x10, #-8]
+66a27a0 cmp      x11, x1
+66a27a4 b.eq     #0x66a27c4
+66a27a8 subs     x9, x9, #1
+66a27ac add      x10, x10, #0x10
+66a27b0 b.ne     #0x66a279c
+66a27b4 mov      w2, #1
+66a27b8 mov      x0, x21
+66a27bc bl       #0x39a388c // sub_39a388c
+66a27c0 b        #0x66a27d4 // sub_66a27d4
+66a27c4 ldr      w9, [x10]
+66a27c8 add      w9, w9, #1
+66a27cc add      x8, x8, w9, sxtw #4
+66a27d0 add      x0, x8, #0x138
+66a27d4 ldp      x8, x1, [x0]
+66a27d8 mov      x0, x21
+66a27dc blr      x8
+66a27e0 tbz      w0, #0, #0x66a2ba4
+66a27e4 ldr      x8, [x20]
+66a27e8 ldr      x1, [x24] //  VA 9cae498 2911012000000000
+66a27ec ldrh     w9, [x8, #0x12e]
+66a27f0 cbz      x9, #0x66a2814
+66a27f4 ldr      x10, [x8, #0xb0]
+66a27f8 add      x10, x10, #8
+66a27fc ldur     x11, [x10, #-8]
+66a2800 cmp      x11, x1
+66a2804 b.eq     #0x66a2824
+66a2808 subs     x9, x9, #1
+66a280c add      x10, x10, #0x10
+66a2810 b.ne     #0x66a27fc
+66a2814 mov      w2, #0x19
+66a2818 mov      x0, x20
+66a281c bl       #0x39a388c // sub_39a388c
+66a2820 b        #0x66a2834 // sub_66a2834
+66a2824 ldr      w9, [x10]
+66a2828 add      w9, w9, #0x19
+66a282c add      x8, x8, w9, sxtw #4
+66a2830 add      x0, x8, #0x138
+66a2834 ldp      x8, x1, [x0]
+66a2838 mov      x0, x20
+66a283c blr      x8
+66a2840 cbz      x0, #0x66a2bb8
+66a2844 ldr      x8, [x0]
+66a2848 ldr      x1, [x25] //  VA 9cae148 510f012000000000
+66a284c mov      x21, x0
+66a2850 ldrh     w9, [x8, #0x12e]
+66a2854 cbz      x9, #0x66a2878
+66a2858 ldr      x10, [x8, #0xb0]
+66a285c add      x10, x10, #8
+66a2860 ldur     x11, [x10, #-8]
+66a2864 cmp      x11, x1
+66a2868 b.eq     #0x66a2888
+66a286c subs     x9, x9, #1
+66a2870 add      x10, x10, #0x10
+66a2874 b.ne     #0x66a2860
+66a2878 mov      w2, #3
+66a287c mov      x0, x21
+66a2880 bl       #0x39a388c // sub_39a388c
+66a2884 b        #0x66a2898 // sub_66a2898
+66a2888 ldr      w9, [x10]
+66a288c add      w9, w9, #3
+66a2890 add      x8, x8, w9, sxtw #4
+66a2894 add      x0, x8, #0x138
+66a2898 ldp      x8, x1, [x0]
+66a289c mov      x0, x21
+66a28a0 blr      x8
+66a28a4 tbz      w0, #0, #0x66a29c8
+66a28a8 mov      x0, x19
+66a28ac mov      x1, x20
+66a28b0 mov      w2, wzr
+66a28b4 mov      x3, xzr
+66a28b8 bl       #0x6118634 // Oak.BurnCommand.Create
+66a28bc mov      x21, x0
+66a28c0 cbz      x19, #0x66a2bbc
+66a28c4 adrp     x10, #0x9a6d000
+66a28c8 ldr      x8, [x19]
+66a28cc ldr      x10, [x10, #0x6f0] //  VA 9a6d6f0 e8e3ca0900000000
+66a28d0 ldrh     w9, [x8, #0x12e]
+66a28d4 ldr      x1, [x10] //  VA 9cae3e8 b710012000000000
+66a28d8 cbz      x9, #0x66a28fc
+66a28dc ldr      x10, [x8, #0xb0]
+66a28e0 add      x10, x10, #8
+66a28e4 ldur     x11, [x10, #-8]
+66a28e8 cmp      x11, x1
+66a28ec b.eq     #0x66a290c
+66a28f0 subs     x9, x9, #1
+66a28f4 add      x10, x10, #0x10
+66a28f8 b.ne     #0x66a28e4
+66a28fc mov      w2, #2
+66a2900 mov      x0, x19
+66a2904 bl       #0x39a388c // sub_39a388c
+66a2908 b        #0x66a291c // sub_66a291c
+66a290c ldr      w9, [x10]
+66a2910 add      w9, w9, #2
+66a2914 add      x8, x8, w9, sxtw #4
+66a2918 add      x0, x8, #0x138
+66a291c ldp      x8, x1, [x0]
+66a2920 mov      x0, x19
+66a2924 blr      x8
+66a2928 adrp     x8, #0x9a6d000
+66a292c ldr      x8, [x8, #0x6d0] //  VA 9a6d6d0 e88cca0900000000
+66a2930 mov      x22, x0
+66a2934 ldr      x0, [x8] //  VA 9ca8ce8 45cd002000000000
+66a2938 ldr      w8, [x0, #0xe0] //  VA 2000ce25 
+66a293c cbnz     w8, #0x66a2944
+66a2940 bl       #0x390a240 // sub_390a240
+66a2944 mov      x0, x22
+66a2948 mov      x1, x21
+66a294c mov      x2, xzr
+66a2950 bl       #0x610fe48 // Oak.CommandDispatcher.Publish
+66a2954 mov      x22, xzr
+66a2958 mov      w23, wzr
+66a295c cbz      x21, #0x66a29c0
+66a2960 adrp     x10, #0x9a6a000
+66a2964 ldr      x8, [x21]
+66a2968 ldr      x10, [x10, #0xd40] //  VA 9a6ad40 30e3ca0900000000
+66a296c ldrh     w9, [x8, #0x12e]
+66a2970 ldr      x1, [x10] //  VA 9cae330 6510012000000000
+66a2974 cbz      x9, #0x66a2998
+66a2978 ldr      x10, [x8, #0xb0]
+66a297c add      x10, x10, #8
+66a2980 ldur     x11, [x10, #-8]
+66a2984 cmp      x11, x1
+66a2988 b.eq     #0x66a29a8
+66a298c subs     x9, x9, #1
+66a2990 add      x10, x10, #0x10
+66a2994 b.ne     #0x66a2980
+66a2998 mov      x0, x21
+66a299c mov      w2, wzr
+66a29a0 bl       #0x39a388c // sub_39a388c
+66a29a4 b        #0x66a29b4 // sub_66a29b4
+66a29a8 ldrsw    x9, [x10]
+66a29ac add      x8, x8, x9, lsl #4
+66a29b0 add      x0, x8, #0x138
+66a29b4 ldp      x8, x1, [x0]
+66a29b8 mov      x0, x21
+66a29bc blr      x8
+66a29c0 cbnz     x22, #0x66a2bc0
+66a29c4 cbz      w23, #0x66a2ba4
+66a29c8 ldr      x8, [x20]
+66a29cc ldr      x1, [x24] //  VA 9cae498 2911012000000000
+66a29d0 ldrh     w9, [x8, #0x12e]
+66a29d4 cbz      x9, #0x66a29f8
+66a29d8 ldr      x10, [x8, #0xb0]
+66a29dc add      x10, x10, #8
+66a29e0 ldur     x11, [x10, #-8]
+66a29e4 cmp      x11, x1
+66a29e8 b.eq     #0x66a2a08
+66a29ec subs     x9, x9, #1
+66a29f0 add      x10, x10, #0x10
+66a29f4 b.ne     #0x66a29e0
+66a29f8 mov      w2, #0x19
+66a29fc mov      x0, x20
+66a2a00 bl       #0x39a388c // sub_39a388c
+66a2a04 b        #0x66a2a18 // sub_66a2a18
+66a2a08 ldr      w9, [x10]
+66a2a0c add      w9, w9, #0x19
+66a2a10 add      x8, x8, w9, sxtw #4
+66a2a14 add      x0, x8, #0x138
+66a2a18 ldp      x8, x1, [x0]
+66a2a1c mov      x0, x20
+66a2a20 blr      x8
+66a2a24 cbz      x0, #0x66a2bb8
+66a2a28 ldr      x8, [x0]
+66a2a2c ldr      x1, [x25] //  VA 9cae148 510f012000000000

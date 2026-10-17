@@ -353,27 +353,33 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.attachEffectToFeet=(effect,actor,node='tip')=>{effect.gimmick.visualAnchor={node,point:()=>characters.footPoint(actor)};};
  this.setWorldTilt=(r,degrees)=>{r.quaternion=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,0,1),degrees*Math.PI/180);selection.update(r);};
  this.setWorldPosition=(r,p)=>{r.position.set(p[0],p[1],-p[2]);selection.update(r);};
+ this.setWorldVisualOffset=(r,p)=>{r.visualOffset=p?new THREE.Vector3(p[0],p[1],-p[2]):null;selection.update(r);};
  this.setWorldRotation=(r,degrees)=>{r.rotation=degrees;selection.update(r);};
  this.setWorldVisible=(r,value)=>{r.visible=!!value;selection.update(r);};
- this.spawnWorldEffect=(name,p,{duration=Infinity,follow,rotation=0,clock=()=>particleTime.value-mapStartTime,state,scale,roll=0}={})=>{
+ this.spawnWorldPrefab=(name,p,{duration=Infinity,follow,rotation=0,clock=()=>particleTime.value-mapStartTime,state,scale,roll=0}={})=>{
   const data=bundle.environment?.gameplayEffects?.[name];if(!data)return null;
   const tile={id:'gameplay-fx:'+ ++gameplayEffectId,name,layer:'gameplay-effects',x:p[0],y:p[1]*2,z:p[2],rotation:rotation/90},record=selection.add(tile),group=new THREE.Group();mapGroup.add(group);states.register(data.spec,data.assets,[tile],group,0);if(roll){record.quaternion=new THREE.Quaternion().setFromEuler(new THREE.Euler(0,-rotation*Math.PI/180,roll*Math.PI/180,'YXZ'));selection.update(record);}if(scale){record.scale.set(...scale);selection.update(record);}record.gimmick.previewTime=0;states.activate(record.gimmick);record.gimmick.effectStart=0;for(const c of record.gimmick.controllers)c.start=0;
   if(state)this.playWorldGimmick(record,state);for(const c of record.gimmick.controllers)c.start=0;
   const fx={record,follow,duration,clock,start:clock(),dispose:()=>{if(!gameplayEffects.delete(fx))return;states.remove(record);selection.records.delete(tile.id);group.removeFromParent();}};gameplayEffects.add(fx);return fx;
  };
+ this.spawnWorldEffect=this.spawnWorldPrefab;
  const timelineMedia=new Map(),timelineSounds=new Set();let mediaTime=null;
  events.clearMedia=()=>{for(const m of timelineMedia.values())m.dispose();timelineMedia.clear();timelineSounds.clear();mediaTime=null;};
  events.sampleMedia=(commands,t)=>{
   const active=new Set(),anchor=(target,offset=[0,0,0],at=t)=>{const record=events.resolve(target),p=events.actorCommands.has(record)?events.evaluateActor(record,events.actorCommands.get(record),at).position:[record.position.x,record.position.y,-record.position.z];return p.map((v,i)=>v+offset[i]);};
-  for(const c of commands){if(c.op==='sound'){if(events.playing&&!timelineSounds.has(c)&&c.at<=t&&(c.at===0||mediaTime!==null&&t>=mediaTime&&c.at>mediaTime)){timelineSounds.add(c);events.onSound?.(c.name);}continue;}if(!['item','effect'].includes(c.op)||t<c.at||t>=c.at+c.duration)continue;active.add(c);let m=timelineMedia.get(c);
+  for(const c of commands){if(c.op==='sound'){if(events.playing&&!timelineSounds.has(c)&&c.at<=t&&(c.at===0||mediaTime!==null&&t>=mediaTime&&c.at>mediaTime)){timelineSounds.add(c);events.onSound?.(c.fadeIn===undefined?c.name:{name:c.name,fadeIn:c.fadeIn});}continue;}if(!['item','effect'].includes(c.op)||t<c.at||t>=c.at+c.duration)continue;active.add(c);let m=timelineMedia.get(c);
    if(!m){if(c.op==='item')m=items.spawn(c.item,bundle.itemMetadata,mapGroup);else{m=thisRuntime.spawnWorldEffect(c.name,c.target?anchor(c.target,c.offset):c.position,{duration:Infinity,clock:()=>events.time});if(!m)throw Error('缺少原生剧情特效：'+c.name);m.start=c.at;}timelineMedia.set(c,m);}
    if(c.op==='item'){const a=anchor(c.target,c.offset,c.at),b=anchor(c.toTarget,c.toOffset||c.offset,c.at),u=(t-c.at)/c.duration;m.setPosition(a.map((v,i)=>v+(b[i]-v)*u));}else{m.record.gimmick.previewTime=t-c.at;thisRuntime.setWorldPosition(m.record,c.target?anchor(c.target,c.offset):c.position);}
   }for(const [c,m] of timelineMedia)if(!active.has(c)){m.dispose();timelineMedia.delete(c);}mediaTime=t;
  };
- this.playWorldGimmick=(r,name,{still=false}={})=>{const e=r?.gimmick;if(!e)return false;let applied=false;for(const [i,c] of e.spec.controllers.entries()){const index=c.states.findIndex(s=>s.name.toLowerCase()===name.toLowerCase());if(index>=0){if(e.controllers[i].index!==index||e.controllers[i].still!==still)states.change(r,'controller:'+i,String(index),still,false);applied=true;}}return applied;};
+ this.setWorldNodeTransform=(r,path,value)=>{const e=r?.gimmick,node=e?.spec.nodes.find(n=>n.path===path);if(!node)return false;if(value)e.transforms.set(node.id,value);else e.transforms.delete(node.id);states.activate(e);return true;};
+ this.setWorldNodeMaterial=(r,path,properties)=>{const e=r?.gimmick,node=e?.spec.nodes.find(n=>n.path===path);if(!node)return false;if(properties)e.materialOverrides.set(node.id,properties);else e.materialOverrides.delete(node.id);states.activate(e);return true;};
+ this.setWorldNodeVisible=(r,path,visible)=>{const e=r?.gimmick,node=e?.spec.nodes.find(n=>n.path===path);if(!node)return false;states.change(r,'node:'+node.id,visible,false,false);return true;};
+ this.playWorldGimmick=(r,name,{still=false,speed=1,restart=false}={})=>{const e=r?.gimmick;if(!e)return false;let applied=false;for(const [i,c] of e.spec.controllers.entries()){const index=c.states.findIndex(s=>s.name.toLowerCase()===name.toLowerCase());if(index>=0){if(restart||e.controllers[i].index!==index||e.controllers[i].still!==still)states.change(r,'controller:'+i,String(index),still,false);e.controllers[i].speed=speed;applied=true;}}return applied;};
  this.setWorldGimmick=(r,{open,lit,still=false}={})=>{if(r.door&&open!==undefined){const target=open?r.door.fields.OpenHeight:0;if(r.door.target!==target)doors.change(r,open?'open':'closed',still,false);return true;}if(lit!==undefined)return this.playWorldGimmick(r,lit?'on':'off',{still});if(open!==undefined)return this.playWorldGimmick(r,open?'open':'close',{still});return false;};
  this.focusWorld=(p,span=10)=>{const offset=new THREE.Vector3(0,500,500);controls.target.set(p[0],p[1],-p[2]);camera.position.copy(controls.target).add(offset);camera.zoom=THREE.MathUtils.clamp((camera.top-camera.bottom)/span,.001,60);camera.updateProjectionMatrix();camera.lookAt(controls.target);camera.updateMatrixWorld();};
  this.projectWorld=p=>{const v=new THREE.Vector3(p[0],p[1],-p[2]).project(camera);return {x:(v.x+1)*host.clientWidth/2,y:(1-v.y)*host.clientHeight/2,visible:v.z>=-1&&v.z<=1};};
+ this.isInCameraView=p=>{const v=new THREE.Vector3(p[0],p[1],-p[2]).project(camera);return ['x','y','z'].every(k=>v[k]>=-1&&v[k]<=1);};
  this.getState=state;
  this.export=async(options={})=>{
   if(!mapGroup||!map)throw new Error('请先加载地图');if(exporting)throw new Error('正在导出地图');

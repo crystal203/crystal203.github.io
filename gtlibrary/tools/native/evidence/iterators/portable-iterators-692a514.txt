@@ -1,0 +1,167 @@
+692a514 stp      x29, x30, [sp, #-0x30]!
+692a518 stp      x22, x21, [sp, #0x10]
+692a51c stp      x20, x19, [sp, #0x20]
+692a520 sub      sp, sp, #0x390
+692a524 adrp     x20, #0xa178000
+692a528 ldrb     w8, [x20, #0x2c8] //  VA a1782c8 
+692a52c mov      x19, x0
+692a530 tbnz     w8, #0, #0x692a590
+692a534 adrp     x0, #0x9a6d000
+692a538 ldr      x0, [x0, #0x7b0] //  VA 9a6d7b0 b8c6ca0900000000
+692a53c bl       #0x390a13c // sub_390a13c
+692a540 adrp     x0, #0x9a6b000
+692a544 ldr      x0, [x0, #0x4f0] //  VA 9a6b4f0 6867cf0900000000
+692a548 bl       #0x390a13c // sub_390a13c
+692a54c adrp     x0, #0x9ada000
+692a550 ldr      x0, [x0, #0x440] //  VA 9ada440 a0c7ce0900000000
+692a554 bl       #0x390a13c // sub_390a13c
+692a558 adrp     x0, #0x9a6b000
+692a55c ldr      x0, [x0, #0x4f8] //  VA 9a6b4f8 7067cf0900000000
+692a560 bl       #0x390a13c // sub_390a13c
+692a564 adrp     x0, #0x9aad000
+692a568 ldr      x0, [x0, #0x8d8] //  VA 9aad8d8 a8c7ce0900000000
+692a56c bl       #0x390a13c // sub_390a13c
+692a570 adrp     x0, #0x9a6e000
+692a574 ldr      x0, [x0, #0x868] //  VA 9a6e868 d0c8cf0900000000
+692a578 bl       #0x390a13c // sub_390a13c
+692a57c adrp     x0, #0x9a6d000
+692a580 ldr      x0, [x0, #0x878] //  VA 9a6d878 4862cb0900000000
+692a584 bl       #0x390a13c // sub_390a13c
+692a588 mov      w8, #1
+692a58c strb     w8, [x20, #0x2c8]
+692a590 add      x0, sp, #0x1d0
+692a594 mov      w2, #0xe0
+692a598 mov      w1, wzr
+692a59c bl       #0x9682b00 // sub_9682b00
+692a5a0 ldr      w8, [x19, #0x10]
+692a5a4 ldr      x22, [x19, #0x20]
+692a5a8 cmp      w8, #1
+692a5ac b.eq     #0x692a61c
+692a5b0 mov      w0, wzr
+692a5b4 cbnz     w8, #0x692a798
+692a5b8 mov      w8, #-1
+692a5bc str      w8, [x19, #0x10]
+692a5c0 cbz      x22, #0x692a7ac
+692a5c4 ldr      w8, [x22, #0x20]
+692a5c8 str      w8, [x19, #0x28]
+692a5cc ldrb     w8, [x22, #0x40]
+692a5d0 cbz      w8, #0x692a5f0
+692a5d4 ldr      x8, [x22, #0x18]
+692a5d8 cbz      x8, #0x692a7ac
+692a5dc ldr      w1, [x8, #0x18]
+692a5e0 mov      w0, wzr
+692a5e4 mov      x2, xzr
+692a5e8 bl       #0x944e70c // sub_944e70c
+692a5ec str      w0, [x19, #0x28]
+692a5f0 ldr      x8, [x22, #0x18]
+692a5f4 cbz      x8, #0x692a7ac
+692a5f8 ldr      w9, [x22, #0x20]
+692a5fc ldr      w8, [x8, #0x18]
+692a600 mov      w20, wzr
+692a604 add      w9, w9, #1
+692a608 sdiv     w10, w9, w8
+692a60c msub     w8, w10, w8, w9
+692a610 str      w8, [x22, #0x20]
+692a614 str      wzr, [x19, #0x2c]
+692a618 b        #0x692a634 // sub_692a634
+692a61c ldr      w8, [x19, #0x2c]
+692a620 mov      w9, #-1
+692a624 str      w9, [x19, #0x10]
+692a628 add      w20, w8, #1
+692a62c str      w20, [x19, #0x2c]
+692a630 cbz      x22, #0x692a7ac
+692a634 ldr      x0, [x22, #0x18]
+692a638 cbz      x0, #0x692a7ac
+692a63c adrp     x21, #0x9aad000
+692a640 ldr      x21, [x21, #0x8d8] //  VA 9aad8d8 a8c7ce0900000000
+692a644 ldr      w1, [x19, #0x28]
+692a648 ldr      x2, [x21] //  VA 9cec7a8 13e605c000000000
+692a64c bl       #0x4604804 // sub_4604804
+692a650 cbz      x0, #0x692a7ac
+692a654 ldr      w8, [x0, #0x18]
+692a658 cmp      w20, w8
+692a65c b.ge     #0x692a790
+692a660 adrp     x8, #0x9a6d000
+692a664 ldr      x8, [x8, #0x7b0] //  VA 9a6d7b0 b8c6ca0900000000
+692a668 ldr      x0, [x8] //  VA 9cac6b8 69fa002000000000
+692a66c ldr      w8, [x0, #0xe0] //  VA 2000fb49 
+692a670 cbnz     w8, #0x692a678
+692a674 bl       #0x390a240 // sub_390a240
+692a678 mov      x0, xzr
+692a67c bl       #0x713e1dc // GameStrings.get_Instance
+692a680 ldr      x8, [x22, #0x18]
+692a684 cbz      x8, #0x692a7ac
+692a688 ldr      w1, [x19, #0x28]
+692a68c ldr      x2, [x21] //  VA 9cec7a8 13e605c000000000
+692a690 mov      x20, x0
+692a694 mov      x0, x8
+692a698 bl       #0x4604804 // sub_4604804
+692a69c cbz      x0, #0x692a7ac
+692a6a0 adrp     x8, #0x9a6b000
+692a6a4 ldr      w1, [x19, #0x2c]
+692a6a8 ldr      x8, [x8, #0x4f8] //  VA 9a6b4f8 7067cf0900000000
+692a6ac ldr      x2, [x8] //  VA 9cf6770 c90806c000000000
+692a6b0 bl       #0x4604804 // sub_4604804
+692a6b4 cbz      x20, #0x692a7ac
+692a6b8 mov      x1, x0
+692a6bc mov      x0, x20
+692a6c0 mov      x2, xzr
+692a6c4 bl       #0x71425e4 // GameStrings.GetStringWithReservedKeywords
+692a6c8 adrp     x8, #0x9a6d000
+692a6cc ldr      x8, [x8, #0x878] //  VA 9a6d878 4862cb0900000000
+692a6d0 ldr      x21, [x22, #0x10]
+692a6d4 mov      x20, x0
+692a6d8 ldr      x8, [x8] //  VA 9cb6248 0772012000000000
+692a6dc ldr      w9, [x8, #0xe0] //  VA 200172e7 
+692a6e0 cbnz     w9, #0x692a6ec
+692a6e4 mov      x0, x8
+692a6e8 bl       #0x390a240 // sub_390a240
+692a6ec add      x0, sp, #0x1d0
+692a6f0 mov      x1, x21
+692a6f4 mov      x2, x20
+692a6f8 mov      x3, xzr
+692a6fc bl       #0x7586b2c // Oak.SpeechBubbleGenerateParam..ctor
+692a700 adrp     x8, #0x9a6e000
+692a704 ldr      s0, [x22, #0x48]
+692a708 ldr      x8, [x8, #0x868] //  VA 9a6e868 d0c8cf0900000000
+692a70c add      x0, sp, #0x1c8
+692a710 str      xzr, [sp, #0x1c8]
+692a714 ldr      x1, [x8] //  VA 9cfc8d0 db7d03c000000000
+692a718 bl       #0x49f3e6c // sub_49f3e6c
+692a71c ldr      x8, [sp, #0x1c8]
+692a720 add      x9, sp, #0x145
+692a724 add      x0, sp, #0x2b0
+692a728 add      x1, sp, #0x1d0
+692a72c stur     x8, [x9, #0xff]
+692a730 ldr      w8, [x22, #0x44]
+692a734 mov      w2, #0xe0
+692a738 str      w8, [sp, #0x1e8]
+692a73c bl       #0x9682ac0 // sub_9682ac0
+692a740 mov      x0, xzr
+692a744 bl       #0x757f7cc // Oak.SpeechBubbleManager.get_Instance
+692a748 mov      x20, x0
+692a74c add      x0, sp, #0xe8
+692a750 add      x1, sp, #0x2b0
+692a754 mov      w2, #0xe0
+692a758 bl       #0x9682ac0 // sub_9682ac0
+692a75c cbz      x20, #0x692a7ac
+692a760 add      x0, sp, #8
+692a764 add      x1, sp, #0xe8
+692a768 mov      w2, #0xe0
+692a76c bl       #0x9682ac0 // sub_9682ac0
+692a770 add      x1, sp, #8
+692a774 mov      x0, x20
+692a778 mov      x2, xzr
+692a77c bl       #0x7583fe8 // Oak.SpeechBubbleManager.ShowSpeechBubbleAsync
+692a780 str      x0, [x19, #0x18]
+692a784 mov      w0, #1
+692a788 str      w0, [x19, #0x10]
+692a78c b        #0x692a798 // sub_692a798
+692a790 mov      w0, wzr
+692a794 str      xzr, [x22, #0x30]
+692a798 add      sp, sp, #0x390
+692a79c ldp      x20, x19, [sp, #0x20]
+692a7a0 ldp      x22, x21, [sp, #0x10]
+692a7a4 ldp      x29, x30, [sp], #0x30
+692a7a8 ret      
+692a7ac bl       #0x390a360 // sub_390a360

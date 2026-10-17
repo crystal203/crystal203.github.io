@@ -1,0 +1,69 @@
+8aa6538 str      x30, [sp, #-0x20]!
+8aa653c stp      x20, x19, [sp, #0x10]
+8aa6540 adrp     x20, #0xa186000
+8aa6544 ldrb     w8, [x20, #0xca5] //  VA a186ca5 
+8aa6548 mov      x19, x0
+8aa654c tbnz     w8, #0, #0x8aa657c
+8aa6550 adrp     x0, #0x9a6d000
+8aa6554 ldr      x0, [x0, #0xc40] //  VA 9a6dc40 9083ca0900000000
+8aa6558 bl       #0x390a13c // sub_390a13c
+8aa655c adrp     x0, #0x9b6c000
+8aa6560 ldr      x0, [x0, #0xdc0] //  VA 9b6cdc0 40d9cd0900000000
+8aa6564 bl       #0x390a13c // sub_390a13c
+8aa6568 adrp     x0, #0x9b6c000
+8aa656c ldr      x0, [x0, #0xdc8] //  VA 9b6cdc8 7853cb0900000000
+8aa6570 bl       #0x390a13c // sub_390a13c
+8aa6574 mov      w8, #1
+8aa6578 strb     w8, [x20, #0xca5]
+8aa657c ldr      w8, [x19, #0x10]
+8aa6580 cbnz     w8, #0x8aa6638
+8aa6584 ldr      x8, [x19, #0x20]
+8aa6588 mov      w9, #-1
+8aa658c str      w9, [x19, #0x10]
+8aa6590 cbz      x8, #0x8aa6648
+8aa6594 ldr      x9, [x8, #0x80]
+8aa6598 cbz      x9, #0x8aa6648
+8aa659c ldr      x0, [x9, #0x20]
+8aa65a0 cbz      x0, #0x8aa6648
+8aa65a4 ldr      x1, [x8, #0x88]
+8aa65a8 adrp     x8, #0x9b6c000
+8aa65ac ldr      x8, [x8, #0xdc0] //  VA 9b6cdc0 40d9cd0900000000
+8aa65b0 ldr      x2, [x8] //  VA 9cdd940 53b205c000000000
+8aa65b4 bl       #0x54270f0 // sub_54270f0
+8aa65b8 cbz      x0, #0x8aa6648
+8aa65bc adrp     x8, #0x9b6c000
+8aa65c0 ldr      x8, [x8, #0xdc8] //  VA 9b6cdc8 7853cb0900000000
+8aa65c4 ldr      x9, [x0]
+8aa65c8 ldr      x8, [x8] //  VA 9cb5378 1b66012000000000
+8aa65cc ldrb     w11, [x9, #0x130]
+8aa65d0 ldrb     w10, [x8, #0x130] //  VA 2001674b 
+8aa65d4 cmp      w11, w10
+8aa65d8 b.lo     #0x8aa6648
+8aa65dc ldr      x9, [x9, #0xc8]
+8aa65e0 add      x9, x9, x10, lsl #3
+8aa65e4 ldur     x9, [x9, #-8]
+8aa65e8 cmp      x9, x8
+8aa65ec b.ne     #0x8aa6648
+8aa65f0 ldr      x0, [x0, #0x20]
+8aa65f4 cbz      x0, #0x8aa6648
+8aa65f8 adrp     x8, #0x9a6d000
+8aa65fc ldr      x8, [x8, #0xc40] //  VA 9a6dc40 9083ca0900000000
+8aa6600 ldr      x9, [x0]
+8aa6604 ldr      x8, [x8] //  VA 9ca8390 09c5002000000000
+8aa6608 ldrb     w11, [x9, #0x130]
+8aa660c ldrb     w10, [x8, #0x130] //  VA 2000c639 
+8aa6610 cmp      w11, w10
+8aa6614 b.lo     #0x8aa6648
+8aa6618 ldr      x9, [x9, #0xc8]
+8aa661c add      x9, x9, x10, lsl #3
+8aa6620 ldur     x9, [x9, #-8]
+8aa6624 cmp      x9, x8
+8aa6628 b.ne     #0x8aa6648
+8aa662c mov      w1, wzr
+8aa6630 mov      x2, xzr
+8aa6634 bl       #0x5e4f728 // Oak.Character.RemoveEmotion
+8aa6638 ldp      x20, x19, [sp, #0x10]
+8aa663c mov      w0, wzr
+8aa6640 ldr      x30, [sp], #0x20
+8aa6644 ret      
+8aa6648 bl       #0x390a360 // sub_390a360

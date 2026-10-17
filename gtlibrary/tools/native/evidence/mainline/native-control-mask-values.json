@@ -1,0 +1,79 @@
+[
+  {
+    "name": "None",
+    "value": 0,
+    "dataOffset": 13525,
+    "bytes": "6664626e",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Move",
+    "value": 1,
+    "dataOffset": 13526,
+    "bytes": "64626e76",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Dash",
+    "value": 2,
+    "dataOffset": 13527,
+    "bytes": "626e7646",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Attack",
+    "value": 4,
+    "dataOffset": 13528,
+    "bytes": "6e764626",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Super",
+    "value": 8,
+    "dataOffset": 13529,
+    "bytes": "764626e6",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Assassination",
+    "value": 16,
+    "dataOffset": 13530,
+    "bytes": "4626e6e6",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "PartySupportBattleAction",
+    "value": 32,
+    "dataOffset": 13531,
+    "bytes": "26e6e6e7",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Throw",
+    "value": 64,
+    "dataOffset": 13532,
+    "bytes": "e6e6e766",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Hold",
+    "value": 128,
+    "dataOffset": 13534,
+    "bytes": "e766e466",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "Interact",
+    "value": 256,
+    "dataOffset": 13536,
+    "bytes": "e466e598",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  },
+  {
+    "name": "All",
+    "value": 511,
+    "dataOffset": 13538,
+    "bytes": "e5986666",
+    "encoding": "XOR66 then IL2CPP compressed signed integer (positive zigzag)"
+  }
+]

@@ -1,0 +1,771 @@
+{
+  "schema": 1,
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "registration": "0x98fb820",
+  "scriptsModule": "0x9a3b730",
+  "methodCount": 195390,
+  "typeCount": 83682,
+  "classes": [
+    {
+      "index": 12772,
+      "name": "StarPieceBehaviour",
+      "namespace": "Oak",
+      "fullName": "Oak.StarPieceBehaviour",
+      "byvalTypeIndex": 48053,
+      "fieldStart": 73065,
+      "methodStart": 110667,
+      "methodCount": 16,
+      "fieldCount": 17,
+      "token": "0x20031e2",
+      "fields": [
+        {
+          "index": 73065,
+          "name": "IsManualHidden",
+          "typeIndex": 24231,
+          "token": "0x4011d6a",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de5d60",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 73066,
+          "name": "IsHidden",
+          "typeIndex": 24231,
+          "token": "0x4011d6b",
+          "offset": 17,
+          "type": {
+            "pointer": "0x9de5d60",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 73067,
+          "name": "stateMachine",
+          "typeIndex": 39372,
+          "token": "0x4011d6c",
+          "offset": 24,
+          "type": {
+            "pointer": "0x9e31370",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 7193,
+            "name": "Oak.ManualTransitionStateMachine"
+          }
+        },
+        {
+          "index": 73068,
+          "name": "<Oak.IFieldObjectBehaviour.ResetOnWrongPosition>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x4011d6d",
+          "offset": 32,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 73069,
+          "name": "fo",
+          "typeIndex": 30797,
+          "token": "0x4011d6e",
+          "offset": 40,
+          "type": {
+            "pointer": "0x9de7a40",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 5090,
+            "name": "Oak.FieldObject"
+          }
+        },
+        {
+          "index": 73070,
+          "name": "starPiecePooledObject",
+          "typeIndex": 43068,
+          "token": "0x4011d6f",
+          "offset": 48,
+          "type": {
+            "pointer": "0x9dea700",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 8144,
+            "name": "Oak.PooledUnityObject"
+          }
+        },
+        {
+          "index": 73071,
+          "name": "hideEffectPooledObject",
+          "typeIndex": 43068,
+          "token": "0x4011d70",
+          "offset": 56,
+          "type": {
+            "pointer": "0x9dea700",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 8144,
+            "name": "Oak.PooledUnityObject"
+          }
+        },
+        {
+          "index": 73072,
+          "name": "starPiece",
+          "typeIndex": 50292,
+          "token": "0x4011d71",
+          "offset": 64,
+          "type": {
+            "pointer": "0x9dec690",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29607,
+            "name": "UnityEngine.Transform"
+          }
+        },
+        {
+          "index": 73073,
+          "name": "effect",
+          "typeIndex": 50292,
+          "token": "0x4011d72",
+          "offset": 72,
+          "type": {
+            "pointer": "0x9dec690",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29607,
+            "name": "UnityEngine.Transform"
+          }
+        },
+        {
+          "index": 73074,
+          "name": "shadow",
+          "typeIndex": 50292,
+          "token": "0x4011d73",
+          "offset": 80,
+          "type": {
+            "pointer": "0x9dec690",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29607,
+            "name": "UnityEngine.Transform"
+          }
+        },
+        {
+          "index": 73075,
+          "name": "starPieceBaseY",
+          "typeIndex": 46849,
+          "token": "0x4011d74",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9deb580",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 73076,
+          "name": "<IsAcquired>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x4011d75",
+          "offset": 88,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 73077,
+          "name": "<IsAppearHiddenEffect>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x4011d76",
+          "offset": 89,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 73078,
+          "name": "GetStarPieceSfxHandleName",
+          "typeIndex": 48363,
+          "token": "0x4011d77",
+          "offset": 96,
+          "type": {
+            "pointer": "0x9deb9e0",
+            "kind": 14,
+            "byref": false,
+            "name": "System.String"
+          }
+        },
+        {
+          "index": 73079,
+          "name": "QuestId",
+          "typeIndex": 36340,
+          "token": "0x4011d78",
+          "offset": 104,
+          "type": {
+            "pointer": "0x9de8e80",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 73080,
+          "name": "ClearedShow",
+          "typeIndex": 24231,
+          "token": "0x4011d79",
+          "offset": 108,
+          "type": {
+            "pointer": "0x9de5d60",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 73081,
+          "name": "QuestProgress",
+          "typeIndex": 36340,
+          "token": "0x4011d7a",
+          "offset": 112,
+          "type": {
+            "pointer": "0x9de8e80",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 110667,
+          "name": "get_CurrentState",
+          "token": "0x601b04c",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d05ac"
+        },
+        {
+          "index": 110668,
+          "name": "get_CurrentAction",
+          "token": "0x601b04d",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d0604"
+        },
+        {
+          "index": 110669,
+          "name": "Oak.IFieldObjectBehaviour.get_ResetOnWrongPosition",
+          "token": "0x601b04e",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d0654"
+        },
+        {
+          "index": 110670,
+          "name": "Oak.IFieldObjectBehaviour.set_ResetOnWrongPosition",
+          "token": "0x601b04f",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x80104be",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x74d065c"
+        },
+        {
+          "index": 110671,
+          "name": "get_IsAcquired",
+          "token": "0x601b050",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d0668"
+        },
+        {
+          "index": 110672,
+          "name": "set_IsAcquired",
+          "token": "0x601b051",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x80104bf",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x74d0670"
+        },
+        {
+          "index": 110673,
+          "name": "get_IsAppearHiddenEffect",
+          "token": "0x601b052",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d067c"
+        },
+        {
+          "index": 110674,
+          "name": "set_IsAppearHiddenEffect",
+          "token": "0x601b053",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x80104c0",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x74d0684"
+        },
+        {
+          "index": 110675,
+          "name": ".ctor",
+          "token": "0x601b054",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d0690"
+        },
+        {
+          "index": 110676,
+          "name": "AttachTo",
+          "token": "0x601b055",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "ifo",
+              "typeIndex": 34964,
+              "token": "0x80104c1",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x74d0724"
+        },
+        {
+          "index": 110677,
+          "name": "OnStageLoad",
+          "token": "0x601b056",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "e",
+              "typeIndex": 29581,
+              "token": "0x80104c2",
+              "type": {
+                "pointer": "0x9e0cab0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4662,
+                "name": "Oak.Event"
+              }
+            }
+          ],
+          "address": "0x74d0ae4"
+        },
+        {
+          "index": 110678,
+          "name": "DetachFrom",
+          "token": "0x601b057",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "ifo",
+              "typeIndex": 34964,
+              "token": "0x80104c3",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x74d0f58"
+        },
+        {
+          "index": 110679,
+          "name": "UpdateFrame",
+          "token": "0x601b058",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "dt",
+              "typeIndex": 46828,
+              "token": "0x80104c4",
+              "type": {
+                "pointer": "0x9deb430",
+                "kind": 12,
+                "byref": false,
+                "name": "System.Single"
+              }
+            }
+          ],
+          "address": "0x74d110c"
+        },
+        {
+          "index": 110680,
+          "name": "OnEvent",
+          "token": "0x601b059",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "e",
+              "typeIndex": 29581,
+              "token": "0x80104c5",
+              "type": {
+                "pointer": "0x9e0cab0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4662,
+                "name": "Oak.Event"
+              }
+            }
+          ],
+          "address": "0x74d1238"
+        },
+        {
+          "index": 110681,
+          "name": "HideHiddenEffect",
+          "token": "0x601b05a",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d1c6c"
+        },
+        {
+          "index": 110682,
+          "name": "ShowHiddenEffect",
+          "token": "0x601b05b",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x74d1d28"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e51db0",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 12772,
+        "name": "Oak.StarPieceBehaviour"
+      }
+    }
+  ],
+  "methods": [],
+  "usages": [],
+  "methodRanges": [
+    {
+      "start": "0x6156000",
+      "end": "0x6159000",
+      "methods": [
+        {
+          "address": "0x6156124",
+          "names": [
+            "Oak.ConditionCoordinator.IsAnyConditionExists"
+          ]
+        },
+        {
+          "address": "0x6156304",
+          "names": [
+            "Oak.ConditionCoordinator..ctor"
+          ]
+        },
+        {
+          "address": "0x61563c8",
+          "names": [
+            "Registration.Add"
+          ]
+        },
+        {
+          "address": "0x6156484",
+          "names": [
+            "Oak.ConditionHelper.EvalSingle"
+          ]
+        },
+        {
+          "address": "0x615670c",
+          "names": [
+            "Oak.ConnectionControlFlow.TryToPass"
+          ]
+        },
+        {
+          "address": "0x6157014",
+          "names": [
+            "Oak.ConnectionControlFlow.Progress"
+          ]
+        },
+        {
+          "address": "0x6157094",
+          "names": [
+            "<Progress>d__5..ctor"
+          ]
+        },
+        {
+          "address": "0x61570bc",
+          "names": [
+            "Oak.ConnectionControlFlow..cctor"
+          ]
+        },
+        {
+          "address": "0x615711c",
+          "names": [
+            "ControlFlowRegion.ToString"
+          ]
+        },
+        {
+          "address": "0x6157260",
+          "names": [
+            "ControlFlowRegion..ctor"
+          ]
+        },
+        {
+          "address": "0x6157268",
+          "names": [
+            "ControlFlowRegion.<>iFixBaseProxy_ToString"
+          ]
+        },
+        {
+          "address": "0x6157270",
+          "names": [
+            "ControlFlowData..ctor"
+          ]
+        },
+        {
+          "address": "0x6157278",
+          "names": [
+            "<Progress>d__5.System.IDisposable.Dispose"
+          ]
+        },
+        {
+          "address": "0x6157294",
+          "names": [
+            "<Progress>d__5.MoveNext"
+          ]
+        },
+        {
+          "address": "0x615768c",
+          "names": [
+            "<Progress>d__5.<>m__Finally1"
+          ]
+        },
+        {
+          "address": "0x61576b4",
+          "names": [
+            "<Progress>d__5.System.Collections.Generic.IEnumerator<System.Object>.get_Current"
+          ]
+        },
+        {
+          "address": "0x61576bc",
+          "names": [
+            "<Progress>d__5.System.Collections.IEnumerator.Reset"
+          ]
+        },
+        {
+          "address": "0x61576f4",
+          "names": [
+            "<Progress>d__5.System.Collections.IEnumerator.get_Current"
+          ]
+        },
+        {
+          "address": "0x61576fc",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour.Oak.IComponent.AttachTo"
+          ]
+        },
+        {
+          "address": "0x61577c0",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour.Oak.IComponent.DetachFrom"
+          ]
+        },
+        {
+          "address": "0x615781c",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour.Oak.IDamagedBehaviour.Damage"
+          ]
+        },
+        {
+          "address": "0x6157cbc",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour.Oak.IDamagedBehaviour.Heal"
+          ]
+        },
+        {
+          "address": "0x6157d48",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour.Oak.IDamagedBehaviour.Die"
+          ]
+        },
+        {
+          "address": "0x6157dd0",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour.Oak.IConvertDamagedBehaviour.ConvertDamage"
+          ]
+        },
+        {
+          "address": "0x6157e30",
+          "names": [
+            "Oak.ConvertSwitchDamagedBehaviour..ctor"
+          ]
+        },
+        {
+          "address": "0x6157e38",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IComponent.AttachTo"
+          ]
+        },
+        {
+          "address": "0x61581b0",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IComponent.DetachFrom"
+          ]
+        },
+        {
+          "address": "0x615841c",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IFieldObjectBehaviour.get_CurrentState"
+          ]
+        },
+        {
+          "address": "0x6158424",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IFieldObjectBehaviour.get_CurrentAction"
+          ]
+        },
+        {
+          "address": "0x615842c",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IFieldObjectBehaviour.get_ResetOnWrongPosition"
+          ]
+        },
+        {
+          "address": "0x6158434",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IFieldObjectBehaviour.set_ResetOnWrongPosition"
+          ]
+        },
+        {
+          "address": "0x6158440",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour.Oak.IEventListener.OnEvent"
+          ]
+        },
+        {
+          "address": "0x6158920",
+          "names": [
+            "Oak.ConvertSwitchFieldObjectBehaviour..ctor"
+          ]
+        },
+        {
+          "address": "0x61589b4",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IInteractable.get_IsInteractable"
+          ]
+        },
+        {
+          "address": "0x61589fc",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IInteractable.get_IconName"
+          ]
+        },
+        {
+          "address": "0x6158a44",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IInteractable.Interact"
+          ]
+        },
+        {
+          "address": "0x6158b10",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Activate"
+          ]
+        },
+        {
+          "address": "0x6158ba8",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IInteractable.CancelInteraction"
+          ]
+        },
+        {
+          "address": "0x6158c00",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IInteractable.FinishInteraction"
+          ]
+        },
+        {
+          "address": "0x6158c58",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IComponent.AttachTo"
+          ]
+        },
+        {
+          "address": "0x6158d1c",
+          "names": [
+            "Oak.ConvertSwitchInteractable.Oak.IComponent.DetachFrom"
+          ]
+        },
+        {
+          "address": "0x6158dc0",
+          "names": [
+            "<Activate>d__10..ctor"
+          ]
+        },
+        {
+          "address": "0x6158de8",
+          "names": [
+            "Oak.ConvertSwitchInteractable..ctor"
+          ]
+        },
+        {
+          "address": "0x6158df0",
+          "names": [
+            "<Activate>d__10.System.IDisposable.Dispose"
+          ]
+        },
+        {
+          "address": "0x6158df4",
+          "names": [
+            "<Activate>d__10.MoveNext"
+          ]
+        }
+      ]
+    }
+  ]
+}

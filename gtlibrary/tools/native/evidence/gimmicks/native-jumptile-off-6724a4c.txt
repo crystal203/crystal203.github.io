@@ -1,0 +1,48 @@
+6724a4c str      x30, [sp, #-0x20]!
+6724a50 stp      x20, x19, [sp, #0x10]
+6724a54 adrp     x20, #0xa177000
+6724a58 ldrb     w8, [x20, #0x4df] //  VA a1774df 
+6724a5c mov      x19, x0
+6724a60 tbnz     w8, #0, #0x6724a84
+6724a64 adrp     x0, #0x9a70000
+6724a68 ldr      x0, [x0, #0xea0] //  VA 9a70ea0 888ccb0900000000
+6724a6c bl       #0x390a13c // sub_390a13c
+6724a70 adrp     x0, #0x9a7a000
+6724a74 ldr      x0, [x0, #0xcd0] //  VA 9a7acd0 00c4db0900000000
+6724a78 bl       #0x390a13c // sub_390a13c
+6724a7c mov      w8, #1
+6724a80 strb     w8, [x20, #0x4df]
+6724a84 ldr      w8, [x19, #0x10]
+6724a88 cmp      w8, #1
+6724a8c b.eq     #0x6724acc
+6724a90 cbnz     w8, #0x6724af8
+6724a94 mov      w8, #-1
+6724a98 str      w8, [x19, #0x10]
+6724a9c adrp     x8, #0x9a70000
+6724aa0 ldr      x8, [x8, #0xea0] //  VA 9a70ea0 888ccb0900000000
+6724aa4 ldr      x0, [x8] //  VA 9cb8c88 af9a012000000000
+6724aa8 bl       #0x390a354 // sub_390a354
+6724aac fmov     s0, #1.50000000
+6724ab0 mov      x1, xzr
+6724ab4 mov      x20, x0
+6724ab8 bl       #0x3b189d0 // sub_3b189d0
+6724abc mov      w0, #1
+6724ac0 str      x20, [x19, #0x18]
+6724ac4 str      w0, [x19, #0x10]
+6724ac8 b        #0x6724afc // sub_6724afc
+6724acc ldr      x8, [x19, #0x20]
+6724ad0 mov      w9, #-1
+6724ad4 str      w9, [x19, #0x10]
+6724ad8 cbz      x8, #0x6724b08
+6724adc ldr      x0, [x8, #0x38]
+6724ae0 cbz      x0, #0x6724b08
+6724ae4 adrp     x8, #0x9a7a000
+6724ae8 ldr      x8, [x8, #0xcd0] //  VA 9a7acd0 00c4db0900000000
+6724aec mov      x2, xzr
+6724af0 ldr      x1, [x8] //  VA 9dbc400 014801a000000000 literal='off'
+6724af4 bl       #0x94106f8 // sub_94106f8
+6724af8 mov      w0, wzr
+6724afc ldp      x20, x19, [sp, #0x10]
+6724b00 ldr      x30, [sp], #0x20
+6724b04 ret      
+6724b08 bl       #0x390a360 // sub_390a360

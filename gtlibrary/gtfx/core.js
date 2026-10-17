@@ -284,6 +284,7 @@ export class FxRuntime {
       mesh.scale.copy(size).multiply(p.worldScale);
       const angles=p.startRotation.clone();
       if(m.RotationModule){const rot=m.RotationModule;angles.z+=integral(rot.curve,age,life,r[0]);if(rot.separateAxes){angles.x+=integral(rot.x,age,life,r[1]);angles.y+=integral(rot.y,age,life,r[2]);}}
+      if(m.RotationBySpeedModule){const rot=m.RotationBySpeedModule,range=rot.range||{x:0,y:1},speed=p.velocity.length(),t=THREE.MathUtils.clamp((speed-range.x)/Math.max(1e-9,range.y-range.x),0,1);angles.z+=value(rot.curve,t,r[0])*age;if(rot.separateAxes){angles.x+=value(rot.x,t,r[1])*age;angles.y+=value(rot.y,t,r[2])*age;}}
       // Unity billboard rotation is clockwise; mesh rotation uses its 3D axes.
       const spinZ=s.renderer.mode===4?angles.z:-angles.z;
       const spin=new THREE.Quaternion().setFromEuler(new THREE.Euler(angles.x,angles.y,spinZ,'ZXY'));

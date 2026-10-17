@@ -39,7 +39,9 @@ export class AudioMixer{
  }
  async effect(handle){
   if(!handle)return;
+  let options={};
   if(typeof handle==='object'){
+   options=handle;
    const key=handle.id||handle.name;
    if(handle.action==='stop'){
     this.loopGeneration.set(key,(this.loopGeneration.get(key)||0)+1);const loop=this.loops.get(key);
@@ -56,7 +58,7 @@ export class AudioMixer{
   // Match the existing per-dispatch duplicate suppression, before asynchronous loads.
   if(this.pendingSounds.has(handle))return;this.pendingSounds.add(handle);queueMicrotask(()=>this.pendingSounds.delete(handle));
   try{const spec=await this.spec(handle),b=await this.buffer(spec.Name||handle);if(this.context.state==='closed')return;
-   const source=this.context.createBufferSource(),volume=this.context.createGain();source.buffer=b;volume.gain.value=spec.Volume??1;source.playbackRate.value=spec.Pitch??1;source.connect(volume);volume.connect(this.gain);this.sources.add(source);source.onended=()=>{this.sources.delete(source);source.disconnect();volume.disconnect();};source.start();
+   const source=this.context.createBufferSource(),volume=this.context.createGain(),level=options.volume??spec.Volume??1,fadeIn=options.fadeIn??0;source.buffer=b;volume.gain.value=level;if(fadeIn>0){const now=this.context.currentTime;volume.gain.setValueAtTime(0,now);volume.gain.linearRampToValueAtTime(level,now+fadeIn);}source.playbackRate.value=options.pitch??spec.Pitch??1;source.connect(volume);volume.connect(this.gain);this.sources.add(source);source.onended=()=>{this.sources.delete(source);source.disconnect();volume.disconnect();};source.start();
   }catch(e){if(this.context.state!=='closed')this.onError(e);}
  }
  setEnabled(value){this.enabled=!!value;this.gain.gain.value=this.enabled?this.volume:0;}

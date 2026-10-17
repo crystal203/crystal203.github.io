@@ -1176,5 +1176,66 @@
     "tipPositionCall": "5eb5888..5eb58a0 / 5eb55f4..5eb560c",
     "tipRotation": "5eb58a8..5eb5900 Quaternion.AngleAxis(swayAngle, Vector3.forward)",
     "calculator": "88b4f00..88b5394"
+  },
+  "revision11": {
+    "attackDirection": {
+      "source": "ManualKnightBattleAction.lua: action_state_class.enter/exit",
+      "behavior": "set_locked_dir on enter; remove_locked_dir on exit; stinger effect position tracks the weapon slot."
+    },
+    "particleUV": {
+      "source": "Mobile/Particles/Additive native shader vec3 in_TEXCOORD0; fx_swordslash_simple_new 2x5 sheet",
+      "fix": "Apply per-particle sheet UVs to vec2/vec3/vec4 input, preserving non-XY components."
+    },
+    "slashRotation": {
+      "source": "GetSlashRotation @0x75a8054; DirectionExtensions.ToDirection @0x713d820",
+      "katanaMask": 9,
+      "katanaReverseMask": 6,
+      "localZRoll": 180
+    },
+    "partyBattle": {
+      "source": [
+        "CharacterControllerPartyBattlePrepareState.MoveToPosition @0x601f308",
+        "PartyFollowState.LateUpdateFrameFree @0x6023634",
+        "GetBattlePositionForPartyMember @0x6a1fd14"
+      ],
+      "nativeJumpDistanceThreshold": 5,
+      "fix": "Prepare an inside-zone target; discard the Snake queue during battle and Free follow the current leader.",
+      "limitation": "Battle preparation uses the current shared jump curve (.45 seconds, .7 height); exact native battle-jump trajectory is not yet certified."
+    },
+    "minimap": {
+      "source": "FieldUIMiniMap.SetMinimapLayer @0x6440d28; MiniMapData.AddWallMap @0x687725c",
+      "floorColor": "0xc048d7ad",
+      "wallColor": "0xc01d645b",
+      "wallAdjacency": 8,
+      "wallCells": "Expanded original mergedWalls from tilemap binary; unknown cells stay transparent."
+    },
+    "treasure": {
+      "source": "TilemapUtil.GetTreasureBoxOpenedCount @0x765668c",
+      "objects": [
+        "mole_glove_box",
+        "sword",
+        "shield",
+        "costume"
+      ],
+      "exclude": "socket_chest1 has no native item/treasure behavior."
+    },
+    "doors": {
+      "source": "native rescue-entry DoorCloseEvent @0x7078818/@0x7078884",
+      "fix": "No reopening at scene end; clean stale opened flags on restore."
+    },
+    "runCollision": {
+      "source": [
+        "DefaultWallCrash @0x66a3550",
+        "NPCCrashBehaviour.KnockBack @0x62b8de8",
+        "NPCCrashBehaviour.Deviate @0x62b95a8"
+      ],
+      "bounceDistance": 0.6000000238418579,
+      "bounceTime": 0.3499999940395355,
+      "bounceJump": 0.3100000023841858,
+      "npcDeviation": 0.25,
+      "npcOutAndBack": 0.11999999731779099,
+      "limitation": "NPC color-pulse interpolation and all native smoke emission conditions are not yet frame-certified."
+    },
+    "verification": "Minimal targeted logic smoke plus one browser smoke; no full-level or frame-by-frame parity claim."
   }
 }

@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "factories": [
+    {
+      "factory": "0x8aa5b7c",
+      "factoryNames": [
+        "ScreenplayObjectEmotion.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x200218f3",
+            "kind": 18,
+            "index": 68729,
+            "pointer": "0x9ea0180",
+            "byref": false,
+            "definitionIndex": 516,
+            "name": "<Operation>d__4"
+          },
+          "definitionIndex": 516,
+          "name": "<Operation>d__4",
+          "start": "0x8aa5f8c",
+          "end": "0x8aa6218",
+          "bodyFile": "basic-operation-iterators-8aa5f8c.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x8aa62d4",
+      "factoryNames": [
+        "ScreenplayObjectRemoveEmotion.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x20021909",
+            "kind": 18,
+            "index": 68740,
+            "pointer": "0x9ea0230",
+            "byref": false,
+            "definitionIndex": 518,
+            "name": "<Operation>d__2"
+          },
+          "definitionIndex": 518,
+          "name": "<Operation>d__2",
+          "start": "0x8aa6538",
+          "end": "0x8aa664c",
+          "bodyFile": "basic-operation-iterators-8aa6538.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x89babb0",
+      "factoryNames": [
+        "ScreenplayObjectPosition.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x20021903",
+            "kind": 18,
+            "index": 68737,
+            "pointer": "0x9ea0200",
+            "byref": false,
+            "definitionIndex": 492,
+            "name": "<Operation>d__6"
+          },
+          "definitionIndex": 492,
+          "name": "<Operation>d__6",
+          "start": "0x89bad8c",
+          "end": "0x89bb784",
+          "bodyFile": "basic-operation-iterators-89bad8c.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x8ab2d14",
+      "factoryNames": [
+        "ScreenplayObjectActivate.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x200218d7",
+            "kind": 18,
+            "index": 68715,
+            "pointer": "0x9ea00a0",
+            "byref": false,
+            "definitionIndex": 547,
+            "name": "<Operation>d__3"
+          },
+          "definitionIndex": 547,
+          "name": "<Operation>d__3",
+          "start": "0x8ab2fd4",
+          "end": "0x8ab3288",
+          "bodyFile": "basic-operation-iterators-8ab2fd4.txt"
+        }
+      ]
+    }
+  ]
+}

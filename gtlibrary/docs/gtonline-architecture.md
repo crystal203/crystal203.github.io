@@ -1,59 +1,56 @@
 # GTOnline 架构与多关卡扩展边界
 
-当前 GTOnline 是建立在 gtmap 渲染核心上的 1-1 可玩适配，尚不是任意关卡配置即可自动运行的通用引擎。1-1 的世界规则、交互和剧情已有大量源数据绑定，仍有明确的单关硬编码。扩展更多关卡应沿现有边界提取共性，避免把各关脚本继续堆进 `game.js`。
+GTOnline 现在按“通用游戏服务 + 关卡模块 + 原生 manifest”组织。1-1 可玩；1-2 仍是明确标注的地图预览，完整原生剧情尚未完成。接入更多关卡不能把其专用剧情继续堆进公共引擎。
 
-## 当前调用链
+## 调用链
 
 ```text
-index.html / library.js
-  ├─ apps/audio → gtaudio catalog / HTMLAudioElement
-  └─ apps/online/app.js → stage-1-1.json → OnlineGame
-                          ├─ gtmap/core.js → 地图/机关/人物/特效
-                          ├─ MapCollision → 场景碰撞与走位
-                          ├─ MapEventPlayer → 可逆时间轴、对白/选择/移动等待
-                          ├─ NativeStageUI / NativeFieldUI → 原生 UI 呈现
-                          ├─ native-motion / item-motion → 物理、倒吊与物品公式
-                          ├─ progress → flag、采集、存档迁移、触发条件
-                          └─ StageAudio → gtaudio AudioMixer / AudioBank
+apps/online/app.js
+  ├─ gtonline/assets/catalog.json → stages/registry.js
+  │   ├─ stage-1-1.json + stages/inn.js → InnGame
+  │   └─ stage-1-2.json + stages/forest-entrance.js → ForestEntranceGame（preview）
+  └─ OnlineGame 通用服务
+      ├─ gtmap/core.js / collision.js / event-player.js
+      ├─ progress.js / loadout.js / native-party.js
+      ├─ NativeStageUI / NativeFieldUI / StageMiniMap
+      └─ StageAudio → gtaudio
 ```
 
-| 模块 | 责任及所有者 |
+| 模块 | 责任 |
 | --- | --- |
-| `apps/online/app.js` | 启动/继续/暂停/退出、键盘触屏输入、页面和地图 HUD，持有 runtime/game/audio/UI 生命周期 |
-| `gtonline/game.js` | 可玩规则、actor/world 绑定、战斗、互动、场景启动及 gameActions，拥有进度状态和游戏时钟 |
-| `gtonline/progress.js` | fresh/restore、收集/flag、nextScene/doorOpen；目前 SAVE_KEY 和若干条件限定 1-1 |
-| `gtonline/assets/stage-1-1.json` | 出生点、演员、marker/region、物件/碰撞、场景/分支、原生公式及来源哈希 |
-| `gtmap/core.js` | 通用 Three.js 渲染和资源加载，暴露 setWorld*/setActor*/playWorldGimmick/collectWorldItem 等接口 |
-| `gtmap/event-player.js` | 通用演出采样、baseline/还原、动作等待、选择/对白暂停、媒体时间轴；不直接提交任务 flag |
-| `gtmap/characters.js / character-motion.js` | Spine 轨道、原生动作和位移/震动/举起计算 |
-| `gtmap/collision.js` | 静态/动态碰撞、路径搜索及高程移动 |
-| `gtonline/native-ui.js / native-field-ui.js` | 原生 prefab/图集/曲线驱动的选择、旁白、通知、引导和物品说明 |
-| `gtonline/native-motion.js / item-motion.js` | 1-1 使用的 RopeSway/RopeLift/PhysicsDistance、Drop/Consume 等原生公式 |
-| `gtaudio/core.js` | 共享内码/handle 解析、解码缓存、BGM/音效/循环音及释放 |
+| `apps/online/app.js` | 选关、启动携带配置、继续/暂停/退出、输入和 HUD；拥有 runtime/game/audio/UI 生命周期 |
+| `stages/registry.js` | 白名单模块注册、延迟 import、manifest 校验和宝物统计；不判断任务条件 |
+| `gtonline/game.js` | actor/world 绑定、通用移动、物件交互、战斗服务、演出调度、保存和资源释放 |
+| `stages/inn.js` | 1-1 罗兰茵、三人组、巨龙、追逐、陷阱、绳索及其演出挂钩 |
+| `stages/inn-progress.js` | 1-1 触发条件与旧剧情版本迁移 |
+| `stages/forest-entrance.js` | 1-2 控制器适配的入口；目前仅预览，拒绝未实现的教学宝箱和关卡通关 |
+| `stages/forest-entrance/butterfly-guide.js` | 蝴蝶原生瞬态触发锁、初始化和实际起点的路线时长；由关卡入口组合，不依赖公共引擎中的关卡判断 |
+| `progress.js` | 按关卡隔离的 schema/坐标/世界状态验证与通用恢复；不推断专属剧情角色加入 |
+| `loadout.js` | 可带入道具白名单、去重和能力查询；不伪造收集或剧情进度 |
+| `assets/stage-*.json` | 原生地图、演员、物件、条件数据、时间轴、公式、来源哈希与未决项 |
+| `gtmap/*` | 共享渲染、碰撞、Spine、动作与可逆时间轴；不直接提交任务 flag |
+| `gtaudio/*` | 共用目录、解码缓存、SoundHandle 和播放/释放；不反向依赖关卡 |
 
-## 数据流和状态约束
+## 关卡扩展契约
 
-地图数据和网页资源通过 GTResources/GTDelivery 读取；重型资源只在选定关卡或演员时加载。WebGL 材质/纹理、临时演员和音频由创建它们的 runtime/application 销毁，离开 iframe 走 GTBridge.dispose。音频库不反向依赖 gtonline；源码证据和生成器只在离线构建时使用。
+关卡类继承 OnlineGame，覆盖有限的生命周期和规则入口：`migrateProgress`、`prepareStage`、`enterStage`、`updateStage/updateStory`、`nextScene`、`beforeScene/afterScene/afterBackgroundScene`、`beforeBattle/afterBattle/battleSpec/battleTriggers`、`canInteract/canExit`、`handleStageAction`、`quest/questMarkers/stageSnapshot`、`disposeStage`。默认实现不含关卡 ID 或角色专用分支；未知 gameAction 抛错。新增挂钩必须说明其复用价值，避免为单条剧情无限扩大公共接口。
 
-OnlineGame 的 `applyWorld` 将可保存进度投影到当前可见性、碰撞和机关状态。副作用必须用“原状态→新状态”触发，不能每次投影重复播放音效/动画。初始化和 still 恢复不应重演交互；本次门音效即在此边界修复。
+时间轴 plan 从 manifest 复制，交给 MapEventPlayer；动态 anchor 与路径可在关卡模块适配。普通剧情锁输入，`blocking:false` 演出与玩家并发。场景开始 flag 的历史策略由 `onSceneStarted` 显式覆盖：1-1 保持旧行为；1-2 不把未播放完的后台演出提前视为完成。
 
-`scene()` 从关卡 manifest 复制 plan，再解析动态 anchor/route，预热资源，交给 MapEventPlayer。普通剧情锁输入；blocking=false 的追逐与玩家并发。时间轴通过 gameActions 请求游戏级行为，游戏保存世界结果。选择分支 preserve baseline，动作完成等待使用 motion ID；UI 读状态而不额外生成第二套选择逻辑。
+通用服务只接收原生行为类型、对象数据或关卡挂钩的结果。不用公共引擎里的 `stage.id` 判断来实现新关卡，不让共享渲染或音频层认识罗兰茵、白兽或教学剧情。原生 C# 控制器的瞬态字段、持久任务状态、条件 AND/OR 和回调顺序应在对应关卡模块恢复，不能仅把所有事件 JSON 连续播放。
 
-存档保留世界结果，不序列化 WebGL 对象、AudioNode、异步 promise 或人物临时引用。恢复必须按关卡版本迁移，并重建世界；不允许仅看通用 version=1 就将不同关卡的 flag 混用。
+## 存档、携带与生命周期
 
-## 新增关卡前需提取的边界
+存档键为 `gtonline.<stage.id>.v<saveSchema>`。旧 1-1 键仍是 `gtonline.1-1.v1`；恢复同时验证 schema、map、可选 stageId 和数值字段，然后由关卡模块迁移专属剧情版本。无 storyVersion 的旧 1-1 存档仍需迁移，不能由通用 fresh 状态提前填入当前剧情版本而跳过。
 
-1. **关卡注册表/入口**：目前 app 直接读取 stage-1-1.json，HUD 总数 26/3/4、标题和返回逻辑含 1-1 假设。新增 stage registry，用 manifest 提供统计/章节/地图/资源版本，路由接收 stage ID。
-2. **保存命名空间**：SAVE_KEY 目前固定 gtonline.1-1.v1。按 stage ID + schema 生成键，迁移必须区分剧情 revision；保留已有 1-1 存档兼容。
-3. **原生事件适配器**：把 maiden、trio、goblin、gloves 等 handle 专用逻辑移到该关适配模块；通用引擎提供事件、条件和动作注册，不在公共核心按关卡名分支。
-4. **条件和世界行为**：收集、火盆、开门、开关、宝箱、npc collider、后台演员准备等按原生行为类型驱动。条件要保留原生 AND/OR、进入半径和保存策略，不能只换触发框位置。
-5. **演出编译器**：复用 `tools/gtmap/native-scene-recorder.lua` 与 build-world-native-scenes 的受限 trace；对 native override 使用显式编译适配和证据账本。所有未知调用列入 coverage，禁止静默省略。
-6. **UI 与声音契约**：UI 文本/图标/曲线来自原生资源；音频统一使用 gtAudio 内码和 SoundHandleSpec，关卡只描述时点/状态。完整 Unity Mixer DSP 仍是独立待补能力。
+开局携带的 `loadout` 单独保存，鼹鼠拳套 30017 通过能力查询赋予 `gloves`。它不等于已经打开原生宝箱，也不增加 collected 或故事 flag。继续冒险使用存档配置，新冒险使用选关页配置；各关卡互不继承。
 
-这些是后续扩展的具体工作项，本次没有用“通用重构”的名义替换尚未厘清的剧情规则。现有 `tools/native/evidence/stage-1-1-ledger.json` 记录当前 15 个场景及分支、动作和未决项，后续可按同一格式加入其他关卡。
+`applyWorld` 将可保存进度投影到可见性、碰撞和机关状态；音效/动画副作用只在状态转换时触发。存档不序列化 WebGL 对象、AudioNode、promise 或临时人物引用。runtime/application 销毁所创建的资源；关卡模块清理自己创建的服务。离开 iframe 通过 GTBridge.dispose，异步加载取消或忽略旧结果。
 
-## 最小接入顺序
+## 原生证据与验收
 
-先定位新关卡原生 stage/map/event/脚本和实际入口，生成版本化 manifest 与 coverage；再确认其所需行为是否已有通用实现。仅为缺失原生行为扩展核心，随后编译所有场景/分支，集中走关键触发链路。最后更新缓存版本、登记证据和提交。详见 [剧情复刻流程](native-story-workflow.md) 与 [资料工作台](native-workbench.md)。
+地图和网页资源经 GTResources/GTDelivery 按需读取。原生解析器、反汇编、编译器和证据账本只参与离线构建。先恢复控制器状态/条件/回调图，再编译场景与分支；未知行为必须列入 pending 或令构建失败，禁止静默忽略。
 
-当前寻路 tie-break、随机序列、部分 UI 字体度量和完整音频 DSP 等尚未认证为原版等价。架构文档和静态账本只提高检索/实现效率，不代表已验收 1-1 的“0 差别”。
+1-2 的生成命令、实际调查范围和未完成列表见 [1-2 接入记录](native-online-stage-1-2.md)。复用 [剧情复刻流程](native-story-workflow.md) 和 [资料工作台](native-workbench.md)，新增关卡先生成来源明确的 manifest 和账本，再实现缺失规则，最后做关键分支、重进与逐帧对照。
+
+当前寻路 tie-break、随机序列、部分 UI 字体度量和完整音频 DSP 等仍未认证原版等价。测试和账本不能替代原生运行验收；1-1 与 1-2 均不得凭静态检查宣称“0 差别”。

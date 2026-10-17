@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "registration": "0x98fb820",
+  "scriptsModule": "0x9a3b730",
+  "methodCount": 195390,
+  "typeCount": 83682,
+  "classes": [
+    {
+      "index": 3313,
+      "name": "DisabledControls",
+      "namespace": "Oak",
+      "fullName": "Oak.DisabledControls",
+      "byvalTypeIndex": 28670,
+      "fieldStart": 21972,
+      "methodStart": -1,
+      "methodCount": 0,
+      "fieldCount": 12,
+      "token": "0x2000cf2",
+      "fields": [
+        {
+          "index": 21972,
+          "name": "value__",
+          "typeIndex": 36359,
+          "token": "0x40055d5",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de8fb0",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 21973,
+          "name": "None",
+          "typeIndex": 28674,
+          "token": "0x40055d6",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21974,
+          "name": "Move",
+          "typeIndex": 28674,
+          "token": "0x40055d7",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21975,
+          "name": "Dash",
+          "typeIndex": 28674,
+          "token": "0x40055d8",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21976,
+          "name": "Attack",
+          "typeIndex": 28674,
+          "token": "0x40055d9",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21977,
+          "name": "Super",
+          "typeIndex": 28674,
+          "token": "0x40055da",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21978,
+          "name": "Assassination",
+          "typeIndex": 28674,
+          "token": "0x40055db",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21979,
+          "name": "PartySupportBattleAction",
+          "typeIndex": 28674,
+          "token": "0x40055dc",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21980,
+          "name": "Throw",
+          "typeIndex": 28674,
+          "token": "0x40055dd",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21981,
+          "name": "Hold",
+          "typeIndex": 28674,
+          "token": "0x40055de",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21982,
+          "name": "Interact",
+          "typeIndex": 28674,
+          "token": "0x40055df",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        },
+        {
+          "index": 21983,
+          "name": "All",
+          "typeIndex": 28674,
+          "token": "0x40055e0",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9e09550",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 3313,
+            "name": "Oak.DisabledControls"
+          }
+        }
+      ],
+      "methods": [],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e09510",
+        "kind": 17,
+        "byref": false,
+        "definitionIndex": 3313,
+        "name": "Oak.DisabledControls"
+      }
+    }
+  ],
+  "methods": [],
+  "usages": [],
+  "methodRanges": []
+}

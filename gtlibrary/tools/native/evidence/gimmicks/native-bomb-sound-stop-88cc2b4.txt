@@ -1,0 +1,56 @@
+88cc2b4 str      x30, [sp, #-0x20]!
+88cc2b8 stp      x20, x19, [sp, #0x10]
+88cc2bc mov      x19, x0
+88cc2c0 mov      w0, #0x7a3
+88cc2c4 mov      x1, xzr
+88cc2c8 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+88cc2cc tbz      w0, #0, #0x88cc2f4
+88cc2d0 mov      w0, #0x7a3
+88cc2d4 mov      x1, xzr
+88cc2d8 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+88cc2dc cbz      x0, #0x88cc330
+88cc2e0 mov      x1, x19
+88cc2e4 ldp      x20, x19, [sp, #0x10]
+88cc2e8 mov      x2, xzr
+88cc2ec ldr      x30, [sp], #0x20
+88cc2f0 b        #0x85d8740 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_552
+88cc2f4 ldr      w20, [x19, #4]
+88cc2f8 mov      x0, xzr
+88cc2fc bl       #0x889cab4 // Oak.MusicPlayer.get_Instance
+88cc300 cbz      x0, #0x88cc330
+88cc304 ldr      w1, [x19]
+88cc308 cmp      w20, #1
+88cc30c b.ne     #0x88cc320
+88cc310 ldp      x20, x19, [sp, #0x10]
+88cc314 mov      x2, xzr
+88cc318 ldr      x30, [sp], #0x20
+88cc31c b        #0x88a283c // Oak.MusicPlayer.StopSfx
+88cc320 ldp      x20, x19, [sp, #0x10]
+88cc324 mov      x2, xzr
+88cc328 ldr      x30, [sp], #0x20
+88cc32c b        #0x88a5708 // Oak.MusicPlayer.StopVoice
+88cc330 bl       #0x390a360 // sub_390a360
+88cc334 stp      x30, x19, [sp, #-0x10]!
+88cc338 mov      x19, x0
+88cc33c mov      w0, #0x41c9
+88cc340 mov      x1, xzr
+88cc344 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+88cc348 tbz      w0, #0, #0x88cc36c
+88cc34c mov      w0, #0x41c9
+88cc350 mov      x1, xzr
+88cc354 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+88cc358 cbz      x0, #0x88cc388
+88cc35c mov      x1, x19
+88cc360 mov      x2, xzr
+88cc364 ldp      x30, x19, [sp], #0x10
+88cc368 b        #0x8600858 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_1228
+88cc36c mov      x0, xzr
+88cc370 bl       #0x889cab4 // Oak.MusicPlayer.get_Instance
+88cc374 cbz      x0, #0x88cc388
+88cc378 ldr      w1, [x19]
+88cc37c mov      x2, xzr
+88cc380 ldp      x30, x19, [sp], #0x10
+88cc384 b        #0x88a5434 // Oak.MusicPlayer.IsVoiceSourcePending
+88cc388 bl       #0x390a360 // sub_390a360
+88cc38c ldr      x0, [x0, #0x30]
+88cc390 ret      

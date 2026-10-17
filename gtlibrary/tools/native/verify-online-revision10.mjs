@@ -1,11 +1,12 @@
+import {restoreInn as restore} from '../../gtonline/stages/inn-progress.js';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import * as THREE from '../../vendor/three.module.js';
 import {MapCollision} from '../../gtmap/collision.js';
 import {NativePartyFollow,PARTY_SPACING,followSpeed} from '../../gtonline/native-party.js';
-import {fresh,restore} from '../../gtonline/progress.js';
+import {fresh} from '../../gtonline/progress.js';
 import {StageMiniMap} from '../../gtonline/native-minimap.js';
-import {OnlineGame} from '../../gtonline/game.js';
+import {InnGame as OnlineGame} from '../../gtonline/stages/inn.js';
 import {MapCharacters} from '../../gtmap/characters.js';
 const stage=JSON.parse(await readFile(new URL('../../gtonline/assets/stage-1-1.json',import.meta.url),'utf8'));
 const saved=fresh(stage);saved.flags=['opening','section_5'];saved.explored=['1,-2','-3,4','nonsense'];const migrated=restore(stage,saved);assert.deepEqual(migrated.party.map(m=>m.handle),['leader','maiden']);assert.deepEqual(migrated.explored,['1,-2','-3,4']);migrated.party.push({handle:'maiden',health:99,maxHealth:100},{handle:'trio_panda',health:100,maxHealth:100});assert.equal(restore(stage,JSON.stringify(migrated)).party.length,2);assert.equal(followSpeed(100,.05),8);assert.equal(followSpeed(-1,.05),0);assert.equal(followSpeed(100,.05,10),10);

@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "stage": "1-2",
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "nativeMainQuest": {
+    "id": 27,
+    "section": 8,
+    "innerProgressBefore": 7,
+    "innerProgressAfter": 8,
+    "resource": "ForestMainNew.json:section_8",
+    "callbacks": [
+      "DropPhone",
+      "GetPhone",
+      "PhoneCall"
+    ],
+    "phoneItem": 20017,
+    "followerId": 13
+  },
+  "tutorial": {
+    "states": {
+      "Began": 0,
+      "SlimesEliminated": 1,
+      "Equipped": 2,
+      "WaitingForSuper": 3,
+      "Cleared": 4
+    },
+    "box": "super_tutorial_box",
+    "item": 9010020,
+    "level": 4,
+    "DontFinish": true,
+    "group": "super_tutorial_goblins",
+    "doors": [
+      "super_tutorial_door_1",
+      "super_tutorial_door_2"
+    ],
+    "disabledControlsMask": 23,
+    "DontMovePartyOnBattleStart": true,
+    "loadStateSource": "OnStageLoad 738d8cc..738d9f4: box IsOpened ? Cleared : Began"
+  },
+  "sources": [
+    {
+      "path": "mainline/native-mainline-entry.json",
+      "sha256": "9035100cdd77a8956117cf2fdb34b411fe215951b28e88b60fde658f3ea80af3"
+    },
+    {
+      "path": "mainline/native-mainline-entry-707b23c.txt",
+      "sha256": "d70467c9166f8517c610de8ec5d500dec75cb35f41dac10f4c8236f0b0afaea7"
+    },
+    {
+      "path": "mainline/native-mainline-routines.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "mainline/native-mainline-routines-707c018.txt",
+      "sha256": "66695c6b7d81c64c5be6dd8c62203cb23295aa4d135ede2a5b317e3c69558154"
+    },
+    {
+      "path": "mainline/tutorial-registered.json",
+      "sha256": "e351d38e0e76cb73ad2e1ef7462c5896f8865b9d27c7b554f60dc6154f6e8806"
+    },
+    {
+      "path": "mainline/tutorial-registered-738db64.txt",
+      "sha256": "70e44f1e123f70aaf4a01499cf56cde19de3c477ea5f662c15f349e59c529366"
+    },
+    {
+      "path": "mainline/tutorial-registered-738ebe4.txt",
+      "sha256": "77185496cf2002327299038f6af7e9c0efbc13d6d596924bcfe56afb0d519482"
+    },
+    {
+      "path": "mainline/tutorial-registered-7390468.txt",
+      "sha256": "1403b2338336aa841bb965efb5347a4d9627b19cb95ed4ae0972e42afe6a39f6"
+    },
+    {
+      "path": "mainline/native-jump-contact-fields.json",
+      "sha256": "5a9f75be83042eb455bcd5229da591283c8ab1cbf0fb187f810583d345cbc99a"
+    },
+    {
+      "path": "mainline/native-tutorial-control.json",
+      "sha256": "22e084290418304f530b5154f780ec14b56e8d18f0e6921ae0f785532e7ce067"
+    },
+    {
+      "path": "mainline/native-disabled-controls.json",
+      "sha256": "7c8402a40185ffb03ef4074a4891c8026ff24336d1afbb85d026749e03a23fc5"
+    },
+    {
+      "path": "mainline/native-control-mask-values.json",
+      "sha256": "ba34dad95efe1ebce1e38a7e87b857878c947fac826c66b78a70a427d96ef57f"
+    },
+    {
+      "path": "mainline/native-door-explicit-events.json",
+      "sha256": "e2ec88bf2b4a963494d7f04bd3d4a64abac6468f9454a9bdad51f3a9427039f1"
+    },
+    {
+      "path": "mainline/native-door-explicit-events-6307908.txt",
+      "sha256": "bafb4f47cba43aac60420428f6efd5863892c30069adc29c34ca1c3be8350dca"
+    },
+    {
+      "path": "mainline/native-door-explicit-events-6305700.txt",
+      "sha256": "ed7ff2561b22abb2fb9a14079c5ca7313efc4cb6aa066f3f9928cb85425156d0"
+    },
+    {
+      "path": "mainline/native-door-explicit-events-6341668.txt",
+      "sha256": "217e35fe2903e8385752b03567c5f65e99c2bec4e8c52dea6d9bd717fefecfc1"
+    },
+    {
+      "path": "mainline/native-tutorial-load.json",
+      "sha256": "a458651e5ba3d746b100954a83ed4e2bfaa812f3e44d81d14008383ed1d2a466"
+    },
+    {
+      "path": "mainline/native-tutorial-load-738d4cc.txt",
+      "sha256": "96d676b18bf983f954d3249d10df9483bb02ab6b2e26785d4bc92b1028795339"
+    }
+  ],
+  "storyParityCertified": false,
+  "limitations": [
+    "SNS UI currently uses the existing narration surface rather than the original SNS panel.",
+    "Tutorial equipment recommendation, original-weapon comparison/choice and exact native spawn coroutine branches still require audit.",
+    "Combat services retain their existing simplified HP/damage/AI limits; cyclone skill lacks its original FX and complete mana rules.",
+    "PetNew optional quest/trap is not enabled by guessed timelines; its native source has been extracted for the next pass."
+  ]
+}

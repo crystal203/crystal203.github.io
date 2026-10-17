@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "factories": [
+    {
+      "factory": "0x89ae818",
+      "factoryNames": [
+        "ScreenplayDo.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x200218bd",
+            "kind": 18,
+            "index": 68702,
+            "pointer": "0x9e9ffd0",
+            "byref": false,
+            "definitionIndex": 472,
+            "name": "<Operation>d__2"
+          },
+          "definitionIndex": 472,
+          "name": "<Operation>d__2",
+          "start": "0x89aedec",
+          "end": "0x89af1d8",
+          "bodyFile": "portable-iterators-89aedec.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x89af8e8",
+      "factoryNames": [
+        "ScreenplaySequence.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x20021957",
+            "kind": 18,
+            "index": 68779,
+            "pointer": "0x9ea04a0",
+            "byref": false,
+            "definitionIndex": 474,
+            "name": "<Operation>d__2"
+          },
+          "definitionIndex": 474,
+          "name": "<Operation>d__2",
+          "start": "0x89b0004",
+          "end": "0x89b068c",
+          "bodyFile": "portable-iterators-89b0004.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x89b7ac4",
+      "factoryNames": [
+        "ScreenplayObjectDo.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x200218ed",
+            "kind": 18,
+            "index": 68726,
+            "pointer": "0x9ea0150",
+            "byref": false,
+            "definitionIndex": 486,
+            "name": "<Operation>d__4"
+          },
+          "definitionIndex": 486,
+          "name": "<Operation>d__4",
+          "start": "0x89b8140",
+          "end": "0x89b8c84",
+          "bodyFile": "portable-iterators-89b8140.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x89b8d70",
+      "factoryNames": [
+        "ScreenplayObjectSequence.Operation"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x20021915",
+            "kind": 18,
+            "index": 68746,
+            "pointer": "0x9ea0290",
+            "byref": false,
+            "definitionIndex": 488,
+            "name": "<Operation>d__4"
+          },
+          "definitionIndex": 488,
+          "name": "<Operation>d__4",
+          "start": "0x89b9548",
+          "end": "0x89ba37c",
+          "bodyFile": "portable-iterators-89b9548.txt"
+        }
+      ]
+    },
+    {
+      "factory": "0x6929c4c",
+      "factoryNames": [
+        "Oak.NPCInteractable.ShowMessageRoutine"
+      ],
+      "iterators": [
+        {
+          "usage": {
+            "word": "0x200201bf",
+            "kind": 18,
+            "index": 65759,
+            "pointer": "0x9e94b70",
+            "byref": false,
+            "definitionIndex": 7650,
+            "name": "<ShowMessageRoutine>d__42"
+          },
+          "definitionIndex": 7650,
+          "name": "<ShowMessageRoutine>d__42",
+          "start": "0x692a514",
+          "end": "0x692a7b0",
+          "bodyFile": "portable-iterators-692a514.txt"
+        }
+      ]
+    }
+  ]
+}

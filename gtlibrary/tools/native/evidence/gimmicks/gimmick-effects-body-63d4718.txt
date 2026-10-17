@@ -1,0 +1,109 @@
+63d4718 sub      sp, sp, #0xf0
+63d471c stp      d9, d8, [sp, #0xc0]
+63d4720 str      x30, [sp, #0xd0]
+63d4724 stp      x20, x19, [sp, #0xe0]
+63d4728 mov      v9.16b, v0.16b
+63d472c mov      x20, x1
+63d4730 mov      x19, x0
+63d4734 movi     v0.2d, #0000000000000000
+63d4738 mov      w0, #0x25f8
+63d473c mov      x1, xzr
+63d4740 mov      v8.16b, v1.16b
+63d4744 str      xzr, [sp, #0xb0]
+63d4748 stp      q0, q0, [sp, #0x90]
+63d474c str      q0, [sp, #0x80]
+63d4750 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63d4754 tbz      w0, #0, #0x63d4784
+63d4758 mov      w0, #0x25f8
+63d475c mov      x1, xzr
+63d4760 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63d4764 cbz      x0, #0x63d4858
+63d4768 mov      x1, x19
+63d476c mov      x2, x20
+63d4770 mov      v0.16b, v9.16b
+63d4774 mov      v1.16b, v8.16b
+63d4778 mov      x3, xzr
+63d477c bl       #0x86141a4 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_1529
+63d4780 b        #0x63d4844 // sub_63d4844
+63d4784 add      x0, sp, #0x80
+63d4788 fmov     s2, #1.00000000
+63d478c mov      x1, x20
+63d4790 mov      v0.16b, v9.16b
+63d4794 mov      v1.16b, v8.16b
+63d4798 mov      w2, wzr
+63d479c mov      w3, wzr
+63d47a0 mov      x4, xzr
+63d47a4 bl       #0x6c92af4 // Oak.ShakeInfo..ctor
+63d47a8 ldr      x0, [x19, #0x118]
+63d47ac ldp      q0, q1, [sp, #0x80]
+63d47b0 ldr      q2, [sp, #0xa0]
+63d47b4 ldr      x8, [sp, #0xb0]
+63d47b8 stp      q0, q1, [sp, #0x40]
+63d47bc str      q2, [sp, #0x60]
+63d47c0 str      x8, [sp, #0x70]
+63d47c4 cbz      x0, #0x63d4858
+63d47c8 ldp      q0, q1, [sp, #0x40]
+63d47cc ldr      q2, [sp, #0x60]
+63d47d0 ldr      x8, [sp, #0x70]
+63d47d4 mov      x1, sp
+63d47d8 mov      x2, xzr
+63d47dc stp      q0, q1, [sp]
+63d47e0 str      q2, [sp, #0x20]
+63d47e4 str      x8, [sp, #0x30]
+63d47e8 bl       #0x6c93054 // Oak.ShakeCalculator.Shake
+63d47ec ldrb     w8, [x19, #0x128]
+63d47f0 cbnz     w8, #0x63d4844
+63d47f4 adrp     x20, #0xa16c000
+63d47f8 ldrb     w8, [x20, #0xa6f] //  VA a16ca6f 
+63d47fc cbnz     w8, #0x63d4814
+63d4800 adrp     x0, #0x9a71000
+63d4804 ldr      x0, [x0, #0xb88] //  VA 9a71b88 48c6ca0900000000
+63d4808 bl       #0x390a13c // sub_390a13c
+63d480c mov      w8, #1
+63d4810 strb     w8, [x20, #0xa6f]
+63d4814 adrp     x8, #0x9a71000
+63d4818 ldr      x8, [x8, #0xb88] //  VA 9a71b88 48c6ca0900000000
+63d481c ldr      x8, [x8] //  VA 9cac648 f1f9002000000000
+63d4820 ldr      x8, [x8, #0xb8] //  VA 2000faa9 
+63d4824 ldr      x0, [x8, #8]
+63d4828 cbz      x0, #0x63d4858
+63d482c ldr      w1, [x19, #0x20]
+63d4830 mov      x2, x19
+63d4834 mov      x3, xzr
+63d4838 bl       #0x84c2264 // Oak.Game.AddUpdateFrameCallback
+63d483c mov      w8, #1
+63d4840 strb     w8, [x19, #0x128]
+63d4844 ldp      x20, x19, [sp, #0xe0]
+63d4848 ldr      x30, [sp, #0xd0]
+63d484c ldp      d9, d8, [sp, #0xc0]
+63d4850 add      sp, sp, #0xf0
+63d4854 ret      
+63d4858 bl       #0x390a360 // sub_390a360
+63d485c stp      d9, d8, [sp, #-0x20]!
+63d4860 stp      x30, x19, [sp, #0x10]
+63d4864 mov      x19, x0
+63d4868 mov      w0, #0x25f7
+63d486c mov      x1, xzr
+63d4870 mov      v8.16b, v1.16b
+63d4874 mov      v9.16b, v0.16b
+63d4878 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63d487c tbz      w0, #0, #0x63d48ac
+63d4880 mov      w0, #0x25f7
+63d4884 mov      x1, xzr
+63d4888 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63d488c cbz      x0, #0x63d48c8
+63d4890 mov      x1, x19
+63d4894 ldp      x30, x19, [sp, #0x10]
+63d4898 mov      v0.16b, v9.16b
+63d489c mov      v1.16b, v8.16b
+63d48a0 mov      x2, xzr
+63d48a4 ldp      d9, d8, [sp], #0x20
+63d48a8 b        #0x85d6f18 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_525
+63d48ac mov      x0, x19
+63d48b0 ldp      x30, x19, [sp, #0x10]
+63d48b4 mov      x1, xzr
+63d48b8 mov      v0.16b, v9.16b
+63d48bc mov      v1.16b, v8.16b
+63d48c0 ldp      d9, d8, [sp], #0x20
+63d48c4 b        #0x63d4718 // Oak.FieldObject.Shake
+63d48c8 bl       #0x390a360 // sub_390a360

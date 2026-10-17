@@ -1,0 +1,453 @@
+63c712c sub      sp, sp, #0x100
+63c7130 str      d14, [sp, #0x60]
+63c7134 stp      d13, d12, [sp, #0x70]
+63c7138 stp      d11, d10, [sp, #0x80]
+63c713c stp      d9, d8, [sp, #0x90]
+63c7140 stp      x29, x30, [sp, #0xa0]
+63c7144 stp      x28, x27, [sp, #0xb0]
+63c7148 stp      x26, x25, [sp, #0xc0]
+63c714c stp      x24, x23, [sp, #0xd0]
+63c7150 stp      x22, x21, [sp, #0xe0]
+63c7154 stp      x20, x19, [sp, #0xf0]
+63c7158 adrp     x19, #0xa175000
+63c715c ldrb     w8, [x19, #0xea6] //  VA a175ea6 
+63c7160 mov      v8.16b, v3.16b
+63c7164 mov      v9.16b, v2.16b
+63c7168 mov      v10.16b, v1.16b
+63c716c mov      v11.16b, v0.16b
+63c7170 str      x0, [sp, #0x18]
+63c7174 tbnz     w8, #0, #0x63c71c8
+63c7178 adrp     x0, #0x9ac0000
+63c717c ldr      x0, [x0, #0xb8] //  VA 9ac00b8 90f6cd0900000000
+63c7180 bl       #0x390a13c // sub_390a13c
+63c7184 adrp     x0, #0x9a6d000
+63c7188 ldr      x0, [x0, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+63c718c bl       #0x390a13c // sub_390a13c
+63c7190 adrp     x0, #0x9a6f000
+63c7194 ldr      x0, [x0, #0x280] //  VA 9a6f280 4015cf0900000000
+63c7198 bl       #0x390a13c // sub_390a13c
+63c719c adrp     x0, #0x9aa7000
+63c71a0 ldr      x0, [x0, #0x6c8] //  VA 9aa76c8 7815cf0900000000
+63c71a4 bl       #0x390a13c // sub_390a13c
+63c71a8 adrp     x0, #0x9aa6000
+63c71ac ldr      x0, [x0, #0xe98] //  VA 9aa6e98 28ebcf0900000000
+63c71b0 bl       #0x390a13c // sub_390a13c
+63c71b4 adrp     x0, #0x9aa6000
+63c71b8 ldr      x0, [x0, #0xea0] //  VA 9aa6ea0 9804ca0900000000
+63c71bc bl       #0x390a13c // sub_390a13c
+63c71c0 mov      w8, #1
+63c71c4 strb     w8, [x19, #0xea6]
+63c71c8 mov      w0, #0x2727
+63c71cc mov      x1, xzr
+63c71d0 str      xzr, [sp, #0x68]
+63c71d4 stp      xzr, xzr, [sp, #0x40]
+63c71d8 str      xzr, [sp, #0x50]
+63c71dc bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63c71e0 tbz      w0, #0, #0x63c7218
+63c71e4 mov      w0, #0x2727
+63c71e8 mov      x1, xzr
+63c71ec bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63c71f0 cbz      x0, #0x63c7564
+63c71f4 ldr      x1, [sp, #0x18]
+63c71f8 mov      v0.16b, v11.16b
+63c71fc mov      v1.16b, v10.16b
+63c7200 mov      v2.16b, v9.16b
+63c7204 mov      v3.16b, v8.16b
+63c7208 mov      x2, xzr
+63c720c bl       #0x86188b0 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_1590
+63c7210 mov      x20, x0
+63c7214 b        #0x63c7530 // sub_63c7530
+63c7218 adrp     x8, #0x9aa6000
+63c721c ldr      x8, [x8, #0xea0] //  VA 9aa6ea0 9804ca0900000000
+63c7220 ldr      x0, [x8] //  VA 9ca0498 937a002000000000
+63c7224 ldr      w8, [x0, #0xe0] //  VA 20007b73 
+63c7228 cbnz     w8, #0x63c7230
+63c722c bl       #0x390a240 // sub_390a240
+63c7230 adrp     x8, #0x9aa6000
+63c7234 ldr      x8, [x8, #0xe98] //  VA 9aa6e98 28ebcf0900000000
+63c7238 ldr      x0, [x8] //  VA 9cfeb28 591d06c000000000
+63c723c bl       #0x4ab607c // sub_4ab607c
+63c7240 adrp     x19, #0xa16c000
+63c7244 ldrb     w8, [x19, #0x27d] //  VA a16c27d 
+63c7248 mov      x20, x0
+63c724c cbnz     w8, #0x63c7264
+63c7250 adrp     x0, #0x9a6a000
+63c7254 ldr      x0, [x0, #0x770] //  VA 9a6a770 188acb0900000000
+63c7258 bl       #0x390a13c // sub_390a13c
+63c725c mov      w8, #1
+63c7260 strb     w8, [x19, #0x27d]
+63c7264 adrp     x8, #0x9a6a000
+63c7268 ldr      x8, [x8, #0x770] //  VA 9a6a770 188acb0900000000
+63c726c ldr      x9, [sp, #0x18]
+63c7270 fmov     s1, #1.00000000
+63c7274 mov      x0, xzr
+63c7278 ldr      x8, [x8] //  VA 9cb8a18 2798012000000000
+63c727c ldr      s0, [x9, #0x18]
+63c7280 ldr      x8, [x8, #0xb8] //  VA 200198df 
+63c7284 scvtf    s0, s0
+63c7288 fdiv     s5, s1, s0
+63c728c ldp      s2, s3, [x8, #0xc]
+63c7290 ldr      s4, [x8, #0x14]
+63c7294 fmul     s0, s2, s8
+63c7298 fmul     s1, s3, s8
+63c729c fmul     s2, s4, s8
+63c72a0 fsub     s3, s11, s0
+63c72a4 fsub     s4, s10, s1
+63c72a8 fsub     s6, s9, s2
+63c72ac fadd     s7, s11, s0
+63c72b0 fadd     s16, s10, s1
+63c72b4 fadd     s17, s9, s2
+63c72b8 fmul     s0, s3, s5
+63c72bc fmul     s1, s4, s5
+63c72c0 fmul     s2, s6, s5
+63c72c4 fmul     s12, s7, s5
+63c72c8 fmul     s13, s16, s5
+63c72cc fmul     s14, s17, s5
+63c72d0 bl       #0x62491c4 // sub_62491c4
+63c72d4 mov      x19, x0
+63c72d8 mov      v0.16b, v12.16b
+63c72dc mov      v1.16b, v13.16b
+63c72e0 mov      v2.16b, v14.16b
+63c72e4 mov      x0, xzr
+63c72e8 str      x1, [sp, #8]
+63c72ec bl       #0x62491c4 // sub_62491c4
+63c72f0 cmp      w19, w0
+63c72f4 str      x19, [sp, #0x10]
+63c72f8 str      x0, [sp]
+63c72fc str      x1, [sp, #0x20]
+63c7300 b.gt     #0x63c7530
+63c7304 adrp     x29, #0x9a6d000
+63c7308 adrp     x25, #0x9a6a000
+63c730c adrp     x21, #0x9aa7000
+63c7310 adrp     x28, #0x9a6f000
+63c7314 ldr      x29, [x29, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+63c7318 ldr      x25, [x25, #0x928] //  VA 9a6a928 9817cb0900000000
+63c731c ldr      x21, [x21, #0x6c8] //  VA 9aa76c8 7815cf0900000000
+63c7320 ldr      x28, [x28, #0x280] //  VA 9a6f280 4015cf0900000000
+63c7324 adrp     x23, #0xa16c000
+63c7328 mov      w22, #1
+63c732c ldr      x8, [sp, #8]
+63c7330 ldr      x9, [sp, #0x20]
+63c7334 cmp      w8, w9
+63c7338 b.gt     #0x63c7518
+63c733c ldr      x8, [sp, #0x10]
+63c7340 and      w19, w8, #0xffff
+63c7344 ldr      x8, [sp, #8]
+63c7348 mov      w24, w8
+63c734c ldr      x8, [sp, #0x18]
+63c7350 ldr      x0, [x8, #0x20]
+63c7354 cbz      x0, #0x63c7564
+63c7358 adrp     x8, #0x9ac0000
+63c735c ldr      x8, [x8, #0xb8] //  VA 9ac00b8 90f6cd0900000000
+63c7360 mov      w1, w19
+63c7364 bfi      w1, w24, #0x10, #0x10
+63c7368 add      x2, sp, #0x68
+63c736c ldr      x3, [x8] //  VA 9cdf690 57b905c000000000
+63c7370 bl       #0x54fe794 // sub_54fe794
+63c7374 tbz      w0, #0, #0x63c7508
+63c7378 ldr      x0, [sp, #0x68]
+63c737c cbz      x0, #0x63c7564
+63c7380 mov      w26, wzr
+63c7384 bl       #0x63c62e4 // InsidePartition.get_Count
+63c7388 cmp      w26, w0
+63c738c b.ge     #0x63c7508
+63c7390 ldr      x0, [sp, #0x68]
+63c7394 cbz      x0, #0x63c7564
+63c7398 mov      w1, w26
+63c739c bl       #0x63c6220 // InsidePartition.get_Item
+63c73a0 cbz      x0, #0x63c7564
+63c73a4 ldr      x8, [x0]
+63c73a8 ldr      x1, [x29] //  VA 9cae498 2911012000000000
+63c73ac mov      x27, x0
+63c73b0 ldrh     w9, [x8, #0x12e]
+63c73b4 cbz      x9, #0x63c73d8
+63c73b8 ldr      x10, [x8, #0xb0]
+63c73bc add      x10, x10, #8
+63c73c0 ldur     x11, [x10, #-8]
+63c73c4 cmp      x11, x1
+63c73c8 b.eq     #0x63c73e8
+63c73cc subs     x9, x9, #1
+63c73d0 add      x10, x10, #0x10
+63c73d4 b.ne     #0x63c73c0
+63c73d8 mov      w2, #8
+63c73dc mov      x0, x27
+63c73e0 bl       #0x39a388c // sub_39a388c
+63c73e4 b        #0x63c73f8 // sub_63c73f8
+63c73e8 ldr      w9, [x10]
+63c73ec add      w9, w9, #8
+63c73f0 add      x8, x8, w9, sxtw #4
+63c73f4 add      x0, x8, #0x138
+63c73f8 ldp      x9, x1, [x0]
+63c73fc add      x8, sp, #0x28
+63c7400 mov      x0, x27
+63c7404 blr      x9
+63c7408 ldur     q0, [sp, #0x28]
+63c740c ldr      x8, [sp, #0x38]
+63c7410 add      x0, sp, #0x40
+63c7414 mov      v1.16b, v10.16b
+63c7418 str      q0, [sp, #0x40]
+63c741c mov      v0.16b, v11.16b
+63c7420 mov      v2.16b, v9.16b
+63c7424 mov      x1, xzr
+63c7428 str      x8, [sp, #0x50]
+63c742c bl       #0x94270a4 // sub_94270a4
+63c7430 ldrb     w8, [x23, #0x277] //  VA a16c277 
+63c7434 mov      v12.16b, v0.16b
+63c7438 mov      v13.16b, v1.16b
+63c743c mov      v14.16b, v2.16b
+63c7440 cbnz     w8, #0x63c7450
+63c7444 mov      x0, x25
+63c7448 bl       #0x390a13c // sub_390a13c
+63c744c strb     w22, [x23, #0x277]
+63c7450 ldr      x0, [x25] //  VA 9cb1798 4735012000000000
+63c7454 ldr      w8, [x0, #0xe0] //  VA 20013627 
+63c7458 cbnz     w8, #0x63c7460
+63c745c bl       #0x390a240 // sub_390a240
+63c7460 fsub     s0, s11, s12
+63c7464 fsub     s1, s10, s13
+63c7468 fsub     s2, s9, s14
+63c746c fmul     s0, s0, s0
+63c7470 fmul     s1, s1, s1
+63c7474 fadd     s0, s0, s1
+63c7478 fmul     s1, s2, s2
+63c747c fadd     s0, s1, s0
+63c7480 fsqrt    s0, s0
+63c7484 fcmp     s0, s8
+63c7488 b.hi     #0x63c74f8
+63c748c cbz      x20, #0x63c7564
+63c7490 ldr      x2, [x21] //  VA 9cf1578 33f705c000000000
+63c7494 mov      x0, x20
+63c7498 mov      x1, x27
+63c749c bl       #0x4604e50 // sub_4604e50
+63c74a0 tbnz     w0, #0, #0x63c74f8
+63c74a4 ldr      w10, [x20, #0x1c]
+63c74a8 ldr      x8, [x20, #0x10]
+63c74ac ldr      x9, [x28] //  VA 9cf1540 25f705c000000000
+63c74b0 add      w10, w10, #1
+63c74b4 str      w10, [x20, #0x1c]
+63c74b8 cbz      x8, #0x63c7564
+63c74bc ldrsw    x10, [x20, #0x18]
+63c74c0 ldr      w11, [x8, #0x18]
+63c74c4 cmp      w10, w11
+63c74c8 b.hs     #0x63c74e0
+63c74cc add      w9, w10, #1
+63c74d0 add      x8, x8, x10, lsl #3
+63c74d4 str      w9, [x20, #0x18]
+63c74d8 str      x27, [x8, #0x20]
+63c74dc b        #0x63c74f8 // sub_63c74f8
+63c74e0 ldr      x8, [x9, #0x20] //  VA c005f745 
+63c74e4 mov      x0, x20
+63c74e8 mov      x1, x27
+63c74ec ldr      x8, [x8, #0xc0]
+63c74f0 ldr      x2, [x8, #0x70]
+63c74f4 bl       #0x4604ac8 // sub_4604ac8
+63c74f8 ldr      x0, [sp, #0x68]
+63c74fc add      w26, w26, #1
+63c7500 cbnz     x0, #0x63c7384
+63c7504 b        #0x63c7564 // sub_63c7564
+63c7508 ldr      x8, [sp, #0x20]
+63c750c add      w24, w24, #1
+63c7510 cmp      w24, w8
+63c7514 b.le     #0x63c734c
+63c7518 ldr      x8, [sp, #0x10]
+63c751c ldr      x9, [sp]
+63c7520 add      w8, w8, #1
+63c7524 cmp      w8, w9
+63c7528 str      x8, [sp, #0x10]
+63c752c b.le     #0x63c732c
+63c7530 mov      x0, x20
+63c7534 ldp      x20, x19, [sp, #0xf0]
+63c7538 ldp      x22, x21, [sp, #0xe0]
+63c753c ldp      x24, x23, [sp, #0xd0]
+63c7540 ldp      x26, x25, [sp, #0xc0]
+63c7544 ldp      x28, x27, [sp, #0xb0]
+63c7548 ldp      x29, x30, [sp, #0xa0]
+63c754c ldp      d9, d8, [sp, #0x90]
+63c7550 ldp      d11, d10, [sp, #0x80]
+63c7554 ldp      d13, d12, [sp, #0x70]
+63c7558 ldr      d14, [sp, #0x60]
+63c755c add      sp, sp, #0x100
+63c7560 ret      
+63c7564 bl       #0x390a360 // sub_390a360
+63c7568 sub      sp, sp, #0xd0
+63c756c str      d14, [sp, #0x40]
+63c7570 stp      d13, d12, [sp, #0x48]
+63c7574 stp      d11, d10, [sp, #0x58]
+63c7578 stp      d9, d8, [sp, #0x68]
+63c757c str      x30, [sp, #0x78]
+63c7580 stp      x28, x27, [sp, #0x80]
+63c7584 stp      x26, x25, [sp, #0x90]
+63c7588 stp      x24, x23, [sp, #0xa0]
+63c758c stp      x22, x21, [sp, #0xb0]
+63c7590 stp      x20, x19, [sp, #0xc0]
+63c7594 adrp     x21, #0xa175000
+63c7598 ldrb     w8, [x21, #0xea7] //  VA a175ea7 
+63c759c mov      v8.16b, v3.16b
+63c75a0 mov      v9.16b, v2.16b
+63c75a4 mov      v10.16b, v1.16b
+63c75a8 mov      v11.16b, v0.16b
+63c75ac mov      x19, x1
+63c75b0 mov      x20, x0
+63c75b4 tbnz     w8, #0, #0x63c75d8
+63c75b8 adrp     x0, #0x9ac0000
+63c75bc ldr      x0, [x0, #0xb8] //  VA 9ac00b8 90f6cd0900000000
+63c75c0 bl       #0x390a13c // sub_390a13c
+63c75c4 adrp     x0, #0x9a6d000
+63c75c8 ldr      x0, [x0, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+63c75cc bl       #0x390a13c // sub_390a13c
+63c75d0 mov      w8, #1
+63c75d4 strb     w8, [x21, #0xea7]
+63c75d8 mov      w0, #0x2729
+63c75dc mov      x1, xzr
+63c75e0 stp      xzr, xzr, [sp, #0x30]
+63c75e4 stp      xzr, xzr, [sp, #0x20]
+63c75e8 bl       #0x87d8cc8 // IFix.WrappersManagerImpl.IsPatched
+63c75ec tbz      w0, #0, #0x63c7624
+63c75f0 mov      w0, #0x2729
+63c75f4 mov      x1, xzr
+63c75f8 bl       #0x87d8d7c // IFix.WrappersManagerImpl.GetPatch
+63c75fc cbz      x0, #0x63c7874
+63c7600 mov      x1, x20
+63c7604 mov      x2, x19
+63c7608 mov      v0.16b, v11.16b
+63c760c mov      v1.16b, v10.16b
+63c7610 mov      v2.16b, v9.16b
+63c7614 mov      v3.16b, v8.16b
+63c7618 mov      x3, xzr
+63c761c bl       #0x86189f4 // IFix.ILFixDynamicMethodWrapper.__Gen_Wrap_1591
+63c7620 b        #0x63c7840 // sub_63c7840
+63c7624 adrp     x21, #0xa16c000
+63c7628 ldrb     w8, [x21, #0x27d] //  VA a16c27d 
+63c762c cbnz     w8, #0x63c7644
+63c7630 adrp     x0, #0x9a6a000
+63c7634 ldr      x0, [x0, #0x770] //  VA 9a6a770 188acb0900000000
+63c7638 bl       #0x390a13c // sub_390a13c
+63c763c mov      w8, #1
+63c7640 strb     w8, [x21, #0x27d]
+63c7644 adrp     x8, #0x9a6a000
+63c7648 ldr      x8, [x8, #0x770] //  VA 9a6a770 188acb0900000000
+63c764c ldr      s0, [x20, #0x18]
+63c7650 fmov     s1, #1.00000000
+63c7654 mov      x0, xzr
+63c7658 ldr      x8, [x8] //  VA 9cb8a18 2798012000000000
+63c765c scvtf    s0, s0
+63c7660 fdiv     s5, s1, s0
+63c7664 ldr      x8, [x8, #0xb8] //  VA 200198df 
+63c7668 ldp      s2, s3, [x8, #0xc]
+63c766c ldr      s4, [x8, #0x14]
+63c7670 fmul     s0, s2, s8
+63c7674 fmul     s1, s3, s8
+63c7678 fmul     s2, s4, s8
+63c767c fsub     s3, s11, s0
+63c7680 fsub     s4, s10, s1
+63c7684 fsub     s6, s9, s2
+63c7688 fadd     s7, s11, s0
+63c768c fadd     s16, s10, s1
+63c7690 fadd     s17, s9, s2
+63c7694 fmul     s0, s3, s5
+63c7698 fmul     s1, s4, s5
+63c769c fmul     s2, s6, s5
+63c76a0 fmul     s12, s7, s5
+63c76a4 fmul     s13, s16, s5
+63c76a8 fmul     s14, s17, s5
+63c76ac bl       #0x62491c4 // sub_62491c4
+63c76b0 mov      x21, x0
+63c76b4 mov      v0.16b, v12.16b
+63c76b8 mov      v1.16b, v13.16b
+63c76bc mov      v2.16b, v14.16b
+63c76c0 mov      x0, xzr
+63c76c4 mov      x22, x1
+63c76c8 bl       #0x62491c4 // sub_62491c4
+63c76cc mov      x23, x0
+63c76d0 cmp      w21, w23
+63c76d4 b.le     #0x63c76e0
+63c76d8 mov      w0, wzr
+63c76dc b        #0x63c7840 // sub_63c7840
+63c76e0 adrp     x26, #0x9ac0000
+63c76e4 ldr      x26, [x26, #0xb8] //  VA 9ac00b8 90f6cd0900000000
+63c76e8 mov      x24, x1
+63c76ec cmp      w22, w24
+63c76f0 b.le     #0x63c7708
+63c76f4 add      w21, w21, #1
+63c76f8 cmp      w21, w23
+63c76fc mov      w0, wzr
+63c7700 b.le     #0x63c76ec
+63c7704 b        #0x63c7840 // sub_63c7840
+63c7708 and      w27, w21, #0xffff
+63c770c mov      w28, w22
+63c7710 ldr      x0, [x20, #0x20]
+63c7714 cbz      x0, #0x63c7874
+63c7718 ldr      x3, [x26] //  VA 9cdf690 57b905c000000000
+63c771c mov      w1, w27
+63c7720 bfi      w1, w28, #0x10, #0x10
+63c7724 add      x2, sp, #0x38
+63c7728 bl       #0x54fe794 // sub_54fe794
+63c772c tbz      w0, #0, #0x63c7770
+63c7730 ldr      x0, [sp, #0x38]
+63c7734 cbz      x0, #0x63c7874
+63c7738 mov      w25, wzr
+63c773c bl       #0x63c62e4 // InsidePartition.get_Count
+63c7740 cmp      w25, w0
+63c7744 b.ge     #0x63c7770
+63c7748 ldr      x0, [sp, #0x38]
+63c774c cbz      x0, #0x63c7874
+63c7750 mov      w1, w25
+63c7754 bl       #0x63c6220 // InsidePartition.get_Item
+63c7758 cmp      x0, x19
+63c775c b.eq     #0x63c7780
+63c7760 ldr      x0, [sp, #0x38]
+63c7764 add      w25, w25, #1
+63c7768 cbnz     x0, #0x63c773c
+63c776c b        #0x63c7874 // sub_63c7874
+63c7770 add      w28, w28, #1
+63c7774 cmp      w28, w24
+63c7778 b.le     #0x63c7710
+63c777c b        #0x63c76f4 // sub_63c76f4
+63c7780 cbz      x19, #0x63c7874
+63c7784 adrp     x10, #0x9a6d000
+63c7788 ldr      x8, [x19]
+63c778c ldr      x10, [x10, #0x5f8] //  VA 9a6d5f8 98e4ca0900000000
+63c7790 ldrh     w9, [x8, #0x12e]
+63c7794 ldr      x1, [x10] //  VA 9cae498 2911012000000000
+63c7798 cbz      x9, #0x63c77bc
+63c779c ldr      x10, [x8, #0xb0]
+63c77a0 add      x10, x10, #8
+63c77a4 ldur     x11, [x10, #-8]
+63c77a8 cmp      x11, x1
+63c77ac b.eq     #0x63c77cc
+63c77b0 subs     x9, x9, #1
+63c77b4 add      x10, x10, #0x10
+63c77b8 b.ne     #0x63c77a4
+63c77bc mov      w2, #8
+63c77c0 mov      x0, x19
+63c77c4 bl       #0x39a388c // sub_39a388c
+63c77c8 b        #0x63c77dc // sub_63c77dc
+63c77cc ldr      w9, [x10]
+63c77d0 add      w9, w9, #8
+63c77d4 add      x8, x8, w9, sxtw #4
+63c77d8 add      x0, x8, #0x138
+63c77dc ldp      x9, x1, [x0]
+63c77e0 add      x8, sp, #8
+63c77e4 mov      x0, x19
+63c77e8 blr      x9
+63c77ec ldur     q0, [sp, #8]
+63c77f0 ldr      x8, [sp, #0x18]
+63c77f4 add      x0, sp, #0x20
+63c77f8 mov      v1.16b, v10.16b
+63c77fc str      q0, [sp, #0x20]
+63c7800 mov      v0.16b, v11.16b
+63c7804 mov      v2.16b, v9.16b
+63c7808 mov      x1, xzr
+63c780c str      x8, [sp, #0x30]
+63c7810 bl       #0x94270a4 // sub_94270a4
+63c7814 fsub     s0, s11, s0
+63c7818 fsub     s1, s10, s1
+63c781c fsub     s2, s9, s2
+63c7820 fmul     s0, s0, s0
+63c7824 fmul     s1, s1, s1
+63c7828 fmul     s2, s2, s2
+63c782c fadd     s0, s0, s1
+63c7830 fadd     s0, s2, s0
+63c7834 fmul     s1, s8, s8
+63c7838 fcmp     s0, s1
+63c783c cset     w0, ls

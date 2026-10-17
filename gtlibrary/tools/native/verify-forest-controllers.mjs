@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {ButterflyGuideController} from '../../gtonline/stages/forest-entrance/butterfly-guide.js';
+import {ForestEntranceGame} from '../../gtonline/stages/forest-entrance.js';
+import {fresh} from '../../gtonline/progress.js';
+const stage=JSON.parse(await readFile(new URL('../../gtonline/assets/stage-1-2.json',import.meta.url),'utf8'));
+const actor={position:{x:0,y:0,z:0}},poses=[];
+const game={stage,state:fresh(stage),async actor(){return actor;},runtime:{
+ setWorldPosition(r,p){[r.position.x,r.position.y,r.position.z]=[p[0],p[1],-p[2]];},
+ setActorState(r,pose){poses.push(pose);},setWorldVisible(r,v){r.visible=v;}}};
+const controller=new ButterflyGuideController(game);await controller.prepare();
+assert.deepEqual([actor.position.x,actor.position.y,-actor.position.z],[49.5,0,-6]);
+assert.deepEqual(poses.at(-1),{animation:'sleep',direction:'front',shadow:false,alpha:1});
+game.state.position=stage.regions.butterfly_2.center;
+assert.equal(controller.nextScene(),'butterfly_2','native second guard is independent of the first');
+controller.started('butterfly_2');assert.equal(controller.nextScene(),null);
+assert.deepEqual(game.state.flags,[],'transient trigger guards are not persisted');
+game.state.position=stage.regions.butterfly_1.center;
+assert.equal(controller.nextScene(),'butterfly_1');controller.started('butterfly_1');assert.equal(controller.nextScene(),null);
+const raw=stage.scenes.butterfly_2,plan=structuredClone(raw);controller.resolvePlan(plan);
+const move=plan.commands.find(c=>c.op==='move');
+const expected=(Math.hypot(61.5-49.5,-10.5+6)+12)/2;
+assert.equal(move.speed,2);assert.equal(move.duration,expected);
+assert.equal(plan.commands.find(c=>c.op==='pose').at,expected);
+assert.equal(plan.duration,expected+3);
+assert.equal(plan.commands.at(-1).at,plan.duration);
+assert.deepEqual(plan.actors[0].position,[49.5,0,-6]);
+assert.notEqual(raw.commands.find(c=>c.op==='move').duration,expected,'source manifest was not mutated');
+const partial={...fresh(stage),flags:['butterfly_1','butterfly_2','other']};
+assert.deepEqual(ForestEntranceGame.prototype.migrateProgress(partial).flags,['other']);
+const reentry=new ButterflyGuideController(game);assert.equal(reentry.nextScene(),'butterfly_1','reentering resets native controller booleans');
+console.log('PASS native butterfly initialization, independent transient guards, actual-position route speed/timing, manifest immutability and reentry.');

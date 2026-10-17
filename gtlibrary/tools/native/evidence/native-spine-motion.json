@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "damageColor": {
+    "value": [
+      1.0,
+      0.3499999940395355,
+      0.3499999940395355,
+      1.0
+    ],
+    "initializer": "0x8864118 / 0x886411c",
+    "field": "Oak.Constants.DamageColor",
+    "staticOffset": 24
+  },
+  "sealedBoyDamage": {
+    "broad": 1.2000000476837158,
+    "narrow": 0.800000011920929,
+    "frequency": 1,
+    "duration": 0.30000001192092896,
+    "firstAnchor": 0.20000000298023224,
+    "secondAnchor": 0.6000000238418579,
+    "deviation": [
+      0.20000000298023224,
+      0,
+      0
+    ],
+    "deviateDuration": 0.10000000149011612,
+    "clearDuration": 0.10000000149011612,
+    "shakeRadius": 0.05000000074505806,
+    "shakeDuration": 0.15000000596046448,
+    "callback": "0x7382684"
+  },
+  "implementations": {
+    "deviation": "0x520bd88..0x520bebc",
+    "squish": "0x6cf0ed4..0x6cf1024",
+    "colorPulse": "0x61083c0..0x6108478",
+    "colorApply": "0x6ccbf60..0x6ccbfb8"
+  },
+  "limits": [
+    "Continuous deviation sampling does not reproduce the native one-frame state-transition hold.",
+    "Native global Unity RNG state is not reproduced by the reversible shake sampler."
+  ],
+  "sfxFadeIn": {
+    "field": "Oak.SfxInfo.fadeInTime",
+    "boxedOffset": 104,
+    "unboxedOffset": 88,
+    "value": 0.699999988079071,
+    "progress": "clamp(TimePassed / Duration, 0, 1)",
+    "targetVolume": "StartVolume + (EndVolume - StartVolume) * Progress",
+    "source": [
+      "0x88af094..0x88af104",
+      "0x88ac054..0x88ac088",
+      "0x88add9c..0x88addc0"
+    ]
+  }
+}

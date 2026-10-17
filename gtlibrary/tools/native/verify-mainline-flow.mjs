@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {ForestMainQuest} from '../../gtonline/stages/forest-entrance/main-quest.js';
+import {ForestSuperTutorial,SuperState} from '../../gtonline/stages/forest-entrance/super-tutorial.js';
+import {ForestEntranceGame} from '../../gtonline/stages/forest-entrance.js';
+import {NativeControlLocks} from '../../gtonline/control-locks.js';
+import {fresh} from '../../gtonline/progress.js';
+const stage=JSON.parse(await readFile(new URL('../../gtonline/assets/stage-1-2.json',import.meta.url)));
+const completed=[],opened=[],scenes=[],g={stage,state:fresh(stage),objects:structuredClone(stage.objects),controlLocks:new NativeControlLocks(),actors:new Map(),groups:new Map(),runtime:{events:{resolveCallback:name=>completed.push(name)},setActorState(){},setWorldVisible(){}},has(flag){return this.state.flags.includes(flag);},flag(flag){if(!this.has(flag))this.state.flags.push(flag);},emit(){},save(){},joinParty(handle){if(!this.state.party.some(m=>m.handle===handle))this.state.party.push({handle,health:100,maxHealth:100});},restoreEquipment(){},applyWorld(){},doors:{force:(o,v)=>opened.push([o.handle,v])},async scene(key){scenes.push(key);},async battle(group){completed.push(group);}};
+const main=g.mainQuest=new ForestMainQuest(g);
+main.handle({name:'ForestPhoneGet'});assert.equal(g.mode,'loot');assert.equal(main.progress.innerProgress,7);assert(g.has('item:20017'));g.loot.onFinish();assert.equal(completed.at(-1),'ForestPhoneGet');
+main.handle({name:'ForestPhoneSNS'});assert(g.has('follower:13'));assert.equal(g.state.sns.length,1);main.advance();assert.equal(completed.at(-1),'ForestPhoneSNS','SNS completion must not resolve the item barrier');
+main.handle({name:'ForestPhoneComplete'});assert.equal(main.progress.innerProgress,8);assert.equal(g.state.party.length,1,'native party conversion waits until the victory animation completes');main.afterScene('forest_phone');assert.equal(g.state.party[1].handle,'maiden');
+const tutorial=g.superTutorial=new ForestSuperTutorial(g),box=tutorial.box;
+tutorial.collected({object:box,drops:[{item:{ItemId:30017}}]});assert.equal(tutorial.state.state,SuperState.Began,'unrelated field items do not complete the equipment tutorial');
+tutorial.collected({object:box,drops:[{item:{ItemId:9010020,Level:4}}]});assert.equal(tutorial.state.state,SuperState.Equipped);assert(!g.state.collected.includes(box.id),'DontFinish retains the unopened source state');
+await tutorial.afterLoot();assert.equal(scenes.at(-1),'super_goblins');await tutorial.afterScene('super_goblins');assert.equal(tutorial.state.state,3);assert(!g.controlLocks.allows('Move'));assert(!g.controlLocks.allows('Attack'));assert(g.controlLocks.allows('Super'));
+tutorial.eliminated('goblins_1');assert.equal(tutorial.state.state,3);tutorial.eliminated('super_tutorial_goblins');assert.equal(tutorial.state.state,4);assert(!g.controlLocks.allows('Move'),'end sequence retains control until the action/overlay finishes');assert.deepEqual(opened,[['super_tutorial_door_1',true],['super_tutorial_door_2',true]]);await tutorial.afterScene('super_end');assert(g.controlLocks.allows('Move'));assert(g.state.collected.includes(box.id));
+assert.equal(ForestEntranceGame.prototype.canExit.call(g),false);g.flag('battle:final');assert.equal(ForestEntranceGame.prototype.canExit.call(g),true);
+const restored=new ForestSuperTutorial(g);restored.prepare();assert.equal(restored.state.state,4);assert.equal(g.state.party.filter(m=>m.handle==='maiden').length,1);
+const interrupted={...g,state:structuredClone(g.state)};interrupted.state.collected=[];interrupted.state.controllers.superTutorial.state=4;interrupted.state.dead.push('tutorial_goblin_1');
+const reloaded=new ForestSuperTutorial(interrupted);reloaded.prepare();assert.equal(reloaded.state.state,0,'native OnStageLoad derives completion from the box, not an interrupted coroutine');assert(!interrupted.state.flags.includes('battle:super_tutorial_goblins'));assert(!interrupted.state.dead.includes('tutorial_goblin_1'));
+const callbackNames=stage.scenes.forest_phone.commands.filter(c=>c.op==='awaitCallback').map(c=>c.name);assert.deepEqual(callbackNames,['ForestPhoneGet','ForestPhoneSNS']);assert(stage.scenes.forest_phone.source.includes('ForestMainNew.json:section_8'));
+console.log('PASS: native phone/SNS acknowledgement order, section 7→8, delayed party join, tutorial enum transitions, DontFinish, control mask 0x17, exact two-door release, restore and final-exit gating');
+

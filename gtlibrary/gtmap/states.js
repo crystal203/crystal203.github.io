@@ -14,7 +14,7 @@ const isActive=node=>{for(let n=node;n;n=n.parent)if(!n.visible)return false;ret
 export class MapStates {
  constructor(camera,textures,selection,pickables,materialFactory){Object.assign(this,{camera,textures,selection,pickables,materialFactory});this.entries=[];this.brightness=1;this.visible=true;this.pickupsVisible=true;this.time=0;}
  register(spec,assets,tiles,group,layerIndex){
-  for(const tile of tiles){const record=this.selection.records.get(tile.id),entry={spec,assets,record,group,layerIndex,controllers:(spec.controllers||[]).map(c=>({index:c.default,start:0,still:false})),custom:{},overrides:new Map(),active:false,effectStart:0};record.gimmick=entry;this.entries.push(entry);}
+  for(const tile of tiles){const record=this.selection.records.get(tile.id),entry={spec,assets,record,group,layerIndex,controllers:(spec.controllers||[]).map(c=>({index:c.default,start:0,still:false})),custom:{},overrides:new Map(),transforms:new Map(),materialOverrides:new Map(),active:false,effectStart:0};record.gimmick=entry;this.entries.push(entry);}
  }
  initialize(){for(const e of this.entries)if(e.spec.pickup||e.spec.controllers.some(c=>c.states[c.default]?.clip))this.activate(e);this.sample(0);}
  controls(record){const e=record?.gimmick;if(!e)return null;
@@ -62,7 +62,7 @@ export class MapStates {
    else if(attribute.startsWith('material.')){if(!e.materialValues.has(node))e.materialValues.set(node,[]);e.materialValues.get(node).push([attribute.slice(9),value]);}
   };
   for(const [i,controller] of e.spec.controllers.entries()){
-   const clock=e.controllers[i];let state=controller.states[clock.index],t=Math.max(0,time-clock.start)*Math.abs(state.speed||1);
+   const clock=e.controllers[i];let state=controller.states[clock.index],t=Math.max(0,time-clock.start)*Math.abs(state.speed||1)*(clock.speed??1);
    // Follow only unconditional source exit transitions, never gameplay predicates.
    for(let guard=0;guard<16&&state?.clip;guard++){const d=Math.max(.001,state.clip.duration);if(clock.still){t=d;break;}const tr=state.transitions.find(x=>!x.data.m_ConditionConstantArray?.length&&x.data.m_HasExitTime);if(tr&&t>=d*(tr.data.m_ExitTime??1)&&controller.states[tr.data.m_DestinationState]){t-=d*(tr.data.m_ExitTime??1);state=controller.states[tr.data.m_DestinationState];}else{t=(state.loop||state.clip.loop)?t%d:Math.min(t,d);break;}}
    if(!state?.clip)continue;if(state.speed<0)t=Math.max(0,state.clip.duration-t);const prefix=e.spec.nodes.find(n=>n.id===controller.node)?.path||'';
@@ -80,22 +80,24 @@ export class MapStates {
   for(const [i,custom] of Object.entries(e.custom))if(sim.effect.scripts[i])sim.effect.scripts[i].fields.StartState=custom.name;
   for(const s of e.spec.scripts)if(s.type==='RotateThis'){const f=s.fields,rotation=f.rotationSpeed||f.RotateSpeed||f.rotation||{};sim.nodes.get(s.node).quaternion.multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(...['x','y','z'].map(k=>(rotation[k]||0)*time*Math.PI/180),'ZXY')));}
   for(const [id,v] of e.overrides)sim.nodes.get(id).visible=v;
+  for(const [id,v] of e.transforms){const node=sim.nodes.get(id);if(v.position)node.position.fromArray(v.position);if(v.scale)node.scale.fromArray(v.scale);}
+  for(const [id,properties] of e.materialOverrides){const node=sim.nodes.get(id);for(const [name,value] of Object.entries(properties)){if(Array.isArray(value))value.forEach((v,i)=>write(node,'material.'+name+'.'+['r','g','b','a'][i],v));else write(node,'material.'+name,value);}}
   if(e.spec.pickup){const root=e.spec.nodes.find(n=>n.name==='root');if(root)sim.nodes.get(root.id).position.y+=Math.sin(time*3)*.1;}
   sim.nodeRoot.updateMatrixWorld(true);
  }
  sample(time){this.time=time;for(const e of this.entries){if(!e.active)continue;for(const b of e.effects.batches)b.mesh.material.userData.animationTime=e.previewTime;e.effects.sample(Math.max(0,(e.previewTime??time)-e.effectStart));
   let rootMatrix=e.record.matrix;const anchor=e.visualAnchor;if(anchor){const spec=e.spec.nodes.find(n=>n.name===anchor.node),node=spec&&e.sim.nodes.get(spec.id),target=anchor.point();if(node&&target){const knot=new THREE.Vector3().applyMatrix4(reflection.clone().multiply(node.matrixWorld).multiply(reflection)).applyMatrix4(rootMatrix),delta=target.clone().sub(knot);rootMatrix=rootMatrix.clone();rootMatrix.elements[12]+=delta.x;rootMatrix.elements[13]+=delta.y;rootMatrix.elements[14]+=delta.z;}}
   for(const p of e.parts){p.mesh.material.userData.animationTime=e.previewTime;const node=e.sim.nodes.get(p.part.node),local=reflection.clone().multiply(node.matrixWorld).multiply(reflection);p.ref.local.copy(local);p.mesh.visible=!e.spec.pickup||this.pickupsVisible;p.ref.enabled=(e.rendererEnabled.get(node)??p.part.enabled)&&isActive(node);p.mesh.setMatrixAt(0,p.ref.enabled?rootMatrix.clone().multiply(local):hidden);p.mesh.instanceMatrix.needsUpdate=true;
-   for(const [name,u] of Object.entries(p.mesh.material.uniforms)){const color=p.source.colors[name]||p.source.nativeShader.defaults[name],slot=p.source.texenvs[name.replace(/_ST$/,'')];if(color&&u.value?.set)u.value.set(...['r','g','b','a'].map(k=>color[k]??0));else if(name.endsWith('_ST')&&slot)u.value.set(slot.scale.x,slot.scale.y,slot.offset.x,slot.offset.y);}
+   for(const [name,u] of Object.entries(p.mesh.material.uniforms)){const color=p.source.colors[name]||p.source.nativeShader.defaults[name],slot=p.source.texenvs[name.replace(/_ST$/,'')],scalar=p.source.floats[name]??p.source.nativeShader.defaults[name];if(color&&typeof color==='object'&&u.value?.set)u.value.set(...['r','g','b','a'].map(k=>color[k]??0));else if(name.endsWith('_ST')&&slot)u.value.set(slot.scale.x,slot.scale.y,slot.offset.x,slot.offset.y);else if(typeof scalar==='number'&&typeof u.value==='number')u.value=scalar;}
    for(const script of e.spec.scripts.filter(s=>s.node===p.part.node&&s.type.startsWith('FxUvanim'))){const name=script.type.includes('Tex2')?'_MainTex2_ST':'_MainTex_ST',u=p.mesh.material.uniforms[name]?.value;if(u){u.z+=(script.fields.scrollSpeed_X||0)*(e.previewTime??time);u.w+=(script.fields.scrollSpeed_Y||0)*(e.previewTime??time);}}
    for(const [attribute,value] of e.materialValues.get(node)||[]){const dot=attribute.lastIndexOf('.');if(dot<0){const scalar=p.mesh.material.uniforms[attribute];if(scalar)scalar.value=value;continue;}const u=p.mesh.material.uniforms[attribute.slice(0,dot)]?.value,k=attribute.slice(dot+1);if(u&&typeof u==='object')u[({r:'x',g:'y',b:'z',a:'w'})[k]||k]=value;}
   }
  }}
- capture(record){const e=record?.gimmick;return e?{controllers:e.controllers.map(c=>({index:c.index,still:c.still})),custom:Object.fromEntries(Object.entries(e.custom).map(([k,v])=>[k,{name:v.name,still:v.still}])),overrides:[...e.overrides]}:null;}
- restore(record,value){const e=record?.gimmick;if(!e||!value)return;e.controllers=value.controllers.map(c=>({...c,start:this.time}));e.custom=Object.fromEntries(Object.entries(value.custom).map(([k,v])=>[k,{...v,start:this.time}]));e.overrides=new Map(value.overrides);this.activate(e);}
+ capture(record){const e=record?.gimmick;return e?{controllers:e.controllers.map(c=>({index:c.index,still:c.still,speed:c.speed})),custom:Object.fromEntries(Object.entries(e.custom).map(([k,v])=>[k,{name:v.name,still:v.still}])),overrides:[...e.overrides],transforms:[...e.transforms],materialOverrides:[...e.materialOverrides]}:null;}
+ restore(record,value){const e=record?.gimmick;if(!e||!value)return;e.controllers=value.controllers.map(c=>({...c,start:this.time}));e.custom=Object.fromEntries(Object.entries(value.custom).map(([k,v])=>[k,{...v,start:this.time}]));e.overrides=new Map(value.overrides);e.transforms=new Map(value.transforms||[]);e.materialOverrides=new Map(value.materialOverrides||[]);this.activate(e);}
  diagnostics(){return {available:this.entries.length,active:this.entries.filter(e=>e.active).length,instances:this.entries.filter(e=>e.active).map(e=>({id:e.record.tile.id,name:e.record.tile.name,states:e.spec.controllers.map((c,i)=>c.states[e.controllers[i].index]?.name),parts:e.parts.map(p=>({name:e.assets.meshes[p.part.mesh]?.name,visible:p.ref.enabled,uv:p.mesh.material.uniforms._MainTex_ST?.value.toArray()}))}))};}
  get batches(){return this.entries.flatMap(e=>e.effects?.batches||[]);}
- reset(records){for(const r of records){const e=r.gimmick;if(!e)continue;e.controllers=e.spec.controllers.map(c=>({index:c.default,start:this.time,still:false}));e.custom={};e.overrides.clear();}this.sample(this.time);}
+ reset(records){for(const r of records){const e=r.gimmick;if(!e)continue;e.controllers=e.spec.controllers.map(c=>({index:c.default,start:this.time,still:false}));e.custom={};e.overrides.clear();e.transforms.clear();e.materialOverrides.clear();}this.sample(this.time);}
  setBrightness(value){this.brightness=value;for(const e of this.entries)if(e.active){e.effects.setBrightness(value);for(const p of e.parts)p.mesh.material.uniforms.brightness.value=value;}}
  setPickupsVisible(value){this.pickupsVisible=value;for(const e of this.entries)if(e.spec.pickup){e.effects?.setVisible(value&&this.visible);for(const p of e.parts||[])p.mesh.visible=value;}}
  setVisible(value){this.visible=value;for(const e of this.entries)e.effects?.setVisible(value&&(!e.spec.pickup||this.pickupsVisible));}

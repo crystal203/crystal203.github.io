@@ -1,0 +1,1630 @@
+{
+  "schema": 1,
+  "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+  "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+  "registration": "0x98fb820",
+  "scriptsModule": "0x9a3b730",
+  "methodCount": 195390,
+  "typeCount": 83682,
+  "classes": [
+    {
+      "index": 6681,
+      "name": "JumpTileBehaviour",
+      "namespace": "Oak",
+      "fullName": "Oak.JumpTileBehaviour",
+      "byvalTypeIndex": 37041,
+      "fieldStart": 38684,
+      "methodStart": 62609,
+      "methodCount": 10,
+      "fieldCount": 7,
+      "token": "0x2001a19",
+      "fields": [
+        {
+          "index": 38684,
+          "name": "JumpSpeed",
+          "typeIndex": 46832,
+          "token": "0x400971d",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9deb470",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 38685,
+          "name": "HorizontalSpeed",
+          "typeIndex": 46832,
+          "token": "0x400971e",
+          "offset": 20,
+          "type": {
+            "pointer": "0x9deb470",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 38686,
+          "name": "JumpTileJumpSfxHandleName",
+          "typeIndex": 48363,
+          "token": "0x400971f",
+          "offset": 24,
+          "type": {
+            "pointer": "0x9deb9e0",
+            "kind": 14,
+            "byref": false,
+            "name": "System.String"
+          }
+        },
+        {
+          "index": 38687,
+          "name": "DifferentSpeedParams",
+          "typeIndex": 20579,
+          "token": "0x4009720",
+          "offset": 32,
+          "type": {
+            "pointer": "0x98ffe10",
+            "kind": 29,
+            "byref": false,
+            "data": "0x9e09220"
+          }
+        },
+        {
+          "index": 38688,
+          "name": "<Oak.IFieldObjectBehaviour.ResetOnWrongPosition>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x4009721",
+          "offset": 40,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 38689,
+          "name": "fo",
+          "typeIndex": 30797,
+          "token": "0x4009722",
+          "offset": 48,
+          "type": {
+            "pointer": "0x9de7a40",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 5090,
+            "name": "Oak.FieldObject"
+          }
+        },
+        {
+          "index": 38690,
+          "name": "animator",
+          "typeIndex": 22571,
+          "token": "0x4009723",
+          "offset": 56,
+          "type": {
+            "pointer": "0x9de55b0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 34157,
+            "name": "UnityEngine.Animator"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 62609,
+          "name": "Oak.IFieldObjectBehaviour.get_CurrentState",
+          "token": "0x600f492",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x67237dc"
+        },
+        {
+          "index": 62610,
+          "name": "Oak.IFieldObjectBehaviour.get_CurrentAction",
+          "token": "0x600f493",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x6723824"
+        },
+        {
+          "index": 62611,
+          "name": "Oak.IFieldObjectBehaviour.get_ResetOnWrongPosition",
+          "token": "0x600f494",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x672386c"
+        },
+        {
+          "index": 62612,
+          "name": "Oak.IFieldObjectBehaviour.set_ResetOnWrongPosition",
+          "token": "0x600f495",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x800afe5",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x6723874"
+        },
+        {
+          "index": 62613,
+          "name": "Oak.IComponent.AttachTo",
+          "token": "0x600f496",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "ifo",
+              "typeIndex": 34964,
+              "token": "0x800afe6",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x6723880"
+        },
+        {
+          "index": 62614,
+          "name": "Oak.IComponent.DetachFrom",
+          "token": "0x600f497",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "ifo",
+              "typeIndex": 34964,
+              "token": "0x800afe7",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x6723a50"
+        },
+        {
+          "index": 62615,
+          "name": "Oak.IEventListener.OnEvent",
+          "token": "0x600f498",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "e",
+              "typeIndex": 29581,
+              "token": "0x800afe8",
+              "type": {
+                "pointer": "0x9e0cab0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4662,
+                "name": "Oak.Event"
+              }
+            }
+          ],
+          "address": "0x6723aac"
+        },
+        {
+          "index": 62616,
+          "name": "CalculateTargetPosition",
+          "token": "0x600f499",
+          "parameterCount": 3,
+          "parameters": [
+            {
+              "name": "jumptile",
+              "typeIndex": 34964,
+              "token": "0x800afe9",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            },
+            {
+              "name": "jumper",
+              "typeIndex": 34964,
+              "token": "0x800afea",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            },
+            {
+              "name": "baseVelocity",
+              "typeIndex": 52243,
+              "token": "0x800afeb",
+              "type": {
+                "pointer": "0x9ded260",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 29474,
+                "name": "UnityEngine.Vector3"
+              }
+            }
+          ],
+          "address": "0x6724478"
+        },
+        {
+          "index": 62617,
+          "name": "Off",
+          "token": "0x600f49a",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x672492c"
+        },
+        {
+          "index": 62618,
+          "name": ".ctor",
+          "token": "0x600f49b",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x67249ec"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e28560",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 6681,
+        "name": "Oak.JumpTileBehaviour"
+      }
+    },
+    {
+      "index": 4392,
+      "name": "JumpTileCrashBehaviour",
+      "namespace": "Oak",
+      "fullName": "Oak.JumpTileCrashBehaviour",
+      "byvalTypeIndex": 37043,
+      "fieldStart": -1,
+      "methodStart": 45368,
+      "methodCount": 3,
+      "fieldCount": 0,
+      "token": "0x2001129",
+      "fields": [],
+      "methods": [
+        {
+          "index": 45368,
+          "name": "OnStageLoad",
+          "token": "0x600b139",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "e",
+              "typeIndex": 29581,
+              "token": "0x80087f8",
+              "type": {
+                "pointer": "0x9e0cab0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4662,
+                "name": "Oak.Event"
+              }
+            }
+          ],
+          "address": "0x62b2b20"
+        },
+        {
+          "index": 45369,
+          "name": "OnCrashRoutine",
+          "token": "0x600b13a",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "crash",
+              "typeIndex": 19139,
+              "token": "0x80087f9",
+              "type": {
+                "pointer": "0x9de6b30",
+                "kind": 17,
+                "byref": true,
+                "definitionIndex": 6367,
+                "name": "Oak.CrashInfo"
+              }
+            }
+          ],
+          "address": "0x62b2b7c"
+        },
+        {
+          "index": 45370,
+          "name": ".ctor",
+          "token": "0x600b13b",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x62b34c8"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9e28580",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 4392,
+        "name": "Oak.JumpTileCrashBehaviour"
+      }
+    },
+    {
+      "index": 2761,
+      "name": "BombFieldObjectBehaviour",
+      "namespace": "Oak",
+      "fullName": "Oak.BombFieldObjectBehaviour",
+      "byvalTypeIndex": 24202,
+      "fieldStart": 17542,
+      "methodStart": 28473,
+      "methodCount": 22,
+      "fieldCount": 30,
+      "token": "0x2000ac9",
+      "fields": [
+        {
+          "index": 17542,
+          "name": "fo",
+          "typeIndex": 30797,
+          "token": "0x4004487",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de7a40",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 5090,
+            "name": "Oak.FieldObject"
+          }
+        },
+        {
+          "index": 17543,
+          "name": "spawningPos",
+          "typeIndex": 52244,
+          "token": "0x4004488",
+          "offset": 24,
+          "type": {
+            "pointer": "0x9ded270",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 29474,
+            "name": "UnityEngine.Vector3"
+          }
+        },
+        {
+          "index": 17544,
+          "name": "foTransform",
+          "typeIndex": 50292,
+          "token": "0x4004489",
+          "offset": 40,
+          "type": {
+            "pointer": "0x9dec690",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29607,
+            "name": "UnityEngine.Transform"
+          }
+        },
+        {
+          "index": 17545,
+          "name": "wickObject",
+          "typeIndex": 32022,
+          "token": "0x400448a",
+          "offset": 48,
+          "type": {
+            "pointer": "0x9de7df0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29544,
+            "name": "UnityEngine.GameObject"
+          }
+        },
+        {
+          "index": 17546,
+          "name": "fireEffect",
+          "typeIndex": 32022,
+          "token": "0x400448b",
+          "offset": 56,
+          "type": {
+            "pointer": "0x9de7df0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29544,
+            "name": "UnityEngine.GameObject"
+          }
+        },
+        {
+          "index": 17547,
+          "name": "meshRenderer",
+          "typeIndex": 44484,
+          "token": "0x400448c",
+          "offset": 64,
+          "type": {
+            "pointer": "0x9e44570",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29395,
+            "name": "UnityEngine.Renderer"
+          }
+        },
+        {
+          "index": 17548,
+          "name": "initialWickHeight",
+          "typeIndex": 46829,
+          "token": "0x400448d",
+          "offset": 72,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17549,
+          "name": "bombState",
+          "typeIndex": 55530,
+          "token": "0x400448e",
+          "offset": 76,
+          "type": {
+            "pointer": "0x9e6d3a0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 2760,
+            "name": "BombState"
+          }
+        },
+        {
+          "index": 17550,
+          "name": "ExplodeRadius",
+          "typeIndex": 46849,
+          "token": "0x400448f",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9deb580",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17551,
+          "name": "spawnDelay",
+          "typeIndex": 46829,
+          "token": "0x4004490",
+          "offset": 80,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17552,
+          "name": "spawnDuration",
+          "typeIndex": 46829,
+          "token": "0x4004491",
+          "offset": 84,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17553,
+          "name": "timeToExplode",
+          "typeIndex": 46829,
+          "token": "0x4004492",
+          "offset": 88,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17554,
+          "name": "blinkThreshold",
+          "typeIndex": 46829,
+          "token": "0x4004493",
+          "offset": 92,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17555,
+          "name": "timePassed",
+          "typeIndex": 46829,
+          "token": "0x4004494",
+          "offset": 96,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17556,
+          "name": "timerStopPassed",
+          "typeIndex": 46829,
+          "token": "0x4004495",
+          "offset": 100,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17557,
+          "name": "CountTickSfxTermModifier",
+          "typeIndex": 46849,
+          "token": "0x4004496",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9deb580",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17558,
+          "name": "countTickBit",
+          "typeIndex": 24227,
+          "token": "0x4004497",
+          "offset": 104,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17559,
+          "name": "countTickSfx",
+          "typeIndex": 23166,
+          "token": "0x4004498",
+          "offset": 108,
+          "type": {
+            "pointer": "0x9de59a0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 1757,
+            "name": "Oak.AudioSourceHolder"
+          }
+        },
+        {
+          "index": 17560,
+          "name": "fuseLoopSfx",
+          "typeIndex": 23166,
+          "token": "0x4004499",
+          "offset": 116,
+          "type": {
+            "pointer": "0x9de59a0",
+            "kind": 17,
+            "byref": false,
+            "definitionIndex": 1757,
+            "name": "Oak.AudioSourceHolder"
+          }
+        },
+        {
+          "index": 17561,
+          "name": "_explosionEffectPool",
+          "typeIndex": 51615,
+          "token": "0x400449a",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9decef0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 13189,
+            "name": "Oak.UnityObjectPool"
+          }
+        },
+        {
+          "index": 17562,
+          "name": "stateMachine",
+          "typeIndex": 39372,
+          "token": "0x400449b",
+          "offset": 128,
+          "type": {
+            "pointer": "0x9e31370",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 7193,
+            "name": "Oak.ManualTransitionStateMachine"
+          }
+        },
+        {
+          "index": 17563,
+          "name": "isExplodeTimerStop",
+          "typeIndex": 24227,
+          "token": "0x400449c",
+          "offset": 136,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17564,
+          "name": "mpb",
+          "typeIndex": 39573,
+          "token": "0x400449d",
+          "offset": 144,
+          "type": {
+            "pointer": "0x9e31f00",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 29394,
+            "name": "UnityEngine.MaterialPropertyBlock"
+          }
+        },
+        {
+          "index": 17565,
+          "name": "ColorPropertyId",
+          "typeIndex": 36349,
+          "token": "0x400449e",
+          "offset": 8,
+          "type": {
+            "pointer": "0x9de8f10",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 17566,
+          "name": "holder",
+          "typeIndex": 34965,
+          "token": "0x400449f",
+          "offset": 152,
+          "type": {
+            "pointer": "0x9de85c0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 6407,
+            "name": "Oak.IFieldObject"
+          }
+        },
+        {
+          "index": 17567,
+          "name": "ShearKeyword",
+          "typeIndex": 48382,
+          "token": "0x40044a0",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9debb10",
+            "kind": 14,
+            "byref": false,
+            "name": "System.String"
+          }
+        },
+        {
+          "index": 17568,
+          "name": "ShearOffsetPropId",
+          "typeIndex": 36349,
+          "token": "0x40044a1",
+          "offset": 12,
+          "type": {
+            "pointer": "0x9de8f10",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 17569,
+          "name": "ShearNotApplyValue",
+          "typeIndex": 36361,
+          "token": "0x40044a2",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9de8fd0",
+            "kind": 8,
+            "byref": false,
+            "name": "System.Int32"
+          }
+        },
+        {
+          "index": 17570,
+          "name": "canBeRespawn",
+          "typeIndex": 24227,
+          "token": "0x40044a3",
+          "offset": 160,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17571,
+          "name": "<Oak.IFieldObjectBehaviour.ResetOnWrongPosition>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x40044a4",
+          "offset": 161,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 28473,
+          "name": "get_IsExplodeTimerStop",
+          "token": "0x6006f3a",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dcfe88"
+        },
+        {
+          "index": 28474,
+          "name": "set_IsExplodeTimerStop",
+          "token": "0x6006f3b",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x8005c05",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x5dcfed0"
+        },
+        {
+          "index": 28475,
+          "name": "get_CanBeRespawn",
+          "token": "0x6006f3c",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd0128"
+        },
+        {
+          "index": 28476,
+          "name": "set_CanBeRespawn",
+          "token": "0x6006f3d",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x8005c06",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x5dd0170"
+        },
+        {
+          "index": 28477,
+          "name": "Explode",
+          "token": "0x6006f3e",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd050c"
+        },
+        {
+          "index": 28478,
+          "name": "Respawn",
+          "token": "0x6006f3f",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd01f0"
+        },
+        {
+          "index": 28479,
+          "name": "Oak.IFieldObjectBehaviour.get_CurrentState",
+          "token": "0x6006f40",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd1534"
+        },
+        {
+          "index": 28480,
+          "name": "Oak.IFieldObjectBehaviour.get_CurrentAction",
+          "token": "0x6006f41",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd1584"
+        },
+        {
+          "index": 28481,
+          "name": "Oak.IFieldObjectBehaviour.get_ResetOnWrongPosition",
+          "token": "0x6006f42",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd1770"
+        },
+        {
+          "index": 28482,
+          "name": "Oak.IFieldObjectBehaviour.set_ResetOnWrongPosition",
+          "token": "0x6006f43",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x8005c07",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x5dd1778"
+        },
+        {
+          "index": 28483,
+          "name": "Oak.IComponent.AttachTo",
+          "token": "0x6006f44",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "target",
+              "typeIndex": 34964,
+              "token": "0x8005c08",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dd1784"
+        },
+        {
+          "index": 28484,
+          "name": "Oak.IComponent.DetachFrom",
+          "token": "0x6006f45",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "target",
+              "typeIndex": 34964,
+              "token": "0x8005c09",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dd1bc8"
+        },
+        {
+          "index": 28485,
+          "name": "Oak.IUpdatable.UpdateFrame",
+          "token": "0x6006f46",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "dt",
+              "typeIndex": 46828,
+              "token": "0x8005c0a",
+              "type": {
+                "pointer": "0x9deb430",
+                "kind": 12,
+                "byref": false,
+                "name": "System.Single"
+              }
+            }
+          ],
+          "address": "0x5dd1df8"
+        },
+        {
+          "index": 28486,
+          "name": "Oak.IEventListener.OnEvent",
+          "token": "0x6006f47",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "e",
+              "typeIndex": 29581,
+              "token": "0x8005c0b",
+              "type": {
+                "pointer": "0x9e0cab0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4662,
+                "name": "Oak.Event"
+              }
+            }
+          ],
+          "address": "0x5dd28f4"
+        },
+        {
+          "index": 28487,
+          "name": "SetBombFiring",
+          "token": "0x6006f48",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd31bc"
+        },
+        {
+          "index": 28488,
+          "name": "SetBombFiringByWindPot",
+          "token": "0x6006f49",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd3248"
+        },
+        {
+          "index": 28489,
+          "name": "Subscriber",
+          "token": "0x6006f4a",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "e",
+              "typeIndex": 29581,
+              "token": "0x8005c0c",
+              "type": {
+                "pointer": "0x9e0cab0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 4662,
+                "name": "Oak.Event"
+              }
+            }
+          ],
+          "address": "0x5dd32c8"
+        },
+        {
+          "index": 28490,
+          "name": "PlayCountSfx",
+          "token": "0x6006f4b",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "colorChangedProgress",
+              "typeIndex": 46828,
+              "token": "0x8005c0d",
+              "type": {
+                "pointer": "0x9deb430",
+                "kind": 12,
+                "byref": false,
+                "name": "System.Single"
+              }
+            }
+          ],
+          "address": "0x5dd25fc"
+        },
+        {
+          "index": 28491,
+          "name": "PlayFuseSfx",
+          "token": "0x6006f4c",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dcff84"
+        },
+        {
+          "index": 28492,
+          "name": "PlayExplodeSfx",
+          "token": "0x6006f4d",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd120c"
+        },
+        {
+          "index": 28493,
+          "name": ".ctor",
+          "token": "0x6006f4e",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd3424"
+        },
+        {
+          "index": 28494,
+          "name": ".cctor",
+          "token": "0x6006f4f",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dd3498"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9df8ed0",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 2761,
+        "name": "Oak.BombFieldObjectBehaviour"
+      }
+    },
+    {
+      "index": 2754,
+      "name": "BombCombustibleBehaviour",
+      "namespace": "Oak",
+      "fullName": "Oak.BombCombustibleBehaviour",
+      "byvalTypeIndex": 24195,
+      "fieldStart": 17509,
+      "methodStart": 28423,
+      "methodCount": 16,
+      "fieldCount": 7,
+      "token": "0x2000ac3",
+      "fields": [
+        {
+          "index": 17509,
+          "name": "fo",
+          "typeIndex": 34965,
+          "token": "0x4004466",
+          "offset": 16,
+          "type": {
+            "pointer": "0x9de85c0",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 6407,
+            "name": "Oak.IFieldObject"
+          }
+        },
+        {
+          "index": 17510,
+          "name": "<Oak.ICombustibleBehaviour.IsCombustible>k__BackingField",
+          "typeIndex": 24236,
+          "token": "0x4004467",
+          "offset": 24,
+          "type": {
+            "pointer": "0x9de5db0",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17511,
+          "name": "<IsAffectedBurn>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x4004468",
+          "offset": 25,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17512,
+          "name": "<IsBurning>k__BackingField",
+          "typeIndex": 24236,
+          "token": "0x4004469",
+          "offset": 26,
+          "type": {
+            "pointer": "0x9de5db0",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17513,
+          "name": "<BurnLifeTime>k__BackingField",
+          "typeIndex": 46829,
+          "token": "0x400446a",
+          "offset": 28,
+          "type": {
+            "pointer": "0x9deb440",
+            "kind": 12,
+            "byref": false,
+            "name": "System.Single"
+          }
+        },
+        {
+          "index": 17514,
+          "name": "<FireOnStart>k__BackingField",
+          "typeIndex": 24227,
+          "token": "0x400446b",
+          "offset": 32,
+          "type": {
+            "pointer": "0x9de5d20",
+            "kind": 2,
+            "byref": false,
+            "name": "System.Boolean"
+          }
+        },
+        {
+          "index": 17515,
+          "name": "<EventName>k__BackingField",
+          "typeIndex": 48359,
+          "token": "0x400446c",
+          "offset": 40,
+          "type": {
+            "pointer": "0x9deb9a0",
+            "kind": 14,
+            "byref": false,
+            "name": "System.String"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 28423,
+          "name": "Oak.ICombustibleBehaviour.get_IsCombustible",
+          "token": "0x6006f08",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dcca90"
+        },
+        {
+          "index": 28424,
+          "name": "get_IsAffectedBurn",
+          "token": "0x6006f09",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dcca98"
+        },
+        {
+          "index": 28425,
+          "name": "set_IsAffectedBurn",
+          "token": "0x6006f0a",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x8005be8",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x5dccaa0"
+        },
+        {
+          "index": 28426,
+          "name": "get_IsBurning",
+          "token": "0x6006f0b",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccaac"
+        },
+        {
+          "index": 28427,
+          "name": "get_BurnLifeTime",
+          "token": "0x6006f0c",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccab4"
+        },
+        {
+          "index": 28428,
+          "name": "set_BurnLifeTime",
+          "token": "0x6006f0d",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 46828,
+              "token": "0x8005be9",
+              "type": {
+                "pointer": "0x9deb430",
+                "kind": 12,
+                "byref": false,
+                "name": "System.Single"
+              }
+            }
+          ],
+          "address": "0x5dccabc"
+        },
+        {
+          "index": 28429,
+          "name": "get_FireOnStart",
+          "token": "0x6006f0e",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccac4"
+        },
+        {
+          "index": 28430,
+          "name": "set_FireOnStart",
+          "token": "0x6006f0f",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 24226,
+              "token": "0x8005bea",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x5dccacc"
+        },
+        {
+          "index": 28431,
+          "name": "get_EventName",
+          "token": "0x6006f10",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccad8"
+        },
+        {
+          "index": 28432,
+          "name": "set_EventName",
+          "token": "0x6006f11",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "value",
+              "typeIndex": 48358,
+              "token": "0x8005beb",
+              "type": {
+                "pointer": "0x9deb990",
+                "kind": 14,
+                "byref": false,
+                "name": "System.String"
+              }
+            }
+          ],
+          "address": "0x5dccae0"
+        },
+        {
+          "index": 28433,
+          "name": "get_IsUpdatableBurn",
+          "token": "0x6006f12",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccae8"
+        },
+        {
+          "index": 28434,
+          "name": "Oak.IComponent.AttachTo",
+          "token": "0x6006f13",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "fo",
+              "typeIndex": 34964,
+              "token": "0x8005bec",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dccb38"
+        },
+        {
+          "index": 28435,
+          "name": "Oak.IComponent.DetachFrom",
+          "token": "0x6006f14",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "fo",
+              "typeIndex": 34964,
+              "token": "0x8005bed",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dccb94"
+        },
+        {
+          "index": 28436,
+          "name": "Oak.ICombustibleBehaviour.GetBurntBy",
+          "token": "0x6006f15",
+          "parameterCount": 2,
+          "parameters": [
+            {
+              "name": "fo",
+              "typeIndex": 34964,
+              "token": "0x8005bee",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            },
+            {
+              "name": "immediate",
+              "typeIndex": 24226,
+              "token": "0x8005bef",
+              "type": {
+                "pointer": "0x9de5d10",
+                "kind": 2,
+                "byref": false,
+                "name": "System.Boolean"
+              }
+            }
+          ],
+          "address": "0x5dccbec"
+        },
+        {
+          "index": 28437,
+          "name": "Oak.ICombustibleBehaviour.GetExtinguishedBy",
+          "token": "0x6006f16",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "fo",
+              "typeIndex": 34964,
+              "token": "0x8005bf0",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dccd24"
+        },
+        {
+          "index": 28438,
+          "name": ".ctor",
+          "token": "0x6006f17",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccd80"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9df8e60",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 2754,
+        "name": "Oak.BombCombustibleBehaviour"
+      }
+    },
+    {
+      "index": 2755,
+      "name": "BombDamagedBehaviour",
+      "namespace": "Oak",
+      "fullName": "Oak.BombDamagedBehaviour",
+      "byvalTypeIndex": 24196,
+      "fieldStart": 17516,
+      "methodStart": 28439,
+      "methodCount": 9,
+      "fieldCount": 1,
+      "token": "0x2000ac4",
+      "fields": [
+        {
+          "index": 17516,
+          "name": "<Instance>k__BackingField",
+          "typeIndex": 24197,
+          "token": "0x400446d",
+          "offset": 0,
+          "type": {
+            "pointer": "0x9df8e80",
+            "kind": 18,
+            "byref": false,
+            "definitionIndex": 2755,
+            "name": "Oak.BombDamagedBehaviour"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "index": 28439,
+          "name": "get_Instance",
+          "token": "0x6006f18",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dccd90"
+        },
+        {
+          "index": 28440,
+          "name": "Oak.IComponent.AttachTo",
+          "token": "0x6006f19",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "fo",
+              "typeIndex": 34964,
+              "token": "0x8005bf1",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dccde8"
+        },
+        {
+          "index": 28441,
+          "name": "Oak.IComponent.DetachFrom",
+          "token": "0x6006f1a",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "fo",
+              "typeIndex": 34964,
+              "token": "0x8005bf2",
+              "type": {
+                "pointer": "0x9de85b0",
+                "kind": 18,
+                "byref": false,
+                "definitionIndex": 6407,
+                "name": "Oak.IFieldObject"
+              }
+            }
+          ],
+          "address": "0x5dcce40"
+        },
+        {
+          "index": 28442,
+          "name": "Oak.IDamagedBehaviour.Damage",
+          "token": "0x6006f1b",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "damage",
+              "typeIndex": 27880,
+              "token": "0x8005bf3",
+              "type": {
+                "pointer": "0x9de6c40",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 1492,
+                "name": "Oak.DamageInfo"
+              }
+            }
+          ],
+          "address": "0x5dcce98"
+        },
+        {
+          "index": 28443,
+          "name": "Oak.IDamagedBehaviour.Heal",
+          "token": "0x6006f1c",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "heal",
+              "typeIndex": 33852,
+              "token": "0x8005bf4",
+              "type": {
+                "pointer": "0x9de8180",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 6386,
+                "name": "Oak.HealInfo"
+              }
+            }
+          ],
+          "address": "0x5dcd02c"
+        },
+        {
+          "index": 28444,
+          "name": "Oak.IDamagedBehaviour.Die",
+          "token": "0x6006f1d",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "damage",
+              "typeIndex": 27880,
+              "token": "0x8005bf5",
+              "type": {
+                "pointer": "0x9de6c40",
+                "kind": 17,
+                "byref": false,
+                "definitionIndex": 1492,
+                "name": "Oak.DamageInfo"
+              }
+            }
+          ],
+          "address": "0x5dcd0b8"
+        },
+        {
+          "index": 28445,
+          "name": "Oak.IConvertDamagedBehaviour.ConvertDamage",
+          "token": "0x6006f1e",
+          "parameterCount": 1,
+          "parameters": [
+            {
+              "name": "damage",
+              "typeIndex": 19143,
+              "token": "0x8005bf6",
+              "type": {
+                "pointer": "0x9de6c30",
+                "kind": 17,
+                "byref": true,
+                "definitionIndex": 1492,
+                "name": "Oak.DamageInfo"
+              }
+            }
+          ],
+          "address": "0x5dcd140"
+        },
+        {
+          "index": 28446,
+          "name": ".ctor",
+          "token": "0x6006f1f",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dcd1a0"
+        },
+        {
+          "index": 28447,
+          "name": ".cctor",
+          "token": "0x6006f20",
+          "parameterCount": 0,
+          "parameters": [],
+          "address": "0x5dcd1a8"
+        }
+      ],
+      "membersTruncated": false,
+      "byvalType": {
+        "pointer": "0x9df8e70",
+        "kind": 18,
+        "byref": false,
+        "definitionIndex": 2755,
+        "name": "Oak.BombDamagedBehaviour"
+      }
+    }
+  ],
+  "methods": [],
+  "usages": [],
+  "methodRanges": []
+}

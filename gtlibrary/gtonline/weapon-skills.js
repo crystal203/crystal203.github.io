@@ -1,0 +1,10 @@
+/** Weapon action data owns timing/radius; stage controllers own tutorial buffs. */
+export class NativeWeaponSkills{
+ constructor(game){this.game=game;}
+ spec(){return this.game.stage.nativeMechanics.weaponSkills?.[this.game.state.equipment?.item1];}
+ trigger(){const g=this.game,s=this.spec();if(!s||!g.controlLocks.allows('Super')||g.mode!=='play'||g.springJump||g.carrying||this.active||g.clock<(this.readyAt||0))return false;if(!s.action.Name.startsWith('SuperCyclone:'))throw Error('尚未注册的武器技能：'+s.action.Name);this.active={spec:s,at:g.clock,next:g.clock};g.pendingAttack=null;g.attackUntil=g.clock+s.action.ActionDuration;g.onSound({name:s.action.SfxInfo[0].SfxName,id:'weapon-skill',action:'start',loop:true,fadeIn:s.action.SfxInfo[0].FadeInTime});g.runtime.setActorState(g.player,{animation:s.action.AnimationInfo[0].Animation,expression:s.action.EmotionInfo[0].Animation,loop:true});return true;}
+ update(){const g=this.game,a=this.active;if(!a)return;const n=a.spec.action;if(g.clock-a.at>=n.ActionDuration){this.active=null;this.readyAt=g.clock;g.onSound({id:'weapon-skill',action:'stop',fadeOut:0});g.runtime.setActorState(g.player,{animation:'idle',expression:'idle',loop:true});return;}g.runtime.setActorState(g.player,{animation:n.AnimationInfo[0].Animation,expression:n.EmotionInfo[0].Animation,loop:true});if(g.clock<a.next)return;a.next+=n.DamageTerm;
+  const p=g.state.position;for(const e of g.enemies)if(e.hp>0&&Math.abs(e.record.position.y-p[1])<.6&&Math.hypot(e.record.position.x-p[0],-e.record.position.z-p[2])<=n.CycloneRadius){e.hp-=a.spec.item.Damage*a.spec.item.StatGrowthRate**a.spec.level*n.ModifierBase;g.runtime.setActorState(e.record,{animation:'damaged'});g.effect('FX_hit',[e.record.position.x,e.record.position.y+.5,-e.record.position.z],{duration:.5});if(e.hp<=0){g.state.dead.includes(e.handle)||g.state.dead.push(e.handle);g.runtime.setWorldVisible(e.record,false);if(!g.enemies.some(x=>x.group===e.group&&x.hp>0))g.completeBattle(e.group);}}
+ }
+ dispose(){if(this.active)this.game.onSound({id:'weapon-skill',action:'stop',fadeOut:0});this.active=null;}
+}

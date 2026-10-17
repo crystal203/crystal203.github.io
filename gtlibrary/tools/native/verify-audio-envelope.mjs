@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {AudioMixer} from '../../gtaudio/core.js';
+const automation=[],sources=[];
+const mixer=Object.create(AudioMixer.prototype);
+Object.assign(mixer,{context:{state:'running',currentTime:4,createBufferSource(){const s={playbackRate:{},connect(){},disconnect(){},start(){this.started=true;}};sources.push(s);return s;},createGain(){return{gain:{value:1,setValueAtTime(v,t){automation.push(['set',v,t]);},linearRampToValueAtTime(v,t){automation.push(['ramp',v,t]);}},connect(){},disconnect(){}};}},gain:{},pendingSounds:new Set(),sources:new Set(),async spec(){return{Volume:.6,Pitch:1.2};},async buffer(){return{};},onError(e){throw e;}});
+await mixer.effect({name:'01_fairy_01',fadeIn:Math.fround(.7)});
+assert.deepEqual(automation,[['set',0,4],['ramp',.6,4+Math.fround(.7)]]);
+assert.equal(sources[0].started,true);assert.equal(sources[0].playbackRate.value,1.2);
+sources[0].onended();assert.equal(mixer.sources.size,0);
+automation.length=0;await mixer.effect('01_hit_comic_01');
+assert.deepEqual(automation,[],'existing one-shot calls keep their immediate gain');
+assert.equal(sources[1].started,true);
+console.log('PASS native linear fade-in source endpoint/duration, shared pitch, cleanup and immediate one-shot compatibility.');
