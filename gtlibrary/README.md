@@ -152,6 +152,8 @@ node tools/prepare-deploy.mjs
 
 Character 目录可切换正常单角色模式与多角色场景模式。场景中的角色可分别设置属性、装备与组件，通过时间轴编排位移、旋转、缩放、显隐、Spine 动作、朝向、皮肤、表情及装备变化；每个角色的轨道可独立收起或仅显示 Spine 动作。支持关键帧拖动、场景 JSON 导入导出与整场动画导出，并复用纹理、动画与查询缓存，暂停时按需重绘。详见 [Character 场景与时间轴](docs/character-scene.md)。回归检查：`node tools/checks/character-scene.cjs`。
 
+资源选择列表及常用资源下拉框支持 ☆ / ★ 收藏按钮，收藏跨刷新保留。下次搜索或选择时，在符合筛选条件的结果中优先显示收藏项，且在分页之前排序；同组内保留原有顺序。详见 [资源收藏](docs/favorites.md)，回归检查：`node tools/checks/favorites.cjs`。
+
 ## 第四子系统：GTMap 地图
 
 已接入 `gtmap/core.js` 和 `apps/map/`，导航、统一搜索、链接分享、按需资源读取与切换销毁沿用资源库机制。已收录全部 2054 个地图源文件（2053 张可解码，1 个测试文件无法解密；末批增加 614 个）；左侧默认分类浏览，主动选择“全部地图”才展示全列表；选择范围、复用接口、操作与已知渲染限制见 [GTMap 说明](gtmap/README.md)。入口：`index.html#view=map&map=afterworld_1_1`。`loadCore('map')` 只载入核心代码；地图文件、模型和贴图按选择加载，资源逻辑前缀为 `resources/map/`。新地图资源暂由本站读取，未接入旧 CDN 提交。发布工具已将 gtmap 纳入缓存版本生成。

@@ -34,19 +34,20 @@ function renderList(){
  const available=catalog.maps.filter(m=>directory.contains(cat,m)&&directory.matches(m,q));
  const folders=directory.children(cat).map(n=>({node:n,maps:available.filter(m=>directory.contains(n.id,m))})).filter(g=>g.maps.length);
  const rows=[],fragment=document.createDocumentFragment();let section=null;
- for(const {node:n,maps} of folders){
-  if(isRoot&&n.section!==section){section=n.section;const h=document.createElement('p');h.className='directory-section';h.textContent=section;fragment.append(h);}
+ for(const {node:n,maps} of GTFavorites.order(folders,g=>['map/category',g.node.id])){
+  const nextSection=GTFavorites.has('map/category',n.id)?'已收藏':n.section;
+  if(isRoot&&nextSection!==section){section=nextSection;const h=document.createElement('p');h.className='directory-section';h.textContent=section;fragment.append(h);}
   const b=document.createElement('button');b.className='category-card';b.dataset.category=n.id;
   const title=document.createElement('strong'),small=document.createElement('small');title.textContent=n.label;
   const count=directory.children(n.id).filter(child=>maps.some(m=>directory.contains(child.id,m))).length;small.textContent=(count?count+' 个子目录 · ':'')+maps.length+' 张地图';
-  b.append(title,small);b.onclick=()=>chooseCategory(n.id);fragment.append(b);
+  b.append(title,small);b.onclick=()=>chooseCategory(n.id);fragment.append(GTFavorites.row(b,'map/category',n.id,n.label));
  }
  const list=cat==='all'?available:available.filter(m=>m.category===cat);
  const variantOrder={'':0,'通道':1,'支线':2,'噩梦':3,'地狱':4,'活动裂痕':5};list.sort((a,b)=>(variantOrder[a.variant]||0)-(variantOrder[b.variant]||0)||a.stageOrder-b.stageOrder||a.id.localeCompare(b.id,undefined,{numeric:true}));
- for(const m of list){const b=document.createElement('button');b.dataset.map=m.id;b.setAttribute('aria-current',String(m===selected));
+ for(const m of GTFavorites.order(list,m=>['map/map',m.id])){const b=document.createElement('button');b.dataset.map=m.id;b.setAttribute('aria-current',String(m===selected));
   const title=document.createElement('strong'),small=document.createElement('small');title.textContent=m.title||m.name;
   small.textContent=(m.title!==m.id?m.id+' · ':'')+(m.status==='unavailable'?'源文件无法解码':(m.variant?m.variant+' · ':'')+m.tiles.toLocaleString()+' 图块');
-  b.append(title,small);b.onclick=()=>selectMap(m);fragment.append(b);rows.push(m);
+  b.append(title,small);b.onclick=()=>selectMap(m);fragment.append(GTFavorites.row(b,'map/map',m.id,m.title||m.name));rows.push(m);
  }
  if(!fragment.children.length){const empty=document.createElement('p');empty.className='empty-list';empty.textContent='没有匹配的地图或分类';fragment.append(empty);}
  $('maps').replaceChildren(fragment);lastListKey=key;$('maps').scrollTop=scrollPositions.get(key)||0;
@@ -95,7 +96,14 @@ let hiddenObjects=[],hiddenKey='',characterListKey='';const hiddenChecks=new Set
 function updateHiddenPanel(rows){hiddenObjects=rows;const key=JSON.stringify(rows);if(key===hiddenKey)return;hiddenKey=key;const ids=new Set(rows.map(r=>r.id));for(const id of hiddenChecks)if(!ids.has(id))hiddenChecks.delete(id);$('hidden-count').textContent=rows.length;renderHiddenList();}
 function renderHiddenList(){const q=$('hidden-search').value.trim().toLowerCase(),rows=hiddenObjects.filter(r=>(r.name+' '+r.layer+' '+r.position.join(',')).toLowerCase().includes(q));$('hidden-list').replaceChildren(...rows.map(r=>{const label=document.createElement('label'),input=document.createElement('input'),text=document.createElement('span');input.type='checkbox';input.dataset.hiddenId=r.id;input.checked=hiddenChecks.has(r.id);input.onchange=()=>input.checked?hiddenChecks.add(r.id):hiddenChecks.delete(r.id);text.textContent=r.name+' · '+r.layer+' · '+r.position.map(v=>Number(v.toFixed(2))).join(', ');label.append(input,text);return label;}));$('restore-hidden-selected').disabled=!hiddenObjects.length;}
 $('hidden-search').oninput=renderHiddenList;$('hidden-select-all').onclick=()=>{for(const input of $('hidden-list').querySelectorAll('input')){input.checked=true;hiddenChecks.add(input.dataset.hiddenId);}};$('restore-hidden-selected').onclick=()=>runtime?.restoreHidden([...hiddenChecks]);
-function updateCharacterList(){if(!runtime)return;const inventory=runtime.getDiagnostics().characters;$('load-map-characters').hidden=!inventory.deferred;$('load-map-characters').disabled=inventory.loading;$('character-inventory').textContent=inventory.deferred?'已跳过 '+inventory.total+' 个已放置人物；可单独载入。':'人物记录 '+inventory.records+' · 剧情预置 '+inventory.staged+' · 已载入 '+inventory.ready+'/'+inventory.total+' · 缺资源 '+inventory.failed.length+(inventory.unrecognized.length?' · 无法解码 '+inventory.unrecognized.length:'')+(inventory.partial?' · 部分解码 '+inventory.partial:'');const rows=runtime.getCharacters(),q=$('character-search').value.trim().toLowerCase(),key=JSON.stringify([rows,q]);if(key===characterListKey)return;characterListKey=key;$('character-count').textContent=rows.length;$('character-list').replaceChildren(...rows.filter(r=>(r.name+' '+r.id+' '+r.handle+' '+r.resource).toLowerCase().includes(q)).map(r=>{const b=document.createElement('button');b.textContent=r.name+' · '+r.handle+' · '+(r.status==='ready'?'已载入':r.status==='loading'?'载入中':r.error||'资源缺失');b.onclick=()=>{runtime.selectTiles([r.tileId]);runtime.focusSelection();};return b;}));}
+function updateCharacterList(){
+ if(!runtime)return;
+ const inventory=runtime.getDiagnostics().characters;$('load-map-characters').hidden=!inventory.deferred;$('load-map-characters').disabled=inventory.loading;
+ $('character-inventory').textContent=inventory.deferred?'已跳过 '+inventory.total+' 个已放置人物；可单独载入。':'人物记录 '+inventory.records+' · 剧情预置 '+inventory.staged+' · 已载入 '+inventory.ready+'/'+inventory.total+' · 缺资源 '+inventory.failed.length+(inventory.unrecognized.length?' · 无法解码 '+inventory.unrecognized.length:'')+(inventory.partial?' · 部分解码 '+inventory.partial:'');
+ const rows=runtime.getCharacters(),q=$('character-search').value.trim().toLowerCase(),key=JSON.stringify([rows,q]);if(key===characterListKey)return;characterListKey=key;$('character-count').textContent=rows.length;
+ const scope='map/character/'+selected.id,matches=GTFavorites.order(rows.filter(r=>(r.name+' '+r.id+' '+r.handle+' '+r.resource).toLowerCase().includes(q)),r=>[scope,r.handle||r.id]);
+ $('character-list').replaceChildren(...matches.map(r=>{const b=document.createElement('button');b.textContent=r.name+' · '+r.handle+' · '+(r.status==='ready'?'已载入':r.status==='loading'?'载入中':r.error||'资源缺失');b.onclick=()=>{runtime.selectTiles([r.tileId]);runtime.focusSelection();};return GTFavorites.row(b,scope,r.handle||r.id,r.name);}));
+}
 $('character-ground-depth').onchange=()=>runtime?.setCharacterState({groundDepth:$('character-ground-depth').checked});
 $('character-search').oninput=()=>{characterListKey='';updateCharacterList();};
 function fillCharacterSelect(id,names,value,empty=false){const select=$(id);select.replaceChildren();if(empty)select.add(new Option('无',''));for(const name of names)select.add(new Option(name,name));if(value&&!names.includes(value))select.add(new Option(value,value));select.value=value||'';}

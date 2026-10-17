@@ -24,8 +24,8 @@ function setTag(text,className){$('hero-tags').append(node('span',text,className
 function filter(){
   if(!catalog)return;
   const q=$('hero-search').value.trim().toLowerCase(),role=$('role-filter').value,stars=$('star-filter').value;
-  const matches=catalog.heroes.filter(h=>(!element||h.element===element)&&(!role||h.role===role)&&(!stars||h.stars===Number(stars))&&
-    (!q||[h.name,h.shortName,h.englishName,h.originId,...h.aliases].some(v=>String(v).toLowerCase().includes(q))));
+  const matches=GTFavorites.order(catalog.heroes.filter(h=>(!element||h.element===element)&&(!role||h.role===role)&&(!stars||h.stars===Number(stars))&&
+    (!q||[h.name,h.shortName,h.englishName,h.originId,...h.aliases].some(v=>String(v).toLowerCase().includes(q)))),h=>['wiki/hero',h.id]);
   $('hero-count').textContent=matches.length+' / '+catalog.heroes.length+' 位角色';
   $('hero-list').replaceChildren();
   if(!matches.length){$('hero-list').append(node('p','没有匹配的角色，请调整筛选。','empty-list'));return;}
@@ -33,7 +33,7 @@ function filter(){
   for(const h of matches){
     const b=node('button',undefined,'hero-card');b.type='button';b.dataset.hero=h.id;b.style.setProperty('--element',colors[h.element]);b.setAttribute('aria-current',String(hero?.id===h.id));
     const frame=node('span',undefined,'portrait-frame'),canvas=node('canvas');canvas.setAttribute('aria-hidden','true');frame.append(canvas);
-    const title=node('span'),small=node('small');title.append(node('strong',h.name));small.append(node('span',h.element+' · '+h.role,'element-label'),node('span','★'.repeat(h.stars),'stars'));title.append(small);b.append(frame,title);frag.append(b);
+    const title=node('span'),small=node('small');title.append(node('strong',h.name));small.append(node('span',h.element+' · '+h.role,'element-label'),node('span','★'.repeat(h.stars),'stars'));title.append(small);b.append(frame,title);frag.append(GTFavorites.row(b,'wiki/hero',h.id,h.name));
     b.onclick=()=>loadHero(h);portrait(canvas,h.portrait).catch(()=>{});
   }
   $('hero-list').append(frag);
@@ -107,12 +107,12 @@ function setPixel(row,{initial=false}={}){
 function appearanceCard(row,stage){
   const b=node('button',undefined,'appearance-card');b.type='button';b.dataset.appearance=row.id;b.setAttribute('aria-pressed','false');
   b.append(spriteBox(row.sprite),node('strong',stage?row.label:row.name),node('small',stage?'★'.repeat(row.stars):row.type));
-  b.onclick=()=>setPixel(row);return b;
+  b.onclick=()=>setPixel(row);return GTFavorites.row(b,'wiki/appearance',row.id,stage?row.label:row.name);
 }
 function renderAppearance(){
   $('appearance-count').textContent=hero.stages.length+' 种形态 · '+hero.costumes.length+' 套时装';
-  $('evolution-list').replaceChildren(...hero.stages.map(s=>appearanceCard(s,true)));
-  $('costume-list').replaceChildren(...hero.costumes.map(c=>appearanceCard(c,false)));
+  $('evolution-list').replaceChildren(...GTFavorites.order(hero.stages,s=>['wiki/appearance',s.id]).map(s=>appearanceCard(s,true)));
+  $('costume-list').replaceChildren(...GTFavorites.order(hero.costumes,c=>['wiki/appearance',c.id]).map(c=>appearanceCard(c,false)));
   if(!hero.costumes.length)empty($('costume-list'),'暂无时装');
   const costume=hero.costumes.find(c=>c.code===params.get('costume'));
   const stage=hero.stages.find(s=>String(s.id)===params.get('stage'))||defaultStage();
@@ -125,7 +125,7 @@ function renderWeapons(){
   const range=(a,b,unit='')=>number(a)+(a===b?'':'–'+number(b))+unit;
   function affixes(card,label,rows){if(!rows?.length)return;const group=node('div',undefined,'weapon-affixes');group.append(node('h5',label));for(const r of rows){const line=node('p');line.append(node('span',r.name),node('strong','+'+range(r.min,r.max,r.unit)));group.append(line);}card.append(group);}
   for(const w of hero.weapons){
-    const card=node('section',undefined,'panel weapon-card'),select=node('select',undefined,'weapon-variant'),body=node('div');select.setAttribute('aria-label',w.name+'版本');
+    const card=node('section',undefined,'panel weapon-card'),select=node('select',undefined,'weapon-variant'),body=node('div');select.setAttribute('aria-label',w.name+'版本');select.dataset.favoriteScope='wiki/weapon-variant';
     select.append(...w.variants.map(v=>{const o=node('option',v.label);o.value=v.id;return o;}));select.hidden=w.variants.length<2;card.append(select,body);
     const render=()=>{
       const v=w.variants.find(v=>String(v.id)===select.value)||w.variants[0],head=node('div',undefined,'weapon-heading'),name=node('div');body.replaceChildren();

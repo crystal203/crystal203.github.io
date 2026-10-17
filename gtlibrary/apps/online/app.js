@@ -27,7 +27,7 @@ addEventListener('gt-dispose',()=>{disposed=true;leave();});addEventListener('pa
 
 async function selectStage(entry){
  const selection=++stageSelection;$('start').disabled=true;$('continue').disabled=true;
- for(const card of $('stages').children)card.setAttribute('aria-pressed',String(card.dataset.stage===entry.id));
+ for(const card of $('stages').querySelectorAll('.stage-card'))card.setAttribute('aria-pressed',String(card.dataset.stage===entry.id));
  try{const loaded=await loadStage(entry);if(disposed||selection!==stageSelection)return;
   ({stage,Game,preview}=loaded);$('map-button').querySelector('strong').textContent=stage.title;
   for(const kind of ['coins','stars','chests'])$(kind).textContent='0 / '+stage.totals[kind];
@@ -42,9 +42,9 @@ for(const item of FIELD_ITEMS){const label=document.createElement('label');label
  const image=document.createElement('img');image.src='../../gtonline/assets/ui/'+item.icon;image.alt='';
  const caption=document.createElement('span');caption.textContent=item.name;label.title=item.description;label.append(input,image,caption);$('loadout-items').append(label);
 }
-try{const entries=await loadStageCatalog();for(const entry of entries){const card=document.createElement('button');card.className='stage-card';card.dataset.stage=entry.id;card.hidden=entry.id!=='1-1';card.setAttribute('aria-pressed','false');
+try{const entries=await loadStageCatalog();for(const entry of GTFavorites.order(entries,e=>['online/stage',e.id])){const card=document.createElement('button');card.className='stage-card';card.dataset.stage=entry.id;card.hidden=entry.id!=='1-1';card.setAttribute('aria-pressed','false');
  const number=document.createElement('span');number.className='stage-number';number.textContent=entry.id.replace('-','–');
- const label=document.createElement('span'),title=document.createElement('strong'),detail=document.createElement('small');title.textContent=entry.title;detail.textContent=entry.preview?'复原中 · 主线流程可游玩':'主线关卡';label.append(title,detail);card.append(number,label);card.onclick=()=>void selectStage(entry);$('stages').append(card);}
+ const label=document.createElement('span'),title=document.createElement('strong'),detail=document.createElement('small');title.textContent=entry.title;detail.textContent=entry.preview?'复原中 · 主线流程可游玩':'主线关卡';label.append(title,detail);card.append(number,label);card.onclick=()=>void selectStage(entry);const row=GTFavorites.row(card,'online/stage',entry.id,entry.title);row.hidden=card.hidden;$('stages').append(row);}
  const initialEntry=entries.find(entry=>entry.id==='1-1');
  if(initialEntry)await selectStage(initialEntry);else throw Error('没有可用关卡');
 }catch(e){$('save-status').textContent='关卡目录读取失败：'+e.message;$('start').disabled=true;}

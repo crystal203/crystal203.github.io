@@ -9,7 +9,8 @@
  function search(items,query){
   const q=query.trim().toLowerCase();if(!q)return [];
   const score=e=>{const names=[e.id,e.name,...(e.aliases||[])].map(v=>String(v).toLowerCase());return names.some(n=>n===q)?3:names.some(n=>n.startsWith(q))?2:names.some(n=>n.includes(q))?1:0;};
-  return items.map((e,i)=>({e,i,score:score(e)})).filter(r=>r.score).sort((a,b)=>b.score-a.score||a.i-b.i).map(r=>r.e);
+  const matches=items.map((e,i)=>({e,i,score:score(e)})).filter(r=>r.score).sort((a,b)=>b.score-a.score||a.i-b.i).map(r=>r.e);
+  return global.GTFavorites?GTFavorites.order(matches,GTFavorites.entityKey):matches;
  }
  global.GTResourceCatalog={load,search};
 })(globalThis);

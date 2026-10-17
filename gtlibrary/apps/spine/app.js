@@ -278,7 +278,7 @@
       }
 
       function refreshVariantSelector(folder, name) {
-        var list = variantsOf(folder, name);
+        var list = GTFavorites.order(variantsOf(folder,name),function(variant){return ['spine/direction',variant];});
         var wrapper = $("skeletonVariantWrapper");
         var buttons = $("skeletonVariantButtons");
         app.variant = currentVariant(folder, name);
@@ -290,7 +290,7 @@
           button.dataset.variant = list[i];
           button.setAttribute("aria-pressed", list[i] === app.variant ? "true" : "false");
           button.textContent = variantLabel(list[i]);
-          buttons.appendChild(button);
+          var pair=GTFavorites.row(button,'spine/direction',list[i],variantLabel(list[i]));pair.classList.add('gt-favorite-inline');buttons.appendChild(pair);
         }
         wrapper.style.display = (list.length > 1) ? "flex" : "none";
       }
@@ -429,6 +429,7 @@
             || displayName(name).toLowerCase().indexOf(keyword) >= 0
             || (app.supplementAliases[name] || "").indexOf(keyword) >= 0;
         });
+        app.shown=GTFavorites.order(app.shown,function(name){return ['spine/'+app.folder,name];});
         renderAssetList();
       }
 
@@ -656,7 +657,8 @@
             || (sheet.zh[name] || "").toLowerCase().indexOf(keyword) >= 0);
         });
         names.sort(function (a, b) {
-          return Number(GTEquipment.isPreferredItem(b, app.current)) - Number(GTEquipment.isPreferredItem(a, app.current))
+          return Number(GTFavorites.has('atlas/region/items',b))-Number(GTFavorites.has('atlas/region/items',a))
+            || Number(GTEquipment.isPreferredItem(b, app.current)) - Number(GTEquipment.isPreferredItem(a, app.current))
             || a.localeCompare(b);
         });
         if (names.indexOf(app.selectedItem) < 0) app.selectedItem = names[0] || null;
@@ -690,7 +692,7 @@
             app.selectedItem = name;
             equipSelectedItem();
           });
-          fragment.appendChild(button);
+          fragment.appendChild(GTFavorites.row(button,'atlas/region/items',name,sheet.zh[name]||name));
         });
         list.appendChild(fragment);
         list.dataset.hasMore = names.length > app.itemLimit ? "true" : "false";
@@ -840,7 +842,7 @@
           item.appendChild(text);
 
           item.addEventListener("click", function () { selectAsset(this.dataset.name); });
-          frag.appendChild(item);
+          frag.appendChild(GTFavorites.row(item,'spine/'+app.folder,name,displayName(name)));
         }
         list.appendChild(frag);
 

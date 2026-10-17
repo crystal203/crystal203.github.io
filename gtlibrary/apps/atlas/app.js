@@ -39,6 +39,7 @@ let currentSpritesheet = null;
             spritesheets.forEach((sheet, index) => {
                 const option = document.createElement('option');
                 option.value = index;
+                option.dataset.favoriteId=sheet.json.split('/').pop().replace('.json','');
                 option.textContent = sheet.name;
                 select.appendChild(option);
             });
@@ -161,7 +162,8 @@ let currentSpritesheet = null;
                 item.appendChild(info);
                 const actions=document.createElement("div");actions.className="region-actions";actions.append(btn);item.append(actions);
 
-                const sheetCode=String(currentSpritesheet.json||'').split('/').pop().replace('.json','');
+                const sheetCode=String(currentSpritesheet.json||'custom').split('/').pop().replace('.json','');
+                actions.prepend(GTFavorites.button('atlas/region/'+sheetCode,region.name,region.zh||region.name));
                 if(['characters','portraits','bosses'].includes(sheetCode)){
                     const selection={name:region.name,sheet:sheetCode,query:region.name};
                     const entity=GTRegistry.resolve(globalThis.GTLibraryRegistry||{aliases:{},entities:{}},selection);
@@ -320,6 +322,8 @@ let currentSpritesheet = null;
                 filteredRegions = allRegions.filter(region => test(region.name) || test(region.zh));
             }
 
+            const favoriteSheet=String(currentSpritesheet?.json||'custom').split('/').pop().replace('.json','');
+            filteredRegions=GTFavorites.order(filteredRegions,region=>['atlas/region/'+favoriteSheet,region.name]);
             currentPage = 1;
             renderRegionList();
             renderPagination();

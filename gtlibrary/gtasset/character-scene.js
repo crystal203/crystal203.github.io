@@ -6,6 +6,16 @@
   const properties = [...Object.keys(defaults),'equipment'];
   const copy = value => JSON.parse(JSON.stringify(value));
   const speedCache = new WeakMap();
+  const actionSuffix=/_(front|back|side)(\d*(?:\[[^\]]*\])?)$/;
+  const actionName=name=>String(name||'').replace(actionSuffix,'$2');
+  const actionDirection=name=>String(name||'').match(actionSuffix)?.[1]||'';
+  function resolveAction(names,wanted,view,fallback='idle') {
+    const base=actionName(wanted);if(!base)return '';
+    const pick=key=>names.find(name=>actionName(name)===key&&actionDirection(name)===view)
+      ||names.find(name=>name===key)
+      ||(!['front','back','side'].includes(view)&&names.find(name=>actionName(name)===key))||'';
+    return pick(base)||(base!==fallback&&fallback?pick(actionName(fallback)):'');
+  }
   function touch(actor) { actor.revision=(actor.revision||0)+1; }
   function upperBound(frames,time) {
     let low=0,high=frames.length;
@@ -23,14 +33,14 @@
     return previous;
   }
   function sample(actor,time) {
-    const result={};for(const property of properties)result[property]=frameAt(actor,property,time).value;return result;
+    const result={};for(const property of properties)result[property]=frameAt(actor,property,time).value;result.action=actionName(result.action);return result;
   }
   function putKey(actor,property,time,value,interpolation='linear') {
     if (!properties.includes(property)) throw Error('未知角色属性');
     const frames = (actor.keys[property] || []).slice();
     time = Math.round(Math.max(0,time)*1000)/1000;
     const index=upperBound(frames,time),existing=index&&Math.abs(frames[index-1].time-time)<.0005;
-    const frame={time,value:property==='equipment'?{...value}:value,interpolation};
+    const frame={time,value:property==='equipment'?{...value}:property==='action'?actionName(value):value,interpolation};
     if(existing)frames[index-1]=frame;else frames.splice(index,0,frame);
     actor.keys[property]=frames;touch(actor);
   }
@@ -67,7 +77,7 @@
           if(!validValue(property,equipment))throw Error('角色装备无效');actor.equipment={...equipment};
         } else if(input.base && Object.hasOwn(input.base,property)) {
           if(!validValue(property,input.base[property])) throw Error('角色属性无效：'+property);
-          actor.base[property]=input.base[property];
+          actor.base[property]=property==='action'?actionName(input.base[property]):input.base[property];
         }
         const frames=input.keys?.[property]||[];
         if(!Array.isArray(frames)||frames.length>10000) throw Error('关键帧数量无效');
@@ -75,7 +85,7 @@
         for(const frame of frames) {
           if(!frame||!Number.isFinite(frame.time)||frame.time<0||frame.time>value.duration||!validValue(property,frame.value)||!['linear','hold',undefined].includes(frame.interpolation)) throw Error('关键帧无效：'+property);
           const time=Math.round(frame.time*1000)/1000;
-          normalized.set(time,{time,value:property==='equipment'?{...frame.value}:frame.value,interpolation:frame.interpolation||'linear'});
+          normalized.set(time,{time,value:property==='equipment'?{...frame.value}:property==='action'?actionName(frame.value):frame.value,interpolation:frame.interpolation||'linear'});
         }
         if(frames.length)actor.keys[property]=[...normalized.values()].sort((a,b)=>a.time-b.time);
       }
@@ -85,5 +95,5 @@
     }
     return result;
   }
-  root.GTCharacterScene={defaults,properties,continuous,copy,frameAt,sample,putKey,animationTime,validate,validValue,touch};
+  root.GTCharacterScene={defaults,properties,continuous,copy,frameAt,sample,putKey,animationTime,validate,validValue,touch,actionName,resolveAction};
 })(globalThis);

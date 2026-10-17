@@ -90,7 +90,14 @@
         names=names.filter(name=>name.includes('[emo]')).map(GTEmotion.key);
         const emotion=selectedRuntime(actor).emotion;
         if(emotion) names.push(...emotion.skeleton.data.animations.map(a=>GTEmotion.key(a.name)).filter(name=>name!=='empty'));
-      } else names=names.filter(name=>property==='sub'?name.includes('[sub]'):!name.includes('[emo]')&&!name.includes('[sub]'));
+      } else {
+        names=names.filter(name=>property==='sub'?name.includes('[sub]'):!name.includes('[emo]')&&!name.includes('[sub]'));
+        if(property==='action'){
+          actor.actionAliases=new Map();
+          for(const name of names){const base=M.actionName(name);if(!actor.actionAliases.has(base))actor.actionAliases.set(base,[]);actor.actionAliases.get(base).push(name);}
+          names=names.map(M.actionName);
+        }
+      }
       return actor.options[property]=[['','（不选）'],...[...new Set(names)].sort().map(name=>[name,name])];
     }
     for(const property of inspectorProperties) {
@@ -100,7 +107,8 @@
       else if(typeof M.defaults[property]==='number') input=el('input',{type:'number',step:property==='rotation'?'1':'.1','aria-label':labels[property]});
       else input=el('select',{'aria-label':labels[property]});
       input.id='sceneProp-'+property;fields[property]=input;
-      const key=el('button',{type:'button',class:'tiny','aria-label':'为'+labels[property]+'添加关键帧',title:'在播放头插入关键帧'},'◆');
+      if(property==='action')input.title='动作自动匹配当前人物朝向，无需选择方向后缀';
+      const key=el('button',{type:'button',class:'tiny scene-property-key','aria-label':'为'+labels[property]+'添加关键帧',title:'在播放头插入关键帧'},'◆');
       row.append(title,input,key);$('sceneProperties').append(row);
       input.onchange=()=>{const value=input.type==='checkbox'?input.checked:input.type==='number'?Number(input.value):input.value;edit(property,value);};
       key.onclick=event=>{event.preventDefault();const actor=current();if(!actor)return;const value=M.sample(actor,time)[property];M.putKey(actor,property,time,value);selectedKey={actor:actor.id,property,frame:actor.keys[property].find(f=>f.time===Math.round(time*1000)/1000)};refresh();sample(time);};
@@ -120,11 +128,11 @@
       equipmentKey.disabled=!actor||!!busy;
       for(const property of inspectorProperties) {
         const input=fields[property];input.disabled=!actor;
-        input.parentNode.querySelector('button').disabled=!actor;
+        input.parentNode.querySelector('.scene-property-key').disabled=!actor;
         if(!actor)continue;
         if(input.tagName==='SELECT') {
           const options=choices(actor,property),signature=actor.id+'|'+(property==='skin'?M.frameAt(actor,'direction',time).value:'');
-          if(input.dataset.options!==signature){input.replaceChildren(...options.map(([key,label])=>new Option(label,key)));input.dataset.options=signature;}
+          if(input.dataset.options!==signature){input.replaceChildren(...options.map(([key,label])=>{const option=new Option(label,key);if(property==='action')option.dataset.favoriteAliases=JSON.stringify(actor.actionAliases.get(key)||[]);return option;}));input.dataset.options=signature;}
           input.value=value[property];
           if(input.value!==value[property])input.add(new Option(value[property],value[property]));
         }
@@ -231,7 +239,7 @@
           if(!r.advancedNames)r.advancedNames=r.emotion?.face?r.emotion.skeleton.data.animations.map(a=>a.name):[];
           const expression=GTEmotion.route(r.emoteNames,r.advancedNames,value.expression,variant);
           r.advanced=expression.advanced;
-          r.clips=[[GTEquipment.inheritAnimation(r.names,value.action,variant,''),'action'],[expression.native,'expression'],[GTEquipment.inheritAnimation(r.names,value.sub,variant,''),'sub']].map(([name,property])=>[r.animations.get(name),property]);
+          r.clips=[[M.resolveAction(r.names,value.action,variant),'action'],[expression.native,'expression'],[GTEquipment.inheritAnimation(r.names,value.sub,variant,''),'sub']].map(([name,property])=>[r.animations.get(name),property]);
         }
         for(const [animation,property] of r.clips) {
           if(animation)animation.apply(s,0,M.animationTime(actor,property,at),value.loop,null,1,spine.MixBlend.replace,spine.MixDirection.mixIn);
@@ -268,7 +276,7 @@
         const data=actor.runtimes[variants[0]].skeleton.data,skins=data.skins;
         actor.base.direction=variants.includes('front')?'front':variants[0];
         actor.base.skin=skins.find(s=>s.name===pendingSkin.name)?.name||skins.find(s=>pendingSkin.tier&&s.name.endsWith('_'+pendingSkin.tier))?.name||skins.at(-1)?.name||'';
-        actor.base.action=data.animations.find(a=>a.name==='idle_'+variants[0])?.name||data.animations.find(a=>!a.name.includes('[')&&a.name.includes('idle'))?.name||'';
+        actor.base.action=M.actionName(data.animations.find(a=>a.name==='idle_'+variants[0])?.name||data.animations.find(a=>!a.name.includes('[')&&a.name.includes('idle'))?.name||'');
         actor.base.sub=data.animations.find(a=>a.name==='[sub]idle_'+variants[0])?.name||'';
         actor.base.x=state.actors.length*35;state.actors.push(actor);
         select(actor.id);if(state.actors.length===1)fit();status('已添加 '+actor.label+'。资源列表可继续添加其他角色。');

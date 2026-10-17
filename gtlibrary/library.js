@@ -65,7 +65,7 @@ function search(){
   const q=$('library-search').value.trim().toLowerCase();$('results').replaceChildren();if(!q){$('results').hidden=true;return;}
   const matched=GTResourceCatalog.search(searchItems,q);
   const info=document.createElement('p');info.textContent=matched.length?'找到 '+matched.length+' 项，显示前 40 项':'未找到资源，可在各功能中选择图集或上传本地文件。';$('results').append(info);
-  for(const e of matched.slice(0,40)){const b=document.createElement('button'),text=document.createElement('span'),code=document.createElement('small'),kinds=document.createElement('span');text.textContent=e.name;code.textContent=e.id;text.append(code);kinds.className='kinds';kinds.textContent=views.filter(v=>e[v]).map(v=>titles[v]).join(' · ');b.append(text,kinds);b.onclick=()=>{navigate(GTRegistry.route(e,e[active]?active:views.find(v=>e[v])));$('results').hidden=true;};$('results').append(b);}
+  for(const e of matched.slice(0,40)){const b=document.createElement('button'),text=document.createElement('span'),code=document.createElement('small'),kinds=document.createElement('span');text.textContent=e.name;code.textContent=e.id;text.append(code);kinds.className='kinds';kinds.textContent=views.filter(v=>e[v]).map(v=>titles[v]).join(' · ');b.append(text,kinds);b.onclick=()=>{navigate(GTRegistry.route(e,e[active]?active:views.find(v=>e[v])));$('results').hidden=true;};$('results').append(GTFavorites.row(b,...GTFavorites.entityKey(e),e.name));}
   $('results').hidden=false;
 }
 $('search-form').onsubmit=e=>{e.preventDefault();search();};let timer;$('library-search').oninput=()=>{clearTimeout(timer);timer=setTimeout(search,180);};

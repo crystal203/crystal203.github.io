@@ -1,0 +1,13 @@
+button.gt-favorite{flex:none;display:inline-grid;place-items:center;width:30px;min-width:30px;height:30px;margin:0;padding:0;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--dim,#9aa3b3);font:21px/1 system-ui,sans-serif;cursor:pointer}
+button.gt-favorite:hover:not(:disabled){color:#ffd178;border-color:#8a713e;background:#ffd17816}button.gt-favorite[aria-pressed=true]{color:#ffd178}button.gt-favorite:focus-visible{outline:2px solid var(--accent,#93aee6);outline-offset:2px}button.gt-favorite:disabled{opacity:.35;cursor:default}
+.gt-favorite-row{display:flex;align-items:center;gap:4px;min-width:0;width:100%}.gt-favorite-row>.gt-favorite-choice{flex:1;min-width:0;margin-bottom:0}.gt-favorite-row>.gt-favorite{margin-right:3px}
+button.gt-favorite-select{align-self:center;vertical-align:middle}#results>.gt-favorite-row{margin:4px 0}#results .gt-favorite-choice{display:flex;gap:14px;align-items:center;text-align:left;background:transparent;border-color:transparent}#results .gt-favorite-choice:hover{background:#232936}
+.gt-favorite-row[hidden],button.gt-favorite[hidden]{display:none!important}
+.appearance-grid>.gt-favorite-row{align-items:stretch;position:relative}.appearance-grid>.gt-favorite-row>.gt-favorite{position:absolute;right:4px;top:4px;background:#10151dcc}.appearance-grid>.gt-favorite-row>.appearance-card{width:100%}
+.scene-property>.gt-favorite{min-width:24px;width:24px;font-size:18px}.region-actions>.gt-favorite{align-self:center}
+.gt-favorite-row.gt-favorite-inline{display:inline-flex;width:auto}
+#filters label:has(>select[data-favorites-ready]){position:relative;padding-right:34px}#filters label:has(>select[data-favorites-ready])>.gt-favorite-select{position:absolute;right:0;bottom:2px}
+:is(#maps,#character-list) button.gt-favorite{display:inline-grid;width:30px;max-width:30px;margin:0;padding:0;text-align:center;background:transparent}:is(#maps,#character-list) button.gt-favorite:hover{background:#ffd17816}
+#spritesheetSelect[data-favorites-ready]{width:calc(100% - 38px);vertical-align:middle}
+.gt-favorite-select-control{display:flex;align-items:center;gap:4px;min-width:0;width:100%}.gt-favorite-select-control>select{flex:1;min-width:0}
+.track:has(>select[data-favorites-ready]){grid-template-columns:48px minmax(0,1fr) 30px}

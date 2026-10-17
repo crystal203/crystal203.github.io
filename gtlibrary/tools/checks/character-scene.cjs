@@ -7,6 +7,13 @@ const http=require('node:http');
 const root=path.resolve(__dirname,'../..');
 const context=vm.createContext({});vm.runInContext(fs.readFileSync(path.join(root,'gtasset/character-scene.js'),'utf8'),context);
 const M=context.GTCharacterScene;
+assert.equal(M.actionName('walk_front'),'walk');assert.equal(M.actionName('attack_back2[tag]'),'attack2[tag]');assert.equal(M.actionName('idle_body'),'idle_body');
+const clips=['idle_front','idle_back','idle_side','walk_front','walk_back','walk_side','walk','attack_front'];
+for(const view of ['front','back','side'])assert.equal(M.resolveAction(clips,'walk_front',view),'walk_'+view);
+assert.equal(M.resolveAction(['walk'],'walk','back'),'walk');assert.equal(M.resolveAction(clips,'attack','back'),'idle_back');
+assert.equal(M.resolveAction(['attack_front'],'attack','side'),'');assert.equal(M.resolveAction(clips,'','front'),'');
+const legacy=M.validate({version:1,duration:3,actors:[{id:'old',resource:'hana',base:{action:'idle_back'},keys:{action:[{time:1,value:'walk_side'},{time:2,value:'walk_front'}]}}]}).actors[0];
+assert.equal(legacy.base.action,'idle');assert.deepEqual(Array.from(legacy.keys.action,key=>[key.time,key.value]),[[1,'walk'],[2,'walk']]);assert.equal(M.animationTime(legacy,'action',2.5),.5);
 const actor={id:'one',resource:'hana',label:'哈娜',base:{...M.defaults,action:'idle_front'},keys:{}};
 M.putKey(actor,'x',0,0);M.putKey(actor,'x',2,100);M.putKey(actor,'direction',1,'back');M.putKey(actor,'visible',1.5,false);
 assert.equal(M.sample(actor,1).x,50);assert.equal(M.sample(actor,.5).direction,'front');assert.equal(M.sample(actor,1).direction,'back');
@@ -79,6 +86,19 @@ const server=http.createServer((req,res)=>{
     await frame.locator('.scene-track-actor').first().locator('.scene-track-view').selectOption('full');
     console.log('PASS independent timeline collapse, action-only view and shared atlas/texture loading');
     await frame.locator('#sceneActors button').first().click();
+    const actionChoices=await frame.locator('#sceneProp-action option').evaluateAll(options=>options.map(o=>o.value));
+    assert.equal(new Set(actionChoices).size,actionChoices.length);assert.ok(actionChoices.includes('walk'));assert.ok(actionChoices.every(value=>!/_((front|back|side))(\d*(?:\[[^\]]*\])?)$/.test(value)));
+    await frame.evaluate(()=>{window.sceneClips=[];const apply=spine.Animation.prototype.apply;spine.Animation.prototype.apply=function(skeleton,...args){if(skeleton.skin?.name.startsWith('hana_')&&!/\[(emo|sub)\]/.test(this.name))window.sceneClips.push({name:this.name,time:args[1]});return apply.call(this,skeleton,...args);};});
+    await frame.locator('#sceneRecord').uncheck();await frame.locator('#sceneProp-action').selectOption('walk');
+    await frame.locator('#sceneTime').fill('0.5');await frame.locator('#sceneTime').dispatchEvent('change');
+    for(const [direction,suffix] of [['back','back'],['left','side'],['right','side'],['front','front']]){
+      await frame.evaluate(()=>{window.sceneClips=[];});await frame.locator('#sceneProp-direction').selectOption(direction);await frame.waitForTimeout(50);
+      const applied=await frame.evaluate(()=>window.sceneClips.filter(clip=>clip.name.startsWith('walk')));
+      assert.ok(applied.length);assert.ok(applied.every(clip=>clip.name==='walk_'+suffix&&Math.abs(clip.time-.5)<1e-8));
+      assert.equal(await frame.locator('#sceneProp-action').inputValue(),'walk');
+    }
+    await frame.locator('#sceneReset').click();await frame.locator('#sceneProp-action').selectOption('idle');await frame.locator('#sceneRecord').check();
+    console.log('PASS grouped actions automatically follow all orientations without restarting the clip');
     await frame.locator('#itemSearch').fill('cwp_hana');await frame.waitForSelector('#itemList .asset-item',{timeout:60000});
     const equipmentSlot=await frame.locator('#equipmentSlot option').evaluateAll(options=>options.find(o=>o.value.includes('weapon1'))?.value||options[0].value);
     await frame.locator('#equipmentSlot').selectOption(equipmentSlot);await frame.locator('#equipBtn').click();
@@ -118,6 +138,7 @@ const server=http.createServer((req,res)=>{
     const downloadEvent=page.waitForEvent('download');await frame.locator('#sceneSave').click();const download=await downloadEvent;
     const file=await download.path(),document=JSON.parse(fs.readFileSync(file,'utf8'));
     assert.equal(document.actors.length,3);assert.equal(document.actors[0].keys.direction[0].value,'back');
+    assert.equal(document.actors[0].base.action,'idle');
     assert.equal(document.actors[0].keys.equipment[0].value[equipmentSlot],'cwp_knight');assert.equal(document.actors[2].timelineView,'action');
     await frame.locator('#sceneClear').click();assert.equal(await frame.locator('#sceneActors button').count(),0);
     await frame.locator('#sceneOpen').setInputFiles({name:'scene.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(document))});
@@ -149,7 +170,7 @@ const server=http.createServer((req,res)=>{
     await frame.locator('#sceneActors button').nth(1).click();assert.equal(await actorSlots.first().isChecked(),true);
     await frame.locator('#sceneActors button').first().click();assert.equal(await actorSlots.first().isChecked(),false);
     await frame.locator('#sceneProp-direction').selectOption('left');
-    const action=await frame.locator('#sceneProp-action option').evaluateAll(options=>options.map(o=>o.value).find(value=>/walk.*side|run.*side/.test(value)));
+    const action=await frame.locator('#sceneProp-action option').evaluateAll(options=>options.map(o=>o.value).find(value=>/^(walk|run)$/.test(value)));
     assert.ok(action);await frame.locator('#sceneProp-action').selectOption(action);
     await frame.waitForTimeout(60);assert.ok(await frame.evaluate(()=>window.drawn.some(d=>d.scaleX<0)));
     console.log('PASS timeline scrubbing, diamond dragging and canvas actor dragging');

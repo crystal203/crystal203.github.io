@@ -23,9 +23,9 @@ async function loadAvatars(){
   }catch(error){console.debug('列表头像暂不可用',error);}
 }
 function renderCharacters(){
-  const query=$('search').value.trim().toLowerCase(),list=catalog.characters.filter(c=>c.name.toLowerCase().includes(query)||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query)||c.aliases?.some(a=>a.toLowerCase().includes(query)));
+  const query=$('search').value.trim().toLowerCase(),list=GTFavorites.order(catalog.characters.filter(c=>c.name.toLowerCase().includes(query)||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query)||c.aliases?.some(a=>a.toLowerCase().includes(query))),char=>['fx/character',char.id]);
   $('characters').replaceChildren(...list.map(char=>{const button=document.createElement('button');button.className='character'+(character?.id===char.id?' active':'');button.title=char.id;button.setAttribute('aria-pressed',String(character?.id===char.id));
-    const name=document.createElement('span');name.className='name';name.textContent=char.name;const count=document.createElement('small');count.textContent=char.count;button.append(avatar(char),name,count);button.onclick=()=>selectCharacter(char);return button;}));
+    const name=document.createElement('span');name.className='name';name.textContent=char.name;const count=document.createElement('small');count.textContent=char.count;button.append(avatar(char),name,count);button.onclick=()=>selectCharacter(char);return GTFavorites.row(button,'fx/character',char.id,char.name);}));
   $('count').textContent=`${list.length} / ${catalog.characters.length}`;
 }
 function label(e){
@@ -44,7 +44,7 @@ async function selectCharacter(char){
     manifestUrl=new URL('../../resources/fx/'+char.index,location.href);const data=await json(manifestUrl);
     if(current!==generation)return;
     index=data;loadedEffect=null;++effectGeneration;
-    $('effect').replaceChildren(...index.effects.map((e,i)=>{const option=new Option(label(e),String(i));option.title=e.assetName;option.disabled=!!e.unavailable;return option;}));
+    $('effect').replaceChildren(...index.effects.map((e,i)=>{const option=new Option(label(e),String(i));option.title=e.assetName;option.dataset.favoriteId=e.id;option.disabled=!!e.unavailable;return option;}));
     $('effect').disabled=false;$('all').disabled=false;
     const desiredEffect=new URLSearchParams(location.search).get('effect');const initial=index.effects.findIndex(e=>!e.unavailable&&(desiredEffect?e.id===desiredEffect:e.assetName==='fx_hana_linkatk_chainhold'));const first=initial>=0?initial:index.effects.findIndex(e=>!e.unavailable&&(e.systems.length||e.statics?.length));
     if(first>=0)await selectEffect(first);else message('没有可播放素材');
