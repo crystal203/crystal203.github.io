@@ -1,0 +1,29 @@
+[hidden]{display:none!important}
+.character-scene .layout{flex:1;min-height:200px;height:auto}
+#characterTimeline{flex:0 0 auto;border-top:1px solid var(--line-2);background:var(--panel);padding:9px 12px 4px;min-width:0;max-height:48vh;overflow:auto}
+.scene-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;font-size:12px}
+.scene-toolbar label{display:flex;gap:5px;align-items:center;white-space:nowrap}
+.scene-toolbar input[type=number]{width:72px;padding:3px 5px}
+#sceneScrub{flex:1;min-width:100px}#sceneZoom{width:80px}#sceneClock{font-variant-numeric:tabular-nums;min-width:112px}
+.scene-import{cursor:pointer;border:1px solid var(--line-2);border-radius:6px;padding:5px 9px}.scene-import input{width:95px;font-size:10px}
+.scene-help{font-size:11px;color:var(--dim);margin:5px 0}.scene-help.error{color:#efaaa1}
+#sceneActors{display:flex;flex-direction:column;gap:4px;max-height:140px;overflow:auto;margin-bottom:8px}
+.scene-actor{text-align:left;overflow-wrap:anywhere}.scene-actor.selected,.scene-track-actor.selected{border-color:var(--accent);background:var(--accent-dim)}
+#characterSceneInspector>.row{flex-wrap:wrap}
+.scene-property{gap:5px}.scene-property>span{min-width:66px}.scene-property input[type=number],.scene-property select{width:100%;min-width:0;flex:1}.scene-property input[type=checkbox]{margin-right:auto}.scene-property>button{flex:none;color:var(--accent-2)}
+#sceneTracks{overflow:auto;max-height:210px;border:1px solid var(--line);border-radius:6px;position:relative}
+.scene-track-content{min-width:100%;width:calc(152px + var(--scene-width) + 20px);position:relative}
+.scene-track-row,.scene-ruler{display:flex;height:26px;border-bottom:1px solid var(--line);position:relative}
+.scene-ruler{position:sticky;top:0;z-index:5;background:var(--panel-2)}
+.scene-track-label{position:sticky;left:0;flex:none;width:152px;padding:3px 9px;text-align:left;font-size:11px;background:var(--panel);border:0;border-right:1px solid var(--line);border-radius:0;z-index:3}
+.scene-track-actor{display:flex;align-items:center;gap:6px;position:sticky;left:0;width:min(100%,calc(100vw - 50px));height:32px;font-size:11px;text-align:left;padding:2px 6px;border:0;border-bottom:1px solid var(--line-2);background:var(--panel-3);z-index:3}
+.scene-track-actor button{background:transparent;border:0;padding:2px 5px}.scene-track-collapse{flex:none;width:25px}.scene-track-name{flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.scene-track-view{max-width:175px;font-size:11px;padding:2px 5px}
+.scene-track-row.selected>.scene-track-label{color:var(--accent-2)}
+.scene-lane{position:relative;width:var(--scene-width);flex:none;cursor:crosshair;background:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:var(--scene-grid) 100%}
+.scene-lane:after{content:'';position:absolute;left:var(--scene-head);top:0;bottom:0;width:1px;background:#f4aa64;pointer-events:none;z-index:2}
+.scene-key{position:absolute;top:0;transform:translateX(-50%);padding:2px 3px;border:0;background:transparent;border-radius:0;color:var(--accent-2);font-size:14px;height:25px;cursor:ew-resize;z-index:3;touch-action:none}
+.scene-key.selected{color:#ffcd74;background:#634521}.scene-tick{position:absolute;font-size:10px;color:var(--dim);white-space:nowrap;padding:3px 4px}
+#sceneSelection{position:absolute;border:1px solid #93aee6;pointer-events:none;z-index:2}
+#sceneSelection:before{content:attr(data-name);position:absolute;left:0;bottom:100%;background:#152237cc;color:#c8d8f7;font-size:11px;padding:1px 5px;white-space:nowrap}
+.character-scene #canvas{touch-action:none;cursor:default}.character-scene #exportRegion{box-shadow:none}
+@media(max-width:760px){.character-scene .layout{flex-direction:row}.character-scene .sidebar{width:285px;max-width:45vw;max-height:none;border-top:0;border-left:1px solid var(--line)}.character-scene .stage{min-height:200px}.scene-toolbar{gap:5px}#characterTimeline{padding:6px;max-height:45vh}.scene-track-label{width:120px}.scene-track-content{width:calc(120px + var(--scene-width) + 20px)}}

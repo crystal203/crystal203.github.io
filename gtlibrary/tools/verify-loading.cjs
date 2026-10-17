@@ -69,13 +69,17 @@ async function verifyCDN() {
     console.log('PASS workspace starts before delayed index; one shared index; no heavy assets on home');
     await page.locator('nav [data-view="spine"]').click();
     let frame=await getFrame('spine');
+    // The atlas selection may route to a character; explicitly select the
+    // illustration directory before asserting its portrait preview sheet.
+    await page.goto(base+'#view=spine&folder=illust&name=illust_hana');
+    frame=await getFrame('spine','folder=illust');
     await frame.waitForSelector('#assetList .asset-item',{timeout:30000});
     await frame.waitForFunction(()=>performance.getEntriesByType('resource').some(entry=>entry.name.includes('/previews/portraits.webp')&&entry.responseEnd>0));
     assert.equal([...counts.keys()].some(url=>/gtatlas\/assets\/(characters|portraits)\.png/.test(url)),false);
     console.log('PASS Spine list and small preview atlas');
     await page.goto(base+'#view=spine&resource=hana&name=hana&folder=character');
     frame=await getFrame('spine','name=hana');
-    await frame.waitForFunction(()=>document.querySelector('#trackAction')?.options.length>0,{},{timeout:30000});
+    await frame.waitForFunction(()=>document.querySelector('#trackAction')?.options.length>1,{},{timeout:30000});
     console.log('PASS Hana Spine animation');
     await page.goto(base+'#view=atlas&sheet=characters&query=hana');
     frame=await getFrame('atlas','sheet=characters');
