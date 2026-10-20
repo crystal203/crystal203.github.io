@@ -49,6 +49,8 @@ gtlibrary/
 
 资料来自 `E:\GTFiles\static_data_dec`，背景来自 `D:\GTAsset` 的原始 Unity 导出，新角色缺少的背景由 `E:\GTFiles\illust_261004` 补充；浏览器不访问 BWIKI。人物与武器默认 Lv.100，等级上限按当前形态和原始突破／祝福／铭刻系数计算：基础 100，满突破 +15，满祝福（人物）或铭刻（武器）+15，开花 +20，最高 150。人物显示未觉醒且不含祝福属性加成的基础图鉴属性；恢复能力按星级固定。等级成长分为 1–83、84–100、101–150 三段，后两段攻击成长率为 1.026／1.006、防御为 1.018／1.004、生命和装备恢复能力为 1.0363／1.0082；武器保留未取整基础值后计算词条范围与每秒伤害。已与 BWIKI 的 Lv.100 卡麦尔（普通与开花）、普利特维采、欧格玛、美娅、未来公主属性及对应专武的 Lv.1 每秒伤害交叉验证；高等级成长率同时对照官方世界 21 更新公告。百分比词条不随装备等级放大。技能同时列出基础与专武强化后的等级；队伍能力按原始选项的 Base / Add × Level 与觉醒节点计算，第二专武使用 `OverrideOptions` 替换节点。觉醒树沿用游戏 Circle / Node prefab 的节点位置和原生 UI 贴图，显示所有觉醒点、效果、连接关系与道具图标。按进化星级、5星突破、晋升和开花分阶段筛选，突出新增节点；统计累计与新增的节点、属性和材料消耗，支持仅看新增、效果检索和缩放平移。数据版本缺少的文本或素材保留为空，不以其他角色代替。
 
+英雄详情还收录中、英、日三语台词，按普通、开花、骑士性格和特殊时装分组；支持三语对照、单语显示和类型／全文搜索。台词直接来自本地 `strings-zhCN.json`、`strings-enUS.json`、`strings-jaJP.json` 的 `Voice_` 与 `cv_` 词条，缺失语言显示“未收录”。更新角色数据后，运行 `python tools/wiki/build-voice-lines.py --source E:/GTFiles/static_data_dec` 再导入台词；运行 `python tools/wiki/verify-voice-lines.py --source E:/GTFiles/static_data_dec` 核对来源。详见 [英雄台词导入](docs/wiki-voice-lines.md)。
+
 本机生成脚本与核验记录放在 `E:\GTFiles\_tools\gtwiki`，临时内容不随站点发布。更新原始资料后运行 `python E:\GTFiles\_tools\gtwiki\build_wiki.py --repo D:\github\gtlibrary`；背景生成脚本为同目录下的 `backgrounds.py`；觉醒资料与原生界面由 `awakening.py` 生成，`awakening_validate.py` 核对全部节点和连接。原始表有 12 个节点未提供数值、1 位新角色缺少 6 项效果文本，页面保留节点并标为未记载，核验报告留在本机工具目录。发布前运行 `node tools/prepare-deploy.mjs` 更新资源缓存版本。
 
 吉蒙里晋升的骨骼与开花素材在原始导出中同名，晋升版本带 `_0` 后缀；已依据晋升 prefab 的 GUID 恢复到 `resources/spine-recovered/wiki/`，通过共同资源别名解析，未替换成开花素材。恢复脚本和来源哈希保存在上述本机工具目录。

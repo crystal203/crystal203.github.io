@@ -3,7 +3,7 @@
 <head>
   <script>if(window===window.top){const p=new URLSearchParams(location.search);p.set('view','wiki');location.replace('../../index.html#'+p);}</script>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>GTWiki · 角色图鉴</title><link rel="stylesheet" href="style.css">
+  <title>GTWiki · 角色图鉴</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="../../gtwiki/voices.css">
 <link rel="stylesheet" href="../../shared/favorites.css"></head>
 <body>
   <div class="wiki-shell">
@@ -21,7 +21,7 @@
       <p id="page-status" role="status">正在打开角色图鉴…</p>
       <article id="hero-detail" hidden>
         <header class="hero-heading"><div><div id="hero-tags" class="tags"></div><h2 id="hero-name"></h2><p id="hero-english" class="english-name"></p></div><button id="copy-link" type="button">复制角色链接</button></header>
-        <nav class="section-nav" aria-label="详情章节"><a href="#overview">概览</a><a href="#skills">技能</a><a href="#awakening">觉醒</a><a href="#appearance">星级与时装</a><a href="#weapons">专属武器</a><a href="#story">背景故事</a></nav>
+        <nav class="section-nav" aria-label="详情章节"><a href="#overview">概览</a><a href="#skills">技能</a><a href="#awakening">觉醒</a><a href="#appearance">星级与时装</a><a href="#weapons">专属武器</a><a href="#story">背景故事</a><a href="#voices">英雄台词</a></nav>
         <section id="overview" class="overview">
           <div class="illustration-panel panel"><div class="panel-top"><h3>角色立绘</h3><select id="illust-select" aria-label="立绘版本"></select></div><div id="illust-stage" class="illust-stage"></div><div class="media-toolbar"><button id="illust-pause">暂停动画</button><button id="illust-reset">复位</button><button id="illust-retry">重试</button><label>缩放<input id="illust-zoom" type="range" min="50" max="200" value="100" aria-label="立绘缩放"></label><button id="illust-open">在立绘查看器打开 ↗</button></div></div>
           <div class="overview-info"><section class="panel biography"><h3>人物信息</h3><p id="hero-description" class="hero-description"></p><dl id="profile-fields" class="profile-fields"></dl><blockquote id="hero-introduction"></blockquote></section>
@@ -32,6 +32,7 @@
         <section id="appearance" class="content-section"><div class="section-heading"><h3>星级与时装</h3><span id="appearance-count" class="section-note"></span></div><div class="appearance-layout"><div><h4>进化形态</h4><div id="evolution-list" class="appearance-grid"></div><h4>时装</h4><div id="costume-list" class="appearance-grid"></div></div><div class="panel pixel-panel"><div class="panel-top"><h4 id="pixel-name">像素动画</h4><select id="pixel-direction" aria-label="像素小人朝向"><option value="front">正面</option><option value="back">背面</option><option value="side">侧面</option></select></div><div id="pixel-stage" class="pixel-stage"></div><div class="media-toolbar"><button id="pixel-pause">暂停</button><button id="pixel-retry">重试</button><button id="pixel-open">在像素查看器打开 ↗</button></div></div></section>
         <section id="weapons" class="content-section"><div class="section-heading"><h3>专属武器</h3><span id="weapon-count" class="section-note"></span></div><label class="level-control">等级 <input id="weapon-level" type="number" min="1" max="150" step="1" value="100" aria-label="武器等级"><span id="weapon-level-range" class="note" title="当前武器在满突破、铭刻后的等级上限"></span></label><div id="weapon-list" class="weapon-grid"></div></section>
         <section id="story" class="content-section"><div class="section-heading"><h3>背景故事</h3></div><div class="panel story-panel"><div id="hero-story"></div></div></section>
+        <section id="voices" class="content-section"><div class="section-heading"><h3>英雄台词</h3></div><div id="hero-voices"></div></section>
       </article>
     </main>
   </div>

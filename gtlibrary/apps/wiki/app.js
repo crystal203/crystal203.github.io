@@ -1,5 +1,6 @@
 import {SpinePreview,drawSprite,portrait} from '../../gtwiki/media.js';
 import {AwakeningTree} from '../../gtwiki/awakening.js';
+import {VoiceLines} from '../../gtwiki/voices.js';
 import {levelValue,heroLevelCap,weaponLevelCap,heroStats,weaponStats} from '../../gtwiki/stats.js';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const colors={火:'#e4a17d',水:'#80b9df',土:'#a7bc81',光:'#dfc777',暗:'#b69edb',虚:'#adb5c4'};
@@ -7,6 +8,7 @@ let catalog,hero,currentSummary,selectedPixel,heroAbort,loadToken=0,disposed=fal
 let weaponRenderers=[];
 const illustPreview=new SpinePreview($('illust-stage')),pixelPreview=new SpinePreview($('pixel-stage'),{pixel:true});
 const awakeningTree=new AwakeningTree($('awakening-tree'),$('awakening-count'));
+const voiceLines=new VoiceLines($('hero-voices'));
 const preferences=matchMedia('(prefers-reduced-motion: reduce)');
 illustPreview.paused=pixelPreview.paused=preferences.matches;
 function plain(value){return String(value||'').replace(/\\n/g,'\n').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<[^>]*>/g,'').replace(/\[(?:c|C|\/?c|\/?C|[a-fA-F0-9]{6}|-)\]/g,'').trim();}
@@ -167,7 +169,7 @@ async function loadHero(summary){
     $('illust-select').replaceChildren(...hero.illustrations.map(row=>{const o=node('option',row.name);o.value=row.asset.key;return o;}));
     if(!hero.illustrations.length){$('illust-select').append(node('option','暂无立绘'));$('illust-select').disabled=true;}else{$('illust-select').disabled=false;if(hero.illustrations.some(r=>r.asset.key===params.get('illust')))$('illust-select').value=params.get('illust');}
     $('hero-story').replaceChildren(...(plain(hero.story)||'未记载').split(/\n\s*\n/).map(p=>node('p',p)));
-    renderWeapons();$('hero-detail').hidden=false;$('page-status').hidden=true;
+    voiceLines.setHero(hero);renderWeapons();$('hero-detail').hidden=false;$('page-status').hidden=true;
     renderAppearance();renderIllust();filter();$('detail-scroll').scrollTop=0;
     for(const key of ['stage','costume','illust','weapon'])params.delete(key);
   }catch(e){if(token===loadToken&&e.name!=='AbortError'){const b=node('button','重试');b.onclick=()=>loadHero(summary);$('page-status').replaceChildren(node('span','角色资料读取失败。'),b);}}
