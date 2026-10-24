@@ -7,7 +7,7 @@
 
       // 数据版本：与 E:\GTFiles\{illust,character}_<版本> 对应。
       // 每次重新生成 assets/ 后必须改这里，否则浏览器会吃旧缓存的 assets.js。
-      var DATA_VERSION = "261010-expansion-1";
+      var DATA_VERSION = "261010-expansion-1-xiaogongzhu";
       var QUERY = "?v=" + DATA_VERSION;
 
       // 新旧导出的后缀都接受，索引小的优先。

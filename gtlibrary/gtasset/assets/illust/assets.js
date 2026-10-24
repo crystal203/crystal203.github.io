@@ -12,5 +12,6 @@ window.spineAssets = [
 "illust_nelluru", "illust_sapa_dragontalon_minion", "illust_second_bishop", "illust_second_bishop_myth", "illust_shop_girl",
 "illust_succubus_researcher", "illust_sunyeo_fire_power", "illust_sunyeo_myth", "illust_teatan_fighter_a", "illust_teatan_fighter_b",
 "illust_teatan_ninja", "illust_teatan_robot_marty_junior", "illust_teatan_zaco", "illust_twins_android_myth", "illust_vampire_bad_girl",
-"illust_whitetiger_baby"
+"illust_whitetiger_baby",
+"xiaogongzhu"
 ];
