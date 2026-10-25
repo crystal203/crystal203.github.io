@@ -2,6 +2,21 @@ import {loadCatalog,loadHandles,loadProvenance,resolveClip,clipURL,setClipSource
 const $=id=>document.getElementById(id),labels={music:'BGM',sfx:'音效',voice:'语音'},params=new URLSearchParams(location.search),size=80,player=$('player');
 let catalog,filtered=[],selected=null,page=0,dead=false,selectionToken=0,provenance,handles;
 player.volume=.5;
+const downloadAbort=new AbortController();let downloading=false;
+$('download').onclick=async event=>{
+ event.preventDefault();if(!selected||downloading)return;
+ const clip=selected;downloading=true;$('download').setAttribute('aria-busy','true');
+ try{
+  const response=await GTResources.fetch(clipURL(clip),{signal:downloadAbort.signal});
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const blob=await response.blob();if(dead)return;
+  // Cross-origin URLs ignore the HTML download attribute; save a local blob instead.
+  const url=URL.createObjectURL(blob),link=document.createElement('a');
+  link.href=url;link.download=clip.name+'.'+clip.file.split('.').pop();document.body.append(link);link.click();link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),30000);
+ }catch(e){if(!dead&&e.name!=='AbortError')$('message').textContent='下载失败，请重试：'+e.message;}
+ finally{downloading=false;$('download').removeAttribute('aria-busy');}
+};
 const duration=n=>Number.isFinite(n)?`${Math.floor(n/60)}:${String(Math.floor(n%60)).padStart(2,'0')}`:'—';
 function route(){const p=new URLSearchParams();if(selected)p.set('clip',selected.id);for(const key of ['query','kind','group'])if($(key).value)p.set(key,$(key).value);history.replaceState(null,'','?'+p);GTBridge.selection({clip:selected?.id||'',q:$('query').value,kind:$('kind').value,group:$('group').value});}
 function updateButtons(){const index=filtered.indexOf(selected);$('previous').disabled=index<=0;$('next').disabled=index<0||index===filtered.length-1;$('play').disabled=!selected;$('play').textContent=player.paused?'播放':'暂停';}
@@ -23,7 +38,7 @@ function adjacent(delta){const i=filtered.indexOf(selected);if(i>=0&&filtered[i+
 $('filters').onsubmit=e=>e.preventDefault();let timer;$('query').oninput=()=>{clearTimeout(timer);timer=setTimeout(()=>filter(),120);};for(const key of ['kind','group'])$(key).onchange=()=>filter();
 $('prev-page').onclick=()=>{page--;render();};$('next-page').onclick=()=>{page++;render();};$('previous').onclick=()=>adjacent(-1);$('next').onclick=()=>adjacent(1);$('play').onclick=()=>player.paused?void play():player.pause();$('loop').onchange=()=>player.loop=$('loop').checked;$('source-details').ontoggle=()=>{if($('source-details').open&&selected)void sourceInfo();};
 player.onplay=player.onpause=updateButtons;player.onended=()=>{updateButtons();if($('continuous').checked)adjacent(1);};player.onerror=()=>{if(!dead&&selected)$('message').textContent='音频读取失败，请重新选择后重试。'+(player.error?.message||'');};
-window.addEventListener('gt-dispose',()=>{dead=true;++selectionToken;clearTimeout(timer);player.pause();player.removeAttribute('src');player.replaceChildren();player.load();},{once:true});
+window.addEventListener('gt-dispose',()=>{dead=true;downloadAbort.abort();++selectionToken;clearTimeout(timer);player.pause();player.removeAttribute('src');player.replaceChildren();player.load();},{once:true});
 try{catalog=await loadCatalog();if(!dead){const s=catalog.summary;$('summary').textContent=`${s.counts.music.toLocaleString()} 首 BGM · ${s.counts.sfx.toLocaleString()} 个音效 · ${s.counts.voice.toLocaleString()} 个语音`;
  for(const group of [...new Set(catalog.clips.map(c=>c.group))].sort()){const o=document.createElement('option');o.value=group;o.textContent=group;$('group').append(o);}
  $('query').value=params.get('query')||params.get('q')||'';for(const key of ['kind','group'])$(key).value=params.get(key)||'';filter(false);

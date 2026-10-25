@@ -39,6 +39,12 @@ const clips=['zhCN','enUS','jaJP'].map(lang=>{
    assert.ok(state.src.startsWith('https://raw.githubusercontent.com/'));assert.equal(state.sources,2);
    await frame.locator('#play').click();
    console.log('PASS native audio CDN failure -> raw playback: '+clip.language);
+   if(clip.language==='cn'){
+    const saved=page.waitForEvent('download');await frame.locator('#download').click();const download=await saved;
+    assert.equal(download.suggestedFilename(),clip.name+'.'+clip.file.split('.').pop());
+    assert.deepEqual(fs.readFileSync(await download.path()),fs.readFileSync(path.join(repo,'gtlibrary/gtaudio',clip.file)));
+    console.log('PASS cross-origin audio download falls back to raw and saves original bytes');
+   }
   }
   // Wiki uses the same streaming helper and must still pause/resume/switch safely.
   await page.close();page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
