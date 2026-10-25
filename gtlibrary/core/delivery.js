@@ -9,6 +9,7 @@
     if (!config.cdnBase || cdnFailed || /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) return local.href;
     if (local.origin !== root.origin || !local.pathname.startsWith(root.pathname)) return local.href;
     const path = local.pathname.slice(root.pathname.length);
+    if ((config.cdnLocalPaths || []).includes(path)) return local.href;
     if (!prefixes.some(prefix => path.startsWith(prefix))) return local.href;
     let base;
     try{base = new URL(config.cdnBase);}catch{return local.href;}

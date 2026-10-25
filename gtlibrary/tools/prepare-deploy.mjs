@@ -10,13 +10,15 @@ const roots = ['apps', 'core', 'gtatlas', 'gtasset', 'gtfx', 'gtmap', 'gtonline'
 // A pinned GitHub URL must never silently serve an older copy of changed assets.
 const config = await readFile(path.join(root,'core/delivery-config.js'),'utf8');
 const snapshot = config.match(/cdnBase:\s*['"]https:\/\/cdn\.jsdelivr\.net\/gh\/[^'"\s]+@([a-f0-9]{40})\/gtlibrary\//);
+const localMatch = config.match(/\bcdnLocalPaths\s*:\s*(\[[\s\S]*?\])/);
+const localPaths = new Set(localMatch ? JSON.parse(localMatch[1]) : []);
 const assetFolders=['gtatlas/assets/','gtasset/assets/','gtfx/assets/'];
 const expectedAssets=new Map();
 if(snapshot){
   // Read the committed tree directly; this also avoids relying on the user's index.
   const tree=execFileSync('git',['ls-tree','-r','-z',snapshot[1],'--',...assetFolders],{cwd:root,encoding:'utf8',maxBuffer:4*1024*1024});
   for(const entry of tree.split('\0').filter(Boolean)){
-    const [header,file]=entry.split('\t');expectedAssets.set(file,header.split(' ')[2]);
+    const [header,file]=entry.split('\t');if(!localPaths.has(file))expectedAssets.set(file,header.split(' ')[2]);
   }
   if(!expectedAssets.size)throw new Error('The pinned CDN commit contains no matching assets.');
 }
@@ -44,7 +46,7 @@ if(process.argv.includes('--staged')){
   const hash=createHash('sha256').update('git-index-v1\0');
   for(const file of files.sort()){
     const blob=index.get(file);if(!blob)throw new Error('Runtime file is not staged: '+file);
-    if(snapshot&&assetFolders.some(folder=>file.startsWith(folder))){
+    if(snapshot&&!localPaths.has(file)&&assetFolders.some(folder=>file.startsWith(folder))){
       if(blob!==expectedAssets.get(file))throw new Error('CDN snapshot differs from staged asset '+file+'. Update cdnBase or disable CDN.');
       expectedAssets.delete(file);
     }
@@ -60,7 +62,7 @@ const hash = createHash('sha256');
 for (const file of files.sort()) {
   hash.update(file + '\0');
   const fileHash = createHash('sha256');
-  const checkAsset=snapshot&&assetFolders.some(folder=>file.startsWith(folder));
+  const checkAsset=snapshot&&!localPaths.has(file)&&assetFolders.some(folder=>file.startsWith(folder));
   const gitHash=checkAsset?createHash('sha1'):null;
   if(gitHash)gitHash.update('blob '+(await stat(path.join(root,file))).size+'\0');
   for await (const chunk of createReadStream(path.join(root, file))){fileHash.update(chunk);gitHash?.update(chunk);}

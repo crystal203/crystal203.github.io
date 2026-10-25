@@ -1,13 +1,18 @@
 /** Shared, metadata-only catalog. Importing this module never loads a sound. */
 const root=new URL('./',import.meta.url);
+const sharedCatalog=Symbol.for('gtAudio.catalog');
 let catalogPromise,handlesPromise;
 async function json(file){const url=new URL(file,root),r=await (globalThis.GTResources?.fetch?.(url)??fetch(url));if(!r.ok)throw Error(`gtAudio ${file}: HTTP ${r.status}`);return r.json();}
-export function loadCatalog(){return catalogPromise??=(json('data/catalog.json').then(data=>{
+export function loadCatalog(){
+ // Reuse the metadata and indexes already loaded by the parent for unified search.
+ try{const parent=globalThis.parent;if(parent&&parent!==globalThis&&parent[sharedCatalog]?.root===root.href)return parent[sharedCatalog].load();}catch{}
+ return catalogPromise??=(json('data/catalog.json').then(data=>{
  if(data.schema!==1)throw Error('Unsupported gtAudio catalog');
  const byId=new Map(data.clips.map(c=>[c.id,c])),byName=new Map();
  for(const clip of data.clips){const list=byName.get(clip.name)||[];list.push(clip);byName.set(clip.name,list);}
  return {...data,byId,byName};
 }).catch(e=>{catalogPromise=null;throw e;}));}
+globalThis[sharedCatalog]={root:root.href,load:loadCatalog};
 export function loadHandles(){return handlesPromise??=json('data/handles.json').catch(e=>{handlesPromise=null;throw e;});}
 export function resolveClip(catalog,name){const clip=catalog.byId.get(name)||catalog.byId.get(catalog.defaults[name]);if(!clip)throw new RangeError('Unknown native AudioClip: '+name);return clip;}
 export function clipURL(clip){const url=new URL(clip.file,root);return globalThis.GTResources?.url?.(url)||url.href;}

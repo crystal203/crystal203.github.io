@@ -11,6 +11,7 @@
 | `gtaudio/data/handles.json` | 原生 SoundHandleSpec、BGM 表；静态表覆盖已恢复的默认值 |
 | `gtaudio/data/native-mixers.json` | APK 中完整 AudioMixer、快照、分组、AudioSource 的序列化配置 |
 | `gtaudio/data/import-report.json` | 全量导入计数、去重后字节数、缺失 handle 报告 |
+| `gtaudio/data/offline-package.json` | GTOfflineServer 发行资源索引及匹配 APK 的逐包哈希、AudioClip ID 和版本记录 |
 | `gtaudio/assets/<SHA 前两位>/<SHA>.<格式>` | 按文件内容去重的实际音频 |
 | `gtaudio/catalog.js` | 惰性目录加载、内码解析、搜索与规范 URL |
 | `gtaudio/core.js` | AudioBank 和 AudioMixer；供关卡共享 |
@@ -21,6 +22,10 @@
 
 完整来源和编译版本在导入报告中，不能用目录记录数代替唯一音频文件数，也不能把内码别名误算成新的音频。
 
+2026-10-25 更新：已从 `GTOfflineServer/assets/resource-index.json` 声明的当前发行资源和 `assets/game.apk` 抓取全部音频，包括中、英、日角色语音、剧情配音、BGM 和音效。索引版本为 3.51.0 / 15.46，包含 10 月 23 日并入的中英文包。共核对 653 个包、46,446 条包内 AudioClip 记录；现有导出按相同 bundle SHA-256/pathId 复用，新增 36,140 条目录记录、32,395 个内容文件，保留全部旧版本及关卡绑定。重复编码不视为独立台词。每包的资源索引 SHA-1／大小、匹配 APK 哈希及输出文件哈希均已核验；原始发行目录保持只读。
+
+`GTWiki` 通过明确 clip ID 关联三语台词，使用共享 `findClip` / `clipURL`，不依赖同名内码默认语言。首次点击才载入目录和音频。详见 [英雄台词与播放](wiki-voice-lines.md)。
+
 ## 生成
 
 依赖 Python、UnityPy、PyCryptodome（原生工作台使用）、FFmpeg。本机 UnityPy 位于 `E:\GTFiles\GTMap\GTMapWeb\tools\python-libs`。推荐先生成到空目录，核对报告，再复制到库中：
@@ -30,6 +35,8 @@ python tools/audio/build-audio.py --assets D:\gtasset\fullextract\ExportedProjec
 ```
 
 运行时没有 Python、FFmpeg 或 UnityPy 依赖。不预缓存整个音频库，HTMLAudioElement 按需流式读取；Range 请求不进入站点的 Service Worker 缓存。游戏的 AudioBank 按需解码，默认 PCM 缓存上限 64 MiB，播放中的 AudioBuffer 独立持有，切换关卡/退出会取消请求并释放缓存。加载失败会报告并允许重试。
+
+更新发行包音频时使用 `tools/audio/import-offline-audio.py --package E:/GTFiles/GTOfflineServer --out <空的暂存gtaudio目录> --unity-libs <UnityPy目录>`。脚本按发行资源索引选择包并验证源哈希，不依赖散落的历史下载目录；新增 PCM 以无损 FLAC 保存，原采样率／声道及精确总帧数保持。输出 `data/offline-checkpoint.jsonl` 只作本机断点记录，**不要随网站发布**。将新增 assets 和四份更新元数据（catalog、provenance、import-report、offline-package）合入 gtaudio 后，运行台词关联脚本、`tools/wiki/verify-voice-audio.py --hash-files`、`node tools/audio/verify-audio.mjs` 和发布缓存工具。存在同名容器副本时，provenance 的 `assetPaths` 区分实际角色路径和历史副本。
 
 ## 调用
 

@@ -154,6 +154,7 @@ function updateWeaponLevelCap(){
   $('weapon-level').max=max;$('weapon-level').value=levelValue($('weapon-level').value,max);$('weapon-level-range').textContent='1–'+max;
 }
 async function loadHero(summary){
+  voiceLines.stop();
   const token=++loadToken;heroAbort?.abort();heroAbort=new AbortController();
   currentSummary=summary;hero=null;selectedPixel=null;illustPreview.abort?.abort();pixelPreview.abort?.abort();illustPreview.clear();pixelPreview.clear();
   $('skill-set').value=params.get('weapon')||'1';
@@ -206,8 +207,8 @@ $('copy-link').onclick=async()=>{
 };
 // Anchor navigation stays inside the wiki iframe; the parent URL keeps the character route.
 for(const a of document.querySelectorAll('.section-nav a'))a.onclick=e=>{e.preventDefault();$(a.hash.slice(1)).scrollIntoView({behavior:preferences.matches?'instant':'smooth',block:'start'});};
-window.addEventListener('gt-dispose',()=>{disposed=true;loadToken++;heroAbort?.abort();illustPreview.dispose();pixelPreview.dispose();awakeningTree.dispose();});
-window.addEventListener('pagehide',()=>{if(!disposed){disposed=true;heroAbort?.abort();illustPreview.dispose();pixelPreview.dispose();awakeningTree.dispose();}});
+window.addEventListener('gt-dispose',()=>{disposed=true;loadToken++;heroAbort?.abort();voiceLines.dispose();illustPreview.dispose();pixelPreview.dispose();awakeningTree.dispose();});
+window.addEventListener('pagehide',()=>{if(!disposed){disposed=true;heroAbort?.abort();voiceLines.dispose();illustPreview.dispose();pixelPreview.dispose();awakeningTree.dispose();}});
 async function start(){
   try{
     catalog=await GTWikiCatalog.load();if(disposed)return;
