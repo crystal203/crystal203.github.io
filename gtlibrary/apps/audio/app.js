@@ -1,4 +1,4 @@
-import {loadCatalog,loadHandles,loadProvenance,resolveClip,clipURL,searchClips} from '../../gtaudio/core.js';
+import {loadCatalog,loadHandles,loadProvenance,resolveClip,clipURL,setClipSource,searchClips} from '../../gtaudio/core.js';
 const $=id=>document.getElementById(id),labels={music:'BGM',sfx:'音效',voice:'语音'},params=new URLSearchParams(location.search),size=80,player=$('player');
 let catalog,filtered=[],selected=null,page=0,dead=false,selectionToken=0,provenance,handles;
 player.volume=.5;
@@ -13,7 +13,7 @@ function render(){
 function filter(save=true){filtered=GTFavorites.order(searchClips(catalog.clips,{query:$('query').value,kind:$('kind').value,group:$('group').value}),clip=>['audio/clip',clip.id]);page=0;render();if(save)route();}
 async function play(){try{await player.play();}catch(e){if(!dead&&e.name!=='AbortError')$('message').textContent='无法播放：'+e.message;}}
 async function select(clip,autoplay=false){
- const token=++selectionToken;selected=clip;player.pause();player.src=clipURL(clip);player.load();$('name').textContent=clip.name;$('badge').textContent=labels[clip.kind];$('selected-group').textContent=clip.group;$('message').textContent='';$('details').replaceChildren();
+ const token=++selectionToken;selected=clip;player.pause();setClipSource(player,clip);$('name').textContent=clip.name;$('badge').textContent=labels[clip.kind];$('selected-group').textContent=clip.group;$('message').textContent='';$('details').replaceChildren();
  for(const [key,value] of Object.entries({'时长':duration(clip.duration),'采样率':clip.sampleRate?clip.sampleRate+' Hz':'原始格式','声道':clip.channels??'—','大小':(clip.bytes/1024).toFixed(1)+' KiB','内码路径':clip.id})){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=key;dd.textContent=value;$('details').append(dt,dd);}
  $('download').hidden=false;$('download').href=clipURL(clip);$('download').download=clip.name+'.'+clip.file.split('.').pop();$('source-details').hidden=false;$('source').textContent='展开以读取来源和 SoundHandleSpec。';render();route();if(autoplay)void play();
  if($('source-details').open)await sourceInfo(token);
@@ -23,7 +23,7 @@ function adjacent(delta){const i=filtered.indexOf(selected);if(i>=0&&filtered[i+
 $('filters').onsubmit=e=>e.preventDefault();let timer;$('query').oninput=()=>{clearTimeout(timer);timer=setTimeout(()=>filter(),120);};for(const key of ['kind','group'])$(key).onchange=()=>filter();
 $('prev-page').onclick=()=>{page--;render();};$('next-page').onclick=()=>{page++;render();};$('previous').onclick=()=>adjacent(-1);$('next').onclick=()=>adjacent(1);$('play').onclick=()=>player.paused?void play():player.pause();$('loop').onchange=()=>player.loop=$('loop').checked;$('source-details').ontoggle=()=>{if($('source-details').open&&selected)void sourceInfo();};
 player.onplay=player.onpause=updateButtons;player.onended=()=>{updateButtons();if($('continuous').checked)adjacent(1);};player.onerror=()=>{if(!dead&&selected)$('message').textContent='音频读取失败，请重新选择后重试。'+(player.error?.message||'');};
-window.addEventListener('gt-dispose',()=>{dead=true;++selectionToken;clearTimeout(timer);player.pause();player.removeAttribute('src');player.load();},{once:true});
+window.addEventListener('gt-dispose',()=>{dead=true;++selectionToken;clearTimeout(timer);player.pause();player.removeAttribute('src');player.replaceChildren();player.load();},{once:true});
 try{catalog=await loadCatalog();if(!dead){const s=catalog.summary;$('summary').textContent=`${s.counts.music.toLocaleString()} 首 BGM · ${s.counts.sfx.toLocaleString()} 个音效 · ${s.counts.voice.toLocaleString()} 个语音`;
  for(const group of [...new Set(catalog.clips.map(c=>c.group))].sort()){const o=document.createElement('option');o.value=group;o.textContent=group;$('group').append(o);}
  $('query').value=params.get('query')||params.get('q')||'';for(const key of ['kind','group'])$(key).value=params.get(key)||'';filter(false);

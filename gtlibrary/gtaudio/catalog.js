@@ -15,7 +15,20 @@ export function loadCatalog(){
 globalThis[sharedCatalog]={root:root.href,load:loadCatalog};
 export function loadHandles(){return handlesPromise??=json('data/handles.json').catch(e=>{handlesPromise=null;throw e;});}
 export function resolveClip(catalog,name){const clip=catalog.byId.get(name)||catalog.byId.get(catalog.defaults[name]);if(!clip)throw new RangeError('Unknown native AudioClip: '+name);return clip;}
-export function clipURL(clip){const url=new URL(clip.file,root);return globalThis.GTResources?.url?.(url)||url.href;}
+function canonicalClipURL(clip){const url=new URL(clip.file,root);return globalThis.GTResources?.url?.(url)||url.href;}
+export function clipURL(clip){const url=canonicalClipURL(clip);return globalThis.GTDelivery?.url?.(url)||url;}
+/** Native source selection streams CDN first, then raw GitHub on load failure. */
+export function setClipSource(player,clip){
+ const url=canonicalClipURL(clip),sources=globalThis.GTDelivery?.urls?.(url)||[url];
+ player.removeAttribute('src');
+ player.replaceChildren(...sources.map((url,index)=>{const source=document.createElement('source');source.src=url;
+  if(index===sources.length-1)source.onerror=()=>{
+   // Abort a pending play() if every source fails; permit the next selection to retry.
+   player.pause();player.replaceChildren();player.load();player.dispatchEvent(new Event('error'));
+  };
+  return source;}));
+ player.load();
+}
 export async function findClip(name,{binding}={}){const catalog=await loadCatalog();return resolveClip(catalog,catalog.bindings?.[binding]?.[name]||name);}
 export async function loadProvenance(){return json('data/provenance.json');}
 export function searchClips(clips,{query='',kind='',group=''}={}){const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);return clips.filter(c=>(!kind||c.kind===kind)&&(!group||c.group===group)&&terms.every(q=>(c.name+' '+c.id).toLowerCase().includes(q)));}

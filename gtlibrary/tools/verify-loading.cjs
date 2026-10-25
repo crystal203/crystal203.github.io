@@ -32,7 +32,7 @@ async function verifyCDN() {
   assert.equal(calls[0],'https://assets.example.test/releases/v1/gtatlas/assets/characters.json');
   calls=[];delivery=runtime(async url=>{calls.push(url);return new Response('{}',{status:url.startsWith('https://assets.')?503:200});});
   assert.equal((await delivery.fetch(asset)).status,200);await delivery.fetch(asset);
-  assert.deepEqual(calls, ['https://assets.example.test/releases/v1/gtatlas/assets/characters.json',asset,asset]);
+  assert.deepEqual(calls, ['https://assets.example.test/releases/v1/gtatlas/assets/characters.json',asset,'https://assets.example.test/releases/v1/gtatlas/assets/characters.json',asset]);
   calls=[];delivery=runtime(async url=>{calls.push(url);return new Response('{}');},{cdnPrefixes:['gtatlas/assets/','gtasset/assets/','gtfx/assets/']});
   const preview='https://crystal203.github.io/gtlibrary/resources/previews/fx.json';
   await delivery.fetch(preview);assert.deepEqual(calls,[preview]);
@@ -45,7 +45,7 @@ async function verifyCDN() {
     const match=text.match(/(?:window\.)?spineAssets\s*=\s*([\s\S]*?);?\s*$/);
     assert.ok(Array.isArray(JSON.parse(match[1].replace(/;\s*$/,''))));
   }
-  console.log('PASS CDN success, HTTP fallback, circuit breaker, timeout, cancellation, manifests');
+  console.log('PASS CDN success, HTTP fallback, retry, timeout, cancellation, manifests');
 }
 (async()=>{
   let browser;

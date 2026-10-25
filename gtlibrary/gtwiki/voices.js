@@ -1,5 +1,5 @@
 /* Hero-local text with explicit, language-specific gtAudio bindings. */
-import {findClip,clipURL} from '../gtaudio/catalog.js';
+import {findClip,setClipSource} from '../gtaudio/catalog.js';
 const languages=[['zhCN','中文'],['enUS','English'],['jaJP','日本語']];
 function node(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function plain(value){return String(value||'').replace(/\\n/g,'\n').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<[^>]*>/g,'').replace(/\[(?:c|C|\/?c|\/?C|[a-fA-F0-9]{6}|-)\]/g,'').trim();}
@@ -23,7 +23,7 @@ export class VoiceLines {
     this.version.onchange=this.language.onchange=this.voiceLanguage.onchange=()=>this.render();this.search.oninput=()=>this.render();
     this.audio.onplay=this.audio.onpause=()=>this.updateButton();
     this.audio.onended=()=>{this.updateButton();if(this.active)this.status.textContent=this.active.label+' · 播放完毕';};
-    this.audio.onerror=()=>{if(this.active&&this.audio.getAttribute('src')){this.status.textContent='语音读取失败，请点击播放重试。';this.updateButton();}};
+    this.audio.onerror=()=>{if(this.active){this.status.textContent='语音读取失败，请点击播放重试。';this.updateButton();}};
   }
   updateButton(){
     if(!this.active)return;
@@ -33,11 +33,11 @@ export class VoiceLines {
   }
   stop(){
     ++this.playToken;this.audio.pause();this.updateButton();if(this.active)this.active.button.disabled=false;this.active=null;
-    this.audio.removeAttribute('src');this.audio.load();this.audio.hidden=true;this.playerPanel.hidden=true;this.status.textContent='';
+    this.audio.removeAttribute('src');this.audio.replaceChildren();this.audio.load();this.audio.hidden=true;this.playerPanel.hidden=true;this.status.textContent='';
   }
   async play(id,row,button){
     if(this.dead||!id)return;
-    if(this.active?.button===button&&this.active.id===id&&!this.audio.error&&this.audio.getAttribute('src')){
+    if(this.active?.button===button&&this.active.id===id&&!this.audio.error&&this.audio.querySelector('source')){
       if(!this.audio.paused){this.audio.pause();return;}
       try{await this.audio.play();}catch(e){if(this.active?.button===button&&e.name!=='AbortError')this.status.textContent='无法播放，请点击重试。';}return;
     }
@@ -46,7 +46,7 @@ export class VoiceLines {
     this.playerPanel.hidden=false;this.status.textContent='正在读取：'+this.active.label;
     try{
       const clip=await findClip(id);if(this.dead||token!==this.playToken)return;
-      this.audio.src=clipURL(clip);this.audio.hidden=false;this.status.textContent=this.active.label;
+      setClipSource(this.audio,clip);this.audio.hidden=false;this.status.textContent=this.active.label;
       await this.audio.play();
     }catch(e){if(!this.dead&&token===this.playToken&&e.name!=='AbortError')this.status.textContent='语音播放失败，请点击播放重试。';}
     finally{if(!this.dead&&token===this.playToken){button.disabled=false;this.updateButton();}}

@@ -1,0 +1,15 @@
+# Keep branch-based GitHub Pages deployment; only the published copy is trimmed.
+# All original files and Git history stay in this repository.
+# Runtime exclusions must match gtlibrary/core/delivery-config.js.
+exclude:
+  - gtlibrary/gtatlas/assets
+  - gtlibrary/gtasset/assets
+  - gtlibrary/gtfx/assets
+  - gtlibrary/gtaudio/assets
+  - gtlibrary/gtmap/assets/packs
+  - gtlibrary/gtmap/assets/textures
+  - gtlibrary/resources/spine-expansion
+  - gtlibrary/resources/illust-jp
+  - secret/asset
+  - gtlibrary/tools
+  - .vscode

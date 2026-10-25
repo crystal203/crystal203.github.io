@@ -12,11 +12,11 @@ const config = await readFile(path.join(root,'core/delivery-config.js'),'utf8');
 const snapshot = config.match(/cdnBase:\s*['"]https:\/\/cdn\.jsdelivr\.net\/gh\/[^'"\s]+@([a-f0-9]{40})\/gtlibrary\//);
 const localMatch = config.match(/\bcdnLocalPaths\s*:\s*(\[[\s\S]*?\])/);
 const localPaths = new Set(localMatch ? JSON.parse(localMatch[1]) : []);
-const assetFolders=['gtatlas/assets/','gtasset/assets/','gtfx/assets/'];
+const assetFolders=JSON.parse(config.match(/\bcdnPrefixes\s*:\s*(\[[\s\S]*?\])/)[1]);
 const expectedAssets=new Map();
 if(snapshot){
   // Read the committed tree directly; this also avoids relying on the user's index.
-  const tree=execFileSync('git',['ls-tree','-r','-z',snapshot[1],'--',...assetFolders],{cwd:root,encoding:'utf8',maxBuffer:4*1024*1024});
+  const tree=execFileSync('git',['ls-tree','-r','-z',snapshot[1],'--',...assetFolders],{cwd:root,encoding:'utf8',maxBuffer:32*1024*1024});
   for(const entry of tree.split('\0').filter(Boolean)){
     const [header,file]=entry.split('\t');if(!localPaths.has(file))expectedAssets.set(file,header.split(' ')[2]);
   }

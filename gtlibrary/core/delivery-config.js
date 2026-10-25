@@ -1,11 +1,11 @@
-/* Existing assets are pinned to a verified public Git commit on jsDelivr.
- * New local previews stay on Pages until published. Never use @main/@latest.
- * When assets change, update this commit after pushing them, or set cdnBase: ''.
- * A custom CDN can mirror the same directory and include resources/previews/. */
+/* Bulk assets are omitted from Pages, but retained in Git.
+ * Push asset changes FIRST, then pin BOTH bases to that public commit.
+ * Keep cdnPrefixes in sync with the root _config.yml exclusions.
+ * Localhost still reads local files for offline development. */
 globalThis.GTDeliveryConfig = {
-  cdnBase: 'https://cdn.jsdelivr.net/gh/crystal203/crystal203.github.io@23234bbfe68b6185123875f2078d4ee8a167de7f/gtlibrary/',
-  cdnPrefixes: ['gtatlas/assets/', 'gtasset/assets/', 'gtfx/assets/'],
-  // These files were added/updated after the pinned resource snapshot.
-  cdnLocalPaths: ["gtasset/assets/illust/assets.js", "gtasset/assets/illust/names.zh.json", "gtasset/assets/illust/xiaogongzhu.atlas", "gtasset/assets/illust/xiaogongzhu.bytes", "gtasset/assets/illust/xiaogongzhu.png"],
-  cdnTimeoutMs: 4000
+  cdnBase: 'https://cdn.jsdelivr.net/gh/crystal203/crystal203.github.io@44a7002faf28a78b27b00a7545747c1243c8df2b/gtlibrary/',
+  rawBase: 'https://raw.githubusercontent.com/crystal203/crystal203.github.io/44a7002faf28a78b27b00a7545747c1243c8df2b/gtlibrary/',
+  cdnPrefixes: ["gtatlas/assets/","gtasset/assets/","gtfx/assets/","gtaudio/assets/","gtmap/assets/packs/","gtmap/assets/textures/","resources/spine-expansion/","resources/illust-jp/"],
+  cdnLocalPaths: [],
+  cdnTimeoutMs: 8000
 };
