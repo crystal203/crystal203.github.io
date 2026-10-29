@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "unityVersion": "2022.3.33f1c1",
+  "systems": [
+    {
+      "preset": "fx_myth_idol_captain_myth_explosion",
+      "path": "fx_idolcaptainmyth_myth_festival_top/hero_idolcaptain_myth_bg_heart_line",
+      "signature": "cab7ba0eed50992839947177cf9191c1857d3ef759f373516c2ecbad0535c210",
+      "seed": 2940251365,
+      "particles": [
+        {
+          "position": [
+            1.0554324388504028,
+            0.0,
+            0.0
+          ],
+          "flip": [
+            1,
+            0
+          ],
+          "randomSeed": 1687437330
+        },
+        {
+          "position": [
+            -0.445120632648468,
+            0.0,
+            0.0
+          ],
+          "flip": [
+            0,
+            0
+          ],
+          "randomSeed": 1831122030
+        }
+      ]
+    },
+    {
+      "preset": "fx_myth_idol_captain_myth_explosion",
+      "path": "fx_idolcaptainmyth_myth_festival_top/hero_idolcaptain_myth_add_heart_line",
+      "signature": "cab7ba0eed50992839947177cf9191c1857d3ef759f373516c2ecbad0535c210",
+      "seed": 2940251365,
+      "particles": [
+        {
+          "position": [
+            1.0554324388504028,
+            0.0,
+            0.0
+          ],
+          "flip": [
+            1,
+            0
+          ],
+          "randomSeed": 1687437330
+        },
+        {
+          "position": [
+            -0.445120632648468,
+            0.0,
+            0.0
+          ],
+          "flip": [
+            0,
+            0
+          ],
+          "randomSeed": 1831122030
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "prefab": "fx_idolcaptainmyth_myth_festival.prefab",
+      "sha256": "647e2b8bce8caa140bb56acb033b24800082a4b85e8bcb30759aaf835f292968"
+    }
+  ]
+}

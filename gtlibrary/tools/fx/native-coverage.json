@@ -1,0 +1,3039 @@
+{
+  "format": "gtfx-native-coverage",
+  "version": 1,
+  "status": "partial-native-parity",
+  "characters": {
+    "hana": {
+      "effects": 18,
+      "styles": 1,
+      "actions": 8,
+      "systems": 124,
+      "source": {
+        "format": "gt-native-source",
+        "version": 1,
+        "bundles": {
+          "effects/manual/hana": {
+            "sha256": "6a629a02155a2d48005f71e6c7002d736892e7ed89f7eda9d671152880b9e855",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/common/battle": {
+            "sha256": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/common/super": {
+            "sha256": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/commons": {
+            "sha256": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/fx_common_ice": {
+            "sha256": "55e5e4453cefdf3d632d246007f4ddfb4ed3427e26db2d1acc1b81ee9b30b3c3",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/effect": {
+            "sha256": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/ngui": {
+            "sha256": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "spritesheets/items": {
+            "sha256": "97571aa9cd0cc8f147f1c7e58199365d0ba195d2a844f0e501781430d5da58e9",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "shaders/oak": {
+            "sha256": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/manual/viking": {
+            "sha256": "9a8b49941ad85a90d5aba6e453c9508269118c32774033726cc19f80c56f851d",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/common/sword": {
+            "sha256": "bc1674ac28056b76e30861cbebd8315d22811f39988c3e25418f00b613cdb7d4",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          }
+        },
+        "settings": {
+          "unity_builtin_extra": {
+            "sha256": "86b20967e51753646537830d75406f13c7a826dc011bc42266ee9a63820f05ac",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          },
+          "globalgamemanagers": {
+            "sha256": "234471609aa9e24371af68d94d7968d8cb09657c89c068a83ecf95d9adedcf60",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          }
+        }
+      },
+      "referenceClosure": {
+        "literalReferences": 18,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      },
+      "effectsAudit": [
+        {
+          "preset": "fx_m_hana_dash",
+          "status": "partial-native-parity",
+          "particleSystems": 1,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_slash",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 3,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_slash_360",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_hook",
+          "status": "partial-native-parity",
+          "particleSystems": 0,
+          "autoSeededSystems": 0,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "HookShot 已通过动作联动构造；组件的所有调用分支尚未核实"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "方向节点已通过动作联动选择；组件的所有调用分支尚未核实"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "ViewportScaleReverter 的视口缩放恢复尚未独立解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_hook_trail",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 3,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_hook_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 7,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6295050835160359407",
+              "name": "[Atlas_add_top]_particle"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_support_chain",
+          "status": "partial-native-parity",
+          "particleSystems": 30,
+          "autoSeededSystems": 10,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_support_hit",
+          "status": "partial-native-parity",
+          "particleSystems": 14,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-2485618326987778683",
+              "name": "[Atlas_add]_hit_line"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-7443178896215777885",
+              "name": "[Atlas_add_top]_spark_circle"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_revival",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "1045642190316130123",
+              "name": "[Atlas_add_top]_shield_particles"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-2149884600970200413",
+              "name": "[Atlas_add_top]_Light_particles (1)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_hana_on_hit",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-712347959225326376",
+              "name": "[Atlas_add_top]_particle"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_hana_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "3863469812293028436",
+              "name": "ajirang_seq_toon2 (1)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_hana_screen",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "909470569681214093",
+              "name": "[Atlas_add_top]_warp_line"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_hana_hit_1",
+          "status": "partial-native-parity",
+          "particleSystems": 11,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6231393911247758986",
+              "name": "[Atlas_add]_swirl_particle"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_hana_hit_2",
+          "status": "partial-native-parity",
+          "particleSystems": 12,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-366422878278728939",
+              "name": "[Atlas_add]_spark"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_hana_hit_3",
+          "status": "partial-native-parity",
+          "particleSystems": 12,
+          "autoSeededSystems": 8,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "568765568325956943",
+              "name": "[Atlas_add]_Spark"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_hana_basic_hookshot_glow",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_event_princess_slash",
+          "status": "partial-native-parity",
+          "particleSystems": 1,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_event_princess_rslash",
+          "status": "partial-native-parity",
+          "particleSystems": 1,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        }
+      ]
+    },
+    "milkywaygirl": {
+      "effects": 40,
+      "styles": 1,
+      "actions": 7,
+      "systems": 251,
+      "source": {
+        "format": "gt-native-source",
+        "version": 1,
+        "bundles": {
+          "effects/manual/milkywaygirl": {
+            "sha256": "aa49734bcd340527e943e1e660a51bdab1d3edaf8debdb9fe02cc2fb25c1e88b",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/awakening": {
+            "sha256": "9c6fb206373012ad2e6dfb38d500cd1d78ad39873fb950a1f593f0bd0d35d7fc",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/common/battle": {
+            "sha256": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/commons": {
+            "sha256": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/effect": {
+            "sha256": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/oak": {
+            "sha256": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/manual/ui": {
+            "sha256": "dcf73da1d2bcd40af1fb5800f7d1550f4df12aaa0872068cd9f507e05d46b972",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          }
+        },
+        "settings": {
+          "unity_builtin_extra": {
+            "sha256": "86b20967e51753646537830d75406f13c7a826dc011bc42266ee9a63820f05ac",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          },
+          "globalgamemanagers": {
+            "sha256": "234471609aa9e24371af68d94d7968d8cb09657c89c068a83ecf95d9adedcf60",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          }
+        }
+      },
+      "referenceClosure": {
+        "literalReferences": 38,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      },
+      "effectsAudit": [
+        {
+          "preset": "fx_cwp_milkyway_girl_attack",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "5705762471852135336",
+              "name": "pierce"
+            },
+            {
+              "code": "force-frame-history",
+              "detail": "每帧随机受力需要原始帧步长和粒子存活顺序",
+              "system": "-4062519931529914543",
+              "name": "[Atlas_add]_Light_particles"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_milkyway_girl_drop_proj",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_milkyway_girl_drop_contrail",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "6449488450627897469",
+              "name": "particles (2)"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-7278629643984496245",
+              "name": "pierce"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_milkyway_girl_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_milkyway_girl_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 15,
+          "autoSeededSystems": 11,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-1836881992385501181",
+              "name": "[Atlas_add]_Spark"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_milkyway_girl_screen",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_support_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_support_ready",
+          "status": "partial-native-parity",
+          "particleSystems": 13,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "-4853082190436967163",
+              "name": "[Atlas_add]_particles (1)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_support_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 16,
+          "autoSeededSystems": 9,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-2229590449389749604",
+              "name": "[Atlas_add]_particle (3)"
+            },
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "3260468583919931345",
+              "name": "[Atlas_add]_particles (2)"
+            },
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "-1276455576345025994",
+              "name": "[Atlas_add]_particles (3)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_1st_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6748913954190892581",
+              "name": "[Atlas_add_top]_spark_inside (2)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_1st_proj",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_1st_contrail",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "5806197141595295780",
+              "name": "[Atlas_add]_arrow_bg (5)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_hit",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 7,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "4234404397860555970",
+              "name": "[Atlas_addtop]_swirl_particle (3)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_3rd_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6748913954190892581",
+              "name": "[Atlas_add_top]_spark_inside (2)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_3rd_proj",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_3rd_contrail",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "1393855352888506824",
+              "name": "[Atlas_add]_arrow_bg (5)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_4th",
+          "status": "partial-native-parity",
+          "particleSystems": 9,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6611889053101681305",
+              "name": "[Atlas_add]_Spark"
+            },
+            {
+              "code": "force-frame-history",
+              "detail": "每帧随机受力需要原始帧步长和粒子存活顺序",
+              "system": "3226397575487761452",
+              "name": "[atlas_add]_iceground (5)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_cast_lv0",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "3308462817954496314",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "3308462817954496314",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "-4988337751181111290",
+              "name": "flower_add (1)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_cast_lv1",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "8003416277332931937",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "8003416277332931937",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "6687032704930545097",
+              "name": "flower_add (1)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_cast_lv2",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "-3714302936284441816",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "-3714302936284441816",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "-6216718559404050617",
+              "name": "flower_add (1)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_cast_lv3",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "3557146916289100269",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "3557146916289100269",
+              "name": "flower_add (4)"
+            },
+            {
+              "code": "trail-geometry",
+              "detail": "拖尾已构造；顶点采样和接缝尚未逐值对齐",
+              "system": "5942666842750512508",
+              "name": "flower_add (1)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_explosion_lv0",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "7915491623415531420",
+              "name": "[Atlas_add]_Sparkline (2)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_explosion_lv1",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6782364573979891393",
+              "name": "[Atlas_add]_Sparkline (2)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_explosion_lv2",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6180190264727511095",
+              "name": "[Atlas_add]_Sparkline (2)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_explosion_lv3",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 5,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-4742883183752377862",
+              "name": "[Atlas_add]_Sparkline (2)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_option_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 5,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_option_end",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_option_proj",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 0,
+          "issues": [
+            {
+              "code": "stage-shadow",
+              "detail": "场景阴影逻辑未在独立特效预览中执行"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_option_proj_remain",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 0,
+          "issues": [
+            {
+              "code": "stage-shadow",
+              "detail": "场景阴影逻辑未在独立特效预览中执行"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_option_contrail",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "-4297099943481049418",
+              "name": "[Atlas_add]_arrow_bg (5)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_option_hit",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6491040058007368040",
+              "name": "[Atlas_add]_Sparkline (3)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_symbol_start",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "3575996324184410017",
+              "name": "[Atlas_add_top]_star_particles"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_symbol_end",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_symbol_lv1",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "stage-shadow",
+              "detail": "场景阴影逻辑未在独立特效预览中执行"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_symbol_lv2",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "stage-shadow",
+              "detail": "场景阴影逻辑未在独立特效预览中执行"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_role_symbol_lv3",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "stage-shadow",
+              "detail": "场景阴影逻辑未在独立特效预览中执行"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_1st_proj_end",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_milkyway_girl_3rd_proj_end",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_ui_common_role_active",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_ui_common_role_active_pad",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        }
+      ]
+    },
+    "peimei": {
+      "effects": 22,
+      "styles": 2,
+      "actions": 5,
+      "systems": 129,
+      "source": {
+        "format": "gt-native-source",
+        "version": 1,
+        "bundles": {
+          "effects/cwp/gauntlet_a": {
+            "sha256": "39c13882469378166dd7bd0ff220829a52ff55cf765455dde19a0e18ae89a3c0",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/common/battle": {
+            "sha256": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/common/super": {
+            "sha256": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/commons": {
+            "sha256": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/fx_common_fire": {
+            "sha256": "5aecf115aaf58972b2b4811343fcb15399a34e174c373a4ded24701e7cbd2dc3",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/fx_common_ice": {
+            "sha256": "55e5e4453cefdf3d632d246007f4ddfb4ed3427e26db2d1acc1b81ee9b30b3c3",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/fx_pet_cyclone": {
+            "sha256": "19f51bf62fa481c8f9339ae5176e30a92f5151ef781a0c4b0262444e9b6f23c5",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/manual/demonceo": {
+            "sha256": "e89c6ca8980e15f3fbcfc5dd5e7710aaa5c8b42cef17fe980156935d388ca3d5",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/manual/festivalgirl": {
+            "sha256": "a8fdc8d5bd21ba88bcca872ccd4f790210afc4fe4980ca1b6ffd0ffa54650b25",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/manual/fireharpy": {
+            "sha256": "3a0828fcc57548a7ff7042828904ede49cca58d9aacdad39e380919671c33c95",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/manual/librarian": {
+            "sha256": "edc2ac9707e70b5ae104b321bd768fec608021ee757f0530269259df9bdfac4a",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/manual/lifeguardyuze": {
+            "sha256": "49b9828d2a314a0352a2a24d6232b7d78fd48045bdb26ddfbae172f6ccd072f1",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "shaders/effect": {
+            "sha256": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/oak": {
+            "sha256": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/cyclone_commons": {
+            "sha256": "4fee361ce4424e71db2558ccfa96d86109028eb251544fdcfb38e2124c5c2dcf",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/fx_common_dark": {
+            "sha256": "6676a2bbcbe10e1ebf748b75ea8082fd52907c3a8d5b4a0b109cab233259cd11",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/manual/wrestler": {
+            "sha256": "580942be4a4be7ce8a299d6fdc4c38b09a363ffd5b6e2e26abc84da17fcb585f",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "worldmap/common": {
+            "sha256": "19c96c4464f62dae73e3df89bd029c0c582b08c1d2342ab4e5238c011396fd95",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "spritesheets/projectiles": {
+            "sha256": "fbb02389b05b91ed2eac420ab367bcdff0e72e7707a55aa48fb4b5834430f4e7",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "audio/sfx/sfxs1": {
+            "sha256": "5b4d2bc4ea8442ae5970c8a2cc889050227bab626f8c53ac150c31192bbe37c6",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "characters/fairy_a": {
+            "sha256": "5a9580afea7a424e0e020680e9533a56bc2feebff79fe50ad903de61c2d42114",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "fonts/common": {
+            "sha256": "1352760fec63648579d421d1094ca7e0aa27950bf9915d00a34db1cfbd3a2463",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/ngui": {
+            "sha256": "8cb6b1d53f5106c70efd4e53787c7367133a20228224b529150259a5d5a048e4",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "spritesheets/battle": {
+            "sha256": "a9e4558b76b2d9cb66b97e60b806d92503055b4fd1d0755726e39ae1017a6a53",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "fonts/base": {
+            "sha256": "3e598add123a88cee19eee6f4a6d8d25615e37435551bd7066126bcd3630aceb",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/tmp": {
+            "sha256": "34b45c703c3d67f8ba39e93babcd451f4ca72271dc9a7cebb2077a50f0297afe",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/manual/china": {
+            "sha256": "e81beee32ad0a043132abb9381e340ec4472d46dbcc037c9d02e4288c18f3bfd",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/fx_common_earth": {
+            "sha256": "a6355b62b68602427aca89915651cf30d1137ea93d303a0c012fe7b1e32d00ec",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/manual/gauntlet": {
+            "sha256": "26ab588060260689fae371792071ce7562bccee3a2f2fc0776ca2c445eee6dd5",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          }
+        },
+        "settings": {
+          "unity_builtin_extra": {
+            "sha256": "86b20967e51753646537830d75406f13c7a826dc011bc42266ee9a63820f05ac",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          },
+          "globalgamemanagers": {
+            "sha256": "234471609aa9e24371af68d94d7968d8cb09657c89c068a83ecf95d9adedcf60",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          }
+        }
+      },
+      "referenceClosure": {
+        "literalReferences": 22,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      },
+      "effectsAudit": [
+        {
+          "preset": "fx_m_chinaheroascent_support_cast_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 9,
+          "autoSeededSystems": 9,
+          "issues": [
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "-6805381537294179645",
+              "name": "[Atlas_add]_Spark_up (4)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_support_explosion_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 14,
+          "autoSeededSystems": 10,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "4550977446601071572",
+              "name": "[Atlas_add_top]_Spark"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "7906972300330833992",
+              "name": "[Atlas_add]_explosion_spark"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "1818573779520567515",
+              "name": "ajirang_seq_toon2"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_support_ready_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "3173119563472070804",
+              "name": "[Atlas_add_top]_start_particles"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_support_cast_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 9,
+          "autoSeededSystems": 9,
+          "issues": [
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "-1489210929044903715",
+              "name": "[Atlas_add]_Spark_up (4)"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_support_explosion_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 14,
+          "autoSeededSystems": 10,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "8341090603677005038",
+              "name": "[Atlas_add_top]_Spark"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-9134613728009244914",
+              "name": "[Atlas_add]_explosion_spark"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "7778240180293618504",
+              "name": "ajirang_seq_toon2"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_support_ready_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-5432261936390444812",
+              "name": "[Atlas_add_top]_start_particles"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_punch_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_punch_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_role_buff_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "6880091747076182720",
+              "name": "[Atlas_add]_swirl_particle"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_role_buff_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-5278473419737191015",
+              "name": "[Atlas_add]_swirl_particle"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_role_shield_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_role_shield_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_role_cast_pei",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 2,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_chinaheroascent_role_cast_mei",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 2,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_peimei_hanzi_text_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_peimei_hanzi_text_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 7,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "483187903953723316",
+              "name": "[Atlas_add_top]_Spark"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_china_hero_energyball_trans",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_china_hero_energyball_trail",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_china_hero_energyball_combine",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-2163099854771823136",
+              "name": "[Atlas_add_top]_Spark (4)"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_china_hero_energyball_result",
+          "status": "partial-native-parity",
+          "particleSystems": 4,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_gauntlet_shockwave_lv1",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-188287639372750192",
+              "name": "[Atlas_add_top]_MainSpark"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_gauntlet_shockwave_blue",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "4507773969616533922",
+              "name": "[Atlas_add_top]_MainSpark"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-6321190613006738940",
+              "name": "[Atlas_add_top]_Spark"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        }
+      ]
+    },
+    "idolcaptain": {
+      "effects": 25,
+      "styles": 2,
+      "actions": 6,
+      "systems": 191,
+      "source": {
+        "format": "gt-native-source",
+        "version": 1,
+        "bundles": {
+          "effects/cwp/staff_a": {
+            "sha256": "a57a6b47a192b357bc92d0d38af0c18e418bf4fe0923580538e13660be631f09",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/common/battle": {
+            "sha256": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/common/super": {
+            "sha256": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/commons": {
+            "sha256": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/effect": {
+            "sha256": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "shaders/oak": {
+            "sha256": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+            "unityVersion": "2022.3.62f2",
+            "origin": "apk"
+          },
+          "effects/manual/idolcaptain": {
+            "sha256": "2d3988edb1fd67219d370b0e543c5bb8c13ab5adb14688f8bcc39db85719a6d5",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          },
+          "effects/myth/common": {
+            "sha256": "f9c2cb79832b2d1d5cf9e32369ec347318ee14d7638edfc00a3bba6c4645c1b8",
+            "unityVersion": "2022.3.62f2",
+            "origin": "bundleRoot"
+          }
+        },
+        "settings": {
+          "unity_builtin_extra": {
+            "sha256": "86b20967e51753646537830d75406f13c7a826dc011bc42266ee9a63820f05ac",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          },
+          "globalgamemanagers": {
+            "sha256": "234471609aa9e24371af68d94d7968d8cb09657c89c068a83ecf95d9adedcf60",
+            "container": "ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk"
+          }
+        }
+      },
+      "referenceClosure": {
+        "literalReferences": 25,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      },
+      "effectsAudit": [
+        {
+          "preset": "fx_m_noteblade_basic_fire",
+          "status": "partial-native-parity",
+          "particleSystems": 1,
+          "autoSeededSystems": 1,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_basic_proj",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_basic_trail",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_basic_hit",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 3,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "3481248153101836175",
+              "name": "[Atlas_add]_particle"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_final_proj_b",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_final_proj_p",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_final_proj_y",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 1,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_final_trail",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "投射物对象池组件的完整生命周期尚未解释"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_final_hit",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "7920209981721421173",
+              "name": "[Atlas_add]_particle"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_noteblade_basic_aura",
+          "status": "partial-native-parity",
+          "particleSystems": 3,
+          "autoSeededSystems": 3,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_idol_captain_support_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 10,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_cwp_buff",
+          "status": "partial-native-parity",
+          "particleSystems": 5,
+          "autoSeededSystems": 5,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_idol_captain_myth_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 9,
+          "autoSeededSystems": 6,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_idol_captain_myth_range",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_idol_captain_myth_screen",
+          "status": "partial-native-parity",
+          "particleSystems": 22,
+          "autoSeededSystems": 16,
+          "issues": [
+            {
+              "code": "force-frame-history",
+              "detail": "每帧随机受力需要原始帧步长和粒子存活顺序",
+              "system": "7673303548120236514",
+              "name": "hero_idolcaptain_Atlas_add_top_particles_heart"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_idol_captain_myth_target",
+          "status": "partial-native-parity",
+          "particleSystems": 9,
+          "autoSeededSystems": 8,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "-2369287287043917326",
+              "name": "hero_idolcaptain_Atlas_add_top_particles"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_idol_captain_myth_support_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 12,
+          "autoSeededSystems": 4,
+          "issues": [
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_idol_captain_myth_cwp_buff",
+          "status": "partial-native-parity",
+          "particleSystems": 10,
+          "autoSeededSystems": 10,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_m_idol_captain_myth_basic_aura",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 5,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_rainbow_sherbet_cast",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_rainbow_sherbet_screen",
+          "status": "partial-native-parity",
+          "particleSystems": 20,
+          "autoSeededSystems": 14,
+          "issues": [
+            {
+              "code": "force-frame-history",
+              "detail": "每帧随机受力需要原始帧步长和粒子存活顺序",
+              "system": "6697831037667547473",
+              "name": "[Atlas_add_top]_shine_particles"
+            },
+            {
+              "code": "force-frame-history",
+              "detail": "每帧随机受力需要原始帧步长和粒子存活顺序",
+              "system": "1576972217316171380",
+              "name": "[eva_pack]_stars_particles"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_rainbow_sherbet_range",
+          "status": "partial-native-parity",
+          "particleSystems": 2,
+          "autoSeededSystems": 2,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_cwp_rainbow_sherbet_target",
+          "status": "partial-native-parity",
+          "particleSystems": 8,
+          "autoSeededSystems": 8,
+          "issues": [
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "6634300371180196517",
+              "name": "[Atlas_add_top]_particle"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_leader_skill_buff_def",
+          "status": "partial-native-parity",
+          "particleSystems": 6,
+          "autoSeededSystems": 4,
+          "issues": [],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        },
+        {
+          "preset": "fx_myth_idol_captain_myth_explosion",
+          "status": "partial-native-parity",
+          "particleSystems": 36,
+          "autoSeededSystems": 21,
+          "issues": [
+            {
+              "code": "noise-integration",
+              "detail": "噪声核已对齐；完整噪声作业及坐标变换尚未逐值核实",
+              "system": "-7734123581175171963",
+              "name": "hero_idolcaptain_myth_note"
+            },
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "-7734123581175171963",
+              "name": "hero_idolcaptain_myth_note"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "8939887686708043580",
+              "name": "hero_idolcaptain_myth_spark"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "1309369381055365837",
+              "name": "hero_idolcaptain_myth_spark"
+            },
+            {
+              "code": "subemitter-order",
+              "detail": "子粒子已跟随父粒子发射；全局作业顺序与继承细节尚未完整验证",
+              "system": "-848164498455337913",
+              "name": "hero_idolcaptain_myth_main_gen"
+            },
+            {
+              "code": "stretched-billboard",
+              "detail": "拉伸公告板的完整原生顶点构造尚未对齐",
+              "system": "1773989541361351730",
+              "name": "hero_idolcaptain_myth_top_start_line"
+            },
+            {
+              "code": "script-lifecycle",
+              "detail": "SortingLayer 的运行时层级设置尚未完整映射"
+            }
+          ],
+          "requirements": [
+            "相同资源版本",
+            "粒子自动种子的实际状态或逐系统种子",
+            "相同发射批次与帧步长",
+            "相同发射器、目标轨迹和场景条件"
+          ],
+          "remaining": [
+            "自动种子的全局分配顺序尚未从游戏运行时捕获",
+            "完整粒子作业及浮点边界尚未全部逐值对齐",
+            "技能命中、碰撞和部分动作机制仍有近似"
+          ]
+        }
+      ]
+    }
+  }
+}

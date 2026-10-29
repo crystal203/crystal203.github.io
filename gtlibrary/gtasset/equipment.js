@@ -38,9 +38,8 @@
     attachment.width = size.w;
     attachment.height = size.h;
     attachment.region.renderObject = attachment.region;
-    // Item sprites use the reflected coordinate system of the game binding.
-    // Equipment.equip converts that reflection into the selected slot's axes.
-    attachment.scaleY = -1;
+    // Native AtlasRegionAttacher uses positive attachment scales and zero
+    // rotation. The Spine slot bones already supply the weapon orientation.
     attachment.updateOffset();
     return attachment;
   }
@@ -56,17 +55,6 @@
   }
 
   Equipment.prototype.equip = function (slot, attachment) {
-    // Weapon slots often sit on an axis child (e.g. b.w1_axis / item1_side),
-    // whose setup rotation converts the parent weapon coordinates. Reflection
-    // and rotation do not commute: R(axis) F != F R(axis). Conjugate the
-    // reflection into the slot frame, using its actual bind rotation, rather
-    // than adding a constant angle to every weapon / view / animation.
-    var bone = slot.bone;
-    if (attachment && bone.parent && /weapon/i.test(bone.parent.data.name) && attachment.scaleY < 0) {
-      attachment = attachment.copy();
-      attachment.rotation -= 2 * bone.data.rotation;
-      attachment.updateOffset();
-    }
     var index = slot.data.index;
     if (!this.bindings[index]) {
       var originalData = slot.data;

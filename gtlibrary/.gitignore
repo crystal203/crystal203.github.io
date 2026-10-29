@@ -9,3 +9,6 @@ __pycache__/
 /tools/native/cache/
 /tools/native/__pycache__/
 /tools/audio/__pycache__/
+
+# FX import provenance, content indexes and recoverable cleanup backups (not deployed).
+/tools/fx/source-cache/

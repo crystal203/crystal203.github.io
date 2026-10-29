@@ -1,5 +1,11 @@
 # 坎公资源库
 
+## 本地一键启动（Windows）
+
+安装 Node.js 后，双击根目录的 `start-local.cmd`。脚本会启动仅限本机访问的静态服务，并自动打开 Hana 人物特效联动页。保持启动窗口开启；关闭窗口或按 `Ctrl+C` 停止服务。无需安装 npm 依赖。
+
+默认端口为 `8765`，占用时自动尝试后续端口。也可在终端运行 `start-local.cmd 9000` 指定起始端口；添加 `--no-open` 只启动服务。脚本通过自身位置定位资源，支持从其他工作目录启动。人物联动范围见 [人物攻击模组联动说明](docs/character-effects.md)。
+
 唯一主入口是 `gtlibrary/index.html`，站点首页的“坎公资源库”卡片指向此处。项目为纯静态网站，可放在普通静态服务器或 GitHub Pages 上；运行时无需 Node 或后端。由于资源使用 fetch 和 ES modules，请通过 HTTP 打开，不能通过 file:// 直接运行。
 
 动画现可导出 GIF、MP4、MOV 和透明 PNG 序列 ZIP；地图可导出带内嵌贴图的 GLB、OBJ 套件或 Blender 套件。详见 [浏览器导出说明](docs/browser-exports.md)。

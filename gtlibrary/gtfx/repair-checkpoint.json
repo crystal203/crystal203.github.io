@@ -1,0 +1,369 @@
+{
+  "format": "gtfx-repair-checkpoint",
+  "version": 1,
+  "recordedAt": "2026-10-28T21:46:37.987476+00:00",
+  "deadline": "2026-10-28T21:50:18Z",
+  "status": "partial-native-parity",
+  "heart": {
+    "case": "fx_idolcaptainmyth_myth_festival",
+    "seed": 12345,
+    "particles": 417,
+    "alive": 197,
+    "time": 0.479,
+    "hearts": [
+      {
+        "system": "hero_idolcaptain_myth_bg_heart_line",
+        "randomSeed": 1687437330,
+        "shapeX": 1.0554324388504028,
+        "world": [
+          1.5108648538589478,
+          0.04999995231628418,
+          0
+        ],
+        "flip": [
+          1,
+          0
+        ],
+        "visible": true
+      },
+      {
+        "system": "hero_idolcaptain_myth_bg_heart_line",
+        "randomSeed": 1831122030,
+        "shapeX": -0.445120632648468,
+        "world": [
+          -1.490241289138794,
+          0.04999995231628418,
+          0
+        ],
+        "flip": [
+          0,
+          0
+        ],
+        "visible": true
+      },
+      {
+        "system": "hero_idolcaptain_myth_add_heart_line",
+        "randomSeed": 1687437330,
+        "shapeX": 1.0554324388504028,
+        "world": [
+          1.5108648538589478,
+          0.04999995231628418,
+          0
+        ],
+        "flip": [
+          1,
+          0
+        ],
+        "visible": true
+      },
+      {
+        "system": "hero_idolcaptain_myth_add_heart_line",
+        "randomSeed": 1831122030,
+        "shapeX": -0.445120632648468,
+        "world": [
+          -1.490241289138794,
+          0.04999995231628418,
+          0
+        ],
+        "flip": [
+          0,
+          0
+        ],
+        "visible": true
+      }
+    ]
+  },
+  "representativeCases": [
+    {
+      "character": "hana",
+      "preset": "fx_m_hana_hook",
+      "actions": [
+        "basic-1",
+        "basic-2",
+        "basic-3",
+        "basic-4",
+        "basic-combo",
+        "support",
+        "cwp-1",
+        "cwp-2",
+        "cwp-3"
+      ],
+      "particles": 0,
+      "visibleTrails": 0,
+      "alive": 0
+    },
+    {
+      "character": "milkywaygirl",
+      "preset": "fx_m_milkyway_girl_role_cast_lv1",
+      "actions": [
+        "basic-1",
+        "basic-2",
+        "basic-3",
+        "basic-4",
+        "basic-combo",
+        "support",
+        "role-lv-0",
+        "role-lv-1",
+        "role-lv-2",
+        "role-lv-3",
+        "cwp"
+      ],
+      "particles": 22,
+      "visibleTrails": 1,
+      "alive": 0
+    },
+    {
+      "character": "peimei",
+      "preset": "fx_m_chinaheroascent_support_cast_pei",
+      "actions": [
+        "basic-1",
+        "basic-loop",
+        "support",
+        "support-ascent-pei",
+        "role-ascent-pei",
+        "cwp"
+      ],
+      "particles": 38,
+      "visibleTrails": 0,
+      "alive": 8
+    },
+    {
+      "character": "idolcaptain",
+      "preset": "fx_idolcaptainmyth_myth_festival",
+      "actions": [
+        "basic-1",
+        "basic-2",
+        "basic-3",
+        "basic-combo",
+        "support",
+        "myth",
+        "cwp"
+      ],
+      "particles": 417,
+      "visibleTrails": 0,
+      "alive": 197
+    }
+  ],
+  "characters": {
+    "hana": {
+      "effects": 18,
+      "styles": 1,
+      "actions": 8,
+      "systems": 124,
+      "unverifiedFeatures": {
+        "script-lifecycle": 4,
+        "stretched-billboard": 10,
+        "noise-integration": 1
+      },
+      "referenceClosure": {
+        "literalReferences": 18,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      }
+    },
+    "milkywaygirl": {
+      "effects": 40,
+      "styles": 1,
+      "actions": 7,
+      "systems": 251,
+      "unverifiedFeatures": {
+        "stretched-billboard": 13,
+        "force-frame-history": 2,
+        "script-lifecycle": 21,
+        "noise-integration": 4,
+        "subemitter-order": 8,
+        "trail-geometry": 8,
+        "stage-shadow": 5
+      },
+      "referenceClosure": {
+        "literalReferences": 38,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      }
+    },
+    "peimei": {
+      "effects": 22,
+      "styles": 2,
+      "actions": 5,
+      "systems": 129,
+      "unverifiedFeatures": {
+        "noise-integration": 2,
+        "script-lifecycle": 13,
+        "stretched-billboard": 15
+      },
+      "referenceClosure": {
+        "literalReferences": 22,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      }
+    },
+    "idolcaptain": {
+      "effects": 25,
+      "styles": 2,
+      "actions": 6,
+      "systems": 191,
+      "unverifiedFeatures": {
+        "script-lifecycle": 12,
+        "stretched-billboard": 7,
+        "force-frame-history": 3,
+        "noise-integration": 1,
+        "subemitter-order": 2
+      },
+      "referenceClosure": {
+        "literalReferences": 25,
+        "missing": [],
+        "note": "Literal resource references only; does not prove all action branches."
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "gtfx/native-random.js",
+      "sha256": "2e6f6d9c1d49c8694e363c14b82043d24e84c247c1f8404627f442fe8c31e06f"
+    },
+    {
+      "path": "gtfx/native-noise.js",
+      "sha256": "86b8f88212e419427768d6429fdb2b2c7e6794ee981ac2f2615886b19aa690d3"
+    },
+    {
+      "path": "gtfx/native-emission.js",
+      "sha256": "23e046db5331fae4f5fd0cc886e37fee26af9e061943f3c506e0ed3ec34043a6"
+    },
+    {
+      "path": "gtfx/core.js",
+      "sha256": "e3e3001d62644290b847f34170902aebdf8542e19e3867c628bda82e56dd2461"
+    },
+    {
+      "path": "gtfx/native-shapes.js",
+      "sha256": "302a8df0e3247df19892469a95ad2d14287c49542b529519a2d5dd0498ee2c9c"
+    },
+    {
+      "path": "gtfx/native-mesh.js",
+      "sha256": "15cad5647f6618d338d2c6bc3b982152a28cc04332918bbb1d43aa98a1d43959"
+    },
+    {
+      "path": "gtfx/native-kernel-vm.js",
+      "sha256": "4d8f65d580861250c334bf957566a6883680d0c2acf3a89bb7e098ace49e8a55"
+    },
+    {
+      "path": "gtfx/native-system-seeds.js",
+      "sha256": "6762bfd64e1fe5598b111de86db544278ca943ead2f8a086ae44eb22be3eb66b"
+    },
+    {
+      "path": "gtfx/native-projectile.js",
+      "sha256": "2b1d2ca4a06f30afd47f920c78f5c5221076ff42fc0f7609428be59d49b646dd"
+    },
+    {
+      "path": "gtfx/native-fidelity.js",
+      "sha256": "f8d3c8a5da522f43382b9d2d56a9169094fcf7e92f886a01746aecdfc254bc98"
+    },
+    {
+      "path": "apps/fx/app.js",
+      "sha256": "9560639734877f5f13ae5aff722365c8d1f26a6f6c2854e1174fc31c599d3897"
+    },
+    {
+      "path": "apps/fx/index.html",
+      "sha256": "36c5fffa8cf4dfd146d1ee64b823d593d276695e6c65c2ad560b35f18443df7b"
+    },
+    {
+      "path": "gtfx/native-motion.js",
+      "sha256": "c645923e7816ade4202d9d0d01d61e6959df1f69b5a55bcee758f87f4433a074"
+    },
+    {
+      "path": "gtfx/native-subemit.js",
+      "sha256": "64a4f1916107b2b568b5ff42b0fe29c28390e3466a27ccaef4b135bc248d1213"
+    },
+    {
+      "path": "gtfx/native-shape-kernels.js",
+      "sha256": "140a74afed3a5cd854ae0612985b511443e170105ed958962f8d6442475d28ec"
+    },
+    {
+      "path": "gtfx/assets/native-action-plans.json",
+      "sha256": "c2c3b811731aeb82a4265da2733bceae0904640a1758ade0512e6ebfa9de4d50"
+    },
+    {
+      "path": "gtfx/action-modules.js",
+      "sha256": "0ebd4bd60e1e9b8897356b2bd5bd474d002709784e096fce2e0d347d9037c000"
+    },
+    {
+      "path": "gtfx/character-link.js",
+      "sha256": "4ffdffd9bc9d36b60ad8f0b5a69750ae0bc626c8f794c8cbc304c08debb3dd56"
+    },
+    {
+      "path": "gtfx/action-player.js",
+      "sha256": "1ce601847b142a9a3de447c92c601bff1807dad62f21ccbbfe2a72d8d52b015c"
+    },
+    {
+      "path": "gtfx/character-player.js",
+      "sha256": "654a520340cafc65f4f9cedf3584ee55958153f07194c000f880872acc558b30"
+    },
+    {
+      "path": "tools/fx/import-character-native.py",
+      "sha256": "425684dbe8e3e00879d66264ae82fc821696e5cb445574f08bf491d458fc5520"
+    },
+    {
+      "path": "tools/fx/native_prefab_converter.py",
+      "sha256": "c03857cc9d7b702e6c0f3c5b35b82d3ce96245a019832613d9f57f4e987369a6"
+    },
+    {
+      "path": "tools/fx/check-native-imports.mjs",
+      "sha256": "78835e458e6e68ed63b4357d5af4f17f2913e960b40e47adf17cd103c183f7c0"
+    },
+    {
+      "path": "tools/fx/check-native-random.mjs",
+      "sha256": "96dbb47e04bf51cf8232bec899b94f0ccf683910e16a6ebfb12ae5d10ff0cda8"
+    },
+    {
+      "path": "tools/fx/audit-native-characters.mjs",
+      "sha256": "b0498bafd2f63f2e3e374e298322a0594efd05132842a51bc58ddb412c802c2b"
+    },
+    {
+      "path": "gtfx/assets/characters/hana.json",
+      "sha256": "00e7dae2701b77ccc9460d02ecea814f436a2c13ed89967860511f2579c485e1"
+    },
+    {
+      "path": "gtfx/assets/native-characters/hana.json",
+      "sha256": "1a587c988890e32c257f0a79133e0ea42c3de90ef07f898b72ba3b494208d24b"
+    },
+    {
+      "path": "gtfx/assets/characters/milkywaygirl.json",
+      "sha256": "bc5ed5c7ee82d10860f4708c3811fe459ca3bda7708fc9d5d8f7e7c3037e7428"
+    },
+    {
+      "path": "gtfx/assets/native-characters/milkywaygirl.json",
+      "sha256": "c1630749039f294de11acbabf74b0caeba821f330b6ba56ed00cae6270f8c5fc"
+    },
+    {
+      "path": "gtfx/assets/characters/peimei.json",
+      "sha256": "de28c561cbd9079db74668568e23ab662318facbb2738e5495d61a71b3eb9632"
+    },
+    {
+      "path": "gtfx/assets/native-characters/peimei.json",
+      "sha256": "dfde6b6f9bdd968f43ab135f9a8a8123ad07b5a0db2ffae84e3dc15fd3b9b32a"
+    },
+    {
+      "path": "gtfx/assets/characters/idolcaptain.json",
+      "sha256": "8456add6f83344324e76c030730dc427c5c8ab7e75679979c0dc1b997fd52e50"
+    },
+    {
+      "path": "gtfx/assets/native-characters/idolcaptain.json",
+      "sha256": "b2c58cbea39a7e8091f17ea16a69ed6c19c8adfc35678bee9627ecf42a3a2e5c"
+    }
+  ],
+  "checks": {
+    "nativeFixtures": "passed 2026-10-28T21:37:53Z",
+    "representativeCases": "passed 2026-10-28T21:39:34Z; four cases, no skin or direction enumeration",
+    "heartIntegrationAndTrace": "passed 2026-10-28T21:41:13Z; original heart at 0.479 seconds",
+    "stagingMatchesRepository": true
+  },
+  "remaining": [
+    "game global automatic seed state and actual reset order",
+    "subemitter job order, inheritance and birth/death boundaries",
+    "full stretched billboard, trail and noise jobs",
+    "scene collision, target life, shadows and all action branches",
+    "viewport scale, runtime sorting and object-pool component lifecycles",
+    "exact game frame history and cross-platform floating-point boundaries"
+  ],
+  "shutdown": "Windows countdown was armed for the deadline; do not cancel or extend",
+  "deployment": "local working files only; no commit, push or deployment in this run"
+}

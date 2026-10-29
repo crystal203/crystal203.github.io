@@ -1,0 +1,461 @@
+{
+  "hana": [
+    {
+      "augmentAction": "ManualHana:First",
+      "initialRate": 1.4,
+      "rateChangeField": "AttackTiming",
+      "rateChangeOffset": -0.04,
+      "source": "ManualHanaBattleAction.lua:420-436"
+    },
+    {
+      "augmentAction": "ManualHana:Third",
+      "clipSpeed": 3,
+      "events": [
+        {
+          "preset": "fx_hana_basic_hookshot_glow",
+          "anchor": "hook"
+        }
+      ],
+      "source": "ManualHanaBattleAction.lua:350,538"
+    },
+    {
+      "id": "support",
+      "label": "连锁技能",
+      "action": "BasicSupport:Hana",
+      "animation": "action",
+      "actorClips": [
+        {
+          "key": "action"
+        },
+        {
+          "key": "end",
+          "atField": "HitTiming",
+          "atOffset": -0.1
+        }
+      ],
+      "events": [
+        {
+          "key": "chain",
+          "phase": 0.1,
+          "anchor": "target",
+          "targetGround": true,
+          "directed": false
+        },
+        {
+          "key": "hit",
+          "phaseField": "HitTiming",
+          "anchor": "target",
+          "directed": false
+        }
+      ]
+    },
+    {
+      "id": "cwp-1",
+      "label": "专武技能 · 第 1 种差分",
+      "action": "CwpHana",
+      "exclusive": true,
+      "animation": "action1",
+      "events": [
+        {
+          "key": "cast",
+          "phaseField": "DashTiming"
+        },
+        {
+          "key": "screen",
+          "phaseField": "HitTiming",
+          "screen": true,
+          "directed": false
+        },
+        {
+          "key": "hit1",
+          "phaseField": "HitTiming",
+          "offsetField": "Offset"
+        }
+      ]
+    },
+    {
+      "id": "cwp-2",
+      "label": "专武技能 · 第 2 种差分",
+      "action": "CwpHana",
+      "exclusive": true,
+      "animation": "action2",
+      "actorClips": [
+        {
+          "key": "action2",
+          "atField": "DashTiming"
+        }
+      ],
+      "events": [
+        {
+          "key": "cast",
+          "phaseField": "DashTiming"
+        },
+        {
+          "key": "screen",
+          "phaseField": "HitTiming",
+          "screen": true,
+          "directed": false
+        },
+        {
+          "key": "hit2",
+          "phaseField": "HitTiming",
+          "offsetField": "Offset",
+          "directed": false
+        }
+      ]
+    },
+    {
+      "id": "cwp-3",
+      "label": "专武技能 · 第 3 种差分",
+      "action": "CwpHana",
+      "exclusive": true,
+      "animation": "action3",
+      "events": [
+        {
+          "key": "cast",
+          "phaseField": "DashTiming"
+        },
+        {
+          "key": "screen",
+          "phaseField": "HitTiming",
+          "screen": true,
+          "directed": false
+        },
+        {
+          "key": "hit3",
+          "phaseField": "HitTiming",
+          "offsetField": "Offset",
+          "directed": false
+        }
+      ]
+    }
+  ],
+  "milkywaygirl": [
+    {
+      "id": "support",
+      "label": "连锁技能",
+      "action": "BasicSupport:MilkywayGirl",
+      "animation": "jump",
+      "actorClips": [
+        {
+          "key": "jump"
+        },
+        {
+          "key": "shoot",
+          "atField": "GroundTiming"
+        }
+      ],
+      "events": [
+        {
+          "key": "cast",
+          "directed": false
+        },
+        {
+          "key": "ground",
+          "anchor": "target",
+          "targetGround": true,
+          "directed": false,
+          "fxEndField": "ExplosionTiming"
+        },
+        {
+          "key": "explosion",
+          "phaseField": "ExplosionTiming",
+          "anchor": "target",
+          "targetGround": true,
+          "directed": false
+        }
+      ]
+    },
+    {
+      "id": "role-lv",
+      "label": "角色技能 · 蓄力",
+      "action": "RoleMilkywayGirl",
+      "animation": "cast",
+      "variants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "events": [
+        {
+          "key": "cast_{variant}",
+          "directed": false
+        },
+        {
+          "key": "explosion_{variant}",
+          "phaseField": "AttackTiming",
+          "directed": false
+        },
+        {
+          "key": "symbol_end",
+          "minVariant": 1,
+          "anchor": "symbol",
+          "directed": false
+        }
+      ]
+    },
+    {
+      "id": "cwp",
+      "label": "专武技能",
+      "action": "CwpMilkywayGirl",
+      "exclusive": true,
+      "animation": "cast",
+      "events": [
+        {
+          "key": "screen",
+          "phaseField": "AttackTiming",
+          "screen": true,
+          "directed": false
+        },
+        {
+          "key": "cast",
+          "directed": false
+        },
+        {
+          "key": "shoot",
+          "directed": false
+        },
+        {
+          "key": "explosion",
+          "phaseField": "AttackTiming",
+          "repeatField": "DropTiming",
+          "stepField": "HitTiming",
+          "anchor": "target",
+          "orbit": true,
+          "directed": false
+        },
+        {
+          "projectileKey": "body",
+          "phaseField": "AttackTiming",
+          "repeatField": "DropTiming",
+          "stepField": "HitTiming",
+          "orbit": true,
+          "projectile": true
+        },
+        {
+          "projectileKey": "trail",
+          "phaseField": "AttackTiming",
+          "repeatField": "DropTiming",
+          "stepField": "HitTiming",
+          "orbit": true,
+          "projectile": true
+        }
+      ],
+      "endSumFields": [
+        "AttackTiming",
+        "EndTiming"
+      ],
+      "randomSequence": {
+        "roundField": "DropTiming",
+        "stepField": "HitTiming",
+        "phaseField": "AttackTiming",
+        "radius": 0.8,
+        "angleStep": 120,
+        "source": "CwpMilkywayGirlBattleAction.lua:sync_sequence,update"
+      }
+    }
+  ],
+  "peimei": [
+    {
+      "augmentAction": "ManualChinaHero:Ascent",
+      "repeatInterval": 0.6,
+      "fxOffset": 0.35,
+      "source": "ManualChinaHeroBattleAction.lua:188,372",
+      "basicVariantByAppearance": {
+        "china_hero_boy_5": "attack",
+        "china_hero_girl_5": "attack_alt",
+        "china_hero_boy_ascent": "attack",
+        "china_hero_girl_ascent": "attack_alt"
+      }
+    },
+    {
+      "id": "support",
+      "label": "连锁技能",
+      "action": "BasicSupport:ChinaHero",
+      "animation": "cast",
+      "events": [
+        {
+          "key": "cast",
+          "phaseField": "HitTiming",
+          "anchor": "target",
+          "directed": false
+        },
+        {
+          "key": "explosion",
+          "phaseField": "HitTiming",
+          "phaseIndex": 1,
+          "anchor": "target",
+          "directed": false
+        }
+      ]
+    },
+    {
+      "id": "support-ascent",
+      "label": "升阶连锁",
+      "action": "BasicSupport:ChinaHero",
+      "option": "china_hero_ascent_support_skill",
+      "animation": "cast",
+      "variantByAppearance": {
+        "china_hero_boy_ascent": "pei",
+        "china_hero_girl_ascent": "mei"
+      },
+      "events": [
+        {
+          "key": "ready_ascent_{variant}",
+          "anchor": "feet",
+          "directed": false
+        },
+        {
+          "key": "cast_ascent_{variant}",
+          "phaseField": "HitTiming",
+          "anchor": "target",
+          "directed": false
+        },
+        {
+          "key": "explosion_ascent_{variant}",
+          "phaseField": "HitTiming",
+          "phaseIndex": 1,
+          "anchor": "target",
+          "directed": false
+        }
+      ],
+      "requiredClass": "china_hero_ascent"
+    },
+    {
+      "id": "role-ascent",
+      "label": "升阶角色技能",
+      "action": "RoleChinaHeroAscent",
+      "option": "china_hero_ascent_role_option",
+      "variantByAppearance": {
+        "china_hero_boy_ascent": "pei",
+        "china_hero_girl_ascent": "mei"
+      },
+      "events": [
+        {
+          "key": "cast_{variant}",
+          "phaseField": "AoeTiming",
+          "anchor": "feet",
+          "directed": false
+        },
+        {
+          "key": "shield_{variant}",
+          "phaseField": "AoeTiming",
+          "anchor": "feet",
+          "directed": false
+        },
+        {
+          "key": "buff_{variant}",
+          "phaseField": "AoeTiming",
+          "anchor": "center",
+          "directed": false
+        }
+      ],
+      "requiredClass": "china_hero_ascent"
+    },
+    {
+      "id": "cwp",
+      "label": "专武技能 · 冰火能量球",
+      "action": "CwpChinaUltimateIceFlameBomb",
+      "exclusive": true,
+      "animation": "attack_ready",
+      "endSumFields": [
+        "ActionDuration",
+        "AttackDuration"
+      ],
+      "actorClips": [
+        {
+          "key": "attack_ready"
+        },
+        {
+          "key": "attack",
+          "atField": "ActionDuration"
+        }
+      ],
+      "events": [
+        {
+          "key": "cast",
+          "anchor": "feet",
+          "directed": false
+        },
+        {
+          "key": "energytrail",
+          "anchor": "feet"
+        },
+        {
+          "key": "energyball_combine",
+          "phaseField": "ActionDuration",
+          "offsetField": "EnergyBallDistance",
+          "directed": false
+        },
+        {
+          "key": "energyball_result",
+          "phaseField": "ActionDuration",
+          "fly": true
+        }
+      ]
+    }
+  ],
+  "idolcaptain": [
+    {
+      "id": "support",
+      "label": "连锁技能",
+      "action": "BasicSupport:IdolCaptain",
+      "sourceArrays": true
+    },
+    {
+      "id": "myth",
+      "label": "开花技能",
+      "action": "MythIdolCaptain",
+      "mythOnly": true,
+      "animation": "cast",
+      "events": [
+        {
+          "key": "explosion",
+          "anchor": "feet",
+          "directed": false
+        },
+        {
+          "key": "buff",
+          "phaseField": "HitTiming",
+          "anchor": "target",
+          "directed": false
+        }
+      ],
+      "source": "MythIdolCaptainBattleAction.lua:on_start,apply_damage"
+    },
+    {
+      "id": "cwp",
+      "label": "专武技能",
+      "action": "CwpIdolCaptainRainbowSherbet",
+      "exclusive": true,
+      "animation": "cwp",
+      "events": [
+        {
+          "key": "cwp",
+          "directed": false
+        },
+        {
+          "key": "screen",
+          "directed": false,
+          "screen": true,
+          "phaseFrameField": "SpineEventFrame",
+          "phaseIndex": 0
+        },
+        {
+          "key": "range",
+          "directed": true,
+          "phaseFrameField": "SpineEventFrame",
+          "phaseIndex": 1
+        },
+        {
+          "key": "target",
+          "directed": false,
+          "anchor": "target",
+          "phaseFrameField": "SubEventFrame",
+          "phaseIndex": 1
+        }
+      ]
+    }
+  ]
+}

@@ -30,15 +30,16 @@ if supplement.exists():
   for row in rows:
    entities.append({'id':f"spine:{folder}:{row['name']}",'name':row['label'],'aliases':row['aliases'],'spine':{'folder':folder,'name':row['name']},'kind':'spine'})
 fx=read(ROOT/'gtfx/assets/catalog.json')
+fx_characters={c['id']:c for c in fx['characters']}
 for c in fx['characters']:
  data=read(ROOT/'gtfx/assets'/c['index'])
  for e in data['effects']:
   if e.get('unavailable'):continue
-  entities.append({'id':f"fx:{c['id']}:{e['id']}",'name':e.get('label') or e.get('name') or e['assetName'],'aliases':[e['assetName'],c['id'],c['key'],c['name'],'特效'],'fx':{'character':c['id'],'effect':e['id']},'kind':'fx'})
+  entities.append({'id':f"fx:{c['id']}:{e['id']}",'name':e.get('label') or e.get('name') or e['assetName'],'aliases':[e['assetName'],c['id'],c['key'],c['name'],*c.get('aliases',[]),'特效'],'fx':{'character':c['id'],'effect':e['id']},'kind':'fx'})
 registry_text=(ROOT/'resources/registry.js').read_text(encoding='utf8');registry=json.loads(registry_text[registry_text.index('{'):].rstrip(';\n\r '))
 for entity in entities:
  if entity.get('fx'):
-  key=entity['fx']['character'];linked=registry['entities'].get(registry['aliases'].get(key,key))
+  character=fx_characters[entity['fx']['character']];key=character['key'];linked=registry['entities'].get(registry['aliases'].get(key,key))
   if linked:entity['aliases']=list(dict.fromkeys(entity['aliases']+linked['aliases']+[linked['name']]))
 result={'version':1,'sheets':sheets,'entities':entities,'counts':{'atlasSheets':len(sheets),'atlasRegions':counts,'blankPlaceholders':len(blank),'spine':sum(e['kind']=='spine' for e in entities),'fx':sum(e['kind']=='fx' for e in entities)}}
 (ROOT/'resources/search-index.json').write_text(json.dumps(result,ensure_ascii=False,separators=(',',':')),encoding='utf-8')

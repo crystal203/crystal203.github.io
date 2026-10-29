@@ -1,10 +1,31 @@
+import {FxCharacterPlayer} from '../../gtfx/character-player.js';
+import {FxActionPlayer} from '../../gtfx/action-player.js';
+import {actionModules} from '../../gtfx/action-modules.js';
+import {profiles} from '../../gtfx/character-link.js';
 import {FxRuntime} from '../../gtfx/core.js';
+import {formatFidelity} from '../../gtfx/native-fidelity.js';
 import {outputSize,nearestResize} from '../../gtfx/gif-sizing.js';
+import {ExportRegion,regionCapturePlan} from '../../gtfx/export-region.js';
 const $=id=>document.getElementById(id);
 let manifestUrl,effectGeneration=0,loadedEffect=null,disposed=false;
 let mediaAbort=null;
 let runtime,catalog,index,character,effect,playing=false,time=0,last=performance.now(),queue=null,gap=0,generation=0,exporting=false,cancelled=false,worker=null,downloadUrl=null,measuring=false,nativePlan=null;
-let avatarImage=null,avatarFrames={};
+let avatarImage=null,avatarFrames={},registry,weaponCatalog={},nativeActions,nativePlans,baseNativeActions,baseNativePlans,modules=[],mode='effect',selectedModule=null;
+const exportRegion=new ExportRegion({canvas:$('canvas'),box:$('export-region'),select:$('region-select'),clear:$('region-clear'),settings:$('region-settings'),fields:Object.fromEntries(['x','y','w','h'].map(k=>[k,$('region-'+k)])),isLocked:()=>exporting||measuring||!effect,onSelect:()=>{playing=false;queue=null;drag=null;sample();$('canvas').focus();},onChange:()=>{nativePlan=null;refreshNativeSize();}});
+function selectedRegionPlan(){return exportRegion.region?regionCapturePlan(runtime,exportRegion.region,$('size').value,Number($('native-scale').value)):null;}
+function showRegionDimensions(){
+  if(!effect||!exportRegion.region){$('region-dimensions').textContent='';return;}
+  try{const {dimensions}=selectedRegionPlan();$('region-dimensions').textContent='选区导出 '+dimensions.width+' × '+dimensions.height+' px';}catch(e){$('region-dimensions').textContent=e.message;}
+}
+const importedProfiles={};
+const profileFor=id=>importedProfiles[id]||profiles[id];
+const nativeWeapon=(profile,appearance)=>profile?.weaponByAppearance?.[appearance]||profile?.weapon;
+function moduleOptions(){const profile=profileFor(character?.id);return {direction:$('direction').value,weapon:$('weapon').value,targetDistance:Number($('target-distance').value),skin:$('skin').value,appearance:$('appearance').value,exclusiveWeapon:!profile||$('weapon').value===nativeWeapon(profile,$('appearance').value),seed:Number($('seed').value)>>>0,profile};}
+async function importedCharacter(id){const response=await GTResources.fetch(new URL('../../gtfx/assets/native-characters/'+id+'.json',location.href));return response.ok?response.json():null;}
+function refreshModules(wanted=$('module').value){
+ modules=actionModules(character.id,index,moduleOptions(),nativeActions,nativePlans);$('module').replaceChildren(...modules.map(m=>new Option(m.label,m.id)));
+ if(modules.length)$('module').value=modules.some(m=>m.id===wanted)?wanted:modules[0].id;
+}
 function message(text=''){$('message').textContent=text;$('message').hidden=!text;}
 function error(e){message(e.message||String(e));playing=false;update();}
 async function json(url){const response=await GTResources.fetch(url);if(!response.ok)throw new Error('文件读取失败：'+url);return response.json();}
@@ -38,36 +59,92 @@ function label(e){
 async function selectCharacter(char){
   if(exporting||measuring)return;++effectGeneration;runtime.loadGeneration=(runtime.loadGeneration||0)+1;const current=++generation;character=char;playing=false;queue=null;effect=null;
   GTBridge.selection({character:char.id});$('sidebar').classList.remove('open');$('current-character').textContent=char.name;renderCharacters();message('加载中');$('effect').disabled=true;
+  const imported=await importedCharacter(char.id);if(current!==generation)return;
+  nativeActions=imported||baseNativeActions;nativePlans=imported?.plans?{...baseNativePlans,[char.id]:imported.plans}:baseNativePlans;
+  if(imported?.profile)importedProfiles[char.id]=imported.profile;
+  const profile=profileFor(char.id);mode=profile?'module':'effect';$('play-mode').value=mode;
+  if(profile){
+    $('appearance').replaceChildren(...profile.appearances.map(code=>{
+      const source=GTRegistry.resolve(registry,{resource:code});
+      return new Option(source?.name&&source.name!==code?`${source.name} / ${code}`:code,code);
+    }));
+    $('appearance').value=profile.appearances[0];$('skin').replaceChildren(new Option(profile.defaultSkin,profile.defaultSkin));
+    const equipped=nativeWeapon(profile,$('appearance').value);
+    $('weapon').replaceChildren(new Option(`专属 · ${equipped}`,equipped),new Option('不装备',''),
+      ...(weaponCatalog[profile.weaponType]||[]).filter(name=>name!==equipped).map(name=>new Option(name,name)));
+    $('weapon').value=equipped;
+  }
   for(const id of ['replay','play','step','all','export'])$(id).disabled=true;
-  runtime.clear();
+  runtime.characterPlayer.clear();runtime.clear();
   try{
     manifestUrl=new URL('../../resources/fx/'+char.index,location.href);const data=await json(manifestUrl);
     if(current!==generation)return;
-    index=data;loadedEffect=null;++effectGeneration;
+    // ObjectPoolSpec.Direction is the prefab's local forward axis. Several
+    // older manifests defaulted it to +Z, including +X facing projectiles.
+    index={...data,effects:data.effects.map(e=>{const direction=nativeActions.presetDirections?.[e.preset];return direction?{...e,direction}:e;})};
+    loadedEffect=null;++effectGeneration;refreshModules('');
+    if(new URLSearchParams(location.search).has('effect'))mode='effect';if(!modules.length)mode='effect';$('play-mode').value=mode;updateMode();
     $('effect').replaceChildren(...index.effects.map((e,i)=>{const option=new Option(label(e),String(i));option.title=e.assetName;option.dataset.favoriteId=e.id;option.disabled=!!e.unavailable;return option;}));
     $('effect').disabled=false;$('all').disabled=false;
-    const desiredEffect=new URLSearchParams(location.search).get('effect');const initial=index.effects.findIndex(e=>!e.unavailable&&(desiredEffect?e.id===desiredEffect:e.assetName==='fx_hana_linkatk_chainhold'));const first=initial>=0?initial:index.effects.findIndex(e=>!e.unavailable&&(e.systems.length||e.statics?.length));
-    if(first>=0)await selectEffect(first);else message('没有可播放素材');
+    const desiredEffect=new URLSearchParams(location.search).get('effect');const initial=index.effects.findIndex(e=>!e.unavailable&&(desiredEffect?e.id===desiredEffect:e.preset===profile?.preferredEffect||e.assetName===profile?.preferredEffect));const first=initial>=0?initial:index.effects.findIndex(e=>!e.unavailable&&(e.systems.length||e.statics?.length));
+    if(mode==='module')await selectModule();else if(first>=0)await selectEffect(first);else message('没有可播放素材');
     const url=new URL(location.href);url.searchParams.set('character',char.id);history.replaceState(null,'',url);
   }catch(e){if(current===generation)error(e);}
 }
+function updateMode(){
+ $('module-choice').hidden=mode!=='module';$('effect-choice').hidden=mode!=='effect';$('all').hidden=mode==='module';
+ $('character-controls').hidden=mode!=='module';
+}
 async function selectEffect(position,auto=true){
+  let requested;
   try{
     $('download-gif').hidden=true;$('export-status').textContent='';nativePlan=null;const selected=index.effects[position];if(!selected||selected.unavailable)return;
-    const current=++effectGeneration;playing=false;effect=null;message('加载中');
+    const current=requested=++effectGeneration;playing=false;effect=null;selectedModule=null;runtime.modulePlayer.clear();runtime.characterPlayer.clear();message('加载中');
     for(const id of ['replay','play','step','export','all'])$(id).disabled=true;
     if(loadedEffect!==selected){await runtime.load(index,p=>GTResources.url(p,manifestUrl),{effect:selected,loadImage:p=>GTResources.image(p)});if(current!==effectGeneration||disposed)return;loadedEffect=selected;}
-    effect=selected;$('all').disabled=false;
-    $('effect').value=String(position);runtime.build(effect,Number($('seed').value)>>>0);runtime.autoFit();
+    if(current!==effectGeneration||disposed)return;effect=selected;$('all').disabled=false;
+        $('effect').value=String(position);const definition=runtime.characterPlayer.effectDefinition(effect);runtime.build(definition,Number($('seed').value)>>>0);
+    $('link-status').textContent='';
+    runtime.autoFit();
     GTBridge.selection({character:character.id,effect:effect.id});
     time=0;gap=0;playing=auto;$('seek').max=runtime.duration;$('end').value=runtime.duration.toFixed(3);$('start').value='0';$('duration').textContent=runtime.duration.toFixed(3)+' s';$('zoom').value='1';
     for(const id of ['replay','play','step','export'])$(id).disabled=false;
     $('quality').hidden=!effect.limitations?.length;$('quality').title=(effect.limitations||[]).join('、');
     $('layers').replaceChildren(...effect.systems.map((system,i)=>{const label=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=true;label.append(check,system.name);check.onchange=()=>{check.checked?runtime.excluded.delete(i):runtime.excluded.add(i);sample();refreshNativeSize();};return label;}));
     message(effect.systems.length||effect.statics?.length?'':'仅有游戏脚本');sample();refreshNativeSize();
-  }catch(e){if(!disposed)error(e);}
+  }catch(e){if(!disposed&&requested===effectGeneration)error(e);}
 }
-function update(){$('play').textContent=playing?'暂停':'播放';$('seek').value=time;$('time').textContent=time.toFixed(3);}
+async function selectModule(auto=true){
+ let requested;
+ try{
+  const id=$('module').value,profile=profileFor(character.id);if(!profile)return;
+  const current=requested=++effectGeneration;playing=false;effect=null;selectedModule=null;runtime.modulePlayer.clear();runtime.characterPlayer.clear();message('加载中');
+  for(const key of ['replay','play','step','export','all'])$(key).disabled=true;
+  const selected=actionModules(character.id,index,moduleOptions(),nativeActions,nativePlans).find(m=>m.id===id);
+  if(!selected)throw Error('攻击模组没有可播放素材');
+  await runtime.load(index,p=>GTResources.url(p,manifestUrl),{effect:selected.tracks.map(t=>t.effect),loadImage:p=>GTResources.image(p)});
+  if(current!==effectGeneration||disposed)return;loadedEffect=null;
+  const skinInfo=await runtime.characterPlayer.load($('appearance').value,$('direction').value,$('skin').value,profile,$('weapon').value);
+  if(current!==effectGeneration||disposed||!skinInfo)return;
+  $('skin').replaceChildren(...skinInfo.skins.map(name=>new Option(name,name)));$('skin').value=skinInfo.skin;
+  for(const key of ['appearance','direction','skin','weapon','target-distance','show-target'])$(key).disabled=false;
+  const module=actionModules(character.id,index,moduleOptions(),nativeActions,nativePlans).find(m=>m.id===id);
+  const first=module.tracks[0].effect,root=first.nodes.find(n=>n.id===first.root);
+  const definition={...first,id:'module:'+module.id,assetName:'module_'+character.id+'_'+module.id,nodes:[root],systems:[],statics:[],scripts:[],duration:module.duration};
+  runtime.build(definition,Number($('seed').value)>>>0);
+  const options={...moduleOptions(),direction:$('direction').value,weapon:$('weapon').value,centerHeight:.375,showTarget:$('show-target').checked};
+  runtime.characterPlayer.configure(module.actor,options,definition);runtime.characterPlayer.moduleMode=true;runtime.characterPlayer.module=module;
+  runtime.group.visible=false;runtime.modulePlayer.load(module,options);runtime.duration=module.duration;
+  selectedModule=module;effect=definition;runtime.autoFit();runtime.frameCharacter();
+  $('module').value=id;$('link-status').textContent=`${module.tracks.length} 个原生特效实例 · ${$('weapon').value||'不装备武器'} · 人物动作联动`;
+  $('layers').replaceChildren();$('quality').hidden=true;
+  GTBridge.selection({character:character.id,action:module.id});
+  time=0;gap=0;playing=auto;$('seek').max=runtime.duration;$('end').value=runtime.duration.toFixed(3);$('start').value='0';$('duration').textContent=runtime.duration.toFixed(3)+' s';$('zoom').value='1';
+  for(const key of ['replay','play','step','export'])$(key).disabled=false;
+  message('');sample();refreshNativeSize();
+ }catch(e){if(!disposed&&requested===effectGeneration)error(e);}
+}
+function update(){$('region-select').disabled=!effect||exporting||measuring;showRegionDimensions();$('play').textContent=playing?'暂停':'播放';$('seek').value=time;$('time').textContent=time.toFixed(3);}
 function sample(){if(effect)runtime.sample(time);update();}
 function tick(now){
   if(disposed)return;
@@ -91,8 +168,13 @@ function showNativeDimensions(){
   try{const size=outputSize(nativePlan,Number($('native-scale').value));$('native-dimensions').textContent=`${size.width} × ${size.height} px`;$('native-dimensions').title=`原始：${nativePlan.width} × ${nativePlan.height} px；${nativePlan.pixelsPerUnit} px / Unity 单位`;}catch(e){$('native-dimensions').textContent='—';}
 }
 async function refreshNativeSize(){
+  showRegionDimensions();
   const native=$('size').value==='native';$('native-scale-label').hidden=$('native-dimensions').hidden=!native;
   if(!native||!effect||exporting||measuring)return;
+  if(exportRegion.region){
+    try{const {captureSize,dimensions}=selectedRegionPlan();$('native-dimensions').textContent=dimensions.width+' × '+dimensions.height+' px';$('native-dimensions').title='选区原始尺寸：'+captureSize.width+' × '+captureSize.height+' px';}catch(e){$('native-dimensions').textContent='—';}
+    return;
+  }
   let times;try{times=exportTimes().times;}catch(e){nativePlan=null;$('native-dimensions').textContent='—';return;}
   const oldTime=time,oldPlaying=playing;measuring=true;playing=false;cancelled=false;
   const disabled=[...document.querySelectorAll('button,input,select')].filter(el=>!el.disabled&&el.id!=='cancel');disabled.forEach(el=>el.disabled=true);
@@ -109,7 +191,9 @@ async function exportGif(){
   $('cancel').hidden=false;$('progress').hidden=false;$('progress').value=0;$('export').textContent='导出中';message('');
   try{
     const native=$('size').value==='native',transparent=$('background').value==='transparent';let captureSize=Number($('size').value),dimensions={width:captureSize,height:captureSize};
-    if(native){nativePlan=await runtime.measureNative(times,{onProgress:value=>$('progress').value=value*.25,isCancelled:()=>cancelled});captureSize=nativePlan;dimensions=outputSize(nativePlan,Number($('native-scale').value));showNativeDimensions();}
+    const cropPlan=selectedRegionPlan();
+    if(cropPlan){captureSize=cropPlan.captureSize;dimensions=cropPlan.dimensions;}
+    else if(native){nativePlan=await runtime.measureNative(times,{onProgress:value=>$('progress').value=value*.25,isCancelled:()=>cancelled});captureSize=nativePlan;dimensions=outputSize(nativePlan,Number($('native-scale').value));showNativeDimensions();}
     if(cancelled)throw new Error('已取消');
     worker=new Worker(new URL('../../gtfx/gif-worker.js',import.meta.url),{type:'module'});
     await workerRequest({type:'start',...dimensions,transparent,threshold:Number($('threshold').value)});
@@ -122,12 +206,28 @@ async function exportGif(){
     }
     const result=await workerRequest({type:'finish'});if(cancelled)throw new Error('已取消');
     if(downloadUrl)URL.revokeObjectURL(downloadUrl);downloadUrl=URL.createObjectURL(new Blob([result.bytes],{type:'image/gif'}));
-    const a=$('download-gif');a.hidden=false;a.href=downloadUrl;a.download=effect.assetName+(native?`_${dimensions.width}x${dimensions.height}`:'')+(transparent?'_transparent':'_matte')+'.gif';a.click();$('export-status').textContent='导出完成 · '+dimensions.width+' × '+dimensions.height+' px';
+    const a=$('download-gif');a.hidden=false;a.href=downloadUrl;a.textContent='保存 GIF';a.download=effect.assetName+(native?`_${dimensions.width}x${dimensions.height}`:'')+(transparent?'_transparent':'_matte')+'.gif';a.click();$('export-status').textContent='导出完成 · '+dimensions.width+' × '+dimensions.height+' px';
   }catch(e){if(!cancelled)message(e.message);}
   finally{worker?.terminate();worker=null;exporting=false;disabled.forEach(el=>el.disabled=false);$('cancel').hidden=true;$('progress').hidden=true;$('export').textContent='导出 '+$('media-format').selectedOptions[0].textContent;time=oldTime;playing=oldPlaying;runtime.resize();sample();}
 }
+$('show-target').onchange=()=>{if(runtime.characterPlayer.options)runtime.characterPlayer.options.showTarget=$('show-target').checked;sample();};
+for(const id of ['appearance','direction','skin','weapon','target-distance'])$(id).onchange=()=>{
+ if(exporting||measuring||!index)return;
+ if(id==='appearance'){
+  const profile=profileFor(character.id),equipped=nativeWeapon(profile,$('appearance').value);
+  if(equipped&&$('weapon').value!==equipped&&profile?.weaponByAppearance){
+   $('weapon').replaceChildren(new Option(`专属 · ${equipped}`,equipped),new Option('不装备',''),
+    ...(weaponCatalog[profile.weaponType]||[]).filter(name=>name!==equipped).map(name=>new Option(name,name)));
+   $('weapon').value=equipped;
+  }
+ }
+ if(id==='target-distance')$('target-distance').value=String(Math.max(1,Math.min(12,Number($('target-distance').value)||6)));
+ queue=null;if(mode==='module'){if(id==='appearance'||id==='weapon')refreshModules();selectModule();}
+};
 $('search').oninput=renderCharacters;$('menu').onclick=()=>$('sidebar').classList.toggle('open');
 $('effect').onchange=()=>{queue=null;selectEffect(Number($('effect').value));};
+$('module').onchange=()=>{queue=null;selectModule();};
+$('play-mode').onchange=()=>{mode=$('play-mode').value;queue=null;updateMode();if(mode==='module')selectModule();else selectEffect(Number($('effect').value));};
 $('play').onclick=()=>{queue=null;gap=0;if(time>=runtime.duration)time=0;playing=!playing;sample();};
 $('replay').onclick=()=>{queue=null;time=0;gap=0;playing=true;sample();};
 $('step').onclick=()=>{queue=null;gap=0;playing=false;time=Math.min(runtime.duration,time+1/60);sample();};
@@ -135,18 +235,18 @@ $('seek').oninput=()=>{queue=null;gap=0;playing=false;time=Number($('seek').valu
 $('all').onclick=()=>{queue=index.effects.map((e,i)=>e.unavailable?null:i).filter(i=>i!==null);selectEffect(queue.shift());};
 $('fit').onclick=()=>{runtime.autoFit();$('zoom').value='1';sample();};
 $('zoom').oninput=()=>{runtime.zoom=Number($('zoom').value);runtime.resize();sample();};
-$('seed').onchange=()=>{const t=time,wasPlaying=playing;selectEffect(Number($('effect').value),wasPlaying);time=t;sample();};
+$('seed').onchange=async()=>{const t=time,wasPlaying=playing;await (mode==='module'?selectModule(wasPlaying):selectEffect(Number($('effect').value),wasPlaying));time=Math.min(t,runtime.duration);sample();};
 $('view').onchange=()=>{runtime.setView($('view').value==='top');sample();refreshNativeSize();};
-$('size').onchange=refreshNativeSize;$('native-scale').oninput=showNativeDimensions;
+$('size').onchange=refreshNativeSize;$('native-scale').oninput=()=>{if(exportRegion.region)refreshNativeSize();else showNativeDimensions();};
 for(const id of ['start','end','fps','speed'])$(id).onchange=refreshNativeSize;
 $('grid').onchange=()=>{runtime.grid.visible=$('grid').checked;sample();};
 function setPreviewBackground(){const solid=$('preview-background').value==='color';$('preview-color').hidden=!solid;$('stage').classList.toggle('checker',!solid);runtime.setBackground(solid?'color':'checker',$('preview-color').value);sample();}
 $('preview-background').onchange=setPreviewBackground;$('preview-color').oninput=setPreviewBackground;
 $('background').onchange=()=>{$('color').hidden=$('background').value==='transparent';};
-$('canvas').onwheel=e=>{e.preventDefault();if(exporting)return;runtime.zoom=Math.min(6,Math.max(.25,runtime.zoom*Math.exp(-e.deltaY*.001)));$('zoom').value=runtime.zoom;runtime.resize();sample();};
+$('stage').onwheel=e=>{e.preventDefault();if(exporting||measuring||exportRegion.drag)return;runtime.zoom=Math.min(6,Math.max(.25,runtime.zoom*Math.exp(-e.deltaY*.001)));$('zoom').value=runtime.zoom;runtime.resize();sample();};
 let drag;
-$('canvas').onpointerdown=e=>{if(exporting||!effect)return;drag={x:e.clientX,y:e.clientY};$('canvas').setPointerCapture(e.pointerId);};
-$('canvas').onpointermove=e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y,scale=runtime.viewSize/runtime.zoom/$('canvas').clientHeight,pitch=runtime.cameraConfig.pitchDeg*Math.PI/180;runtime.viewCenter.x-=dx*scale;runtime.viewCenter.y+=dy*scale*Math.cos(pitch)*Math.sin(pitch);runtime.viewCenter.z-=dy*scale*Math.sin(pitch)**2;drag={x:e.clientX,y:e.clientY};runtime.setView(runtime.topView);sample();};
+$('canvas').onpointerdown=e=>{if(exporting||measuring||exportRegion.drawing||!effect)return;drag={x:e.clientX,y:e.clientY};$('canvas').setPointerCapture(e.pointerId);};
+$('canvas').onpointermove=e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y,scale=runtime.viewSize/runtime.zoom/$('canvas').clientHeight,pitch=(runtime.topView?89.999:runtime.cameraConfig.pitchDeg)*Math.PI/180,comp=runtime.camera.nativeViewportScale();runtime.viewCenter.x-=dx*scale;runtime.viewCenter.y+=dy*scale*Math.cos(pitch)*comp;runtime.viewCenter.z-=dy*scale*Math.sin(pitch)*comp;drag={x:e.clientX,y:e.clientY};runtime.setView(runtime.topView);sample();};
 $('canvas').onpointerup=()=>{drag=null;};$('canvas').onpointercancel=()=>{drag=null;};
 async function exportMedia(){
  if(exporting||measuring||!effect)return;
@@ -157,9 +257,11 @@ async function exportMedia(){
  $('cancel').hidden=false;$('progress').hidden=false;$('progress').value=0;$('export').textContent='导出中';update();message('');
  try{
   const native=$('size').value==='native',transparent=$('background').value==='transparent';let captureSize=Number($('size').value),dimensions={width:captureSize,height:captureSize};
-  if(native){nativePlan=await runtime.measureNative(config.times,{onProgress:p=>$('progress').value=p*.2,isCancelled:()=>cancelled});dimensions=outputSize(nativePlan,Number($('native-scale').value));captureSize=nativePlan;showNativeDimensions();}
+  const cropPlan=selectedRegionPlan();
+  if(cropPlan){captureSize=cropPlan.captureSize;dimensions=cropPlan.dimensions;}
+  else if(native){nativePlan=await runtime.measureNative(config.times,{onProgress:p=>$('progress').value=p*.2,isCancelled:()=>cancelled});dimensions=outputSize(nativePlan,Number($('native-scale').value));captureSize=nativePlan;showNativeDimensions();}
   const {exportAnimation}=await import('../../core/animation-export.js'),{offerDownload}=await import('../../core/export-utils.js');
-  const result=await exportAnimation({format,...dimensions,frames:config.times.length,fps:config.fps,duration:(config.end-config.start)/config.speed,transparent,background:$('color').value,signal:mediaAbort.signal,getFrame:i=>{const rgba=runtime.captureFrame(config.times[i],captureSize);return native?nearestResize(rgba,nativePlan.width,nativePlan.height,dimensions.width,dimensions.height):rgba;},onProgress:p=>$('progress').value=(native?.2:0)+p*(native?.8:1)});
+  const result=await exportAnimation({format,...dimensions,frames:config.times.length,fps:config.fps,duration:(config.end-config.start)/config.speed,transparent,background:$('color').value,signal:mediaAbort.signal,getFrame:i=>{const rgba=runtime.captureFrame(config.times[i],captureSize);return nearestResize(rgba,typeof captureSize==='object'?captureSize.width:captureSize,typeof captureSize==='object'?captureSize.height:captureSize,dimensions.width,dimensions.height);},onProgress:p=>$('progress').value=(native?.2:0)+p*(native?.8:1)});
   if(!cancelled){offerDownload($('download-gif'),result.blob,effect.assetName+'.'+result.extension);$('export-status').textContent=`导出完成 · ${result.width} × ${result.height} px`;}
  }catch(e){if(!cancelled&&e.name!=='AbortError')message(e.message);}
  finally{exporting=false;mediaAbort=null;locked.forEach(el=>el.disabled=false);$('cancel').hidden=true;$('progress').hidden=true;$('export').textContent='导出 '+$('media-format').selectedOptions[0].textContent;time=oldTime;playing=oldPlaying;if(!disposed){runtime.resize();sample();}}
@@ -167,9 +269,16 @@ async function exportMedia(){
 
 $('export').onclick=exportMedia;$('cancel').onclick=()=>{cancelled=true;mediaAbort?.abort();};
 $('media-format').onchange=()=>{const video=['mp4','mov'].includes($('media-format').value);$('background').querySelector('option[value=transparent]').disabled=video;if(video)$('background').value='color';$('color').hidden=$('background').value==='transparent';$('export').textContent='导出 '+$('media-format').selectedOptions[0].textContent;};
-$('info').onclick=()=>{$('info-text').textContent=effect?`${character.name} / ${character.id}\n${effect.assetName}\n${effect.preset}\n${effect.systems.length} 个粒子系统 · ${effect.statics?.length||0} 个静态图层\n${runtime.duration.toFixed(3)} s\n\n${effect.limitations?.length?'近似项：'+effect.limitations.join('、'):'基础粒子渲染'}\n\n全部素材随站点打包。GIF 支持 1 位透明，半透明边缘会量化。\n原始尺寸：按素材 PPU（无记录时 100 px / Unity 单位）与整段动画可见边界计算，倍率采用最近邻缩放。`:'角色特效播放器';$('info-dialog').showModal();};
+$('info').onclick=()=>{
+ const moduleText=selectedModule?`${character.name} / ${character.id}\n${selectedModule.label}\n${selectedModule.tracks.length} 个特效实例\n${selectedModule.tracks.map(t=>`${(t.at+t.link.delay).toFixed(2)} s · ${t.effect.preset}`).join('\n')}\n${runtime.duration.toFixed(3)} s`:null;
+ $('info-text').textContent=moduleText||(effect?`${character.name} / ${character.id}\n${effect.assetName}\n${effect.preset}\n${effect.systems.length} 个粒子系统 · ${effect.statics?.length||0} 个静态图层\n${runtime.duration.toFixed(3)} s\n\n${effect.limitations?.length?'近似项：'+effect.limitations.join('、'):'原始粒子数据已导入'}\n\n全部素材随站点打包。GIF 支持 1 位透明，半透明边缘会量化。\n原始尺寸：按素材 PPU（无记录时 100 px / Unity 单位）与整段动画可见边界计算，倍率采用最近邻缩放。`:'角色特效播放器');
+ $('info-text').textContent+='\n\n'+formatFidelity(selectedModule?selectedModule.tracks.map(t=>t.effect):effect?[effect]:[]);
+ $('export-replay').disabled=!runtime.effect&&!runtime.modulePlayer?.active;
+ $('info-dialog').showModal();
+};
 $('close-info').onclick=()=>$('info-dialog').close();
-async function init(){try{runtime=new FxRuntime($('canvas'));runtime.grid.visible=false;runtime.setBackground('checker');new ResizeObserver(()=>{if(!exporting&&!measuring){runtime.resize();sample();}}).observe($('stage'));runtime.resize();catalog=await json('../../resources/fx/catalog.json');const registry=await GTRegistry.load();catalog={...catalog,characters:catalog.characters.map(c=>{const entity=GTRegistry.resolve(registry,{character:c.id});return {...c,name:entity?.name||c.name,aliases:entity?.aliases||[]};})};renderCharacters();const desired=new URL(location.href).searchParams.get('character')||'hana';const selected=catalog.characters.find(c=>c.id===desired);if(selected)await selectCharacter(selected);else message('当前索引没有对应角色：'+desired);if(!disposed)loadAvatars();}catch(e){error(e);}requestAnimationFrame(tick);}
+$('export-replay').onclick=async()=>{const {downloadBlob}=await import('../../core/export-utils.js');downloadBlob(new Blob([JSON.stringify(runtime.getReplayTrace(),null,2)],{type:'application/json'}),character.id+'-'+(selectedModule?.id||effect.preset)+'-replay.json');};
+async function init(){try{runtime=new FxRuntime($('canvas'));runtime.characterPlayer=new FxCharacterPlayer(runtime);runtime.modulePlayer=new FxActionPlayer(runtime);runtime.grid.visible=false;runtime.setBackground('checker');new ResizeObserver(()=>{if(!exporting&&!measuring){runtime.resize();exportRegion.render();sample();}}).observe($('stage'));runtime.resize();[catalog,weaponCatalog,nativeActions,nativePlans]=await Promise.all([json('../../resources/fx/catalog.json'),json('../../gtfx/assets/weapon-types.json'),json('../../gtfx/assets/native-actions.json'),json('../../gtfx/assets/native-action-plans.json')]);baseNativeActions=nativeActions;baseNativePlans=nativePlans;registry=await GTRegistry.load();catalog={...catalog,characters:catalog.characters.map(c=>{const entity=GTRegistry.resolve(registry,{resource:c.key,character:c.id});return {...c,name:entity?.name||c.name,aliases:[...new Set([...(c.aliases||[]),...(entity?.aliases||[])])]};})};renderCharacters();const desired=new URL(location.href).searchParams.get('character')||'hana';const selected=catalog.characters.find(c=>c.id===desired);if(selected)await selectCharacter(selected);else message('当前索引没有对应角色：'+desired);if(!disposed)loadAvatars();}catch(e){error(e);}requestAnimationFrame(tick);}
 init();
 
 window.addEventListener("gt-dispose",()=>{disposed=true;++generation;++effectGeneration;cancelled=true;mediaAbort?.abort();worker?.terminate();if(downloadUrl)URL.revokeObjectURL(downloadUrl);runtime?.dispose();});
