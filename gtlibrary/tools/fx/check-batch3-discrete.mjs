@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync as read} from 'node:fs';
+import {runInThisContext} from 'node:vm';
+import {actionModules} from '../../gtfx/action-modules.js';
+import {equipmentProfile,preferredWeaponSelection,sourceExclusiveWeapon} from '../../gtfx/equipment-selection.js';
+const root=new URL('../../',import.meta.url),raw=p=>read(new URL(p,root)),json=p=>JSON.parse(raw(p)),catalog=json('gtfx/assets/weapon-types.json'),rows=[];
+for(const p of ['vendor/spine-webgl.js','gtasset/core.js'])runInThisContext(raw(p).toString());
+for(const id of ['vampirelord','dragondaughter','popp']){
+ const n=json('gtfx/assets/native-characters/'+id+'.json'),index=json('gtfx/assets/characters/'+id+'.json'),hero=n.profile.appearances[0],weapon=preferredWeaponSelection(n,n.profile,hero),profile=equipmentProfile(n,n.profile,hero,hero,weapon,catalog),ms=actionModules(id,index,{profile,appearance:hero,heroAppearance:hero,weapon,weaponEquipped:true,exclusiveWeapon:sourceExclusiveWeapon(n,profile,hero,hero,weapon),direction:'right',targetDistance:6,seed:12345},n,{[id]:n.plans}),get=k=>{const m=ms.find(m=>m.id===k);assert(m,k);return m;};
+ assert(index.materialValidation.passed);assert.deepEqual(n.sourcePlanResolution.legacyFallbackActions,[]);const mag=get('basic-magazine');assert.equal(mag.magazine.count,id==='dragondaughter'?10:16);assert(Math.abs(mag.actor.end-(id==='dragondaughter'?3:4.8))<1e-6);
+ if(id==='vampirelord'){assert.equal(get('basic-1').sourceTrace.shots[0].at,0);assert.equal(get('basic-last').tracks.find(t=>t.effect.preset==='fx_m_vamiprelord_break').link.delay,.15);assert.equal(get('support').actor.skinPath[0].skin,'metamorph');assert(get('cwp').duration>=1.85);assert(mag.sourceTrace.optionHits.length>=2);}
+ if(id==='dragondaughter'){assert.equal(get('basic-last').sourceTrace.shots[0].index,1);assert(mag.sourceTrace.parts.filter(p=>!p.breaking).every(p=>['normal1','normal2','normal3'].includes(p.animationKey)));const c=get('cwp'),boom=c.tracks.find(t=>t.effect.preset==='fx_cwp_dragondaughter_explosion');assert.equal(boom.link.delay,.15);assert.deepEqual(boom.link.graphPosition,[5,0,0]);assert.equal(c.actor.end,.4);assert(c.duration>=.75);}
+ if(id==='popp'){assert.equal(get('basic-last').tracks.find(t=>t.effect.preset==='fx_m_popp_break_enhanced').link.delay,.27);const c=get('cwp');assert.deepEqual(c.sourceTrace.shootTimes,[.5,.62,.74,.86,.98]);assert(c.tracks.some(t=>t.link.motionPath?.length>2));assert(c.sourceTrace.fieldEnd>c.actor.end);assert.equal(get('support').sourceTrace.launchAt,.85);assert(get('support').duration>=1.85);}
+ const png=raw('gtasset/assets/character/'+hero+'.png'),decoded=GTSpineCore.parse({spine,atlasText:raw('gtasset/assets/character/'+hero+'.atlas').toString(),bytes:raw('gtasset/assets/character/'+hero+'_side.bytes'),images:[{width:png.readUInt32BE(16),height:png.readUInt32BE(20)}],createTexture:image=>new spine.FakeTexture(image)});
+ for(const m of ms)for(const c of m.actor.clips)assert(decoded.data.findAnimation(c.name+'_side')||decoded.data.findAnimation(c.name),'Missing source clip '+c.name);if(id==='vampirelord')assert(decoded.data.findSkin('metamorph'));decoded.dispose();rows.push({id,hero,weapon,modules:ms.map(m=>m.id),magazine:mag.magazine,duration:mag.actor.end,materialValidation:index.materialValidation});
+}
+console.log(JSON.stringify({passed:true,rows,browserOperations:0,pixelsRead:0}));

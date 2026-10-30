@@ -1,3 +1,4 @@
+import {targetPosition,aimDirection} from './targeting.js';
 import {sampleGraphPath} from './graph-action.js';
 import {createHomingTrajectory} from './native-projectile.js';
 const projectileTrajectories=new WeakMap();
@@ -17,11 +18,11 @@ export function actionClip(link,time,direction){
  return selected;
 }
 export function clipTime(clip,time,duration){
- const elapsed=Math.max(0,time-clip.start),speed=clip.targetDuration?duration/clip.targetDuration:clip.speed;
- return speed*(clip.rateChange==null?elapsed:Math.min(elapsed,clip.rateChange)*clip.initialRate+Math.max(0,elapsed-clip.rateChange));
+ const elapsed=Math.max(0,time-(clip.start??0)),speed=clip.targetDuration?duration/clip.targetDuration:(clip.speed??1);
+ return (clip.timeOffset||0)+speed*(clip.rateChange==null?elapsed:Math.min(elapsed,clip.rateChange)*clip.initialRate+Math.max(0,elapsed-clip.rateChange));
 }
-export function castDirection(link,direction){
- const d=directions[direction],a=(link.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
+export function castDirection(link,direction,options={}){
+ const d=aimDirection(options,direction),a=(link.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
  return [d[0]*c+d[2]*s,0,d[2]*c-d[0]*s];
 }
 export function hookDistance(link,time,{targetDistance=Infinity,boundsSize=[.55,.75,.55]}={}){
@@ -35,26 +36,27 @@ export function anchorVelocity(link,time,direction,options){
  const dt=time+step-Math.max(link.delay||0,time-step);return b.map((v,i)=>(v-a[i])/dt);
 }
 export function anchorPosition(link,time,direction,options){
+ if(link.motionPath)return sampleGraphPath(link.motionPath,time);
  if(link.graphPosition){const p=link.graphPosition.slice();if(link.graphFollow){const owner=sampleGraphPath(link.graphPath,time);for(let i=0;i<3;i++)p[i]+=owner[i]-link.graphOwnerAtBirth[i];}return p;}
- const {centerHeight,targetDistance,boundsSize}=options;
+ const {centerHeight,boundsSize}=options,target=link.targetPosition||targetPosition(options,direction),targetDistance=Math.hypot(target[0],target[2]);
  if(link.anchor==='symbol')return [.8,centerHeight+.5,.8];
- const d=castDirection(link,direction),height=link.anchor==='feet'||link.anchor==='ground'||link.targetGround?0: centerHeight;
+ const d=castDirection(link,direction,options),height=link.anchor==='feet'||link.anchor==='ground'||link.targetGround?0: centerHeight;
  const orbit=link.orbitOffset||[0,0,0];
  let distance=link.offset||0;
- if(link.anchor==='target')distance=targetDistance;
+ if(link.anchor==='target')return [target[0]+orbit[0],height+orbit[1],target[2]+orbit[2]];
  if(link.anchor==='projectile'){
   const elapsed=link.projectileElapsed??Math.max(0,time-link.delay),speed=link.projectileSpeed||0,accel=link.projectileAccel||0;
   distance=Math.max(0,distance+speed*elapsed+accel*elapsed*elapsed/2);
   if(!link.projectileUnclamped)distance=Math.min(targetDistance,distance);
   if(link.homingAngularSpeed>0){
-   const startDirection=castDirection({angle:link.projectileOriginAngle??link.angle??0},direction);
+   const startDirection=castDirection({angle:link.projectileOriginAngle??link.angle??0},direction,options);
    const start=startDirection.map(v=>v*(link.projectileOriginDistance??link.offset??0));start[1]=height;
-   const base=directions[direction],target=[base[0]*targetDistance,options.targetHeight??height,base[2]*targetDistance];
-   const key=JSON.stringify([direction,start,target,speed,accel,link.homingAngularSpeed,options.projectileStep]);
+   const destination=[target[0],options.targetHeight??height,target[2]];
+   const key=JSON.stringify([direction,start,destination,speed,accel,link.homingAngularSpeed,options.projectileStep]);
    let cached=projectileTrajectories.get(link);
    if(!cached||cached.key!==key||cached.frames!==options.projectileFrameSteps||cached.targetAt!==options.targetPositionAt){
     cached={key,frames:options.projectileFrameSteps,targetAt:options.targetPositionAt,
-     sample:createHomingTrajectory({position:start,direction:d,speed,accel,angularSpeed:link.homingAngularSpeed,target,
+     sample:createHomingTrajectory({position:start,direction:d,speed,accel,angularSpeed:link.homingAngularSpeed,target:destination,
       targetAt:options.targetPositionAt,step:options.projectileStep||1/60,frameSteps:options.projectileFrameSteps})};
     projectileTrajectories.set(link,cached);
    }
@@ -65,7 +67,7 @@ export function anchorPosition(link,time,direction,options){
   const side=link.meteorSide||1,height=link.meteorHeight||4.5;
   const duration=Math.sqrt(height*height*2+side*side)/(link.projectileSpeed||70);
   const t=Math.min(1,Math.max(0,(time-link.delay)/duration));
-  return [d[0]*targetDistance+orbit[0]+(direction==='right'?-side:side)*(1-t),height*(1-t),d[2]*targetDistance+orbit[2]+height*(1-t)];
+  return [target[0]+orbit[0]+(direction==='right'?-side:side)*(1-t),height*(1-t),target[2]+orbit[2]+height*(1-t)];
  }
  if(link.anchor==='hook')distance=hookDistance(link,time,{targetDistance,boundsSize});
  return [d[0]*distance+orbit[0],height+(link.anchor==='ground'?.03:0)+orbit[1],d[2]*distance+orbit[2]];
@@ -76,7 +78,7 @@ export function anchorPosition(link,time,direction,options){
 export function effectRotation(reference,direction,type='Default'){
  if(!direction)return {yaw:0,roll:0};
  const yaw=Math.atan2(direction[0],direction[2])-Math.atan2(reference[0],reference[2]);
- const bit=direction[0]>0?2:direction[0]<0?8:direction[2]>0?1:4;
+ const bit=Math.abs(direction[0])>=Math.abs(direction[2])?(direction[0]>=0?2:8):(direction[2]>0?1:4);
  const mask={Slash:3,KatanaSlash:9,KatanaSlashReverse:6}[type]||0;
  return {yaw,roll:mask&bit?Math.PI:0};
 }

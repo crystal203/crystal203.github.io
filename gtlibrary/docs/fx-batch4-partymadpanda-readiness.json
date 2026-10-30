@@ -1,0 +1,122 @@
+{
+  "format": "gtfx-character-readiness",
+  "scope": "One default source form with actual UI equipment resolution; no browser, image, pixel, facing or costume sweep; does not certify all source mechanisms",
+  "reports": [
+    {
+      "character": "partymadpanda",
+      "status": "structurally-ready-not-visual-acceptance",
+      "failures": [],
+      "sourceReviewNotes": [
+        "basic-mech: no actor clips; check whether source intentionally leaves current pose",
+        "role: no actor clips; check whether source intentionally leaves current pose",
+        "role-mech: no actor clips; check whether source intentionally leaves current pose",
+        "support: no actor clips; check whether source intentionally leaves current pose",
+        "cwp: no actor clips; check whether source intentionally leaves current pose",
+        "summon-500303-basic-1: no actor clips; check whether source intentionally leaves current pose",
+        "summon-500403-basic-1: no actor clips; check whether source intentionally leaves current pose",
+        "summon-500403-basic-continuous: no actor clips; check whether source intentionally leaves current pose"
+      ],
+      "evidence": {
+        "hero": "party_mad_panda",
+        "weapon": "cwp_partymadpanda",
+        "weaponType": "gauntlet",
+        "style": "gauntlet_party_mad_panda",
+        "installedActions": [
+          "BasicSupport:PartyMadPanda",
+          "Temp",
+          "Temp"
+        ],
+        "sourcePlanResolution": {
+          "policy": "source-first",
+          "compiledActions": [
+            "BasicSupport:PartyMadPanda",
+            "CwpPartyMadPanda",
+            "ManualPartyMadPandaBoss",
+            "ManualPartyMadPandaMan",
+            "ManualPartyMadPandaPanda",
+            "RolePartyMadPanda"
+          ],
+          "legacyFallbackActions": []
+        },
+        "materialValidation": {
+          "version": 1,
+          "passed": true,
+          "effects": 38,
+          "materials": 158,
+          "scope": "action dependencies",
+          "visualValidation": false
+        },
+        "modules": [
+          {
+            "id": "basic-1",
+            "actorEnd": 0.6,
+            "duration": 0.8,
+            "clips": 1,
+            "tracks": 3
+          },
+          {
+            "id": "basic-mech",
+            "actorEnd": 0.5,
+            "duration": 5.46,
+            "clips": 0,
+            "tracks": 3
+          },
+          {
+            "id": "role",
+            "actorEnd": 0.5,
+            "duration": 11,
+            "clips": 0,
+            "tracks": 3
+          },
+          {
+            "id": "role-mech",
+            "actorEnd": 0.5,
+            "duration": 5.05,
+            "clips": 0,
+            "tracks": 2
+          },
+          {
+            "id": "support",
+            "actorEnd": 1.2,
+            "duration": 2.8,
+            "clips": 0,
+            "tracks": 4
+          },
+          {
+            "id": "cwp",
+            "actorEnd": 0.5,
+            "duration": 6.75,
+            "clips": 0,
+            "tracks": 8
+          },
+          {
+            "id": "summon-500303-basic-1",
+            "actorEnd": 5.5,
+            "duration": 5.5,
+            "clips": 0,
+            "tracks": 2
+          },
+          {
+            "id": "summon-500403-basic-1",
+            "actorEnd": 5,
+            "duration": 5,
+            "clips": 0,
+            "tracks": 4
+          },
+          {
+            "id": "summon-500403-basic-continuous",
+            "actorEnd": 0.2,
+            "duration": 0.2,
+            "clips": 0,
+            "tracks": 4
+          }
+        ]
+      }
+    }
+  ],
+  "inputSnapshots": {
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-characters/partymadpanda.json": "91a79dd8f3e6820060e7926c8f36216aa33ce222fdc5efe98a1fc8e94da975fe",
+    "gtfx/assets/characters/partymadpanda.json": "f098a5129deb31d3b39801f8d0ca28301ce044117a38ac92c2532b8df3ef76af"
+  }
+}

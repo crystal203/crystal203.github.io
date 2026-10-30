@@ -148,11 +148,14 @@ def main():
     parser.add_argument('--usage',type=lambda s:int(s,0),action='append',default=[])
     parser.add_argument('--range',action='append',default=[])
     parser.add_argument('--method-range',action='append',default=[])
+    parser.add_argument('--method',action='append',default=[],help='Exact registered fully qualified method; emit its bounded native body automatically')
+    parser.add_argument('--find-type',action='append',default=[],help='Case-insensitive substring search over real metadata type names (bounded results)')
+    parser.add_argument('--find-method',action='append',default=[],help='Case-insensitive substring search over registered native method names')
     parser.add_argument('--address',type=lambda s:int(s,0),action='append',default=[])
     parser.add_argument('--capstone-libs',type=Path)
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
-    if len(args.classes)>32 or len(args.range)>8 or len(args.method_range)>8 or len(args.usage)>64 or len(args.address)>64:parser.error('Request exceeds bounded batch size')
+    if len(args.classes)>32 or len(args.range)>8 or len(args.method_range)>8 or len(args.usage)>64 or len(args.address)>64 or len(args.method)>8 or len(args.find_type)>8 or len(args.find_method)>8:parser.error('Request exceeds bounded batch size')
     if args.capstone_libs:sys.path.insert(0,str(args.capstone_libs))
     image=RegisteredImage(args.profile)
     try:
@@ -162,6 +165,26 @@ def main():
                     classes=[image.describe(c) for c in args.classes],
                     methods=[dict(address=hex(a),names=image.methodAliases.get(a,[])) for a in args.address],
                     usages=[image.usage(w) for w in args.usage])
+        result['typeMatches']=[]
+        for query in args.find_type:
+            matches=[dict(index=t['index'],fullName=t['fullName']) for t in image.definitions.types if query.casefold() in t['fullName'].casefold()]
+            result['typeMatches'].append(dict(query=query,total=len(matches),matches=matches[:128],truncated=len(matches)>128))
+        result['methodMatches']=[]
+        for query in args.find_method:
+            matches=[dict(name=name,address=hex(address)) for address,names in sorted(image.methodAliases.items()) for name in names if query.casefold() in name.casefold()]
+            result['methodMatches'].append(dict(query=query,total=len(matches),matches=matches[:128],truncated=len(matches)>128))
+        result['selectedMethods']=[]
+        addresses=sorted(image.methodAliases)
+        for requested in args.method:
+            matches=[address for address,names in image.methodAliases.items() if requested in names]
+            if len(matches)!=1:raise ValueError('Method must resolve to one native address: '+requested)
+            start=matches[0];end=next((a for a in addresses if a>start),None)
+            if end is None or not 0<end-start<=16384:
+                raise ValueError('Method exceeds bounded 16 KiB body; use an explicit --range: '+requested)
+            file=args.output.with_name(args.output.stem+'-'+hex(start)[2:]+'.txt')
+            file.parent.mkdir(parents=True,exist_ok=True)
+            file.write_text(image.disassemble(start,end),'utf8')
+            result['selectedMethods'].append(dict(name=requested,start=hex(start),end=hex(end),bodyBytes=end-start,aliases=image.methodAliases[start],disassembly=str(file)))
         result['methodRanges']=[]
         for span in args.method_range:
             start,end=[int(s,0) for s in span.split(':')]

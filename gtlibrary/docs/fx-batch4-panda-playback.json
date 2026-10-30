@@ -1,0 +1,343 @@
+{
+  "passed": true,
+  "scope": "Initial source form/right/seed12345; embedded-skeleton tracks only; actual FxRuntime.load -> effectDefinition -> FxActionPlayer -> createEffectSkeletons -> CPU sample. Texture dimensions only; no GPU or visual acceptance.",
+  "reports": [
+    {
+      "character": "partymadpanda",
+      "modules": [
+        {
+          "id": "basic-1",
+          "tracks": [
+            {
+              "preset": "summonable:500303",
+              "view": "side",
+              "skin": "party_mad_panda_man_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_man_side_SkeletonData",
+                  "animations": [
+                    "idle_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            },
+            {
+              "preset": "summonable:500403",
+              "view": "side",
+              "skin": "party_mad_panda_panda_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_panda_side_SkeletonData",
+                  "animations": [
+                    "idle_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.4,
+            0.7999900000000001
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "basic-mech",
+          "tracks": [
+            {
+              "preset": "fx_m_partymadpanda_mech",
+              "view": "side",
+              "skin": "party_mad_panda_mech_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_mech_side_SkeletonData",
+                  "animations": [
+                    "idle_side",
+                    "party_mad_panda_mech/attack_mace_ready_side",
+                    "party_mad_panda_mech/attack_mace_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.24999,
+            0.25,
+            0.25001,
+            0.49999
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "role",
+          "tracks": [
+            {
+              "preset": "fx_m_partymadpanda_mech",
+              "view": "side",
+              "skin": "party_mad_panda_mech_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_mech_side_SkeletonData",
+                  "animations": [
+                    "idle_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            3,
+            5.99999
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "role-mech",
+          "tracks": [
+            {
+              "preset": "fx_m_partymadpanda_mech",
+              "view": "side",
+              "skin": "party_mad_panda_mech_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_mech_side_SkeletonData",
+                  "animations": [
+                    "idle_side",
+                    "party_mad_panda_mech/attack_drill_ready_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.25,
+            0.49999
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "support",
+          "tracks": [
+            {
+              "preset": "fx_m_partymadpanda_mech",
+              "view": "side",
+              "skin": "party_mad_panda_mech_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_mech_side_SkeletonData",
+                  "animations": [
+                    "idle_side",
+                    "party_mad_panda_mech/attack_dash_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.09999000000000001,
+            0.1,
+            0.10001,
+            0.4,
+            0.7999900000000001
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "cwp",
+          "tracks": [
+            {
+              "preset": "summonable:500303",
+              "view": "side",
+              "skin": "party_mad_panda_man_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_man_side_SkeletonData",
+                  "animations": [
+                    "idle_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            },
+            {
+              "preset": "summonable:500403",
+              "view": "side",
+              "skin": "party_mad_panda_panda_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_panda_side_SkeletonData",
+                  "animations": [
+                    "idle_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            },
+            {
+              "preset": "fx_cwp_partymadpanda_mech",
+              "selected": [
+                {
+                  "source": "boss_mech_SkeletonData",
+                  "animations": [
+                    "idle_front",
+                    "empty_jump_end_front",
+                    "empty_walk_front",
+                    "empty_throw_loop_front"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.3,
+            0.30001,
+            0.49999,
+            0.5,
+            0.50001,
+            1.275,
+            1.74999,
+            1.75,
+            1.75001,
+            2.24999,
+            3.375,
+            6.74999
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "summon-500303-basic-1",
+          "tracks": [
+            {
+              "preset": "summonable:500303",
+              "view": "side",
+              "skin": "party_mad_panda_man_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_man_side_SkeletonData",
+                  "animations": [
+                    "idle_side",
+                    "party_mad_panda_man/attack1_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.49999,
+            0.5,
+            0.50001,
+            2.75,
+            5.49999
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "summon-500403-basic-1",
+          "tracks": [
+            {
+              "preset": "summonable:500403",
+              "view": "side",
+              "skin": "party_mad_panda_panda_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_panda_side_SkeletonData",
+                  "animations": [
+                    "idle_side",
+                    "rifle_shoot2_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            2.5,
+            4.99999
+          ],
+          "runtimeErrors": []
+        },
+        {
+          "id": "summon-500403-basic-continuous",
+          "tracks": [
+            {
+              "preset": "summonable:500403",
+              "view": "side",
+              "skin": "party_mad_panda_panda_5",
+              "selected": [
+                {
+                  "source": "party_mad_panda_panda_side_SkeletonData",
+                  "animations": [
+                    "idle_side",
+                    "rifle_shoot2_side"
+                  ]
+                }
+              ],
+              "meshCounts": [
+                1
+              ]
+            }
+          ],
+          "samples": [
+            0,
+            0.00001,
+            0.1,
+            0.19999
+          ],
+          "runtimeErrors": []
+        }
+      ],
+      "failures": [],
+      "appearance": "party_mad_panda",
+      "hero": "party_mad_panda_5",
+      "weapon": "cwp_partymadpanda"
+    }
+  ],
+  "browserOperations": 0,
+  "pixelsRead": 0
+}

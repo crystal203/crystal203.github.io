@@ -1,0 +1,97 @@
+{
+  "format": "gtfx-character-readiness",
+  "scope": "One default source form with actual UI equipment resolution; no browser, image, pixel, facing or costume sweep; does not certify all source mechanisms",
+  "reports": [
+    {
+      "character": "heroai",
+      "status": "structurally-ready-not-visual-acceptance",
+      "failures": [],
+      "sourceReviewNotes": [],
+      "evidence": {
+        "hero": "hero_ai",
+        "weapon": "cwp_heroai",
+        "weaponType": "onehandsword",
+        "style": "onehand_hero_ai",
+        "installedActions": [
+          "BasicSupport:HeroAi"
+        ],
+        "sourcePlanResolution": {
+          "policy": "source-first",
+          "compiledActions": [
+            "BasicSupport:HeroAi",
+            "CwpHeroAi",
+            "ManualHeroAi:First",
+            "ManualHeroAi:Fourth",
+            "ManualHeroAi:Second",
+            "ManualHeroAi:Third"
+          ],
+          "legacyFallbackActions": []
+        },
+        "materialValidation": {
+          "version": 1,
+          "passed": true,
+          "effects": 12,
+          "materials": 146,
+          "scope": "action dependencies",
+          "visualValidation": false
+        },
+        "modules": [
+          {
+            "id": "basic-1",
+            "actorEnd": 0.3,
+            "duration": 0.44999999999999996,
+            "clips": 2,
+            "tracks": 1
+          },
+          {
+            "id": "basic-2",
+            "actorEnd": 0.4,
+            "duration": 0.44999999999999996,
+            "clips": 2,
+            "tracks": 1
+          },
+          {
+            "id": "basic-3",
+            "actorEnd": 0.6,
+            "duration": 1.2999999999999998,
+            "clips": 1,
+            "tracks": 2
+          },
+          {
+            "id": "basic-4",
+            "actorEnd": 0.7,
+            "duration": 0.9299999999999999,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "support",
+            "actorEnd": 1.2,
+            "duration": 6.1,
+            "clips": 1,
+            "tracks": 4
+          },
+          {
+            "id": "cwp",
+            "actorEnd": 0.4,
+            "duration": 1.55,
+            "clips": 1,
+            "tracks": 3
+          },
+          {
+            "id": "basic-combo",
+            "actorEnd": 1.9999999999999998,
+            "duration": 2.2299999999999995,
+            "clips": 6,
+            "tracks": 5
+          }
+        ]
+      }
+    }
+  ],
+  "inputSnapshots": {
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-characters/heroai.json": "f224eb2f9f0772a510ceae12a769f09dffd59fec55edc00361b18366b00804cd",
+    "gtfx/assets/characters/heroai.json": "d10b2bf394be738f34b26378338895c8f02174ea3bb45f8a7a454b74bb3f22a6"
+  }
+}

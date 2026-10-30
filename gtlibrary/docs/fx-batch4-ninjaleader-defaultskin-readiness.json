@@ -1,0 +1,97 @@
+{
+  "format": "gtfx-character-readiness",
+  "scope": "One default source form with actual UI equipment resolution; no browser, image, pixel, facing or costume sweep; does not certify all source mechanisms",
+  "reports": [
+    {
+      "character": "ninjaleader",
+      "status": "structurally-ready-not-visual-acceptance",
+      "failures": [],
+      "sourceReviewNotes": [],
+      "evidence": {
+        "hero": "ninja_leader_5",
+        "weapon": "cwp_ninjaleader",
+        "weaponType": "onehandsword",
+        "style": "one_hand_ninja_leader",
+        "installedActions": [
+          "BasicSupport:NinjaLeader"
+        ],
+        "sourcePlanResolution": {
+          "policy": "source-first",
+          "compiledActions": [
+            "BasicSupport:NinjaLeader",
+            "CwpNinjaLeader",
+            "ManualNinjaLeader:First",
+            "ManualNinjaLeader:Second",
+            "ManualNinjaLeader:Third",
+            "RoleNinjaLeader"
+          ],
+          "legacyFallbackActions": []
+        },
+        "materialValidation": {
+          "version": 1,
+          "passed": true,
+          "effects": 18,
+          "materials": 142,
+          "scope": "action dependencies",
+          "visualValidation": false
+        },
+        "modules": [
+          {
+            "id": "support",
+            "actorEnd": 1.1,
+            "duration": 2.15,
+            "clips": 3,
+            "tracks": 11
+          },
+          {
+            "id": "cwp",
+            "actorEnd": 0.3,
+            "duration": 1.52,
+            "clips": 1,
+            "tracks": 16
+          },
+          {
+            "id": "basic-1",
+            "actorEnd": 0.4,
+            "duration": 0.65,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-2",
+            "actorEnd": 0.5,
+            "duration": 0.9,
+            "clips": 1,
+            "tracks": 10
+          },
+          {
+            "id": "basic-3",
+            "actorEnd": 0.7,
+            "duration": 1.2,
+            "clips": 3,
+            "tracks": 3
+          },
+          {
+            "id": "role",
+            "actorEnd": 0.45,
+            "duration": 0.75,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-combo",
+            "actorEnd": 1.6,
+            "duration": 2.1,
+            "clips": 5,
+            "tracks": 14
+          }
+        ]
+      }
+    }
+  ],
+  "inputSnapshots": {
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-characters/ninjaleader.json": "74fa97176aa39c635524827f3bea7fedfb44f8fc903aeb58f4ed96ec5c46c89c",
+    "gtfx/assets/characters/ninjaleader.json": "ea13e4ec7be44826c8f35bad41e3aa3ef1e92ed3d061fda99f7052fba346ea0d"
+  }
+}

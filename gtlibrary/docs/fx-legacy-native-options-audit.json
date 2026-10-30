@@ -1,0 +1,99 @@
+{
+  "scope": [
+    "idolcaptain",
+    "villainredhood"
+  ],
+  "policy": "Source branch audit and one fixed numerical case per new mechanism; no screenshot, skin, or facing sweep. Package presence is not completeness.",
+  "source": {
+    "apkSha256": "11ad39a67bb2a7bad18f59a22303fb7347017f6830d80ec63db6efe4f3e91d1b",
+    "elfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+    "nativeEvidence": "tools/fx/source-cache/legacy-native-options",
+    "lua": [
+      {
+        "path": "E:\\GTFiles\\decrypted\\Battle\\Option\\IdolCaptainSpecialOption.lua",
+        "sha256": "b494a65664bdb6a5159305c901f730697122d5ed257dd4cd70b6cba9dcc79230"
+      },
+      {
+        "path": "E:\\GTFiles\\decrypted\\Battle\\Option\\IdolCaptainCwpOption.lua",
+        "sha256": "3dbe33f096143039241cd1eba98c9bb88b6fa4b13e4996f3117b3978c906bb39"
+      },
+      {
+        "path": "E:\\GTFiles\\decrypted\\Battle\\Option\\VillainRedhoodSpecialOption.lua",
+        "sha256": "94a1e1f210037c2a670b30c0f951f2095145994eaceea4dcdb8457d821814b7f"
+      }
+    ]
+  },
+  "idolcaptain": {
+    "identity": "偶像骑士团长伊娃 / idol_captain / OriginId 315",
+    "certainErrors": [
+      "Old package omitted heroOptionIds, weapons, awakening and buffs, so source option activation could not be respected.",
+      "ManualSoundWave basic aura was born at action start; native OnStateUpdate creates it at first ShootFrame.",
+      "DashFrame hop .3 high was omitted; native Jump uses the entire DashFrame interval, including a legal tail beyond action end.",
+      "Third basic fixed projectile-color order; native each shot randomly selects and removes an index from the remaining list.",
+      "Normal-action-triggered CWP ownership buff FX had no runtime consumer; source has a CoolTime gate and myth preset override."
+    ],
+    "alreadySupported": [
+      "EnhanceActionName is the existing third ManualSoundWave action in both native styles, not a hidden replacement or fourth attack.",
+      "IdolCaptainSpecialOption uses that name to double healing and, with active myth option, apply healing/buff to living stage members. It contains no explicit FX spawn."
+    ],
+    "bounds": [
+      "Only existing preview owner receives CWP ownership FX; real stage-party members and their summonables require battle-party state.",
+      "Healing target selection and damage reduction are gameplay rules; no invented HP trigger or alternate action is added.",
+      "Native default flag=false preserves reverse Angle indexing through TriggerInfo; alternate network flag snapshots are outside this fixed preview.",
+      "CWP rainbow screen/world mixed-node projection remains the separately documented source candidate; this audit does not certify its visual shape."
+    ]
+  },
+  "villainredhood": {
+    "identity": "红斗篷团伙领导人阿拉贝尔 / villain_redhood / OriginId 307",
+    "certainErrors": [
+      "Final stamina-break shot omitted native RecoilType1(distance .3000000119, height .2000000030, duration .2750000060, angle 8).",
+      "Equipped option branch was gated only by exclusiveWeapon boolean, instead of valid OptionId membership."
+    ],
+    "alreadySupported": [
+      "Constructor reads normal ProjectileName from valid ManualMythOptionId data and keeps original SuperProjectileName.",
+      "Constructor reads extra ProjectileName from equipped OptionId before EnhancedCwpMythOptionId. The latter changes only DpsMultiplier .75 to .9, and has no alternate projectile.",
+      "GetAttackType chooses extra-shot attack type 2 only when equipped option is valid and cwpOptionTimePassed <= 0; StartAttack resets to 3 seconds; OnUpdateFrame decrements it.",
+      "OnUpdateFrameAttack ends at .25 seconds independent of weapon ShootTerm .35. Six-round preview already follows .25 clock.",
+      "VillainRedhoodSpecialOption damage callback grants movement SpeedScale and Critical buffs. Its script and referenced buff records have no FX spawn."
+    ],
+    "bounds": [
+      "Myth manual SpeedIncreaseRate .25 exists in metadata but is not read by the inspected launcher constructor or ManualDiscreteStamina constructor; do not change the firing clock from this field alone.",
+      "The fixed preview does not simulate terrain, full battle collision, or damage commands."
+    ]
+  },
+  "legacyOverrideLesson": "A nonempty per-character native-action-plans.json override bypasses plans_for and all new source compilation. Only idolcaptain stale entry removed here. Keep unsupported legacy/augment plans; do not globally prioritize unreviewed source compilation.",
+  "verification": {
+    "villainredhood": "E:/GTFiles/legacy-native-options/check-villain.mjs passed; final midpoint [-.3000000119,.2000000030,0], angle 8; six starts 0/.25/.5/.75/1/1.25; valid myth enhanced multiplier .9, normal .75; no equipped option => no enhanced variant. Public actionModules entry passed after ordinary reimport; 3 stale shot prefab StageShadowSetter Transform->GameObject bindings were repaired by converter; 22 FX / 247 materials passed static contracts.",
+    "idolcaptain": "Ordinary incremental reimport completed; real public actionModules entry passed fixed checks: jump .2->.6666667, midpoint .4333333 at .3000000119; third shots .2666667/.3333333/.4; aura at first shot; seed7 permutation [2,0,1]; CWP trigger owner-only at0, normal cooldown8/myth6, no equipped option => no effect. 25 FX / 216 materials passed static contracts."
+  },
+  "outputSnapshots": [
+    {
+      "path": "gtfx/assets/native-characters/idolcaptain.json",
+      "sha256": "57a334547946306fbd4b6621216ac66c5a32694a5fb103236b7693b4ea25e33b"
+    },
+    {
+      "path": "gtfx/assets/native-characters/villainredhood.json",
+      "sha256": "dd9856e6dcfa2369941558c0a02e150e8ff6f58e9bdb4be6bf9e7605807d0841"
+    },
+    {
+      "path": "gtfx/assets/characters/idolcaptain.json",
+      "sha256": "fd08050d490b6e30f6f3e3d1291c02063d2c8f75825f91a91ebaee1cd014bf47"
+    },
+    {
+      "path": "gtfx/assets/characters/villainredhood.json",
+      "sha256": "ddd1ecb651a4a0586c4b03dc581192c9c59d732bf0c2a4ea6ed0e3d24d61c996"
+    },
+    {
+      "path": "tools/fx/native_csharp_soundwave.py",
+      "sha256": "123a1df92beb2869299d267d92cf5e2596cbeb7dc96ea51e6670d3a2c8076b95"
+    },
+    {
+      "path": "gtfx/native-soundwave-actions.js",
+      "sha256": "d1ff155cb52222279ed8e42288b636a272fa194a35ad281627a1f66af917fd44"
+    },
+    {
+      "path": "gtfx/projectile-actions.js",
+      "sha256": "bed2e0f23e26d9fa4e4749b60f2a6bdc99442ff86f22a9418270fecbe16684a7"
+    }
+  ]
+}

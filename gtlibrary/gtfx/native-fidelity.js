@@ -14,7 +14,7 @@ export function auditEffect(effect){
     if(m.ForceModule?.randomizePerFrame)add('force-frame-history','每帧随机受力需要原始帧步长和粒子存活顺序',s);
     if(m.UVModule?.timeMode)add('uv-clock','贴图动画的非生命周期时钟尚未对齐',s);
     for(const name of ['CollisionModule','TriggerModule','ExternalForcesModule','LightsModule'])if(m[name])add('unsupported-module',name+' 尚未解释',s);
-    if(m.CustomDataModule&&!["particleDissolve","screenDistortion"].includes(s.material?.surface))add('custom-stream','自定义顶点流尚未映射到材质',s);
+    if(m.CustomDataModule&&!["particleDissolve","particleDissolveTwoPass","screenDistortion"].includes(s.material?.surface))add('custom-stream','自定义顶点流尚未映射到材质',s);
   }
   const scriptGaps={
     ViewportScaleReverter:'ViewportScaleReverter 的视口缩放恢复尚未独立解释',

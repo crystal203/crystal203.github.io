@@ -1,0 +1,213 @@
+{
+  "format": "gtfx-character-readiness",
+  "scope": "One default source form with actual UI equipment resolution; no browser, image, pixel, facing or costume sweep; does not certify all source mechanisms",
+  "reports": [
+    {
+      "character": "jadeshaman",
+      "status": "structurally-ready-not-visual-acceptance",
+      "failures": [],
+      "sourceReviewNotes": [
+        "summon-basic-1: no actor clips; check whether source intentionally leaves current pose",
+        "summon-basic-2: no actor clips; check whether source intentionally leaves current pose",
+        "summon-basic-combo: no actor clips; check whether source intentionally leaves current pose"
+      ],
+      "evidence": {
+        "hero": "jade_shaman",
+        "weapon": "cwp_jadeshaman",
+        "weaponType": "staff",
+        "style": "staff_jade_shaman",
+        "installedActions": [
+          "BasicSupport:JadeShaman",
+          "RoleJadeShaman"
+        ],
+        "sourcePlanResolution": {
+          "policy": "source-first",
+          "compiledActions": [
+            "BasicSupport:JadeShaman",
+            "CwpJadeShaman",
+            "ManualJadeShaman:First",
+            "ManualJadeShaman:Second",
+            "ManualJadeShaman:Third",
+            "ManualJadeSpirit:First",
+            "ManualJadeSpirit:Second",
+            "RoleJadeShaman"
+          ],
+          "legacyFallbackActions": []
+        },
+        "materialValidation": {
+          "version": 1,
+          "passed": true,
+          "effects": 27,
+          "materials": 233,
+          "scope": "action dependencies",
+          "visualValidation": false
+        },
+        "modules": [
+          {
+            "id": "support",
+            "actorEnd": 1.2,
+            "duration": 2.75,
+            "clips": 1,
+            "tracks": 6
+          },
+          {
+            "id": "cwp",
+            "actorEnd": 1,
+            "duration": 2.13,
+            "clips": 2,
+            "tracks": 5
+          },
+          {
+            "id": "basic-1",
+            "actorEnd": 0.45,
+            "duration": 1.3499999999999999,
+            "clips": 1,
+            "tracks": 2
+          },
+          {
+            "id": "basic-2",
+            "actorEnd": 0.4,
+            "duration": 1.3499999999999999,
+            "clips": 1,
+            "tracks": 2
+          },
+          {
+            "id": "basic-3",
+            "actorEnd": 0.65,
+            "duration": 1.12,
+            "clips": 1,
+            "tracks": 2
+          },
+          {
+            "id": "role",
+            "actorEnd": 0.4,
+            "duration": 2,
+            "clips": 1,
+            "tracks": 2
+          },
+          {
+            "id": "basic-combo",
+            "actorEnd": 1.5,
+            "duration": 1.9700000000000002,
+            "clips": 3,
+            "tracks": 4
+          },
+          {
+            "id": "summon-basic-1",
+            "actorEnd": 0.6,
+            "duration": 0.6,
+            "clips": 0,
+            "tracks": 3
+          },
+          {
+            "id": "summon-basic-2",
+            "actorEnd": 0.6,
+            "duration": 0.6,
+            "clips": 0,
+            "tracks": 3
+          },
+          {
+            "id": "summon-basic-combo",
+            "actorEnd": 1.2,
+            "duration": 1.2,
+            "clips": 0,
+            "tracks": 5
+          }
+        ]
+      }
+    },
+    {
+      "character": "ninjaleader",
+      "status": "structurally-ready-not-visual-acceptance",
+      "failures": [],
+      "sourceReviewNotes": [],
+      "evidence": {
+        "hero": "ninja_leader",
+        "weapon": "cwp_ninjaleader",
+        "weaponType": "onehandsword",
+        "style": "one_hand_ninja_leader",
+        "installedActions": [
+          "BasicSupport:NinjaLeader"
+        ],
+        "sourcePlanResolution": {
+          "policy": "source-first",
+          "compiledActions": [
+            "BasicSupport:NinjaLeader",
+            "CwpNinjaLeader",
+            "ManualNinjaLeader:First",
+            "ManualNinjaLeader:Second",
+            "ManualNinjaLeader:Third",
+            "RoleNinjaLeader"
+          ],
+          "legacyFallbackActions": []
+        },
+        "materialValidation": {
+          "version": 1,
+          "passed": true,
+          "effects": 18,
+          "materials": 142,
+          "scope": "action dependencies",
+          "visualValidation": false
+        },
+        "modules": [
+          {
+            "id": "support",
+            "actorEnd": 1.1,
+            "duration": 2.15,
+            "clips": 3,
+            "tracks": 11
+          },
+          {
+            "id": "cwp",
+            "actorEnd": 0.3,
+            "duration": 1.52,
+            "clips": 1,
+            "tracks": 16
+          },
+          {
+            "id": "basic-1",
+            "actorEnd": 0.4,
+            "duration": 0.65,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-2",
+            "actorEnd": 0.5,
+            "duration": 0.9,
+            "clips": 1,
+            "tracks": 10
+          },
+          {
+            "id": "basic-3",
+            "actorEnd": 0.7,
+            "duration": 1.2,
+            "clips": 3,
+            "tracks": 3
+          },
+          {
+            "id": "role",
+            "actorEnd": 0.45,
+            "duration": 0.75,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-combo",
+            "actorEnd": 1.6,
+            "duration": 2.1,
+            "clips": 5,
+            "tracks": 14
+          }
+        ]
+      }
+    }
+  ],
+  "inputSnapshots": {
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-characters/jadeshaman.json": "a749149c979b2235ea3f51d5131c8374464e9ff5e0e8153c801de0b2f5dfc6c9",
+    "gtfx/assets/characters/jadeshaman.json": "044aa97aad99f04477d613edecfc76bcf36f1bf41c271bfe83612bad729ecb4e",
+    "gtfx/assets/native-characters/ninjaleader.json": "d1bf8189e3b5b0506134692eb5da754902daf9b29cb00f6845a45c10535c6811",
+    "gtfx/assets/characters/ninjaleader.json": "ea13e4ec7be44826c8f35bad41e3aa3ef1e92ed3d061fda99f7052fba346ea0d"
+  }
+}

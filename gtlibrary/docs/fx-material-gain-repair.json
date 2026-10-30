@@ -1,0 +1,458 @@
+{
+  "format": "gtfx-known-material-gain-repair",
+  "version": 1,
+  "repairedAtUtc": "2026-10-30T08:15:03.612409+00:00",
+  "rule": "APK GLES for the listed shader variants outputs COLOR * Tint * MainTex2 * Mask * MainTex * 4 in RGBA.",
+  "shaderVariants": [
+    "Effect/Mask_Additive_Blend_2Tex",
+    "Effect/Mask_Additive_Blend_2Tex_Top",
+    "Effect/Mask_Additive_Tint_2Tex",
+    "Effect/Mask_Additive_Tint_2Tex_Top"
+  ],
+  "scope": "Declared imported action dependency consumers; external-owned character data is read-only.",
+  "beforeAuditSummary": {
+    "charactersAudited": 43,
+    "resolvedEffectConsumers": 1961,
+    "charactersWithFindings": 8,
+    "unresolvedDeclaredReferences": 2,
+    "sourceFilesChangedDuringAudit": [],
+    "issues": {
+      "legacy_effect_without_native_source": {
+        "confidence": "risk",
+        "characters": 1,
+        "effects": 1,
+        "instances": 1,
+        "characterIds": [
+          "hana"
+        ]
+      },
+      "two_texture_gain_not_native": {
+        "confidence": "confirmed-data-mismatch",
+        "characters": 7,
+        "effects": 15,
+        "instances": 15,
+        "characterIds": [
+          "alicia",
+          "fallenqueen",
+          "fireharpy",
+          "legendaryhero",
+          "necromancer",
+          "secondbishop",
+          "succubusnoble"
+        ]
+      }
+    },
+    "rawScreenMaterialInstances": 95,
+    "rawScreenProtectedInstances": 95,
+    "fourGainMaterialInstances": 216,
+    "spriteStaticInstances": 29,
+    "simulationSpace": {
+      "systems": 17332,
+      "space0": 15582,
+      "space1": 1750
+    }
+  },
+  "files": [
+    {
+      "path": "gtfx/assets/characters/alicia.json",
+      "beforeSha256": "b1cad86274b1302f082a976251b88b2947f2f22a9b6d80b2bcc174e0dcba827e",
+      "afterSha256": "7563ff113b7a293d1efb5cf58a444a41e811e6f8bd729441c31d4ecb46b5f344",
+      "changes": [
+        {
+          "preset": "yuusha_fx_m_alicia_myth_myth_explosion",
+          "consumingCharacters": [
+            "alicia"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_clb_aliciamyth_yuusha_myth_aurawave_mesh",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "yuusha_fx_m_alicia_myth_myth_explosion",
+          "consumingCharacters": [
+            "alicia"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_clb_aliciamyth_yuusha_myth_aurawave_mesh",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        }
+      ]
+    },
+    {
+      "path": "gtfx/assets/characters/fallenqueen.json",
+      "beforeSha256": "93f3bc9d1a9c6fcbfcbbd2af6614d10b2e185f3083b7aa8945906a2be81d6c2a",
+      "afterSha256": "8690030f93b6237cb6a9cd70113a3e234a189219e946370b802a48337713e83d",
+      "changes": [
+        {
+          "preset": "fx_cwp_fallenqueen_screen",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_cwp_fallenqueen_darkspear_screen_aura",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_screen",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_cwp_fallenqueen_darkspear_screen_aura",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_m_fallenqueen_myth_support_fire",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_fallenqueenmyth_linkatk_fire_mat",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_m_fallenqueen_myth_support_fire",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_fallenqueenmyth_linkatk_fire_mat",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_myth_screen",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[1].material",
+          "material": "fx_cwp_fallenqueenmyth_darkspear_screen_aura2",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_myth_screen",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[1].materials[0]",
+          "material": "fx_cwp_fallenqueenmyth_darkspear_screen_aura2",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_myth_cast",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_cwp_fallenqueenmyth_darkspear_cast_mat",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_myth_cast",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_cwp_fallenqueenmyth_darkspear_cast_mat",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_myth_explosion",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_cwp_fallenqueenmyth_darkspear_explosion_mat",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fallenqueen_myth_explosion",
+          "consumingCharacters": [
+            "fallenqueen"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_cwp_fallenqueenmyth_darkspear_explosion_mat",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        }
+      ]
+    },
+    {
+      "path": "gtfx/assets/characters/fireharpy.json",
+      "beforeSha256": "27ccfc768df83e9adb233ca6df9b0daaf0b308fb4fd956114e6bbdacdf0670b4",
+      "afterSha256": "aad1fa1923dc05d529e875543c462aa416ab4ea20c3103b95e58152419bde156",
+      "changes": [
+        {
+          "preset": "fx_cwp_fireharpy_screen",
+          "consumingCharacters": [
+            "fireharpy"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_fireharpy_flame_screenfx",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_fireharpy_screen",
+          "consumingCharacters": [
+            "fireharpy"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_fireharpy_flame_screenfx",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        }
+      ]
+    },
+    {
+      "path": "gtfx/assets/characters/necromancer.json",
+      "beforeSha256": "bb8b94a73c01febdd2a9ab94fbc28e2a0fcc77bf70ad1bee7b0a9ddaa43dbdd5",
+      "afterSha256": "d6f0d4af60f8fa610baec217ed63b70deb6f778d79dd5a261d12ab75ffe9fdd3",
+      "changes": [
+        {
+          "preset": "ice_golem_fx_m_necromancer_summon",
+          "consumingCharacters": [
+            "necromancer"
+          ],
+          "location": "statics[0].material",
+          "material": "FX_BlockAura_Char_ab",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "ice_golem_fx_m_necromancer_summon",
+          "consumingCharacters": [
+            "necromancer"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "FX_BlockAura_Char_ab",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "high_templar_fx_m_necromancer_summon",
+          "consumingCharacters": [
+            "necromancer"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_aura_darkspirit_ad",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "high_templar_fx_m_necromancer_summon",
+          "consumingCharacters": [
+            "necromancer"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_aura_darkspirit_ad",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        }
+      ]
+    },
+    {
+      "path": "gtfx/assets/characters/secondbishop.json",
+      "beforeSha256": "6844369a17b05b2db7b2da9a5f14f8e3704b9f81b210096d04a5f1451633dc18",
+      "afterSha256": "ee0f2cc70e1e1b7ab7975f7f2c352b095534d88303d986d9767026740e71db5b",
+      "changes": [
+        {
+          "preset": "fx_cwp_second_bishop_cast",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_cast",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[1].material",
+          "material": "fx_cwp_secondbishop_laser_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[1].materials[0]",
+          "material": "fx_cwp_secondbishop_laser_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[2].material",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[2].materials[0]",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_myth_cast",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[0].material",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_myth_cast",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[0].materials[0]",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_myth_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[1].material",
+          "material": "fx_cwp_secondbishop_laser_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_myth_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[1].materials[0]",
+          "material": "fx_cwp_secondbishop_laser_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_myth_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[2].material",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        },
+        {
+          "preset": "fx_cwp_second_bishop_myth_laser",
+          "consumingCharacters": [
+            "secondbishop"
+          ],
+          "location": "statics[2].materials[0]",
+          "material": "fx_cwp_secondbishop_head_2tex",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        }
+      ]
+    },
+    {
+      "path": "gtfx/assets/characters/succubusnoble.json",
+      "beforeSha256": "39920a49d9c912ffefc654e5e25cdd9efdefe81ef3342339de558ed632101f1e",
+      "afterSha256": "621cee6efb18af666d20a2c5db9a80723dbd8e302dbb7a206557bd97f0bc8f5e",
+      "changes": [
+        {
+          "preset": "safeguard_fx_cwp_succubusnoble_cast",
+          "consumingCharacters": [
+            "succubusnoble"
+          ],
+          "location": "systems[5].material",
+          "material": "fx_cwp_succubusnoble_safeguard_cast_heilx_ab",
+          "shader": "Effect/Mask_Additive_Blend_2Tex",
+          "beforeGain": null,
+          "afterGain": 4
+        }
+      ]
+    }
+  ],
+  "skippedExternalConsumers": [
+    {
+      "character": "legendaryhero",
+      "preset": "old_fx_cwp_lenendaryhero_myth_screen",
+      "indexCharacter": "legendaryhero",
+      "kind": "statics",
+      "index": 1,
+      "name": "hero_legendaryheromyth_Mesh_elec_ab",
+      "node": "-1904884897049689462",
+      "slot": 0,
+      "material": "fx_cwp_legendaryheromyth_oldhero_skycmd_screen_wave_ab_m",
+      "shader": "Effect/Mask_Additive_Blend_2Tex",
+      "colorGain": null,
+      "expected": 4
+    }
+  ],
+  "changedFiles": 6,
+  "changedMaterialRecords": 31
+}

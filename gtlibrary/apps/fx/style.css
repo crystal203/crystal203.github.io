@@ -6,3 +6,82 @@
 
 .region-bar,#region-settings{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.region-bar label{display:flex;align-items:center;gap:4px;color:var(--dim)}.region-bar input{width:70px;padding:5px 6px}.region-bar output{font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums}#region-select[aria-pressed=true]{border-color:var(--accent);background:#334a73}canvas.selecting-region{cursor:crosshair}
 #export-region{position:absolute;border:1px dashed #a4c4ff;box-shadow:0 0 0 9999px #06080b80;pointer-events:none;z-index:1;touch-action:none}#export-region .edge{position:absolute;pointer-events:auto;cursor:move}#export-region .top,#export-region .bottom{left:11px;right:11px;height:8px}#export-region .top{top:-4px}#export-region .bottom{bottom:-4px}#export-region .left,#export-region .right{top:11px;bottom:11px;width:8px}#export-region .left{left:-4px}#export-region .right{right:-4px}#export-region .handle{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;background:#a4c4ff;border:2px solid #10131a;border-radius:3px;pointer-events:auto}#export-region .nw{left:0;top:0;cursor:nwse-resize}#export-region .n{left:50%;top:0;cursor:ns-resize}#export-region .ne{left:100%;top:0;cursor:nesw-resize}#export-region .e{left:100%;top:50%;cursor:ew-resize}#export-region .se{left:100%;top:100%;cursor:nwse-resize}#export-region .s{left:50%;top:100%;cursor:ns-resize}#export-region .sw{left:0;top:100%;cursor:nesw-resize}#export-region .w{left:0;top:50%;cursor:ew-resize}#export-region.drawing .edge,#export-region.drawing .handle{pointer-events:none}
+
+/* FX workspace: content / character and targets / stage / playback / optional export. */
+.workspace{padding:12px 16px;gap:8px}
+.effect-bar{flex-shrink:0;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.effect-bar>label{display:flex;align-items:center;gap:7px;color:var(--dim);min-width:0}
+#module-choice{flex:1}#module{max-width:100%;min-width:130px}
+#effect{max-width:none}#fold-top{margin-left:auto}
+.character-controls{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:8px;flex-shrink:0}
+.actor-settings,.target-settings,.target-fields{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;min-width:0}
+.actor-settings label{color:var(--dim);min-width:0;white-space:nowrap}
+.actor-settings label>span{flex:0 0 auto}
+.actor-settings label>select{flex:1 1 auto;width:0}
+.actor-settings select{max-width:100%;min-width:0;color:var(--text)}
+.actor-settings label:has(#appearance){flex:2 1 300px;min-width:220px}
+.actor-settings label:has(#weapon){flex:1 1 280px;min-width:220px}
+.actor-settings label:has(#direction){flex:0 0 120px}
+.actor-settings label:has(#skin){flex:0 1 180px;min-width:140px}
+#appearance,#weapon{text-overflow:ellipsis}
+#skin{max-width:180px}.section-label{color:var(--dim)}
+.target-settings{padding-top:8px;border-top:1px solid var(--line);gap:6px 10px}
+.target-settings>label{color:var(--dim)}
+.target-precision{position:relative;font-size:12px;color:var(--dim)}
+.target-precision>summary{padding:6px;border-radius:5px}
+.target-fields{position:absolute;left:0;top:100%;width:360px;max-width:calc(100vw - 48px);padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 28px #0008;z-index:3}
+#secondary-targets{display:flex;gap:5px;flex-wrap:wrap;width:100%}
+#secondary-targets:empty{display:none}
+
+#stage{min-height:240px;border-radius:8px}
+.transport{gap:7px;flex-shrink:0}.transport button,.transport select{padding:6px 9px}
+.zoom-control{margin-left:auto;font-size:11px}#zoom{margin-left:0;width:90px}
+#fold-top,#fold-bottom{font-size:12px;white-space:nowrap;background:transparent}
+.timeline{gap:10px;flex-shrink:0;padding:0 3px}
+#bottom-details{display:flex;flex-direction:column;gap:12px;flex-shrink:0;padding:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
+.export-settings{display:flex;flex-direction:column;gap:10px}
+.export-bar{border:0;padding:0;gap:8px}.region-bar{font-size:12px}
+
+.options{border-top:1px solid var(--line);padding-top:10px}
+.workspace.top-folded #character-controls{display:none!important}
+.workspace.bottom-folded #bottom-details{display:none}
+button[aria-pressed=true]{border-color:var(--accent);background:#334a73}
+@media(max-width:760px){
+ .workspace{padding:10px;gap:8px}
+ .effect-bar>label{flex-wrap:wrap}#module-choice{flex:1 1 130px}
+ .actor-settings{gap:7px}.actor-settings label:has(#appearance),.actor-settings label:has(#weapon){flex:1 1 100%}
+ .target-fields{position:fixed;top:auto;left:12px;right:12px;width:auto}
+ .transport{gap:6px}
+ .zoom-control{display:none}#fold-bottom{margin-left:auto}
+ #stage{height:max(320px,calc(100dvh - 360px));flex:none}
+ .workspace.top-folded #stage{height:max(320px,calc(100dvh - 230px))}
+}
+
+.effect-bar>label,.transport label,.region-bar label,.options label{white-space:nowrap}
+button,summary{white-space:nowrap}
+#export-replay{margin-top:8px;font-size:12px}
+
+#variant-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}#variant-controls label{display:flex;align-items:center;gap:7px;white-space:nowrap;color:var(--dim)}#variant-controls select{min-width:100px;max-width:220px}
+
+.character{flex-direction:column;align-items:flex-start;gap:5px}.character .name{white-space:normal;line-height:1.4}.character-portraits{display:flex;gap:3px;flex-wrap:wrap;max-width:100%}.character-portraits .avatar{flex:0 0 36px;width:36px;height:36px}#material-appearance-choice{white-space:nowrap}#material-appearance{min-width:110px;max-width:260px}
+
+.actor-settings #skill-form-choice{flex:0 0 140px;white-space:nowrap}
+
+/* Native selects may ignore option colors; the star also identifies special FX. */
+#appearance.special-fx,#material-appearance.special-fx,
+#appearance option.special-fx,#material-appearance option.special-fx{color:#f2bf66}
+#appearance option:not(.special-fx),#material-appearance option:not(.special-fx){color:#dfe5ef}
+
+/* Keep native hero forms distinct from ordinary costumes in both selectors. */
+:is(#appearance,#material-appearance,#skill-form)[data-appearance-kind="base"],
+:is(#appearance,#material-appearance,#skill-form) option[data-appearance-kind="base"]{color:#8bbcff}
+:is(#appearance,#material-appearance,#skill-form)[data-appearance-kind="myth"],
+:is(#appearance,#material-appearance,#skill-form) option[data-appearance-kind="myth"]{color:#ed99d5}
+:is(#appearance,#material-appearance,#skill-form)[data-appearance-kind="ascent"],
+:is(#appearance,#material-appearance,#skill-form) option[data-appearance-kind="ascent"]{color:#83d7b5}
+
+.actor-settings #shield-choice{flex:1 1 280px;min-width:220px}.actor-settings #summoned-choice{flex:0 0 auto;min-width:0;white-space:nowrap}
+
+#summon-position-fields:not([hidden]){display:flex;flex-wrap:wrap;gap:8px;width:100%}#summon-position-fields label{white-space:nowrap}
+
+.actor-settings #summon-direction-choice{flex:0 1 240px;min-width:210px;white-space:nowrap}

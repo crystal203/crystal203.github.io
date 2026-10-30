@@ -1,0 +1,47 @@
+{
+  "character": "tanker",
+  "entryHero": "tanker_2",
+  "action": "BasicSupport:Tanker",
+  "status": "source-contract-fixed; visual acceptance pending",
+  "rootCause": "AssetName aliases and exact ObjectPoolSpec PresetName keys were mixed in insertion order; the later legacy fx_bb_krag_buff_lightbeam alias overwrote the exact requested fx_krag_buff_lightbeam preset.",
+  "requestedPreset": "fx_krag_buff_lightbeam",
+  "incorrectConsumerBeforeFix": "fx_bb_krag_buff_lightbeam",
+  "sourceBundle": "effects/manual/tanker",
+  "sourceBundleSha256": "7fbca56f9ddf6e9c268dec7e88864e19f038c1c29d43e6a73fbdac9ccdaa1a40",
+  "sourceMaterial": "FX_Lightaura_beam",
+  "sourceShader": "Effect/Mask_Additive_Tint",
+  "sourceNativeBlend": [
+    5,
+    1
+  ],
+  "nativeFragment": "C = 2 * vertexColor * TintColor * Mask(uv1) * MainTex(uv2); outputRGB = C.rgb * C.a + destinationRGB",
+  "incorrectLegacyBlend": "alpha; no shader/nativeBlend provenance; outputRGB = C.rgb*C.a + destinationRGB*(1-C.a)",
+  "sourcePoolDistinction": {
+    "fx_krag_buff_lightbeam": {
+      "AssetName": "fx_krag_buff_lightbeam",
+      "InitialSize": 4
+    },
+    "fx_bb_krag_buff_lightbeam": {
+      "AssetName": "fx_krag_buff_lightbeam",
+      "InitialSize": 0
+    }
+  },
+  "fix": "effectLookup filters unavailable entries, registers prefab-name aliases, then registers exact presets with higher priority.",
+  "check": {
+    "command": "node tools/fx/check-tanker-support-material.mjs",
+    "result": "passed",
+    "actualTracks": [
+      "FX_Char_Buff_AuraRing_depup_cast",
+      "fx_krag_buff_lightbeam"
+    ],
+    "scope": "one actual initial hero and equipment selection; no browser, pixels, screenshot, or full-character sweep"
+  },
+  "guardLimit": "The incremental importer correctly repaired the declared exact preset. The undeclared legacy alias was not a dependency; runtime lookup incorrectly selected it after the static guard.",
+  "changesToSourceImages": false,
+  "reimportNeeded": false,
+  "hashes": {
+    "gtfx/effect-lookup.js": "9a2bdad7eae1d3519cfdf794d9d1350cf02ca4ca56c234bc1fcfa1dc7c5168be",
+    "tools/fx/check-tanker-support-material.mjs": "374118852f4de954db0cd9d565f07ee51ae0ce6490468f2dc478de9862b4331d",
+    "gtfx/assets/characters/tanker.json": "bf6646f75ccc1366ea95259fb5e1f9b88435a50431be3b67188efb3ba7bdfc78"
+  }
+}

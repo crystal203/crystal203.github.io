@@ -1,0 +1,127 @@
+{
+  "format": "gtfx-character-readiness",
+  "scope": "One default source form with actual UI equipment resolution; no browser, image, pixel, facing or costume sweep; does not certify all source mechanisms",
+  "reports": [
+    {
+      "character": "whitedruid",
+      "status": "structurally-ready-not-visual-acceptance",
+      "failures": [],
+      "sourceReviewNotes": [
+        "role: no actor clips; check whether source intentionally leaves current pose"
+      ],
+      "evidence": {
+        "hero": "white_druid",
+        "weapon": "cwp_whitedruid",
+        "weaponType": "staff",
+        "style": "staff_white_druid",
+        "installedActions": [
+          "BasicSupport:WhiteDruid"
+        ],
+        "sourcePlanResolution": {
+          "policy": "source-first",
+          "compiledActions": [
+            "BasicSupport:WhiteDruid",
+            "CwpWhiteDruid",
+            "ManualWhiteDruid:First",
+            "ManualWhiteDruid:Second",
+            "ManualWhiteDruid:Third",
+            "RoleWhiteDruid"
+          ],
+          "legacyFallbackActions": []
+        },
+        "materialValidation": {
+          "version": 1,
+          "passed": true,
+          "effects": 44,
+          "materials": 215,
+          "scope": "action dependencies",
+          "visualValidation": false
+        },
+        "modules": [
+          {
+            "id": "basic-1",
+            "actorEnd": 0.55,
+            "duration": 0.55,
+            "clips": 5,
+            "tracks": 1
+          },
+          {
+            "id": "basic-2",
+            "actorEnd": 0.55,
+            "duration": 0.55,
+            "clips": 5,
+            "tracks": 1
+          },
+          {
+            "id": "basic-3",
+            "actorEnd": 0.7,
+            "duration": 0.95,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-combo",
+            "actorEnd": 1.8,
+            "duration": 2.05,
+            "clips": 11,
+            "tracks": 3
+          },
+          {
+            "id": "basic-1-tiger",
+            "actorEnd": 0.55,
+            "duration": 0.55,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-2-tiger",
+            "actorEnd": 0.55,
+            "duration": 0.55,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-3-tiger",
+            "actorEnd": 0.7,
+            "duration": 1,
+            "clips": 1,
+            "tracks": 1
+          },
+          {
+            "id": "basic-combo-tiger",
+            "actorEnd": 1.8,
+            "duration": 2.1,
+            "clips": 3,
+            "tracks": 3
+          },
+          {
+            "id": "role",
+            "actorEnd": 5,
+            "duration": 5.4,
+            "clips": 0,
+            "tracks": 3
+          },
+          {
+            "id": "support",
+            "actorEnd": 0.8,
+            "duration": 1.15,
+            "clips": 2,
+            "tracks": 2
+          },
+          {
+            "id": "cwp",
+            "actorEnd": 0.6,
+            "duration": 2.15,
+            "clips": 1,
+            "tracks": 4
+          }
+        ]
+      }
+    }
+  ],
+  "inputSnapshots": {
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-characters/whitedruid.json": "3fda0b8dc1b98ee6c203aef83c5bcba722e33961b222368fa84f9f12ed163b80",
+    "gtfx/assets/characters/whitedruid.json": "26f8adf0a8fcd08327a0bdaa8175e1816765510d654aaef16f5584b7c5038e05"
+  }
+}

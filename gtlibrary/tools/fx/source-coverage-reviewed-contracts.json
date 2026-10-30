@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "scope": "Reviewed narrow contracts; source hashes invalidate evidence on source changes. These are audit facts, not runtime hero dispatch.",
+  "contracts": [
+    {
+      "character": "summerrie",
+      "action": "MythSummerRie",
+      "sourceFile": "MythSummerRieBattleAction.lua",
+      "sourceSha256": "c8481923097cf68e6a05c2b36f5b44211644970fcdaed38be76ba293635f257f",
+      "kind": "fixed-events",
+      "events": [
+        {
+          "key": "slash",
+          "at": 0.02
+        },
+        {
+          "key": "fire",
+          "at": 0.1
+        },
+        {
+          "key": "screen",
+          "at": 0.4
+        },
+        {
+          "key": "explosion",
+          "at": 0.4
+        }
+      ],
+      "evidence": "Manually reviewed update_movement: four direct unconditional clock branches; lines 141-162. Requires no target/buff/option branch assumption.",
+      "resolution": "Existing declarative timeline can express this contract."
+    },
+    {
+      "character": "mermaidspy",
+      "action": "MythMermaidSpy",
+      "sourceFile": "MythMermaidSpyBattleAction.lua",
+      "sourceSha256": "af38f4ef08142db725111d02c04cdca77a10bf37606a3efd7cfbe4c27ca5e5e0",
+      "kind": "required-features",
+      "features": [
+        "spine",
+        "projectile"
+      ],
+      "effectKeys": [
+        "jump"
+      ],
+      "evidence": "Manually reviewed on_declare/on_start/update_movement: height8 + alpha fade; cubic descent .2-1, rotate .5-1; HitTiming-.15 projectiles from seeded 120 degree radial targets; HitTiming explosions; jump effect at1. Source animation shoot/landing changes also absent from old cast-only plan.",
+      "resolution": "Needs source-derived recipe for random radial points, projectile origins, actor spine offset/rotation/alpha path; presence alone cannot certify timings."
+    }
+  ]
+}
+

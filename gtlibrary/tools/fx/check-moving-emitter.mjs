@@ -1,0 +1,9 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import * as THREE from '../../vendor/three.module.js';import {createParticleSimulation}from '../../gtfx/core.js';import {resolveFacing}from '../../gtfx/targeting.js';
+const index=JSON.parse(fs.readFileSync('gtfx/assets/characters/necromancer.json')),effect=index.effects.find(e=>e.preset==='fx_cwp_necromancer_proj');
+const geometries=Object.fromEntries(Object.entries(index.meshes).filter(([,m])=>m.position).map(([k,m])=>{const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(m.position,3));if(m.uv)g.setAttribute('uv',new THREE.Float32BufferAttribute(m.uv,2));if(m.indices)g.setIndex(m.indices);return[k,g];}));
+const camera=new THREE.OrthographicCamera(-10,10,10,-10,.01,82),sim=createParticleSimulation(effect,{index,geometries,textures:{white:new THREE.Texture()},camera});
+const movers=new Set(effect.scripts.filter(s=>s.type==='CustomAnimator').map(s=>s.node)),affected=sim.particles.filter(p=>!p.s.local&&(()=>{for(let n=p.node;n;n=n.parent)if([...movers].some(id=>sim.nodes.get(id)===n))return true;return false;})());assert(affected.length>0);
+for(const p of affected){sim.animationCache=null;sim.animateNodes(p.birth/p.s.speed);assert(p.matrix.elements.every((x,i)=>Math.abs(x-p.node.matrixWorld.elements[i])<1e-6));}
+const starts=affected.map(p=>p.worldPos.x),span=Math.max(...starts)-Math.min(...starts);assert(span>5,'moving emitter births still collapsed');sim.sample(.25);assert(sim.particles.filter(p=>p.mesh.visible).every(p=>p.mesh.matrix.elements.every(Number.isFinite)));
+assert.equal(resolveFacing('auto',[2,0,5]),'back');assert.equal(resolveFacing('auto',[2,0,5],[2,0,8]),'front');assert.equal(resolveFacing('left',[5,0,0]),'left');
+console.log(JSON.stringify({passed:true,emitterBirthPositions:affected.length,xSpan:span,automaticFacing:true,imageTests:0}));sim.clear();

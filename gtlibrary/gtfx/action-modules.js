@@ -1,13 +1,57 @@
+import {batch6CActionModules} from './source-batch6-c.js';
+import {batch6AActionModules} from './source-batch6-a.js';
+import {batch6BActionModules} from './source-batch6-b.js';
+import {batch6RootActionModules} from './source-batch6-root.js';
+import {batch5DActionModules} from './source-batch5-d.js';
+import {batch5CActionModules} from './source-batch5-c.js';
+import {batch5AActionModules} from './source-batch5-a.js';
+import {batch5BActionModules} from './source-batch5-b.js';
+import {batch4RangedActionModules} from './source-batch4-ranged.js';
+import {batch4MeleeActionModules} from './source-batch4-melee.js';
+import {batch4SpecialActionModules} from './source-batch4-special.js';
+import {batch4RootActionModules} from './source-batch4-root.js';
+import {batch3RangedActionModules} from './source-batch3-ranged.js';
+import {batch3SupportActionModules} from './source-batch3-support.js';
+import {batch3MeleeActionModules} from './source-batch3-melee.js';
+import {batch3RootActionModules} from './source-batch3-root.js';
+import {effectLookup} from './effect-lookup.js';
+import {buildNativeWeaponActions} from './native-weapon-actions.js';
+import {nativeForAppearance} from './character-catalog.js';
+import {nativeForWeapon} from './weapon-hero-variants.js';
+import {selectedWeaponPlans} from './equipment-selection.js';
+import {resolveNativeManagerStyle} from './native-manager-operations.js';
+import {orbitCardActionModules} from './native-orbit-cards.js';
+import {graphStaminaMagazine} from './graph-preview-helpers.js';
+import {summonActionModules} from './summon-actions.js';
+import {equipmentStyle} from './equipment-options.js';
+import {expandManagedStyle} from './managed-actions.js';
+import {applyCostumeOverrides} from './costume-overrides.js';
+import {scriptActionModules} from './script-actions.js';
+import {sourceProjectileModules} from './script-projectile-patterns.js';
+import {projectileActionModules} from './projectile-actions.js';
+import {targetPosition as resolveTarget,selectActionTargets} from './targeting.js';
 import {interpretActionGraph,sampleGraphPath} from './graph-action.js';
 import {profiles} from './character-link.js';
 import {UnityRand} from './native-random.js';
+import {skyBarrageActionModules} from './native-sky-barrage.js';
+import {nativeSoundWaveActionModules} from './native-soundwave-actions.js';
+import {nativeAreaActionModules} from './native-area-actions.js';
+import {nativeFirearmActionModules} from './native-firearm-actions.js';
+import {foxBeadActionModules} from './native-foxbead-actions.js';
+import {fanActionModules} from './native-fan-actions.js';
+import {propRushActionModules} from './native-prop-rush.js';
+import {continuousArsenalActionModules} from './native-continuous-arsenal.js';
+import {reindeerActionModules} from './source-reindeer-actions.js';
+import {batch2ContinuousActionModules} from './source-batch2-continuous.js';
+import {batch2MeleeActionModules} from './source-batch2-melee.js';
+import {batch2ProjectileMeleeActionModules} from './source-batch2-projectile-melee.js';
 
 // Interprets exported BattleStyle, BattleAction and Projectile records. Action
 // exceptions are data in native-action-plans.json, rather than actor branches.
 const list=v=>Array.isArray(v)?v:v==null?[]:[v];
 const fields=rows=>Object.fromEntries(list(rows).flatMap(row=>row?.Name&&row?.Preset?[[row.Name,row.Preset]]:Object.entries(row||{}).filter(([,v])=>typeof v==='string')));
 const duration=a=>a?.ActionDuration??a?.EndTiming??a?.Duration??1;
-const clip=(r,start=0)=>({name:r.Animation,start,speed:r.Scale||1,loop:!!r.Loop,...(r.TargetDuration?{targetDuration:r.TargetDuration}:{})});
+const clip=(r,start=0)=>({name:r.Animation,start,speed:r.Scale??1,loop:!!r.Loop,...(r.TargetDuration?{targetDuration:r.TargetDuration}:{})});
 const travel=(speed,accel,range,life)=>Math.min(life,accel?(Math.sqrt(speed*speed+2*accel*range)-speed)/accel:range/speed);
 // Lua random_util.get_random_value delegates to UnityEngine.Random.value.
 // Sequence events share one draw for the projectile and all attached prefabs.
@@ -26,15 +70,21 @@ function sequenceRandoms(plan,action,rng){
 }
 
 
-export function actionModules(character,index,{targetDistance=6,appearance='',exclusiveWeapon=true,seed=12345,randomState=null,direction='right',weapon='',profile=profiles[character]}={},native={},plans={}){
+export function actionModules(character,index,{nativeManagerMode=null,targetDistance=6,targetPosition=null,secondaryTargets=[],appearance='',heroAppearance='',exclusiveWeapon=true,weaponEquipped=true,shield,summoned=true,summonPosition=null,summonDirection='auto',seed=12345,randomState=null,choiceOverrides={},buffScores={},direction='right',weapon='',profile=profiles[character]}={},native={},plans={}){
  if(!profile)return [];
- const heroClass=native.heroClasses?.[appearance]||native.heroClasses?.[profile.defaultSkin];
+ const sourceNative=nativeForAppearance(native,appearance,heroAppearance);if(sourceNative!==native){native=sourceNative;plans={...plans,[character]:native.plans};}
+ native=nativeForWeapon(native,heroAppearance||appearance||profile.defaultSkin,weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,exclusiveWeapon);
+ plans={...plans,[character]:selectedWeaponPlans(native,plans[character]||[],weapon||profile.weaponByAppearance?.[appearance]||profile.weapon)};
+ native=applyCostumeOverrides(native,appearance);heroAppearance=heroAppearance||appearance;
+ const targeting={targetDistance,targetPosition,secondaryTargets};
+ const point=resolveTarget(targeting,direction);targetDistance=Math.hypot(point[0],point[2]);
+ const heroClass=native.heroClasses?.[heroAppearance]||native.heroClasses?.[profile.defaultSkin];
  const useMyth=heroClass?.endsWith('_myth');
- const candidates=Object.values(native.styles||{}).filter(s=>s.Class===heroClass&&s.Weapon1===profile.weaponType&&s.ManualBattleActions?.length);
- const style=candidates.find(s=>s.Name===profile.nativeStyle)||candidates.sort((a,b)=>b.ManualBattleActions.length-a.ManualBattleActions.length)[0]||native.styles?.[profile.nativeStyle];
- if(!style)return [];
+ const managerStyle=resolveNativeManagerStyle(native,equipmentStyle(native,profile,heroAppearance,weaponEquipped,shield),{...targeting,targetDistance,heroAppearance,appearance,exclusiveWeapon,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,direction,profile,nativeManagerMode},plans[character]||[]);
+ const style=expandManagedStyle(native,managerStyle,{buffScores});
+ if(!style)return [{id:'idle',label:'待机',actor:{end:1,clips:[]},duration:1,tracks:[]}];
  const actions=native.actions||{},projectiles=native.projectiles||{};let rng;
- const effects=new Map(index.effects.filter(e=>!e.unavailable).flatMap(e=>[[e.preset,e],[e.assetName,e]]));
+ const effects=effectLookup(index.effects);
  const result=[];
  const put=(tracks,action,preset,at=0,link={})=>{const effect=effects.get(preset);if(effect)tracks.push({effect,at,link:{action:action.Name,end:duration(action),delay:0,anchor:'center',clips:[],...link}});};
  const make=(id,label,action,actor,build)=>{const stream=new UnityRand(seed);if(randomState)stream.setState(randomState);rng=()=>stream.nextFloat();const stateBefore=stream.getState(),tracks=[];build(tracks);if(tracks.length)result.push({id,label,actor,random:{implementation:'UnityEngine.Random',stateBefore,stateAfter:stream.getState()},duration:Math.max(actor.end,...tracks.map(t=>t.at+(t.link.fxEnd??t.link.delay+t.effect.duration))),tracks});};
@@ -45,7 +95,7 @@ export function actionModules(character,index,{targetDistance=6,appearance='',ex
   return {end:duration(action),clips:c?[c]:[]};};
  const spec=a=>projectiles[list(a.ProjectileInfo)[0]?.Name];
  const basic=(a,tracks,at=0)=>{
-  const p=fields(useMyth&&a.MythPresetInfo||a.PresetInfo),kind=a.AttackType,projectile=spec(a),life=projectile?.Lifetime||0;
+  const p=({...fields(a.PresetInfo),...(useMyth?fields(a.MythPresetInfo):{})}),kind=a.AttackType,projectile=spec(a),life=projectile?.Lifetime||0;
   const add=(key,delay,link={})=>p[key]&&put(tracks,a,p[key],at,{delay,...link});
   if(a.ProjName&&a.ShootFrame){
    add('action',0,{directed:false});
@@ -100,25 +150,34 @@ export function actionModules(character,index,{targetDistance=6,appearance='',ex
   add(variant,0,{referenceDirection:[1,0,0],mirrorZForLeft:true,offset:rule?.fxOffset||0,
    scaleFactor:1+(exclusiveWeapon?option?.ScaleFactorAdd||0:0)});
  };
- const heroOptions=native.heroOptionIds?.[appearance]||native.heroOptionIds?.[profile.defaultSkin]||[];
+ const heroOptions=native.heroOptionIds?.[heroAppearance]||native.heroOptionIds?.[profile.defaultSkin]||[];
  const weaponInfo=native.weapons?.[weapon||profile.weaponByAppearance?.[appearance]||profile.weapon];
- const graphOptions={targetDistance,direction,exclusiveWeapon,optionIds:[...heroOptions,...(exclusiveWeapon?weaponInfo?.optionIds||[]:[])]};
- const graphAction=(a,extra={})=>{const graph=native.graphs?.[a?.GraphName];if(!graph)throw Error('Missing action graph: '+a?.GraphName);return interpretActionGraph(graph,index,{...graphOptions,...extra});};
- const graphBasics=(style.ManualBattleActions||[]).map(n=>actions[n]).filter(a=>a?.Name.startsWith('GraphCombo:'));
- for(const [i,a] of graphBasics.entries())result.push({id:`basic-${i+1}`,label:`普攻第 ${i+1} 段`,...graphAction(a)});
+ const graphOptions={targetDistance,targetPosition,secondaryTargets,direction,exclusiveWeapon,ownerElement:native.heroElements?.[heroAppearance]??native.heroElements?.[profile.defaultSkin],optionIds:[...heroOptions,...(exclusiveWeapon?weaponInfo?.optionIds||[]:[])]};
+ const graphAction=(a,extra={})=>{const graph=native.graphs?.[a?.GraphName];if(!graph)throw Error('Missing action graph: '+a?.GraphName);return interpretActionGraph(graph,index,{...graphOptions,action:a,native,...extra});};
+ const graphBasics=(style.ManualBattleActions||[]).map(n=>actions[n]).filter(a=>a?.GraphName&&!/^(GraphRole|GraphSupport|GraphTrigger|GraphMyth):/.test(a.Name));
+ for(const [i,a] of graphBasics.entries()){result.push({id:`basic-${i+1}`,label:`普攻第 ${i+1} 段`,...graphAction(a)});if(a.Name.startsWith('GraphStamina:'))result.push({id:'basic-break',label:'弹匣终结攻击',...graphAction(a,{breakAttack:true})});}
+
+ // GraphStamina consumes the native character pool, independently of weapon MagazineSize.
+ for(const a of graphBasics.filter(a=>a.Name.startsWith('GraphStamina:'))){
+  const magazine=graphStaminaMagazine(extra=>graphAction(a,extra),native.battleDefaults?.maxStamina??200);
+  if(magazine)result.push(magazine);
+ }
  if(graphBasics.length>1){
-  let time=0,position=[0,0,0];const tracks=[],clips=[],path=[],traces=[];
+  let time=0,position=[0,0,0];const tracks=[],clips=[],path=[],spinePath=[],traces=[];
   for(const a of graphBasics){const m=graphAction(a,{initialPosition:position});
-   tracks.push(...m.tracks.map(t=>({...t,at:time})));
+   tracks.push(...m.tracks.map(t=>({...t,at:time+t.at})));
    clips.push(...m.actor.clips.map(c=>({...c,start:c.start+time,end:(c.end??m.actor.end)+time})));
    path.push(...m.actor.graphPath.filter(p=>p.time<=m.actor.end+1e-9).map(p=>({...p,time:p.time+time})));
+   spinePath.push(...(m.actor.spinePath||[]).map(p=>({...p,time:p.time+time})));
    position=sampleGraphPath(m.actor.graphPath,m.actor.end);traces.push(m.graphTrace);time+=m.actor.end;
   }
-  result.push({id:'basic-combo',label:'普攻连贯',actor:{end:time,clips,graphPath:path},tracks,duration:Math.max(time,...tracks.map(t=>t.at+t.link.fxEnd)),graphTrace:traces});
+  result.push({id:'basic-combo',label:'普攻连贯',actor:{end:time,clips,graphPath:path,spinePath},tracks,duration:Math.max(time,...tracks.map(t=>t.at+t.link.fxEnd)),graphTrace:traces});
  }
- const graphRoles=(style.ManualBattleActions||[]).map(n=>actions[n]).filter(a=>a?.Name.startsWith('GraphRole:'));
+ const installedActions=Object.values(native.options||{}).filter(o=>graphOptions.optionIds.includes(o.Id)).map(o=>o.BattleActionName);
+ const graphRoles=[...new Set([...(style.ManualBattleActions||[]),...installedActions])].map(n=>actions[n]).filter(a=>a?.Name.startsWith('GraphRole:'));
  const graphSupports=Object.values(actions).filter(a=>a.Name.startsWith('GraphSupport:'));
- for(const [id,label,rows] of [['role','角色技能',graphRoles],['support','连锁技能',graphSupports],['cwp','专武技能',exclusiveWeapon&&weaponInfo?.action?[actions[weaponInfo.action]].filter(a=>a?.GraphName):[]]]){
+ const graphMyths=useMyth?Object.values(actions).filter(a=>a.Name.startsWith('GraphMyth:')):[];
+ for(const [id,label,rows] of [['role','角色技能',graphRoles],['support','连锁技能',graphSupports],['myth','开花技能',graphMyths],['cwp','专武技能',exclusiveWeapon&&weaponInfo?.action?[actions[weaponInfo.action]].filter(a=>a?.GraphName):[]]]){
   rows.forEach((a,i)=>result.push({id:id+(i?'-'+i:''),label,...graphAction(a)}));
  }
  const basics=(style.ManualBattleActions?.length?style.ManualBattleActions:style.BattleActions||[]).filter(n=>n.startsWith('Manual')).map(n=>actions[n]).filter(Boolean);
@@ -137,7 +196,7 @@ export function actionModules(character,index,{targetDistance=6,appearance='',ex
  // Plans only identify source fields and Lua event kinds. All clock values,
  // projectile physics, prefabs and clips are resolved from native records.
   for(const plan of plans[character]||[]){
-  if(plan.augmentAction||result.some(m=>m.id===plan.id))continue;
+  if(plan.behavior||plan.augmentAction||result.some(m=>m.id===plan.id))continue;
   if(plan.requiredClass&&heroClass!==plan.requiredClass)continue;
   if(plan.mythOnly&&!useMyth||plan.normalOnly&&useMyth)continue;
   if(plan.exclusive&&!exclusiveWeapon)continue;
@@ -151,7 +210,7 @@ export function actionModules(character,index,{targetDistance=6,appearance='',ex
    })));
    continue;
   }
-  const p={...fields(useMyth&&action.MythPresetInfo||action.PresetInfo),...fields(native.options?.[plan.option]?.PresetInfo)};
+  const p={...fields(action.PresetInfo),...(useMyth?fields(action.MythPresetInfo):{}),...fields(native.options?.[plan.option]?.PresetInfo)};
   const variants=plan.variantByAppearance?[plan.variantByAppearance[appearance]]:plan.variants||[null];
   for(const variant of variants){
    if(plan.variantByAppearance&&variant==null)continue;
@@ -168,7 +227,7 @@ export function actionModules(character,index,{targetDistance=6,appearance='',ex
      const rounds=e.repeatField?list(action[e.repeatField]):[0];
      for(const [ri,round] of rounds.entries()){
       for(const [si,step] of (e.stepField?list(action[e.stepField]):[0]).entries()){
-       const frame=e.phaseFrameField?list(action[e.phaseFrameField])[e.phaseIndex||0]/(native.frameRate||30):0;
+       const frame=e.phaseFrameField?(list(action[e.phaseFrameField])[e.phaseIndex||0]??0)/(native.frameRate||30):0;
        const delay=(e.phaseField?list(action[e.phaseField])[e.phaseIndex||0]||0:e.phase||0)+frame+round+step;
        const link={delay,anchor:e.anchor||'center',directed:e.directed??true};
        if(e.targetGround)link.targetGround=true;
@@ -179,12 +238,55 @@ export function actionModules(character,index,{targetDistance=6,appearance='',ex
        if(e.fly){Object.assign(link,{anchor:'projectile',offset:action.EnergyBallDistance||0,projectileSpeed:action.EnergyBallSpeed||0,projectileUnclamped:true,fxEnd:delay+(action.AttackDuration||1)});}
        if(e.offsetField)link.offset=action[e.offsetField];
        if(e.fxEndField)link.fxEnd=action[e.fxEndField];
-       put(tracks,action,preset,0,link);
+       if(link.anchor==='target'&&action.LimitTarget>1){for(const p of selectActionTargets(action,targeting,direction))put(tracks,action,preset,0,{...link,targetPosition:p});}
+       else put(tracks,action,preset,0,link);
       }
      }
     }
    });
   }
  }
- return result;
+ const orbit=orbitCardActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const nativeWeapons=buildNativeWeaponActions(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,style);
+ const sky=skyBarrageActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[]);
+ const areas=nativeAreaActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const firearms=nativeFirearmActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const arsenals=continuousArsenalActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch3Ranged=batch3RangedActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch3Support=batch3SupportActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch3Melee=batch3MeleeActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch5C=batch5CActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch5D=batch5DActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch6C=batch6CActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch6A=batch6AActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch6B=batch6BActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch6Root=batch6RootActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch5A=batch5AActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch5B=batch5BActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch4Ranged=batch4RangedActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch4Melee=batch4MeleeActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch4Special=batch4SpecialActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch4Root=batch4RootActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch3Root=batch3RootActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch2Continuous=batch2ContinuousActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch2Melee=batch2MeleeActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const batch2ProjectileMelee=batch2ProjectileMeleeActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const reindeer=reindeerActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const props=propRushActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const fans=fanActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const foxbeads=foxBeadActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const soundwaves=nativeSoundWaveActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const sourced=sourceProjectileModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const scripted=scriptActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const typed=projectileActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,weapon:weapon||profile.weaponByAppearance?.[appearance]||profile.weapon,profile},native,plans[character]||[],style);
+ const moduleIds=new Set(),combined=[...batch6C,...batch6A,...batch6B,...batch6Root,...batch5D,...batch5C,...batch5A,...batch5B,...batch4Ranged,...batch4Melee,...batch4Special,...batch4Root,...batch3Ranged,...batch3Support,...batch3Melee,...batch3Root,...batch2ProjectileMelee,...batch2Melee,...batch2Continuous,...arsenals,...reindeer,...props,...fans,...foxbeads,...firearms,...areas,...soundwaves,...sky,...orbit,...nativeWeapons,...sourced,...scripted,...typed,...result].filter(m=>{if(moduleIds.has(m.id))return false;moduleIds.add(m.id);return true;}).map(m=>({...m,actor:{...m.actor,idleAnimation:style.CustomIdle??profile.idleAnimation}}));
+ // A preview exposes both executable native distance branches in one menu.
+ // Automatic play still uses the actual distance; explicit alternatives retain
+ // their source distance condition and never replace the normal branch.
+ const switchable=style.nativeManagers?.find(s=>s.plan.nativeManager.operation==='distanceMagazine'&&s.parameters);
+ if(!nativeManagerMode&&switchable){
+  const branch=switchable.active?'melee':'ranged',alternatives=actionModules(character,index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,weaponEquipped,shield,summoned,summonPosition,summonDirection,seed,randomState,choiceOverrides,buffScores,weapon,profile,nativeManagerMode:branch},native,plans);
+  for(const m of alternatives.filter(m=>/^basic(?:-|$)/.test(m.id)))combined.push({...m,id:'basic-'+branch+'-'+m.id.replace(/^basic-?/,''),label:branch==='melee'?'近战 · '+m.label:m.label,nativeCondition:{...m.nativeCondition,branch,distance:switchable.threshold,comparison:branch==='melee'?'at-most':'greater-than'}});
+ }
+ return summonActionModules(index,{...targeting,appearance,heroAppearance,direction,exclusiveWeapon,summoned,summonPosition,summonDirection,seed,weapon,profile},native,plans[character]||[],combined);
 }

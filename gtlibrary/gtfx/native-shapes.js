@@ -7,7 +7,7 @@ const f32=Math.fround;
 export function nativeShapeSupported(shape){
   if(!shape)return true;
   if(shape.type===6)return !!shape.mesh&&[0,1].includes(shape.placementMode)&&!(shape.m_MeshSpawn?.mode||0)&&!Number(shape.m_Texture?.m_PathID||0);
-  const mode=shape.type===5?0:shape.type===12?shape.radius?.mode:shape.arc?.mode;
+  const mode=[5,18].includes(shape.type)?0:shape.type===12?shape.radius?.mode:shape.arc?.mode;
   return !!names[shape.type]&&((mode||0)===0||mode===3||mode===1&&[8,17].includes(shape.type)||mode===2&&shape.type===12)&&
     !Number(shape.m_Texture?.m_PathID||shape.m_Texture?.fileID||0);
 }
@@ -33,7 +33,7 @@ export function nativeShapeSamples(shape,rng,count,{normalize=true,phase=0,previ
     }
     return result.slice(0,count);
   }
-  const mode=shape.type===5?0:shape.type===12?shape.radius?.mode:shape.arc?.mode;
+  const mode=[5,18].includes(shape.type)?0:shape.type===12?shape.radius?.mode:shape.arc?.mode;
   const name=names[shape.type]+(mode===3?'Spread':mode===1?'Loop':mode===2?'PingPong':'');
   const vm=rng.shapeVM??=new NativeKernelVM(shapeConstants),v=vm.view,base=0x1000,data=0x2000;
   for(const [offset,value] of [[0x10,shape.radius?.value??1],[0x18,shape.radius?.spread??0],

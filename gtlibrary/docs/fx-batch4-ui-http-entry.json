@@ -1,0 +1,104 @@
+{
+  "requests": [
+    "http://127.0.0.1:8765/gtfx/assets/catalog.json",
+    "http://127.0.0.1:8765/gtfx/assets/native-action-plans.json",
+    "http://127.0.0.1:8765/gtfx/assets/weapon-types.json",
+    "http://127.0.0.1:8765/gtfx/assets/character-groups.json",
+    "http://127.0.0.1:8765/gtfx/assets/native-characters/ninjaleader.json",
+    "http://127.0.0.1:8765/gtfx/assets/characters/ninjaleader.json",
+    "http://127.0.0.1:8765/gtfx/assets/native-characters/jadeshaman.json",
+    "http://127.0.0.1:8765/gtfx/assets/characters/jadeshaman.json"
+  ],
+  "report": [
+    {
+      "alias": "ninja_leader",
+      "id": "ninjaleader",
+      "name": "雪华众上忍枣",
+      "appearance": "ninja_leader",
+      "weapon": "cwp_ninjaleader",
+      "exclusiveWeapon": true,
+      "skills": [
+        {
+          "id": "support",
+          "label": "连锁技能",
+          "tracks": 11,
+          "clips": 3,
+          "presets": [
+            "fx_m_ninja_leader_support_3rd_cast",
+            "fx_m_ninja_leader_support_3rd_loop",
+            "fx_m_ninja_leader_clone_up",
+            "fx_m_ninja_leader_support_3rd_loop",
+            "fx_m_ninja_leader_support_3rd_explosion",
+            "fx_m_ninja_leader_clone_start",
+            "fx_m_ninja_leader_3rd_dash",
+            "fx_m_ninja_leader_support_dash_contrail",
+            "fx_m_ninja_leader_clone_start",
+            "fx_m_ninja_leader_3rd_dash",
+            "fx_m_ninja_leader_support_dash_contrail"
+          ]
+        },
+        {
+          "id": "cwp",
+          "label": "专武技能",
+          "tracks": 16,
+          "clips": 1,
+          "presets": [
+            "fx_cwp_ninja_leader_screen",
+            "fx_cwp_ninja_leader_slash",
+            "fx_cwp_ninja_leader_proj",
+            "fx_cwp_ninja_leader_contrail",
+            "fx_cwp_ninja_leader_proj_end",
+            "fx_m_ninja_leader_clone_start",
+            "fx_cwp_ninja_leader_slash",
+            "fx_cwp_ninja_leader_proj",
+            "fx_cwp_ninja_leader_contrail",
+            "fx_cwp_ninja_leader_proj_end",
+            "fx_m_ninja_leader_clone_start",
+            "fx_cwp_ninja_leader_slash",
+            "fx_cwp_ninja_leader_proj",
+            "fx_cwp_ninja_leader_contrail",
+            "fx_cwp_ninja_leader_proj_end",
+            "fx_m_ninja_leader_clone_start"
+          ]
+        }
+      ]
+    },
+    {
+      "alias": "jade_shaman",
+      "id": "jadeshaman",
+      "name": "翡翠驱魔师塔莎",
+      "appearance": "jade_shaman",
+      "weapon": "cwp_jadeshaman",
+      "exclusiveWeapon": true,
+      "skills": [
+        {
+          "id": "support",
+          "label": "连锁技能",
+          "tracks": 6,
+          "clips": 1,
+          "presets": [
+            "fx_m_jade_shaman_support_cast",
+            "fx_m_jade_shaman_support_trail",
+            "fx_m_jade_shaman_support_stone",
+            "fx_m_jade_shaman_support_summon_spine",
+            "fx_m_jade_shaman_support_explosion",
+            "summonable:500701"
+          ]
+        },
+        {
+          "id": "cwp",
+          "label": "专武技能",
+          "tracks": 5,
+          "clips": 2,
+          "presets": [
+            "fx_cwp_jade_shaman_cast",
+            "fx_cwp_jade_shaman_screen",
+            "fx_cwp_jade_shaman_slash",
+            "fx_cwp_jade_shaman_slash_rev",
+            "summonable:500701"
+          ]
+        }
+      ]
+    }
+  ]
+}

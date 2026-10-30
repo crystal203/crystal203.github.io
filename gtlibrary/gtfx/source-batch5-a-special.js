@@ -1,0 +1,11 @@
+import {scriptActionModules} from './script-actions.js';
+import {aimDirection} from './targeting.js';
+const add=(a,b,k=1)=>a.map((x,i)=>x+b[i]*k);
+export function batch5ASpecial(index,options,native,p,style){
+ if(p.batch5Operation!=='inspector-hook')return null;
+ const a=native.actions[p.action],initial=options.actorPosition||[0,0,0],dir=aimDirection(options,options.direction,initial),center=add(initial,[0,.375,0]),length=a.DashSpeed*a.DashDuration*.5,offset=Math.max(options.boundsSize?.[0]??.55,options.boundsSize?.[2]??.55)*.5+.5,toPath=[];
+ for(let i=0;i<=12;i++){const time=a.ExpandDuration*i/12;toPath.push({time,position:add(center,dir,offset+length*(time/a.ExpandDuration)**4)});}toPath.push({time:a.DashTiming+a.DashDuration,position:toPath.at(-1).position});
+ const ev=(key,at=0,extra={})=>({op:'effect',key,at,anchor:'center',nativePoolLifetime:true,nativePoolTransform:extra.directed===false?'direct':'directional',...extra}),dead=a.DashTiming+a.DashDuration,m=scriptActionModules(index,options,native,[{...p,behavior:'timeline',clips:[{key:'attack',at:0}],events:[ev('chain',a.ShootTiming,{directed:false,until:dead}),ev('explosion',a.ExpandDuration,{directed:false,link:{graphPosition:toPath.at(-1).position}}),ev('dash',a.DashTiming,{follow:true,followSpine:true})],moves:[{op:'dash',at:a.DashTiming,duration:a.DashDuration,speed:a.DashSpeed}],spine:[]}],style)[0];
+ if(!m)return null;const track=m.tracks.find(t=>t.effect.preset===Object.assign({},...a.PresetInfo).chain),fx=track.effect,script=fx.scripts.find(s=>s.type==='HookShot'),chain=fx.nodes.find(n=>n.name==='chain'),head=fx.nodes.find(n=>n.name==='head');if(!script||!chain||!head)throw Error('Incomplete native HookShot dependencies');
+ track.link.nativeHookFromTo={fromPath:m.actor.graphPath.map(p=>({time:p.time,position:add(p.position,[0,.375,0])})),toPath,headNode:head.id,chainNode:chain.id,headLength:script.fields.HeadLength,chainUnitLength:script.fields.chainUnitLength,chainScale:[chain.scale.x,chain.scale.y,chain.scale.z],headScale:[head.scale.x,head.scale.y,head.scale.z],headOffset:head.position.z};m.sourceTrace={operation:'native-hook-from-to',expand:a.ExpandDuration,dashAt:a.DashTiming,dead,maxLength:length+offset,sourceMethod:'Oak.HookShot.SetFromTo 0x6665ca8'};return m;
+}

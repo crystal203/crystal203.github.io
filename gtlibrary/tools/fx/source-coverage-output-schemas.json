@@ -1,0 +1,445 @@
+{
+  "schema": 2,
+  "contracts": [
+    {
+      "name": "charge-release-variants",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "native-charge"
+      },
+      "runtime": "gtfx/native-charge-actions.js",
+      "dependencies": {
+        "gtfx/native-charge-actions.js": "60fe80360dffc5e133b8ff3bd8afead20c74d216114fb1f5de9dd7bfe026aba6",
+        "tools/fx/native_script_charge.py": "70803edd183d31d182f9305a0c1e114cc20cdc0479f47716015fa88c2b9b2e85",
+        "gtfx/script-actions.js": "8106cfc9ea6d629b9e2d03bb7385c5c48d2dca0533e0dc0dd667f2bb36d6c4ba",
+        "gtfx/melee-timeline.js": "9d0c3220ffdb73f32b2e225071cfed2921d76110b8998975e83441be289b2d75"
+      },
+      "requiredActionFields": [
+        "ChargeDurations",
+        "MaxChargeDuration",
+        "AttackDuration",
+        "ProjectileInfo"
+      ],
+      "sourceGuardAll": [
+        "function local_class:charge_level(level)",
+        "self.reverse_flag = not self.reverse_flag",
+        "self.sync_level + proj_index"
+      ],
+      "features": {
+        "move": true,
+        "projectile": true,
+        "option": false
+      },
+      "effectKeys": [],
+      "bindings": {
+        "move": "expandNativeChargePlans emits moves[].dash from nativeCharge dashAt/dashDuration/dashSpeedPerLevel/stopOffset; scriptActionModules -> buildMeleeTimeline",
+        "projectile": "release emits projectile event with level-1 plus enhancedProjectileOffset, offset from rule.projectileOriginOffset + ProjectileInfo.Offset",
+        "effects": "charge/lvN and nativeCharge.slashKeys, optionally _myth when a referenced non-Cwp MythOptionId exists; thresholds from ChargeDurations and MaxChargeDuration",
+        "option": "Weapon ProjectileInfo replacement and non-Cwp appended ProjectileInfo are represented; Cwp buff/gameplay branches remain unknown"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient.",
+      "effectKeyGenerator": "charge-variants",
+      "requiredPlanFields": [
+        "nativeCharge"
+      ],
+      "reviewNote": "2026-10-30: re-read script-actions after the unshipped nativeAim/actorTailEnd experiment was removed. expandNativeChargePlans, resolvedParameters, buildMeleeTimeline and projectile index/offset/direction consumption remain represented by this contract; charge events carry no ricochet branch."
+    },
+    {
+      "name": "weapon-falling-chain",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "native-weapon-skill",
+        "nativeWeaponSkill": "falling-chain"
+      },
+      "runtime": "gtfx/native-weapon-actions.js",
+      "dependencies": {
+        "gtfx/native-weapon-actions.js": "5041a9d6adbd4f60ba563fc8048f2aaa604a366d34fca674c803799480de5fa9",
+        "tools/fx/native_script_weapon_actions.py": "409b6542ba139d23e574e5a13a3be0dfff0b9b5ffed8173c603e32f107c22083",
+        "gtfx/native-melee-operations.js": "ce23bea51a18dd55284fdf84a9ffc6aa51d8eac8069af10f399ad609b0d5fed2"
+      },
+      "requiredActionFields": [
+        "ActionDuration",
+        "SearchRange",
+        "Limit",
+        "AttackTiming",
+        "HitDelay",
+        "AttackDelay"
+      ],
+      "sourceGuardAll": [
+        "function action_state_class:on_field_routine",
+        "local height = 10",
+        "self.unchecked_label"
+      ],
+      "features": {
+        "move": false,
+        "routine": true,
+        "option": false
+      },
+      "effectKeys": [
+        "cast",
+        "screen",
+        "proj",
+        "trail",
+        "explosion"
+      ],
+      "bindings": {
+        "routine": "on_field_routine output expanded into AttackTiming + i*(HitDelay+AttackDelay) falling motionPath, disposal at hit and independent explosion tails",
+        "effects": "cast/screen at start; proj/trail per impact; explosion after HitDelay",
+        "option": "Ascent preset replacement exists; Radius and native damage/collision are not certified"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient.",
+      "requiredPlanFields": [
+        "nativeWeaponSkill"
+      ]
+    },
+    {
+      "name": "weapon-charge-impact",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "native-weapon-skill",
+        "nativeWeaponSkill": "charge-impact"
+      },
+      "runtime": "gtfx/native-weapon-actions.js",
+      "dependencies": {
+        "gtfx/native-weapon-actions.js": "5041a9d6adbd4f60ba563fc8048f2aaa604a366d34fca674c803799480de5fa9",
+        "tools/fx/native_script_weapon_actions.py": "409b6542ba139d23e574e5a13a3be0dfff0b9b5ffed8173c603e32f107c22083",
+        "gtfx/native-melee-operations.js": "ce23bea51a18dd55284fdf84a9ffc6aa51d8eac8069af10f399ad609b0d5fed2"
+      },
+      "requiredActionFields": [
+        "ActionDuration",
+        "ChargeStartProgress",
+        "ChargeSpeed",
+        "ChargeBoundSize"
+      ],
+      "sourceGuardAll": [
+        "self.charge_start_timing",
+        "self.pass_crash_behaviour.PushingTargets.Count"
+      ],
+      "features": {
+        "move": true,
+        "option": false
+      },
+      "effectKeys": [
+        "cast",
+        "dash",
+        "smoke",
+        "explosion"
+      ],
+      "bindings": {
+        "move": "ChargeStartProgress * ActionDuration * (1-ChargeStartScale), ChargeSpeed, swept ChargeBoundSize OBB until impact; actor.graphPath uses 60Hz level-floor preview",
+        "effects": "cast at start; dash/smoke at charge start; disposal and explosion at hit/end",
+        "option": "ChargeStartScale and presets merge exists; RadiusScale/native damage collision branch remains unknown"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient.",
+      "requiredPlanFields": [
+        "nativeWeaponSkill"
+      ]
+    },
+    {
+      "name": "orbit-aimed-twin-shot",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "source-orbit-cards",
+        "pattern": "aimed-twin-shot"
+      },
+      "runtime": "gtfx/native-orbit-cards.js",
+      "dependencies": {
+        "gtfx/native-orbit-cards.js": "2612ede27f2adaa94842d24385c5691691f0c96d9141e6085358481e264fd1df",
+        "tools/fx/native_script_orbit_cards.py": "867f8b07595c49c5600fbe017d979d2730e2e97617d724bb3811750951831d98",
+        "gtfx/native-projectile.js": "2b1d2ca4a06f30afd47f920c78f5c5221076ff42fc0f7609428be59d49b646dd"
+      },
+      "requiredActionFields": [
+        "ProjectileInfo",
+        "ShootTiming"
+      ],
+      "sourceGuardAll": [
+        "obj.twin_atk = (combo_index == 2)",
+        "function action_state_class:get_avail_angle(target_pos, spec)"
+      ],
+      "features": {
+        "projectile": true,
+        "option": false
+      },
+      "effectKeys": [],
+      "bindings": {
+        "projectile": "ComboIndex == twinComboIndex emits two ProjectileInfo[0] launches using nativeTwinAngle, or one otherwise; target/no-target choices retain source motionPath/directionPath",
+        "option": "Action MythPresetInfo/MythProjectileInfo selection exists; extra option/buff branches remain unknown"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient."
+    },
+    {
+      "name": "orbit-single-ground-cast",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "source-orbit-cards",
+        "pattern": "single-ground-cast"
+      },
+      "runtime": "gtfx/native-orbit-cards.js",
+      "dependencies": {
+        "gtfx/native-orbit-cards.js": "2612ede27f2adaa94842d24385c5691691f0c96d9141e6085358481e264fd1df",
+        "tools/fx/native_script_orbit_cards.py": "867f8b07595c49c5600fbe017d979d2730e2e97617d724bb3811750951831d98",
+        "gtfx/native-projectile.js": "2b1d2ca4a06f30afd47f920c78f5c5221076ff42fc0f7609428be59d49b646dd"
+      },
+      "requiredActionFields": [
+        "HitAreaTimings"
+      ],
+      "sourceGuardAll": [
+        "battle_util.instantiate_effect(self, 'cast', self.target_pos)",
+        "self.hit_timing"
+      ],
+      "features": {
+        "projectile": false,
+        "option": false
+      },
+      "effectKeys": [
+        "cast"
+      ],
+      "bindings": {
+        "effects": "cast at targetGround; HitAreaTimings recorded in nativeOrbitTrace.damageTimings",
+        "option": "Option parser is source inventory only; effects/damage/buff branches are not certified"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient."
+    },
+    {
+      "name": "orbit-staged-orbit-launch",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "source-orbit-cards",
+        "pattern": "staged-orbit-launch"
+      },
+      "runtime": "gtfx/native-orbit-cards.js",
+      "dependencies": {
+        "gtfx/native-orbit-cards.js": "2612ede27f2adaa94842d24385c5691691f0c96d9141e6085358481e264fd1df",
+        "tools/fx/native_script_orbit_cards.py": "867f8b07595c49c5600fbe017d979d2730e2e97617d724bb3811750951831d98",
+        "gtfx/native-projectile.js": "2b1d2ca4a06f30afd47f920c78f5c5221076ff42fc0f7609428be59d49b646dd"
+      },
+      "requiredActionFields": [
+        "ShootTiming",
+        "ProjectileInfo"
+      ],
+      "sourceGuardAll": [
+        "local first_index = #self.shoot_timing - #self.card_fx_table + 1",
+        "card_fx.transform.localScale = 0.6",
+        "character_util.jump(self.owner, 0.5, 0.5, 0, false)"
+      ],
+      "features": {
+        "jump": true,
+        "projectile": true,
+        "option": false
+      },
+      "effectKeys": [
+        "cast",
+        "screen",
+        "proj1",
+        "trail1",
+        "proj2",
+        "trail2"
+      ],
+      "bindings": {
+        "jump": "Exclusive-weapon sine jump from plan.jump.height/duration -> actor.spinePath",
+        "projectile": "ShootTiming/ProjectileInfo alternating card mode -> prelaunch orbit motionPath/directionPath then launched ProjectileSpec; prelaunchScale changes at release",
+        "effects": "cast/screen at start; proj/trail keys composed from index % 2 + 1 only",
+        "option": "MythOptionIdList preset/projectile selection exists; CwpBuff and on-hit option branches remain unknown"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient.",
+      "requiredPlanFields": [
+        "jump",
+        "radius",
+        "initTerm",
+        "orbitStart",
+        "prelaunchScale",
+        "shootOffset"
+      ]
+    },
+    {
+      "name": "registered-manual-soundwave",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "native-soundwave"
+      },
+      "runtime": "gtfx/native-soundwave-actions.js",
+      "dependencies": {
+        "gtfx/native-soundwave-actions.js": "d1ff155cb52222279ed8e42288b636a272fa194a35ad281627a1f66af917fd44",
+        "tools/fx/native_csharp_soundwave.py": "123a1df92beb2869299d267d92cf5e2596cbeb7dc96ea51e6670d3a2c8076b95"
+      },
+      "requiredActionFields": [
+        "ProjName",
+        "ShootFrame",
+        "Angle",
+        "DashFrame",
+        "AnimationInfo",
+        "ActionDuration"
+      ],
+      "sourceGuardAll": [],
+      "features": {
+        "jump": true,
+        "projectile": true,
+        "option": false
+      },
+      "effectKeys": [],
+      "bindings": {
+        "jump": "DashFrame / nativeSoundWave.fps and jumpHeight -> sine actor.spinePath including action tail",
+        "projectile": "ShootFrame/fps, reverse Angle indexing, ProjName/MythProjName, random without replacement and physical launch paths",
+        "effects": "PresetInfo[nativeSoundWave.auraKey] at first ShootFrame; ProjectileSpec-dependent pools are separate from action keys",
+        "option": "normalTriggerOptions explicitly compiled cooldown/preset/owner-recipient branch only; no all-option verdict"
+      },
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or all option branches.",
+      "optionCoverage": "Unknown unless explicitly bound. Parsing, presets merging and active IDs alone are insufficient.",
+      "requiredPlanFields": [
+        "nativeSoundWave"
+      ],
+      "effectKeyPlanFields": [
+        "nativeSoundWave.auraKey"
+      ]
+    },
+    {
+      "name": "source-persistent-area",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "source-persistent-area"
+      },
+      "runtime": "gtfx/native-area-actions.js",
+      "dependencies": {
+        "gtfx/native-area-actions.js": "a7fee5e1be0046c70181f7407f53cb15970ca77504bb86a3b2dfd43acc16e91e",
+        "tools/fx/native_script_persistent_area.py": "90807665ff843885a1b0c7c3865b1e8f41ad7105e4169cb6ea7f13a598909124"
+      },
+      "features": {
+        "move": false,
+        "jump": true,
+        "spine": true,
+        "recoil": true,
+        "projectile": false,
+        "option": true
+      },
+      "bindings": {
+        "move": "actor graphPath stationary",
+        "jump": "source RecoilType1 Jump component",
+        "spine": "Upper and Emotion clips plus source recoil spinePath",
+        "recoil": "sampleNativeRecoil nativeArea.recoilNormal/recoilBreak",
+        "projectile": "area FX; no ProjectileSpec physical projectile is invented",
+        "option": "actual equipped and active option IDs, per-target cooldown"
+      },
+      "effectKeys": [],
+      "sourceGuardAll": [
+        "function local_class:persistent_begin",
+        "self.damage_length * progress * self.current_attack_type.size_modifier"
+      ],
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or visual completion.",
+      "optionCoverage": "Only the explicitly reviewed consumer bindings below; not all source option fields.",
+      "effectKeyPlanFields": [
+        "nativeArea.fireKey",
+        "nativeArea.breakFireKey",
+        "nativeArea.projectileKey",
+        "nativeArea.breakProjectileKey",
+        "nativeArea.optionHitKey"
+      ],
+      "requiredPlanFields": [
+        "nativeArea"
+      ],
+      "requiredActionFields": [
+        "HitTiming",
+        "StaminaPerAction",
+        "DamageExpandDuration"
+      ]
+    },
+    {
+      "name": "source-accelerated-field",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "source-accelerated-field"
+      },
+      "runtime": "gtfx/native-area-actions.js",
+      "dependencies": {
+        "gtfx/native-area-actions.js": "a7fee5e1be0046c70181f7407f53cb15970ca77504bb86a3b2dfd43acc16e91e",
+        "tools/fx/native_script_persistent_area.py": "90807665ff843885a1b0c7c3865b1e8f41ad7105e4169cb6ea7f13a598909124"
+      },
+      "features": {
+        "move": false,
+        "jump": false,
+        "spine": true,
+        "recoil": false,
+        "projectile": false,
+        "option": true
+      },
+      "bindings": {
+        "move": "actor stationary; independent effect motionPath continues after actor end",
+        "spine": "Base and Emotion source clips",
+        "projectile": "accelerated field FX, not ProjectileSpec",
+        "option": "source myth radius and original action MythPresetInfo"
+      },
+      "effectKeys": [
+        "screen"
+      ],
+      "sourceGuardAll": [
+        "function local_class:create_proj(proj_info, dir_vector, sync_pos)",
+        "proj_pos = proj_pos + dir_vector * speed * dt"
+      ],
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or visual completion.",
+      "optionCoverage": "Only the explicitly reviewed consumer bindings below; not all source option fields.",
+      "effectKeyPlanFields": [
+        "nativeArea.projectileKey",
+        "nativeArea.exclusiveCompanionKey",
+        "nativeArea.castKey",
+        "nativeArea.hitKey"
+      ],
+      "requiredPlanFields": [
+        "nativeArea"
+      ],
+      "requiredActionFields": [
+        "WaitDuration",
+        "ProjectileAccel",
+        "ProjectileAccelDuration",
+        "ProjectileDuration"
+      ]
+    },
+    {
+      "name": "source-sky-barrage",
+      "schema": "gt-fx-reviewed-helper-output-v2",
+      "selector": {
+        "behavior": "source-sky-barrage"
+      },
+      "runtime": "gtfx/native-sky-barrage.js",
+      "dependencies": {
+        "gtfx/native-sky-barrage.js": "2b62fb021948d79dca7616c73ae049e101732d4e68c796a8b1b3b380ff56bd71",
+        "tools/fx/native_script_sky_barrage.py": "1e8c95333503f0993d01360d8e54c2c8df171d60b276f9f245bc9b2ef37ea312"
+      },
+      "features": {
+        "move": false,
+        "jump": true,
+        "spine": true,
+        "projectile": true
+      },
+      "bindings": {
+        "move": "actor.graphPath is two stationary initial-position points",
+        "jump": "actor.spinePath carries cubic vertical descent, not root movement",
+        "spine": "actor.spinePath + spineRotationPath + alpha",
+        "projectile": "spec-driven falling projectile motionPath and directionPath"
+      },
+      "effectKeys": [
+        "explosion",
+        "jump"
+      ],
+      "sourceGuardAll": [
+        "self.target_random_pos[idx]",
+        "self.hit_timing[idx]",
+        "CS.Oak.Interpolations.EaseInCubic"
+      ],
+      "coverage": "Potential outputs of this exact consumer operation; not simultaneous effects or visual completion.",
+      "optionCoverage": "Only the explicitly reviewed consumer bindings below; not all source option fields.",
+      "requiredPlanFields": [
+        "sourceConstants",
+        "hitTimings",
+        "nativeProjectileContract"
+      ],
+      "requiredActionFields": [
+        "HitTiming"
+      ]
+    }
+  ]
+}

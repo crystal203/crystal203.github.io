@@ -13,7 +13,8 @@ def import_graphs(actions, config):
     for name in names:
         bundle,asset=name.split(':',1)
         if bundle not in bundles:
-            path=Path(config['bundleRoot'])/bundle if config.get('bundleRoot') else None
+            roots=([config['bundleRoot']] if config.get('bundleRoot') else [])+config.get('bundleFallbackRoots',[])
+            path=next((Path(root)/bundle for root in roots if (Path(root)/bundle).is_file()),None)
             if path and path.is_file():raw=path.read_bytes()
             else:
                 with zipfile.ZipFile(config['apk']) as apk:raw=apk.read('assets/AssetBundles/Android/'+bundle)

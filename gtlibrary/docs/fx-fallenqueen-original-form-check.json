@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "scope": "Fallen Queen original form; one fixed right/targetDistance=6 actionModules scene, plus same-form legacy metadata fallback and myth menu count",
+  "sourceItems": [
+    {
+      "id": 9060624,
+      "name": "cwp_fallenqueen_epic",
+      "weaponType": "staff",
+      "exclusiveCharacterId": 515
+    },
+    {
+      "id": 9094214,
+      "name": "mirror_cwp_fallenqueen_epic",
+      "weaponType": "custom",
+      "exclusiveCharacterId": null
+    }
+  ],
+  "catalogTypes": [
+    "custom",
+    "staff"
+  ],
+  "original": {
+    "weapon": "cwp_fallenqueen",
+    "weaponType": "staff",
+    "modules": [
+      {
+        "id": "basic-1",
+        "tracks": 3,
+        "end": 0.35,
+        "duration": 1.1
+      },
+      {
+        "id": "basic-2",
+        "tracks": 3,
+        "end": 0.35,
+        "duration": 1.1
+      },
+      {
+        "id": "basic-3",
+        "tracks": 27,
+        "end": 0.65,
+        "duration": 1.1
+      },
+      {
+        "id": "basic-4",
+        "tracks": 4,
+        "end": 0.65,
+        "duration": 0.9
+      },
+      {
+        "id": "role",
+        "tracks": 2,
+        "end": 0.5,
+        "duration": 3.2
+      },
+      {
+        "id": "support",
+        "tracks": 2,
+        "end": 1,
+        "duration": 2.55
+      },
+      {
+        "id": "cwp",
+        "tracks": 9,
+        "end": 0.6,
+        "duration": 2.675
+      },
+      {
+        "id": "basic-combo",
+        "tracks": 37,
+        "end": 2,
+        "duration": 2.25
+      }
+    ]
+  },
+  "legacyMetadataFallback": {
+    "weaponType": "staff",
+    "moduleIds": [
+      "basic-1",
+      "basic-2",
+      "basic-3",
+      "basic-4",
+      "role",
+      "support",
+      "cwp",
+      "basic-combo"
+    ]
+  },
+  "mythModuleCount": 9,
+  "snapshots": {
+    "gtfx/equipment-selection.js": "0decfcfd98a223cc82975eedb6c7625f53ccdbeba5c9518c70fa5a8c9ef78a5d",
+    "gtfx/assets/native-characters/fallenqueen.json": "ce58716ccaba03216c6cf8cfaf78e5f20b067804efe524ff172eeca6e3b9196d",
+    "gtfx/assets/characters/fallenqueen.json": "5843d8628d72246b73fed57ba3c4fb8a7001416e83830bbfead9632fea1b5373",
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-source/items.json": "92c01f9fdfdfb6b1a21547f0857f8562df29e5a852c7db77e07dbf692d7daefb"
+  },
+  "browserOperations": 0,
+  "pixelsRead": 0
+}

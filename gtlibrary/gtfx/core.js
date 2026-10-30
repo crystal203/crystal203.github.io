@@ -1,3 +1,10 @@
+import {nativeRendererOrder} from './native-renderer-order.js';
+import {screenEffectViewport} from './screen-viewport.js';
+import {materialBlend,materialColorGain} from './material-blend.js';
+import {applyNativeRotateThis} from './native-component-motion.js';
+import {expandNativeMaterialPasses} from './native-material-passes.js';
+import {nativeScreenFragment} from './native-screen-material.js';
+import {ensureEffectSkeletonRuntime,createEffectSkeletons} from './skeleton-effects.js';
 import * as THREE from '../vendor/three.module.js';
 import {installNativeProjection} from '../gtmap/native-camera.js';
 import {sampleAnimator} from '../core/custom-animator.js';
@@ -171,14 +178,14 @@ function transformShapeSample(sh,position,direction,rng,native=false) {
   const s=sh.m_Scale||{x:1,y:1,z:1};position.multiply(vec(s));
   if(native){position.set(...position.toArray().map(Math.fround));direction.multiply(vec(s));if(direction.lengthSq()>1e-30)direction.normalize();else direction.set(0,0,1);}
   const rot=vec(sh.m_Rotation).multiplyScalar(Math.PI/180);
-  const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(rot.x,rot.y,rot.z,'ZXY'));
+  const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(rot.x,rot.y,rot.z,'YXZ'));
   position.applyQuaternion(q).add(vec(sh.m_Position));direction.applyQuaternion(q);
   if(!native&&sh.randomDirectionAmount){const random=new THREE.Vector3(rng()*2-1,rng()*2-1,rng()*2-1).normalize();direction.lerp(random,sh.randomDirectionAmount).normalize();}
   return {position,direction};
 }
-const vertexShader=`attribute vec4 rgba; varying vec2 vUv; varying vec2 vUv2; varying vec2 vMaskUv; varying vec4 vColor; varying vec3 vNormal; varying float vHeight; varying vec2 nativeRawUv; varying vec4 nativeScreenPos;
-uniform vec4 uvRect; uniform vec4 particleColor; uniform vec2 uvScale; uniform vec2 uvOffset;
-uniform vec2 uvScale2; uniform vec2 uvOffset2;
+const vertexShader=`attribute vec4 rgba; varying vec2 vUv; varying vec2 vUv2; varying vec2 vMaskUv; varying vec4 vColor; varying vec3 vNormal; varying float vHeight; varying vec3 nativeObjectPosition; varying vec2 nativeRawUv; varying vec4 nativeScreenPos;
+uniform vec4 uvRect; uniform vec4 particleColor; uniform vec2 uvScale; uniform vec2 uvOffset; uniform bool missingMeshParticleNormal;
+uniform vec2 uvScale2; uniform vec2 uvOffset2; uniform bool nativeBendColor; uniform vec4 nativeBendPivot;
 uniform vec2 spriteSize; uniform vec2 spriteAtlasFlip; uniform vec3 particlePivot; uniform bool clampSpriteUv; uniform bool spriteRotated; uniform vec2 flipUv; uniform vec2 maskScale; uniform vec2 maskOffset;
 void main(){vec2 particleUv=mix(uv,1.0-uv,flipUv);vec2 spriteUv=spriteRotated?vec2(particleUv.y,1.0-particleUv.x):particleUv;
 vUv=(uvRect.xy+spriteUv*uvRect.zw)*uvScale+uvOffset;
@@ -195,24 +202,46 @@ if(clampSpriteUv){
 }
 vColor=rgba*particleColor;
 vec3 vertex=position;vertex.xy*=spriteSize;vertex+=particlePivot;
-vNormal=normalize(mat3(modelViewMatrix)*normal);vHeight=vertex.y;
+// Unity CPU mesh-particle baking emits zero normals when the mesh lacks this stream.
+// Static meshes instead use the graphics device default Normal channel.
+vNormal=missingMeshParticleNormal?vec3(0.0):normalize(mat3(modelViewMatrix)*normal);vHeight=vertex.y;
 gl_Position=projectionMatrix*modelViewMatrix*vec4(vertex,1.0);
-nativeRawUv=particleUv;nativeScreenPos=gl_Position;nativeScreenPos.xy=gl_Position.xy*0.5+gl_Position.ww*0.5;}`;
+if(nativeBendColor){
+ // APK no-SHEAR vertex variant: positive height is camera compensated;
+ // negative height folds along native +Z. Three uses the inverse Z axis.
+ vec4 world=modelMatrix*vec4(vertex,1.0);
+ vec2 pivot=mix(vec2(modelMatrix[3].y,-modelMatrix[3].z),nativeBendPivot.yz,nativeBendPivot.w);
+ float height=world.y-pivot.x;
+ float cameraXZ=max(length(vec2(viewMatrix[0].z,viewMatrix[2].z)),0.01);
+ vec4 bent=world;bent.y=pivot.x+max(height/cameraXZ,0.0);bent.z-=min(height,0.0);
+ vec4 projected=projectionMatrix*viewMatrix*bent;
+ gl_Position.yz=projected.yz;
+}
+nativeObjectPosition=position;nativeRawUv=particleUv;nativeScreenPos=gl_Position;nativeScreenPos.xy=gl_Position.xy*0.5+gl_Position.ww*0.5;}`;
 const fragmentShader=`uniform sampler2D map; uniform sampler2D map2; uniform bool dualTexture; uniform sampler2D maskMap; uniform bool masked; uniform sampler2D matcapMap; uniform bool matcap; uniform bool opaque;
+uniform bool partlyVisible; uniform vec3 partlyOrigin; uniform float partlySqrRange; uniform float matcapRgbGain; uniform bool skeletonGhost; uniform float ghostTextureFade; uniform vec4 ghostFadeColor; varying vec3 nativeObjectPosition;
 uniform vec4 gradColor; uniform vec2 gradRange; uniform bool gradation; uniform float cutoff;
-uniform bool particleDissolve; uniform vec4 nativeCustom1;
+uniform bool particleDissolve; uniform int nativeDissolvePass; uniform vec4 nativeCustom1; uniform vec4 nativeCustom2;
 uniform bool clampSpriteUv; uniform vec4 spriteUvBounds;
-uniform vec4 tint;uniform bool additive;uniform bool sourcePremultiplied;uniform bool ignoreVertexColor;uniform bool gammaColorSpace;uniform float colorGain;varying vec2 vUv;varying vec2 vUv2;varying vec2 vMaskUv;varying vec4 vColor;varying vec3 vNormal;varying float vHeight;
+uniform bool nativeSoftAdditive;uniform bool textureAlphaMultiplier;uniform vec4 tint;uniform bool additive;uniform bool sourcePremultiplied;uniform float nativeSourceFactor;uniform bool ignoreVertexColor;uniform bool gammaColorSpace;uniform float colorGain;varying vec2 vUv;varying vec2 vUv2;varying vec2 vMaskUv;varying vec4 vColor;varying vec3 vNormal;varying float vHeight;
 void main(){vec2 sampleUv=clampSpriteUv?clamp(vUv,spriteUvBounds.xy,spriteUvBounds.zw):vUv;gl_FragColor=texture2D(map,sampleUv)*(ignoreVertexColor?vec4(1.0):vColor)*tint*colorGain;
+if(textureAlphaMultiplier)gl_FragColor*=texture2D(map,sampleUv).a;
+if(nativeSoftAdditive)gl_FragColor.rgb*=gl_FragColor.a;
+if(skeletonGhost){vec4 tex=texture2D(map,sampleUv);gl_FragColor=vec4(max(tex.rgb,vec3(ghostTextureFade))*tex.a*vColor.rgb*tint.rgb,tex.a*tex.a*vColor.a*tint.a)*mix(vec4(1.0),ghostFadeColor,ghostTextureFade);}
 if(dualTexture)gl_FragColor*=texture2D(map2,vUv2);
 if(particleDissolve)gl_FragColor=texture2D(map,sampleUv).r>nativeCustom1.x?vColor:vec4(0.0);
+// Native 2pass alpha is binary and deliberately ignores COLOR.a and tint.
+if(nativeDissolvePass>0)gl_FragColor=vec4(nativeDissolvePass==1?vColor.rgb:nativeCustom2.rgb,texture2D(map,sampleUv).r>nativeCustom1.x?1.0:0.0);
 // Match GTCharFx.BuildParticleShader: multiply mask RGB and alpha independently.
 // Its UV transform must stay independent of scrolling/tiling on the main texture.
 if(masked)gl_FragColor*=texture2D(maskMap,vMaskUv);
+if(!matcap&&cutoff>0.0&&gl_FragColor.a<cutoff)discard;
 if(matcap){
-  vec3 n=normalize(vNormal);
-  // Orthographic Unity camera: MatCap lookup is the view-space surface normal.
+  vec3 n=vNormal;
+  // Native shader normalizes at vertices and interpolates lookup coordinates.
   gl_FragColor*=texture2D(matcapMap,n.xy*0.5+0.5);
+  gl_FragColor.rgb*=matcapRgbGain;
+  if(partlyVisible)gl_FragColor.a*=step(dot(nativeObjectPosition-partlyOrigin,nativeObjectPosition-partlyOrigin),partlySqrRange);
   if(gradation&&abs(gradRange.y-gradRange.x)>0.00001){float g=clamp((vHeight-gradRange.x)/(gradRange.y-gradRange.x),0.0,1.0);gl_FragColor.rgb*=mix(vec3(1.0),gradColor.rgb,g);}
   if(gl_FragColor.a<cutoff)discard;
   if(opaque)gl_FragColor.a=1.0;
@@ -223,7 +252,10 @@ gl_FragColor.a=clamp(gl_FragColor.a,0.0,1.0);
 if(!gammaColorSpace)gl_FragColor=sRGBTransferOETF(gl_FragColor);
 // Additive textures may contain opaque black. Black contributes no light and
 // must not turn into opaque black coverage when the canvas/GIF is transparent.
-if(!sourcePremultiplied&&!opaque)gl_FragColor.rgb*=gl_FragColor.a;
+if(!opaque){
+ if(nativeSourceFactor==3.0)gl_FragColor.rgb*=gl_FragColor.rgb;
+ else if(nativeSourceFactor==5.0)gl_FragColor.rgb*=gl_FragColor.a;
+}
 if(additive)gl_FragColor.a=clamp(max(max(gl_FragColor.r,gl_FragColor.g),gl_FragColor.b),0.0,1.0);
 if(gl_FragColor.a<0.002)discard;
 }`;
@@ -239,7 +271,11 @@ function geometry(data) {
     g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(data.position,3));
     g.setAttribute('uv',new THREE.Float32BufferAttribute(data.uv||Array(data.position.length/3*2).fill(0),2));g.setIndex(data.indices);
     for(const group of data.groups||[])g.addGroup(group.start,group.count,group.material);
-    if(data.normal?.length===g.attributes.position.count*3)g.setAttribute('normal',new THREE.Float32BufferAttribute(data.normal,3));else g.computeVertexNormals();
+    if(data.normal?.length===g.attributes.position.count*3)g.setAttribute('normal',new THREE.Float32BufferAttribute(data.normal,3));else if(data.defaultNormal||data.normal?.length===0){
+      // Unity's default Normal shader channel is (0,0,-1,0); do not invent face shading.
+      const fallback=data.defaultNormal||[0,0,-1],normals=new Float32Array(g.attributes.position.count*3);
+      for(let i=0;i<normals.length;i+=3)normals.set(fallback,i);g.setAttribute('normal',new THREE.BufferAttribute(normals,3));
+    }else g.computeVertexNormals();
   }
   const count=g.attributes.position.count, colors=data.color;
   let out=Array(count*4).fill(1);
@@ -247,7 +283,8 @@ function geometry(data) {
   else if(colors?.length===count*3)for(let i=0;i<count;i++)for(let j=0;j<3;j++)out[i*4+j]=colors[i*3+j];
   // Unity Color32 mesh channels are bytes; Float32 shader attributes expect 0..1.
   if(colors?.length&&out.some(channel=>channel>1.01))out=out.map((channel,i)=>colors.length===count*3&&i%4===3?1:channel/255);
-  g.setAttribute('rgba',new THREE.Float32BufferAttribute(out,4));return g;
+  g.setAttribute('rgba',new THREE.Float32BufferAttribute(out,4));
+  g.userData.missingSourceNormals=!data.primitive&&(data.normal?.length===0||!!data.defaultNormal);return g;
 }
 // Reused atlas frames retain the clamp-to-edge sampling of standalone PNGs.
 // Clamp in the fragment stage, so interior UV interpolation is unchanged.
@@ -281,6 +318,7 @@ export class FxRuntime {
   }
   resize() {
     const w=this.renderer.domElement.clientWidth,h=this.renderer.domElement.clientHeight;
+    if(this.screenFraming){const {baseAspect,baseSize}=this.screenFraming,fit=Math.min(1,(w/Math.max(h,1))/baseAspect);this.viewSize=2*baseSize/fit;}
     this.renderer.setSize(w,h,false);if(this.backgroundMode==='checker'&&this.checker)this.checker.repeat.set(w/192,h/192);const aspect=w/Math.max(h,1),size=this.viewSize/this.zoom;
     // Shared native ViewportScaler applies both the world and projection transforms.
     this.camera.left=-size*aspect/2;this.camera.right=size*aspect/2;this.camera.top=size/2;this.camera.bottom=-size/2;
@@ -294,7 +332,8 @@ export class FxRuntime {
     this.screenCamera.updateProjectionMatrix();
   }
   clear() {
-    for(const p of [...this.particles,...this.statics]){this.group.remove(p.mesh);p.mesh.userData.grabTexture?.dispose();for(const material of materialsOf(p.mesh))material.dispose();}
+    for(const item of this.skeletonEffects||[])item.clear();this.skeletonEffects=[];
+    for(const p of [...this.particles,...this.statics]){this.group.remove(p.mesh);p.mesh.userData.grabTexture?.dispose();if(p.mesh.userData.nativePassGeometry)p.mesh.geometry.dispose();for(const material of materialsOf(p.mesh))material.dispose();}
     for(const p of this.trails||[]){this.group.remove(p.trail);p.trail.geometry.dispose();p.trail.material.dispose();}
     this.trails=[];
     this.statics=[];
@@ -314,6 +353,7 @@ export class FxRuntime {
       const visit=v=>{if(typeof v==='string'){if(index.textures[v])textureKeys.add(v);if(index.meshes[v])meshKeys.add(v);if(index.sprites[v]&&!visited.has(v)){visited.add(v);visit(index.sprites[v]);}}else if(v&&typeof v==='object')Object.values(v).forEach(visit);};
       visit(effect);index={...index,textures:Object.fromEntries([...textureKeys].map(k=>[k,index.textures[k]])),meshes:Object.fromEntries([...meshKeys].map(k=>[k,index.meshes[k]]))};
     }
+    if((effect?(Array.isArray(effect)?effect:[effect]):index.effects).some(e=>e.skeletons?.length))await ensureEffectSkeletonRuntime();
     const loaded={}, generation=(this.loadGeneration||0)+1;this.loadGeneration=generation;
     try {
       await Promise.all(Object.entries(index.textures).map(async([key,t])=>{
@@ -332,7 +372,7 @@ export class FxRuntime {
     const white=new THREE.DataTexture(new Uint8Array([255,255,255,255]),1,1);white.needsUpdate=true;this.textures.white=white;
   }
   build(effect,seed=12345) {
-    this.clear();effect={...effect,gravity:effect.gravity??this.index.gravity3D};this.effect=effect;this.seed=seed;this.excluded.clear();
+    this.clear();this.screenFraming=null;effect={...effect,gravity:effect.gravity??this.index.gravity3D};this.effect=effect;this.seed=seed;this.excluded.clear();
     this.screenEffect=effect.scripts?.some(s=>s.type==='ScreenEffectObject')||false;
     if(!this.mapSimulation){
       const targetScene=this.screenEffect?this.screenScene:this.scene;
@@ -349,11 +389,30 @@ export class FxRuntime {
     // Without an action direction the native pool instantiates the prefab at
     // its authored rotation. Direction describes its local forward axis; it
     // is not an initial rotation to apply to the prefab itself.
-    root.scale.set(effect.scale[0]*(effect.rootScaleFactor||1),Math.abs(effect.scale[1]),Math.abs(effect.scale[2])*(effect.rootScaleFactor||1)*(effect.rootScaleZ||1));root.updateMatrixWorld(true);
-    this.nodes=nodes;this.nodeRoot=root;
+    const uniform=effect.rootUniformScale??1;root.scale.set(effect.scale[0]*(effect.rootScaleX??1)*(effect.rootScaleFactor??1)*uniform,Math.abs(effect.scale[1])*(effect.rootScaleY??1)*uniform,Math.abs(effect.scale[2])*(effect.rootScaleFactor??1)*(effect.rootScaleZ??1)*uniform);root.updateMatrixWorld(true);
+    this.nodes=nodes;this.nodeRoot=root;this.skeletonEffects=createEffectSkeletons(effect,this);
     this.scriptByNode=new Map();
     for(const script of effect.scripts||[]){if(!this.scriptByNode.has(script.node))this.scriptByNode.set(script.node,[]);this.scriptByNode.get(script.node).push(script);}
     for(const node of nodes.values())node.userData.base={position:node.position.clone(),rotation:node.quaternion.clone(),scale:node.scale.clone()};
+    // World-space particles keep the emitter transform at their own birth,
+    // not the prefab's editor pose (which can be the end of a movement curve).
+    const movingNodes=new Set((effect.scripts||[]).filter(s=>s.type==='RotateThis'||s.type==='CustomAnimator'&&(s.fields.States||[]).some(st=>(st.Curves||[]).some(c=>c.Key<=5||[10,15,16].includes(c.Key)))).map(s=>s.node));
+    if(effect.sampleNodes)movingNodes.add(effect.root);
+    const movingTransforms=new Set([...movingNodes].map(id=>nodes.get(id)));
+    const animatedEmitter=node=>{for(let n=node;n;n=n.parent)if(movingTransforms.has(n))return true;return false;};
+    const birthPoses=new Map();
+    const capturePose=node=>{
+      const matrix=node.matrixWorld.clone(),position=new THREE.Vector3().setFromMatrixPosition(matrix),rotation=rotationOf(node),scale=new THREE.Vector3().setFromMatrixScale(matrix);
+      if(matrix.determinant()<0)scale.x=-scale.x;
+      return {matrix,position,rotation,scale};
+    };
+    const authoredPoses=new Map([...nodes.values()].map(node=>[node,capturePose(node)]));
+    const emitterPose=(node,time,animated)=>{
+      if(!animated)return authoredPoses.get(node);
+      const key=node.uuid+':'+time;if(birthPoses.has(key))return birthPoses.get(key);
+      this.animationCache=null;this.animateNodes(time);
+      const result=capturePose(node);birthPoses.set(key,result);return result;
+    };
     let end=effect.duration;
     const systemIds=new Map(effect.systems.map((s,i)=>[String(s.sourceId),i]));
     const subEmitterIds=new Set(effect.systems.flatMap(s=>(s.modules.SubModule?.subEmitters||[]).map(row=>String(row.emitter))));
@@ -373,9 +432,7 @@ export class FxRuntime {
       const emission=emissionOverride??nativeEmissionBatches(s,seeds[si],value,{step:effect.simulationStep||1/60,frameSteps:effect.frameSteps,
         emitterPosition:effect.emitterPosition,baseAt,limit:effect.particleBudget??1500,delayOverride:effect.systemDelays?.[s.sourceId],simulationDuration:effect.simulationDuration});
       const {delay,batches}=emission,births=[];
-      const worldPos=new THREE.Vector3().setFromMatrixPosition(node.matrixWorld),worldRot=rotationOf(node),worldScale=new THREE.Vector3().setFromMatrixScale(node.matrixWorld);
-      if(node.matrixWorld.determinant()<0)worldScale.x=-worldScale.x;
-      const originOffset=origin?origin.clone().sub(worldPos):new THREE.Vector3();
+      const animated=!s.local&&animatedEmitter(node);
       // Each emission batch advances independent Initial and Shape SIMD streams.
       // NativeEmission coordinate recordings are deliberately not a runtime input.
       const native=[],liveUntil=liveBySystem[si],trace={system:s.sourceId,baseAt,depth,seed:seeds[si],delay,batches:[],initialStateBefore:initialStreams[si].lanes.map(r=>r.getState()),shapeStateBefore:shapeStreams[si].lanes.map(r=>r.getState()),emissionStateAfter:emission.state};
@@ -403,6 +460,8 @@ export class FxRuntime {
       let birthIndex=0;
       for(const localBirth of births){
         const birth=(baseAt+localBirth/s.speed)*s.speed;
+        const pose=emitterPose(node,birth/s.speed,animated),worldPos=pose.position,worldRot=pose.rotation,worldScale=pose.scale;
+        const originOffset=origin?origin.clone().sub(worldPos):new THREE.Vector3();
         const nativeParticle=native[birthIndex++],r=[...nativeParticle.r,...nativeParticleRandom(nativeParticle.randomSeed,0,3)];
         const life=nativeParticle.life,initialTime=nativeParticle.initialTime;
         const sample=nativeParticle.shape;
@@ -415,12 +474,12 @@ export class FxRuntime {
           inherited.set(inherited.x/(worldScale.x||1),inherited.y/(worldScale.y||1),inherited.z/(worldScale.z||1));
           if(inherit.m_Mode===0&&(inherit.m_Curve.minMaxState===0||inherit.m_Curve.minMaxState===3))velocity.addScaledVector(inherited,value(inherit.m_Curve,0,moduleRandom.inherit));
         }
-        const hidden=s.emitterOnly||s.renderer.mode===5;
+        const hidden=s.emitterOnly||s.renderer.enabled===false||s.renderer.mode===5;
         const mesh=hidden?null:this.createMesh(s,s.renderer.mesh?this.geometries[s.renderer.mesh]:this.quad,{pivot:s.renderer.pivot});
         if(mesh){mesh.frustumCulled=false;mesh.visible=false;mesh.matrixAutoUpdate=false;
-          mesh.renderOrder=(s.material.name.toLowerCase().includes('top')?100:0)+s.renderer.sort;this.group.add(mesh);}
+          mesh.renderOrder=nativeRendererOrder(this.index,s.renderer,(s.material.name.toLowerCase().includes('top')?100:0)+s.renderer.sort);this.group.add(mesh);}
         const flip=s.renderer.flip||{};
-        const p={mesh,s,si,r,moduleRandom,inherited,birth,life,sh:sh.position,velocity,worldPos,worldRot,worldScale,node,matrix:node.matrixWorld.clone(),originOffset,
+        const p={mesh,s,si,r,moduleRandom,inherited,birth,life,sh:sh.position,velocity,worldPos,worldRot,worldScale,node,matrix:pose.matrix.clone(),originOffset,
           systemStart:parent?parent.p.birth+(emissionOverride?.subDelay||0):baseAt*s.speed+delay,orderFrames:nativeParticle.orderFrames,emissionFrameStates:emission.frameStates,emissionState:emission.state,forceFrames:nativeParticle.forceFrames,systemSeed:seeds[si],noiseSeedOffset:m.NoiseModule?noiseSeedOffset(seeds[si]):null,randomSeed:nativeParticle.randomSeed,randomSource:sample?'native-initial-and-shape':'native-initial-approximate-shape',
           birthFrame:baseAt*s.speed+nativeParticle.frame,birthFrameIndex:nativeParticle.frameIndex,rotationSign:nativeParticle.rotationSign,
           flip:(s.renderer.mode===4?nativeMeshParticleFlip:nativeParticleFlip)(nativeParticle.randomSeed,flip),
@@ -469,8 +528,9 @@ export class FxRuntime {
       let active=true;for(let n=node;n;n=n.parent)if(!n.visible)active=false;
       if(!active)continue;
       const mat=s.material,sp=s.sprite&&this.index.sprites[s.sprite];
-      const mesh=this.createMesh(s,s.mesh?this.geometries[s.mesh]:this.quad,{sprite:sp,size:s.size||[1,1],atlas:s.sprite?.startsWith('atlas-')});
-      mesh.matrixAutoUpdate=false;mesh.matrix.copy(node.matrixWorld);mesh.frustumCulled=false;mesh.renderOrder=s.sort||0;
+      const mesh=this.createMesh(s,s.mesh?this.geometries[s.mesh]:this.quad,{sprite:sp,size:s.size||[1,1],pivot:s.pivot||{},atlas:s.sprite?.startsWith('atlas-')});
+      mesh.matrixAutoUpdate=false;mesh.matrix.copy(node.matrixWorld);mesh.frustumCulled=false;mesh.renderOrder=nativeRendererOrder(this.index,{layer:s.layer??0,sort:s.sort||0});
+      if(s.spriteRenderer)for(const material of materialsOf(mesh))material.uniforms.flipUv.value.set(...s.spriteRenderer.flip.map(Number));
       this.statics.push({mesh,s,node});this.group.add(mesh);
     }
     this.duration=Math.min(30,effect.duration||end);this.fitViewSize=16;this.viewSize=16;
@@ -496,7 +556,8 @@ export class FxRuntime {
       const angles=motion.rotation||p.startRotation;
       // Unity billboard rotation is clockwise; mesh rotation uses its 3D axes.
       const spinZ=s.renderer.mode===4?angles.z:-angles.z;
-      const spin=new THREE.Quaternion().setFromEuler(new THREE.Euler(angles.x,angles.y,spinZ,'ZXY'));
+      // Unity's extrinsic Z-X-Y is Three.js intrinsic Y-X-Z (Ry * Rx * Rz).
+      const spin=new THREE.Quaternion().setFromEuler(new THREE.Euler(angles.x,angles.y,spinZ,'YXZ'));
       if(s.renderer.mode===4){
         // Native mesh flip reflects geometry (including its pivot), not UVs.
         size.multiply(new THREE.Vector3(...p.flip.map(f=>f?-1:1)));
@@ -569,7 +630,8 @@ export class FxRuntime {
         }
       }
     }
-    for(const p of this.statics){p.mesh.matrix.copy(p.node.matrixWorld);for(const [i,mat] of materialsOf(p.mesh).entries())mat.uniforms.tint.value.set(...rgba((p.s.materials?.[i]||p.s.material).tint));this.animateMaterial(p,time);}
+    for(const item of this.skeletonEffects||[])item.sample(time);
+    for(const p of this.statics){p.mesh.matrix.copy(p.node.matrixWorld);for(const [i,mat] of materialsOf(p.mesh).entries())mat.uniforms.tint.value.set(...rgba((p.s.materials?.[mat.userData.sourceMaterialIndex??i]||p.s.material).tint));this.animateMaterial(p,time);}
     for(const p of this.particles)if(p.mesh.visible)this.animateMaterial(p,time);
     for(const p of this.trails)this.sampleTrail(p,time,cameraQ);
     this.modulePlayer?.sample(sceneTime);
@@ -602,7 +664,7 @@ export class FxRuntime {
   }
   animationCurves(script,time) {
     if(this.animationCache?.has(script))return this.animationCache.get(script);
-    const sampled=sampleAnimator(script.fields,time).map(c=>({Key:c.key,v:c.value,vector:new THREE.Vector3(...c.vector)}));
+    const sampled=sampleAnimator(script.fields,time).map(c=>({Key:c.key,texture:c.texture,v:c.value,vector:new THREE.Vector3(...c.vector)}));
     this.animationCache?.set(script,sampled);return sampled;
   }
   animateNodes(time) {
@@ -613,13 +675,14 @@ export class FxRuntime {
       if(script.type==='CustomAnimator')for(const c of this.animationCurves(script,time)){
         if(c.Key<=2)node.position[['x','y','z'][c.Key]]=c.v;
         else if(c.Key>=3&&c.Key<=5)node.scale[['x','y','z'][c.Key-3]]=c.v;
-        else if(c.Key===10){const v=c.vector.multiplyScalar(Math.PI/180);node.quaternion.setFromEuler(new THREE.Euler(v.x,v.y,v.z,'ZXY'));}
+        else if(c.Key===10){const v=c.vector.multiplyScalar(Math.PI/180);node.quaternion.setFromEuler(new THREE.Euler(v.x,v.y,v.z,'YXZ'));}
         else if(c.Key===15)node.position.copy(c.vector);
         else if(c.Key===16)node.scale.copy(c.vector);
       }
       if(script.type==='RotateThis'){
-        const f=script.fields,rotation=vec(f.rotationSpeed||f.RotateSpeed||f.rotation).multiplyScalar(time*Math.PI/180);
-        node.quaternion.multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(rotation.x,rotation.y,rotation.z,'ZXY')));
+        const f=script.fields;
+        if(['rotationSpeedX','rotationSpeedY','rotationSpeedZ'].some(key=>Object.hasOwn(f,key)))applyNativeRotateThis(node,f,time,this.effect.simulationStep||1/60);
+        else{const rotation=vec(f.rotationSpeed||f.RotateSpeed||f.rotation).multiplyScalar(time*Math.PI/180);node.quaternion.multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(rotation.x,rotation.y,rotation.z,'YXZ')));}
       }
     }
     // Native ScreenEffectObject.OnEnable: transformType 1 calls SetEffectSize
@@ -635,7 +698,7 @@ export class FxRuntime {
         continue;
       }
       if(f.transformType!==1)continue;
-      const size=camera.top/(f.baseSize||4.6),aspect=(camera.right/camera.top)/(f.baseAspect||2.08);
+      const viewport=screenEffectViewport(camera,f),size=viewport.orthographicSize/(f.baseSize||4.6),aspect=viewport.aspect/(f.baseAspect||2.08);
       if(f.scaleType===1)node.scale.set(aspect*size,base.y*size,base.z*size);
       else node.scale.set(aspect*size,base.y,base.z);
     }
@@ -701,15 +764,21 @@ export class FxRuntime {
     for(const mat of materialsOf(p.mesh)){
     const uniforms=mat.uniforms;
     for(const script of this.scriptByNode.get(p.s.node)||[]){
+      if(script.type==='CustomAnimator'&&this.effect.nativeAnimatorMaterialInit){
+        const tiling=script.fields.textureTiling;if(tiling&&((tiling.x-1)**2+(tiling.y-1)**2)>1e-10)uniforms.uvScale.value.set(tiling.x,tiling.y);
+      }
       if(script.type==='CustomAnimator')for(const c of this.animationCurves(script,time)){
+        const prefix=['_Mask','_MaskTex'].includes(c.texture)?'mask':c.texture==='_MainTex2'?'uv2':c.texture==='_MainTex'?'uv':null;
+        const offset=prefix==='mask'?uniforms.maskOffset:prefix==='uv2'?uniforms.uvOffset2:prefix==='uv'?uniforms.uvOffset:null;
+        const scale=prefix==='mask'?uniforms.maskScale:prefix==='uv2'?uniforms.uvScale2:prefix==='uv'?uniforms.uvScale:null;
         if(c.Key>=6&&c.Key<=9)uniforms.tint.value[['x','y','z','w'][c.Key-6]]=c.v;
-        else if(c.Key===11)uniforms.uvOffset.value.x=c.v;
-        else if(c.Key===12)uniforms.uvOffset.value.y=c.v;
-        else if(c.Key===13)uniforms.uvScale.value.x=c.v;
-        else if(c.Key===14)uniforms.uvScale.value.y=c.v;
+        else if(c.Key===11&&offset)offset.value.x=c.v;
+        else if(c.Key===12&&offset)offset.value.y=c.v;
+        else if(c.Key===13&&scale)scale.value.x=c.v;
+        else if(c.Key===14&&scale)scale.value.y=c.v;
         else if(c.Key===17){uniforms.tint.value.x=c.vector.x;uniforms.tint.value.y=c.vector.y;uniforms.tint.value.z=c.vector.z;}
-        else if(c.Key===18)uniforms.uvOffset.value.set(c.vector.x,c.vector.y);
-        else if(c.Key===19)uniforms.uvScale.value.set(c.vector.x,c.vector.y);
+        else if(c.Key===18&&offset)offset.value.set(c.vector.x,c.vector.y);
+        else if(c.Key===19&&scale)scale.value.set(c.vector.x,c.vector.y);
       }
       const clock=time+(this.effect.shaderTimeOrigin||0),scroll=key=>clock*(script.fields[key]||0)*(script.fields.TimeScale??1),frac=x=>x-Math.floor(x);
       if(['FxUvanim','FxUvanim_frac_Main','FxUvanim_add'].includes(script.type))uniforms.uvOffset.value.set(frac(scroll('scrollSpeed_X')),frac(scroll('scrollSpeed_Y')));
@@ -730,18 +799,15 @@ export class FxRuntime {
     this.backgroundMode=mode;
     if(mode==='transparent'){this.scene.background=null;this.renderer.setClearColor(0,0);return;}
     if(mode==='color'){this.scene.background=new THREE.Color(color);return;}
-    if(!this.checker){
-      const size=16,data=new Uint8Array(size*size*4);
-      for(let y=0;y<size;y++)for(let x=0;x<size;x++)data.set((x+y)%2?[28,34,43,255]:[19,24,32,255],(y*size+x)*4);
-      this.checker=new THREE.DataTexture(data,size,size);this.checker.colorSpace=THREE.SRGBColorSpace;
-      this.checker.minFilter=this.checker.magFilter=THREE.NearestFilter;this.checker.generateMipmaps=false;
-      this.checker.wrapS=this.checker.wrapT=THREE.RepeatWrapping;this.checker.needsUpdate=true;
-    }
-    this.checker.repeat.set(this.renderer.domElement.clientWidth/192,this.renderer.domElement.clientHeight/192);
-    this.scene.background=this.checker;
+    // The checker is a transparency guide supplied by the FX page's CSS.
+    // Including its opaque pixels in GrabPass lets native BW/distortion shaders
+    // turn the guide into solid black coverage. Keep real color backgrounds in
+    // the scene, while the checker remains below the transparent framebuffer.
+    this.scene.background=null;this.renderer.setClearColor(0,0);
   }
 
   autoFit() {
+    this.screenFraming=null;
     if(this.screenEffect&&!this.modulePlayer?.active)return;
     const bounds=new THREE.Box2().makeEmpty(),oldTime=this.currentTime||0;
     const delay=this.characterPlayer?.active?this.characterPlayer.link.delay:0;
@@ -762,9 +828,14 @@ export class FxRuntime {
     if(Number.isFinite(height)&&height>0){
       // Keep the pixel character at a stable fraction of the viewport across
       // attacks; distant particles no longer dictate the initial zoom.
-      this.viewSize=Math.max(2,Math.min(40,height/.17));
-      const center=bounds.getCenter(new THREE.Vector2()),module=this.modulePlayer?.module;
-      if(module?.tracks.some(t=>['target','projectile','meteor','hook'].includes(t.link.anchor))){
+      const module=this.modulePlayer?.module,script=module?.tracks.flatMap(t=>t.effect.scripts||[]).find(s=>s.type==='ScreenEffectObject'&&s.fields.transformType===1);
+      this.screenFraming=script?{baseAspect:script.fields.baseAspect||2.08,baseSize:script.fields.baseSize||4.6}:null;
+      const frameFit=this.screenFraming?Math.min(1,(this.renderer.domElement.clientWidth/Math.max(1,this.renderer.domElement.clientHeight))/this.screenFraming.baseAspect):1;
+      // In screen-linked actions one native world unit and one authored screen
+      // unit use the same pixel scale; far FX never change this initial scale.
+      this.viewSize=this.screenFraming?2*this.screenFraming.baseSize/frameFit:Math.max(2,Math.min(40,height/.17));
+      const center=bounds.getCenter(new THREE.Vector2());
+      if(this.screenFraming||module?.tracks.some(t=>['target','projectile','meteor','hook'].includes(t.link.anchor))){
         const pitch=(this.topView?89.999:this.cameraConfig.pitchDeg)*Math.PI/180,comp=this.camera.nativeViewportScale(),target=this.characterPlayer.target.position;
         center.x=(center.x+target.x)/2;
         const targetY=target.y*Math.cos(pitch)-target.z*Math.sin(pitch)/comp;
@@ -783,9 +854,10 @@ export class FxRuntime {
     for(const ref of refs){const ppu=this.index.sprites[ref]?.pixelsToUnits;if(ppu>0&&Number.isFinite(ppu))counts.set(ppu,(counts.get(ppu)||0)+1);}
     return [...counts.entries()].sort((a,b)=>b[1]-a[1])[0]?.[0]||100;
   }
-  createMaterial(mat,{sprite=null,size=[1,1],pivot={},atlas=false,shared=null}={}) {
-    const opaque=mat.blend==='opaque',gradation=mat.gradation,distortion=mat.surface==='screenDistortion';
-    const uniforms={map:{value:this.textures[sprite?.texture||mat.texture]||this.textures.white},
+  createMaterial(mat,{sprite=null,size=[1,1],pivot={},atlas=false,shared=null,missingMeshParticleNormal=false}={}) {
+    // Saved properties can survive shader changes; Detail uses neither gradient nor cutoff.
+    const blendState=materialBlend(mat),opaque=blendState.opaque,gradation=mat.shader==='MatCap/Detail'?null:mat.gradation,distortion=mat.surface==='screenDistortion';
+    const uniforms={nativeSoftAdditive:{value:!!mat.nativeSoftAdditive},nativeBendColor:{value:mat.surface==='nativeBendColor'},nativeBendPivot:{value:new THREE.Vector4(...rgba(mat.nativeBend?.pivot||{r:0,g:0,b:0,a:0}))},textureAlphaMultiplier:{value:!!mat.textureAlphaMultiplier},map:{value:this.textures[sprite?.texture||mat.texture]||this.textures.white},
       dualTexture:{value:!!mat.texture2},map2:{value:this.textures[mat.texture2?.texture]||this.textures.white},
       uvScale2:{value:new THREE.Vector2(mat.texture2?.scale.x??1,mat.texture2?.scale.y??1)},
       uvOffset2:{value:new THREE.Vector2(mat.texture2?.offset.x??0,mat.texture2?.offset.y??0)},
@@ -793,35 +865,32 @@ export class FxRuntime {
       maskScale:{value:new THREE.Vector2(mat.mask?.scale.x??1,mat.mask?.scale.y??1)},
       maskOffset:{value:new THREE.Vector2(mat.mask?.offset.x??0,mat.mask?.offset.y??0)},
       uvRect:{value:new THREE.Vector4(...(sprite?.uv||[0,0,1,1]))},particleColor:{value:new THREE.Vector4(1,1,1,1)},
-      flipUv:{value:new THREE.Vector2(0,0)},
+      flipUv:{value:new THREE.Vector2(0,0)},missingMeshParticleNormal:{value:missingMeshParticleNormal},
       spriteAtlasFlip:{value:new THREE.Vector2(...(sprite?.atlasFlip||[0,0]))},clampSpriteUv:{value:!!sprite?.clampUv},spriteUvBounds:{value:spriteSampleBounds(sprite,this.index.textures)},
-      particleDissolve:{value:mat.surface==='particleDissolve'},nativeCustom1:{value:new THREE.Vector4()},nativeCustom2:{value:new THREE.Vector4()},
+      particleDissolve:{value:mat.surface==='particleDissolve'},nativeDissolvePass:{value:mat.dissolvePass||0},nativeCustom1:{value:new THREE.Vector4()},nativeCustom2:{value:new THREE.Vector4()},
       tint:{value:new THREE.Vector4(...rgba(mat.tint))},uvScale:{value:new THREE.Vector2(sprite?1:mat.scale.x,sprite?1:mat.scale.y)},
       uvOffset:{value:new THREE.Vector2(sprite?0:mat.offset.x,sprite?0:mat.offset.y)},spriteSize:{value:new THREE.Vector2(...size)},
-      particlePivot:{value:vec(pivot)},spriteRotated:{value:!!sprite?.rotated},additive:{value:mat.blend==='add'},
-      colorGain:{value:mat.colorGain??(atlas?1:2)},matcap:{value:mat.surface==='matcap'},matcapMap:{value:this.textures[mat.matcap]||this.textures.white},
-      sourcePremultiplied:{value:!!mat.premultiplied},ignoreVertexColor:{value:!!mat.ignoreVertexColor},gammaColorSpace:{value:this.index.colorSpace!=='linear'},
+      particlePivot:{value:vec(pivot)},spriteRotated:{value:!!sprite?.rotated},additive:{value:blendState.additive},
+      partlyVisible:{value:!!mat.partlyVisible},partlyOrigin:{value:new THREE.Vector3(...(mat.partlyVisible?.origin||[0,0,0]))},partlySqrRange:{value:mat.partlyVisible?.sqrRange??0},matcapRgbGain:{value:mat.matcapRgbGain??1},skeletonGhost:{value:mat.surface==='skeletonGhost'},ghostTextureFade:{value:mat.ghostTextureFade??0},ghostFadeColor:{value:new THREE.Vector4(...rgba(mat.ghostFadeColor))},
+      colorGain:{value:materialColorGain(mat,atlas)},matcap:{value:mat.surface==='matcap'},matcapMap:{value:this.textures[mat.matcap]||this.textures.white},
+      nativeSourceFactor:{value:blendState.source},sourcePremultiplied:{value:!!mat.premultiplied},ignoreVertexColor:{value:!!mat.ignoreVertexColor},gammaColorSpace:{value:this.index.colorSpace!=='linear'},
       opaque:{value:opaque},gradation:{value:!!gradation},gradRange:{value:new THREE.Vector2(gradation?.start||0,gradation?.end||0)},
-      gradColor:{value:new THREE.Vector4(...rgba(gradation?.color))},cutoff:{value:mat.cutoff||0}};
+      gradColor:{value:new THREE.Vector4(...rgba(gradation?.color))},cutoff:{value:mat.shader==='MatCap/Detail'?0:mat.cutoff||0}};
     if(shared)for(const key of ['uvRect','particleColor','spriteSize','particlePivot','spriteRotated','flipUv','clampSpriteUv','spriteUvBounds','spriteAtlasFlip'])uniforms[key]=shared[key];
     let fragment=fragmentShader;
     if(distortion){
       for(const [key,v] of Object.entries(mat.parameters||{}))uniforms[key]={value:typeof v==='number'?v:new THREE.Vector4(...rgba(v))};
       const uv=mat.parameters?._DistortNoiseUV||{};uniforms._DistortNoiseUV={value:new THREE.Vector2(uv.r??1,uv.g??1)};
+      for(const [key,texture] of Object.entries(mat.textureBindings||{}))uniforms[key]={value:this.textures[texture]||this.textures.white};
+      if(mat.grabUniform)uniforms[mat.grabUniform]={value:this.textures.white};
       uniforms._Time={value:new THREE.Vector4()};uniforms._ProjectionParams={value:new THREE.Vector4(1,.01,100,.01)};uniforms._GrabTexture={value:this.textures.white};
-      fragment=`uniform vec4 nativeCustom1;uniform vec4 nativeCustom2;varying vec4 vColor;varying vec2 nativeRawUv;varying vec4 nativeScreenPos;
-#define vs_TEXCOORD1 nativeCustom1
-#define vs_TEXCOORD2 nativeScreenPos
-#define vs_TEXCOORD3 vec4(nativeRawUv,0.0,0.0)
-#define vs_TEXCOORD4 nativeCustom2
-#define vs_COLOR0 vColor
-`+mat.fragmentSource;
+      fragment=nativeScreenFragment(mat);
     }
     return new THREE.ShaderMaterial({vertexShader,fragmentShader:fragment,uniforms,transparent:!opaque||distortion,
       side:mat.cull==='back'?THREE.FrontSide:mat.cull==='front'?THREE.BackSide:THREE.DoubleSide,
       depthWrite:mat.depthWrite??opaque,depthTest:mat.depthTest??true,blending:opaque?THREE.NoBlending:THREE.CustomBlending,
-      blendSrc:THREE.OneFactor,blendDst:mat.blend==='add'?THREE.OneFactor:THREE.OneMinusSrcAlphaFactor,
-      blendSrcAlpha:THREE.OneFactor,blendDstAlpha:THREE.OneMinusSrcAlphaFactor});
+      blendSrc:blendState.hardwareSource??THREE.OneFactor,blendDst:blendState.destination,
+      blendSrcAlpha:blendState.source===2?THREE.DstAlphaFactor:THREE.OneFactor,blendDstAlpha:THREE.OneMinusSrcAlphaFactor});
   }
   createMesh(s,geo,options={}) {
     if(s.renderer?.mode===4&&options.pivot){
@@ -831,15 +900,17 @@ export class FxRuntime {
       const pivot=vec(options.pivot).multiply(geo.boundingBox.getSize(new THREE.Vector3()));
       pivot.z=-pivot.z;options={...options,pivot};
     }
-    const defs=s.materials?.length?s.materials:[s.material],materials=[];
+    options={...options,missingMeshParticleNormal:s.renderer?.mode===4&&!!geo.userData.missingSourceNormals};
+    const expanded=expandNativeMaterialPasses(s.materials?.length?s.materials:[s.material],geo);
+    const defs=expanded.defs,materials=[];geo=expanded.geometry;
     const count=Math.max(defs.length,...geo.groups.map(g=>g.materialIndex+1),1);
-    for(let i=0;i<count;i++)materials.push(this.createMaterial(defs[Math.min(i,defs.length-1)],{...options,shared:materials[0]?.uniforms}));
-    const mesh=new THREE.Mesh(geo,materials.length===1?materials[0]:materials);
+    for(let i=0;i<count;i++){const def=defs[Math.min(i,defs.length-1)],material=this.createMaterial(def,{...options,shared:materials[0]?.uniforms});material.userData.sourceMaterialIndex=def.sourceMaterialIndex;materials.push(material);}
+    const mesh=new THREE.Mesh(geo,materials.length===1?materials[0]:materials);mesh.userData.nativePassGeometry=!!expanded.owned;
     if(defs.some(mat=>mat.surface==='screenDistortion')){
       mesh.onBeforeRender=(renderer,scene,camera,geometry,material)=>{
         const size=renderer.getDrawingBufferSize(new THREE.Vector2());let grab=mesh.userData.grabTexture;
         if(!grab||grab.image.width!==size.x||grab.image.height!==size.y){grab?.dispose();grab=new THREE.FramebufferTexture(size.x,size.y);grab.minFilter=grab.magFilter=THREE.LinearFilter;mesh.userData.grabTexture=grab;}
-        renderer.copyFramebufferToTexture(grab);material.uniforms._GrabTexture.value=grab;
+        renderer.copyFramebufferToTexture(grab);for(const [key,uniform] of Object.entries(material.uniforms))if(key.startsWith('_Grab'))uniform.value=grab;
       };
     }
     if(materials.length>1&&!geo.groups.length){geo.addGroup(0,geo.index?.count||geo.attributes.position.count,0);}
@@ -853,6 +924,13 @@ export class FxRuntime {
       for(const x of [b.min.x,b.max.x])for(const y of [b.min.y,b.max.y])for(const z of [b.min.z,b.max.z]){
         point.set(x*u.spriteSize.value.x,y*u.spriteSize.value.y,z).add(u.particlePivot.value).applyMatrix4(mesh.matrix);
         point.x+=this.group.position.x;point.y+=this.group.position.y;point.z-=this.group.position.z;
+        bounds.expandByPoint(new THREE.Vector2(point.x,point.y*Math.cos(pitch)+point.z*Math.sin(pitch)/compensation));
+      }
+    }
+    if(this.group.visible)for(const item of this.skeletonEffects||[])for(const mesh of item.meshes){
+      if(!mesh.visible)continue;const b=mesh.geometry.boundingBox,matrix=new THREE.Matrix4();mesh.getMatrixAt(0,matrix);
+      for(const x of [b.min.x,b.max.x])for(const y of [b.min.y,b.max.y]){
+        point.set(x,y,0).applyMatrix4(matrix);point.x+=this.group.position.x;point.y+=this.group.position.y;point.z-=this.group.position.z;
         bounds.expandByPoint(new THREE.Vector2(point.x,point.y*Math.cos(pitch)+point.z*Math.sin(pitch)/compensation));
       }
     }
@@ -964,3 +1042,5 @@ export function createParticleSimulation(effect,{textures,geometries,index,camer
  }
  return sim;
 }
+
+

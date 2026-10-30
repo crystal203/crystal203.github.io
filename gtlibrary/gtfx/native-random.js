@@ -28,6 +28,13 @@ export class UnityRand {
   nextFloat() { return nativeRandom01(this.nextUint()); }
 }
 
+// Utils.GetRandomInt (Scripts.dll 0x5dad9e4): float32 multiply, truncate,
+// remainder, then add min. Unity value is inclusive, so value==1 wraps to min.
+export function nativeScriptRandomInt(rng,min,maxExclusive){
+ const span=maxExclusive-min;if(span<=0)return min;
+ return min+Math.trunc(f32(rng.nextFloat()*f32(span)))%span;
+}
+
 export class UnityRand4 {
   constructor(seed) { this.setSeed(seed); }
   // A module seed expands into four lanes. Particle-derived seeds instead

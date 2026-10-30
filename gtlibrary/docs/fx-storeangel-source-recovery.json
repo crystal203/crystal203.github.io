@@ -1,0 +1,476 @@
+{
+  "schema": 1,
+  "character": "storeangel",
+  "problem": "3.54 bow_a references sixteen Sprite path IDs absent from the 3.51 APK battle dependency despite an identical CAB name.",
+  "source": {
+    "package": "com.kakaogames.gdtskr",
+    "versionName": "3.54.0",
+    "versionCode": 423,
+    "downloadPage": "https://apkpure.net/가디언-테일즈/com.kakaogames.gdtskr/download/3.54.0",
+    "downloadUrl": "https://d.apkpure.net/b/XAPK/com.kakaogames.gdtskr?versionCode=423&nc=arm64-v8a&sv=24",
+    "mirrorTlsCertificateVerification": false,
+    "xapkSha256": "4db0912c1975f03a8ac27ac3895b34655e5deddd2f5168afaf04b4e3e016f3b0",
+    "apkSha256": "94599456c23ebf2f0462f1c4c3d18cc7e432a213e9384d88117d8822201c909f",
+    "member": "assets/AssetBundles/Android/effects/common/battle",
+    "bundleSha256": "f05c6888d7c39445f8a56ad8dda84e6d489892849dc4c9bc189877327df23797",
+    "bytes": 516852,
+    "cab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+    "objects": 257,
+    "sourceCache": "E:\\GTFiles\\storeangel-source-3.54",
+    "scope": "Only the missing battle bundle was added; no previous source bundle was replaced."
+  },
+  "before": {
+    "bundles": {
+      "effects/cwp/bow_a": {
+        "source": "E:\\GTFiles\\files\\AssetBundles\\Android\\effects\\cwp\\bow_a",
+        "sha256": "a25eaa5489a600607583e6dbb7b9b8f69fc38d4fef2e17e87adfdcd020b6650e",
+        "bytes": 624994,
+        "rootVersionMarker": [
+          "b8cd0ea2ee2e475cd2a918731e9265269134efae",
+          "3.54.0"
+        ],
+        "serializedFiles": [
+          {
+            "cab": "CAB-43c05e182438940720bade9ac61a9e59",
+            "objects": 663,
+            "types": {
+              "GameObject": 157,
+              "Sprite": 37,
+              "ParticleSystemRenderer": 127,
+              "ParticleSystem": 127,
+              "Transform": 157,
+              "Texture2D": 10,
+              "MonoBehaviour": 14,
+              "Material": 11,
+              "Mesh": 10,
+              "MeshRenderer": 3,
+              "MeshFilter": 3,
+              "MonoScript": 6,
+              "AssetBundle": 1
+            }
+          }
+        ]
+      },
+      "effects/common/battle": {
+        "source": "E:/GTFiles/_fromTry/ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk!assets/AssetBundles/Android/effects/common/battle",
+        "sha256": "da347a5005442b418b4a766967055128d7c24c7db9596b1eabf88d6cf69a3bc1",
+        "bytes": 294965,
+        "apkFilenameVersion": "3.51.0",
+        "serializedFiles": [
+          {
+            "cab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+            "objects": 234,
+            "types": {
+              "Sprite": 111,
+              "MeshRenderer": 13,
+              "Transform": 20,
+              "Mesh": 14,
+              "GameObject": 20,
+              "Material": 16,
+              "MeshFilter": 13,
+              "Texture2D": 21,
+              "AnimationClip": 1,
+              "Shader": 1,
+              "SkinnedMeshRenderer": 1,
+              "Avatar": 1,
+              "AssetBundle": 1,
+              "Animator": 1
+            }
+          }
+        ]
+      }
+    },
+    "spriteReferenceCount": 314,
+    "missingSpriteReferences": [
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-163889743189402731",
+        "error": "-163889743189402731",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-8165931775086375077",
+        "error": "-8165931775086375077",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "2800170830378917882",
+        "error": "2800170830378917882",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-1137836274693093230",
+        "error": "-1137836274693093230",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "8336428616263080215",
+        "error": "8336428616263080215",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "617905630152722708",
+        "error": "617905630152722708",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "948938306219447585",
+        "error": "948938306219447585",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_r",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-6263739120863258656",
+        "error": "-6263739120863258656",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "8797861830056282522",
+        "error": "8797861830056282522",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-1710719905166748669",
+        "error": "-1710719905166748669",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "1538214712608309502",
+        "error": "1538214712608309502",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "7851467980290281215",
+        "error": "7851467980290281215",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "8826439981813099537",
+        "error": "8826439981813099537",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-5636160511830644812",
+        "error": "-5636160511830644812",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "193833327344408662",
+        "error": "193833327344408662",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      },
+      {
+        "node": "[angel_asset]_angel_sprite_l",
+        "usage": "ParticleSystem.UVModule.sprites",
+        "originCab": "CAB-43c05e182438940720bade9ac61a9e59",
+        "targetCab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "pathId": "-6840512717310599871",
+        "error": "-6840512717310599871",
+        "targetBundle": "effects/common/battle",
+        "classification": "existing-cab-missing-path-id"
+      }
+    ],
+    "candidateBundles": [
+      {
+        "source": "E:\\GTFiles\\storeangel-source-3.54\\com.kakaogames.gdtskr.apk!assets/AssetBundles/Android/effects/common/battle",
+        "sha256": "f05c6888d7c39445f8a56ad8dda84e6d489892849dc4c9bc189877327df23797",
+        "bytes": 516852,
+        "cab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+        "objects": 257,
+        "exactMissingPathIdsPresent": [
+          "-163889743189402731",
+          "-8165931775086375077",
+          "2800170830378917882",
+          "-1137836274693093230",
+          "8336428616263080215",
+          "617905630152722708",
+          "948938306219447585",
+          "-6263739120863258656",
+          "8797861830056282522",
+          "-1710719905166748669",
+          "1538214712608309502",
+          "7851467980290281215",
+          "8826439981813099537",
+          "-5636160511830644812",
+          "193833327344408662",
+          "-6840512717310599871"
+        ]
+      }
+    ]
+  },
+  "after": {
+    "presets": [
+      "fx_cwp_storeangel_angel"
+    ],
+    "bundles": {
+      "effects/cwp/bow_a": {
+        "source": "E:\\GTFiles\\files\\AssetBundles\\Android\\effects\\cwp\\bow_a",
+        "sha256": "a25eaa5489a600607583e6dbb7b9b8f69fc38d4fef2e17e87adfdcd020b6650e",
+        "bytes": 624994,
+        "rootVersionMarker": [
+          "b8cd0ea2ee2e475cd2a918731e9265269134efae",
+          "3.54.0"
+        ],
+        "serializedFiles": [
+          {
+            "cab": "CAB-43c05e182438940720bade9ac61a9e59",
+            "objects": 663,
+            "types": {
+              "GameObject": 157,
+              "Sprite": 37,
+              "ParticleSystemRenderer": 127,
+              "ParticleSystem": 127,
+              "Transform": 157,
+              "Texture2D": 10,
+              "MonoBehaviour": 14,
+              "Material": 11,
+              "Mesh": 10,
+              "MeshRenderer": 3,
+              "MeshFilter": 3,
+              "MonoScript": 6,
+              "AssetBundle": 1
+            }
+          }
+        ]
+      },
+      "effects/common/battle": {
+        "source": "E:\\GTFiles\\files\\AssetBundles\\Android\\effects\\common\\battle",
+        "sha256": "f05c6888d7c39445f8a56ad8dda84e6d489892849dc4c9bc189877327df23797",
+        "bytes": 516852,
+        "rootVersionMarker": [
+          "b8cd0ea2ee2e475cd2a918731e9265269134efae",
+          "3.54.0"
+        ],
+        "serializedFiles": [
+          {
+            "cab": "CAB-6a35728b6b25e6433040b8b354af3cee",
+            "objects": 257,
+            "types": {
+              "Sprite": 133,
+              "MeshRenderer": 13,
+              "Transform": 20,
+              "Mesh": 14,
+              "GameObject": 20,
+              "Material": 16,
+              "MeshFilter": 13,
+              "Texture2D": 22,
+              "AnimationClip": 1,
+              "Shader": 1,
+              "SkinnedMeshRenderer": 1,
+              "Avatar": 1,
+              "AssetBundle": 1,
+              "Animator": 1
+            }
+          }
+        ]
+      },
+      "effects/commons": {
+        "source": "E:/GTFiles/_fromTry/ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk!assets/AssetBundles/Android/effects/commons",
+        "sha256": "a484636979f69c71735417dd7ceab676d5dcfaccf68a4edde6aaea0df1657522",
+        "bytes": 2279121,
+        "apkFilenameVersion": "3.51.0",
+        "serializedFiles": [
+          {
+            "cab": "CAB-63f2efb5baeedab77ee9acb708c5fffb",
+            "objects": 1684,
+            "types": {
+              "MeshFilter": 96,
+              "Texture2D": 81,
+              "Sprite": 781,
+              "MeshRenderer": 96,
+              "GameObject": 176,
+              "Animator": 6,
+              "Material": 77,
+              "Mesh": 97,
+              "Transform": 176,
+              "Shader": 5,
+              "Avatar": 6,
+              "ParticleSystem": 30,
+              "ParticleSystemRenderer": 30,
+              "TrailRenderer": 2,
+              "Animation": 3,
+              "AnimationClip": 7,
+              "AnimatorController": 4,
+              "MonoBehaviour": 4,
+              "MonoScript": 3,
+              "SkinnedMeshRenderer": 2,
+              "AssetBundle": 1,
+              "MeshCollider": 1
+            }
+          }
+        ]
+      },
+      "shaders/effect": {
+        "source": "E:/GTFiles/_fromTry/ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk!assets/AssetBundles/Android/shaders/effect",
+        "sha256": "3d2cdcdd0f8259bc6a9c9236b1e3ae17815d686efaea9d61327361b4ce04a3bb",
+        "bytes": 31756,
+        "apkFilenameVersion": "3.51.0",
+        "serializedFiles": [
+          {
+            "cab": "CAB-8c612add09e764c8f418ad4e1ba3ca8e",
+            "objects": 28,
+            "types": {
+              "Shader": 27,
+              "AssetBundle": 1
+            }
+          }
+        ]
+      },
+      "shaders/oak": {
+        "source": "E:/GTFiles/_fromTry/ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk!assets/AssetBundles/Android/shaders/oak",
+        "sha256": "564b57ce72ecb7b38ab92f3715642022149fa13fe60edbae3d01b391a7fe089c",
+        "bytes": 164001,
+        "apkFilenameVersion": "3.51.0",
+        "serializedFiles": [
+          {
+            "cab": "CAB-c1ad8e886efb1e612cf720a92a9a23ff",
+            "objects": 112,
+            "types": {
+              "Shader": 111,
+              "AssetBundle": 1
+            }
+          }
+        ]
+      },
+      "effects/common/super": {
+        "source": "E:/GTFiles/_fromTry/ktblgzyqshxgjzjdqhmx_3.51.0_0805_pr_01_20260907_120749_c6d8e.apk!assets/AssetBundles/Android/effects/common/super",
+        "sha256": "dab198a8ebee97ad8e774d01fc7a5ccc68f0a6af2dd690d9ae262c9e9ab59a50",
+        "bytes": 196351,
+        "apkFilenameVersion": "3.51.0",
+        "serializedFiles": [
+          {
+            "cab": "CAB-4efeb4032f2630c8897a408424b89332",
+            "objects": 71,
+            "types": {
+              "Transform": 12,
+              "Sprite": 6,
+              "GameObject": 12,
+              "Mesh": 10,
+              "MeshFilter": 10,
+              "MeshRenderer": 10,
+              "Material": 5,
+              "Shader": 1,
+              "AssetBundle": 1,
+              "Animation": 1,
+              "Texture2D": 3
+            }
+          }
+        ]
+      },
+      "effects/fx_common_lightning": {
+        "source": "E:\\GTFiles\\files\\AssetBundles\\Android\\effects\\fx_common_lightning",
+        "sha256": "44d57c34ce7c2f35042616c6eb1b05861fa7912420c5493005c2a3a7fa987a81",
+        "bytes": 274177,
+        "rootVersionMarker": [
+          "b8cd0ea2ee2e475cd2a918731e9265269134efae",
+          "3.54.0"
+        ],
+        "serializedFiles": [
+          {
+            "cab": "CAB-2c27352a5229ed4d7974331cfacf00de",
+            "objects": 57,
+            "types": {
+              "ParticleSystemRenderer": 11,
+              "ParticleSystem": 11,
+              "GameObject": 13,
+              "Transform": 13,
+              "MonoScript": 1,
+              "Texture2D": 3,
+              "Material": 3,
+              "AssetBundle": 1,
+              "MonoBehaviour": 1
+            }
+          }
+        ]
+      }
+    },
+    "spriteReferenceCount": 314,
+    "missingSpriteReferences": [],
+    "candidateBundles": [],
+    "passed": true,
+    "contract": "A CAB name alone does not prove matching contents. Missing PPtrs require original source with the exact target CAB and path IDs; candidates are inspected only and never substituted."
+  },
+  "import": {
+    "sourcePrefabs": 38,
+    "convertedEffects": 33,
+    "styles": 2,
+    "actions": 5,
+    "options": 18,
+    "materialValidation": true,
+    "visualValidation": false
+  },
+  "remaining": "Actual actionModules entry has no basic attack. ManualStoreAngel and CwpStoreAngel are Lua state machines and need source compilation; successful import does not establish action completeness."
+}

@@ -1,0 +1,186 @@
+{
+  "character": "steamknight",
+  "name": "龙骑士夏皮拉",
+  "status": "ready-for-user-review",
+  "scope": "Source mechanisms plus one UI-equivalent default scene; no browser or visual certification",
+  "sourceReview": {
+    "nativeElfSha256": "d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db",
+    "basic": [
+      "TwohandSlash .5s with FX at .375s",
+      "TwohandBackSlash .5s with FX at .375s",
+      "TwohandSpinningSlash fixed1.7s, ready0-.5, spin.5-1.5, recovery1.5-1.7; short dash stay.5/duration.25/maxspeed10; native source pools/scale1.75"
+    ],
+    "support": {
+      "action": "JumpStompSupport:SteamKnight",
+      "jumpDuration": 0.6,
+      "jumpHeight": 18,
+      "jumpIntervalDefault": 0.1,
+      "backJumpDuration": 0.25,
+      "backJumpHeight": 1.5,
+      "effectTiming": 0.5,
+      "actorEnd": 0.9,
+      "destination": "target position",
+      "movementSource": "0x8c1dc6c/0x8c22f8c/0x8c1ff38"
+    },
+    "cwp": {
+      "action": "CwpSteamKnight",
+      "sourceSha256": "bbefd6e71c643b0658646fe142cf97635c974e79e54c8fe17b08becf8bbb53d7",
+      "castTiming": 0,
+      "areaTiming": 0.3,
+      "areaOffset": 2.8,
+      "actorEnd": 0.5,
+      "damageTimesRelativeToArea": [
+        0.1,
+        0.4,
+        0.7
+      ],
+      "independentAreaEnd": 1.0,
+      "nilRotation": "cast and explosion retain identity",
+      "animation": "No declared AnimationInfo; source set_anim(action) has no authored entry, so zero clips is intentional"
+    },
+    "heroOptions": "No installed role action; source awakening installs JumpStompSupport:SteamKnight; no ascent/myth source form"
+  },
+  "fixedScene": {
+    "hero": "steam_knight_5",
+    "weapon": "cwp_steamknight",
+    "weaponType": "twohandsword",
+    "style": "steam_knight",
+    "installedActions": [
+      "JumpStompSupport:SteamKnight"
+    ],
+    "sourcePlanResolution": {
+      "policy": "source-first",
+      "compiledActions": [
+        "CwpSteamKnight",
+        "JumpStompSupport:SteamKnight",
+        "TwohandBackSlash:SteamKnight",
+        "TwohandSlash:SteamKnight",
+        "TwohandSpinningSlash:SteamKnight"
+      ],
+      "legacyFallbackActions": []
+    },
+    "materialValidation": {
+      "version": 1,
+      "passed": true,
+      "effects": 8,
+      "materials": 53,
+      "scope": "action dependencies",
+      "visualValidation": false
+    },
+    "modules": [
+      {
+        "id": "basic-1",
+        "actorEnd": 0.5,
+        "duration": 1.375,
+        "clips": 1,
+        "tracks": 1
+      },
+      {
+        "id": "basic-2",
+        "actorEnd": 0.5,
+        "duration": 1.375,
+        "clips": 1,
+        "tracks": 1
+      },
+      {
+        "id": "basic-3",
+        "actorEnd": 1.7,
+        "duration": 2.3,
+        "clips": 3,
+        "tracks": 2
+      },
+      {
+        "id": "support",
+        "actorEnd": 0.9,
+        "duration": 2.5,
+        "clips": 1,
+        "tracks": 1
+      },
+      {
+        "id": "cwp",
+        "actorEnd": 0.5,
+        "duration": 1.9000000000000001,
+        "clips": 0,
+        "tracks": 3
+      },
+      {
+        "id": "basic-combo",
+        "actorEnd": 2.7,
+        "duration": 3.3,
+        "clips": 5,
+        "tracks": 4
+      }
+    ]
+  },
+  "inputSnapshots": {
+    "gtfx/assets/weapon-types.json": "3e338e3af90283078257b3ad802c63b4ecdcb731a1632deeb78bb76d8317bb28",
+    "gtfx/assets/native-characters/steamknight.json": "1a45ac6a8dd63a09e2e1dfdfcb2c6ce4acf3ed1efa1d28c5ed262534b28f8bb9",
+    "gtfx/assets/characters/steamknight.json": "4e6fd4dd62c0de6ecfb8cff9f9794c96f130ee9b192bb753752f8ce8b8c9a5a3",
+    "gtfx/assets/native-characters/succubus.json": "015810f3a03bae840f9964dea890b3f056483f21272f33f1d5aed642d6a5990c",
+    "gtfx/assets/characters/succubus.json": "07d22131362b75816bc23d35e6c14867a456645b703cc3b85f595efd377a5c3d"
+  },
+  "browserOperations": 0,
+  "renderedPixelsRead": 0,
+  "confirmedUserIssue": {
+    "issue": "Third basic spinning sword arc was static",
+    "cause": "RotateThis serialized rotationSpeedX/Y/Z floats were ignored by vector-only runtime binding",
+    "nativeSource": "RotateThis.Update 0x71343b8: deltaTime * TimeScale then Transform.Rotate(x,y,z,local)",
+    "verification": {
+      "sourceMethod": "RotateThis.Update 0x71343b8",
+      "fields": {
+        "m_Enabled": 1,
+        "m_Name": "",
+        "rotationSpeedX": 0,
+        "rotationSpeedY": 1800,
+        "rotationSpeedZ": 0,
+        "local": 1
+      },
+      "node": "SwordWheelTrail",
+      "samples": [
+        {
+          "time": 0,
+          "quaternion": [
+            0,
+            -0.4664304554462433,
+            0,
+            0.8845579028129578
+          ],
+          "deltaDegrees": 0
+        },
+        {
+          "time": 0.01,
+          "quaternion": [
+            0,
+            -0.3223125802190808,
+            0,
+            0.9466333259658497
+          ],
+          "deltaDegrees": 17.999999999999968
+        },
+        {
+          "time": 0.02,
+          "quaternion": [
+            0,
+            -0.17025829957279887,
+            0,
+            0.9853994949375745
+          ],
+          "deltaDegrees": 36.00000000000002
+        },
+        {
+          "time": 0.1,
+          "quaternion": [
+            0,
+            0.8845579028129578,
+            0,
+            0.46643045544624384
+          ],
+          "deltaDegrees": 179.99999999999994
+        }
+      ],
+      "browserOperations": 0,
+      "renderedPixelsRead": 0
+    },
+    "status": "fixed-source-and-numeric-check; awaiting user visual acceptance"
+  }
+}
