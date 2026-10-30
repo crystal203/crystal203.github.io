@@ -23,7 +23,8 @@ def compile_batch6_a_plan(a,lua,path):
  elif typ=='CwpVampireNoble':return dyn('vampire-cwp')
  elif exact=='VampireNobleSupport':return dyn('vampire-support')
  elif typ=='ManualRedhoodAscent':return dyn('redhood-ascent')
- elif typ=='RoleRedhoodAscent':return dyn('redhood-role')
+ elif typ=='RoleRedhoodAscent':
+  p['requiredSourceEntities']=[dict(preset='source-entity:redhood_ascent_mech',bundleField='MechBundleName',assetField='MechAssetName')];return dyn('redhood-role')
  elif typ=='ManualExorcistGirl':
   if a['AttackType']=='extra':return dyn('exorcist-extra')
   p.update(clips=[clip('cast')],moves=[dash()],events=[ev('cast',a['AttackTiming']-.02,follow=True,triggerDisposeAt=a['ActionDuration'])])

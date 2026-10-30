@@ -52,7 +52,17 @@ from native_script_batch6_b import compile_batch6_b_plan
 from native_script_batch6_c import compile_batch6_c_plan
 from native_script_batch6_root import compile_batch6_root_plan
 
+from native_script_batch6_witch import compile_batch6_witch_plan
+from native_script_batch6_e import compile_batch6_e_plan
+from native_script_batch6_f import compile_batch6_f_plan
+
 def _compile_script_plan_impl(a,lua,path):
+ additional=compile_batch6_f_plan(a,lua,path)
+ if additional:return additional
+ extra=compile_batch6_e_plan(a,lua,path)
+ if extra:return extra
+ witch=compile_batch6_witch_plan(a,lua,path)
+ if witch:return witch
  batch6=compile_batch6_c_plan(a,lua,path) or compile_batch6_a_plan(a,lua,path) or compile_batch6_b_plan(a,lua,path) or compile_batch6_root_plan(a,lua,path)
  if batch6:return batch6
  batch5=compile_batch5_d_plan(a,lua,path) or compile_batch5_a_plan(a,lua,path) or compile_batch5_b_plan(a,lua,path) or compile_batch5_c_plan(a,lua,path)

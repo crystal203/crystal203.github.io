@@ -22,6 +22,12 @@ class RegisteredImage(workbench.NativeImage):
         if self.profile['elfSha256']!=self.ELF:
             raise ValueError('Registration addresses are pinned to the inspected ELF')
         self.definitions=metadata_module.ControllerMetadata(self.metadata)
+        self.fieldDefaults={}
+        for field,type_index,data_index in self.definitions.rows('fieldDefaultValues','<III'):
+            protected=field>10000000
+            if protected:field,type_index,data_index=(v^0x66666666 for v in [field,type_index,data_index])
+            self.fieldDefaults[field]=(type_index,data_index,protected)
+
         r=self.REGISTRATION
         self.typeCount=self.u64(r+48);self.typePointers=self.u64(r+56)
         self.fieldOffsets=self.u64(r+88)
@@ -92,6 +98,30 @@ class RegisteredImage(workbench.NativeImage):
         for i,field in enumerate(result['fields']):
             field['offset']=struct.unpack('<i',self.read(offsets+i*4,4))[0]
             field['type']=self.type(field['typeIndex'])
+            default=self.fieldDefaults.get(field['index'])
+            if default:
+                _,index,protected=default;start,size=self.definitions.tables['defaultValueData']
+                if index<size:
+                    raw=self.definitions.data[start+index:start+min(size,index+1024)]
+                    if protected:raw=bytes(v^0x66 for v in raw)
+                    name=field['type'].get('name')
+                    def integer(raw):
+                        b=raw[0]
+                        if b<128:return b,1
+                        if b<192:return ((b&63)<<8)|raw[1],2
+                        if b<224:return ((b&31)<<24)|(raw[1]<<16)|(raw[2]<<8)|raw[3],4
+                        if b==240:return int.from_bytes(raw[1:5],'little'),5
+                        raise ValueError('Unsupported compressed metadata constant')
+                    if name=='System.Single':field['constant']=struct.unpack_from('<f',raw)[0]
+                    elif name=='System.Double':field['constant']=struct.unpack_from('<d',raw)[0]
+                    elif name=='System.Boolean':field['constant']=bool(raw[0])
+                    elif name=='System.String':
+                        encoded,skip=integer(raw);length=~(encoded>>1) if encoded&1 else encoded>>1
+                        field['constant']=None if length<0 else raw[skip:skip+length].decode('utf-8')
+                    elif name in ['System.Int32','System.UInt32']:
+                        encoded,_=integer(raw);field['constant']=(~(encoded>>1) if encoded&1 else encoded>>1) if name=='System.Int32' else encoded
+        result['nestedTypes']=[dict(index=t['index'],name=t['name'],selector='#'+str(t['index'])) for t in self.definitions.types if self.definitions.row('typeDefinitions','<16i8H2I',t['index'])[3]==row['byvalTypeIndex']]
+
         for method in result['methods']:
             for parameter in method.get('parameters',[]):parameter['type']=self.type(parameter['typeIndex'])
             if 'token' in method:

@@ -1,1 +1,29 @@
-export function batch6WitchActionModules(index,options,native,plans,style){return [];}
+import {scriptActionModules} from './script-actions.js';
+import {sequenceActionModules} from './source-module-sequence.js';
+import {aimDirection,targetPositions} from './targeting.js';
+import {sourceHero} from './weapon-hero-variants.js';
+import {UnityRand} from './native-random.js';
+const add=(a,b,k=1)=>a.map((x,i)=>x+b[i]*k),rotate=(v,d)=>{const r=d*Math.PI/180;return [v[0]*Math.cos(r)+v[2]*Math.sin(r),v[1],v[2]*Math.cos(r)-v[0]*Math.sin(r)];};
+const fields=rows=>Object.fromEntries((rows||[]).flatMap(r=>r.Name&&r.Preset?[[r.Name,r.Preset]]:Object.entries(r))),ev=(key,at=0,extra={})=>({op:'effect',key,at,anchor:'feet',nativePoolLifetime:true,nativePoolTransform:extra.directed===false?'direct':'directional',...extra});
+export function batch6WitchActionModules(index,options,native,plans,style){
+ const initial=options.actorPosition||[0,0,0],direction=aimDirection(options,options.direction,initial),target=targetPositions(options,options.direction)[0],result=[],hero=sourceHero(native,options.heroAppearance||options.appearance||options.profile.defaultSkin),ids=new Set([...(native.heroOptionIds?.[hero]||[]),...(options.exclusiveWeapon?native.weapons?.[options.weapon]?.optionIds||[]:[])]),activeOptions=Object.values(native.options||{}).filter(o=>ids.has(o.Id)),cwp=activeOptions.find(o=>o.Id===310328),rng=new UnityRand(options.seed??12345),build=(p,extra)=>scriptActionModules(index,options,native,[{...p,behavior:'timeline',meleeTimeline:true,sourceProjectilePools:true,events:[],clips:[],moves:[],spine:[],disableCombo:true,...extra}],style)[0];
+ for(const p of plans.filter(p=>p.behavior==='source-batch6-witch')){if(p.exclusive&&!options.exclusiveWeapon)continue;const a=native.actions[p.action],typ=p.action.split(':')[0];let m;
+ if(typ==='ManualDarkHound'||typ==='ManualDarkHoundCluster'){
+  const at=a.ShootTiming,spec=native.projectiles[a.ProjName],cluster=typ==='ManualDarkHoundCluster',count=cwp&&rng.nextFloat()<cwp.Probability?1+cwp.ExtraShoot:1,events=[],preset={};
+  if(spec.ShootEffectPreset)events.push(ev(null,at,{preset:spec.ShootEffectPreset,offset:.5,directed:false}));
+  const action={...a,ProjectileInfo:[{Name:a.ProjName}]};for(let i=0;i<count;i++)events.push({op:'projectile',at,index:0,height:-.375,offset:0,sideOffset:(cwp?.Offset||0)*(i-(count-1)*.5),directional:true,muzzle:false,nativePoolTransform:'directional'});
+  if(cluster){const explosion=native.projectiles[a.ExplosionProjName];for(let i=0;i<a.Limit;i++)events.push(ev(null,at+a.ExplosionTiming+i*a.DelayTerm,{preset:explosion.ExplosionPreset,offset:a.Offset+i*a.Distance,directed:false}));}
+  m=build(p,{clips:[{key:'action',at:0},{key:'cast',at:Math.max(0,at-.13)}],events,resolvedParameters:{action,presets:fields(a.PresetInfo)},independentFieldEnd:cluster?at+a.ExplosionTiming+(a.Limit-1)*a.DelayTerm:at+spec.Lifetime});if(m)m.sourceTrace={operation:cluster?'dark-hound-cluster':'dark-hound',shootAt:at,count,clusterExplosions:cluster?a.Limit:0,clusterFirst:cluster?at+a.ExplosionTiming:undefined,clusterTerm:a.DelayTerm};
+ }else if(typ==='CwpWitchCocoHellHound'){
+  const indexByDirection=Math.abs(direction[0])>=Math.abs(direction[2])?(direction[0]<0?3:0):(direction[2]>0?1:2),action={...a,ProjectileInfo:[{Name:a.ProjName[indexByDirection]}]},events=[ev('action',0,{triggerDisposeAt:a.ActionDuration}),ev('cast',0,{directed:false}),ev('screen',0,{screen:true,directed:false}),ev('spawn',a.ShootTiming,{offset:1,directed:false})];for(let i=0;i<a.LimitShoot;i++)events.push({op:'projectile',at:a.ShootTiming,index:0,height:-.375,offset:-2,directionAngle:a.Angle*(i-(a.LimitShoot-1)*.5),directional:true,muzzle:false,nativePoolTransform:'directional'});
+  m=build(p,{clips:[{key:'action',at:0},{key:'spawn',at:a.ShootTiming-.2}],events,resolvedParameters:{action,presets:fields(a.PresetInfo)}});if(m)m.sourceTrace={operation:'four-hell-hounds',shootAt:a.ShootTiming,count:a.LimitShoot,angleStep:a.Angle,launchBackOffset:2};
+ }else if(typ==='WitchCocoSupport'){
+  const halfHeight=(options.boundsSize?.[1]??.75)*.5,offset=(options.targetBoundsSize?.[0]??.55)*.5+1.3,events=[],positions=[add(target,[-offset,0,0]),add(target,[offset,0,0])];
+  for(let i=0;i<2;i++){const pos=positions[i],view='side',dir=i===0?[1,0,0]:[-1,0,0];events.push(ev('spawn',0,{directed:false,link:{graphPosition:add(pos,[0,halfHeight,0])}}),ev('hound',0,{directed:false,until:.7,uniformScale:1.1,link:{graphPosition:pos,graphDirection:dir,skeletonView:view,skeletonFlip:i===1,skeletonIdle:'run',skeletonClips:[{name:i===0?'attack2':'angry',start:0,end:i===0?.4:.1,speed:1,loop:i===1},...(i===1?[{name:'attack2',start:.1,end:.5,speed:1,loop:false}]:[]),{name:'happy',start:i===0?.4:.5,end:.7,speed:1,loop:true},{name:'run',start:.7,speed:1,loop:true}],skeletonAlpha:i===0?[{at:0,from:0,to:1,duration:.2},{at:.5,from:1,to:0,duration:.2}]:[{at:0,from:0,to:1,duration:.2}]}}),ev('end',.5,{directed:false,link:{graphPosition:add(pos,[0,halfHeight,0])}}));}
+  events.push(ev('claw',.3,{anchor:'targetGround',directed:true,link:{graphDirection:[Math.SQRT1_2,0,Math.SQRT1_2]}}),ev('claw',.4,{anchor:'targetGround',directed:true,link:{graphDirection:[-Math.SQRT1_2,0,Math.SQRT1_2]}}));m=build(p,{clips:[],animationArrays:true,events,independentFieldEnd:.7});if(m)m.sourceTrace={operation:'two-independent-support-hounds',actorAnimation:'Native OnStart delegates base and starts coroutine; source AnimationKeys are not guessed as actor clips',houndPositions:positions,bodyScale:1.1,claws:[.3,.4],fadeAt:.5,disposeAt:.7};
+ }
+ if(m)result.push(m);
+ }
+ if(!options.skipWitchCombo){const basics=(style.ManualBattleActions||[]).filter(n=>n.startsWith('Manual')),parts=basics.map(n=>result.find(m=>m.id==='basic-'+((style.ManualBattleActions||[]).filter(n=>n.startsWith('Manual')).indexOf(n)+1))).filter(Boolean);if(parts.length===basics.length&&parts.length>1)result.push(sequenceActionModules(parts,{id:'basic-combo',label:'普攻三段连贯',source:parts[0].source}));}
+ return result;
+}

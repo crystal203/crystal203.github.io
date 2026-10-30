@@ -31,7 +31,7 @@ export class FxActionPlayer {
    definition.emitterVelocity=time=>this.velocity(track,time+(track.link.delay||0));
    definition.emitterPosition=time=>this.anchor(track,time+(track.link.delay||0));
    const sourceSampleNodes=definition.sampleNodes;
-   if(track.link.nativeHookFromTo||track.link.materialPaths?.length||track.link.nodePaths?.length||track.link.eulerPath||track.link.uniformScalePath||definition.scripts?.some(s=>s.type==='StageShadowSetter'&&s.bodyNode))definition.sampleNodes=(simulation,localTime)=>{
+   if(track.link.nativeLaserScalePath||track.link.nativeHookFromTo||track.link.materialPaths?.length||track.link.nodePaths?.length||track.link.eulerPath||track.link.uniformScalePath||definition.scripts?.some(s=>s.type==='StageShadowSetter'&&s.bodyNode))definition.sampleNodes=(simulation,localTime)=>{
     sourceSampleNodes?.(simulation,localTime);
     const at=localTime+(track.link.delay||0),path=track.link.eulerPath;
     if(path&&at>=path[0].time){const values=sampleGraphPath(path,at),euler=new THREE.Euler().setFromQuaternion(simulation.nodeRoot.quaternion,'YXZ');for(let i=0;i<3;i++)if(track.link.eulerMask?.[i])euler['xyz'[i]]=values[i]*Math.PI/180;simulation.nodeRoot.quaternion.setFromEuler(euler);}
@@ -57,6 +57,7 @@ export class FxActionPlayer {
      for(const item of simulation.statics.filter(s=>s.s.node===h.chainNode))for(const mat of Array.isArray(item.mesh.material)?item.mesh.material:[item.mesh.material])mat.uniforms.uvScale.value.y=span/h.chainScale[1];
      simulation.nativeHookSample={length,span,from,to,root,headScale:Math.min(1,length/h.headLength),headZ:head.position.z,chainScaleY:chain.scale.y,uvTop:span/h.chainScale[1]};
     }
+    if(track.link.nativeLaserScalePath){const scale=sampleGraphPath(track.link.nativeLaserScalePath,at)[0];for(const script of definition.scripts||[])for(const rule of script.scalingNodes||[]){const node=simulation.nodes.get(rule.node);if(!node)throw Error('Missing ScalingLaserEffect node '+rule.node);node.scale.fromArray(rule.scale.map((v,i)=>v*(rule.axes&(1<<i)?scale:1)));}}
     sampleNativeStageShadow(simulation,localTime);
    };
    definition.simulationDuration=Math.max(0,(track.link.emissionEnd??track.link.fxEnd??(track.link.delay||0)+track.effect.duration)-(track.link.delay||0));

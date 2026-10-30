@@ -223,7 +223,7 @@ uniform bool partlyVisible; uniform vec3 partlyOrigin; uniform float partlySqrRa
 uniform vec4 gradColor; uniform vec2 gradRange; uniform bool gradation; uniform float cutoff;
 uniform bool particleDissolve; uniform int nativeDissolvePass; uniform vec4 nativeCustom1; uniform vec4 nativeCustom2;
 uniform bool clampSpriteUv; uniform vec4 spriteUvBounds;
-uniform bool nativeSoftAdditive;uniform bool textureAlphaMultiplier;uniform vec4 tint;uniform bool additive;uniform bool sourcePremultiplied;uniform float nativeSourceFactor;uniform bool ignoreVertexColor;uniform bool gammaColorSpace;uniform float colorGain;varying vec2 vUv;varying vec2 vUv2;varying vec2 vMaskUv;varying vec4 vColor;varying vec3 vNormal;varying float vHeight;
+uniform bool nativeRgbCoverage;uniform bool nativeSoftAdditive;uniform bool textureAlphaMultiplier;uniform vec4 tint;uniform bool additive;uniform bool sourcePremultiplied;uniform float nativeSourceFactor;uniform bool ignoreVertexColor;uniform bool gammaColorSpace;uniform float colorGain;varying vec2 vUv;varying vec2 vUv2;varying vec2 vMaskUv;varying vec4 vColor;varying vec3 vNormal;varying float vHeight;
 void main(){vec2 sampleUv=clampSpriteUv?clamp(vUv,spriteUvBounds.xy,spriteUvBounds.zw):vUv;gl_FragColor=texture2D(map,sampleUv)*(ignoreVertexColor?vec4(1.0):vColor)*tint*colorGain;
 if(textureAlphaMultiplier)gl_FragColor*=texture2D(map,sampleUv).a;
 if(nativeSoftAdditive)gl_FragColor.rgb*=gl_FragColor.a;
@@ -256,7 +256,7 @@ if(!opaque){
  if(nativeSourceFactor==3.0)gl_FragColor.rgb*=gl_FragColor.rgb;
  else if(nativeSourceFactor==5.0)gl_FragColor.rgb*=gl_FragColor.a;
 }
-if(additive)gl_FragColor.a=clamp(max(max(gl_FragColor.r,gl_FragColor.g),gl_FragColor.b),0.0,1.0);
+if(additive||nativeRgbCoverage)gl_FragColor.a=clamp(max(max(gl_FragColor.r,gl_FragColor.g),gl_FragColor.b),0.0,1.0);
 if(gl_FragColor.a<0.002)discard;
 }`;
 function geometry(data) {
@@ -857,7 +857,7 @@ export class FxRuntime {
   createMaterial(mat,{sprite=null,size=[1,1],pivot={},atlas=false,shared=null,missingMeshParticleNormal=false}={}) {
     // Saved properties can survive shader changes; Detail uses neither gradient nor cutoff.
     const blendState=materialBlend(mat),opaque=blendState.opaque,gradation=mat.shader==='MatCap/Detail'?null:mat.gradation,distortion=mat.surface==='screenDistortion';
-    const uniforms={nativeSoftAdditive:{value:!!mat.nativeSoftAdditive},nativeBendColor:{value:mat.surface==='nativeBendColor'},nativeBendPivot:{value:new THREE.Vector4(...rgba(mat.nativeBend?.pivot||{r:0,g:0,b:0,a:0}))},textureAlphaMultiplier:{value:!!mat.textureAlphaMultiplier},map:{value:this.textures[sprite?.texture||mat.texture]||this.textures.white},
+    const uniforms={nativeRgbCoverage:{value:mat.nativeBlend?.[1]===6},nativeSoftAdditive:{value:!!mat.nativeSoftAdditive},nativeBendColor:{value:mat.surface==='nativeBendColor'},nativeBendPivot:{value:new THREE.Vector4(...rgba(mat.nativeBend?.pivot||{r:0,g:0,b:0,a:0}))},textureAlphaMultiplier:{value:!!mat.textureAlphaMultiplier},map:{value:this.textures[sprite?.texture||mat.texture]||this.textures.white},
       dualTexture:{value:!!mat.texture2},map2:{value:this.textures[mat.texture2?.texture]||this.textures.white},
       uvScale2:{value:new THREE.Vector2(mat.texture2?.scale.x??1,mat.texture2?.scale.y??1)},
       uvOffset2:{value:new THREE.Vector2(mat.texture2?.offset.x??0,mat.texture2?.offset.y??0)},

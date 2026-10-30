@@ -1,5 +1,7 @@
 """Fixed projectile references from native firearm constructors, not equipment."""
 NATIVE_FIREARM_PROJECTILES={
+    'ManualHealShotgun':('manual_heal_shotgun_projectile',),
+    'ManualRecoveryBow':('manual_fairy_damage_projectile',),
     # Oak.ManualWeakBasket constructor 0x8b0d2d4.
     'ManualWeakBasket':('weak_basket_shot',),
     # Oak.MachineGunArrow constructor 0x8ac1fac, same-version ARM64.

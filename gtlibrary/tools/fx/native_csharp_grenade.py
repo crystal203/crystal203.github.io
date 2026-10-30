@@ -8,6 +8,9 @@ ELF = 'd33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db'
 
 def compile_native_grenade_plan(a):
     typ = a['Name'].split(':')[0]
+    if a['Name']=='ManualGrenade:RedHood' or typ in ['RedhoodSupport','CwpRedhoodNewtonApple']:
+        cat='basic' if typ=='ManualGrenade' else 'support' if typ=='RedhoodSupport' else 'cwp'
+        return dict(behavior='source-batch6-a',batch6Operation={'basic':'redhood-original','support':'redhood-support','cwp':'redhood-cwp'}[cat],category=cat,id=cat,label={'basic':'普通攻击','support':'连锁技能','cwp':'专武技能'}[cat],action=a['Name'],end=a.get('ActionDuration',a.get('Duration',.5)),exclusive=cat=='cwp',source='registered native ARM64 ManualGrenade.StartAttack 0x8b29cd4/ShootGrenade 0x8b2a5b8; RedhoodSupport 0x8c2caa0/0x8c2d818/0x8c2e8bc; NewtonApple 0x8bd5f50/0x8bd678c/0x8bd5968/0x8bd6c30',sourceSha256=ELF,events=[],clips=[],moves=[],spine=[])
     if typ == 'ManualMadScientist':
         category = 'basic'
         rule = dict(kind='manual', parameterOptionField='OptionId',

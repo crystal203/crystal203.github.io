@@ -367,6 +367,14 @@ def convert_missing(manifest, pool_rows, output, config, refresh=()):
                 source=component.component.read();cls=source.m_Script.read().m_ClassName
                 values=component.component.read_typetree();values.pop('m_GameObject',None);values.pop('m_Script',None)
                 script={'node':node_id,'type':cls,'fields':values}
+                if cls=='ScalingLaserEffect':
+                    script['scalingNodes']=[]
+                    for item in source.scalingEffects:
+                        ref=item.transform
+                        if ref.path_id:script['scalingNodes'].append(dict(node=str(ref.read().m_GameObject.path_id),axes=int(item.targetVector),scale=[float(item.initialScale.x),float(item.initialScale.y),float(item.initialScale.z)]))
+                if cls=='ScalingEffect':
+                    ref=source.rayTransform
+                    if ref.path_id:script['rayNode']=str(ref.read().m_GameObject.path_id)
                 if cls=='StageShadowSetter':
                     # Native fields reference Transforms; runtime nodes use GameObject IDs.
                     for field,binding_key in [('Body','bodyNode'),('Shadow','shadowNode')]:
