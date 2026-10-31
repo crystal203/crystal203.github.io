@@ -258,18 +258,6 @@
   ],
   "peimei": [
     {
-      "augmentAction": "ManualChinaHero:Ascent",
-      "repeatInterval": 0.6,
-      "fxOffset": 0.35,
-      "source": "ManualChinaHeroBattleAction.lua:188,372",
-      "basicVariantByAppearance": {
-        "china_hero_boy_5": "attack",
-        "china_hero_girl_5": "attack_alt",
-        "china_hero_boy_ascent": "attack",
-        "china_hero_girl_ascent": "attack_alt"
-      }
-    },
-    {
       "id": "support",
       "label": "连锁技能",
       "action": "BasicSupport:ChinaHero",
