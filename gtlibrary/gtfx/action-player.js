@@ -59,7 +59,7 @@ export class FxActionPlayer {
      simulation.nativeHookSample={length,span,from,to,root,headScale:Math.min(1,length/h.headLength),headZ:head.position.z,chainScaleY:chain.scale.y,uvTop:span/h.chainScale[1]};
     }
     if(track.link.nativeLaserScalePath){const scale=sampleGraphPath(track.link.nativeLaserScalePath,at)[0];for(const script of definition.scripts||[])for(const rule of script.scalingNodes||[]){const node=simulation.nodes.get(rule.node);if(!node)throw Error('Missing ScalingLaserEffect node '+rule.node);node.scale.fromArray(rule.scale.map((v,i)=>v*(rule.axes&(1<<i)?scale:1)));}}
-    sampleNativeStageShadow(simulation,localTime);
+    if(track.link.nativeStageShadowPosition!==false)sampleNativeStageShadow(simulation,localTime);
    };
    definition.simulationDuration=Math.max(0,(track.link.emissionEnd??track.link.fxEnd??(track.link.delay||0)+track.effect.duration)-(track.link.delay||0));
    definition.particleAutoSeedState=autoSeeds.getState();

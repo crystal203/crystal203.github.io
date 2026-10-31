@@ -119,7 +119,7 @@ export function sourceProjectileModules(index,options,native,plans,style){
    let previous;
    for(const [i,t]of shots.entries()){
     const at=deploy+t,fall=at+a.HitDelay-plan.fallLead,impact=at+a.HitDelay,n=i%plan.variantCount+1,format=s=>s.replace('%d',n);
-    effect(presets[k.fire],at,add(initial,[0,plan.fireHeight,0]));effect(presets[format(k.shoot)],at,add(initial,[0,plan.fireHeight,0]));
+    effect(presets[k.fire],at,add(initial,[0,plan.fireHeight,0]));effect(presets[format(k.shoot)],at,add(initial,[0,plan.fireHeight,0]),{nativeStageShadowPosition:false});
     // Native search is a cylinder around the placed entity. An out-of-range
     // preview target must not move the battery's attacks beyond its search.
     let target=targets.find(p=>Math.hypot(p[0]-initial[0],p[2]-initial[2])<=a.AttackRange&&Math.abs(p[1]-initial[1])<=plan.searchHeight);
@@ -129,7 +129,7 @@ export function sourceProjectileModules(index,options,native,plans,style){
      const angle=rng.nextFloat()*plan.randomAngleSpan+plan.randomAngleMin,radius=rng.nextFloat()*(a.AttackRange-plan.minRandomRadius)+plan.minRandomRadius;
      target=add(initial,unit(rotate(last,angle)),radius);target[1]=0;
     }
-    previous=target.slice();effect(presets[format(k.fall)],fall,target);effect(presets[format(k.impact)],impact,target);
+    previous=target.slice();effect(presets[format(k.fall)],fall,target,{nativeStageShadowPosition:false});effect(presets[format(k.impact)],impact,target);
     trace.shots.push({at,variant:n});trace.falls.push({at:fall,position:target.slice(),fallback});trace.impacts.push({at:impact,position:target.slice()});
    }
    trace.entity={position:initial.slice(),spawn:deploy,fieldEnd,end:fieldEnd+plan.fadeOut,independentClock:true};
