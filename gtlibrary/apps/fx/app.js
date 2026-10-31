@@ -121,7 +121,7 @@ async function selectCharacter(char,sourceId=null){
       const source=GTRegistry.resolve(registry,{resource:code});
       return appearanceOption(source?.name&&source.name!==code?`${source.name} / ${code}`:code,code);
     }));
-    const requested=char.members.find(m=>m.id===sourceId)?.key,member=imported?.nativeMembers?.find(m=>m.id===sourceId)?.pack.profile.appearances[0];$('appearance').value=profile.appearances.includes(requested)?requested:member||profile.appearances[0];$('skin').replaceChildren(new Option(profile.defaultSkin,profile.defaultSkin));
+    const requested=char.members.find(m=>m.id===sourceId)?.key,member=imported?.nativeMembers?.find(m=>m.id===sourceId)?.pack.profile.appearances[0];const linkedAppearance=sourceId?new URL(location.href).searchParams.get('appearance'):null;$('appearance').value=profile.appearances.includes(linkedAppearance)?linkedAppearance:profile.appearances.includes(requested)?requested:member||profile.appearances[0];$('skin').replaceChildren(new Option(profile.defaultSkin,profile.defaultSkin));
     refreshAppearanceColor('appearance');refreshSkillForms(profile,true);refreshWeapons(profile);refreshShields(profile,true);$('summoned-choice').hidden=!Object.keys(nativeActions.summonables||{}).length;$('summoned').checked=true;summonPoint=[0,0,0];summonPicked=false;$('pick-summon').hidden=$('summoned-choice').hidden;$('summon-position-fields').hidden=$('summoned-choice').hidden;$('summon-direction-choice').hidden=$('summoned-choice').hidden;setPickMode(null);
   }
   for(const id of ['replay','play','step','all','export'])$(id).disabled=true;
@@ -140,7 +140,7 @@ async function selectCharacter(char,sourceId=null){
     $('effect').disabled=false;$('all').disabled=false;
     const desiredEffect=new URLSearchParams(location.search).get('effect');const initial=index.effects.findIndex(e=>!e.unavailable&&(!$('material-appearance').value||e.resourceCharacters.includes($('material-appearance').value))&&(desiredEffect?e.id===desiredEffect:e.preset===profile?.preferredEffect||e.assetName===profile?.preferredEffect));const first=initial>=0?initial:index.effects.findIndex(e=>!e.unavailable&&(!$('material-appearance').value||e.resourceCharacters.includes($('material-appearance').value))&&(e.systems.length||e.statics?.length));
     if(mode==='module')await selectModule();else if(first>=0)await selectEffect(first);else message('没有可播放素材');
-    const url=new URL(location.href);url.searchParams.set('character',char.id);history.replaceState(null,'',url);
+    const url=new URL(location.href);url.searchParams.set('character',char.id);if(profile)url.searchParams.set('appearance',$('appearance').value);else url.searchParams.delete('appearance');history.replaceState(null,'',url);GTBridge.selection({character:char.id,...(profile?{appearance:$('appearance').value}:{})});
   }catch(e){if(current===generation)error(e);}
 }
 function refreshEffectOptions(){
@@ -294,7 +294,7 @@ $('show-target').onchange=()=>{if(runtime.characterPlayer.options)runtime.charac
 for(const id of ['appearance','skill-form','direction','skin','weapon','shield','summoned','summon-direction','target-distance'])$(id).onchange=()=>{
  if(exporting||measuring||!index)return;
  if(id==='appearance'||id==='skill-form'){
-  const profile=profileFor(character.id),previous=$('weapon').value;if(id==='appearance'){refreshAppearanceColor('appearance');refreshSkillForms(profile);}else refreshAppearanceColor('skill-form');
+  const profile=profileFor(character.id),previous=$('weapon').value;if(id==='appearance'){refreshAppearanceColor('appearance');refreshSkillForms(profile);const url=new URL(location.href);url.searchParams.set('appearance',$('appearance').value);history.replaceState(null,'',url);GTBridge.selection({character:character.id,appearance:$('appearance').value});}else refreshAppearanceColor('skill-form');
   refreshWeapons(profile,previous);refreshShields(profile);
  }
  if(id==='weapon')refreshShields(profileFor(character.id));

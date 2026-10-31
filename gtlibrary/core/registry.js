@@ -3,9 +3,13 @@
   function normalize(name){return String(name||'').replace(/^illust_/,'').replace(/_(?:front|back|side|tentacle)$/,'').replace(/_\d+$/,'');}
   function resolve(registry, selection){
     if(!selection)return null;
-    const names=[selection.resource,selection.name,selection.character].filter(Boolean);
+    const names=[selection.resource,selection.name,selection.character,selection.fx?.character,selection.spine?.name,selection.illust?.name,selection.atlas?.query,selection.query].filter(Boolean);
     for(const name of names){const id=registry.aliases[name]||registry.aliases[normalize(name)];if(id&&registry.entities[id])return registry.entities[id];}
     return null;
+  }
+  function associate(registry,entry){
+    const linked=resolve(registry,entry);
+    return linked?{...linked,...entry,aliases:[...new Set([...(linked.aliases||[]),...(entry.aliases||[])])]}:entry;
   }
   function route(entity,view){
     if(!entity)return {view};
@@ -27,5 +31,5 @@
     return pending;
   }
   const source=document.currentScript.src;
-  global.GTRegistry={normalize,resolve,route,load};
+  global.GTRegistry={normalize,resolve,associate,route,load};
 })(globalThis);

@@ -8,6 +8,6 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-node "%~dp0tools\serve-local.cjs" %*
+node "%~dp0core\serve-local.cjs" %*
 if errorlevel 1 pause
 endlocal

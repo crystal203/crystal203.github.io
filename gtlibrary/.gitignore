@@ -1,14 +1,5 @@
-# Offline working caches and very large intermediate exports are regenerated from E:/GTFiles.
+# Python bytecode and local operating-system metadata.
 __pycache__/
-/tools/gtmap/native-cache/
-/tools/gtmap/source-maps/
-/tools/gtmap/batches/*master*.json
-/tools/gtmap/batches/*master*.json.gz
-/tools/gtmap/checks/effects-fixtures.json.gz
-
-/tools/native/cache/
-/tools/native/__pycache__/
-/tools/audio/__pycache__/
-
-# FX import provenance, content indexes and recoverable cleanup backups (not deployed).
-/tools/fx/source-cache/
+*.pyc
+Thumbs.db
+.DS_Store

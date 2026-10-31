@@ -15,13 +15,14 @@ function resolveSelection(value){
  if(value?.view==='map'||value?.map)return mapEntities.find(e=>e.id===value.map||e.id===value.resource)||null;
  if(value?.view==='wiki'||value?.hero){const hero=wikiCatalog&&GTWikiCatalog.resolve(wikiCatalog,value);if(hero)return {...(registry&&GTRegistry.resolve(registry,{name:hero.id})),...wikiEntities.find(e=>e.id===hero.id)};}
  const found=resourceEntities.find(e=>e.id===value?.resource)||(registry?GTRegistry.resolve(registry,value):null)||resourceEntities.find(e=>e.atlas?.sheet===value?.sheet&&e.atlas?.query===(value.query||value.name))||null;
+ const linked=found&&registry?GTRegistry.associate(registry,found):found;
  const hero=wikiCatalog&&GTWikiCatalog.resolve(wikiCatalog,value);
- return found?(hero?{...found,wiki:{hero:hero.id}}:found):hero?wikiEntities.find(e=>e.id===hero.id):null;
+ return linked?(hero?{...linked,wiki:{hero:hero.id}}:linked):hero?wikiEntities.find(e=>e.id===hero.id):null;
 }
 let active=null,frame=null,entity=null,route=null;
 const states={};let searchItems=[];
 function readRoute(){const params=new URLSearchParams(location.hash.slice(1));const result=Object.fromEntries(params);result.view=views.includes(result.view)?result.view:'atlas';return result;}
-function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category','hero','stage','costume','illust','direction','skin','weapon','level','weaponLevel','clip','kind','group','q','role','element','rarity'])if(state[key])params.set(key,state[key]);return params.toString();}
+function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category','hero','stage','costume','illust','direction','appearance','skin','weapon','level','weaponLevel','clip','kind','group','q','role','element','rarity'])if(state[key])params.set(key,state[key]);return params.toString();}
 function navigate(state){if(state)location.hash=encode(state);}
 function renderContext(){
   $('context').textContent=active==='online'?'在线玩 · 世界 1 / 1-1 旅馆':entity?entity.name+' · '+entity.id:'浏览全部资源';
