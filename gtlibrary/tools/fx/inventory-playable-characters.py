@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 FIRST_THREE = ['pirate', 'sniper', 'eighttail']
 EXISTING_NONMYTH = {'hana', 'milkywaygirl', 'peimei', 'necromancer'}
-PRODUCTION_STATES = {'pending', 'in-progress', 'ready-for-user-review', 'delivered', 'blocked', 'existing-native'}
+PRODUCTION_STATES = {'excluded-by-user', 'pending', 'in-progress', 'ready-for-user-review', 'delivered', 'blocked', 'existing-native'}
 
 
 def read(path):

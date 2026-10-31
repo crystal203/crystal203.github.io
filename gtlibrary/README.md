@@ -188,3 +188,8 @@ Character 目录可切换正常单角色模式与多角色场景模式。场景�
 来源、校验值和排除原因见 `tools/spine-expansion-audit.json`。原始 `big_maiden_hand` 骨架引用 atlas 中不存在的 `hand_shadow`，原始 Bundle 与解包文件完全一致，因此排除手部，保留可用躯干和脚部；未改造游戏素材补造附件。详细说明见 [Spine 补录说明](docs/spine-expansion.md)。
 
 纯静态运行：本次补录没有增加 Node 服务或运行时依赖，文件同步后即可由 GitHub Pages 静态托管。更新缓存标识也可使用 `python tools/refresh-cache-version.py`。
+
+
+## 开发归档
+
+已完成的一次性核验脚本、历史报告和探针资料已移出工程；目录、迁移清单及恢复方式见[开发归档说明](docs/development-archive.md)。角色导入器、原生查找器、构建/发布/启动工具及其依赖继续保留。历史文档中的核验命令如需重跑，先按清单恢复相应工具。

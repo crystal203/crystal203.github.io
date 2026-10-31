@@ -1,3 +1,4 @@
+import {snapshotPlaybackTargets} from './targeting.js';
 import {sampleNativeStageShadow} from './native-stage-shadow.js';
 import {sampleGraphPath} from './graph-action.js';
 import * as THREE from '../vendor/three.module.js';
@@ -12,16 +13,16 @@ export class FxActionPlayer {
   const link=track.link,dir=this.runtime.characterPlayer.direction,follower=link.entityBoneFollower;
   if(!follower)return anchorPosition(link,time,dir,this.options);
   const body=this.entries.find(e=>e.track.link.entityId===follower.entityId);if(!body)throw Error('实体骨骼引用不存在 '+follower.entityId);
-  const bodyTime=track.at+time-body.track.at,root=anchorPosition(body.track.link,bodyTime,dir,this.options),local=Math.max(0,bodyTime-(body.track.link.delay||0));
+  const bodyTime=track.at+(follower.freezeAt??time)-body.track.at,root=anchorPosition(body.track.link,bodyTime,dir,this.options),local=Math.max(0,bodyTime-(body.track.link.delay||0));
   const skeleton=body.sim.skeletonEffects.find(e=>typeof e.bonePosition==='function');if(!skeleton)throw Error('实体没有原生骨骼 '+follower.entityId);
-  const offset=skeleton.bonePosition(follower.bone,local);return root.map((v,i)=>v+offset[i]);
+  const offset=skeleton.bonePosition(follower.bone,local);const delta=follower.deltaPath?sampleGraphPath(follower.deltaPath,time):[0,0,0];return root.map((v,i)=>v+offset[i]+delta[i]);
  }
  velocity(track,time){
   if(!track.link.entityBoneFollower)return anchorVelocity(track.link,time,this.runtime.characterPlayer.direction,this.options);
   const step=1/4096,start=Math.max(track.link.delay||0,time-step),a=this.anchor(track,start),b=this.anchor(track,time+step),dt=time+step-start;return b.map((v,i)=>(v-a[i])/dt);
  }
  load(module,options,cycle=0){
-  this.clear();this.module=module;this.options=options;this.cycle=cycle;if(cycle===0)this.initialRepeatState=options.particleAutoSeedState;
+  this.clear();this.module=module;this.options=snapshotPlaybackTargets(options,this.runtime.characterPlayer.direction);this.cycle=cycle;if(cycle===0)this.initialRepeatState=options.particleAutoSeedState;
   const rt=this.runtime,seed=rt.seed??12345,autoSeeds=new UnityRand(seed);
   if(options.particleAutoSeedState)autoSeeds.setState(options.particleAutoSeedState);
   this.randomStateBefore=autoSeeds.getState();

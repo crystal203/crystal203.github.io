@@ -9,7 +9,7 @@ def supported_shader(name):
         re.fullmatch(r'MatCap/Detail(?: Y Gradation(?: UpDown)?| Alpha(?: ZWrite| UV)?| UV)?',name) or
         name in {'Effect/Mobile_Additive_Color','Effect/Mobile_Additive_Color_Top','Effect/Mobile_AlphaBlend','Effect/Mobile_AlphaBlend_Top',
         'Effect/TwoSidedDissolve_1pass_cvs','Effect/TwoSidedDissolve_1pass_cvs_top','Effect/TwoSidedDissolve_2pass_cvs','Effect/Screen/CA_BW_Distort','Effect/Screen/PP_CABWDB',
-        'Unlit/Transparent','Unlit/Transparent Additive Bend','Unlit/Transparent Color Bend','Unlit/Transparent Color Bend Shear','Unlit/Shadow','Unlit/Texture','Unlit/Premultiplied Colored','Unlit/Transparent Colored','Unlit/Transparent Cutout','Unlit/Transparent Tint','Particles/Standard Unlit',
+        'Sprites/Default','Unlit/Transparent','Unlit/Transparent Additive Bend','Unlit/Transparent Color Bend','Unlit/Transparent Color Bend Shear','Unlit/Shadow','Unlit/Texture','Unlit/Premultiplied Colored','Unlit/Transparent Colored','Unlit/Transparent Cutout','Unlit/Transparent Tint','Particles/Standard Unlit',
         'Legacy Shaders/Particles/Additive (Soft)','MatCap/Partly Visible','Spine/SkeletonGhost Character','Legacy/Particles/Additive Shear','Mobile/Unlit (Supports Lightmap)','Effect/BasicBlend_Tint_Side'})
 
 def blend_mode(pair):
@@ -50,6 +50,7 @@ def material_issues(mat,index):
         if not mat.get('textureAlphaMultiplier'):errors.append('native bend color requires a second texture-alpha multiplier')
         if mat.get('scale')!={'x':1,'y':1} or mat.get('offset')!={'x':0,'y':0}:errors.append('native bend color must use raw UV')
     if shader=='Legacy Shaders/Particles/Additive (Soft)' and mat.get('nativeSoftAdditive',{}).get('variant')!='SOFTPARTICLES_OFF':errors.append('missing native soft-particle keyword variant')
+    if shader=='Sprites/Default' and (mat.get('nativeSpriteDefault',{}).get('version')!=1 or mat.get('nativeBlend')!=[1,10]):errors.append('missing native Sprite premultiplication contract')
     if shader=='Unlit/Transparent':
         if mat.get('nativeUnlitTexture',{}).get('version')!=1 or not mat.get('ignoreVertexColor') or mat.get('colorGain')!=1 or mat.get('tint')!={'r':1,'g':1,'b':1,'a':1}:errors.append('missing exact unlit texture-only fragment contract')
     if shader=='MatCap/Partly Visible':

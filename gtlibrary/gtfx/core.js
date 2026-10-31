@@ -1,3 +1,4 @@
+import {sampleNativeTileAnimation} from './native-tile-animation.js';
 import {nativeRendererOrder} from './native-renderer-order.js';
 import {screenEffectViewport} from './screen-viewport.js';
 import {materialBlend,materialColorGain} from './material-blend.js';
@@ -333,7 +334,7 @@ export class FxRuntime {
   }
   clear() {
     for(const item of this.skeletonEffects||[])item.clear();this.skeletonEffects=[];
-    for(const p of [...this.particles,...this.statics]){this.group.remove(p.mesh);p.mesh.userData.grabTexture?.dispose();if(p.mesh.userData.nativePassGeometry)p.mesh.geometry.dispose();for(const material of materialsOf(p.mesh))material.dispose();}
+    for(const p of [...this.particles,...this.statics]){this.group.remove(p.mesh);p.mesh.userData.grabTexture?.dispose();if(p.mesh.userData.nativePassGeometry||p.nativeTileUV)p.mesh.geometry.dispose();for(const material of materialsOf(p.mesh))material.dispose();}
     for(const p of this.trails||[]){this.group.remove(p.trail);p.trail.geometry.dispose();p.trail.material.dispose();}
     this.trails=[];
     this.statics=[];
@@ -558,7 +559,20 @@ export class FxRuntime {
       const spinZ=s.renderer.mode===4?angles.z:-angles.z;
       // Unity's extrinsic Z-X-Y is Three.js intrinsic Y-X-Z (Ry * Rx * Rz).
       const spin=new THREE.Quaternion().setFromEuler(new THREE.Euler(angles.x,angles.y,spinZ,'YXZ'));
-      if(s.renderer.mode===4){
+      if(s.renderer.mode===1&&this.effect.nativeStretchVelocity){
+        // Native Stretched Billboard: the long Y axis follows particle velocity,
+        // while the plane faces the camera around that axis. RenderAlignment.Local
+        // does not replace this velocity basis with the emitter's XY plane.
+        const axis=currentVelocity.clone().transformDirection(p.matrix),normal=new THREE.Vector3(0,0,1).applyQuaternion(cameraQ);
+        if(axis.lengthSq()<1e-12)axis.set(0,1,0).applyQuaternion(cameraQ);
+        const right=new THREE.Vector3().crossVectors(axis,normal);
+        if(right.lengthSq()<1e-12)right.set(1,0,0).applyQuaternion(cameraQ);
+        right.normalize();normal.crossVectors(right,axis).normalize();
+        const orientation=new THREE.Quaternion().setFromRotationMatrix(new THREE.Matrix4().makeBasis(right,axis,normal)).multiply(spin);
+        const scale=s.scalingMode===0?new THREE.Vector3().setFromMatrixScale(p.matrix):s.scalingMode===1?p.node.scale:new THREE.Vector3(1,1,1);
+        mesh.quaternion.copy(orientation);mesh.scale.copy(size).multiply(scale);mesh.matrix.compose(mesh.position,orientation,mesh.scale);
+      }
+      else if(s.renderer.mode===4){
         // Native mesh flip reflects geometry (including its pivot), not UVs.
         size.multiply(new THREE.Vector3(...p.flip.map(f=>f?-1:1)));
         // Render alignment and simulation space are independent. World-space
@@ -633,6 +647,7 @@ export class FxRuntime {
     for(const item of this.skeletonEffects||[])item.sample(time);
     for(const p of this.statics){p.mesh.matrix.copy(p.node.matrixWorld);for(const [i,mat] of materialsOf(p.mesh).entries())mat.uniforms.tint.value.set(...rgba((p.s.materials?.[mat.userData.sourceMaterialIndex??i]||p.s.material).tint));this.animateMaterial(p,time);}
     for(const p of this.particles)if(p.mesh.visible)this.animateMaterial(p,time);
+    sampleNativeTileAnimation(this,time);
     for(const p of this.trails)this.sampleTrail(p,time,cameraQ);
     this.modulePlayer?.sample(sceneTime);
     this.characterPlayer?.afterSample(sceneTime);
@@ -857,7 +872,7 @@ export class FxRuntime {
   createMaterial(mat,{sprite=null,size=[1,1],pivot={},atlas=false,shared=null,missingMeshParticleNormal=false}={}) {
     // Saved properties can survive shader changes; Detail uses neither gradient nor cutoff.
     const blendState=materialBlend(mat),opaque=blendState.opaque,gradation=mat.shader==='MatCap/Detail'?null:mat.gradation,distortion=mat.surface==='screenDistortion';
-    const uniforms={nativeRgbCoverage:{value:mat.nativeBlend?.[1]===6},nativeSoftAdditive:{value:!!mat.nativeSoftAdditive},nativeBendColor:{value:mat.surface==='nativeBendColor'},nativeBendPivot:{value:new THREE.Vector4(...rgba(mat.nativeBend?.pivot||{r:0,g:0,b:0,a:0}))},textureAlphaMultiplier:{value:!!mat.textureAlphaMultiplier},map:{value:this.textures[sprite?.texture||mat.texture]||this.textures.white},
+    const uniforms={nativeRgbCoverage:{value:mat.nativeBlend?.[1]===6},nativeSoftAdditive:{value:!!(mat.nativeSoftAdditive||mat.nativeSpriteDefault)},nativeBendColor:{value:mat.surface==='nativeBendColor'},nativeBendPivot:{value:new THREE.Vector4(...rgba(mat.nativeBend?.pivot||{r:0,g:0,b:0,a:0}))},textureAlphaMultiplier:{value:!!mat.textureAlphaMultiplier},map:{value:this.textures[sprite?.texture||mat.texture]||this.textures.white},
       dualTexture:{value:!!mat.texture2},map2:{value:this.textures[mat.texture2?.texture]||this.textures.white},
       uvScale2:{value:new THREE.Vector2(mat.texture2?.scale.x??1,mat.texture2?.scale.y??1)},
       uvOffset2:{value:new THREE.Vector2(mat.texture2?.offset.x??0,mat.texture2?.offset.y??0)},

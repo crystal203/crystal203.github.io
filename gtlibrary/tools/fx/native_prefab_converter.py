@@ -213,6 +213,10 @@ def convert_missing(manifest, pool_rows, output, config, refresh=()):
         if shader_name=='Legacy Shaders/Particles/Additive (Soft)':
             if 'SOFTPARTICLES_ON' in (obj.m_ShaderKeywords or '').split():raise ValueError('Soft depth-fade variant requires a scene depth contract: '+obj.m_Name)
             result.update(colorGain=1,tint=white['tint'],nativeSoftAdditive={'version':1,'variant':'SOFTPARTICLES_OFF','fragment':'MainTex * vertex; RGB *= alpha once'},premultiplied=True)
+        if shader_name=='Sprites/Default':
+            keywords=(obj.m_ShaderKeywords or '').split()
+            if any(k in keywords for k in ('PIXELSNAP_ON','ETC1_EXTERNAL_ALPHA')):raise ValueError('Unsupported Sprite keyword variant: '+obj.m_Name)
+            result.update(colorGain=1,scale={'x':1,'y':1},offset={'x':0,'y':0},nativeSpriteDefault={'version':1,'fragment':'MainTex(rawUV) * vertex * Color * RendererColor; RGB *= alpha once'})
         if shader_name=='Unlit/Transparent':
             result.update(ignoreVertexColor=True,colorGain=1,tint={'r':1,'g':1,'b':1,'a':1},nativeUnlitTexture={'version':1,'fragment':'MainTex only; transformed UV; no vertex color or tint'})
         if shader_name=='Unlit/Shadow':
@@ -357,7 +361,8 @@ def convert_missing(manifest, pool_rows, output, config, refresh=()):
                     if renderer.m_DrawMode!=0:raise ValueError('Unimplemented native sliced/tiled SpriteRenderer')
                     size=[float(src.m_Rect.width/src.m_PixelsToUnits),float(src.m_Rect.height/src.m_PixelsToUnits)]
                     mat=material(renderer.m_Materials[0]) if renderer.m_Materials else material(None)
-                    mat['tint']=color(renderer.m_Color);mat['colorGain']=1
+                    renderer_color=color(renderer.m_Color)
+                    mat['tint']={k:mat['tint'][k]*renderer_color[k] for k in 'rgba'};mat['colorGain']=1
                     statics.append({'node':node_id,'name':go.m_Name,'mesh':None,'sprite':sprite_key,'size':size,
                                     'spriteRenderer':{'drawMode':int(renderer.m_DrawMode),'flip':[bool(renderer.m_FlipX),bool(renderer.m_FlipY)]},
                                     'pivot':{'x':float((.5-src.m_Pivot.x)*size[0]),'y':float((.5-src.m_Pivot.y)*size[1]),'z':0},
@@ -367,6 +372,9 @@ def convert_missing(manifest, pool_rows, output, config, refresh=()):
                 source=component.component.read();cls=source.m_Script.read().m_ClassName
                 values=component.component.read_typetree();values.pop('m_GameObject',None);values.pop('m_Script',None)
                 script={'node':node_id,'type':cls,'fields':values}
+                if cls=='TileAnimation':
+                    if not (values.get('tileX',0)>0 and values.get('tileY',0)>0 and 0<values.get('maxTileCount',0)<=values['tileX']*values['tileY'] and values.get('frame',0)>0):raise ValueError('Invalid native TileAnimation dimensions')
+                    script['nativeTileAnimation']={'version':1,'source':'ARM64 0x7134430/0x71345d8/0x7134650','operation':'Mesh.uv per tile; first scheduled tick repeats tile zero'}
                 if cls=='ScalingLaserEffect':
                     script['scalingNodes']=[]
                     for item in source.scalingEffects:

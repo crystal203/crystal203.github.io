@@ -4,6 +4,12 @@ export function targetPosition(options={},direction='right'){
  const p=options.targetPosition;
  return Array.isArray(p)&&p.length===3&&p.every(Number.isFinite)?[p[0],0,p[2]]:facingVectors[direction].map(v=>v*(options.targetDistance??6));
 }
+// Resolve relative defaults once at playback start; animated facing is not scene placement.
+export function snapshotPlaybackTargets(options={},direction='right'){
+ const initial=facingVectors[options.direction]?options.direction:direction;
+ const points=targetPositions(options,initial);
+ return {...options,targetPosition:points[0],secondaryTargets:points.slice(1)};
+}
 export function aimDirection(options={},direction='right',origin=[0,0,0]){
  const p=targetPosition(options,direction),x=p[0]-origin[0],z=p[2]-origin[2],n=Math.hypot(x,z);
  return n>1e-9?[x/n,0,z/n]:facingVectors[direction].slice();

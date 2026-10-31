@@ -33,7 +33,7 @@ def compile_batch4_melee_plan(a,lua,path):
  elif category=='basic' and 'self.effect_target_time' in lua and 'RefreshCycleCount' in a:
   return dyn('periodic-held-rush')
  elif category=='role' and 'self.charge_calculator' in lua and 'SpecialOptionId' in a:
-  p.update(clips=[dict(key='charge',at=a['DashTiming'],track='Upper')],events=[ev('charge',a['DashTiming'],follow=True,followSpine=True)],moves=[dict(op='dash',at=a['DashTiming'],duration=a['DashDuration'],speed=a['DashSpeed'],free=True)])
+  p.update(clips=[dict(key='charge',at=a['DashTiming'],track='Upper')],events=[ev('charge',a['DashTiming'],follow=True,followSpine=True)],moves=[dict(op='dash',at=a['DashTiming'],duration=a['DashDuration'],speed=a['DashSpeed'],free=True)],nativeAim=dict(bone='b.aim',originHeight=.375,windows=[dict(at=a['DashTiming'],end=a['ActionDuration'])]))
  elif category=='support' and 'self.first_pos' in lua and 'self.second_pos' in lua and 'EaseInQuint' in lua:return dyn('fade-dash-return-slash')
  elif category=='cwp' and 'self.clone_lengths' in lua and 'clone_state_class' in lua:return dyn('independent-four-clone-charge')
  elif category=='basic' and 'self.action_type.strike' in lua and a.get('AttackType') in ['stomp','slash','strike'] and 'DashTiming' in a:

@@ -1,5 +1,8 @@
 """Fixed projectile references from native firearm constructors, not equipment."""
 NATIVE_FIREARM_PROJECTILES={
+    'ManualDimensionBow':('manual_dimension_projectile','manual_dimension_super_projectile'),
+    'CwpSurvivorAutoGuidedArrow':('cwp_auto_guided_proj',),
+    'ManualBounceFireball':('manual_swindler_bounce_fireball','manual_swindler_bounce_fireball_enhance'),
     'ManualHealShotgun':('manual_heal_shotgun_projectile',),
     'ManualRecoveryBow':('manual_fairy_damage_projectile',),
     # Oak.ManualWeakBasket constructor 0x8b0d2d4.

@@ -1,3 +1,4 @@
+import * as THREE from '../vendor/three.module.js';
 import {scriptActionModules} from './script-actions.js';
 import {batch6CActionModules} from './source-batch6-c.js';
 import {continuousArsenalActionModules} from './native-continuous-arsenal.js';
@@ -7,14 +8,18 @@ import {sampleGraphPath} from './graph-action.js';
 import {effectLookup} from './effect-lookup.js';
 const add=(a,b,k=1)=>a.map((x,i)=>x+b[i]*k),unit=v=>{const n=Math.hypot(...v);return n?v.map(x=>x/n):[1,0,0];},ev=(key,at=0,extra={})=>({op:'effect',key,at,anchor:'feet',nativePoolLifetime:true,nativePoolTransform:extra.directed===false?'direct':'directional',...extra});
 export function batch6FActionModules(index,options,native,plans,style){
- const initial=options.actorPosition||[0,0,0],target=targetPositions(options,options.direction)[0],forward=aimDirection(options,options.direction,initial),effects=effectLookup(index.effects),result=[],build=(p,extra)=>scriptActionModules(index,options,native,[{...p,behavior:'timeline',meleeTimeline:true,sourceProjectilePools:true,clips:[],events:[],moves:[],spine:[],disableCombo:true,...extra}],style)[0];
+ const initial=options.actorPosition||[0,0,0],target=targetPositions(options,options.direction)[0],forward=aimDirection(options,options.direction,initial),effects=effectLookup(index.effects),result=[],build=(p,extra)=>scriptActionModules(index,options,native,[{...p,behavior:'timeline',nativePoolEventPosition:true,meleeTimeline:true,sourceProjectilePools:true,clips:[],events:[],moves:[],spine:[],disableCombo:true,...extra}],style)[0];
  for(const p of plans.filter(p=>p.behavior==='source-batch6-f')){if(p.exclusive&&!options.exclusiveWeapon)continue;const a=native.actions[p.action],op=p.batch6Operation;let m;
  if(op==='CwpGhostBusterMagitonChain'){
-  const casting=a.ActionDuration*a.CastingProgress,interval=(a.ActionDuration-casting)/(a.ShotCount-1),events=[ev('cast',0,{directed:false,follow:true,triggerDisposeAt:casting})],points=targetPositions(options,options.direction).slice(0,a.MaxTargets);
-  for(let shot=0;shot<a.ShotCount;shot++){const at=casting+shot*interval,from=add(add(initial,forward,.75),[0,.375,0]),to=add(target,[0,.375,0]),length=Math.hypot(...add(to,from,-1));events.push(ev('shoot',at,{anchor:'center',offset:.75}));let prev=from;
-   for(const point of points){const dest=add(point,[0,.375,0]),delta=add(dest,prev,-1),distance=Math.hypot(...delta),fx=effects.get(Object.assign({},...(a.PresetInfo||[]).map(r=>r.Name?{[r.Name]:r.Preset}:r)).chain),rule=fx?.scripts?.find(s=>s.type==='ScalingEffect');if(!rule?.rayNode)throw Error('ScalingEffect ray Transform binding missing');const dir=unit(delta),yaw=Math.atan2(-dir[2],dir[0])*180/Math.PI;events.push(ev('chain',at,{directed:false,euler:[0,yaw,0],link:{graphPosition:prev,nodePaths:[{node:rule.rayNode,scale:[1,distance,1]}]}}));prev=dest;}
+  const casting=a.ActionDuration*a.CastingProgress,interval=(a.ActionDuration-casting)/(a.ShotCount-1),events=[ev('cast',0,{directed:false,follow:true,triggerDisposeAt:casting})],points=targetPositions(options,options.direction).slice(0,a.MaxTargets),segments=[];
+  const fx=effects.get(Object.assign({},...(a.PresetInfo||[]).map(r=>r.Name?{[r.Name]:r.Preset}:r)).chain),rule=fx?.scripts?.find(s=>s.type==='ScalingEffect');if(!rule?.rayNode)throw Error('ScalingEffect ray Transform binding missing');
+  // SetRay instantiates at endPos; FromToRotation(Vector3.right,startPos-endPos)
+  // sets the complete 3D root rotation; rayTransform keeps its source axes.
+  const rayEuler=dir=>new THREE.Euler().setFromQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(1,0,0),new THREE.Vector3(...dir)),'YXZ').toArray().slice(0,3).map(v=>v*180/Math.PI);
+  for(let shot=0;shot<a.ShotCount;shot++){const at=casting+shot*interval,from=add(initial,forward,.75);events.push(ev('shoot',at,{anchor:'feet',offset:.75,directed:false}));let prev=from;
+   for(const point of points){const dest=add(point,[0,.375,0]),delta=add(prev,dest,-1),distance=Math.hypot(...delta),dir=unit(delta);events.push(ev('chain',at,{directed:false,euler:rayEuler(dir),link:{graphPosition:dest,nodePaths:[{node:rule.rayNode,scale:[1,distance,1]}]}}));segments.push({at,from:prev,to:dest,distance});prev=dest;}
   }
-  m=build(p,{clips:[{key:'cast',at:0,end:casting},{key:'shoot',at:casting,loop:true}],events});if(m)m.sourceTrace={operation:op,casting,interval,shots:a.ShotCount};
+  m=build(p,{clips:[{key:'cast',at:0,end:casting},{key:'shoot',at:casting,loop:true}],events});if(m){m.actor.nativeAim={bone:'b.aim',originHeight:0,direction:forward,windows:[{at:casting,end:p.end}]};m.sourceTrace={operation:op,casting,interval,shots:a.ShotCount,segments};}
  }else if(op==='ManualThrustCombo'){
   m=build(p,{resolvedParameters:{action:{...a,AnimationInfo:[{Name:'thrust',Animation:a.AnimationName,Scale:4}]},presets:{}},clips:[{animation:a.AnimationName,at:0,speed:.2,track:'Upper'},{animation:a.AnimationName,at:a.StayDuration,speed:4,track:'Upper'},{animation:'[emo]'+a.EmotionName,at:0,track:'Emotion',loop:true}],events:[ev(null,a.StayDuration,{preset:'Manual_Onehanded_SteamPrincess_Thrust',follow:true,spineEvent:{animationKey:'thrust',nameField:'SpineEventName'}})],moves:[{op:'dash',at:a.StayDuration,duration:a.DashDuration,speed:a.DashDistanceCap/a.DashDuration}]});
  }else if(op==='CwpDesertSlaveEarthquake'){

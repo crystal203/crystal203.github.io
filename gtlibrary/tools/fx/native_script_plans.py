@@ -1,3 +1,4 @@
+from native_script_story_final import compile_story_final_plan
 from native_source_event_contracts import compile_fixed_clock_myth_plan, normalize_literal_effect_positions, compile_party_heal_support_plan
 """Compile supported Lua action idioms to declarative, actor-independent operations.
 The emitted recipe retains its source hash. Runtime dispatches operations, never
@@ -56,7 +57,13 @@ from native_script_batch6_witch import compile_batch6_witch_plan
 from native_script_batch6_e import compile_batch6_e_plan
 from native_script_batch6_f import compile_batch6_f_plan
 
+from native_script_final_native import compile_final_native_plan
+
 def _compile_script_plan_impl(a,lua,path):
+ story=compile_story_final_plan(a,lua,path)
+ if story:return story
+ final=compile_final_native_plan(a,lua,path)
+ if final:return final
  additional=compile_batch6_f_plan(a,lua,path)
  if additional:return additional
  extra=compile_batch6_e_plan(a,lua,path)

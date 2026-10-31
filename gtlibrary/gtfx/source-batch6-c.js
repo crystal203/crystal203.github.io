@@ -33,8 +33,8 @@ export function batch6CActionModules(index,options,native,plans,style){
  }else if(op==='ManualGas'){
   const override=options.exclusiveWeapon?Object.values(native.options||{}).find(o=>o.Id===a.OptionId):null,enhance=override?.EnhanceType==='ContinuousEnhance'?override.RequiredTime:Infinity;
   clips.push({animation:a.ShootStateAnimation,at:0,loop:true,track:'Upper'});
-  for(const key of ['GasPreset','FiringPreset'])if(a[key])events.push(fx(a[key],0,{follow:true,nativePoolTransform:'directional',until:Math.min(p.end,enhance)}));
-  if(enhance<p.end)for(const key of ['GasPreset','FiringPreset'])if(override['Enhance'+key])events.push(fx(override['Enhance'+key],enhance,{follow:true,nativePoolTransform:'directional',until:p.end}));
+  for(const key of ['GasPreset','FiringPreset'])if(a[key])events.push(fx(a[key],0,{follow:true,nativePoolTransform:'directional',until:Math.min(p.end,enhance),link:{nativeTileAnimation:true}}));
+  if(enhance<p.end)for(const key of ['GasPreset','FiringPreset'])if(override['Enhance'+key])events.push(fx(override['Enhance'+key],enhance,{follow:true,nativePoolTransform:'directional',until:p.end,link:{nativeTileAnimation:true}}));
   const endPreset=enhance<p.end?override.EnhanceEndPreset:a.EndPreset;if(endPreset)events.push(fx(endPreset,p.end,{nativePoolTransform:'directional'}));
  }else if(op==='CwpDragonBoy'){
   const change=a.JumpDuration,stop=change+a.BreathDuration;extra.alpha=options.exclusiveWeapon?[{at:0,value:0},{at:p.end,from:0,value:1,duration:.2}]:[];

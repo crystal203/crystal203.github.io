@@ -18,7 +18,10 @@ def build(output=None,catalog_path=None,source=None):
  all_items=read(source/'items.json');items=[i for i in all_items if i.get('Type') in ('costume','supercostume')]
  registry=json.loads((ROOT/'resources/registry.js').read_text(encoding='utf-8').split('=',1)[1].strip().rstrip(';'))
  portrait_frames=read(ROOT/'resources/previews/portraits.json')['frames']
- by_id={h['Id']:h for h in heroes};hero_names={};costume_names={}
+ by_id={h['Id']:h for h in heroes};hero_names={};hero_exact_names={};costume_names={}
+ for h in heroes:
+  if h.get('SummonCategory') not in (None,'None'):
+   hero_exact_names.setdefault(normalize(h['Name']),set()).add(h['OriginId'])
  for h in heroes:
   keys=[h['Name'],h.get('PortraitAssetName'),*names(h.get('SpineAssetName'))]
   for key in filter(None,keys):
@@ -43,7 +46,8 @@ def build(output=None,catalog_path=None,source=None):
  bases=[];costumes=[];excluded=[]
  for entry in catalog:
   keys=[entry['id'],entry.get('key'),entry.get('portraitKey'),*entry.get('aliases',[])]
-  origin=set().union(*(hero_names.get(normalize(k),set()) for k in keys if k))
+  origin=set().union(*(hero_exact_names.get(normalize(k),set()) for k in keys if k))
+  if not origin:origin=set().union(*(hero_names.get(normalize(k),set()) for k in keys if k))
   matched={i['Id']:i for k in keys if k for i in costume_names.get(compact(k),[])}
   if matched and not origin:
    costumes.append((entry,set().union(*(targets(i) for i in matched.values()))));continue
@@ -102,7 +106,7 @@ def build(output=None,catalog_path=None,source=None):
    if targets(item)&g['origins']:
     aliases.update([item['Name'],entity(item['Name']).get('name',item['Name'])])
     if item.get('PortraitAssetName'):portrait(item['PortraitAssetName'],'special' if item.get('IsSpecial') else 'supercostume' if item['Type']=='supercostume' else 'costume',item['Name'])
-  result.append({'id':base['id'],'key':base.get('key'),'name':g.get('displayName') or entity(base.get('key') or base['id']).get('name') or base['name'],
+  result.append({'id':base['id'],'key':base.get('key'),'name':g.get('displayName') or entity(base.get('key') or base['id']).get('name') or next((entity(k).get('name') for h in rows for k in [h.get('PortraitAssetName'),*names(h.get('SpineAssetName'))] if entity(k).get('name') and entity(k).get('name')!=k),None) or base['name'],
    **({'nativeAggregation':g['nativeAggregation']} if g.get('nativeAggregation') else {}),
    'origins':sorted(g['origins']),'members':[m['id'] for m in members],'portraits':list(portraits.values()),'appearanceKinds':appearance_kinds,'aliases':sorted(aliases)})
  result={'version':1,'characters':result,'excluded':excluded}

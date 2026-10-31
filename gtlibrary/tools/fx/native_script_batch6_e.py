@@ -3,6 +3,10 @@ import hashlib
 ELF='d33d4ff70c197d8d758dae6a6292192c7aea04160fcd97a4e11b72a8741ee7db'
 def compile_batch6_e_plan(a,lua,path):
  n=a['Name'];t=n.split(':')[0];category=None
+ if n in ('ManualDesertElvenArchery:DancingArcher','RoleDesertArrow:DancingArcher','DancingArcherSupport','CwpDancingArcherDesertRain'):
+  cat='basic' if t.startswith('Manual') else 'role' if t.startswith('Role') else 'support' if t=='DancingArcherSupport' else 'cwp'
+  return dict(behavior='source-batch6-e',batch6Operation=t,category=cat,id=cat,label={'basic':'普通攻击','role':'角色技能','support':'连锁技能','cwp':'专武技能'}[cat],action=n,end=a.get('ActionDuration',a.get('Duration',a.get('ShootTerm',.5))),exclusive=cat=='cwp',requiredPoolPresets=['FX_single_projectile'] if cat=='basic' else [],source='native ARM64 Oak.'+t+'BattleAction; E:/GTFiles/b6e; SuperTargetedAreaBaseAction 0x8b96318',sourceSha256=ELF)
+
  if t=='ManualKatanaSlash' and n.split(':')[-1].startswith('Admiral'):category='basic'
  elif n=='RoleHookTaunt:Admiral':category='role'
  elif n=='TankerSupport:Admiral':category='support'

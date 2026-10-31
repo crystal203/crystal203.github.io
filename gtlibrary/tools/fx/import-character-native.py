@@ -133,7 +133,7 @@ def plans_for(rows,pool_directions,character_options,compiled_actions=None):
  return [normalize_literal_effect_positions(plan,*source_by_action.get(plan.get('action'),('',None))) for plan in plans]
 
 for index_path in args.index:
- if not index_path.exists():
+ if not index_path.exists() or index_path.stem not in catalog:
   if not args.create_hero or len(args.index)!=1:raise ValueError('Missing index: use --create-hero with one exact native hero')
   selected=next(h for h in heroes if h['Name']==args.create_hero and h.get('Playable'))
   resource=re.sub(r'_(?:\d+|myth|ascent)$','',selected['Name'])
@@ -144,7 +144,7 @@ for index_path in args.index:
   portraits=read(repo/'resources/previews/portraits.json')['frames'];portrait=selected.get('PortraitAssetName')
   if portrait in portraits:entry.update(portraitKey=portrait,portrait=portraits[portrait])
   catalog[char_id]=entry;catalog_data['characters'].append(entry)
-  manifest={'format':'gt-char-fx','version':1,'camera':read(args.output/'characters/common.json')['camera'],'character':char_id,'effects':[],'textures':{},'sprites':{},'meshes':{},'motionPatched':True}
+  manifest=read(index_path) if index_path.exists() else {'format':'gt-char-fx','version':1,'camera':read(args.output/'characters/common.json')['camera'],'character':char_id,'effects':[],'textures':{},'sprites':{},'meshes':{},'motionPatched':True}
  else:manifest=read(index_path)
  char_id=manifest['character'];entry=catalog[char_id];resource=entry['key']
  # Star-level keys select an origin; all forms of that origin share the import.
@@ -272,7 +272,8 @@ for index_path in args.index:
   source_plan_resolution={'policy':'source-first','compiledActions':sorted(source_actions),'legacyFallbackActions':sorted(str(p.get('action') or p.get('augmentAction')) for p in legacy if p.get('augmentAction') or p.get('action') not in source_actions)}
  else:
   character_plans=plan_source.get(char_id) or plans_for(action_rows,source_pool_directions,option_rows)
- referenced_presets=set(all_strings([graphs,action_rows,option_rows,projectile_rows,costumes,summon_rows,character_plans]))
+ pool_plan_rows=[{k:v for k,v in plan.items() if k!='throwWeapons'} for plan in character_plans]
+ referenced_presets=set(all_strings([graphs,action_rows,option_rows,projectile_rows,costumes,summon_rows,pool_plan_rows]))
  wanted=referenced_presets|{e['preset'] for e in manifest['effects']}
  pool_rows=[p for p in pools if p.get('PresetName') in wanted]+summon_pools
  # Explicit source LoadPrefab actors are export carriers, never invented pool specs.

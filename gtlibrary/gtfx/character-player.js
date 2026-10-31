@@ -4,7 +4,7 @@ import {GraphMirageRenderer} from './graph-mirage-renderer.js';
 import {applyTimelineSkin} from './melee-timeline.js';
 import {effectDirectionNodes} from './effect-direction.js';
 import {mainWeaponSlots} from './equipment-options.js';
-import {targetPositions} from './targeting.js';
+import {targetPositions,snapshotPlaybackTargets} from './targeting.js';
 import {sampleGraphPath} from './graph-action.js';
 import * as THREE from '../vendor/three.module.js';
 import {SpineThreeRenderer} from '../gtasset/three-renderer.js';
@@ -80,7 +80,7 @@ export class FxCharacterPlayer {
  }
  configure(link,options,effect){
   if(link?.idleAnimation!==undefined)this.idleAnimation=link.idleAnimation;
-  this.link=link;this.options=options;this.fxDuration=effect.duration;this.active=!!link;this.group.visible=this.active;
+  this.link=link;this.options=snapshotPlaybackTargets(options,this.direction);this.fxDuration=effect.duration;this.active=!!link;this.group.visible=this.active;
   this.runtime.nativePlanCache=null;
  }
  effectDefinition(effect,link=this.link){
@@ -93,7 +93,7 @@ export class FxCharacterPlayer {
    const side=link.meteorSide||1,height=link.meteorHeight||4.5;
    quaternion.setFromUnitVectors(new THREE.Vector3(...effect.direction).normalize(),new THREE.Vector3(this.direction==='right'?side:-side,-height,-height).normalize());
   }
-  const definition={...effect,skeletonSkin:link.skeletonSkin,skeletonAnimation:link.skeletonAnimation,skeletonView:link.skeletonView,skeletonFlip:link.skeletonFlip,skeletonClips:link.skeletonClips,skeletonAttachments:link.skeletonAttachments,skeletonEquipmentAssets:link.skeletonAttachments?.length?this.itemsData:undefined,skeletonAlpha:link.skeletonAlpha,skeletonOffsetPath:link.skeletonOffsetPath,skeletonRotationPath:link.skeletonRotationPath,skeletonRotationPivot:link.skeletonRotationPivot,skeletonIdle:link.skeletonIdle,rootRotation:quaternion.toArray(),rootUniformScale:link.uniformScale??1,rootScaleY:link.rootScaleY??1,rootScaleX:link.rootScaleX??1,rootScaleZ:(link.rootScaleZ||1)*(link.mirrorZForLeft&&this.direction==='left'?-1:1),rootScaleFactor:link.scaleFactor||1};
+  const definition={...effect,nativeTileAnimation:!!link.nativeTileAnimation,nativeStretchVelocity:!!link.nativeStretchVelocity,skeletonSkin:link.skeletonSkin,skeletonAnimation:link.skeletonAnimation,skeletonView:link.skeletonView,skeletonFlip:link.skeletonFlip,skeletonClips:link.skeletonClips,skeletonAttachments:link.skeletonAttachments,skeletonEquipmentAssets:link.skeletonAttachments?.length?this.itemsData:undefined,skeletonAlpha:link.skeletonAlpha,skeletonOffsetPath:link.skeletonOffsetPath,skeletonRotationPath:link.skeletonRotationPath,skeletonRotationPivot:link.skeletonRotationPivot,skeletonIdle:link.skeletonIdle,rootRotation:quaternion.toArray(),rootUniformScale:link.uniformScale??1,rootScaleY:link.rootScaleY??1,rootScaleX:link.rootScaleX??1,rootScaleZ:(link.rootScaleZ||1)*(link.mirrorZForLeft&&this.direction==='left'?-1:1),rootScaleFactor:link.scaleFactor||1};
   definition.nodes=effectDirectionNodes(effect,this.direction);
   if(link.attachmentNodePaths?.length){
    definition.sampleNodes=(simulation,localTime)=>{
