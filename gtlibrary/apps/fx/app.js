@@ -1,3 +1,4 @@
+import {loadNativeCharacterPack} from '../../gtfx/native-character-packs.js';
 import {weaponChoices,equipmentProfile,sourceExclusiveWeapon,shieldAllowedForWeapon,preferredWeaponSelection} from '../../gtfx/equipment-selection.js';
 import {hasCostumeEffects} from '../../gtfx/costume-overrides.js';
 import {groupCharacters,resolveCharacter,mergeCharacterIndexes,appearanceKind,mergeNativeCharacterPacks,nativeForAppearance} from '../../gtfx/character-catalog.js';
@@ -74,7 +75,7 @@ function syncTargets(){
 function setPickMode(value){pickMode=value;drag=null;$('pick-main').setAttribute('aria-pressed',String(value==='main'));$('pick-secondary').setAttribute('aria-pressed',String(value==='secondary'));$('pick-summon').setAttribute('aria-pressed',String(value==='summon'));$('canvas').style.cursor=value?'crosshair':'';}
 async function rebuildTargets(){if(exporting||measuring||!index||mode!=='module')return;queue=null;await selectModule(true,true);}
 function moduleOptions(){const profile=selectedProfile();return {direction:previewDirection(),weapon:$('weapon').value,weaponEquipped:!!$('weapon').value,shield:$('shield').value,summoned:$('summoned').checked,summonPosition:summonPicked?summonPoint.slice():null,summonDirection:$('summon-direction').value,targetDistance:targetPoint?Math.hypot(targetPoint[0],targetPoint[2]):Number($('target-distance').value),targetPosition:targetPoint?.slice()||null,secondaryTargets:secondaryTargets.map(p=>p.slice()),skin:$('skin').value,appearance:$('appearance').value,heroAppearance:heroAppearance(),exclusiveWeapon:!profile||sourceExclusiveWeapon(nativeActions,profile,$('appearance').value,heroAppearance(),$('weapon').value),seed:Number($('seed').value)>>>0,choiceOverrides:{...choiceOverrides},profile};}
-async function importedCharacter(id){const response=await GTResources.fetch(new URL('../../gtfx/assets/native-characters/'+id+'.json',location.href));return response.ok?response.json():null;}
+const importedCharacter=loadNativeCharacterPack;
 function refreshModules(wanted=$('module').value){
  modules=actionModules(character.id,index,moduleOptions(),nativeActions,nativePlans);$('module').replaceChildren(...modules.map(m=>new Option(m.label,m.id)));
  if(modules.length)$('module').value=modules.some(m=>m.id===wanted)?wanted:modules[0].id;

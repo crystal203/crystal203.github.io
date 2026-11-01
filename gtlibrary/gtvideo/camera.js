@@ -1,4 +1,5 @@
 import {clone,sampleKeys,sampledSegments,setKey} from './model.js';
+import {isBezierControl} from './bezier.js';
 import {followSpan} from './position-follow.js';
 const fields={cameraPosition:'position',cameraTarget:'target',span:'span',cameraNear:'near',cameraFar:'far',cameraProjection:'nativeProjection'};
 const subtract=(a,b)=>a.map((value,index)=>value-b[index]);
@@ -20,7 +21,7 @@ export function cameraPositionKeys(shot,tracks,track,time,positionAt){
 export function cameraViewOffsetAt(shot,track,time){
  const fallback=subtract(shot.camera.target,shot.camera.position),span=track&&followSpan(track.keys,time);
  if(span)return clone(span.left.viewOffset||fallback);
- return sampleKeys((track?.keys||[]).filter(key=>key.viewOffset).map(key=>({...key,value:key.viewOffset,ease:key.viewEase||key.ease,trajectory:undefined})),time,fallback);
+ return sampleKeys((track?.keys||[]).filter(key=>key.viewOffset&&!isBezierControl(key)).map(key=>({...key,value:key.viewOffset,ease:key.viewEase||key.ease,trajectory:undefined,bezier:undefined})),time,fallback);
 }
 export function cameraPoseAt(shot,tracks,time,resolveFollow,positionAt){
  const camera=clone(shot.camera);let linkedTarget;
@@ -45,7 +46,7 @@ export function migrateCameraTargets(shot,poseAt){
  const targets=shot.tracks.filter(track=>track.target==='camera'&&track.property==='cameraTarget'),position=shot.tracks.find(track=>track.target==='camera'&&track.property==='cameraPosition');
  if(!position||!targets.length&&position.keys.every(key=>key.viewOffset))return false;
  const oldStatic=!targets.length&&!position.keys.some(key=>key.viewOffset),times=[...new Set([...position.keys.map(key=>key.time),...targets.filter(track=>track.enabled!==false).flatMap(track=>track.keys.map(key=>key.time))])].sort((a,b)=>a-b),poses=times.map(time=>{const pose=poseAt?poseAt(time):cameraPoseAt(shot,shot.tracks,time);if(oldStatic)pose.target=clone(shot.camera.target);return [time,pose];});
- for(const [time,pose] of poses){const previous=position.keys.find(key=>Math.abs(key.time-time)<1e-5);setKey(position,time,pose.position,previous?.ease||'linear');const key=position.keys.find(key=>Math.abs(key.time-time)<1e-5);key.viewOffset=subtract(pose.target,pose.position);}
+ for(const [time,pose] of poses){const previous=position.keys.find(key=>Math.abs(key.time-time)<1e-5);if(!isBezierControl(previous))setKey(position,time,pose.position,previous?.ease||'linear');const key=position.keys.find(key=>Math.abs(key.time-time)<1e-5);key.viewOffset=subtract(pose.target,pose.position);}
  shot.tracks=shot.tracks.filter(track=>!targets.includes(track));
  if(shot.inspectorDrafts)for(const track of targets)for(const item of [track,...track.keys,...track.clips]){delete shot.inspectorDrafts[item.id];if(shot.inspectorDraftTimes)delete shot.inspectorDraftTimes[item.id];}
  return true;

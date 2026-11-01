@@ -31,3 +31,7 @@
 .viewbar{height:auto;min-height:44px;flex-wrap:wrap}#edit-tools{flex-wrap:wrap}
 
 .transport{height:auto;min-height:43px;flex-wrap:wrap}.timeline-zoom-controls{display:flex;align-items:center;gap:3px;flex-shrink:0}.timeline-zoom-controls button{padding:2px 6px;min-height:25px;font-size:11px}#timeline-zoom{width:80px;min-width:40px}#timeline-scale{min-width:70px;text-align:center;color:var(--muted);font-size:10px;font-variant-numeric:tabular-nums;white-space:nowrap}#ruler:before{content:'';position:sticky;display:block;left:0;width:160px;height:100%;background:#182130;z-index:2;border-right:1px solid var(--line)}.tick{top:0;pointer-events:none;white-space:nowrap}.tick.minor{height:7px;top:auto;bottom:0;border-color:#344354}.segment.compact{padding-left:0;padding-right:0;font-size:0;border-radius:2px}.segment.compact .trim{width:40%;max-width:7px}
+
+.key.bezier-control{background:#f3b66b;border-color:#ffe1ba;border-radius:50%}.key.bezier-node{background:#72d8a7;border-color:#c2ffe3}.key.bezier-endpoint{background:#70cce5;border-color:#d0f6ff}.key.bezier-control.selected,.key.bezier-node.selected,.key.bezier-endpoint.selected{background:#ffe28e}.bezier-guide{color:#f3c183;border-color:#f3c18399}
+
+.key{z-index:2}

@@ -1,10 +1,11 @@
+import {loadNativeCharacterPack} from '../gtfx/native-character-packs.js';
 import {fxCatalog} from './special-effects.js';
 import {resolveCharacter,mergeNativeCharacterPacks,nativeForAppearance} from '../gtfx/character-catalog.js';
 import {applyCostumeOverrides} from '../gtfx/costume-overrides.js';
 
 const packs=new Map(),labels={basic:'普攻',skill:'技能',chain:'连锁'};
 async function nativePack(character){
- if(!packs.has(character.id)){const promise=Promise.all(character.members.map(async member=>{const response=await GTResources.fetch(new URL('../gtfx/assets/native-characters/'+member.id+'.json',import.meta.url));return response.ok?response.json():null;})).then(imported=>mergeNativeCharacterPacks(character,imported));packs.set(character.id,promise);promise.catch(()=>{if(packs.get(character.id)===promise)packs.delete(character.id);});if(packs.size>32)packs.delete(packs.keys().next().value);}return packs.get(character.id);
+ if(!packs.has(character.id)){const promise=Promise.all(character.members.map(member=>loadNativeCharacterPack(member.id))).then(imported=>mergeNativeCharacterPacks(character,imported));packs.set(character.id,promise);promise.catch(()=>{if(packs.get(character.id)===promise)packs.delete(character.id);});if(packs.size>32)packs.delete(packs.keys().next().value);}return packs.get(character.id);
 }
 function soundNames(value,result=new Set()){
  if(typeof value==='string'){if(value)result.add(value);}else if(Array.isArray(value))for(const row of value)soundNames(row,result);else if(value&&typeof value==='object'){if(Object.hasOwn(value,'SfxName'))soundNames(value.SfxName,result);else for(const [key,item] of Object.entries(value))if(!['Name','TypePriority','Delay','Loop','Volume','Pitch'].includes(key))soundNames(item,result);}return result;
