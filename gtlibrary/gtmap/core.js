@@ -1,3 +1,4 @@
+import {captureMapDelta} from './edit-delta.js';
 import {installNativeProjection} from './native-camera.js';
 import {MapSpeechBubble} from './speech-bubbles.js';
 import {MapEventPlayer} from './event-player.js';
@@ -69,8 +70,8 @@ export class MapRuntime {
  this.showWorldSpeech=(target,text,{duration=2,typeSpeed=.03,clock=()=>particleTime.value-mapStartTime}={})=>{worldSpeech.clock=clock;worldSpeech.start=clock();worldSpeech.duration=Math.max(duration,String(text).replace(/<[^>]*>/g,'').length*typeSpeed+duration);worldSpeech.time=0;worldSpeech.plan={};worldSpeech.dialogueCommand={at:0,target,text,typeSpeed};};
  this.clearWorldSpeech=()=>{worldSpeech.plan=null;worldSpeech.dialogueCommand=null;worldBubble.sample();};
  function sampleSpeech(){speechBubble.sample();if(worldSpeech.plan){worldSpeech.time=Math.max(0,worldSpeech.clock()-worldSpeech.start);if(worldSpeech.time>=worldSpeech.duration)thisRuntime.clearWorldSpeech();}worldBubble.sample();}
- selection.captureExtra=r=>({gimmick:states.capture(r),door:r.door?{target:r.door.target}:null,character:characters.capture(r)});
- selection.restoreExtra=(r,s)=>{if(!s)return;states.restore(r,s.gimmick);if(s.door)doors.change(r,s.door.target===0?'closed':'open',true,false);characters.restore(r,s.character);};
+ selection.captureExtra=r=>({gimmick:states.capture(r),door:r.door?{target:r.door.target}:null,character:characters.capture(r),...(r.itemSettings?{item:structuredClone(r.itemSettings)}:{})});
+ selection.restoreExtra=(r,s)=>{if(!s)return;states.restore(r,s.gimmick);if(s.door)doors.change(r,s.door.target===0?'closed':'open',true,false);characters.restore(r,s.character);if(r.itemSettings){r.itemSettings={floating:true,shadow:true,alpha:1,...s.item};items.sample(items.time,new Set([r]));}};
  controls=new OrbitControls(camera,renderer.domElement);controls.rotateSpeed=2.2;controls.enableDamping=true;controls.dampingFactor=.09;controls.screenSpacePanning=true;controls.minZoom=.001;controls.maxZoom=60;controls.minPolarAngle=controls.maxPolarAngle=Math.PI/4;controls.mouseButtons={LEFT:null,MIDDLE:THREE.MOUSE.PAN,RIGHT:THREE.MOUSE.ROTATE};controls.touches={ONE:THREE.TOUCH.PAN,TWO:THREE.TOUCH.DOLLY_PAN};
  events.controls=controls;
  manipulator=new MapManipulator(scene,camera,renderer.domElement,selection,controls,changed);
@@ -386,7 +387,7 @@ function buildClouds(key, tiles, group, layerIndex) {
   editInsertions.push({assets:clipboard.assets,tiles});
   selection.transaction(()=>selection.restore(snapshots,tiles.map(t=>t.id)),records);animate(particleTime.value-mapStartTime);selection.refresh();changed();return tiles.length;
  };
- this.captureEdits=()=>({snapshots:selection.snapshot([...selection.records.values()]),insertions:[...editInsertions],history:structuredClone(selection.history),future:structuredClone(selection.future),ids:[...selection.ids],editId});
+ this.captureEdits=({delta=false,transform}={})=>delta?captureMapDelta(selection,{insertions:editInsertions,editId,transform}):({snapshots:selection.snapshot([...selection.records.values()]),insertions:[...editInsertions],history:structuredClone(selection.history),future:structuredClone(selection.future),ids:[...selection.ids],editId});
  this.restoreEdits=async session=>{
   if(session.snapshots.some(s=>s.id.startsWith('character:'))&&characters.deferred)await thisRuntime.loadCharacters();
   for(const insertion of session.insertions){if(insertion.character)await insertEditCharacter(insertion.character);else{await importEditAssets(insertion.assets);insertEditTiles(insertion.tiles);}editInsertions.push(insertion);}
@@ -404,6 +405,7 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.actorSpineEffectPosition=(r,name)=>{const p=characters.spineEffectPoint(r,name);return p?[p.x,p.y,-p.z]:null;};
  this.collectWorldItem=(r,follow)=>items.collect(r,follow);
  this.spawnWorldItem=id=>items.spawn(id,bundle.itemMetadata,mapGroup);
+ this.setItemSettings=(r,values)=>{if(!r.itemSettings)return;Object.assign(r.itemSettings,values);items.sample(items.time,new Set([r]));};
  this.setWorldScale=(r,scale)=>{r.scale.set(...scale);selection.update(r);};
  // Hang.tip is configured in native scene coordinates, not a Spine bone attachment.
  this.attachEffectToNativeRope=(effect,actor,node='tip')=>{effect.gimmick.visualAnchor={node,point:()=>new THREE.Vector3(actor.position.x,actor.position.y+(actor.character.settings.spineOffset?.[1]||0)-1,actor.position.z-1)};};

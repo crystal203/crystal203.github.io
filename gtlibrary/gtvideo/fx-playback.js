@@ -1,0 +1,5 @@
+export const ownsFxActor=(clip,time)=>time>=clip.start&&time<clip.start+clip.duration;
+export function fxActorOwners(tracks,time,recordFor){const owners=new Map();for(const track of tracks)if(track.enabled!==false&&track.property==='fx')for(const clip of track.clips){if(!ownsFxActor(clip,time))continue;const record=recordFor(track.target),previous=owners.get(record);if(record&&(!previous||clip.start>=previous.start))owners.set(record,clip);}return owners;}
+export function fxPlaybackEnd(clip,nativeDuration=clip.nativeDuration){return clip.start+Math.max(clip.duration,clip.continueFx?Math.max(0,((nativeDuration??Infinity)-(clip.in||0))/(Math.abs(clip.speed??1)||1e-12)):0);}
+export const playsFx=(clip,time,nativeDuration)=>time>=clip.start&&time<fxPlaybackEnd(clip,nativeDuration);
+export function fxStackRows(clips){const rows=new Map(),ends=[];for(const clip of clips.map((clip,index)=>({clip,index})).sort((a,b)=>a.clip.start-b.clip.start||a.index-b.index).map(entry=>entry.clip)){let row=ends.findIndex(end=>end<=clip.start+1e-7);if(row<0)row=ends.length;ends[row]=clip.start+clip.duration;rows.set(clip.id,row);}return {rows,count:Math.max(1,ends.length)};}

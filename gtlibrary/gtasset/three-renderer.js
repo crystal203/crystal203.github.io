@@ -12,7 +12,11 @@ export class SpineThreeRenderer {
  static texture(spine,image){const proxy=new spine.FakeTexture(image),texture=new THREE.Texture(image);texture.flipY=false;texture.colorSpace=THREE.NoColorSpace;texture.magFilter=texture.minFilter=THREE.NearestFilter;texture.generateMipmaps=false;texture.needsUpdate=true;proxy.three=texture;proxy.dispose=()=>texture.dispose();return proxy;}
  draw(skeleton,local,order,overlay=null){
   const groups=[];let blend=[770,771];const batch={setBlendMode:(a,b)=>{blend=[a,b];},draw:(texture,vertices,indices)=>{let g=groups.at(-1);if(!g||g.texture!==texture||g.blend[0]!==blend[0]||g.blend[1]!==blend[1]){g={texture,blend:[...blend],vertices:[],indices:[]};groups.push(g);}const offset=g.vertices.length/12;for(const v of vertices)g.vertices.push(v);for(const i of indices)g.indices.push(offset+i);}};
-  this.renderer.draw(batch,skeleton);if(overlay)this.renderer.draw(batch,overlay);
+  this.renderer.draw(batch,skeleton);if(overlay){
+   // human_emotion is already premultiplied, as in GTAsset's
+   // drawSkeleton(emotion, true). A SRC_ALPHA draw darkens it a second time.
+   this.renderer.premultipliedAlpha=true;try{this.renderer.draw(batch,overlay);}finally{this.renderer.premultipliedAlpha=false;}
+  }
   for(const [i,g] of groups.entries()){
    let mesh=this.meshes[i];if(!mesh){const material=new THREE.ShaderMaterial({vertexShader,fragmentShader,uniforms:{image:{value:g.texture.three},brightness:{value:this.brightness},groundDepth:{value:0},groundY:{value:0}},transparent:true,depthWrite:false,depthTest:true,side:THREE.DoubleSide,toneMapped:false,blending:THREE.CustomBlending});material.userData={source:this.tile.character.resource,shader:'Spine 3.8 · 动态骨骼',queue:3000};mesh=new THREE.InstancedMesh(new THREE.BufferGeometry(),material,1);mesh.onBeforeRender=()=>{mesh.material.uniforms.groundDepth.value=this.groundDepth?1:0;mesh.material.uniforms.groundY.value=this.groundY||0;};mesh.frustumCulled=false;mesh.userData={tiles:[this.tile],sourceMesh:this.tile.character.resource,sourceMaterial:this.tile.character.resource,sourceShader:'Spine 3.8 · 动态骨骼',kind:'character'};this.group.add(mesh);this.meshes.push(mesh);this.pickables.push(mesh);this.selection.attach(this.tile.id,mesh,0);mesh.userData.ref=this.selection.records.get(this.tile.id).refs.at(-1);}
    const count=g.vertices.length/12,geometry=mesh.geometry;
