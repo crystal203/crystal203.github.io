@@ -1,5 +1,5 @@
 import {loadCatalog,catalogEntities} from './gtaudio/catalog.js';
-const $=id=>document.getElementById(id),views=['atlas','spine','fx','map','online','wiki','audio'],titles={atlas:'图集',spine:'像素动画',fx:'特效',map:'地图',online:'在线玩',wiki:'角色图鉴',audio:'音频'};
+const $=id=>document.getElementById(id),views=['atlas','spine','fx','map','video','online','wiki','audio'],titles={atlas:'图集',spine:'像素动画',fx:'特效',map:'地图',video:'动画',online:'在线玩',wiki:'角色图鉴',audio:'音频'};
 let registry=null,mapEntities=[],resourceEntities=[],wikiCatalog=null,wikiEntities=[],audioEntities=[];
 function rebuildSearch(){
  const people=registry?Object.values(registry.entities):[],keys=new Set();
@@ -27,12 +27,12 @@ function navigate(state){if(state)location.hash=encode(state);}
 function renderContext(){
   $('context').textContent=active==='online'?'在线玩 · 世界 1 / 1-1 旅馆':entity?entity.name+' · '+entity.id:'浏览全部资源';
   $('related').replaceChildren();
-  if(entity)for(const view of (entity.audio?['audio']:entity.map?['map']:views.filter(v=>!['map','online','audio'].includes(v)))){const b=document.createElement('button'),target=GTRegistry.route(entity,view);b.textContent=titles[view]+(target?'':' · 暂无');b.disabled=!target;b.title=target?'打开关联的'+titles[view]:'索引中没有对应资源';b.onclick=()=>navigate(target);$('related').append(b);}
+  if(entity)for(const view of (entity.audio?['audio']:entity.map?['map']:views.filter(v=>!['map','video','online','audio'].includes(v)))){const b=document.createElement('button'),target=GTRegistry.route(entity,view);b.textContent=titles[view]+(target?'':' · 暂无');b.disabled=!target;b.title=target?'打开关联的'+titles[view]:'索引中没有对应资源';b.onclick=()=>navigate(target);$('related').append(b);}
 }
 function open(){
   const next=readRoute();if(route&&encode(next)===encode(route))return;
   if(active&&route)states[active]={...route};
-  document.body.classList.remove('map-presentation');document.body.classList.toggle('map-workspace',['map','online'].includes(next.view));route=next;active=next.view;entity=resolveSelection(next);renderContext();
+  document.body.classList.remove('map-presentation');document.body.classList.toggle('map-workspace',['map','video','online'].includes(next.view));route=next;active=next.view;entity=resolveSelection(next);renderContext();
   document.title=(entity?entity.name+' · ':'')+titles[active]+' | 坎公资源库';
   for(const b of document.querySelectorAll('nav button')){b.setAttribute('aria-current',b.dataset.view===active?'page':'false');}
   if(frame){try{frame.contentWindow.GTBridge?.dispose();}catch{}frame.remove();}
@@ -45,7 +45,7 @@ function open(){
 }
 for(const b of document.querySelectorAll('nav button'))b.onclick=()=>{
   if(active===b.dataset.view)return;
-  if(b.dataset.view==='online'){navigate(states.online||{view:'online'});return;}
+  if(['online','video'].includes(b.dataset.view)){navigate(states[b.dataset.view]||{view:b.dataset.view});return;}
   const related=GTRegistry.route(entity,b.dataset.view);
   if(entity&&!related){$('status').textContent='当前角色没有对应的'+titles[b.dataset.view]+'，已打开全部资源。';}
   const saved=states[b.dataset.view];navigate(saved&&(!entity||entity.map||b.dataset.view==='map'||saved.resource===entity.id||(b.dataset.view==='wiki'&&saved.hero===entity.wiki?.hero))?saved:related||{view:b.dataset.view});

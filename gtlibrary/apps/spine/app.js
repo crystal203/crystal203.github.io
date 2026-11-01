@@ -315,7 +315,7 @@
         $('characterModeField').hidden = folder !== 'character';
         if (characterEditor) characterEditor.setActive(folder === "character" && characterMode === 'scene');
         updateWikiEntry();
-        $("equipmentPanel").style.display = folder === "character" ? "block" : "none";
+        $("equipmentPanel").style.display = folder === "character" ? "block" : "none";$("characterCopy").hidden=folder!=="character";
         refreshEquipmentPanel();
         if (folder === "character") {$("equipmentStatus").textContent=app.itemSheet ? "" : "点击物品搜索框载入装备图集";$("equipmentPanel").addEventListener("focusin",ensureItems,{once:true});$("equipmentPanel").addEventListener("pointerdown",ensureItems,{once:true});}
         var isCustom = folder === "custom";
@@ -555,6 +555,21 @@
         return app.equipmentByCharacter[name]
           || (app.equipmentByCharacter[name] = Object.create(null));
       }
+
+      function copyCharacter() {
+        if(app.exporting||!app.model||app.model.folder!=='character'||!app.skeleton)return;
+        var actor=characterEditor.active?characterEditor.selected:null;if(characterEditor.active&&!actor)return;
+        var value=actor?GTCharacterScene.sample(actor,characterEditor.time):null;
+        var resource=actor?actor.resource:app.model.name,variant=app.model.variant||'front';
+        var tracks=app.animState.tracks.map(function(t){return t?{name:t.animation?.name,time:t.trackTime,loop:t.loop,timeScale:t.timeScale}:null;});
+        var settings={resource:resource,skin:app.skeleton.skin?.name||'',direction:value?.direction||(variant==='side'?'right':variant),animation:value?.action||app.tracks.action,expression:value?.expression||app.expressionByCharacter[resource]||'idle',sub:value?.sub??app.tracks.sub,speed:value?.speed??Number($('speedSlider').value),playing:actor?characterEditor.playing:!app.paused,animationSpeed:tracks[0]?.timeScale??1,expressionLoop:tracks[1]?.loop??true,subLoop:tracks[2]?.loop??true,equipment:JSON.parse(JSON.stringify(equipmentState())),slotOpacity:{...(actor?.opacity||app.opacity)},slotEnabled:{...(actor?.enabled||app.enabled)},loop:value?.loop??app.animState.tracks[0]?.loop??true,trackTimes:tracks};
+        if(value){settings.rotationZ=value.rotation;settings.spineScale=[value.scaleX,value.scaleY,1];}
+        var sourceMetadata={folder:'character',resource:resource,variant:variant,tracks:tracks,viewer:{scale:app.scale,position:{...app.pos}},scene:actor?characterEditor.serialize().actors.find(function(a){return a.id===actor.id}):null};
+        GTBridge.clipboard.write({version:1,kind:'characters',characters:[{resource:resource,name:actor?.label||displayName(resource),asset:{variants:variantsOf('character',resource)},settings:settings,sourceMetadata:sourceMetadata}],snapshots:[{position:[0,0,0],rotation:0,scale:[1,1,1],visible:value?.visible!==false}]});
+        $('copyCharacterStatus').textContent='已复制';
+      }
+      $('copyCharacterBtn').onclick=copyCharacter;
+      addEventListener('keydown',function(e){if(e.isComposing||e.repeat||e.defaultPrevented||e.altKey||!(e.ctrlKey||e.metaKey)||e.key.toLowerCase()!=='c'||e.target.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"])')||app.folder!=='character'||!app.skeleton)return;e.preventDefault();copyCharacter();});
 
       function ensureItems() {
         if (app.itemSheet && !app.itemSheet.failed) return app.itemSheet.loading;

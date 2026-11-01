@@ -5,7 +5,6 @@ export class NativeCombustion{
  constructor(game){this.game=game;this.refreshed=new Map();}
  ignite(o){const g=this.game,f=o.spec.CombustibleBehaviour;
   if(!f||f.IsCombustible===false||f.IsAffectedBurn===false||o.hidden||g.state.collected.includes(o.id))return false;
-  if(f.__class__==='Oak.BombCombustibleBehaviour')return g.bombs?.provoke(o,'fire')||false;
   if(![ordinary,brazier].includes(f.__class__))return false;
   if(f.__class__===brazier)this.refreshed.set(o.id,g.clock);
   if(g.state.lit.includes(o.id))return true;

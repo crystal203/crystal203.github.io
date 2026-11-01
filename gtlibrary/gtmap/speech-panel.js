@@ -1,0 +1,8 @@
+// Rasterize the nine-slice before adding shadows: fractional patch edges must never be composited independently.
+const panels=new WeakMap();
+export function speechPanel(image,width,height,slices,borders,pixelRatio=1){
+ const w=Math.max(1,Math.round(width*pixelRatio)),h=Math.max(1,Math.round(height*pixelRatio)),key=[w,h,...slices,...borders.map(v=>Math.round(v*pixelRatio))].join(':');let cache=panels.get(image);if(!cache){cache=new Map();cache.pixels=0;panels.set(image,cache);}if(cache.has(key))return cache.get(key);
+ const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d'),[top,right,bottom,left]=slices,[bt,br,bb,bl]=borders.map(v=>Math.round(v*pixelRatio)),sx=[0,left,image.width-right,image.width],sy=[0,top,image.height-bottom,image.height],dx=[0,bl,w-br,w],dy=[0,bt,h-bb,h];for(let row=0;row<3;row++)for(let col=0;col<3;col++){const dw=dx[col+1]-dx[col],dh=dy[row+1]-dy[row];if(dw>0&&dh>0)ctx.drawImage(image,sx[col],sy[row],sx[col+1]-sx[col],sy[row+1]-sy[row],dx[col],dy[row],dw,dh);}while(cache.size&&(cache.size>=32||cache.pixels+w*h>4*1024*1024)){const oldest=cache.keys().next().value,panel=cache.get(oldest);cache.pixels-=panel.width*panel.height;cache.delete(oldest);}cache.set(key,canvas);cache.pixels+=w*h;return canvas;
+}
+let images;
+export function speechPanelAssets(){return images??=Promise.all(['bubble.png','bubble_shout.png','bubble_think.png'].map(async name=>{const url=new URL('./assets/dialogue/'+name,import.meta.url);let image;if(globalThis.GTResources)image=await GTResources.image(url);else{image=new Image();image.src=url;await image.decode();}return [name,image];})).then(Object.fromEntries).catch(error=>{images=null;throw error;});}

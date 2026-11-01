@@ -9,6 +9,7 @@ import {MapDoors} from './doors.js';
 import {MapItems,itemInfo} from './items.js';
 import {MapManipulator} from './manipulator.js';
 import {MapSelection} from './selection.js';
+import {captureEditAssets,pasteOffset} from './edit-assets.js';
 import {MapStates} from './states.js';
 import {MapEffects} from './effects.js';
 import {sampleAnimator} from '../core/custom-animator.js';
@@ -39,7 +40,7 @@ export function assetsForMap(pack,doc){
 export class MapRuntime {
  constructor(host,{onChange=()=>{},onPick=()=>{},onSelection=()=>{}}={}) {
  let renderer,camera,controls,scene,bundle,map,mapGroup,eventGroup,baseSpan=220,oblique=true,unityView=true,disposed=false,environmentVisible=true,brightness=1,assetsGeneration=0;
- const thisRuntime=this;this.frameListeners=new Set();let gameplayMode=false;const gameplayEffects=new Set();let gameplayEffectId=0;
+ const thisRuntime=this;this.frameListeners=new Set();let gameplayMode=false;const gameplayEffects=new Set();let gameplayEffectId=0,editId=0;const editInsertions=[];let loadEditImage;
  const textures=new Map(),geometryCache=new Map(),layerGroups=new Map(),allMaterials=[],pickables=[],cloudBatches=[],nativeAnimations=[];
  const particleTime={value:0};let mapStartTime=0,exporting=false,exportAbort=null;
  function animate(time){for(const r of selection.records.values()){const c=r.gimmick?.consume;if(!c)continue;const elapsed=items.time-c.at,target=c.follow(),u=Math.min(1,elapsed/.25),v=u*u;r.position.set(c.from[0]+(target[0]-c.from[0])*v,c.from[1]+(target[1]+.6-c.from[1])*v,-(c.from[2]+(target[2]-c.from[2])*v));r.quaternion=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),u*Math.PI*2);r.scale.setScalar(1-u);if(u===1){r.visible=false;delete r.gimmick.consume;}selection.update(r);}events.sample(time);for(const fn of thisRuntime.frameListeners)fn(time);for(const item of nativeAnimations){const uniforms=item.material.uniforms;const scripts=Array.isArray(item.fields)?item.fields:[{type:'CustomAnimator',fields:item.fields}];
@@ -70,18 +71,18 @@ export class MapRuntime {
  function sampleSpeech(){speechBubble.sample();if(worldSpeech.plan){worldSpeech.time=Math.max(0,worldSpeech.clock()-worldSpeech.start);if(worldSpeech.time>=worldSpeech.duration)thisRuntime.clearWorldSpeech();}worldBubble.sample();}
  selection.captureExtra=r=>({gimmick:states.capture(r),door:r.door?{target:r.door.target}:null,character:characters.capture(r)});
  selection.restoreExtra=(r,s)=>{if(!s)return;states.restore(r,s.gimmick);if(s.door)doors.change(r,s.door.target===0?'closed':'open',true,false);characters.restore(r,s.character);};
- controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.09;controls.screenSpacePanning=true;controls.minZoom=.001;controls.maxZoom=60;controls.minPolarAngle=controls.maxPolarAngle=Math.PI/4;controls.mouseButtons={LEFT:null,MIDDLE:THREE.MOUSE.PAN,RIGHT:THREE.MOUSE.ROTATE};controls.touches={ONE:THREE.TOUCH.PAN,TWO:THREE.TOUCH.DOLLY_PAN};
+ controls=new OrbitControls(camera,renderer.domElement);controls.rotateSpeed=2.2;controls.enableDamping=true;controls.dampingFactor=.09;controls.screenSpacePanning=true;controls.minZoom=.001;controls.maxZoom=60;controls.minPolarAngle=controls.maxPolarAngle=Math.PI/4;controls.mouseButtons={LEFT:null,MIDDLE:THREE.MOUSE.PAN,RIGHT:THREE.MOUSE.ROTATE};controls.touches={ONE:THREE.TOUCH.PAN,TWO:THREE.TOUCH.DOLLY_PAN};
  events.controls=controls;
  manipulator=new MapManipulator(scene,camera,renderer.domElement,selection,controls,changed);
  const sentinel=(x,z)=>(x>=998.5&&x<=999.5)||(z>=998.5&&z<=999.5)||(x===99&&z===99);
  function resize(){const width=host.clientWidth,height=host.clientHeight;if(!width||!height)return;const span=(camera.top-camera.bottom)/camera.zoom;renderer.setSize(width,height,false);renderer.domElement.style.width=width+'px';renderer.domElement.style.height=height+'px';baseSpan=height/32;const aspect=width/height;camera.left=-baseSpan*aspect/2;camera.right=baseSpan*aspect/2;camera.top=baseSpan/2;camera.bottom=-camera.top;if(gameplayMode&&span>0)camera.zoom=baseSpan/span;camera.updateProjectionMatrix();if(events.plan){events.apply();events.snapCamera();}}
- function state(){return {selection:selection.getState(),position:camera.position.toArray(),target:controls.target.toArray(),zoom:camera.zoom,viewportWidth:host.clientWidth,viewportHeight:host.clientHeight,unityVerticalCompensation:camera.nativeViewportScale(),nativeWorldYScale:camera.nativeViewportScale(),viewWidth:(camera.right-camera.left)/camera.zoom,pixelsPerTileAt100:32,unityView,oblique,layers:[...layerGroups].map(([name,g])=>({name,visible:g.visible,count:g.userData.renderedTiles})),history:{undo:selection.history.length,redo:selection.future.length},hidden:[...selection.records.values()].filter(r=>!r.visible&&!r.character?.temporary).map(r=>({id:r.tile.id,name:r.tile.name,layer:r.tile.layer,position:[r.position.x,r.position.y*2,-r.position.z]})),characters:characters.diagnostics(),visibleTiles:[...selection.records.values()].filter(r=>r.visible&&(!r.character||characters.visible)&&layerGroups.get(r.tile.layer)?.visible&&(r.refs.length||environmentVisible&&r.effectRenderable)).length};}
+ function state(){return {selection:selection.getState(),position:camera.position.toArray(),target:controls.target.toArray(),zoom:camera.zoom,viewportWidth:host.clientWidth,viewportHeight:host.clientHeight,unityVerticalCompensation:camera.nativeViewportScale(),nativeWorldYScale:camera.nativeViewportScale(),viewWidth:(camera.right-camera.left)/camera.zoom,pixelsPerTileAt100:32,unityView,oblique,layers:[...layerGroups].map(([name,g])=>({name,visible:g.visible,count:g.userData.renderedTiles})),edited:selection.dirty,history:{undo:selection.history.length,redo:selection.future.length},hidden:[...selection.records.values()].filter(r=>!r.deleted&&!r.visible&&!r.character?.temporary).map(r=>({id:r.tile.id,name:r.tile.name,layer:r.tile.layer,position:[r.position.x,r.position.y*2,-r.position.z]})),characters:characters.diagnostics(),visibleTiles:[...selection.records.values()].filter(r=>!r.deleted&&r.visible&&(!r.character||characters.visible)&&layerGroups.get(r.tile.layer)?.visible&&(r.refs.length||environmentVisible&&r.effectRenderable)).length};}
  function changed(){onChange(state());}
  controls.addEventListener('change',changed);const observer=new ResizeObserver(resize);observer.observe(host);
  renderer.setAnimationLoop(time=>{if(disposed||exporting)return;particleTime.value=time*.001;animate(particleTime.value-mapStartTime);controls.update();sampleSpeech();if(!document.hidden)renderer.render(scene,camera);});
- function clear(){thisRuntime.clearWorldSpeech();for(const fx of gameplayEffects)fx.dispose();events.clear();characters.clear();doors.clear();items.clear();states.clear();effects.clear();selection.clear();if(mapGroup){scene.remove(mapGroup);mapGroup.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.userData.cloud)o.geometry.dispose();});}if(eventGroup){scene.remove(eventGroup);eventGroup.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});}allMaterials.splice(0).forEach(m=>m.dispose());geometryCache.forEach(g=>g.dispose());geometryCache.clear();layerGroups.clear();pickables.length=cloudBatches.length=nativeAnimations.length=0;mapGroup=eventGroup=null;map=null;}
+ function clear(){thisRuntime.clearWorldSpeech();for(const fx of gameplayEffects)fx.dispose();events.clear();characters.clear();doors.clear();items.clear();states.clear();effects.clear();selection.clear();if(mapGroup){scene.remove(mapGroup);mapGroup.traverse(o=>{if(o.isInstancedMesh)o.dispose();if(o.userData.cloud)o.geometry.dispose();});}if(eventGroup){scene.remove(eventGroup);eventGroup.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});}allMaterials.splice(0).forEach(m=>m.dispose());geometryCache.forEach(g=>g.dispose());geometryCache.clear();layerGroups.clear();pickables.length=cloudBatches.length=nativeAnimations.length=0;mapGroup=eventGroup=null;map=null;editInsertions.length=0;}
  this.clear=clear;
- this.loadAssets=async(data,loadImage)=>{exportAbort?.abort();const assetToken=++assetsGeneration;clear();textures.forEach(t=>t.dispose());textures.clear();bundle=data;await Promise.all(Object.entries(data.textures).map(async([key,info])=>{const image=await loadImage(info.url);if(disposed||assetToken!==assetsGeneration)return;const t=new THREE.Texture(image);t.needsUpdate=true;t.colorSpace=THREE.NoColorSpace;t.magFilter=info.filter===0?THREE.NearestFilter:THREE.LinearFilter;t.minFilter=info.filter===0?THREE.NearestMipmapNearestFilter:THREE.LinearMipmapLinearFilter;t.wrapS=t.wrapT=info.wrap===1?THREE.ClampToEdgeWrapping:THREE.RepeatWrapping;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.set(key,t);}));};
+ this.loadAssets=async(data,loadImage)=>{exportAbort?.abort();const assetToken=++assetsGeneration;clear();textures.forEach(t=>t.dispose());textures.clear();bundle={...data,templates:{...data.templates},meshes:{...data.meshes},materials:{...data.materials},textures:{...data.textures},environment:{...data.environment,clouds:{...data.environment?.clouds},effects:{...data.environment?.effects},states:{...data.environment?.states}}};loadEditImage=loadImage;await Promise.all(Object.entries(data.textures).map(async([key,info])=>{const image=await loadImage(info.url);if(disposed||assetToken!==assetsGeneration)return;const t=new THREE.Texture(image);t.needsUpdate=true;t.colorSpace=THREE.NoColorSpace;t.magFilter=info.filter===0?THREE.NearestFilter:THREE.LinearFilter;t.minFilter=info.filter===0?THREE.NearestMipmapNearestFilter:THREE.LinearMipmapLinearFilter;t.wrapS=t.wrapT=info.wrap===1?THREE.ClampToEdgeWrapping:THREE.RepeatWrapping;t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());textures.set(key,t);}));};
 function createMaterial(key, vertexColors, billboard = false, partMatrix = null, animation = null) {
   const m = bundle.materials[key]; if (!m) return null;
   const profile = m.nativeShader;
@@ -236,7 +237,7 @@ function buildClouds(key, tiles, group, layerIndex) {
       position.set(...['x','y','z'].map(k => spec.shapePosition[k] + spec.position[k] + (random() - .5) * spec.shapeScale[k]));
       position.z *= -1; position.applyQuaternion(rotation);
       position.add(new THREE.Vector3(tile.x, tile.y * .5, -tile.z));
-      mesh.setMatrixAt(i++, matrix.makeTranslation(position.x, position.y, position.z));
+      matrix.makeTranslation(position.x, position.y, position.z);mesh.setMatrixAt(i,matrix);selection.attach(tile.id,mesh,i++,selection.matrixFor(selection.records.get(tile.id)).invert().multiply(matrix));
       const size = sample(spec.size); shapes.push(size, size, sample(spec.angle)); speeds.push(sample(spec.angularSpeed));
       const mix = random(); colors.push(...['r','g','b','a'].map(k => THREE.MathUtils.lerp(spec.minColor[k], spec.maxColor[k], mix)));
     }
@@ -251,21 +252,7 @@ function buildClouds(key, tiles, group, layerIndex) {
   return true;
 }
 
- this.build=async(doc,{loadCharacters=true}={})=>{const buildGeneration=assetsGeneration;clear();mapStartTime=particleTime.value;map=doc;events.mapName=doc.mapName;mapGroup=new THREE.Group();scene.add(mapGroup);
-  let renderedTiles = 0, sentinelTiles = 0, emptyTiles = 0, instanceCount = 0;
-  const sourceBounds = new THREE.Box3();
-  for (const [layerIndex, layer] of map.layers.entries()) {
-    if (layer.type !== 0) continue;
-    const group = new THREE.Group(); group.name = layer.name; group.userData.renderedTiles = 0; group.userData.cloudTiles = 0; layerGroups.set(layer.name, group); mapGroup.add(group);
-    const byTemplate = new Map();let tileIndex=0;
-    for (const tile of layer.tiles) {
-      if (sentinel(tile.x, tile.z)) { sentinelTiles++; continue; }
-      const key = `${bundle.setOrder.indexOf(doc.tilesets[tile.ts - 1].name)+1}:${tile.name}`;
-      if (!bundle.templates[key] || bundle.templates[key].name !== tile.name) throw new Error('资源模板与地图索引不一致：' + key);
-      if (!byTemplate.has(key)) byTemplate.set(key, []);
-      const live={...tile,layer:layer.name,id:layerIndex+':'+tileIndex++};live.item=itemInfo(live,doc,bundle.itemMetadata);byTemplate.get(key).push(live);selection.add(live);
-      sourceBounds.expandByPoint(new THREE.Vector3(tile.x, 0, -tile.z));
-    }
+ function renderTileGroups(byTemplate,group,layerIndex,doc){let renderedTiles=0,emptyTiles=0,instanceCount=0;
     for (const [key, tiles] of byTemplate) {
       const state=bundle.environment?.states?.[key];if(state)states.register(state.spec,state.assets,tiles,group,layerIndex);
       const nativeEffect=bundle.environment?.effects?.[key];let didRender = buildClouds(key, tiles, group, layerIndex);if(nativeEffect){const particles=effects.build(nativeEffect.spec,nativeEffect.assets,tiles,group,layerIndex);didRender=!!particles||didRender;}
@@ -278,7 +265,7 @@ function buildClouds(key, tiles, group, layerIndex) {
         const part = parts[pi], raw = bundle.meshes[part.mesh];
         for (let si = 0; si < raw.submeshes.length; si++) {
           const matKey = part.materials[Math.min(si, part.materials.length - 1)];
-          const animation=nativeEffect?.spec.staticScripts[part.node]||bundle.environment?.animators?.[bundle.setOrder[Number(key.split(':')[0])-1]]?.[bundle.templates[key].name]?.[part.node];
+          const animation=nativeEffect?.spec.staticScripts[part.node]||(bundle.templates[key].animations||bundle.environment?.animators?.[bundle.setOrder[Number(key.split(':')[0])-1]]?.[bundle.templates[key].name])?.[part.node];
           const mat = createMaterial(matKey, !!raw.colors, false, part.matrix, animation); if (!mat || !raw.submeshes[si].length) continue;
           const mesh = new THREE.InstancedMesh(partGeometry(key, pi, si), mat, tiles.length);
           const sorting=animation?.find?.(s=>s.type==='SortingLayer')?.fields;
@@ -299,6 +286,24 @@ function buildClouds(key, tiles, group, layerIndex) {
       if (didRender) { renderedTiles += tiles.length; group.userData.renderedTiles += tiles.length; }
       else emptyTiles += tiles.length;
     }
+  return {renderedTiles,emptyTiles,instanceCount};
+ }
+ this.build=async(doc,{loadCharacters=true}={})=>{const buildGeneration=assetsGeneration;clear();mapStartTime=particleTime.value;map=doc;events.mapName=doc.mapName;mapGroup=new THREE.Group();scene.add(mapGroup);
+  let renderedTiles = 0, sentinelTiles = 0, emptyTiles = 0, instanceCount = 0;
+  const sourceBounds = new THREE.Box3();
+  for (const [layerIndex, layer] of map.layers.entries()) {
+    if (layer.type !== 0) continue;
+    const group = new THREE.Group(); group.name = layer.name; group.userData.renderedTiles = 0; group.userData.cloudTiles = 0; layerGroups.set(layer.name, group); mapGroup.add(group);
+    const byTemplate = new Map();let tileIndex=0;
+    for (const tile of layer.tiles) {
+      if (sentinel(tile.x, tile.z)) { sentinelTiles++; continue; }
+      const key = `${bundle.setOrder.indexOf(doc.tilesets[tile.ts - 1].name)+1}:${tile.name}`;
+      if (!bundle.templates[key] || bundle.templates[key].name !== tile.name) throw new Error('资源模板与地图索引不一致：' + key);
+      if (!byTemplate.has(key)) byTemplate.set(key, []);
+      const live={...tile,layer:layer.name,id:layerIndex+':'+tileIndex++};live.assetKey=key;live.item=itemInfo(live,doc,bundle.itemMetadata);byTemplate.get(key).push(live);selection.add(live);
+      sourceBounds.expandByPoint(new THREE.Vector3(tile.x, 0, -tile.z));
+    }
+    const built=renderTileGroups(byTemplate,group,layerIndex,doc);renderedTiles+=built.renderedTiles;emptyTiles+=built.emptyTiles;instanceCount+=built.instanceCount;
 
     if(disposed)throw new Error('Preview disposed');
   }
@@ -310,7 +315,7 @@ function buildClouds(key, tiles, group, layerIndex) {
   eventGroup=new THREE.Group();eventGroup.visible=false;eventGroup.renderOrder=1000000;scene.add(eventGroup);
   for(const l of doc.layers.filter(l=>l.type===1)){const events=l.events.filter(e=>!sentinel(e.position[0],e.position[2]));const geom=new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(events.flatMap(e=>[e.position[0],e.position[1]+1.5,-e.position[2]]),3));const mat=new THREE.PointsMaterial({color:0x93aee6,size:6,sizeAttenuation:false,depthTest:false,depthWrite:false,transparent:true});const points=new THREE.Points(geom,mat);points.renderOrder=1000000;points.userData.eventLayer=l.name;eventGroup.add(points);}
   for(const m of allMaterials)m.uniforms.brightness.value=brightness;
-  effects.setVisible(environmentVisible);effects.setBrightness(brightness);this.fit();changed();return {characters:characterResult,nativeParticleSystems:effects.simulations.reduce((n,s)=>n+s.effect.systems.length,0),nativeParticleInstances:effects.batches.reduce((n,b)=>n+(b.staticSprite?0:b.mesh.count),0),renderedTiles,emptyTiles,sentinelTiles,instanceCount,cloudEmitters:[...layerGroups.values()].reduce((n,g)=>n+g.userData.cloudTiles,0),cloudParticles:cloudBatches.reduce((n,b)=>n+b.count,0),nativeAnimatedMaterials:nativeAnimations.length,layers:doc.layers.length,tiles:doc.tileCount};
+  effects.setVisible(environmentVisible);effects.setBrightness(brightness);selection.markClean();this.fit();changed();return {characters:characterResult,nativeParticleSystems:effects.simulations.reduce((n,s)=>n+s.effect.systems.length,0),nativeParticleInstances:effects.batches.reduce((n,b)=>n+(b.staticSprite?0:b.mesh.count),0),renderedTiles,emptyTiles,sentinelTiles,instanceCount,cloudEmitters:[...layerGroups.values()].reduce((n,g)=>n+g.userData.cloudTiles,0),cloudParticles:cloudBatches.reduce((n,b)=>n+b.count,0),nativeAnimatedMaterials:nativeAnimations.length,layers:doc.layers.length,tiles:doc.tileCount};
  };
  this.fit=()=>{if(!mapGroup)return;const bounds=mapGroup.userData.bounds,center=bounds.getCenter(new THREE.Vector3()),size=bounds.getSize(new THREE.Vector3());const aspect=host.clientWidth/Math.max(host.clientHeight,1);const fitSpan=Math.max(4,size.z*(oblique&&!unityView?.78:1),size.x/aspect)*1.35;controls.target.copy(center);camera.position.copy(center).add(new THREE.Vector3(0,oblique?500:700,oblique?500:.01));camera.zoom=THREE.MathUtils.clamp(host.clientHeight/32/fitSpan,.001,60);resize();controls.update();changed();};
  this.setView=(value)=>{oblique=value==='oblique';unityView=oblique;controls.minPolarAngle=unityView?Math.PI/4:.02;controls.maxPolarAngle=unityView?Math.PI/4:Math.PI*.49;const center=controls.target;camera.position.copy(center).add(new THREE.Vector3(0,oblique?500:700,oblique?500:.01));resize();controls.update();changed();};
@@ -320,8 +325,8 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.setGimmickState=(id,value,still=false)=>{if(!this.getGimmickControls()||value==='__mixed')return;selection.transaction(()=>{for(const r of selection.values())if(id==='door:height')doors.change(r,value,still,false);else states.change(r,id,value,still,false);animate(particleTime.value-mapStartTime);selection.refresh();});changed();};
  this.getCharacterControls=()=>selection.values().length===1?characters.controls(selection.values()[0]):null;
  this.setCharacterState=settings=>{if(selection.values().length!==1||!selection.values()[0].character)return;selection.transaction(()=>characters.change(selection.values()[0],settings));selection.refresh();changed();};
- this.getCharacters=()=>characters.entries.map(e=>({...e.tile.character,name:e.tile.name,tileId:e.tile.id,layer:e.tile.layer,position:[e.record.position.x,e.record.position.y*2,-e.record.position.z]}));
- this.loadCharacters=async()=>{if(!mapGroup||!characters.deferred)return characters.diagnostics();const doc=map,token=assetsGeneration;const result=await characters.loadDeferred();if(disposed||doc!==map||token!==assetsGeneration)throw new DOMException('地图已切换','AbortError');for(const group of layerGroups.values())if(!group.parent)mapGroup.add(group);for(const entry of characters.entries){mapGroup.userData.bounds.expandByPoint(entry.record.position);if(entry.loaded)entry.group.userData.renderedTiles++;}changed();return result;};
+ this.getCharacters=()=>characters.entries.filter(e=>!e.record.deleted).map(e=>({...e.tile.character,name:e.tile.name,tileId:e.tile.id,layer:e.tile.layer,position:[e.record.position.x,e.record.position.y*2,-e.record.position.z]}));
+ this.loadCharacters=async()=>{if(!mapGroup||!characters.deferred)return characters.diagnostics();const doc=map,token=assetsGeneration,added=selection.snapshot(characters.entries.filter(e=>e.tile.editAdded).map(e=>e.record)),ids=[...selection.ids];const result=await characters.loadDeferred();if(disposed||doc!==map||token!==assetsGeneration)throw new DOMException('地图已切换','AbortError');for(const group of layerGroups.values())if(!group.parent)mapGroup.add(group);for(const snapshot of selection.snapshot(characters.entries.filter(e=>!e.tile.editAdded).map(e=>e.record)))if(!selection.baseline.has(snapshot.id))selection.baseline.set(snapshot.id,JSON.stringify(snapshot));for(const entry of characters.entries){mapGroup.userData.bounds.expandByPoint(entry.record.position);if(entry.loaded)entry.group.userData.renderedTiles++;}for(const insertion of editInsertions)if(insertion.character)await insertEditCharacter(insertion.character);if(added.length)selection.restore(added,ids);characters.sample(characters.time,true);changed();return result;};
  this.setCharacterShadows=value=>{characters.setShadows(value);changed();};this.setCharacters=value=>{characters.setVisible(value);changed();};this.setCharactersPlaying=value=>characters.setPlaying(value);
  this.focusSelection=()=>{const values=selection.values();if(!values.length)return;const center=values.reduce((p,r)=>p.add(r.position),new THREE.Vector3()).multiplyScalar(1/values.length),offset=camera.position.clone().sub(controls.target);controls.target.copy(center);camera.position.copy(center).add(offset);camera.zoom=Math.max(camera.zoom,2);camera.updateProjectionMatrix();controls.update();changed();};
  this.setEnvironment=value=>{environmentVisible=value;cloudBatches.forEach(b=>b.visible=value);effects.setVisible(value);states.setVisible(value);changed();};
@@ -330,17 +335,69 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.setBrightness=value=>{brightness=value;characters.setBrightness(value);effects.setBrightness(value);states.setBrightness(value);allMaterials.forEach(m=>m.uniforms.brightness.value=value);};
  this.zoom=factor=>{camera.zoom=THREE.MathUtils.clamp(camera.zoom*factor,.001,60);camera.updateProjectionMatrix();changed();};
  this.actualSize=()=>{camera.zoom=1;camera.updateProjectionMatrix();changed();};
- this.selectTiles=(ids)=>{selection.ids.clear();for(const id of ids)if(selection.records.has(id))selection.ids.add(id);selection.refresh();};
- this.getTileRecords=()=>[...selection.records.values()].map(r=>({...r.tile,...{visible:r.visible,partCount:r.refs.length}}));
+ this.selectTiles=(ids)=>{selection.ids.clear();for(const id of ids)if(selection.records.has(id)&&!selection.records.get(id).deleted)selection.ids.add(id);selection.refresh();};
+ this.getTileRecords=()=>[...selection.records.values()].filter(r=>!r.deleted).map(r=>({...r.tile,...{visible:r.visible,partCount:r.refs.length}}));
  this.setCollectibles=value=>{items.setVisible(value);states.setPickupsVisible(value);changed();};
  this.setTransformMode=mode=>manipulator.setMode(mode);this.setTransformSnap=value=>manipulator.setSnap(value);this.setSelectionOutline=value=>{selection.overlay.visible=!!value;};
- this.getSelection=()=>selection.getState();this.editSelection=changes=>{selection.transaction(()=>selection.apply(changes));changed();};this.resetEdits=(all=false)=>{const records=all?[...selection.records.values()]:selection.values();selection.transaction(()=>{states.reset(records);characters.reset(records);selection.reset(all);doors.reset(records);},records);changed();};
+ this.getSelection=()=>selection.getState();this.editSelection=changes=>{selection.transaction(()=>selection.apply(changes));changed();};
+ this.resetEdits=(all=false)=>{const records=all?[...selection.records.values()]:selection.values();selection.transaction(()=>{const snapshots=records.map(r=>selection.baseline.has(r.tile.id)?JSON.parse(selection.baseline.get(r.tile.id)):{...selection.snapshot([r])[0],deleted:true});selection.restore(snapshots,[...selection.ids],true);},records);changed();};
+ this.deleteSelection=()=>{selection.deleteSelected();animate(particleTime.value-mapStartTime);changed();};
+ this.copySelection=()=>{
+  const records=selection.values();if(!records.length)throw new Error('请先选择要复制的图块');
+  if(records.every(r=>r.character))return {version:1,kind:'characters',characters:records.map(r=>characters.describe(r)),snapshots:structuredClone(selection.snapshot(records))};
+  if(records.some(r=>r.character))throw new Error('请分别复制人物与图块');
+  const capsule=captureEditAssets(bundle,records.map(r=>r.tile.assetKey),'clip-'+crypto.randomUUID()+':');
+  return {version:1,kind:'tiles',sourceMap:map.mapName,copiedAt:Date.now(),assets:capsule.data,tiles:records.map(r=>({...structuredClone(r.tile),assetKey:capsule.keys.get(r.tile.assetKey),sourceMapName:r.tile.sourceMapName||map.mapName,pickupTextureKeys:Object.fromEntries(Object.entries(r.tile.pickupTextureKeys||Object.fromEntries(Object.keys(bundle.textures).filter(k=>k.startsWith('pickup-')).map(k=>[k,k]))).map(([key,value])=>[key,capsule.textureKeys[value]]))})),snapshots:structuredClone(selection.snapshot(records))};
+ };
+ async function importEditAssets(data){
+  const token=assetsGeneration,images=await Promise.all(Object.entries(data.textures).filter(([key])=>!textures.has(key)).map(async([key,info])=>[key,info,await loadEditImage(info.url)]));
+  if(disposed||token!==assetsGeneration)throw new DOMException('地图已切换','AbortError');
+  for(const [key,info,image] of images){const t=new THREE.Texture(image);t.needsUpdate=true;t.colorSpace=THREE.NoColorSpace;t.magFilter=info.filter===0?THREE.NearestFilter:THREE.LinearFilter;t.minFilter=info.filter===0?THREE.NearestMipmapNearestFilter:THREE.LinearMipmapLinearFilter;t.wrapS=t.wrapT=info.wrap===1?THREE.ClampToEdgeWrapping:THREE.RepeatWrapping;textures.set(key,t);}
+  for(const type of ['templates','meshes','materials','textures'])Object.assign(bundle[type],data[type]);
+  for(const type of ['clouds','effects','states'])Object.assign(bundle.environment[type],data.environment[type]);
+ }
+ function insertEditTiles(tiles){
+  const groups=new Map();for(const tile of tiles){const r=selection.add(tile);r.deleted=true;selection.update(r);if(!groups.has(tile.layer))groups.set(tile.layer,new Map());const templates=groups.get(tile.layer);if(!templates.has(tile.assetKey))templates.set(tile.assetKey,[]);templates.get(tile.assetKey).push(tile);}
+  const oldEffects=effects.batches.length;for(const [name,templates] of groups){let group=layerGroups.get(name);if(!group){group=new THREE.Group();group.name=name;group.userData.renderedTiles=group.userData.cloudTiles=0;layerGroups.set(name,group);mapGroup.add(group);}renderTileGroups(templates,group,[...layerGroups.keys()].indexOf(name),map);}
+  pickables.push(...effects.batches.slice(oldEffects).map(b=>b.mesh));for(const tile of tiles)doors.register(selection.records.get(tile.id));
+  for(const m of allMaterials)m.uniforms.brightness.value=brightness;
+  const records=tiles.map(t=>selection.records.get(t.id));for(const r of records)selection.update(r);return records;
+ }
+ async function insertEditCharacter(spec){
+  const token=assetsGeneration,r=await characters.prepareActor(spec,{isCurrent:()=>token===assetsGeneration&&!disposed});
+  r.character.temporary=false;r.tile.character.preview=false;r.tile.editAdded=true;r.tile.sourceMetadata=structuredClone(spec.sourceMetadata||{});r.deleted=true;r.visible=true;
+  for(const group of layerGroups.values())if(!group.parent)mapGroup.add(group);r.character.group.userData.renderedTiles++;selection.update(r);return r;
+ }
+ async function pasteCharacters(clipboard,target){
+  const sources=clipboard.snapshots||clipboard.characters.map(()=>({position:[0,0,0],rotation:0,scale:[1,1,1],visible:true})),offset=pasteOffset(sources,target),records=[],insertions=[];
+  try{for(const input of clipboard.characters){const spec={...structuredClone(input),handle:'edit-character-'+crypto.randomUUID(),position:[0,0,0]},r=await insertEditCharacter(spec);records.push(r);insertions.push({character:spec});}}
+  catch(error){for(const r of records){r.deleted=true;selection.update(r);}throw error;}
+  const snapshots=records.map((r,i)=>({...selection.snapshot([r])[0],position:sources[i].position.map((v,j)=>v+offset[j]),rotation:sources[i].rotation||0,quaternion:sources[i].quaternion||null,scale:sources[i].scale||[1,1,1],visible:sources[i].visible!==false,deleted:false}));
+  editInsertions.push(...insertions);selection.transaction(()=>selection.restore(snapshots,records.map(r=>r.tile.id)),records);characters.sample(characters.time,true);selection.refresh();changed();return records.length;
+ }
+ this.pasteSelection=async clipboard=>{
+  if(!map||exporting||manipulator.control.dragging)throw new Error('请等待地图准备完成');
+  if(clipboard?.version!==1)throw new Error('请先复制');
+  const selected=selection.values(),target=selected.length===1?selected[0].position.toArray():controls.target.toArray(),offset=pasteOffset(clipboard.snapshots,target);
+  if(clipboard.kind==='characters')return pasteCharacters(clipboard,target);
+  if(!clipboard.tiles?.length)throw new Error('请先复制图块');
+  await importEditAssets(clipboard.assets);
+  const tiles=clipboard.tiles.map(t=>({...structuredClone(t),id:'edit:'+ ++editId,editAdded:true})),records=insertEditTiles(tiles),snapshots=clipboard.snapshots.map((s,i)=>({...structuredClone(s),id:tiles[i].id,position:s.position.map((v,j)=>v+offset[j]),deleted:false}));
+  editInsertions.push({assets:clipboard.assets,tiles});
+  selection.transaction(()=>selection.restore(snapshots,tiles.map(t=>t.id)),records);animate(particleTime.value-mapStartTime);selection.refresh();changed();return tiles.length;
+ };
+ this.captureEdits=()=>({snapshots:selection.snapshot([...selection.records.values()]),insertions:[...editInsertions],history:structuredClone(selection.history),future:structuredClone(selection.future),ids:[...selection.ids],editId});
+ this.restoreEdits=async session=>{
+  if(session.snapshots.some(s=>s.id.startsWith('character:'))&&characters.deferred)await thisRuntime.loadCharacters();
+  for(const insertion of session.insertions){if(insertion.character)await insertEditCharacter(insertion.character);else{await importEditAssets(insertion.assets);insertEditTiles(insertion.tiles);}editInsertions.push(insertion);}
+  editId=Math.max(editId,session.editId);selection.restore(session.snapshots,session.ids,true);selection.history=session.history;selection.future=session.future;selection.checkDirty();animate(particleTime.value-mapStartTime);changed();
+ };
  this.undo=()=>{if(exporting||manipulator.control.dragging)return false;if(events.plan)events.stop();if(events.walking)events.walk(false);const result=selection.undo();animate(particleTime.value-mapStartTime);changed();return result;};this.redo=()=>{if(exporting||manipulator.control.dragging)return false;if(events.plan)events.stop();if(events.walking)events.walk(false);const result=selection.redo();animate(particleTime.value-mapStartTime);changed();return result;};
- this.restoreHidden=ids=>{const records=ids.map(id=>selection.records.get(id)).filter(r=>r&&!r.visible);selection.transaction(()=>{const touched=new Set();for(const r of records){r.visible=true;selection.update(r,touched);}for(const mesh of touched)mesh.computeBoundingSphere();selection.refresh();},records);changed();};this.clearSelection=()=>selection.select(null);
+ this.restoreHidden=ids=>{const records=ids.map(id=>selection.records.get(id)).filter(r=>r&&!r.deleted&&!r.visible);selection.transaction(()=>{const touched=new Set();for(const r of records){r.visible=true;selection.update(r,touched);}for(const mesh of touched)mesh.computeBoundingSphere();selection.refresh();},records);changed();};this.clearSelection=()=>selection.select(null);
  // Gameplay clients share actors, original object states and camera projection with the editor.
  this.setGameplayMode=value=>{gameplayMode=!!value;controls.enabled=!gameplayMode;controls.enableDamping=!gameplayMode;manipulator.setMode('select');selection.overlay.visible=!gameplayMode;};
  this.createActor=async spec=>{const r=await characters.prepareActor(spec);r.character.temporary=false;r.tile.character.preview=false;if(spec.position)r.position.set(spec.position[0],spec.position[1],-spec.position[2]);r.visible=spec.visible!==false;selection.matrix(r);for(const group of layerGroups.values())if(!group.parent)mapGroup.add(group);await characters.warm(r,['front','back','left','right']);characters.sample(characters.time,true);return r;};
- this.getWorldRecords=()=>[...selection.records.values()];
+ this.getWorldRecords=()=>[...selection.records.values()].filter(r=>!r.deleted);
  this.setActorState=(r,settings)=>{const changes={};for(const [key,value] of Object.entries(settings))if(r.character.settings[key]!==value)changes[key]=value;if(Object.keys(changes).length)return characters.change(r,changes);};
  this.restartActorAnimation=r=>{if(r.character?.loaded)characters.pose(r.character);};
  this.actorSlotPosition=(r,name)=>{const p=characters.slotPoint(r,name);return p?[p.x,p.y,-p.z]:null;};
@@ -380,6 +437,14 @@ function buildClouds(key, tiles, group, layerIndex) {
  this.focusWorld=(p,span=10)=>{const offset=new THREE.Vector3(0,500,500);controls.target.set(p[0],p[1],-p[2]);camera.position.copy(controls.target).add(offset);camera.zoom=THREE.MathUtils.clamp((camera.top-camera.bottom)/span,.001,60);camera.updateProjectionMatrix();camera.lookAt(controls.target);camera.updateMatrixWorld();};
  this.projectWorld=p=>{const v=new THREE.Vector3(p[0],p[1],-p[2]).project(camera);return {x:(v.x+1)*host.clientWidth/2,y:(1-v.y)*host.clientHeight/2,visible:v.z>=-1&&v.z<=1};};
  this.isInCameraView=p=>{const v=new THREE.Vector3(p[0],p[1],-p[2]).project(camera);return ['x','y','z'].every(k=>v[k]>=-1&&v[k]<=1);};
+ // GTVideo drives the same scene with an explicit clock and one renderer.
+ this.videoBridge={renderer,camera,controls,scene,characters,selection,states,doors,manipulator,nativeProjection:()=>unityView&&oblique,
+   setNativeProjection:enabled=>{unityView=!!enabled;oblique=true;camera.updateProjectionMatrix();camera.updateMatrixWorld();},
+  manual:()=>{renderer.setAnimationLoop(null);controls.enableDamping=false;},
+  size:(width,height)=>{width=Math.max(1,Math.round(width));height=Math.max(1,Math.round(height));if(renderer.domElement.width===width&&renderer.domElement.height===height)return;const span=(camera.top-camera.bottom)/camera.zoom;renderer.setPixelRatio(1);renderer.setSize(width,height,false);camera.left=-span*width/height/2;camera.right=-camera.left;camera.top=span/2;camera.bottom=-camera.top;camera.zoom=1;camera.updateProjectionMatrix();},
+  renderLocal:(time,records)=>{controls.update();camera.updateMatrixWorld();characters.time=time;const frustum=characters.frame();for(const record of records)if(record.character)characters.sampleEntry(record.character,frustum,true);renderer.render(scene,camera);},
+   render:(time,idleTime=time,offline=false,force=true)=>{characters.videoClock=idleTime;characters.videoForce=force;characters.videoFreezePreview=!force;characters.videoOffline=offline;if(offline)for(const e of characters.entries)if(e.loaded&&!e.preview){e.lastPose=time;for(const track of e.state.tracks)if(track)track.trackTime=time*(e.settings.speed??1);for(const track of e.emotion?.state.tracks||[])if(track)track.trackTime=time;}animate(time);controls.update();camera.updateMatrixWorld();renderer.render(scene,camera);}
+ };
  this.getState=state;
  this.export=async(options={})=>{
   if(!mapGroup||!map)throw new Error('请先加载地图');if(exporting)throw new Error('正在导出地图');
@@ -393,7 +458,7 @@ function buildClouds(key, tiles, group, layerIndex) {
  const marquee=document.createElement('div');marquee.className='map-marquee';marquee.style.cssText='position:absolute;pointer-events:none;border:1px solid #8ad5ff;background:#8ad5ff22;z-index:3;display:none';host.append(marquee);let boxStart=null,oldOrbit=true;
  const boxDown=e=>{if(gameplayMode||exporting||!map||e.button!==0||!e.shiftKey)return;e.preventDefault();e.stopImmediatePropagation();oldOrbit=controls.enabled;controls.enabled=false;boxStart={x:e.clientX,y:e.clientY,add:e.ctrlKey||e.metaKey};renderer.domElement.setPointerCapture(e.pointerId);};
  const boxMove=e=>{if(!boxStart)return;const rect=host.getBoundingClientRect();Object.assign(marquee.style,{display:'block',left:Math.min(e.clientX,boxStart.x)-rect.left+'px',top:Math.min(e.clientY,boxStart.y)-rect.top+'px',width:Math.abs(e.clientX-boxStart.x)+'px',height:Math.abs(e.clientY-boxStart.y)+'px'});};
- const boxEnd=e=>{if(!boxStart)return;e.preventDefault();e.stopImmediatePropagation();const start=boxStart;boxStart=null;marquee.style.display='none';controls.enabled=oldOrbit;renderer.domElement.releasePointerCapture(e.pointerId);if(e.type==='pointercancel')return;const rect=renderer.domElement.getBoundingClientRect(),left=Math.min(start.x,e.clientX),right=Math.max(start.x,e.clientX),top=Math.min(start.y,e.clientY),bottom=Math.max(start.y,e.clientY);camera.updateMatrixWorld();if(!start.add)selection.ids.clear();for(const r of selection.records.values()){if(!r.visible||!layerGroups.get(r.tile.layer)?.visible||!r.refs.some(ref=>!ref.suppressed&&ref.enabled!==false&&ref.mesh.visible))continue;const box=selection.bounds(r),points=[];for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new THREE.Vector3(x,y,z).project(camera);points.push({x:(v.x+1)*rect.width/2+rect.left,y:(1-v.y)*rect.height/2+rect.top,z:v.z});}if(points.every(p=>p.z < -1||p.z>1))continue;if(Math.max(...points.map(p=>p.x))>=left&&Math.min(...points.map(p=>p.x))<=right&&Math.max(...points.map(p=>p.y))>=top&&Math.min(...points.map(p=>p.y))<=bottom)selection.ids.add(r.tile.id);}selection.refresh();changed();};
+ const boxEnd=e=>{if(!boxStart)return;e.preventDefault();e.stopImmediatePropagation();const start=boxStart;boxStart=null;marquee.style.display='none';controls.enabled=oldOrbit;renderer.domElement.releasePointerCapture(e.pointerId);if(e.type==='pointercancel')return;const rect=renderer.domElement.getBoundingClientRect(),left=Math.min(start.x,e.clientX),right=Math.max(start.x,e.clientX),top=Math.min(start.y,e.clientY),bottom=Math.max(start.y,e.clientY);camera.updateMatrixWorld();if(!start.add)selection.ids.clear();for(const r of selection.records.values()){if(r.deleted||!r.visible||!layerGroups.get(r.tile.layer)?.visible||!r.refs.some(ref=>!ref.suppressed&&ref.enabled!==false&&ref.mesh.visible))continue;const box=selection.bounds(r),points=[];for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z]){const v=new THREE.Vector3(x,y,z).project(camera);points.push({x:(v.x+1)*rect.width/2+rect.left,y:(1-v.y)*rect.height/2+rect.top,z:v.z});}if(points.every(p=>p.z < -1||p.z>1))continue;if(Math.max(...points.map(p=>p.x))>=left&&Math.min(...points.map(p=>p.x))<=right&&Math.max(...points.map(p=>p.y))>=top&&Math.min(...points.map(p=>p.y))<=bottom)selection.ids.add(r.tile.id);}selection.refresh();changed();};
  renderer.domElement.addEventListener('pointerdown',boxDown,true);renderer.domElement.addEventListener('pointermove',boxMove,true);renderer.domElement.addEventListener('pointerup',boxEnd,true);renderer.domElement.addEventListener('pointercancel',boxEnd,true);
  let start=[0,0];const down=e=>{renderer.domElement.focus({preventScroll:true});start=[e.clientX,e.clientY];if(!manipulator.control.dragging)manipulator.consumed=false;};const context=e=>e.preventDefault();
  let lastPick=null;
@@ -402,7 +467,7 @@ function buildClouds(key, tiles, group, layerIndex) {
   const rect=renderer.domElement.getBoundingClientRect(),ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);
   if(events.pick(ray))return;
   const shown=m=>{for(let o=m;o;o=o.parent)if(!o.visible)return false;return true;},hits=[],seen=new Set();
-  for(const hit of ray.intersectObjects(pickables.filter(shown),false)){const tile=hit.object.userData.tiles?.[hit.instanceId];if(!tile||seen.has(tile.id)||!selection.records.get(tile.id)?.visible)continue;seen.add(tile.id);hits.push(hit);}
+  for(const hit of ray.intersectObjects(pickables.filter(shown),false)){const tile=hit.object.userData.tiles?.[hit.instanceId];if(!tile||seen.has(tile.id)||(!selection.records.get(tile.id)?.visible||selection.records.get(tile.id)?.deleted))continue;seen.add(tile.id);hits.push(hit);}
   const key=hits.map(h=>h.object.userData.tiles[h.instanceId].id).join('|'),repeat=lastPick&&lastPick.key===key&&Math.hypot(e.clientX-lastPick.x,e.clientY-lastPick.y)<6;
   const index=repeat?(lastPick.index+1)%Math.max(1,hits.length):0;lastPick={key,index,x:e.clientX,y:e.clientY};
   const hit=hits[index],tile=hit?.object.userData.tiles[hit.instanceId];

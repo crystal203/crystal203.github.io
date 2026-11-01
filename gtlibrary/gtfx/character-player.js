@@ -124,7 +124,7 @@ export class FxCharacterPlayer {
   if(!chain||!head)return definition;
   const layer=effect.statics.find(s=>s.node===chain.id),unit=chain.scale.y;
   if(!layer||!unit)return definition;
-  const count=Math.ceil(Math.max(0,Math.min(this.options.targetDistance,link.hookMax??Infinity)-1.15)/unit);
+  const capacity=Number.isFinite(link.hookMax)?link.hookMax:this.options.targetDistance, count=Math.ceil(Math.max(0,capacity-1.15)/unit);
   const segments=Array.from({length:count},(_,i)=>({...chain,id:chain.id+':'+i,name:'chain:'+i}));
   definition.nodes=effect.nodes.filter(n=>n!==chain).concat(segments);
   definition.statics=definition.statics.filter(s=>s.node!==chain.id).concat(segments.map((n,i)=>({...layer,node:n.id,chainIndex:i})));

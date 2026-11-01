@@ -303,8 +303,8 @@ function rotationOf(node){
 }
 
 export class FxRuntime {
-  constructor(canvas) {
-    this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  constructor(canvas,{renderer=null}={}) {
+    this.renderer=renderer||new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
     this.renderer.setPixelRatio(Math.min(devicePixelRatio,2));this.renderer.setClearColor(0,0);
     this.scene=new THREE.Scene();this.camera=new THREE.OrthographicCamera(-8,8,8,-8,.01,100);
     this.screenScene=new THREE.Scene();this.screenCamera=new THREE.OrthographicCamera(-4.6,4.6,4.6,-4.6,.01,100);

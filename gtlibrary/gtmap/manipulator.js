@@ -1,5 +1,5 @@
 import * as THREE from '../vendor/three.module.js';
-import {TransformControls} from '../vendor/TransformControls.js';
+import {TransformControls} from '../vendor/TransformControls.js?gtmap-rotation=20261101';
 
 /** Transform the selection from a drag-start snapshot, without accumulating error. */
 export class MapManipulator {

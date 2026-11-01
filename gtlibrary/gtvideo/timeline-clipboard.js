@@ -1,0 +1,30 @@
+import {uid,clone} from './model.js';
+import {sliceAudioEnvelope} from './audio-envelope.js';
+import {entryStart} from './timeline-selection.js';
+
+const phaseProperties=new Set(['animation','expression','sub','fx','audio']);
+export function copyTimelineFrames(entries,{project,shot,resolveKey}={}){
+ const frames=entries.filter(entry=>entry.kind==='key'||entry.kind==='segment');if(!frames.length)return null;
+ return {project:project.id,shot:shot.id,start:Math.min(...frames.map(entryStart)),frames:frames.map(entry=>{
+  const item=clone(entry.item);delete item.initial;if(item.follow&&resolveKey)item.value=resolveKey(item);
+  return {kind:entry.kind,track:entry.track,target:entry.model.target,property:entry.model.property,group:entry.model.gimmickGroup,item};
+ })};
+}
+function tailClip(clip,start,property){const tail={...clone(clip),id:uid(),start,duration:clip.start+clip.duration-start};delete tail.initial;if(property==='audio')tail.audioEnvelope=sliceAudioEnvelope(clip,start-clip.start);if(clip.in!==undefined||phaseProperties.has(property))tail.in=(clip.in||0)+(start-clip.start)*(['animation','expression','sub','fx'].includes(property)?clip.speed||1:1);return tail;}
+// Overwrite just the pasted interval, preserving the existing material on either side.
+function spliceInterval(clips,item,property){const end=item.start+item.duration,result=[];for(const old of clips){const oldEnd=old.start+old.duration;if(oldEnd<=item.start+1e-6||old.start>=end-1e-6){result.push(old);continue;}if(old.start<item.start-1e-6){const left={...clone(old),duration:item.start-old.start};delete left.initial;if(property==='audio')left.audioEnvelope=sliceAudioEnvelope(old);result.push(left);}if(oldEnd>end+1e-6)result.push(tailClip(old,end,property));}result.push(item);return result.sort((a,b)=>a.start-b.start);}
+export function planTimelinePaste(clipboard,{project,shot,time,target}){
+ if(!clipboard?.frames.length||!shot)throw Error('请先复制关键帧或区间帧');
+ const same=clipboard.project===project.id&&clipboard.shot===shot.id,ids=new Map(clipboard.frames.map(frame=>[frame.item.id,uid()])),tracks=new Map(),entries=[];
+ for(const source of clipboard.frames){
+  const matches=track=>track.target===target&&track.property===source.property&&(source.group===undefined||track.gimmickGroup===source.group),track=(same&&source.target===target?shot.tracks.find(track=>track.id===source.track&&matches(track)):null)||shot.tracks.find(matches);
+  if(!track)throw Error('此对象没有可粘贴的'+source.property+'轨道');
+  const item=clone(source.item);item.id=ids.get(item.id);delete item.initial;if(item.trajectory){if(ids.has(item.trajectory.to))item.trajectory.to=ids.get(item.trajectory.to);else if(!same||source.target!==target)delete item.trajectory;}
+  if(source.kind==='key'){item.time=time+item.time-clipboard.start;if(item.time>shot.duration+1e-6)throw Error('粘贴的关键帧超出镜头');if(item.follow){if(ids.has(item.follow.clip)){item.follow={track:shot.tracks.find(track=>track.target===target&&track.property==='follow')?.id,clip:ids.get(item.follow.clip)};}else if(!same||!shot.tracks.some(track=>track.id===item.follow.track&&track.clips.some(clip=>clip.id===item.follow.clip)))delete item.follow;}}
+  else {item.start=time+item.start-clipboard.start;if(item.start>=shot.duration-1e-6)throw Error('粘贴的片段超出镜头');if(track.property==='audio'&&item.duration>shot.duration-item.start)item.audioEnvelope=sliceAudioEnvelope(item);item.duration=Math.min(item.duration,shot.duration-item.start);if(track.property==='follow'&&!shot.instances.some(instance=>instance.id===item.object))throw Error('此镜头不存在跟随目标');if(track.property==='fx'){if(item.target&&!shot.instances.some(instance=>instance.id===item.target))throw Error('此镜头不存在 GTFX 主目标');for(const secondary of item.secondary||[])if(secondary.object&&!shot.instances.some(instance=>instance.id===secondary.object))throw Error('此镜头不存在 GTFX 副目标');}}
+  if(!tracks.has(track.id))tracks.set(track.id,{track,keys:track.keys.slice(),clips:track.clips.slice()});entries.push({kind:source.kind,id:item.id,track:track.id,item,model:track});
+ }
+ for(const entry of entries.slice().sort((a,b)=>entryStart(a)-entryStart(b))){const state=tracks.get(entry.track);if(entry.kind==='key'){state.keys=state.keys.filter(key=>Math.abs(key.time-entry.item.time)>1e-5);state.keys.push(entry.item);state.keys.sort((a,b)=>a.time-b.time);}else state.clips=spliceInterval(state.clips,entry.item,entry.model.property);}
+ const removed=new Set();for(const state of tracks.values()){const retained=new Set([...state.keys,...state.clips].map(item=>item.id));for(const item of [...state.track.keys,...state.track.clips])if(!retained.has(item.id))removed.add(item.id);}
+ return {tracks,entries,removed};
+}

@@ -20,7 +20,7 @@ export class CharacterShadows {
    }
   }catch(e){if(e.name!=='AbortError')this.error=e.message;}
  }
- sample(entries,charactersVisible){for(const e of entries){const s=e.shadow;if(!s)continue;const preview=e.preview||{},alpha=(preview.alpha??e.settings.alpha??1)*(preview.shadowAlpha??e.settings.shadowAlpha??1),shown=this.visible&&charactersVisible&&e.loaded&&e.record.visible&&e.group.visible&&e.settings.shadow!==false&&s.active&&alpha>0;
+ sample(entries,charactersVisible){for(const e of entries){const s=e.shadow;if(!s)continue;const preview=e.preview||{},alpha=(preview.alpha??e.settings.alpha??1)*(preview.shadowAlpha??e.settings.shadowAlpha??1),shown=this.visible&&charactersVisible&&e.loaded&&!e.record.deleted&&e.record.visible&&e.group.visible&&e.settings.shadow!==false&&s.active&&alpha>0;
    const mesh=s.batch.mesh,scale=e.settings.shadowScale??1,matrix=shown?e.record.matrix.clone().multiply(new THREE.Matrix4().makeTranslation(0,.012,0)).multiply(s.local).multiply(new THREE.Matrix4().makeScale(scale,scale,1)):hidden;mesh.setMatrixAt(s.index,matrix);const tint=mesh.geometry.attributes.shadowTint;tint.setXYZW(s.index,s.tint[0],s.tint[1],s.tint[2],s.tint[3]*alpha);tint.needsUpdate=true;mesh.instanceMatrix.needsUpdate=true;
   }}
  clear(){++this.generation;for(const b of this.batches){for(const e of b.actors)e.shadow=null;b.mesh.removeFromParent();b.mesh.dispose();b.mesh.geometry.dispose();b.mesh.material.dispose();}this.batches=[];this.texture?.dispose();this.texture=null;}

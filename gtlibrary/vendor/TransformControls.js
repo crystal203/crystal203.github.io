@@ -648,7 +648,10 @@ class TransformControls extends Controls {
 
 			this._offset.copy( this.pointEnd ).sub( this.pointStart );
 
-			const ROTATION_SPEED = 20 / this.worldPosition.distanceTo( _tempVector.setFromMatrixPosition( this.camera.matrixWorld ) );
+			// Orthographic drag distances depend on the visible span, not camera distance.
+			const ROTATION_SPEED = this.camera.isOrthographicCamera
+				? 2 * Math.PI * this.camera.zoom / ( this.camera.top - this.camera.bottom )
+				: 20 / this.worldPosition.distanceTo( _tempVector.setFromMatrixPosition( this.camera.matrixWorld ) );
 
 			let _inPlaneRotation = false;
 

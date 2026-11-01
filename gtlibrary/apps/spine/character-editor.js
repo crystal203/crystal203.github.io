@@ -322,6 +322,8 @@
       M.putKey(actor,'equipment',time,M.frameAt(actor,'equipment',time).value);
       selectedKey={actor:actor.id,property:'equipment',frame:M.frameAt(actor,'equipment',time)};refresh();sample(time);
     };
+    const videoCopy=el('button',{id:'sceneCopyToVideo',type:'button'},'复制到动画');$('sceneDuplicate').after(videoCopy);
+    videoCopy.onclick=()=>{const actor=current();if(!actor)return;const value=M.sample(actor,time),settings={direction:value.direction,skin:value.skin,animation:value.action,expression:value.expression,sub:value.sub,speed:value.speed,loop:value.loop,equipment:value.equipment};GTBridge.clipboard.write({version:1,kind:'characters',characters:[{resource:actor.resource,name:actor.label||actor.resource,asset:{variants:actor.variants,defaultSkin:value.skin},settings}],snapshots:[{position:[0,0,0],rotation:0,scale:[1,1,1],visible:true}]});status('已复制');};
     $('sceneDuplicate').onclick=async()=>{
       const source=current();if(!source||busy)return;
       if(state.actors.length>=100){status('场景最多容纳 100 个角色',true);return;}
@@ -359,7 +361,7 @@
       view.x=p.x-(p.x-view.x)*factor;view.y=p.y-(p.y-view.y)*factor;view.zoom=next;sample(time);
     },{passive:false});
     return {
-      get active(){return active;},get duration(){return state.duration;},get time(){return time;},get selected(){return current();},
+      get active(){return active;},get playing(){return playing;},get duration(){return state.duration;},get time(){return time;},get selected(){return current();},
       hasActors(){return !!state.actors.length;},
       invalidate(){const actor=current();if(actor)M.touch(actor);sample(time);},
       requestDraw(){renderDirty=true;},
