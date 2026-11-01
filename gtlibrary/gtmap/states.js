@@ -62,10 +62,10 @@ export class MapStates {
    else if(attribute.startsWith('material.')){if(!e.materialValues.has(node))e.materialValues.set(node,[]);e.materialValues.get(node).push([attribute.slice(9),value]);}
   };
   for(const [i,controller] of e.spec.controllers.entries()){
-   const clock=e.controllers[i];let state=controller.states[clock.index],t=Math.max(0,time-clock.start)*Math.abs(state.speed||1)*Math.abs(clock.speed??1);
+   const clock=e.controllers[i];let state=controller.states[clock.index],t=Math.max(0,time-clock.start)*Math.abs(state.speed??1)*Math.abs(clock.speed??1);
    // Follow only unconditional source exit transitions, never gameplay predicates.
    for(let guard=0;guard<16&&state?.clip;guard++){const d=Math.max(.001,state.clip.duration);if(clock.still){t=d;break;}const tr=state.transitions.find(x=>!x.data.m_ConditionConstantArray?.length&&x.data.m_HasExitTime);if(tr&&(clock.speed??1)>=0&&t>=d*(tr.data.m_ExitTime??1)&&controller.states[tr.data.m_DestinationState]){t-=d*(tr.data.m_ExitTime??1);state=controller.states[tr.data.m_DestinationState];}else{t=(state.loop||state.clip.loop)?t%d:Math.min(t,d);break;}}
-   if(!state?.clip)continue;if(state.speed*(clock.speed??1)<0)t=Math.max(0,state.clip.duration-t);const prefix=e.spec.nodes.find(n=>n.id===controller.node)?.path||'';
+   if(!state?.clip)continue;if((state.speed??1)*(clock.speed??1)<0)t=Math.max(0,state.clip.duration-t);const prefix=e.spec.nodes.find(n=>n.id===controller.node)?.path||'';
    for(const c of state.clip.curves){const path=[prefix,c.path].filter(Boolean).join('/'),node=sim.nodes.get(byPath.get(path));if(!node)continue;
     const keys=c.curve.m_Curve||[];
     if(typeof keys[0]?.value==='object'){for(const k of Object.keys(keys[0].value)){const cv={...c.curve,m_Curve:keys.map(v=>({...v,value:v.value[k],inSlope:v.inSlope?.[k]??0,outSlope:v.outSlope?.[k]??0}))};write(node,c.attribute+'.'+k,curve(cv,t,0));}}

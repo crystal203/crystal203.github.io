@@ -1,3 +1,4 @@
+import {playbackTime} from '../shared/playback-time.js';
 import {captureMapDelta} from './edit-delta.js';
 import {installNativeProjection} from './native-camera.js';
 import {MapSpeechBubble} from './speech-bubbles.js';
@@ -445,7 +446,7 @@ function buildClouds(key, tiles, group, layerIndex) {
   manual:()=>{renderer.setAnimationLoop(null);controls.enableDamping=false;},
   size:(width,height)=>{width=Math.max(1,Math.round(width));height=Math.max(1,Math.round(height));if(renderer.domElement.width===width&&renderer.domElement.height===height)return;const span=(camera.top-camera.bottom)/camera.zoom;renderer.setPixelRatio(1);renderer.setSize(width,height,false);camera.left=-span*width/height/2;camera.right=-camera.left;camera.top=span/2;camera.bottom=-camera.top;camera.zoom=1;camera.updateProjectionMatrix();},
   renderLocal:(time,records)=>{controls.update();camera.updateMatrixWorld();characters.time=time;const frustum=characters.frame();for(const record of records)if(record.character)characters.sampleEntry(record.character,frustum,true);renderer.render(scene,camera);},
-   render:(time,idleTime=time,offline=false,force=true)=>{characters.videoClock=idleTime;characters.videoForce=force;characters.videoFreezePreview=!force;characters.videoOffline=offline;if(offline)for(const e of characters.entries)if(e.loaded&&!e.preview){e.lastPose=time;for(const track of e.state.tracks)if(track)track.trackTime=time*(e.settings.speed??1);for(const track of e.emotion?.state.tracks||[])if(track)track.trackTime=time;}animate(time);controls.update();camera.updateMatrixWorld();renderer.render(scene,camera);}
+   render:(time,idleTime=time,offline=false,force=true)=>{characters.videoClock=idleTime;characters.videoForce=force;characters.videoFreezePreview=!force;characters.videoOffline=offline;if(offline)for(const e of characters.entries)if(e.loaded&&!e.preview){e.lastPose=time;for(const track of e.state.tracks)if(track)track.trackTime=playbackTime(time,e.settings.speed??1,track.animationEnd-track.animationStart,0,track.loop);for(const track of e.emotion?.state.tracks||[])if(track)track.trackTime=time;}animate(time);controls.update();camera.updateMatrixWorld();renderer.render(scene,camera);}
  };
  this.getState=state;
  this.export=async(options={})=>{
