@@ -1,0 +1,9 @@
+const root=new URL('../gtatlas/assets/',import.meta.url),sheets=new Map();
+function sheet(name){
+ if(!sheets.has(name)){const promise=Promise.all([GTResources.fetch(new URL(name+'.json',root)).then(response=>{if(!response.ok)throw Error('图集读取失败');return response.json();}),GTResources.image(new URL(name+'.png',root))]).then(([data,image])=>{const regions=new Map(GTAtlasCore.parse(data,image).map(region=>[region.name,region])),tiers=new Map();for(const key of regions.keys()){const match=key.match(/^(.*)_(\d{1,2})$/);if(match&&(!tiers.has(match[1])||Number(match[2])<tiers.get(match[1]).tier))tiers.set(match[1],{key,tier:Number(match[2])});}return {image,regions,tiers};});sheets.set(name,promise);promise.catch(()=>{if(sheets.get(name)===promise)sheets.delete(name);});}return sheets.get(name);
+}
+export function thumbnail(atlas,name,label=name,{character=false,size=40}={}){
+ const canvas=document.createElement('canvas');canvas.className='asset-thumbnail';canvas.width=canvas.height=size;canvas.setAttribute('role','img');canvas.setAttribute('aria-label',label);canvas.dataset.atlas=atlas;canvas.dataset.sprite=name;
+ sheet(atlas).then(({image,regions,tiers})=>{if(!canvas.isConnected)return;const names=character?[name,name.replace(/_\d{1,2}$/,''),tiers.get(name)?.key,name.endsWith('_b')?name.slice(0,-2):name+'_b']:[name],region=names.map(key=>regions.get(key)).find(Boolean);if(!region||region.w<=1&&region.h<=1){canvas.hidden=true;return;}const scale=Math.min((size-4)/region.w,(size-4)/region.h),context=canvas.getContext('2d');context.translate((size-region.w*scale)/2,(size-region.h*scale)/2);GTAtlasCore.draw(context,image,region,region.w*scale,region.h*scale);canvas.dataset.ready='true';canvas.dataset.sprite=region.name;}).catch(()=>{canvas.hidden=true;});return canvas;
+}
+export const characterThumbnail=(name,label)=>thumbnail('characters',name,label,{character:true});
