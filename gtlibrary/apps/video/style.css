@@ -45,3 +45,5 @@
 .emotion-options button{color:#58382f}
 
 .timeline-gap{position:absolute;top:2px;bottom:2px;background:#7cb7ef20;outline:1px dashed #86bced;pointer-events:none}.audio-drop-target{background-color:#28594d!important;box-shadow:inset 0 0 0 2px #8de5bd}
+
+.storyboard-review{width:min(960px,94vw);max-height:90vh;overflow:auto}.storyboard-review h2{margin-top:0;font-size:17px}.storyboard-brief{white-space:pre-wrap;font:inherit;padding:12px;background:#0e1520;border-radius:5px;max-height:180px;overflow:auto}.storyboard-review ol{max-height:160px;overflow:auto;font-size:12px;padding-left:24px}.storyboard-preview-tools{display:flex;gap:8px;margin:12px 0}.storyboard-preview-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}.storyboard-preview-images figure{margin:0}.storyboard-preview-images img{width:100%;display:block}.storyboard-preview-images figcaption{font-size:11px;color:var(--muted);text-align:center}.storyboard-error{color:#ffad9e;white-space:pre-wrap;font-size:12px}

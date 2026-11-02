@@ -1,0 +1,4 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>GTVideo 分镜运行时</title></head><body>
+<script src="../../core/cache-version.js"></script><script src="../../core/delivery-config.js"></script><script src="../../core/delivery.js"></script><script src="../../core/resources.js"></script><script src="../../core/map-catalog.js"></script><script src="../../core/aliases.js"></script><script src="../../core/favorites.js"></script><script src="../../gtatlas/core.js"></script><script src="../../core/registry.js"></script><script src="../../core/bridge.js"></script>
+<script type="module">import {createAuthoringEndpoint} from '../../gtvideo/authoring-runtime.js';globalThis.GTVideoAuthoring=createAuthoringEndpoint();addEventListener('pagehide',()=>GTVideoAuthoring.dispose(),{once:true});</script></body></html>
