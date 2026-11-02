@@ -1,3 +1,4 @@
+import {playbackTime} from '../shared/playback-time.js';
 import * as THREE from '../vendor/three.module.js';
 import {curve} from '../core/animation-curve.js';
 import {sampleAnimator} from '../core/custom-animator.js';
@@ -62,7 +63,7 @@ export class MapStates {
    else if(attribute.startsWith('material.')){if(!e.materialValues.has(node))e.materialValues.set(node,[]);e.materialValues.get(node).push([attribute.slice(9),value]);}
   };
   for(const [i,controller] of e.spec.controllers.entries()){
-   const clock=e.controllers[i];let state=controller.states[clock.index],t=Math.max(0,time-clock.start)*Math.abs(state.speed??1)*Math.abs(clock.speed??1);
+   const clock=e.controllers[i];let state=controller.states[clock.index],t=(Math.max(0,time-clock.start)*Math.abs(clock.speed??1)+(clock.offset||0))*Math.abs(state.speed??1);
    // Follow only unconditional source exit transitions, never gameplay predicates.
    for(let guard=0;guard<16&&state?.clip;guard++){const d=Math.max(.001,state.clip.duration);if(clock.still){t=d;break;}const tr=state.transitions.find(x=>!x.data.m_ConditionConstantArray?.length&&x.data.m_HasExitTime);if(tr&&(clock.speed??1)>=0&&t>=d*(tr.data.m_ExitTime??1)&&controller.states[tr.data.m_DestinationState]){t-=d*(tr.data.m_ExitTime??1);state=controller.states[tr.data.m_DestinationState];}else{t=(state.loop||state.clip.loop)?t%d:Math.min(t,d);break;}}
    if(!state?.clip)continue;if((state.speed??1)*(clock.speed??1)<0)t=Math.max(0,state.clip.duration-t);const prefix=e.spec.nodes.find(n=>n.id===controller.node)?.path||'';
@@ -72,7 +73,7 @@ export class MapStates {
     else write(node,c.attribute,curve(c.curve,t,0));
    }
   }
-  for(const [i,s] of e.spec.scripts.entries())if(s.type==='CustomAnimator'){const custom=e.custom[i],node=sim.nodes.get(s.node),f=custom?{...s.fields,StartState:custom.name}:s.fields;for(const c of sampleAnimator(f,custom?.still?Math.max(.001,...(f.States.find(st=>st.StateName===custom.name)?.Curves||[]).map(c=>c.Duration||0)):Math.max(0,time-(custom?.start||0)))){
+  for(const [i,s] of e.spec.scripts.entries())if(s.type==='CustomAnimator'){const custom=e.custom[i],node=sim.nodes.get(s.node),f=custom?{...s.fields,StartState:custom.name}:s.fields;const duration=Math.max(.001,...(f.States.find(st=>st.StateName===f.StartState)?.Curves||[]).map(c=>c.Duration||0)),sample=custom?.still?((custom.speed??1)<0?0:duration):custom?((custom.speed??1)<0?playbackTime(time-custom.start,custom.speed,duration,custom.offset||0):Math.max(0,time-custom.start)*(custom.speed??1)+(custom.offset||0)):Math.max(0,time);for(const c of sampleAnimator(f,sample)){
    if(c.key<=2)node.position[['x','y','z'][c.key]]=c.value;else if(c.key<=5)node.scale[['x','y','z'][c.key-3]]=c.value;else if(c.key===15)node.position.fromArray(c.vector);else if(c.key===16)node.scale.fromArray(c.vector);else if(c.key===10)node.quaternion.setFromEuler(new THREE.Euler(...c.vector.map(v=>v*Math.PI/180),'ZXY'));
    else if(c.key===17){for(const [j,k] of ['r','g','b'].entries())write(node,'material.'+(f.CustomShaderColorKey||'_TintColor')+'.'+k,c.vector[j]);}else if(c.key===18||c.key===19){for(const [j,k] of (c.key===18?['z','w']:['x','y']).entries())write(node,'material._MainTex_ST.'+k,c.vector[j]);}
    else if(c.key>=6&&c.key<=9)write(node,'material.'+(f.CustomShaderColorKey||'_TintColor')+'.'+['r','g','b','a'][c.key-6],c.value);else if(c.key>=11&&c.key<=14)write(node,'material._MainTex_ST.'+['z','w','x','y'][c.key-11],c.value);
@@ -85,7 +86,7 @@ export class MapStates {
   if(e.spec.pickup){const root=e.spec.nodes.find(n=>n.name==='root');if(root)sim.nodes.get(root.id).position.y+=Math.sin(time*3)*.1;}
   sim.nodeRoot.updateMatrixWorld(true);
  }
- sample(time){this.time=time;for(const e of this.entries){if(!e.active)continue;for(const b of e.effects.batches)b.mesh.material.userData.animationTime=e.previewTime;e.effects.sample(Math.max(0,(e.previewTime??time)-e.effectStart));
+ sample(time,records){this.time=time;const selected=records?new Set(records):null;for(const e of this.entries){if(!e.active||selected&&!selected.has(e.record))continue;for(const b of e.effects.batches)b.mesh.material.userData.animationTime=e.previewTime;e.effects.sample(Math.max(0,(e.previewTime??time)-e.effectStart));
   let rootMatrix=e.record.matrix;const anchor=e.visualAnchor;if(anchor){const spec=e.spec.nodes.find(n=>n.name===anchor.node),node=spec&&e.sim.nodes.get(spec.id),target=anchor.point();if(node&&target){const knot=new THREE.Vector3().applyMatrix4(reflection.clone().multiply(node.matrixWorld).multiply(reflection)).applyMatrix4(rootMatrix),delta=target.clone().sub(knot);rootMatrix=rootMatrix.clone();rootMatrix.elements[12]+=delta.x;rootMatrix.elements[13]+=delta.y;rootMatrix.elements[14]+=delta.z;}}
   for(const p of e.parts){p.mesh.material.userData.animationTime=e.previewTime;const node=e.sim.nodes.get(p.part.node),local=reflection.clone().multiply(node.matrixWorld).multiply(reflection);p.ref.local.copy(local);p.mesh.visible=!e.spec.pickup||this.pickupsVisible;p.ref.enabled=(e.rendererEnabled.get(node)??p.part.enabled)&&isActive(node);p.mesh.setMatrixAt(0,p.ref.enabled&&!e.record.deleted&&e.record.visible?rootMatrix.clone().multiply(local):hidden);p.mesh.instanceMatrix.needsUpdate=true;
    for(const [name,u] of Object.entries(p.mesh.material.uniforms)){const color=p.source.colors[name]||p.source.nativeShader.defaults[name],slot=p.source.texenvs[name.replace(/_ST$/,'')],scalar=p.source.floats[name]??p.source.nativeShader.defaults[name];if(color&&typeof color==='object'&&u.value?.set)u.value.set(...['r','g','b','a'].map(k=>color[k]??0));else if(name.endsWith('_ST')&&slot)u.value.set(slot.scale.x,slot.scale.y,slot.offset.x,slot.offset.y);else if(typeof scalar==='number'&&typeof u.value==='number')u.value=scalar;}

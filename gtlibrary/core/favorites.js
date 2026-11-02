@@ -18,7 +18,7 @@
   function paint(button){
     const on=nodeHas(button.dataset.favoriteScope,button);
     button.textContent=on?'★':'☆';button.setAttribute('aria-pressed',String(on));
-    button.title=(on?'取消收藏：':'收藏：')+(button.dataset.favoriteLabel||button.dataset.favoriteId);button.setAttribute('aria-label',button.title);
+    button.title=(on?'取消收藏：':'收藏：')+(button.dataset.favoriteLabel||button.dataset.favoriteId)+' · 右键编辑别名'+(global.GTAliases?.get(button.dataset.favoriteScope,button.dataset.favoriteId).length?' · '+GTAliases.get(button.dataset.favoriteScope,button.dataset.favoriteId).join(' / '):'');button.setAttribute('aria-label',button.title);
   }
   function changed(){
     for(const button of document.querySelectorAll('button.gt-favorite'))paint(button);
@@ -43,7 +43,7 @@
     button.dataset.favoriteScope=scope;button.dataset.favoriteId=String(id);button.dataset.favoriteLabel=label||String(id);paint(button);return button;
   }
   function row(choice,scope,id,label){
-    const container=document.createElement('div');container.className='gt-favorite-row';choice.classList.add('gt-favorite-choice');container.append(choice,button(scope,id,label));return container;
+    const container=document.createElement('div');container.className='gt-favorite-row';choice.classList.add('gt-favorite-choice');container.append(choice,button(scope,id,label));global.GTAliases?.bindText(choice,scope,id,label||String(id));return container;
   }
   function keysForEntity(entity){
     const keys=[];
@@ -81,7 +81,7 @@
     let state=selections.get(select);
     if(!state){
       state={button:button(scope,'',''),base:new WeakMap(),serial:0};selections.set(select,state);select.dataset.favoritesReady='true';state.button.classList.add('gt-favorite-select');
-      select.addEventListener('change',()=>refreshSelect(select,false));
+      select.title=(select.title?select.title+' · ':'')+'右键搜索选项或别名';select.addEventListener('contextmenu',event=>{event.preventDefault();if(!select.disabled)global.GTAliases?.choose(select,scopeFor(select));});select.addEventListener('change',()=>refreshSelect(select,false));
       select.addEventListener('pointerdown',()=>refreshSelect(select,true));
       select.addEventListener('keydown',event=>{if(['ArrowDown','ArrowUp','Home','End',' '].includes(event.key))refreshSelect(select,true);});
       const parent=select.parentElement,style=getComputedStyle(parent);
@@ -93,7 +93,7 @@
     const options=Array.from(select.options),value=select.value,selected=options.filter(option=>option.selected);
     for(const option of options){
       if(!state.base.has(option))state.base.set(option,state.serial++);
-      const on=option.value!==''&&nodeHas(scope,option),label=(on?'★ ':'')+option.text;
+      const on=option.value!==''&&nodeHas(scope,option),identity=idsFor(option).find(id=>global.GTAliases?.get(scope,id).length)||idsFor(option)[0],label=(on?'★ ':'')+(global.GTAliases?.display(scope,identity,option.text)||option.text);option.title=option.text;
       if(option.label!==label)option.label=label;
     }
     if(reorder){
@@ -104,18 +104,18 @@
       }
       if(select.multiple)for(const option of options)option.selected=selected.includes(option);else select.value=value;
     }
-    const option=select.selectedOptions[0];state.button.dataset.favoriteScope=scope;state.button.dataset.favoriteId=option?.dataset.favoriteId||option?.value||'';state.button.dataset.favoriteLabel=option?.text||'';
+    const option=select.selectedOptions[0];select.title=(option?.text||'')+' · 右键搜索选项或别名';state.button.dataset.favoriteScope=scope;state.button.dataset.favoriteId=option?.dataset.favoriteId||option?.value||'';state.button.dataset.favoriteLabel=option?.text||'';
     state.button.dataset.favoriteAliases=option?.dataset.favoriteAliases||'';
     state.button.disabled=select.disabled||!option||!option.value||option.disabled;state.button.hidden=select.hidden;paint(state.button);
   }
   function schedule(select){if(!scopeFor(select))return;pending.add(select);if(scheduled)return;scheduled=true;queueMicrotask(()=>{scheduled=false;if(stopped)return;for(const select of pending)refreshSelect(select);pending.clear();});}
   function observe(){
-    for(const select of document.querySelectorAll('select'))schedule(select);
+    for(const button of document.querySelectorAll('button.gt-favorite'))global.GTAliases?.attachFavorite(button);for(const select of document.querySelectorAll('select'))schedule(select);
     observer=new MutationObserver(records=>{
       for(const record of records){
         const owner=record.target.nodeType===1?record.target.closest('select'):record.target.parentElement?.closest('select');
         if(owner)schedule(owner);
-        for(const node of record.addedNodes||[])if(node.nodeType===1){if(node.matches('select'))schedule(node);for(const select of node.querySelectorAll('select'))schedule(select);}
+        for(const node of record.addedNodes||[])if(node.nodeType===1){if(node.matches('button.gt-favorite'))global.GTAliases?.attachFavorite(node);for(const button of node.querySelectorAll('button.gt-favorite'))global.GTAliases?.attachFavorite(button);if(node.matches('select'))schedule(node);for(const select of node.querySelectorAll('select'))schedule(select);}
       }
     });
     observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['disabled','hidden','data-favorite-scope']});
@@ -124,6 +124,7 @@
     const target=event.target.closest?.('button.gt-favorite');if(!target||target.disabled)return;
     event.preventDefault();event.stopPropagation();const scope=target.dataset.favoriteScope,on=!nodeHas(scope,target);setIds(scope,on?[target.dataset.favoriteId]:idsFor(target),on);
   },true);
+  document.addEventListener('contextmenu',event=>{const button=event.target.closest?.('button.gt-favorite');if(!button||button.disabled)return;event.preventDefault();event.stopPropagation();global.GTAliases?.edit(button.dataset.favoriteScope,button.dataset.favoriteId,button.dataset.favoriteLabel);},true);global.addEventListener('gt-aliases-change',changed);
   global.addEventListener('storage',event=>{if(event.key===storageKey||event.key===null){saved=read()||new Set();reindex();changed();}});
   global.addEventListener('gt-dispose',()=>{stopped=true;observer?.disconnect();pending.clear();},{once:true});
   global.GTFavorites={has,set,order,button,row,key,entityKey,keysForEntity,refreshSelect};

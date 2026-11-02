@@ -1,0 +1,10 @@
+import {plainRichText} from './rich-text.js';
+const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
+export function richTextEditor(parent,value,{change,checkpoint}){
+ const box=node('div'),bar=node('div'),input=node('textarea');box.className='rich-text-editor';bar.className='rich-text-toolbar';input.value=value||'';input.rows=5;input.setAttribute('aria-label','对白内容');let editing=false;const commit=()=>{if(!editing){checkpoint();editing=true;}change(input.value);};input.oninput=commit;input.onblur=()=>editing=false;
+ const wrap=(open,close)=>{const start=input.selectionStart,end=input.selectionEnd,selected=input.value.slice(start,end);input.setRangeText(open+selected+close,start,end,'select');input.focus();input.setSelectionRange(start+open.length,start+open.length+selected.length);commit();};
+ for(const [label,tag,title] of [['B','b','粗体'],['I','i','斜体'],['U','u','下划线'],['S','s','删除线']]){const button=node('button',label);button.type='button';button.title=title;button.setAttribute('aria-label',title);button.onpointerdown=e=>e.preventDefault();button.onclick=()=>wrap('<'+tag+'>','</'+tag+'>');bar.append(button);}
+ const color=node('input');color.type='color';color.value='#312525';color.title='文字颜色';color.setAttribute('aria-label','对白文字颜色');color.onchange=()=>wrap('<color='+color.value+'>','</color>');bar.append(color);
+ const size=node('input');size.type='number';size.min=8;size.max=72;size.step=1;size.value=18;size.title='字号';size.setAttribute('aria-label','对白字号');size.onchange=()=>{if(size.reportValidity())wrap('<size='+size.value+'>','</size>');};bar.append(size);
+ const clear=node('button','清除');clear.type='button';clear.title='清除选中文字的格式';clear.onpointerdown=e=>e.preventDefault();clear.onclick=()=>{const start=input.selectionStart,end=input.selectionEnd;if(start===end){input.value=plainRichText(input.value);input.focus();}else input.setRangeText(plainRichText(input.value.slice(start,end)),start,end,'select');commit();};bar.append(clear);box.append(bar,input);parent.append(box);return input;
+}

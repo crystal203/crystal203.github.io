@@ -13,7 +13,7 @@
   const path=id=>{const result=[];for(let n=nodes.get(id);n;n=nodes.get(n.parent))result.unshift(n);return result;};
   const label=id=>id==='categories'?'选择分类':id==='all'?'全部地图':nodes.get(id)?.label||id;
   const contains=(id,m)=>id==='categories'||id==='all'||(m.categoryPath||[m.category]).includes(id);
-  const matches=(m,q)=>!q||[m.id,m.title,m.group,m.variant,...path(m.category).flatMap(n=>[n.label,...(n.aliases||[])])].some(v=>v?.toLowerCase().includes(q));
+  const matches=(m,q)=>!q||global.GTAliases?.matches('map/map',m.id,q)||path(m.category).some(n=>global.GTAliases?.matches('map/category',n.id,q))||[m.id,m.title,m.group,m.variant,...path(m.category).flatMap(n=>[n.label,...(n.aliases||[])])].some(v=>v?.toLowerCase().includes(q));
   const resolve=(id,map)=>['categories','all'].includes(id)||nodes.has(id)?id:map&&(map.sourceCategory===id||map.category===id)?map.category:'categories';
   const ordered=[];function visit(id){for(const n of children(id)){ordered.push(n);visit(n.id);}}visit('categories');
   return {nodes,children,path,label,contains,matches,resolve,ordered};

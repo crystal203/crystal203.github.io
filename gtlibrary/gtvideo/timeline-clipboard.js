@@ -1,3 +1,4 @@
+import {planIntervalOverwrite} from './intervals.js';
 import {trimFxSource} from './fx-playback.js';
 import {sliceCameraEffect} from './camera-effects.js';
 import {hasPositionFollowCycle} from './position-follow.js';
@@ -13,9 +14,6 @@ export function copyTimelineFrames(entries,{project,shot,resolveKey}={}){
   return {kind:entry.kind,track:entry.track,target:entry.model.target,property:entry.model.property,group:entry.model.gimmickGroup,item};
  })};
 }
-function tailClip(clip,start,property){const tail={...clone(clip),id:uid(),start,duration:clip.start+clip.duration-start};delete tail.initial;if(property==='cameraEffect'){Object.assign(tail,sliceCameraEffect(clip,start-clip.start));tail.seed=clip.seed||clip.id;}if(property==='audio')tail.audioEnvelope=sliceAudioEnvelope(clip,start-clip.start);if(clip.in!==undefined||phaseProperties.has(property))tail.in=(clip.in||0)+(start-clip.start)*Math.abs(clip.speed??1);return tail;}
-// Overwrite just the pasted interval, preserving the existing material on either side.
-function spliceInterval(clips,item,property){const end=item.start+item.duration,result=[];for(const old of clips){const oldEnd=old.start+old.duration;if(oldEnd<=item.start+1e-6||old.start>=end-1e-6){result.push(old);continue;}if(old.start<item.start-1e-6){const left={...clone(old),duration:item.start-old.start};delete left.initial;if(property==='cameraEffect')Object.assign(left,sliceCameraEffect(old));if(property==='audio')left.audioEnvelope=sliceAudioEnvelope(old);result.push(left);}if(oldEnd>end+1e-6)result.push(tailClip(old,end,property));}result.push(item);return result.sort((a,b)=>a.start-b.start);}
 export function planTimelinePaste(clipboard,{project,shot,time,target}){
  if(!clipboard?.frames.length||!shot)throw Error('请先复制关键帧或区间帧');
  const same=clipboard.project===project.id&&clipboard.shot===shot.id,ids=new Map(clipboard.frames.map(frame=>[frame.item.id,uid()])),tracks=new Map(),entries=[];
@@ -28,8 +26,9 @@ export function planTimelinePaste(clipboard,{project,shot,time,target}){
   else {item.start=time+item.start-clipboard.start;if(item.start>=shot.duration-1e-6)throw Error('粘贴的片段超出镜头');if(track.property==='fx'&&item.duration>shot.duration-item.start)Object.assign(item,trimFxSource(item,0,'right'));if(track.property==='cameraEffect'&&item.duration>shot.duration-item.start)Object.assign(item,sliceCameraEffect(item));if(track.property==='audio'&&item.duration>shot.duration-item.start)item.audioEnvelope=sliceAudioEnvelope(item);item.duration=Math.min(item.duration,shot.duration-item.start);if(track.property==='follow'&&!shot.instances.some(instance=>instance.id===item.object))throw Error('此镜头不存在跟随目标');if(track.property==='fx'){if(item.target&&!shot.instances.some(instance=>instance.id===item.target))throw Error('此镜头不存在 GTFX 主目标');for(const secondary of item.secondary||[])if(secondary.object&&!shot.instances.some(instance=>instance.id===secondary.object))throw Error('此镜头不存在 GTFX 副目标');}}
   if(!tracks.has(track.id))tracks.set(track.id,{track,keys:track.keys.slice(),clips:track.clips.slice()});entries.push({kind:source.kind,id:item.id,track:track.id,item,model:track});
  }
- for(const entry of entries.slice().sort((a,b)=>entryStart(a)-entryStart(b))){const state=tracks.get(entry.track);if(entry.kind==='key'){state.keys=state.keys.filter(key=>Math.abs(key.time-entry.item.time)>1e-5);state.keys.push(entry.item);state.keys.sort((a,b)=>a.time-b.time);}else if(entry.model.property==='fx'){state.clips.push(entry.item);state.clips.sort((a,b)=>a.start-b.start);}else state.clips=spliceInterval(state.clips,entry.item,entry.model.property);}
+ for(const entry of entries.slice().sort((a,b)=>entryStart(a)-entryStart(b))){const state=tracks.get(entry.track);if(entry.kind==='key'){state.keys=state.keys.filter(key=>Math.abs(key.time-entry.item.time)>1e-5);state.keys.push(entry.item);state.keys.sort((a,b)=>a.time-b.time);}else state.clips.push(entry.item);}
+ for(const state of tracks.values()){state.overwrite=planIntervalOverwrite(state.clips,state.track.property,entries.filter(entry=>entry.track===state.track.id&&entry.kind==='segment').map(entry=>entry.item));if(state.overwrite)state.clips=state.overwrite.clips;state.clips.sort((a,b)=>a.start-b.start);}
  if(hasPositionFollowCycle(shot.tracks.map(track=>tracks.has(track.id)?{...track,keys:tracks.get(track.id).keys}:track)))throw Error('位置跟随不能形成循环');
  const removed=new Set();for(const state of tracks.values()){const retained=new Set([...state.keys,...state.clips].map(item=>item.id));for(const item of [...state.track.keys,...state.track.clips])if(!retained.has(item.id))removed.add(item.id);}
- return {tracks,entries,removed};
+ return {tracks,entries:entries.filter(entry=>(entry.kind==='key'?tracks.get(entry.track).keys:tracks.get(entry.track).clips).some(item=>item.id===entry.id)),removed};
 }

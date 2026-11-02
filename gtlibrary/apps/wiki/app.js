@@ -27,7 +27,7 @@ function filter(){
   if(!catalog)return;
   const q=$('hero-search').value.trim().toLowerCase(),role=$('role-filter').value,stars=$('star-filter').value;
   const matches=GTFavorites.order(catalog.heroes.filter(h=>(!element||h.element===element)&&(!role||h.role===role)&&(!stars||h.stars===Number(stars))&&
-    (!q||[h.name,h.shortName,h.englishName,h.originId,...h.aliases].some(v=>String(v).toLowerCase().includes(q)))),h=>['wiki/hero',h.id]);
+    (!q||GTAliases.matches('wiki/hero',h.id,q)||[h.name,h.shortName,h.englishName,h.originId,...h.aliases].some(v=>String(v).toLowerCase().includes(q)))),h=>['wiki/hero',h.id]);
   $('hero-count').textContent=matches.length+' / '+catalog.heroes.length+' 位角色';
   $('hero-list').replaceChildren();
   if(!matches.length){$('hero-list').append(node('p','没有匹配的角色，请调整筛选。','empty-list'));return;}

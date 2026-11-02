@@ -12,9 +12,15 @@
     return normalize(item) === "cwp" + normalize(character || "");
   }
 
+  function actionKey(name) { return String(name || '').replace(/_(front|back|side|tentacle)(\d*(?:\[[^\]]*\])?)$/, '$2'); }
+  function actionNames(names) { return Array.from(new Set(names.filter(function(name) { return !/\[(?:emo|sub|down)\]/.test(name); }).map(actionKey))); }
   function inheritAnimation(names, wanted, view, fallback) {
     if (wanted === "") return "";
     var directed = view ? wanted.replace(/_(front|back|side|tentacle)(\d*(?:\[[^\]]*\])?)$/, "_" + view + "$2") : wanted;
+    if (view && names.indexOf(wanted + '_' + view) >= 0) return wanted + '_' + view;
+    if (names.indexOf(directed) >= 0 && directed !== wanted) return directed;
+    var normalized = actionKey(wanted), matched = view && names.find(function(name) { return actionKey(name) === normalized && new RegExp('_' + view + '(\\d*(?:\\[[^\\]]*\\])?)$').test(name); });
+    if (matched) return matched;
     if (names.indexOf(directed) >= 0) return directed;
     if (names.indexOf(wanted) >= 0) return wanted;
     return fallback;
@@ -84,6 +90,6 @@
   root.GTEquipment = {
     Equipment: Equipment, slotKey: slotKey,
     isPreferredItem: isPreferredItem, createAttachment: createAttachment,
-    inheritAnimation: inheritAnimation
+    inheritAnimation: inheritAnimation, actionKey: actionKey, actionNames: actionNames
   };
 })(typeof globalThis !== "undefined" ? globalThis : this);

@@ -31,5 +31,5 @@ export function setClipSource(player,clip){
 }
 export async function findClip(name,{binding}={}){const catalog=await loadCatalog();return resolveClip(catalog,catalog.bindings?.[binding]?.[name]||name);}
 export async function loadProvenance(){return json('data/provenance.json');}
-export function searchClips(clips,{query='',kind='',group=''}={}){const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);return clips.filter(c=>(!kind||c.kind===kind)&&(!group||c.group===group)&&terms.every(q=>(c.name+' '+c.id).toLowerCase().includes(q)));}
+export function searchClips(clips,{query='',kind='',group=''}={}){const terms=query.trim().toLowerCase().split(/\s+/).filter(Boolean);return clips.filter(c=>(!kind||c.kind===kind)&&(!group||c.group===group)&&terms.every(q=>(globalThis.GTAliases?.text('audio/clip',c.id,c.name+' '+c.id)||c.name+' '+c.id).toLowerCase().includes(q)));}
 export function catalogEntities(catalog){return catalog.clips.map(c=>({id:'audio:'+c.id,name:c.name,aliases:[c.kind,c.group,c.language||''],audio:{clip:c.id}}));}

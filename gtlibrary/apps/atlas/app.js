@@ -319,7 +319,7 @@ let currentSpritesheet = null;
                         : text.toLowerCase().includes(searchTerm.toLowerCase());
                 };
 
-                filteredRegions = allRegions.filter(region => test(region.name) || test(region.zh));
+                filteredRegions = allRegions.filter(region => test(region.name) || test(region.zh) || GTAliases.get('atlas/region/'+String(currentSpritesheet?.json||'custom').split('/').pop().replace('.json',''),region.name).some(test));
             }
 
             const favoriteSheet=String(currentSpritesheet?.json||'custom').split('/').pop().replace('.json','');

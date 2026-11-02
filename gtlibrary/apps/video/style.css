@@ -35,3 +35,13 @@
 .key.bezier-control{background:#f3b66b;border-color:#ffe1ba;border-radius:50%}.key.bezier-node{background:#72d8a7;border-color:#c2ffe3}.key.bezier-endpoint{background:#70cce5;border-color:#d0f6ff}.key.bezier-control.selected,.key.bezier-node.selected,.key.bezier-endpoint.selected{background:#ffe28e}.bezier-guide{color:#f3c183;border-color:#f3c18399}
 
 .key{z-index:2}
+
+#position-step{width:65px;min-height:24px;padding:2px 4px}.number-step-dialog{padding:18px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:inherit}.number-step-dialog label{display:flex;gap:12px;align-items:center}.number-step-dialog h3{margin-top:0}
+
+.rich-text-editor{margin-top:10px}.rich-text-toolbar{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin-bottom:5px}.rich-text-toolbar button{min-height:25px;padding:1px 7px!important;margin:0!important}.rich-text-toolbar button[aria-label="粗体"]{font-weight:bold}.rich-text-toolbar button[aria-label="斜体"]{font-style:italic}.rich-text-toolbar button[aria-label="下划线"]{text-decoration:underline}.rich-text-toolbar input[type=color]{width:30px!important;height:25px!important;padding:2px!important}.rich-text-toolbar input[type=number]{width:49px;height:25px;min-height:25px;padding:2px 4px}.rich-text-editor textarea{width:100%;min-height:110px;resize:vertical}
+
+.emotion-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:4px;margin:8px 0}.emotion-options button{display:flex;align-items:center;justify-content:center;width:100%;height:48px;padding:3px!important;margin:0!important;background:#f1e0b5;border:2px solid transparent;border-radius:8px}.emotion-options button[aria-pressed=true]{border-color:#74bfff;box-shadow:0 0 0 1px #74bfff}.emotion-options img{width:34px;height:38px;object-fit:contain;image-rendering:pixelated}.emotion-picker>input{width:100%;margin:5px 0}.emotion-picker .equipment-results{max-height:230px;overflow:auto}
+
+.emotion-options button{color:#58382f}
+
+.timeline-gap{position:absolute;top:2px;bottom:2px;background:#7cb7ef20;outline:1px dashed #86bced;pointer-events:none}.audio-drop-target{background-color:#28594d!important;box-shadow:inset 0 0 0 2px #8de5bd}

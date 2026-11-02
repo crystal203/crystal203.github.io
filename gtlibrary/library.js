@@ -64,13 +64,14 @@ window.addEventListener('message',event=>{
 });
 function search(){
   const q=$('library-search').value.trim().toLowerCase();$('results').replaceChildren();if(!q){$('results').hidden=true;return;}
-  const matched=GTResourceCatalog.search(searchItems,q);
+  const matched=GTResourceCatalog.search(searchItems,q),represented=new Set(matched.flatMap(e=>GTFavorites.keysForEntity(e).map(([scope,id])=>GTAliases.key(scope,id))));for(const row of GTAliases.entries())if(row.route&&GTAliases.matches(row.scope,row.id,q,row.label)&&!represented.has(GTAliases.key(row.scope,row.id)))matched.push({id:row.id,name:row.label,aliasRecord:row,[row.route.view]:{}});
   const info=document.createElement('p');info.textContent=matched.length?'找到 '+matched.length+' 项，显示前 40 项':'未找到资源，可在各功能中选择图集或上传本地文件。';$('results').append(info);
-  for(const e of matched.slice(0,40)){const b=document.createElement('button'),text=document.createElement('span'),code=document.createElement('small'),kinds=document.createElement('span');text.textContent=e.name;code.textContent=e.id;text.append(code);kinds.className='kinds';kinds.textContent=views.filter(v=>e[v]).map(v=>titles[v]).join(' · ');b.append(text,kinds);b.onclick=()=>{navigate(GTRegistry.route(e,e[active]?active:views.find(v=>e[v])));$('results').hidden=true;};$('results').append(GTFavorites.row(b,...GTFavorites.entityKey(e),e.name));}
+  for(const e of matched.slice(0,40)){const b=document.createElement('button'),text=document.createElement('span'),code=document.createElement('small'),kinds=document.createElement('span');text.textContent=e.name;const aliasKey=(e.aliasRecord?[[e.aliasRecord.scope,e.aliasRecord.id]]:GTFavorites.keysForEntity(e)).find(([scope,id])=>GTAliases.get(scope,id).length);if(aliasKey)GTAliases.bindText(text,...aliasKey,e.name,{hover:b});code.textContent=e.id;text.append(code);kinds.className='kinds';kinds.textContent=views.filter(v=>e[v]).map(v=>titles[v]).join(' · ');b.append(text,kinds);b.onclick=()=>{navigate(e.aliasRecord?.route||GTRegistry.route(e,e[active]?active:views.find(v=>e[v])));$('results').hidden=true;};$('results').append(GTFavorites.row(b,...(e.aliasRecord?[e.aliasRecord.scope,e.aliasRecord.id]:GTFavorites.entityKey(e)),e.name));}
   $('results').hidden=false;
 }
 $('search-form').onsubmit=e=>{e.preventDefault();search();};let timer;$('library-search').oninput=()=>{clearTimeout(timer);timer=setTimeout(search,180);};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$('results').hidden=true;});document.addEventListener('click',e=>{if(!e.target.closest('#results,#search-form'))$('results').hidden=true;});
+$('manage-aliases').onclick=()=>GTAliases.manage();addEventListener('gt-aliases-change',()=>{if($('library-search').value)search();});
 $('help').onclick=()=>$('help-dialog').showModal();$('close-help').onclick=()=>$('help-dialog').close();
 window.addEventListener('hashchange',open);open();
 GTRegistry.load().then(value=>{

@@ -76,7 +76,7 @@ function setPickMode(value){pickMode=value;drag=null;$('pick-main').setAttribute
 async function rebuildTargets(){if(exporting||measuring||!index||mode!=='module')return;queue=null;await selectModule(true,true);}
 function moduleOptions(){const profile=selectedProfile();return {direction:previewDirection(),weapon:$('weapon').value,weaponEquipped:!!$('weapon').value,shield:$('shield').value,summoned:$('summoned').checked,summonPosition:summonPicked?summonPoint.slice():null,summonDirection:$('summon-direction').value,targetDistance:targetPoint?Math.hypot(targetPoint[0],targetPoint[2]):Number($('target-distance').value),targetPosition:targetPoint?.slice()||null,secondaryTargets:secondaryTargets.map(p=>p.slice()),skin:$('skin').value,appearance:$('appearance').value,heroAppearance:heroAppearance(),exclusiveWeapon:!profile||sourceExclusiveWeapon(nativeActions,profile,$('appearance').value,heroAppearance(),$('weapon').value),seed:Number($('seed').value)>>>0,choiceOverrides:{...choiceOverrides},profile};}
 const importedCharacter=loadNativeCharacterPack;
-function refreshModules(wanted=$('module').value){
+function refreshModules(wanted=$('module').value){$('module').dataset.favoriteScope='fx/module/'+character.id;
  modules=actionModules(character.id,index,moduleOptions(),nativeActions,nativePlans);$('module').replaceChildren(...modules.map(m=>new Option(m.label,m.id)));
  if(modules.length)$('module').value=modules.some(m=>m.id===wanted)?wanted:modules[0].id;
 }
@@ -98,7 +98,7 @@ async function loadAvatars(){
   }catch(error){console.debug('列表头像暂不可用',error);}
 }
 function renderCharacters(){
-  const query=$('search').value.trim().toLowerCase(),list=GTFavorites.order(catalog.characters.filter(c=>c.name.toLowerCase().includes(query)||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query)||c.aliases?.some(a=>a.toLowerCase().includes(query))),char=>['fx/character',char.id]);
+  const query=$('search').value.trim().toLowerCase(),list=GTFavorites.order(catalog.characters.filter(c=>GTAliases.matches('fx/character',c.id,query)||c.name.toLowerCase().includes(query)||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query)||c.aliases?.some(a=>a.toLowerCase().includes(query))),char=>['fx/character',char.id]);
   $('characters').replaceChildren(...list.map(char=>{const button=document.createElement('button');button.className='character'+(character?.id===char.id?' active':'');button.title=char.id;button.setAttribute('aria-pressed',String(character?.id===char.id));
     const name=document.createElement('span');name.className='name';name.textContent=char.name;const portraits=document.createElement('span');portraits.className='character-portraits';portraits.append(...(char.portraits?.length?char.portraits.map(p=>avatar(char,p)):[avatar(char)]));button.append(name,portraits);button.onclick=()=>selectCharacter(char);return GTFavorites.row(button,'fx/character',char.id,char.name);}));
 }

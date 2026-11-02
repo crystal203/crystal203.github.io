@@ -425,7 +425,7 @@
         app.listLimit = 20;
         $("assetList").scrollTop = 0;
         app.shown = !keyword ? app.all.slice() : app.all.filter(function (name) {
-          return name.toLowerCase().indexOf(keyword) >= 0
+          return GTAliases.matches('spine/'+app.folder,name,keyword) || name.toLowerCase().indexOf(keyword) >= 0
             || displayName(name).toLowerCase().indexOf(keyword) >= 0
             || (app.supplementAliases[name] || "").indexOf(keyword) >= 0;
         });
@@ -669,7 +669,7 @@
         var names = Object.keys(sheet.frames).filter(function (name) {
           var frame = sheet.frames[name].frame;
           return (frame.w > 1 || frame.h > 1) && (!keyword || name.toLowerCase().indexOf(keyword) >= 0
-            || (sheet.zh[name] || "").toLowerCase().indexOf(keyword) >= 0);
+            || (sheet.zh[name] || "").toLowerCase().indexOf(keyword) >= 0 || GTAliases.matches('atlas/region/items',name,keyword));
         });
         names.sort(function (a, b) {
           return Number(GTFavorites.has('atlas/region/items',b))-Number(GTFavorites.has('atlas/region/items',a))
