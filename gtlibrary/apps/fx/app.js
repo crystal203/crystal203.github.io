@@ -84,7 +84,11 @@ function message(text=''){$('message').textContent=text;$('message').hidden=!tex
 function error(e){message(e.message||String(e));playing=false;update();}
 async function json(url){const response=await GTResources.fetch(url);if(!response.ok)throw new Error('文件读取失败：'+url);return response.json();}
 function avatar(char,portrait=null){
-  const canvas=document.createElement('canvas');canvas.width=canvas.height=40;canvas.className='avatar';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',portrait?.name||char.name);canvas.title=portrait?portrait.name+' · '+({base:'原版',myth:'开花',ascent:'觉醒',special:'特殊时装',supercostume:'超级时装',costume:'时装'}[portrait.kind]||''):char.name;
+  const canvas=document.createElement('canvas'),label=portrait?.name||char.name,code=portrait?.key||char.id;
+  canvas.width=canvas.height=40;canvas.className='avatar';canvas.setAttribute('role','img');
+  canvas.setAttribute('aria-label',label);
+  canvas.title=portrait?label+' · '+({base:'原版',myth:'开花',ascent:'觉醒',special:'特殊时装',supercostume:'超级时装',costume:'时装'}[portrait.kind]||''):label;
+  GTI18n.bindAttribute(canvas,'aria-label',code,label);GTI18n.bindAttribute(canvas,'title',code,label);
   const draw=()=>{const context=canvas.getContext('2d'),entry=portrait?portraitFrames[portrait.key]:avatarFrames[char.id],image=portrait?portraitImage:avatarImage;
     context.clearRect(0,0,40,40);
     if(!entry||!image){context.fillStyle='#93aee6';context.font='19px system-ui';context.textAlign='center';context.fillText(char.name[0]||'·',20,27);return;}
@@ -98,7 +102,7 @@ async function loadAvatars(){
   }catch(error){console.debug('列表头像暂不可用',error);}
 }
 function renderCharacters(){
-  const query=$('search').value.trim().toLowerCase(),list=GTFavorites.order(catalog.characters.filter(c=>GTAliases.matches('fx/character',c.id,query)||c.name.toLowerCase().includes(query)||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query)||c.aliases?.some(a=>a.toLowerCase().includes(query))),char=>['fx/character',char.id]);
+  const query=$('search').value.trim().toLowerCase(),list=GTFavorites.order(catalog.characters.filter(c=>GTAliases.matches('fx/character',c.id,query)||[...GTI18n.namesFor(c.id,c.name)].some(name=>name.toLowerCase().includes(query))||c.id.toLowerCase().includes(query)||c.key?.toLowerCase().includes(query)||c.aliases?.some(a=>a.toLowerCase().includes(query))),char=>['fx/character',char.id]);
   $('characters').replaceChildren(...list.map(char=>{const button=document.createElement('button');button.className='character'+(character?.id===char.id?' active':'');button.title=char.id;button.setAttribute('aria-pressed',String(character?.id===char.id));
     const name=document.createElement('span');name.className='name';name.textContent=char.name;const portraits=document.createElement('span');portraits.className='character-portraits';portraits.append(...(char.portraits?.length?char.portraits.map(p=>avatar(char,p)):[avatar(char)]));button.append(name,portraits);button.onclick=()=>selectCharacter(char);return GTFavorites.row(button,'fx/character',char.id,char.name);}));
 }
@@ -112,7 +116,7 @@ function label(e){
 async function selectCharacter(char,sourceId=null){
   if(exporting||measuring)return;choiceOverrides={};$('variant-controls').hidden=true;++effectGeneration;runtime.loadGeneration=(runtime.loadGeneration||0)+1;const current=++generation;character=char;playing=false;queue=null;effect=null;selectedModule=null;
   runtime.modulePlayer.clear();runtime.characterPlayer.clear();runtime.clear();
-  GTBridge.selection({character:char.id});$('sidebar').classList.remove('open');$('current-character').textContent=char.name;renderCharacters();message('加载中');$('effect').disabled=true;
+  GTBridge.selection({character:char.id});$('sidebar').classList.remove('open');$('current-character').textContent=char.name;GTI18n.bindText($('current-character').firstChild,char.id);renderCharacters();message('加载中');$('effect').disabled=true;
   const imported=char.nativeAggregation==='appearance-source'?mergeNativeCharacterPacks(char,await Promise.all(char.members.map(m=>importedCharacter(m.id)))):await importedCharacter(char.id);if(current!==generation)return;
   nativeActions=imported||baseNativeActions;nativePlans=imported?.plans?{...baseNativePlans,[char.id]:imported.plans}:baseNativePlans;
   if(imported?.profile)importedProfiles[char.id]=imported.profile;

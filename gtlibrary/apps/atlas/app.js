@@ -13,7 +13,7 @@ let currentSpritesheet = null;
         };
 
         // `zh` is an optional sidecar of {internalCode: 中文名}; when present the
-        // Chinese name is shown first and is searchable alongside the internal code
+        // Display names and internal codes are both searchable.
         let spritesheets = [];
 
         document.addEventListener('DOMContentLoaded', async function() {
@@ -79,7 +79,7 @@ let currentSpritesheet = null;
             } catch (error) {
                 if(generation!==loadGeneration||error.name==='AbortError')return;
                 console.error('加载图集失败:', error);
-                alert('加载图集失败: ' + error.message);
+                alert(GTI18n.translate('加载图集失败: ' + error.message));
                 showLoading(false);
             }
         }
@@ -121,6 +121,7 @@ let currentSpritesheet = null;
 
             regionList.innerHTML = '';
             pageRegions.forEach(region => {
+                const sheetCode=String(currentSpritesheet.json||'custom').split('/').pop().replace('.json','');
                 const item = document.createElement('div');
                 item.className = 'region-item';
 
@@ -133,15 +134,17 @@ let currentSpritesheet = null;
                 const info = document.createElement('div');
                 info.className = 'region-info';
 
-                // the Chinese name wins; the internal code stays underneath as the
+                // Keep the internal code underneath the localized name as the
                 // thing you would actually reference or search for
                 const nameEl = document.createElement('div');
                 nameEl.className = 'region-name';
                 nameEl.textContent = region.zh || region.name;
+                if (sheetCode !== 'custom') GTI18n.bindText(nameEl.firstChild, region.name);
+                else nameEl.dataset.i18nIgnore = '';
                 nameEl.title = region.zh ? `${region.zh}  ·  ${region.name}` : region.name;
 
                 const subParts = [];
-                if (region.zh) subParts.push(region.name);
+                if (region.zh || sheetCode !== 'custom' && GTI18n.namesFor(region.name).length) subParts.push(region.name);
                 if (region.rotated) subParts.push('已旋转');
 
                 info.appendChild(nameEl);
@@ -162,7 +165,6 @@ let currentSpritesheet = null;
                 item.appendChild(info);
                 const actions=document.createElement("div");actions.className="region-actions";actions.append(btn);item.append(actions);
 
-                const sheetCode=String(currentSpritesheet.json||'custom').split('/').pop().replace('.json','');
                 actions.prepend(GTFavorites.button('atlas/region/'+sheetCode,region.name,region.zh||region.name));
                 if(['characters','portraits','bosses'].includes(sheetCode)){
                     const selection={name:region.name,sheet:sheetCode,query:region.name};
@@ -262,7 +264,7 @@ let currentSpritesheet = null;
                     window.uploadedJson = JSON.parse(await file.text());
                     checkAndLoadUploadedFiles();
                 } catch (error) {
-                    alert('JSON文件格式错误: ' + error.message);
+                    alert(GTI18n.translate('JSON文件格式错误: ' + error.message));
                 }
             }
             event.target.value = '';
@@ -287,7 +289,7 @@ let currentSpritesheet = null;
                 window.uploadedJson = null;
             };
             img.onerror = function() {
-                alert('加载上传的图片失败');
+                alert(GTI18n.translate('加载上传的图片失败'));
             };
             img.src = window.uploadedImage;
         }
@@ -319,7 +321,7 @@ let currentSpritesheet = null;
                         : text.toLowerCase().includes(searchTerm.toLowerCase());
                 };
 
-                filteredRegions = allRegions.filter(region => test(region.name) || test(region.zh) || GTAliases.get('atlas/region/'+String(currentSpritesheet?.json||'custom').split('/').pop().replace('.json',''),region.name).some(test));
+                filteredRegions = allRegions.filter(region => test(region.name) || [...GTI18n.namesFor(region.name, region.zh)].some(test) || GTAliases.get('atlas/region/'+String(currentSpritesheet?.json||'custom').split('/').pop().replace('.json',''),region.name).some(test));
             }
 
             const favoriteSheet=String(currentSpritesheet?.json||'custom').split('/').pop().replace('.json','');

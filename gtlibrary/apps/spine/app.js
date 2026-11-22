@@ -384,7 +384,7 @@
           app.zh = {};
           app.current = null;
           renderAssetList();
-          window.alert(err.message);
+          window.alert(GTI18n.translate(err.message));
         });
       }
 
@@ -426,7 +426,7 @@
         $("assetList").scrollTop = 0;
         app.shown = !keyword ? app.all.slice() : app.all.filter(function (name) {
           return GTAliases.matches('spine/'+app.folder,name,keyword) || name.toLowerCase().indexOf(keyword) >= 0
-            || displayName(name).toLowerCase().indexOf(keyword) >= 0
+            || [...GTI18n.namesFor(name, displayName(name))].some(label => label.toLowerCase().includes(keyword))
             || (app.supplementAliases[name] || "").indexOf(keyword) >= 0;
         });
         app.shown=GTFavorites.order(app.shown,function(name){return ['spine/'+app.folder,name];});
@@ -669,7 +669,7 @@
         var names = Object.keys(sheet.frames).filter(function (name) {
           var frame = sheet.frames[name].frame;
           return (frame.w > 1 || frame.h > 1) && (!keyword || name.toLowerCase().indexOf(keyword) >= 0
-            || (sheet.zh[name] || "").toLowerCase().indexOf(keyword) >= 0 || GTAliases.matches('atlas/region/items',name,keyword));
+            || [...GTI18n.namesFor(name, sheet.zh[name])].some(label => label.toLowerCase().includes(keyword)) || GTAliases.matches('atlas/region/items',name,keyword));
         });
         names.sort(function (a, b) {
           return Number(GTFavorites.has('atlas/region/items',b))-Number(GTFavorites.has('atlas/region/items',a))
@@ -986,7 +986,7 @@
           if (err && err.name === "AbortError") return;   // 被新的一次切换取消，属正常
           if (token !== app.loadToken) return;
           setLoading(false);
-          window.alert("加载失败：" + name + "\n" + (err && err.message ? err.message : err));
+          window.alert(GTI18n.translate("加载失败：" + name + "\n" + (err && err.message ? err.message : err)));
         });
       }
 
@@ -1421,6 +1421,7 @@
 
           var label = document.createElement("label");
           label.textContent = name;
+          label.dataset.slot = name;
           label.title = "点这一行即选中该组件（画布上会描出它的范围）";
 
           var range = document.createElement("input");
@@ -2252,7 +2253,7 @@
         for (var i = 0; i < rows.length; i++) {
           var row = rows[i];
           var label = row.querySelector("label");
-          var on = !!name && label && label.textContent === name;
+          var on = !!name && label && label.dataset.slot === name;
           row.classList.toggle("picked", on);
           if (on && row.scrollIntoView) row.scrollIntoView({ block: "nearest" });
         }
@@ -2469,7 +2470,7 @@
         loadImage(URL.createObjectURL(upload.image))]).then(function (results) {
           buildSkeleton(results[0], results[1], [results[2]], null);
         }).catch(function (err) {
-          window.alert("载入失败：" + (err && err.message ? err.message : err));
+          window.alert(GTI18n.translate("载入失败：" + (err && err.message ? err.message : err)));
         });
       });
 
@@ -2578,7 +2579,7 @@
 
       $("recordGifBtn").addEventListener("click", function () {
         if (!app.skeleton || !app.animState) {
-          window.alert("请先加载一个资源再导出");
+          window.alert(GTI18n.translate("请先加载一个资源再导出"));
           return;
         }
         if (app.exporting) return;
@@ -2631,7 +2632,7 @@
           button.textContent = "导出 GIF";
           bar.classList.remove("on");
           fill.style.width = "0%";
-          if (!ok && message) window.alert(message);
+          if (!ok && message) window.alert(GTI18n.translate(message));
         }
 
         import("../../vendor/gifenc.esm.js").then(function (mod) {
@@ -2747,7 +2748,7 @@
               return out;
             },onProgress:function (p) { button.textContent='导出中 '+Math.round(p*100)+'%';fill.style.width=(p*100)+'%'; }});
           if (!mediaAbort.signal.aborted) util.offerDownload($('mediaDownload'),result.blob,'spine_export.'+result.extension);
-        } catch (err) { if (err.name !== 'AbortError') window.alert('导出失败：'+err.message); }
+        } catch (err) { if (err.name !== 'AbortError') window.alert(GTI18n.translate('导出失败：'+err.message)); }
         finally { tracks.forEach(function (item) { Object.assign(item[0],item[1]); }); app.animState.apply(app.skeleton); app.skeleton.updateWorldTransform(); app.exporting=false; locked.forEach(function(el){el.disabled=false;});if(characterEditor&&characterEditor.active)characterEditor.sample(characterEditor.time);button.textContent='导出所选格式';bar.classList.remove('on');$("cancelMediaBtn").hidden=true;mediaAbort=null; }
       });
       window.addEventListener('gt-dispose',function(){mediaAbort?.abort();});

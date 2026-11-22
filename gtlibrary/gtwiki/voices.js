@@ -20,7 +20,20 @@ export class VoiceLines {
     this.audio=node('audio');this.audio.controls=true;this.audio.preload='none';this.audio.volume=.5;this.audio.setAttribute('aria-label','角色台词播放器');this.audio.hidden=true;
     this.playerPanel.append(this.status,this.audio);
     this.body=node('div');host.append(this.toolbar,this.count,this.playerPanel,this.body);
-    this.version.onchange=this.language.onchange=this.voiceLanguage.onchange=()=>this.render();this.search.oninput=()=>this.render();
+    this.version.onchange=()=>this.render();this.search.oninput=()=>this.render();
+    this.language.onchange=()=>{this.customLanguage=true;this.render();};
+    this.voiceLanguage.onchange=()=>{this.customAudioLanguage=true;this.render();};
+    this.applyLocale=()=>{
+      const english=globalThis.GTI18n?.locale==='en';
+      const text=english?'enUS':'all',audio=english?'enUS':'zhCN';
+      const changeText=!this.customLanguage&&this.language.value!==text;
+      const changeAudio=!this.customAudioLanguage&&this.voiceLanguage.value!==audio;
+      if(changeText)this.language.value=text;
+      if(changeAudio)this.voiceLanguage.value=audio;
+      if((changeText||changeAudio)&&this.groups.length)this.render();
+    };
+    this.applyLocale();
+    addEventListener('gt-language-change',this.applyLocale);
     this.audio.onplay=this.audio.onpause=()=>this.updateButton();
     this.audio.onended=()=>{this.updateButton();if(this.active)this.status.textContent=this.active.label+' · 播放完毕';};
     this.audio.onerror=()=>{if(this.active){this.status.textContent='语音读取失败，请点击播放重试。';this.updateButton();}};
@@ -51,7 +64,7 @@ export class VoiceLines {
     }catch(e){if(!this.dead&&token===this.playToken&&e.name!=='AbortError')this.status.textContent='语音播放失败，请点击播放重试。';}
     finally{if(!this.dead&&token===this.playToken){button.disabled=false;this.updateButton();}}
   }
-  dispose(){if(this.dead)return;this.stop();this.dead=true;this.audio.onplay=this.audio.onpause=this.audio.onended=this.audio.onerror=null;}
+  dispose(){if(this.dead)return;this.stop();this.dead=true;removeEventListener('gt-language-change',this.applyLocale);this.audio.onplay=this.audio.onpause=this.audio.onended=this.audio.onerror=null;}
   setHero(hero){
     this.groups=hero.voiceLines||[];this.search.value='';
     this.version.replaceChildren(...this.groups.map(group=>{const o=node('option',group.label);o.value=group.id;return o;}));
@@ -64,7 +77,7 @@ export class VoiceLines {
     if(!group){this.count.textContent='';this.body.append(node('p','当前数据未收录该角色的台词文本。','empty-panel'));return;}
     const langs=this.language.value==='all'?languages:languages.filter(([lang])=>lang===this.language.value);
     const query=this.search.value.trim().toLocaleLowerCase();
-    const lines=group.lines.filter(row=>!query||[row.label,...langs.flatMap(([lang])=>row.texts[lang]||[])].some(text=>plain(text).toLocaleLowerCase().includes(query)));
+    const lines=group.lines.filter(row=>!query||[row.label,globalThis.GTI18n?.translate(row.label),...langs.flatMap(([lang])=>row.texts[lang]||[])].some(text=>plain(text).toLocaleLowerCase().includes(query)));
     const voiceLang=this.voiceLanguage.value,voiceLabel=languages.find(([lang])=>lang===voiceLang)[1];
     this.count.textContent=lines.length+' / '+group.lines.length+' 类台词 · '+langs.map(([lang,label])=>label+' '+lines.filter(row=>row.texts[lang]?.length).length).join(' · ')+' · '+voiceLabel+'语音 '+lines.filter(row=>row.audio?.[voiceLang]?.length).length;
     if(!lines.length){this.body.append(node('p','没有匹配的台词，请调整搜索。','empty-panel'));return;}
@@ -89,7 +102,7 @@ export class VoiceLines {
         for(const [i,text] of texts.entries()){
           const p=node('p',undefined,'voice-text');
           if(texts.length>1)p.append(node('small','文本 '+(i+1),'voice-alternative'));
-          p.append(document.createTextNode(plain(text)));cell.append(p);
+          const line=node('span',plain(text));line.dataset.i18nIgnore='';p.append(line);cell.append(p);
         }
         tr.append(cell);
       }

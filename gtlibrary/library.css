@@ -12,3 +12,11 @@ body:has(nav [data-view=online][aria-current=page])>.context-bar{display:none}
 @media(max-width:760px){nav{flex-wrap:wrap}nav button{min-width:65px}}
 
 body:has(nav [data-view=video][aria-current=page])>.context-bar{display:none}
+
+.header-actions{display:flex;align-items:center;gap:8px;margin-inline-start:auto;flex:none}
+.header-actions #help{margin-left:0}
+.language-control select{font:inherit;color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:7px 9px;cursor:pointer}
+.language-control select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(min-width:1251px){html[lang=en] .library-header{gap:18px}html[lang=en] nav button{padding-inline:12px}}
+@media(max-width:760px){.library-header .brand{flex:1;min-width:0}.brand-mark{flex:none}}
+@media(max-width:420px){.header-actions{gap:5px}.header-actions #manage-aliases{padding-inline:7px}.language-control select{padding-inline:4px}}

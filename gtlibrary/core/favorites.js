@@ -17,8 +17,12 @@
   const nodeHas=(scope,node)=>idsFor(node).some(id=>has(scope,id));
   function paint(button){
     const on=nodeHas(button.dataset.favoriteScope,button);
+    const i18n=global.GTI18n,{favoriteScope,favoriteId,favoriteLabel}=button.dataset;
+    const code=i18n?.resourceCode(favoriteScope,favoriteId),label=favoriteLabel||favoriteId;
+    i18n?.bindAttribute(button,'title',code,label);
+    i18n?.bindAttribute(button,'aria-label',code,label);
     button.textContent=on?'★':'☆';button.setAttribute('aria-pressed',String(on));
-    button.title=(on?'取消收藏：':'收藏：')+(button.dataset.favoriteLabel||button.dataset.favoriteId)+' · 右键编辑别名'+(global.GTAliases?.get(button.dataset.favoriteScope,button.dataset.favoriteId).length?' · '+GTAliases.get(button.dataset.favoriteScope,button.dataset.favoriteId).join(' / '):'');button.setAttribute('aria-label',button.title);
+    button.title=(on?'取消收藏：':'收藏：')+label+' · 右键编辑别名'+(global.GTAliases?.get(favoriteScope,favoriteId).length?' · '+GTAliases.get(favoriteScope,favoriteId).join(' / '):'');button.setAttribute('aria-label',button.title);
   }
   function changed(){
     for(const button of document.querySelectorAll('button.gt-favorite'))paint(button);
@@ -94,7 +98,10 @@
     for(const option of options){
       if(!state.base.has(option))state.base.set(option,state.serial++);
       const on=option.value!==''&&nodeHas(scope,option),identity=idsFor(option).find(id=>global.GTAliases?.get(scope,id).length)||idsFor(option)[0],label=(on?'★ ':'')+(global.GTAliases?.display(scope,identity,option.text)||option.text);option.title=option.text;
-      if(option.label!==label)option.label=label;
+      const code=global.GTI18n?.resourceCode(scope,identity);
+      global.GTI18n?.bindText(option,code,!!global.GTAliases?.get(scope,identity).length);
+      global.GTI18n?.bindAttribute(option,'title',code,option.text);
+      if((option.getAttribute('label')??option.text)!==label)option.label=label;
     }
     if(reorder){
       for(const group of [select,...select.querySelectorAll('optgroup')]){
@@ -104,7 +111,9 @@
       }
       if(select.multiple)for(const option of options)option.selected=selected.includes(option);else select.value=value;
     }
-    const option=select.selectedOptions[0];select.title=(option?.text||'')+' · 右键搜索选项或别名';state.button.dataset.favoriteScope=scope;state.button.dataset.favoriteId=option?.dataset.favoriteId||option?.value||'';state.button.dataset.favoriteLabel=option?.text||'';
+    const option=select.selectedOptions[0];
+    global.GTI18n?.bindAttribute(select,'title',global.GTI18n.resourceCode(scope,option?.dataset.favoriteId||option?.value),option?.text);
+    select.title=(option?.text||'')+' · 右键搜索选项或别名';state.button.dataset.favoriteScope=scope;state.button.dataset.favoriteId=option?.dataset.favoriteId||option?.value||'';state.button.dataset.favoriteLabel=option?.text||'';
     state.button.dataset.favoriteAliases=option?.dataset.favoriteAliases||'';
     state.button.disabled=select.disabled||!option||!option.value||option.disabled;state.button.hidden=select.hidden;paint(state.button);
   }

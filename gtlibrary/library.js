@@ -24,8 +24,12 @@ const states={};let searchItems=[];
 function readRoute(){const params=new URLSearchParams(location.hash.slice(1));const result=Object.fromEntries(params);result.view=views.includes(result.view)?result.view:'atlas';return result;}
 function encode(state){const params=new URLSearchParams();for(const key of ['view','resource','name','folder','character','sheet','query','effect','map','category','hero','stage','costume','illust','direction','appearance','skin','weapon','level','weaponLevel','clip','kind','group','q','role','element','rarity'])if(state[key])params.set(key,state[key]);return params.toString();}
 function navigate(state){if(state)location.hash=encode(state);}
+function renderTitle(){
+  const label=entity?GTI18n.name(GTI18n.entityCode(entity),entity.name)+' · ':'';
+  document.title=label+titles[active]+' | 坎公资源库';
+}
 function renderContext(){
-  $('context').textContent=active==='online'?'在线玩 · 世界 1 / 1-1 旅馆':entity?entity.name+' · '+entity.id:'浏览全部资源';
+  $('context').textContent=active==='online'?'在线玩 · 世界 1 / 1-1 旅馆':entity?GTI18n.name(GTI18n.entityCode(entity),entity.name)+' · '+entity.id:'浏览全部资源';
   $('related').replaceChildren();
   if(entity)for(const view of (entity.audio?['audio']:entity.map?['map']:views.filter(v=>!['map','video','online','audio'].includes(v)))){const b=document.createElement('button'),target=GTRegistry.route(entity,view);b.textContent=titles[view]+(target?'':' · 暂无');b.disabled=!target;b.title=target?'打开关联的'+titles[view]:'索引中没有对应资源';b.onclick=()=>navigate(target);$('related').append(b);}
 }
@@ -33,7 +37,7 @@ function open(){
   const next=readRoute();if(route&&encode(next)===encode(route))return;
   if(active&&route)states[active]={...route};
   document.body.classList.remove('map-presentation');document.body.classList.toggle('map-workspace',['map','video','online'].includes(next.view));route=next;active=next.view;entity=resolveSelection(next);renderContext();
-  document.title=(entity?entity.name+' · ':'')+titles[active]+' | 坎公资源库';
+  renderTitle();
   for(const b of document.querySelectorAll('nav button')){b.setAttribute('aria-current',b.dataset.view===active?'page':'false');}
   if(frame){try{frame.contentWindow.GTBridge?.dispose();}catch{}frame.remove();}
   $('status').hidden=false;$('status').textContent='正在打开'+titles[active]+'…';
@@ -52,6 +56,8 @@ for(const b of document.querySelectorAll('nav button'))b.onclick=()=>{
 };
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame?.contentWindow||event.data?.channel!=='gt-library')return;
+  // Ignore late messages while the address already points to the next workspace.
+  if(encode(readRoute())!==encode(route))return;
   const data=event.data;
   if(data.type==='map-layout'&&active==='map'){document.body.classList.toggle('map-presentation',data.mode==='presentation');return;}
   if(data.type==='navigate'){if(!registry)return;const selected=resolveSelection(data.selection),target=GTRegistry.route(selected,data.view);if(target)navigate({...target,...data.selection,...data.params});return;}
@@ -59,7 +65,7 @@ window.addEventListener('message',event=>{
     const selected=resolveSelection({view:active,...data.selection});entity=selected;
     route={view:active,...data.selection,...(selected?{resource:selected.id}:{resource:''})};
     history.replaceState(null,'','#'+encode(route));renderContext();
-    document.title=(entity?entity.name+' · ':'')+titles[active]+' | 坎公资源库';
+    renderTitle();
   }
 });
 function search(){
@@ -73,6 +79,7 @@ $('search-form').onsubmit=e=>{e.preventDefault();search();};let timer;$('library
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$('results').hidden=true;});document.addEventListener('click',e=>{if(!e.target.closest('#results,#search-form'))$('results').hidden=true;});
 $('manage-aliases').onclick=()=>GTAliases.manage();addEventListener('gt-aliases-change',()=>{if($('library-search').value)search();});
 $('help').onclick=()=>$('help-dialog').showModal();$('close-help').onclick=()=>$('help-dialog').close();
+addEventListener('gt-language-change',()=>{renderContext();renderTitle();if(!$('results').hidden)search();});
 window.addEventListener('hashchange',open);open();
 GTRegistry.load().then(value=>{
   registry=value;rebuildSearch();entity=resolveSelection(route);renderContext();

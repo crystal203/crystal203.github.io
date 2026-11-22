@@ -13,7 +13,7 @@ const preferences=matchMedia('(prefers-reduced-motion: reduce)');
 illustPreview.paused=pixelPreview.paused=preferences.matches;
 function plain(value){return String(value||'').replace(/\\n/g,'\n').replace(/<br\s*\/?\s*>/gi,'\n').replace(/<[^>]*>/g,'').replace(/\[(?:c|C|\/?c|\/?C|[a-fA-F0-9]{6}|-)\]/g,'').trim();}
 function node(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
-function number(value){return Number(value).toLocaleString('zh-CN',{maximumFractionDigits:4});}
+function number(value){return Number(value).toLocaleString(GTI18n.locale,{maximumFractionDigits:4});}
 function empty(target,message){target.replaceChildren(node('p',message,'empty-panel'));}
 function spriteBox(sprite){const box=node('span',undefined,'sprite-holder');if(sprite){const c=node('canvas');c.setAttribute('aria-label',sprite.name);box.append(c);drawSprite(c,sprite).catch(()=>box.replaceChildren(node('span','预览暂不可用','sprite-missing')));}else box.append(node('span','未收录缩略图','sprite-missing'));return box;}
 function descriptor(value){return value?catalog.assets[value.key]:null;}
@@ -27,7 +27,7 @@ function filter(){
   if(!catalog)return;
   const q=$('hero-search').value.trim().toLowerCase(),role=$('role-filter').value,stars=$('star-filter').value;
   const matches=GTFavorites.order(catalog.heroes.filter(h=>(!element||h.element===element)&&(!role||h.role===role)&&(!stars||h.stars===Number(stars))&&
-    (!q||GTAliases.matches('wiki/hero',h.id,q)||[h.name,h.shortName,h.englishName,h.originId,...h.aliases].some(v=>String(v).toLowerCase().includes(q)))),h=>['wiki/hero',h.id]);
+    (!q||GTAliases.matches('wiki/hero',h.id,q)||[...GTI18n.namesFor(h.id,h.name),h.shortName,h.englishName,h.originId,...h.aliases].some(v=>String(v).toLowerCase().includes(q)))),h=>['wiki/hero',h.id]);
   $('hero-count').textContent=matches.length+' / '+catalog.heroes.length+' 位角色';
   $('hero-list').replaceChildren();
   if(!matches.length){$('hero-list').append(node('p','没有匹配的角色，请调整筛选。','empty-list'));return;}
@@ -48,6 +48,9 @@ function renderProfile(){
   }
   $('hero-description').textContent=plain(hero.description);$('hero-description').hidden=!hero.description;
   $('hero-introduction').textContent=plain(hero.introduction);$('hero-introduction').hidden=!hero.introduction;
+}
+function renderStory(){
+  $('hero-story').replaceChildren(...(plain(GTI18n.story(hero))||'未记载').split(/\n\s*\n/).map(p=>node('p',p)));
 }
 function skillCard(skill){
   const row=node('div',undefined,'skill');if(skill.kind)row.append(node('span',skill.kind,'skill-kind'));
@@ -163,18 +166,23 @@ async function loadHero(summary){
     const r=await GTResources.fetch(new URL('gtwiki/data/'+summary.file,GTResources.root).href,{signal:heroAbort.signal});if(!r.ok)throw Error('角色信息读取失败：'+r.status);
     const data=await r.json();if(token!==loadToken||disposed)return;hero=data;
     document.documentElement.style.setProperty('--element',colors[hero.element]);
-    $('hero-name').textContent=hero.name;$('hero-english').textContent=hero.englishName;$('hero-tags').replaceChildren();
+    $('hero-name').textContent=hero.name;GTI18n.bindText($('hero-name').firstChild,hero.id);$('hero-english').textContent=hero.englishName;$('hero-english').hidden=GTI18n.locale==='en';$('hero-tags').replaceChildren();
     setTag(hero.element+'属性','element-tag');setTag(hero.role);setTag('初始 '+'★'.repeat(summary.stars),'rarity-tag');if(hero.title)setTag(hero.title);
     renderProfile();$('stats-stage').replaceChildren(...hero.stages.map(s=>{const o=node('option',s.label);o.value=s.id;return o;}));
     $('stats-stage').value=params.get('stage')||String(defaultStage().id);if(!$('stats-stage').value)$('stats-stage').value=defaultStage().id;renderStats();
     $('illust-select').replaceChildren(...hero.illustrations.map(row=>{const o=node('option',row.name);o.value=row.asset.key;return o;}));
     if(!hero.illustrations.length){$('illust-select').append(node('option','暂无立绘'));$('illust-select').disabled=true;}else{$('illust-select').disabled=false;if(hero.illustrations.some(r=>r.asset.key===params.get('illust')))$('illust-select').value=params.get('illust');}
-    $('hero-story').replaceChildren(...(plain(hero.story)||'未记载').split(/\n\s*\n/).map(p=>node('p',p)));
+    renderStory();
     voiceLines.setHero(hero);renderWeapons();$('hero-detail').hidden=false;$('page-status').hidden=true;
     renderAppearance();renderIllust();filter();$('detail-scroll').scrollTop=0;
     for(const key of ['stage','costume','illust','weapon'])params.delete(key);
   }catch(e){if(token===loadToken&&e.name!=='AbortError'){const b=node('button','重试');b.onclick=()=>loadHero(summary);$('page-status').replaceChildren(node('span','角色资料读取失败。'),b);}}
 }
+addEventListener('gt-language-change',()=>{
+  $('hero-english').hidden=GTI18n.locale==='en';
+  if(hero)renderStory();
+  if($('hero-search').value)filter();
+});
 $('hero-search').value=params.get('q')||'';$('role-filter').value=params.get('role')||'';$('star-filter').value=params.get('rarity')||'';$('pixel-direction').value=params.get('direction')||'front';
 for(const input of [$('hero-search'),$('role-filter'),$('star-filter')])input.addEventListener(input.tagName==='INPUT'?'input':'change',()=>{filter();selection();});
 $('reset-filters').onclick=()=>{$('hero-search').value='';$('role-filter').value='';$('star-filter').value='';element='';renderElements();filter();selection();};
